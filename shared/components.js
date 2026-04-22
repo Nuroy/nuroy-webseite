@@ -320,6 +320,201 @@
     });
   }
 
+  /* ── Preloader ──────────────────────────────────────────── */
+  function buildPreloader() {
+    var titleText = 'nuroy / dashboard';
+    var titleLetters = titleText.split('').map(function(ch) {
+      return '<span class="pdb-title-letter">' + (ch === ' ' ? ' ' : ch) + '</span>';
+    }).join('');
+
+    var chartSvg =
+      '<svg viewBox="0 0 440 50" preserveAspectRatio="none">' +
+        '<path class="pdb-chart-area" d="M0,50 L0,38 C40,35 80,28 120,22 C160,16 200,24 240,18 C280,12 320,20 360,14 C400,8 430,6 440,10 L440,50 Z" />' +
+        '<path class="pdb-chart-line" d="M0,38 C40,35 80,28 120,22 C160,16 200,24 240,18 C280,12 320,20 360,14 C400,8 430,6 440,10" />' +
+        '<circle class="pdb-chart-endpoint" cx="440" cy="10" r="3" />' +
+      '</svg>';
+
+    return '<div id="nuroy-preloader" class="preloader">' +
+      '<div class="preloader-grid"></div>' +
+      '<div class="preloader-content">' +
+        '<div class="preloader-dot"></div>' +
+        '<div class="preloader-dashboard">' +
+          '<div class="pdb-topbar">' +
+            '<div class="pdb-dots">' +
+              '<span class="pdb-dot-r"></span>' +
+              '<span class="pdb-dot-y"></span>' +
+              '<span class="pdb-dot-g"></span>' +
+            '</div>' +
+            '<div class="pdb-title">' + titleLetters + '</div>' +
+            '<div class="pdb-live"><span class="pdb-live-dot"></span>Live</div>' +
+          '</div>' +
+          '<div class="pdb-chart">' + chartSvg + '</div>' +
+          '<div class="pdb-metrics">' +
+            '<div class="pdb-metric">' +
+              '<div class="pdb-metric-label">Projekte</div>' +
+              '<div class="pdb-metric-value" data-count-target="12" data-count-suffix="+">0</div>' +
+            '</div>' +
+            '<div class="pdb-metric">' +
+              '<div class="pdb-metric-label">Uptime</div>' +
+              '<div class="pdb-metric-value" data-count-target="99.9" data-count-suffix="%" data-count-decimals="1">0</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="pdb-feed">' +
+            '<div class="pdb-feed-item">' +
+              '<span class="pdb-feed-dot"></span>' +
+              '<span class="pdb-feed-text">system / boot</span>' +
+              '<span class="pdb-feed-badge">\u2192 initialized</span>' +
+            '</div>' +
+            '<div class="pdb-feed-item">' +
+              '<span class="pdb-feed-dot"></span>' +
+              '<span class="pdb-feed-text">core / modules</span>' +
+              '<span class="pdb-feed-badge">\u2192 ready</span>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="preloader-footer">' +
+          '<span class="preloader-tagline">Software \u00B7 Automation \u00B7 Strategie</span>' +
+          '<div class="preloader-progress-wrap"><div class="preloader-progress-bar"></div></div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="preloader-status">' +
+        '<span class="status-line">System initialisiert...</span>' +
+        '<span class="status-line">Komponenten geladen</span>' +
+        '<span class="status-line">Dashboard bereit</span>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function countUp(el, target, suffix, decimals, duration) {
+    var start = performance.now();
+    var from = 0;
+    function ease(t) { return 1 - Math.pow(1 - t, 3); } // easeOutCubic
+    function tick(now) {
+      var t = Math.min((now - start) / duration, 1);
+      var val = from + (target - from) * ease(t);
+      el.textContent = (decimals > 0 ? val.toFixed(decimals) : Math.round(val)) + suffix;
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function initPreloader() {
+    // Skip if already seen this session
+    if (sessionStorage.getItem('nuroy_preloader') === '1') return;
+
+    // Prevent content flash
+    document.body.classList.add('preloader-active');
+    document.body.style.overflow = 'hidden';
+
+    // Insert preloader as first child of body
+    var tmp = document.createElement('div');
+    tmp.innerHTML = buildPreloader();
+    var preloader = tmp.firstChild;
+    document.body.insertBefore(preloader, document.body.firstChild);
+
+    // Timeline constants
+    var T = {
+      GRID: 50, DOT: 400, FRAME: 800, TITLE: 1000,
+      CHART: 1400, METRICS: 1600, FEED: 2000,
+      FOOTER: 2800, STATUS: 3400, EXIT: 4000
+    };
+
+    var grid = preloader.querySelector('.preloader-grid');
+    var dot = preloader.querySelector('.preloader-dot');
+    var dashboard = preloader.querySelector('.preloader-dashboard');
+    var titleLetters = preloader.querySelectorAll('.pdb-title-letter');
+    var live = preloader.querySelector('.pdb-live');
+    var chartLine = preloader.querySelector('.pdb-chart-line');
+    var chartArea = preloader.querySelector('.pdb-chart-area');
+    var chartEndpoint = preloader.querySelector('.pdb-chart-endpoint');
+    var metrics = preloader.querySelectorAll('.pdb-metric');
+    var metricValues = preloader.querySelectorAll('.pdb-metric-value');
+    var feedItems = preloader.querySelectorAll('.pdb-feed-item');
+    var footer = preloader.querySelector('.preloader-footer');
+    var bar = preloader.querySelector('.preloader-progress-bar');
+    var statusLines = preloader.querySelectorAll('.status-line');
+
+    // 0–400ms: Grid fades in
+    setTimeout(function() { grid.classList.add('visible'); }, T.GRID);
+
+    // 400–800ms: Dot scales in
+    setTimeout(function() { dot.classList.add('visible'); }, T.DOT);
+
+    // 800–1200ms: Dashboard frame appears
+    setTimeout(function() { dashboard.classList.add('visible'); }, T.FRAME);
+
+    // 1000–2000ms: Title typing (18 chars × ~55ms)
+    for (var i = 0; i < titleLetters.length; i++) {
+      (function(idx) {
+        setTimeout(function() { titleLetters[idx].classList.add('visible'); }, T.TITLE + idx * 55);
+      })(i);
+    }
+
+    // Show live badge after title finishes typing
+    setTimeout(function() { live.classList.add('visible'); }, T.TITLE + titleLetters.length * 55 + 100);
+
+    // 1400–2400ms: Chart draws + metrics count up
+    setTimeout(function() {
+      chartArea.classList.add('visible');
+      chartLine.classList.add('draw');
+      chartEndpoint.classList.add('visible');
+    }, T.CHART);
+
+    // 1600ms: Metrics fade in + count up
+    setTimeout(function() {
+      for (var m = 0; m < metrics.length; m++) {
+        (function(idx) {
+          setTimeout(function() {
+            metrics[idx].classList.add('visible');
+            var valEl = metricValues[idx];
+            var target = parseFloat(valEl.getAttribute('data-count-target'));
+            var suffix = valEl.getAttribute('data-count-suffix') || '';
+            var decimals = parseInt(valEl.getAttribute('data-count-decimals') || '0', 10);
+            countUp(valEl, target, suffix, decimals, 800);
+          }, idx * 120);
+        })(m);
+      }
+    }, T.METRICS);
+
+    // 2000–2600ms: Feed items slide in staggered
+    for (var f = 0; f < feedItems.length; f++) {
+      (function(idx) {
+        setTimeout(function() { feedItems[idx].classList.add('visible'); }, T.FEED + idx * 250);
+      })(f);
+    }
+
+    // 2800–3400ms: Tagline + progress bar
+    setTimeout(function() {
+      footer.classList.add('visible');
+      setTimeout(function() { bar.classList.add('fill'); }, 100);
+    }, T.FOOTER);
+
+    // 3400ms: Status lines staggered
+    for (var j = 0; j < statusLines.length; j++) {
+      (function(idx) {
+        setTimeout(function() {
+          statusLines[idx].classList.add('visible');
+          if (idx === statusLines.length - 1) {
+            setTimeout(function() { statusLines[idx].classList.add('done'); }, 200);
+          }
+        }, T.STATUS + idx * 180);
+      })(j);
+    }
+
+    // 4000ms: Exit
+    setTimeout(function() {
+      preloader.classList.add('out');
+      document.body.style.overflow = '';
+      document.body.classList.remove('preloader-active');
+      sessionStorage.setItem('nuroy_preloader', '1');
+
+      // 800ms later: remove from DOM
+      setTimeout(function() {
+        if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
+      }, 800);
+    }, T.EXIT);
+  }
+
   function initMobileNav() {
     const burger = document.getElementById('nav-burger');
     const menu = document.getElementById('mobile-menu');
@@ -363,9 +558,9 @@
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-      inject(); initCursorGlow(); initScrollReveal(); initNavScroll(); initNavPill(); initMobileNav();
+      inject(); initPreloader(); initCursorGlow(); initScrollReveal(); initNavScroll(); initNavPill(); initMobileNav();
     });
   } else {
-    inject(); initCursorGlow(); initScrollReveal(); initNavScroll(); initNavPill(); initMobileNav();
+    inject(); initPreloader(); initCursorGlow(); initScrollReveal(); initNavScroll(); initNavPill(); initMobileNav();
   }
 })();

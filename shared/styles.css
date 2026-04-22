@@ -855,3 +855,372 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .nav-link-num { opacity: 1 !important; transform: none !important; }
 }
 
+/* ============================================================
+   PRELOADER — Premium Dashboard Intro
+   ============================================================ */
+
+/* Flash prevention: hide page content while preloader is active */
+body.preloader-active > *:not(#nuroy-preloader) { visibility: hidden; }
+
+/* ── Overlay ─────────────────────────────────────────────── */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0, 1);
+}
+.preloader.out {
+  opacity: 0;
+  transform: translateY(-40px);
+  pointer-events: none;
+}
+
+/* ── Dashboard Grid Background ───────────────────────────── */
+.preloader-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 45, 122, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 45, 122, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.preloader-grid.visible { opacity: 1; }
+
+/* ── Content Container ───────────────────────────────────── */
+.preloader-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+/* ── Pink Dot ────────────────────────────────────────────── */
+.preloader-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--pink);
+  box-shadow: 0 0 20px var(--pink-glow-lg), 0 0 60px var(--pink-glow);
+  transform: scale(0);
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.preloader-dot.visible {
+  transform: scale(1);
+  animation: dot-glow-pulse 2s ease-in-out infinite;
+}
+@keyframes dot-glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px var(--pink-glow-lg), 0 0 60px var(--pink-glow); }
+  50%      { box-shadow: 0 0 30px var(--pink-glow-lg), 0 0 80px rgba(255, 45, 122, 0.3); }
+}
+
+/* ── Dashboard Frame ─────────────────────────────────────── */
+.preloader-dashboard {
+  width: 100%;
+  max-width: 480px;
+  background: var(--bg-2);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 45, 122, 0.06);
+  opacity: 0;
+  transform: scale(0.92) translateY(12px);
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.preloader-dashboard.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* ── Top Bar (macOS-style) ───────────────────────────────── */
+.pdb-topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-3);
+}
+.pdb-dots {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.pdb-dot-r, .pdb-dot-y, .pdb-dot-g {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.pdb-dot-r { background: #FF5F57; }
+.pdb-dot-y { background: #FFBD2E; }
+.pdb-dot-g { background: #28CA41; }
+
+/* ── Title Typing ────────────────────────────────────────── */
+.pdb-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  color: var(--fg-muted);
+  display: inline-flex;
+  flex: 1;
+  min-width: 0;
+}
+.pdb-title-letter {
+  opacity: 0;
+  transition: opacity 0.06s ease;
+  display: inline-block;
+  white-space: pre;
+}
+.pdb-title-letter.visible { opacity: 1; }
+
+/* ── Live Badge ──────────────────────────────────────────── */
+.pdb-live {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ok);
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.pdb-live.visible { opacity: 1; }
+.pdb-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ok);
+  animation: pdb-live-blink 1.6s ease-in-out infinite;
+}
+@keyframes pdb-live-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+
+/* ── Mini Chart ──────────────────────────────────────────── */
+.pdb-chart {
+  padding: 12px 14px;
+  height: 60px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+}
+.pdb-chart svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.pdb-chart-area {
+  fill: var(--pink-bg);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.pdb-chart-area.visible { opacity: 1; }
+.pdb-chart-line {
+  fill: none;
+  stroke: var(--pink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.pdb-chart-line.draw { stroke-dashoffset: 0; }
+.pdb-chart-endpoint {
+  fill: var(--pink);
+  opacity: 0;
+  transition: opacity 0.3s ease 0.8s;
+}
+.pdb-chart-endpoint.visible { opacity: 1; }
+
+/* ── Metrics Row ─────────────────────────────────────────── */
+.pdb-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--line);
+}
+.pdb-metric {
+  padding: 10px 14px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.pdb-metric:first-child { border-right: 1px solid var(--line); }
+.pdb-metric.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.pdb-metric-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin-bottom: 4px;
+}
+.pdb-metric-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--fg);
+  letter-spacing: -0.02em;
+}
+
+/* ── Feed Section ────────────────────────────────────────── */
+.pdb-feed {
+  padding: 8px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.pdb-feed-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--fg-muted);
+  padding: 5px 0;
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.2, 0, 0, 1);
+}
+.pdb-feed-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.pdb-feed-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--pink);
+  flex-shrink: 0;
+}
+.pdb-feed-text { flex: 1; min-width: 0; }
+.pdb-feed-badge {
+  font-size: 9px;
+  color: var(--ok);
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+/* ── Footer Area (tagline + progress) ────────────────────── */
+.preloader-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.preloader-footer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.preloader-tagline {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--fg-dim);
+}
+
+/* ── Progress Bar ────────────────────────────────────────── */
+.preloader-progress-wrap {
+  width: 240px;
+  height: 2px;
+  background: var(--bg-3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.preloader-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--pink);
+  border-radius: 2px;
+  box-shadow: 0 0 8px var(--pink-glow-lg);
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.preloader-progress-bar.fill { width: 100%; }
+
+/* ── Status Lines ────────────────────────────────────────── */
+.preloader-status {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 1;
+}
+.status-line {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--fg-dim);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+.status-line.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.status-line.done { color: var(--ok); }
+
+/* ── Preloader Mobile ────────────────────────────────────── */
+@media (max-width: 900px) {
+  .preloader-dashboard { max-width: 320px; }
+  .pdb-topbar { padding: 8px 10px; gap: 8px; }
+  .pdb-dots { gap: 5px; }
+  .pdb-dot-r, .pdb-dot-y, .pdb-dot-g { width: 7px; height: 7px; }
+  .pdb-title { font-size: 10px; }
+  .pdb-live { font-size: 8px; }
+  .pdb-chart { height: 48px; padding: 10px 12px; }
+  .pdb-metric { padding: 8px 12px; }
+  .pdb-metric-label { font-size: 8px; }
+  .pdb-metric-value { font-size: 17px; }
+  .pdb-feed { padding: 6px 12px; }
+  .pdb-feed-item { font-size: 9px; gap: 6px; }
+  .pdb-feed-badge { font-size: 8px; }
+  .preloader-progress-wrap { width: 180px; }
+  .preloader-status { bottom: 28px; }
+  .status-line { font-size: 10px; }
+}
+
+/* ── Preloader Reduced Motion ────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .preloader { transition-duration: 0.3s; }
+  .preloader-dot { transition-duration: 0.2s; animation: none !important; }
+  .preloader-dashboard { transition-duration: 0.2s; }
+  .pdb-title-letter { transition-duration: 0.05s; }
+  .pdb-live { transition-duration: 0.1s; }
+  .pdb-chart-line { transition-duration: 0.2s; }
+  .pdb-chart-area { transition-duration: 0.1s; }
+  .pdb-chart-endpoint { transition-duration: 0.1s; transition-delay: 0s; }
+  .pdb-metric { transition-duration: 0.1s; }
+  .pdb-feed-item { transition-duration: 0.1s; }
+  .preloader-footer { transition-duration: 0.2s; }
+  .preloader-progress-bar { transition-duration: 0.4s; }
+  .status-line { transition-duration: 0.1s; }
+  .preloader-grid { transition-duration: 0.2s; }
+  .pdb-live-dot { animation: none !important; opacity: 1; }
+}
+
