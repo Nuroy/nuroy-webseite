@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projekte — Nuroy</title>
+  <link rel="stylesheet" href="shared/styles.css?v=1776884200265">
+  <style>
+    .proj-hero {
+      padding: calc(var(--nav-h) + 80px) 0 72px;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .proj-hero-glow {
+      position: absolute;
+      top: -200px; right: -100px;
+      width: 700px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,45,122,0.09) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .proj-hero-inner {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .proj-count {
+      font-family: var(--font-display);
+      font-size: clamp(80px, 12vw, 160px);
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,45,122,0.2);
+      margin-bottom: -12px;
+    }
+
+    /* Filter bar */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      padding: 7px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      color: var(--fg-muted);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover { border-color: rgba(255,45,122,0.3); color: var(--pink); }
+    .filter-btn.active {
+      background: var(--pink-bg);
+      border-color: rgba(255,45,122,0.3);
+      color: var(--pink);
+    }
+    .filter-count {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--fg-dim);
+      letter-spacing: 0.06em;
+    }
+
+    /* Project grid */
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-top: 40px;
+    }
+    .proj-card {
+      background: var(--bg-2);
+      padding: 48px;
+      text-decoration: none;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .proj-card.in {
+      animation: proj-in 0.6s cubic-bezier(0.2,0,0,1) forwards;
+    }
+    @keyframes proj-in {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .proj-card:hover { background: var(--bg-3); }
+    .proj-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,45,122,0.04) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .proj-card:hover::after { opacity: 1; }
+
+    /* Top bar of card */
+    .proj-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+    .proj-card-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--fg-dim);
+      letter-spacing: 0.08em;
+    }
+    .proj-card-status {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ok);
+      letter-spacing: 0.06em;
+    }
+    .proj-card-status-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--ok);
+      animation: blink 3s ease-in-out infinite;
+    }
+
+    /* Big project title */
+    .proj-card-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 4vw, 64px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .proj-card-tagline {
+      font-size: clamp(14px, 1.2vw, 17px);
+      color: var(--pink);
+      font-weight: 500;
+      margin-bottom: 16px;
+      line-height: 1.4;
+      position: relative;
+      z-index: 1;
+    }
+    .proj-card-desc {
+      font-size: 14px;
+      color: var(--fg-muted);
+      line-height: 1.75;
+      max-width: 480px;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+    .proj-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+    .proj-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--pink);
+      letter-spacing: 0.06em;
+      transition: gap 0.3s;
+      position: relative;
+      z-index: 1;
+    }
+    .proj-card:hover .proj-card-cta { gap: 14px; }
+    .proj-card-cta svg { transition: transform 0.3s; }
+    .proj-card:hover .proj-card-cta svg { transform: translateX(4px); }
+
+    /* Ghost big number */
+    .proj-card-ghost {
+      position: absolute;
+      right: -20px;
+      bottom: -40px;
+      font-family: var(--font-display);
+      font-size: 200px;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,45,122,0.05);
+      line-height: 1;
+      pointer-events: none;
+      transition: -webkit-text-stroke-color 0.4s, transform 0.4s;
+    }
+    .proj-card:hover .proj-card-ghost {
+      -webkit-text-stroke-color: rgba(255,45,122,0.13);
+      transform: translateY(-12px);
+    }
+
+    /* Mockup preview */
+    .proj-mockup {
+      background: var(--bg-3);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+    .proj-mockup-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .pmb-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .pmb-r { background: #FF5F57; }
+    .pmb-y { background: #FFBD2E; }
+    .pmb-g { background: #27C840; }
+    .pmb-title {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--fg-dim);
+      margin-left: 4px;
+      letter-spacing: 0.06em;
+    }
+
+    /* Inline mini mockups */
+    .mini-row {
+      display: flex; align-items: center; gap: 8px;
+      padding: 6px 0; border-bottom: 1px solid var(--line);
+      font-family: var(--font-mono); font-size: 10px; color: var(--fg-dim);
+    }
+    .mini-row:last-child { border-bottom: none; }
+    .mini-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+    .mini-amt { margin-left: auto; color: var(--fg-muted); }
+    .mini-badge { font-size: 8px; padding: 1px 5px; border-radius: 2px; }
+    .mb-ok { background: rgba(143,163,115,.12); color: var(--ok); }
+    .mb-pink { background: var(--pink-bg); color: var(--pink); }
+    .mb-warn { background: rgba(209,168,92,.12); color: var(--warn); }
+
+    /* Wave bars */
+    .mini-wave { display: flex; align-items: center; gap: 2px; height: 32px; }
+    .mwb { flex: 1; background: var(--pink); border-radius: 2px; animation: mwav 1s ease-in-out infinite alternate; }
+    @keyframes mwav { from { transform: scaleY(1); } to { transform: scaleY(0.15); } }
+
+    /* Health bars */
+    .mini-health { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .mh-item { background: var(--bg-4); border-radius: 4px; padding: 6px 8px; }
+    .mh-name { font-family: var(--font-mono); font-size: 8px; color: var(--fg-dim); margin-bottom: 3px; }
+    .mh-bar { height: 3px; background: var(--line); border-radius: 2px; }
+    .mh-fill { height: 100%; border-radius: 2px; }
+
+    /* Pipeline */
+    .mini-pipeline { display: flex; gap: 4px; }
+    .mpp { flex: 1; background: var(--bg-4); border-radius: 3px; padding: 5px 4px; }
+    .mpp-name { font-family: var(--font-mono); font-size: 7px; color: var(--fg-dim); margin-bottom: 3px; letter-spacing: .04em; }
+    .mpp-bar { height: 3px; background: var(--pink); border-radius: 2px; opacity: .7; }
+
+    /* CTA final */
+    .proj-final-cta {
+      background: var(--pink);
+      padding: clamp(64px, 8vw, 112px) 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .proj-final-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.05) 0%, transparent 55%);
+    }
+    .pfc-h {
+      font-family: var(--font-display);
+      font-size: clamp(36px,5vw,72px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #fff;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .pfc-sub { font-size: 16px; color: rgba(255,255,255,.75); margin-bottom: 32px; position: relative; }
+    .pfc-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
+    .btn-w { background: #fff; color: var(--pink); font-weight: 600; }
+    .btn-w:hover { background: rgba(255,255,255,.9); transform: translateY(-1px); }
+    .btn-wo { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.4); }
+    .btn-wo:hover { background: rgba(255,255,255,.1); }
+
+    @media (max-width: 900px) {
+      .proj-grid { grid-template-columns: 1fr; }
+      .proj-card { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+<div id="cursor-glow"></div>
+<div id="nav-mount"></div>
+
+<section class="proj-hero">
+  <div class="proj-hero-glow"></div>
+  <div class="noise-overlay"></div>
+  <div class="container">
+    <div class="proj-hero-inner">
+      <div>
+        <p class="t-label reveal">Portfolio</p>
+        <h1 class="t-h1 reveal reveal-d1" style="margin-top:8px;max-width:580px">Was wir wirklich bauen.</h1>
+        <p class="t-body-lg c-muted reveal reveal-d2" style="max-width:480px;margin-top:16px">Vier ausgewählte Systeme aus über 20 Projekten — gebaut, ausgeliefert, in Produktion. Kein Showcase, kein Prototyp.</p>
+      </div>
+      <div class="proj-count reveal reveal-d1">04</div>
+    </div>
+    <div class="filter-bar reveal reveal-d3">
+      <button class="filter-btn active" data-filter="all">Alle Projekte</button>
+      <button class="filter-btn" data-filter="software">Software</button>
+      <button class="filter-btn" data-filter="automation">Automation</button>
+      <button class="filter-btn" data-filter="crm">CRM / CS</button>
+      <span class="filter-count" id="proj-count">4 Projekte</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:48px">
+  <div class="container">
+    <div class="proj-grid" id="proj-grid">
+
+      <!-- 01 Accountly -->
+      <a href="arbeiten/accountly.html" class="proj-card" data-cat="software" data-delay="0">
+        <div class="proj-card-ghost">01</div>
+        <div class="proj-card-header">
+          <span class="proj-card-num">01 — Buchhaltungs-SaaS</span>
+          <span class="proj-card-status"><span class="proj-card-status-dot"></span>In Betrieb</span>
+        </div>
+        <div class="proj-mockup">
+          <div class="proj-mockup-bar">
+            <div class="pmb-dot pmb-r"></div><div class="pmb-dot pmb-y"></div><div class="pmb-dot pmb-g"></div>
+            <span class="pmb-title">accountly — dashboard</span>
+          </div>
+          <svg width="100%" height="40" viewBox="0 0 400 40" preserveAspectRatio="none">
+            <defs><linearGradient id="pg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FF2D7A" stop-opacity="0.25"/><stop offset="100%" stop-color="#FF2D7A" stop-opacity="0"/></linearGradient></defs>
+            <path d="M0,36 C40,32 70,26 110,22 C150,18 170,28 210,24 C250,20 280,10 320,7 C360,4 380,5 400,4 L400,40 L0,40Z" fill="url(#pg1)"/>
+            <path d="M0,36 C40,32 70,26 110,22 C150,18 170,28 210,24 C250,20 280,10 320,7 C360,4 380,5 400,4" fill="none" stroke="#FF2D7A" stroke-width="1.5"/>
+          </svg>
+          <div class="mini-row"><span class="mini-dot" style="background:var(--ok)"></span><span>Müller & Partner — #1042</span><span class="mini-amt">€ 4.200</span><span class="mini-badge mb-ok">bezahlt</span></div>
+          <div class="mini-row"><span class="mini-dot" style="background:var(--pink)"></span><span>DataForce GmbH — #1043</span><span class="mini-amt">€ 8.750</span><span class="mini-badge mb-pink">offen</span></div>
+          <div class="mini-row"><span class="mini-dot" style="background:var(--warn)"></span><span>TechBase Consult. — #1045</span><span class="mini-amt">€ 6.400</span><span class="mini-badge mb-warn">fällig</span></div>
+        </div>
+        <h2 class="proj-card-title">Accountly</h2>
+        <p class="proj-card-tagline">Vom Prototyp zur produktiven Software in 11 Wochen.</p>
+        <p class="proj-card-desc">Buchhaltungsplattform mit DATEV-Anbindung, OCR-Beleglesung und automatischem Abgleich. Deployed für einen Steuerkanzlei-Verbund mit acht Standorten.</p>
+        <div class="proj-card-tags">
+          <span class="tag">Next.js</span><span class="tag">Supabase</span><span class="tag">DATEV-API</span><span class="tag">OCR</span><span class="tag">Stripe</span>
+        </div>
+        <span class="proj-card-cta">Case Study lesen <svg width="14" height="14" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 02 Voice Agent -->
+      <a href="arbeiten/voice-agent.html" class="proj-card" data-cat="automation" data-delay="1">
+        <div class="proj-card-ghost">02</div>
+        <div class="proj-card-header">
+          <span class="proj-card-num">02 — Telefon-Automation</span>
+          <span class="proj-card-status"><span class="proj-card-status-dot"></span>In Betrieb</span>
+        </div>
+        <div class="proj-mockup">
+          <div class="proj-mockup-bar">
+            <div class="pmb-dot pmb-r"></div><div class="pmb-dot pmb-y"></div><div class="pmb-dot pmb-g"></div>
+            <span class="pmb-title">voice-agent — live</span>
+            <span style="margin-left:auto;font-family:var(--font-mono);font-size:9px;color:var(--pink)">● Aktiv</span>
+          </div>
+          <div class="mini-wave" id="proj-wave"></div>
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--fg-dim);margin-top:10px;line-height:1.6;background:var(--bg-4);border-radius:4px;padding:8px">
+            <span style="color:var(--pink)">Agent:</span> Guten Tag, wie kann ich helfen?<br>
+            <span style="color:var(--fg-muted)">Kunde:</span> Ich brauche einen Termin…
+          </div>
+        </div>
+        <h2 class="proj-card-title">KI-Voice-<br>Agent</h2>
+        <p class="proj-card-tagline">70% weniger manueller Aufwand in der Terminierung.</p>
+        <p class="proj-card-desc">Vollautomatischer Inbound-Agent für ein medizinisches Versorgungszentrum. OpenAI Realtime API, Twilio und n8n — natürliche Gespräche, automatische CRM-Übergabe.</p>
+        <div class="proj-card-tags">
+          <span class="tag">OpenAI Realtime</span><span class="tag">Twilio</span><span class="tag">n8n</span><span class="tag">Node.js</span>
+        </div>
+        <span class="proj-card-cta">Case Study lesen <svg width="14" height="14" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 03 CSM Suite -->
+      <a href="arbeiten/csm-suite.html" class="proj-card" data-cat="crm" data-delay="2">
+        <div class="proj-card-ghost">03</div>
+        <div class="proj-card-header">
+          <span class="proj-card-num">03 — Customer Success</span>
+          <span class="proj-card-status"><span class="proj-card-status-dot"></span>In Betrieb</span>
+        </div>
+        <div class="proj-mockup">
+          <div class="proj-mockup-bar">
+            <div class="pmb-dot pmb-r"></div><div class="pmb-dot pmb-y"></div><div class="pmb-dot pmb-g"></div>
+            <span class="pmb-title">csm-suite — health overview</span>
+          </div>
+          <div class="mini-health">
+            <div class="mh-item"><div class="mh-name">Acme Corp</div><div class="mh-bar"><div class="mh-fill" style="width:94%;background:var(--ok)"></div></div></div>
+            <div class="mh-item"><div class="mh-name">DataForce GmbH</div><div class="mh-bar"><div class="mh-fill" style="width:38%;background:var(--pink)"></div></div></div>
+            <div class="mh-item"><div class="mh-name">Nexum Solutions</div><div class="mh-bar"><div class="mh-fill" style="width:87%;background:var(--ok)"></div></div></div>
+            <div class="mh-item"><div class="mh-name">TechBase AG</div><div class="mh-bar"><div class="mh-fill" style="width:61%;background:var(--warn)"></div></div></div>
+          </div>
+        </div>
+        <h2 class="proj-card-title">CSM-<br>Suite</h2>
+        <p class="proj-card-tagline">Individuelle Customer-Journey ohne Salesforce-Overhead.</p>
+        <p class="proj-card-desc">Maßgeschneiderte Customer-Success-Plattform mit Health-Scoring, Kanban-Workflow, automatisierten Slack-Touchpoints — React & Fastify auf Railway.</p>
+        <div class="proj-card-tags">
+          <span class="tag">React</span><span class="tag">Fastify</span><span class="tag">PostgreSQL</span><span class="tag">Slack API</span>
+        </div>
+        <span class="proj-card-cta">Case Study lesen <svg width="14" height="14" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <!-- 04 CRM System -->
+      <a href="arbeiten/crm-system.html" class="proj-card" data-cat="crm" data-delay="3">
+        <div class="proj-card-ghost">04</div>
+        <div class="proj-card-header">
+          <span class="proj-card-num">04 — B2B-Pipeline</span>
+          <span class="proj-card-status"><span class="proj-card-status-dot"></span>In Betrieb</span>
+        </div>
+        <div class="proj-mockup">
+          <div class="proj-mockup-bar">
+            <div class="pmb-dot pmb-r"></div><div class="pmb-dot pmb-y"></div><div class="pmb-dot pmb-g"></div>
+            <span class="pmb-title">crm — sales pipeline</span>
+          </div>
+          <div class="mini-pipeline">
+            <div class="mpp"><div class="mpp-name">Lead</div><div class="mpp-bar" style="width:100%"></div></div>
+            <div class="mpp"><div class="mpp-name">Quali.</div><div class="mpp-bar" style="width:67%"></div></div>
+            <div class="mpp"><div class="mpp-name">Prop.</div><div class="mpp-bar" style="width:38%"></div></div>
+            <div class="mpp"><div class="mpp-name">Verh.</div><div class="mpp-bar" style="width:21%"></div></div>
+            <div class="mpp"><div class="mpp-name">Win</div><div class="mpp-bar" style="width:13%;background:var(--ok)"></div></div>
+          </div>
+          <div style="font-family:var(--font-display);font-size:22px;font-weight:900;letter-spacing:-0.03em;margin-top:10px;color:var(--pink)">€ 284.000 <span style="font-family:var(--font-mono);font-size:10px;color:var(--fg-dim);font-weight:400">Forecast Q1</span></div>
+        </div>
+        <h2 class="proj-card-title">CRM-<br>System</h2>
+        <p class="proj-card-tagline">Kein HubSpot-Kompromiss — eigene Logik, eigene Pipelines.</p>
+        <p class="proj-card-desc">Vollständiges B2B-Vertriebs-CRM mit custom Pipeline-Logik, Twilio-Follow-ups, Gmail-Integration und Deal-Forecasting. Remix & Prisma auf Vercel Edge.</p>
+        <div class="proj-card-tags">
+          <span class="tag">Remix</span><span class="tag">Prisma</span><span class="tag">Twilio</span><span class="tag">Gmail API</span>
+        </div>
+        <span class="proj-card-cta">Case Study lesen <svg width="14" height="14" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<div class="proj-final-cta">
+  <div class="container">
+    <h2 class="pfc-h reveal">Dein Projekt als nächstes?</h2>
+    <p class="pfc-sub reveal reveal-d1">30 Minuten Erstgespräch. Kostenlos. Direkt mit Julius.</p>
+    <div class="pfc-btns reveal reveal-d2">
+      <a href="kontakt.html" class="btn btn-w btn-lg">Erstgespräch buchen <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="team.html" class="btn btn-wo btn-lg">Das Team kennenlernen</a>
+    </div>
+  </div>
+</div>
+
+<div id="footer-mount"></div>
+<script src="shared/components.js?v=1776884200265"></script>
+<script>
+  /* wave bars */
+  const pw = document.getElementById('proj-wave');
+  if (pw) {
+    for (let i = 0; i < 32; i++) {
+      const b = document.createElement('div'); b.className = 'mwb';
+      b.style.height = (Math.random() * 28 + 4) + 'px';
+      b.style.animationDelay = (i * 0.05) + 's';
+      b.style.animationDuration = (0.6 + Math.random() * 0.8) + 's';
+      pw.appendChild(b);
+    }
+  }
+
+  /* card entrance */
+  const cards = document.querySelectorAll('.proj-card');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const delay = parseInt(e.target.dataset.delay || 0) * 100;
+      setTimeout(() => e.target.classList.add('in'), delay);
+      obs.unobserve(e.target);
+    });
+  }, { threshold: 0.1 });
+  cards.forEach(c => obs.observe(c));
+
+  /* filter */
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      let count = 0;
+      cards.forEach(c => {
+        const match = f === 'all' || c.dataset.cat === f;
+        c.style.display = match ? 'block' : 'none';
+        if (match) count++;
+      });
+      document.getElementById('proj-count').textContent = count + ' Projekt' + (count !== 1 ? 'e' : '');
+    });
+  });
+</script>
+</body>
+</html>

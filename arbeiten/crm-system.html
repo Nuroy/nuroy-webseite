@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRM-System — Nuroy Arbeiten</title>
+  <link rel="stylesheet" href="../shared/styles.css?v=1776884200265">
+  <style>
+    .cs-hero{padding:calc(var(--nav-h) + 72px) 0 72px;position:relative;overflow:hidden}
+    .cs-hero-glow{position:absolute;top:-100px;left:-80px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,45,122,0.09) 0%,transparent 65%);pointer-events:none}
+    .cs-hero-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:center}
+    .cs-breadcrumb{font-family:var(--font-mono);font-size:11px;color:var(--fg-dim);letter-spacing:0.06em;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+    .cs-breadcrumb a{color:var(--fg-dim);transition:color .2s}.cs-breadcrumb a:hover{color:var(--pink)}
+    .cs-num{font-family:var(--font-mono);font-size:11px;color:var(--pink);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+    .cs-title{font-family:var(--font-display);font-size:clamp(48px,6.5vw,88px);font-weight:900;letter-spacing:-.04em;line-height:1.0;margin-bottom:16px}
+    .cs-tagline{font-size:clamp(16px,1.4vw,20px);color:var(--pink);font-weight:500;margin-bottom:16px;line-height:1.4}
+    .cs-intro{font-size:15px;color:var(--fg-muted);line-height:1.75;max-width:480px;margin-bottom:28px}
+    .cs-tags{display:flex;flex-wrap:wrap;gap:8px}
+    .cs-meta-bar{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .cs-meta-inner{display:grid;grid-template-columns:repeat(4,1fr)}
+    .cs-meta-cell{padding:24px 32px;border-right:1px solid var(--line)}.cs-meta-cell:last-child{border-right:none}
+    .cs-meta-label{font-family:var(--font-mono);font-size:10px;color:var(--fg-dim);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+    .cs-meta-val{font-family:var(--font-display);font-size:17px;font-weight:700;letter-spacing:-.01em}
+    .sb{padding:clamp(64px,8vw,112px) 0}.sb+.sb{border-top:1px solid var(--line)}
+    .tc{display:grid;grid-template-columns:1fr 1.4fr;gap:72px;align-items:start}
+    .sl{font-family:var(--font-mono);font-size:11px;color:var(--pink);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
+    .sh{font-family:var(--font-display);font-size:clamp(26px,3vw,44px);font-weight:800;letter-spacing:-.025em;margin-bottom:20px;line-height:1.15}
+    .bt{font-size:15px;color:var(--fg-muted);line-height:1.8}.bt+.bt{margin-top:16px}
+    .arch{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:32px;overflow:hidden}
+    .rg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:40px}
+    .rc{background:var(--bg-2);padding:32px 24px}
+    .rn{font-family:var(--font-display);font-size:clamp(36px,4vw,60px);font-weight:900;letter-spacing:-.04em;color:var(--pink);text-shadow:0 0 30px rgba(255,45,122,.4);line-height:1;margin-bottom:8px}
+    .rl{font-size:13px;color:var(--fg-muted)}
+    .pl{margin-top:32px}
+    .pi{display:flex;gap:24px;padding:24px 0;border-bottom:1px solid var(--line)}.pi:last-child{border-bottom:none}
+    .pn{font-family:var(--font-mono);font-size:11px;color:var(--pink);width:32px;flex-shrink:0;padding-top:3px}
+    .pt{font-family:var(--font-display);font-size:17px;font-weight:700;margin-bottom:6px;letter-spacing:-.01em}
+    .pd{font-size:14px;color:var(--fg-muted);line-height:1.7}
+    .sg{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+    .si{background:var(--bg-3);border:1px solid var(--line);border-radius:8px;padding:12px 16px}
+    .sn{font-family:var(--font-display);font-size:14px;font-weight:600;margin-bottom:3px}
+    .sr{font-family:var(--font-mono);font-size:10px;color:var(--fg-dim)}
+    .nnp{background:var(--bg-2);border-top:1px solid var(--line);padding:clamp(48px,6vw,80px) 0}
+    .nni{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+    .nnl{font-family:var(--font-mono);font-size:11px;color:var(--fg-dim);margin-bottom:8px}
+    .nnt{font-family:var(--font-display);font-size:clamp(22px,2.5vw,36px);font-weight:800;letter-spacing:-.025em}
+
+    /* CRM mockup */
+    .cs-mockup-frame{background:var(--bg-2);border:1px solid var(--line-strong);border-radius:14px;overflow:hidden;box-shadow:0 32px 100px rgba(0,0,0,.55),0 0 60px rgba(255,45,122,.07)}
+    .mtb{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--bg-3);border-bottom:1px solid var(--line)}
+    .mdts{display:flex;gap:6px}.mdt{width:10px;height:10px;border-radius:50%}
+    .mdr{background:#FF5F57}.mdy{background:#FFBD2E}.mdg{background:#27C840}
+    .mtt{font-family:var(--font-mono);font-size:11px;color:var(--fg-dim)}
+    .mbdg{display:flex;align-items:center;gap:5px;font-family:var(--font-mono);font-size:10px}
+    .bdok{width:6px;height:6px;border-radius:50%;background:var(--ok);animation:blink 2s ease-in-out infinite}
+    .mb{padding:20px}
+    .crm-h{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px}
+    .crm-fc{font-family:var(--font-display);font-size:28px;font-weight:900;letter-spacing:-.03em}
+    .crm-fl{font-family:var(--font-mono);font-size:9px;color:var(--fg-dim);margin-top:3px}
+    .crm-delta{font-family:var(--font-mono);font-size:11px;color:var(--ok);text-align:right}
+    .crm-pp{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+    .crm-st{}
+    .crm-sh{font-family:var(--font-mono);font-size:9px;color:var(--fg-dim);letter-spacing:.06em;text-transform:uppercase;padding-bottom:6px;border-bottom:2px solid var(--line);margin-bottom:6px;display:flex;align-items:center;justify-content:space-between}
+    .crm-sc{background:var(--bg-4);border-radius:3px;padding:1px 4px;font-size:9px}
+    .crm-d{background:var(--bg-3);border:1px solid var(--line);border-radius:5px;padding:7px 8px;margin-bottom:5px}
+    .crm-dn{font-family:var(--font-mono);font-size:9px;color:var(--fg-dim);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .crm-dv{font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:-.01em}
+    .crm-dw{color:var(--pink)}
+    @media(max-width:900px){
+      .cs-hero-inner,.tc{grid-template-columns:1fr;gap:40px}
+      .cs-meta-inner{grid-template-columns:1fr 1fr}
+      .rg{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:0;scrollbar-width:none}
+      .rg::-webkit-scrollbar{display:none}
+      .rc{scroll-snap-align:start;min-width:75vw;flex-shrink:0}
+
+      /* mockup responsive */
+      .cs-mockup-frame{overflow:hidden}
+      .mtb{flex-wrap:wrap;gap:8px;padding:10px 14px}
+      .mtt{font-size:10px}
+      .mb{padding:14px}
+      .crm-h{flex-direction:column;gap:8px}
+      .crm-fc{font-size:22px}
+      .crm-delta{text-align:left}
+      .crm-pp{grid-template-columns:repeat(3,1fr);gap:4px}
+      /* hide last 2 stages on tablet */
+      .crm-st:nth-child(4),.crm-st:nth-child(5){display:none}
+      .nni{flex-direction:column;align-items:flex-start}
+    }
+    @media(max-width:600px){
+      .cs-hero{padding:calc(var(--nav-h) + 40px) 0 48px}
+      .cs-title{font-size:clamp(36px,12vw,56px)}
+      .cs-meta-inner{grid-template-columns:1fr}
+      .cs-meta-cell{border-right:none;border-bottom:1px solid var(--line);padding:16px 20px}
+      .cs-meta-cell:last-child{border-bottom:none}
+      .mb{padding:10px}
+      .crm-fc{font-size:20px}
+      .crm-pp{grid-template-columns:1fr 1fr;gap:4px}
+      .crm-st:nth-child(3){display:none}
+      .crm-d{padding:6px}
+      .crm-dv{font-size:11px}
+      .sh{font-size:clamp(22px,6vw,32px)}
+      .pi{gap:16px}
+      .sg{gap:8px}
+      .si{padding:10px 12px}
+    }
+  </style>
+</head>
+<body>
+<div id="cursor-glow"></div>
+<div id="nav-mount"></div>
+
+<section class="cs-hero">
+  <div class="cs-hero-glow"></div>
+  <div class="noise-overlay"></div>
+  <div class="container">
+    <div class="cs-hero-inner">
+      <div>
+        <div class="cs-breadcrumb reveal"><a href="../arbeiten.html">Arbeiten</a><span>›</span><span>CRM-System</span></div>
+        <div class="cs-num reveal">04 — B2B-Pipeline</div>
+        <h1 class="cs-title reveal reveal-d1">CRM-<br>System</h1>
+        <p class="cs-tagline reveal reveal-d2">Kein HubSpot-Kompromiss — eigene Logik, eigene Pipelines.</p>
+        <p class="cs-intro reveal reveal-d3">Ein vollständiges B2B-Vertriebs-CRM mit custom Pipeline-Logik, automatischen Twilio-Follow-ups, Gmail-Integration und Deal-Forecasting. Gebaut mit Remix und Prisma, deployed auf Vercel Edge.</p>
+        <div class="cs-tags reveal reveal-d4">
+          <span class="tag">Remix</span><span class="tag">Prisma</span><span class="tag">Twilio</span><span class="tag">Gmail API</span><span class="tag">Vercel Edge</span>
+        </div>
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="cs-mockup-frame">
+          <div class="mtb">
+            <div class="mdts"><div class="mdt mdr"></div><div class="mdt mdy"></div><div class="mdt mdg"></div></div>
+            <span class="mtt">crm — sales pipeline Q1 2026</span>
+            <div class="mbdg"><span class="bdok"></span><span style="color:var(--ok)">57 aktive Deals</span></div>
+          </div>
+          <div class="mb">
+            <div class="crm-h">
+              <div><div class="crm-fc">€ 284.000</div><div class="crm-fl">Forecast Q1 2026 · Weighted Pipeline</div></div>
+              <div><div class="crm-delta">▲ +18% vs. Q4</div><div style="font-family:var(--font-mono);font-size:9px;color:var(--fg-dim);text-align:right">Conversion 12.5%</div></div>
+            </div>
+            <div class="crm-pp">
+              <div class="crm-st">
+                <div class="crm-sh">Lead<span class="crm-sc">24</span></div>
+                <div class="crm-d"><div class="crm-dn">Orion Systems</div><div class="crm-dv">€ 8.5k</div></div>
+                <div class="crm-d"><div class="crm-dn">NovaCorp GmbH</div><div class="crm-dv">€ 12k</div></div>
+              </div>
+              <div class="crm-st">
+                <div class="crm-sh">Quali.<span class="crm-sc">16</span></div>
+                <div class="crm-d"><div class="crm-dn">DataFlow AG</div><div class="crm-dv">€ 22k</div></div>
+                <div class="crm-d"><div class="crm-dn">TechBase</div><div class="crm-dv">€ 18k</div></div>
+              </div>
+              <div class="crm-st">
+                <div class="crm-sh">Prop.<span class="crm-sc">9</span></div>
+                <div class="crm-d"><div class="crm-dn">Meridian GmbH</div><div class="crm-dv">€ 45k</div></div>
+                <div class="crm-d"><div class="crm-dn">Apex Solutions</div><div class="crm-dv">€ 38k</div></div>
+              </div>
+              <div class="crm-st">
+                <div class="crm-sh">Verh.<span class="crm-sc">5</span></div>
+                <div class="crm-d"><div class="crm-dn">VentureStack</div><div class="crm-dv">€ 95k</div></div>
+                <div class="crm-d"><div class="crm-dn">BridgeCo</div><div class="crm-dv">€ 62k</div></div>
+              </div>
+              <div class="crm-st">
+                <div class="crm-sh">Win<span class="crm-sc">3</span></div>
+                <div class="crm-d"><div class="crm-dn">Acme Corp</div><div class="crm-dv crm-dw">€ 140k</div></div>
+                <div class="crm-d"><div class="crm-dn">Nexum AG</div><div class="crm-dv crm-dw">€ 85k</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cs-meta-bar">
+  <div class="container">
+    <div class="cs-meta-inner">
+      <div class="cs-meta-cell reveal"><div class="cs-meta-label">Typ</div><div class="cs-meta-val">B2B-Vertriebs-CRM</div></div>
+      <div class="cs-meta-cell reveal reveal-d1"><div class="cs-meta-label">Laufzeit</div><div class="cs-meta-val">10 Wochen</div></div>
+      <div class="cs-meta-cell reveal reveal-d2"><div class="cs-meta-label">Jahr</div><div class="cs-meta-val">2025</div></div>
+      <div class="cs-meta-cell reveal reveal-d3"><div class="cs-meta-val" style="color:var(--ok);margin-top:16px">In Betrieb</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="sb">
+    <div class="tc">
+      <div>
+        <div class="sl reveal">Der Kontext</div>
+        <h2 class="sh reveal reveal-d1">HubSpot passte nicht — und kostet zu viel.</h2>
+        <p class="bt reveal reveal-d2">Ein B2B-Softwareunternehmen mit einem 6-köpfigen Vertriebsteam nutzte HubSpot — und zahlte nicht nur fünfstellige Jahreskosten, sondern kämpfte täglich mit Logik, die nicht zu ihrem Verkaufsprozess passte. Pipeline-Stufen, Score-Algorithmen, Follow-up-Regeln: alles war ein Kompromiss.</p>
+        <p class="bt reveal reveal-d2">Das Ziel war kein besseres CRM von der Stange. Es war ein System, das die eigene Verkaufslogik abbildet — mit automatischen SMS-/E-Mail-Follow-ups, Deal-Forecasting und direkter Gmail-Integration.</p>
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="arch">
+          <div class="sl" style="margin-bottom:20px">Systemarchitektur</div>
+          <svg width="100%" viewBox="0 0 480 230" xmlns="http://www.w3.org/2000/svg" style="font-family:var(--font-mono);font-size:10px;">
+            <defs><marker id="a4" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#FF2D7A"/></marker></defs>
+            <rect x="10" y="91" width="90" height="48" rx="6" fill="#1C1C22" stroke="rgba(245,242,236,0.12)" stroke-width="1"/>
+            <text x="55" y="111" fill="#F5F2EC" text-anchor="middle" font-size="10" font-weight="600">Remix SSR</text>
+            <text x="55" y="127" fill="#9A968C" text-anchor="middle" font-size="9">Vercel Edge</text>
+            <rect x="165" y="91" width="100" height="48" rx="6" fill="#1C1C22" stroke="#FF2D7A" stroke-width="1" stroke-opacity="0.4"/>
+            <text x="215" y="111" fill="#F5F2EC" text-anchor="middle" font-size="10" font-weight="600">Prisma ORM</text>
+            <text x="215" y="127" fill="#9A968C" text-anchor="middle" font-size="9">PostgreSQL</text>
+            <rect x="325" y="20" width="110" height="48" rx="6" fill="#1C1C22" stroke="rgba(245,242,236,0.12)" stroke-width="1"/>
+            <text x="380" y="40" fill="#F5F2EC" text-anchor="middle" font-size="10" font-weight="600">Gmail API</text>
+            <text x="380" y="56" fill="#9A968C" text-anchor="middle" font-size="9">E-Mail-Sync</text>
+            <rect x="325" y="91" width="110" height="48" rx="6" fill="#1C1C22" stroke="rgba(245,242,236,0.12)" stroke-width="1"/>
+            <text x="380" y="111" fill="#F5F2EC" text-anchor="middle" font-size="10" font-weight="600">Twilio SMS</text>
+            <text x="380" y="127" fill="#9A968C" text-anchor="middle" font-size="9">Follow-ups</text>
+            <rect x="325" y="162" width="110" height="48" rx="6" fill="#1C1C22" stroke="rgba(245,242,236,0.12)" stroke-width="1"/>
+            <text x="380" y="182" fill="#F5F2EC" text-anchor="middle" font-size="10" font-weight="600">Forecast</text>
+            <text x="380" y="198" fill="#9A968C" text-anchor="middle" font-size="9">Weighted Pipeline</text>
+            <line x1="100" y1="115" x2="163" y2="115" stroke="#FF2D7A" stroke-width="1.2" marker-end="url(#a4)"/>
+            <line x1="265" y1="102" x2="323" y2="54" stroke="#FF2D7A" stroke-width="1.2" marker-end="url(#a4)" stroke-opacity="0.7"/>
+            <line x1="265" y1="115" x2="323" y2="115" stroke="#FF2D7A" stroke-width="1.2" marker-end="url(#a4)" stroke-opacity="0.7"/>
+            <line x1="265" y1="128" x2="323" y2="172" stroke="#FF2D7A" stroke-width="1.2" marker-end="url(#a4)" stroke-opacity="0.7"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sb">
+    <div class="sl reveal">Der Stack</div>
+    <h2 class="sh reveal reveal-d1">Technologien im Detail.</h2>
+    <div class="sg reveal reveal-d2">
+      <div class="si"><div class="sn">Remix</div><div class="sr">SSR · Loaders · Actions · Vercel Edge</div></div>
+      <div class="si"><div class="sn">Prisma + PostgreSQL</div><div class="sr">Typsicheres ORM · Relationen · Migrations</div></div>
+      <div class="si"><div class="sn">Twilio Messaging</div><div class="sr">SMS-Follow-ups · Automatische Sequenzen</div></div>
+      <div class="si"><div class="sn">Gmail API</div><div class="sr">E-Mail-Sync · Thread-Tracking · Labels</div></div>
+      <div class="si"><div class="sn">Forecast-Engine</div><div class="sr">Weighted Pipeline · Stage-Probabilities</div></div>
+    </div>
+  </div>
+
+  <div class="sb">
+    <div class="sl reveal">Der Prozess</div>
+    <h2 class="sh reveal reveal-d1">10 Wochen zur ersten eigenen Pipeline.</h2>
+    <div class="pl reveal reveal-d2">
+      <div class="pi"><span class="pn">W 1–2</span><div><div class="pt">Prozess-Audit</div><div class="pd">Analyse des bestehenden HubSpot-Setups, Dokumentation des eigenen Vertriebsprozesses, Definition der Pipeline-Stages und Score-Logik.</div></div></div>
+      <div class="pi"><span class="pn">W 3–4</span><div><div class="pt">Datenmodell &amp; Core</div><div class="pd">Prisma-Schema, Deal- und Kontakt-Modell, PostgreSQL-Setup, Remix-App-Grundstruktur mit Auth.</div></div></div>
+      <div class="pi"><span class="pn">W 5–7</span><div><div class="pt">Pipeline + Integrationen</div><div class="pd">Kanban-Pipeline-UI, Gmail-Sync, Twilio-Follow-up-Sequenzen, Deal-Timeline und Activity-Feed.</div></div></div>
+      <div class="pi"><span class="pn">W 8–9</span><div><div class="pt">Forecasting &amp; Reporting</div><div class="pd">Weighted-Pipeline-Berechnung, Conversion-Metriken, wöchentlicher Forecast-Report, Deal-Velocity-Tracking.</div></div></div>
+      <div class="pi"><span class="pn">W 10</span><div><div class="pt">HubSpot-Migration</div><div class="pd">Export und Import aller Kontakte, Deals und E-Mail-History. Parallelbetrieb für zwei Wochen, dann vollständige Ablösung.</div></div></div>
+    </div>
+  </div>
+
+  <div class="sb">
+    <div class="sl reveal">Die Ergebnisse</div>
+    <h2 class="sh reveal reveal-d1">Nach einem Quartal in Produktion.</h2>
+    <div class="rg reveal reveal-d2">
+      <div class="rc"><div class="rn">18%</div><div class="rl">höhere Pipeline-Conversion durch bessere Follow-up-Timing</div></div>
+      <div class="rc"><div class="rn">0 €</div><div class="rl">HubSpot-Kosten — vollständig ersetzt</div></div>
+      <div class="rc"><div class="rn">100%</div><div class="rl">eigene Logik — keine Kompromisse mit Vendor-Features</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="nnp">
+  <div class="container">
+    <div class="nni">
+      <div>
+        <div class="nnl reveal">Alle Projekte</div>
+        <div class="nnt reveal reveal-d1">← Zurück zur Übersicht</div>
+        <p class="bt reveal reveal-d2" style="margin-top:8px">Alle vier Projekte auf einen Blick.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap" class="reveal reveal-d2">
+        <a href="../arbeiten.html" class="btn btn-primary btn-lg">Alle Arbeiten ansehen</a>
+        <a href="../kontakt.html" class="btn btn-secondary btn-lg">Erstgespräch buchen</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="footer-mount"></div>
+<script src="../shared/components.js?v=1776884200265"></script>
+</body>
+</html>

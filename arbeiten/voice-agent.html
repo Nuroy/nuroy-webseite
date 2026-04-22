@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KI-Voice-Agent — Nuroy Arbeiten</title>
+  <link rel="stylesheet" href="../shared/styles.css?v=1776884200265">
+  <style>
+    .cs-hero{padding:calc(var(--nav-h) + 72px) 0 72px;position:relative;overflow:hidden}
+    .cs-hero-glow{position:absolute;top:-150px;left:-100px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,45,122,0.1) 0%,transparent 65%);pointer-events:none}
+    .cs-hero-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:center}
+    .cs-breadcrumb{font-family:var(--font-mono);font-size:11px;color:var(--fg-dim);letter-spacing:0.06em;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+    .cs-breadcrumb a{color:var(--fg-dim);transition:color 0.2s}.cs-breadcrumb a:hover{color:var(--pink)}
+    .cs-num{font-family:var(--font-mono);font-size:11px;color:var(--pink);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px}
+    .cs-title{font-family:var(--font-display);font-size:clamp(48px,6.5vw,88px);font-weight:900;letter-spacing:-0.04em;line-height:1.0;margin-bottom:16px}
+    .cs-tagline{font-size:clamp(16px,1.4vw,20px);color:var(--pink);font-weight:500;margin-bottom:16px;line-height:1.4}
+    .cs-intro{font-size:15px;color:var(--fg-muted);line-height:1.75;max-width:480px;margin-bottom:28px}
+    .cs-tags{display:flex;flex-wrap:wrap;gap:8px}
+    .cs-meta-bar{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .cs-meta-inner{display:grid;grid-template-columns:repeat(4,1fr)}
+    .cs-meta-cell{padding:24px 32px;border-right:1px solid var(--line)}.cs-meta-cell:last-child{border-right:none}
+    .cs-meta-label{font-family:var(--font-mono);font-size:10px;color:var(--fg-dim);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px}
+    .cs-meta-val{font-family:var(--font-display);font-size:17px;font-weight:700;letter-spacing:-0.01em}
+    .section-block{padding:clamp(64px,8vw,112px) 0}.section-block+.section-block{border-top:1px solid var(--line)}
+    .two-col{display:grid;grid-template-columns:1fr 1.4fr;gap:72px;align-items:start}
+    .section-label{font-family:var(--font-mono);font-size:11px;color:var(--pink);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px}
+    .section-h{font-family:var(--font-display);font-size:clamp(26px,3vw,44px);font-weight:800;letter-spacing:-0.025em;margin-bottom:20px;line-height:1.15}
+    .body-text{font-size:15px;color:var(--fg-muted);line-height:1.8}.body-text+.body-text{margin-top:16px}
+    .arch-diagram{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:32px;overflow:hidden}
+    .result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:40px}
+    .result-cell{background:var(--bg-2);padding:32px 24px}
+    .result-num{font-family:var(--font-display);font-size:clamp(36px,4vw,60px);font-weight:900;letter-spacing:-0.04em;color:var(--pink);text-shadow:0 0 30px rgba(255,45,122,0.4);line-height:1;margin-bottom:8px}
+    .result-label{font-size:13px;color:var(--fg-muted)}
+    .process-list{margin-top:32px}
+    .process-item{display:flex;gap:24px;padding:24px 0;border-bottom:1px solid var(--line)}.process-item:last-child{border-bottom:none}
+    .process-item-num{font-family:var(--font-mono);font-size:11px;color:var(--pink);letter-spacing:0.08em;width:32px;flex-shrink:0;padding-top:3px}
+    .process-item-title{font-family:var(--font-display);font-size:17px;font-weight:700;margin-bottom:6px;letter-spacing:-0.01em}
+    .process-item-desc{font-size:14px;color:var(--fg-muted);line-height:1.7}
+    .stack-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+    .stack-item{background:var(--bg-3);border:1px solid var(--line);border-radius:8px;padding:12px 16px}
+    .stack-item-name{font-family:var(--font-display);font-size:14px;font-weight:600;margin-bottom:3px}
+    .stack-item-role{font-family:var(--font-mono);font-size:10px;color:var(--fg-dim);letter-spacing:0.04em}
+    .nav-next-project{background:var(--bg-2);border-top:1px solid var(--line);padding:clamp(48px,6vw,80px) 0}
+    .nav-next-inner{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+    .nav-next-label{font-family:var(--font-mono);font-size:11px;color:var(--fg-dim);letter-spacing:0.08em;margin-bottom:8px}
+    .nav-next-title{font-family:var(--font-display);font-size:clamp(22px,2.5vw,36px);font-weight:800;letter-spacing:-0.025em}
+
+    /* Voice mockup */
+    .cs-mockup-frame{background:var(--bg-2);border:1px solid var(--line-strong);border-radius:14px;overflow:hidden;box-shadow:0 32px 100px rgba(0,0,0,0.55),0 0 60px rgba(255,45,122,0.07)}
+    .m-tb{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--bg-3);border-bottom:1px solid var(--line)}
+    .m-dots{display:flex;gap:6px}.m-dot{width:10px;height:10px;border-radius:50%}.md-r{background:#FF5F57}.md-y{background:#FFBD2E}.md-g{background:#27C840}
+    .m-tit{font-family:var(--font-mono);font-size:11px;color:var(--fg-dim);letter-spacing:0.05em}
+    .m-bdg{display:flex;align-items:center;gap:5px;font-family:var(--font-mono);font-size:10px}
+    .bdg-pink{width:6px;height:6px;border-radius:50%;background:var(--pink);animation:blink 1.5s ease-in-out infinite}
+    .m-body{padding:20px}
+    .v-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+    .v-stat{background:var(--bg-3);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+    .v-stat-lbl{font-family:var(--font-mono);font-size:9px;color:var(--fg-dim);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:4px}
+    .v-stat-val{font-family:var(--font-display);font-size:22px;font-weight:800;letter-spacing:-0.02em}
+    .wave-wrap{background:var(--bg-3);border:1px solid var(--line);border-radius:8px;padding:16px;margin-bottom:12px}
+    .wave-label{font-family:var(--font-mono);font-size:9px;color:var(--pink);letter-spacing:0.06em;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .wave-bars{display:flex;align-items:center;gap:2px;height:44px}
+    .wb{flex:1;border-radius:2px;background:var(--pink);animation:wv 1.2s ease-in-out infinite alternate}
+    @keyframes wv{from{transform:scaleY(1);opacity:0.9}to{transform:scaleY(0.15);opacity:0.5}}
+    .transcript{background:var(--bg-4);border:1px solid var(--line);border-radius:8px;padding:14px;font-family:var(--font-mono);font-size:11px;line-height:1.75;color:var(--fg-dim)}
+    .tr-a{color:var(--pink)}.tr-k{color:var(--fg-muted)}
+    .call-log{margin-top:12px}
+    .call-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-family:var(--font-mono);font-size:10px;color:var(--fg-dim)}
+    .call-row:last-child{border-bottom:none}
+    .call-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+    .cd-ok{background:var(--ok)}.cd-pink{background:var(--pink)}
+    .call-dur{margin-left:auto;color:var(--fg-muted)}
+
+    @media(max-width:900px){
+      .cs-hero-inner,.two-col{grid-template-columns:1fr;gap:40px}
+      .cs-meta-inner{grid-template-columns:1fr 1fr}
+      .result-grid{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:0;scrollbar-width:none}
+      .result-grid::-webkit-scrollbar{display:none}
+      .result-cell{scroll-snap-align:start;min-width:75vw;flex-shrink:0}
+
+      /* mockup responsive */
+      .cs-mockup-frame{overflow:hidden}
+      .m-tb{flex-wrap:wrap;gap:8px;padding:10px 14px}
+      .m-tit{font-size:10px}
+      .m-body{padding:14px}
+      .v-stats{gap:6px}
+      .v-stat{padding:10px}
+      .v-stat-val{font-size:18px}
+      .transcript{font-size:10px;padding:10px}
+      .nav-next-inner{flex-direction:column;align-items:flex-start}
+    }
+    @media(max-width:600px){
+      .cs-hero{padding:calc(var(--nav-h) + 40px) 0 48px}
+      .cs-title{font-size:clamp(36px,12vw,56px)}
+      .cs-meta-inner{grid-template-columns:1fr}
+      .cs-meta-cell{border-right:none;border-bottom:1px solid var(--line);padding:16px 20px}
+      .cs-meta-cell:last-child{border-bottom:none}
+      .m-body{padding:10px}
+      .v-stats{grid-template-columns:1fr 1fr 1fr}
+      .v-stat-val{font-size:16px}
+      .wave-wrap{padding:10px}
+      .transcript{font-size:9px;padding:8px}
+      .call-row{font-size:9px}
+      .section-h{font-size:clamp(22px,6vw,32px)}
+      .process-item{gap:16px}
+      .stack-grid{gap:8px}
+      .stack-item{padding:10px 12px}
+    }
+  </style>
+</head>
+<body>
+<div id="cursor-glow"></div>
+<div id="nav-mount"></div>
+
+<section class="cs-hero">
+  <div class="cs-hero-glow"></div>
+  <div class="noise-overlay"></div>
+  <div class="container">
+    <div class="cs-hero-inner">
+      <div>
+        <div class="cs-breadcrumb reveal"><a href="../arbeiten.html">Arbeiten</a><span>›</span><span>KI-Voice-Agent</span></div>
+        <div class="cs-num reveal">02 — Telefon-Automation</div>
+        <h1 class="cs-title reveal reveal-d1">KI-Voice-<br>Agent</h1>
+        <p class="cs-tagline reveal reveal-d2">70% weniger manueller Aufwand in der Terminierung.</p>
+        <p class="cs-intro reveal reveal-d3">Ein vollautomatischer Inbound- und Outbound-Telefon-Agent für ein medizinisches Versorgungszentrum. OpenAI Realtime API trifft auf Twilio — für natürliche Gespräche und automatische CRM-Übergabe.</p>
+        <div class="cs-tags reveal reveal-d4">
+          <span class="tag">OpenAI Realtime</span><span class="tag">Twilio</span><span class="tag">n8n</span><span class="tag">Node.js</span><span class="tag">Webhooks</span>
+        </div>
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="cs-mockup-frame">
+          <div class="m-tb">
+            <div class="m-dots"><div class="m-dot md-r"></div><div class="m-dot md-y"></div><div class="m-dot md-g"></div></div>
+            <span class="m-tit">voice-agent — live call monitor</span>
+            <div class="m-bdg"><span class="bdg-pink"></span><span style="color:var(--pink)">Anruf aktiv</span></div>
+          </div>
+          <div class="m-body">
+            <div class="v-stats">
+              <div class="v-stat"><div class="v-stat-lbl">Heute</div><div class="v-stat-val" style="color:var(--fg)">47</div></div>
+              <div class="v-stat"><div class="v-stat-lbl">Ø Dauer</div><div class="v-stat-val" style="color:var(--fg)">3:42</div></div>
+              <div class="v-stat"><div class="v-stat-lbl">Abschluss</div><div class="v-stat-val" style="color:var(--ok)">94%</div></div>
+            </div>
+            <div class="wave-wrap">
+              <div class="wave-label"><svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#FF2D7A"/></svg>Kanal 1 — Inbound aktiv</div>
+              <div class="wave-bars" id="wave-cs"></div>
+            </div>
+            <div class="transcript">
+              <span class="tr-a">Agent:</span> Guten Tag, hier ist der Terminassistent der MedCare-Praxis.<br>
+              <span class="tr-k">Kunde:</span> Ich brauche einen Kardiologen-Termin diese Woche.<br>
+              <span class="tr-a">Agent:</span> Ich sehe freie Kapazitäten am Donnerstag, 10:30 Uhr. Passt das?<br>
+              <span class="tr-k">Kunde:</span> Ja, perfekt.
+            </div>
+            <div class="call-log">
+              <div class="call-row"><span class="call-dot cd-ok"></span><span>+49 89 2847••• — Termin gebucht</span><span class="call-dur">3:12</span></div>
+              <div class="call-row"><span class="call-dot cd-ok"></span><span>+49 30 9128••• — Umterminierung</span><span class="call-dur">2:48</span></div>
+              <div class="call-row"><span class="call-dot cd-pink"></span><span>+49 40 5511••• — Weiterleitung</span><span class="call-dur">0:45</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cs-meta-bar">
+  <div class="container">
+    <div class="cs-meta-inner">
+      <div class="cs-meta-cell reveal"><div class="cs-meta-label">Typ</div><div class="cs-meta-val">Telefon-Automation</div></div>
+      <div class="cs-meta-cell reveal reveal-d1"><div class="cs-meta-label">Laufzeit</div><div class="cs-meta-val">6 Wochen</div></div>
+      <div class="cs-meta-cell reveal reveal-d2"><div class="cs-meta-label">Jahr</div><div class="cs-meta-val">2025</div></div>
+      <div class="cs-meta-cell reveal reveal-d3"><div class="cs-meta-label">Status</div><div class="cs-meta-val" style="color:var(--ok)">In Betrieb</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="section-block">
+    <div class="two-col">
+      <div>
+        <div class="section-label reveal">Der Kontext</div>
+        <h2 class="section-h reveal reveal-d1">Praxis mit Telefon-Engpass.</h2>
+        <p class="body-text reveal reveal-d2">Ein medizinisches Versorgungszentrum mit vier Fachbereichen empfing täglich über 120 Anrufe — ausschließlich für Terminvereinbarungen, Umterminierungen und einfache Auskünfte. Drei Vollzeit-Mitarbeitende verbrachten bis zu 60% ihrer Arbeitszeit am Telefon.</p>
+        <p class="body-text reveal reveal-d2">Das Kernproblem: Jedes Gespräch erforderte manuelle CRM-Eintragungen, Kalenderprüfung und Rückruf-Koordination. Eine einfache Terminbuchung dauerte im Durchschnitt vier Minuten.</p>
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="arch-diagram">
+          <div class="section-label" style="margin-bottom:24px;">Systemarchitektur</div>
+          <svg width="100%" viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg" style="font-family:var(--font-mono);font-size:10px;">
+            <defs><marker id="a2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#FF2D7A"/></marker></defs>
+            <rect x="10" y="86" width="90" height="48" rx="6" fill="#1C1C22" stroke="rgba(245,242,236,0.12)" stroke-width="1"/>
+            <text x="55" y="106" fill="#F5F2EC" text-anchor="middle" font-size="10" font-weight="600">Telefon</text>
+            <text x="55" y="122" fill="#9A968C" text-anchor="middle" font-size="9">Anruf / PSTN</text>
+            <rect x="160" y="86" width="100" height="48" rx="6" fill="#1C1C22" stroke="#FF2D7A" stroke-width="1" stroke-opacity="0.45"/>
+            <text x="210" y="106" fill="#F5F2EC" text-anchor="middle" font-size="10" font-weight="600">Twilio</text>
+            <text x="210" y="122" fill="#9A968C" text-anchor="middle" font-size="9">Voice Gateway</text>
+            <rect x="320" y="20" width="110" height="48" rx="6" fill="#1C1C22" stroke="rgba(245,242,236,0.12)" stroke-width="1"/>
+            <text x="375" y="40" fill="#F5F2EC" text-anchor="middle" font-size="10" font-weight="600">OpenAI</text>
+            <text x="375" y="56" fill="#9A968C" text-anchor="middle" font-size="9">Realtime API</text>
+            <rect x="320" y="86" width="110" height="48" rx="6" fill="#1C1C22" stroke="rgba(245,242,236,0.12)" stroke-width="1"/>
+            <text x="375" y="106" fill="#F5F2EC" text-anchor="middle" font-size="10" font-weight="600">n8n</text>
+            <text x="375" y="122" fill="#9A968C" text-anchor="middle" font-size="9">Workflow Engine</text>
+            <rect x="320" y="152" width="110" height="48" rx="6" fill="#1C1C22" stroke="rgba(245,242,236,0.12)" stroke-width="1"/>
+            <text x="375" y="172" fill="#F5F2EC" text-anchor="middle" font-size="10" font-weight="600">Kalender/CRM</text>
+            <text x="375" y="188" fill="#9A968C" text-anchor="middle" font-size="9">Termin + Eintrag</text>
+            <line x1="100" y1="110" x2="158" y2="110" stroke="#FF2D7A" stroke-width="1.2" marker-end="url(#a2)"/>
+            <line x1="260" y1="98" x2="318" y2="52" stroke="#FF2D7A" stroke-width="1.2" marker-end="url(#a2)" stroke-opacity="0.7"/>
+            <line x1="260" y1="110" x2="318" y2="110" stroke="#FF2D7A" stroke-width="1.2" marker-end="url(#a2)" stroke-opacity="0.7"/>
+            <line x1="375" y1="134" x2="375" y2="150" stroke="#FF2D7A" stroke-width="1.2" marker-end="url(#a2)" stroke-opacity="0.7"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label reveal">Der Stack</div>
+    <h2 class="section-h reveal reveal-d1">Technologien im Detail.</h2>
+    <div class="stack-grid reveal reveal-d2">
+      <div class="stack-item"><div class="stack-item-name">OpenAI Realtime API</div><div class="stack-item-role">Speech-to-Speech · Latenz &lt; 500ms</div></div>
+      <div class="stack-item"><div class="stack-item-name">Twilio Voice</div><div class="stack-item-role">PSTN Gateway · Rufnummer · Recording</div></div>
+      <div class="stack-item"><div class="stack-item-name">n8n</div><div class="stack-item-role">Workflow-Orchestrierung · CRM-Übergabe</div></div>
+      <div class="stack-item"><div class="stack-item-name">Node.js</div><div class="stack-item-role">WebSocket-Bridge · Prompt-Management</div></div>
+      <div class="stack-item"><div class="stack-item-name">Webhooks</div><div class="stack-item-role">Event-Dispatch · Kalender-Integration</div></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label reveal">Der Prozess</div>
+    <h2 class="section-h reveal reveal-d1">Von der Idee zur ersten Automatisierung.</h2>
+    <div class="process-list reveal reveal-d2">
+      <div class="process-item"><span class="process-item-num">W 1</span><div><div class="process-item-title">Gesprächs-Analyse</div><div class="process-item-desc">Aufnahme und Transkription von 200 echten Praxis-Anrufen, Klassifizierung der Anruftypen, Definition der Automatisierbarkeitsquote.</div></div></div>
+      <div class="process-item"><span class="process-item-num">W 2–3</span><div><div class="process-item-title">Agent-Architektur</div><div class="process-item-desc">Twilio-Anbindung, Node.js WebSocket-Bridge, OpenAI Realtime API-Integration, erste Gesprächsführungs-Prompts.</div></div></div>
+      <div class="process-item"><span class="process-item-num">W 4</span><div><div class="process-item-title">Workflow-Integration</div><div class="process-item-desc">n8n-Flows für Kalender-Check, Terminbuchung, CRM-Eintragung und Rückruf-Eskalation bei nicht lösbaren Anfragen.</div></div></div>
+      <div class="process-item"><span class="process-item-num">W 5–6</span><div><div class="process-item-title">Rollout &amp; Tuning</div><div class="process-item-desc">Parallelbetrieb (Agent + Mensch), Prompt-Optimierung basierend auf echten Gesprächen, schrittweise Erhöhung der automatisierten Quote.</div></div></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label reveal">Die Ergebnisse</div>
+    <h2 class="section-h reveal reveal-d1">Sechs Monate nach Go-Live.</h2>
+    <div class="result-grid reveal reveal-d2">
+      <div class="result-cell"><div class="result-num">70%</div><div class="result-label">weniger manueller Aufwand in der Terminierung</div></div>
+      <div class="result-cell"><div class="result-num">94%</div><div class="result-label">Anruf-Abschlussrate ohne menschliches Eingreifen</div></div>
+      <div class="result-cell"><div class="result-num">3,4 h</div><div class="result-label">eingesparte Personalstunden pro Tag</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="nav-next-project">
+  <div class="container">
+    <div class="nav-next-inner">
+      <div>
+        <div class="nav-next-label reveal">Nächstes Projekt</div>
+        <div class="nav-next-title reveal reveal-d1">CSM-Suite →</div>
+        <p class="body-text reveal reveal-d2" style="margin-top:8px;">Customer-Success-Plattform ohne Salesforce-Overhead.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;" class="reveal reveal-d2">
+        <a href="csm-suite.html" class="btn btn-primary btn-lg">Nächste Case Study</a>
+        <a href="../kontakt.html" class="btn btn-secondary btn-lg">Erstgespräch buchen</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="footer-mount"></div>
+<script src="../shared/components.js?v=1776884200265"></script>
+<script>
+  const wc = document.getElementById('wave-cs');
+  if (wc) {
+    for (let i = 0; i < 36; i++) {
+      const b = document.createElement('div'); b.className = 'wb';
+      b.style.height = (Math.random() * 38 + 6) + 'px';
+      b.style.animationDelay = (i * 0.045) + 's';
+      b.style.animationDuration = (0.7 + Math.random() * 0.7) + 's';
+      wc.appendChild(b);
+    }
+  }
+</script>
+</body>
+</html>

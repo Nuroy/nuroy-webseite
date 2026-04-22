@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automatisierung — Nuroy</title>
+  <link rel="stylesheet" href="../shared/styles.css?v=1776884200265">
+  <style>
+    .page-hero{padding:calc(var(--nav-h)+80px) 0 80px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+    .hero-glow{position:absolute;top:-150px;left:-80px;width:600px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,45,122,0.09) 0%,transparent 65%);pointer-events:none}
+    .sb{padding:clamp(64px,8vw,112px) 0}.sb+.sb{border-top:1px solid var(--line)}
+    .sl{font-family:var(--font-mono);font-size:11px;color:var(--pink);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
+    .sh{font-family:var(--font-display);font-size:clamp(26px,3vw,44px);font-weight:800;letter-spacing:-.025em;margin-bottom:20px;line-height:1.15}
+    .bt{font-size:15px;color:var(--fg-muted);line-height:1.8}.bt+.bt{margin-top:14px}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+    .fi{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}.fi:last-child{border-bottom:none}
+    .fi-dot{width:6px;height:6px;border-radius:50%;background:var(--pink);flex-shrink:0;margin-top:7px}
+    .fi-title{font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:4px;letter-spacing:-.01em}
+    .fi-desc{font-size:13px;color:var(--fg-muted);line-height:1.65}
+    .tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+    .tool-item{background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:20px;text-align:center}
+    .tool-name{font-family:var(--font-display);font-size:14px;font-weight:700;margin-bottom:4px}
+    .tool-role{font-family:var(--font-mono);font-size:9px;color:var(--fg-dim);letter-spacing:.04em}
+    .use-cases{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .uc{background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:24px}
+    .uc-title{font-family:var(--font-display);font-size:15px;font-weight:700;margin-bottom:6px}
+    .uc-desc{font-size:13px;color:var(--fg-muted);line-height:1.65}
+    .ref-cards{display:grid;grid-template-columns:1fr;gap:12px;margin-top:40px}
+    .ref-card{background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:24px;text-decoration:none;transition:border-color .2s;display:block}
+    .ref-card:hover{border-color:rgba(255,45,122,.3)}
+    .ref-num{font-family:var(--font-mono);font-size:10px;color:var(--pink);margin-bottom:6px}
+    .ref-title{font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:4px}
+    .ref-desc{font-size:12px;color:var(--fg-muted)}
+    .cta-strip{background:var(--pink);padding:64px 0;text-align:center;position:relative;overflow:hidden}
+    .cta-strip::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.05) 0%,transparent 60%)}
+    .cta-strip h2{font-family:var(--font-display);font-size:clamp(28px,3.5vw,52px);font-weight:900;color:#fff;margin-bottom:12px;position:relative;letter-spacing:-.03em}
+    .cta-strip p{color:rgba(255,255,255,.75);margin-bottom:28px;position:relative}
+    .cta-strip-btns{display:flex;gap:12px;justify-content:center;position:relative}
+    .btn-w{background:#fff;color:var(--pink);font-weight:600}.btn-w:hover{background:rgba(255,255,255,.9)}
+    .btn-wo{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}.btn-wo:hover{background:rgba(255,255,255,.1)}
+    @media(max-width:900px){.two-col,.tools-grid,.use-cases{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div id="cursor-glow"></div>
+<div id="nav-mount"></div>
+<section class="page-hero">
+  <div class="hero-glow"></div>
+  <div class="noise-overlay"></div>
+  <div class="container">
+    <p class="t-label reveal">Leistung · 02</p>
+    <h1 class="t-h1 reveal reveal-d1" style="margin-top:8px;max-width:640px">Automatisierung</h1>
+    <p class="t-body-lg c-muted reveal reveal-d2" style="max-width:540px;margin-top:20px">Manuelle Prozesse werden zu Systemen, die alleine laufen. n8n, Make, API-Orchestrierung, Webhooks und Queues — wir automatisieren alles, was wiederholbar ist.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px" class="reveal reveal-d3">
+      <a href="../kontakt.html" class="btn btn-primary btn-lg">Erstgespräch buchen</a>
+      <a href="../leistungen.html" class="btn btn-secondary">Alle Leistungen</a>
+    </div>
+  </div>
+</section>
+<div class="container">
+  <div class="sb">
+    <div class="two-col">
+      <div>
+        <div class="sl reveal">Was wir automatisieren</div>
+        <h2 class="sh reveal reveal-d1">Jeder manuelle Prozess ist ein Kandidat.</h2>
+        <p class="bt reveal reveal-d2">Wenn ein Mensch dieselbe Abfolge von Schritten mehr als dreimal pro Woche macht, ist das ein Automatisierungskandidat. Wir analysieren, was wiederholbar ist — und bauen es so, dass es wartbar bleibt.</p>
+        <p class="bt reveal reveal-d2">Von einfachen Zapier-Flows bis zu komplexen n8n-Architekturen mit Error-Handling, Retry-Logik und Monitoring. Alles dokumentiert, alles übergabefähig.</p>
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="fi"><div class="fi-dot"></div><div><div class="fi-title">Lead-Routing &amp; CRM-Flows</div><div class="fi-desc">Automatische Qualifizierung, Zuweisung und Follow-up-Sequenzen für Inbound-Leads.</div></div></div>
+        <div class="fi"><div class="fi-dot"></div><div><div class="fi-title">Daten-Synchronisation</div><div class="fi-desc">Bidirektionale Sync zwischen ERP, CRM, Buchhaltung und internen Tools — ohne manuelle Exports.</div></div></div>
+        <div class="fi"><div class="fi-dot"></div><div><div class="fi-title">Notification &amp; Alerting</div><div class="fi-desc">Intelligente Benachrichtigungen auf Basis von Daten-Schwellenwerten, Ereignissen und Zeitfenstern.</div></div></div>
+        <div class="fi"><div class="fi-dot"></div><div><div class="fi-title">Dokumenten-Workflows</div><div class="fi-desc">Automatische Erstellung, Befüllung, Versand und Ablage von Rechnungen, Reports und Verträgen.</div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="sb" style="background:var(--bg)">
+    <div class="sl reveal">Tools &amp; Plattformen</div>
+    <h2 class="sh reveal reveal-d1">Was wir einsetzen.</h2>
+    <div class="tools-grid reveal reveal-d2">
+      <div class="tool-item"><div class="tool-name">n8n</div><div class="tool-role">Primäres Automation-Tool</div></div>
+      <div class="tool-item"><div class="tool-name">Make</div><div class="tool-role">Visual Workflow Builder</div></div>
+      <div class="tool-item"><div class="tool-name">Zapier</div><div class="tool-role">SaaS-Integrationen</div></div>
+      <div class="tool-item"><div class="tool-name">Webhooks</div><div class="tool-role">Event-basierter Dispatch</div></div>
+      <div class="tool-item"><div class="tool-name">API-Orchestrierung</div><div class="tool-role">Custom Middleware</div></div>
+      <div class="tool-item"><div class="tool-name">Queue-Systeme</div><div class="tool-role">Redis / BullMQ</div></div>
+      <div class="tool-item"><div class="tool-name">OpenAI</div><div class="tool-role">KI in Workflows</div></div>
+      <div class="tool-item"><div class="tool-name">Twilio</div><div class="tool-role">SMS / Voice Trigger</div></div>
+    </div>
+  </div>
+  <div class="sb">
+    <div class="sl reveal">Anwendungsfälle</div>
+    <h2 class="sh reveal reveal-d1">Typische Projekte.</h2>
+    <div class="use-cases reveal reveal-d2">
+      <div class="uc"><div class="uc-title">Inbound-Lead-Verarbeitung</div><div class="uc-desc">Lead landet im Formular → Qualifizierung per KI → CRM-Eintrag → Salesperson-Benachrichtigung → Follow-up-Sequenz. Vollautomatisch.</div></div>
+      <div class="uc"><div class="uc-title">Rechnungs-Workflow</div><div class="uc-desc">PDF-Eingang → OCR-Extraktion → Datev-Buchung → Zahlungsfreigabe → Buchungsbeleg-Ablage. Zero Manual Steps.</div></div>
+      <div class="uc"><div class="uc-title">Kunden-Onboarding</div><div class="uc-desc">Deal-Abschluss im CRM → Account-Anlage → Onboarding-E-Mail-Sequenz → Slack-Benachrichtigung → Kalender-Einladung.</div></div>
+      <div class="uc"><div class="uc-title">Reporting &amp; Alerting</div><div class="uc-desc">Tägliche KPI-Zusammenfassung, automatische Alerts bei Schwellenwerten, wöchentliche PDF-Reports an Stakeholder.</div></div>
+    </div>
+  </div>
+  <div class="sb">
+    <div class="sl reveal">Referenz</div>
+    <h2 class="sh reveal reveal-d1">Automatisierung in Produktion.</h2>
+    <div class="ref-cards reveal reveal-d2">
+      <a href="../arbeiten/voice-agent.html" class="ref-card"><div class="ref-num">02 — Telefon-Automation</div><div class="ref-title">KI-Voice-Agent</div><div class="ref-desc">Vollautomatischer Inbound-Agent mit n8n, Twilio und OpenAI Realtime API. 70% weniger manueller Aufwand.</div></a>
+    </div>
+  </div>
+</div>
+<div class="cta-strip">
+  <div class="container">
+    <h2 class="reveal">Was bei dir automatisiert werden kann?</h2>
+    <p class="reveal reveal-d1">Erstgespräch — wir analysieren gemeinsam deine Kandidaten.</p>
+    <div class="cta-strip-btns reveal reveal-d2">
+      <a href="../kontakt.html" class="btn btn-w btn-lg">Erstgespräch buchen</a>
+      <a href="../arbeiten.html" class="btn btn-wo btn-lg">Referenzen ansehen</a>
+    </div>
+  </div>
+</div>
+<div id="footer-mount"></div>
+<script src="../shared/components.js?v=1776884200265"></script>
+</body>
+</html>

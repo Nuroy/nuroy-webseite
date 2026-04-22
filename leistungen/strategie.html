@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategieberatung — Nuroy</title>
+  <link rel="stylesheet" href="../shared/styles.css?v=1776884200265">
+  <style>
+    .page-hero{padding:calc(var(--nav-h)+80px) 0 80px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+    .hero-glow{position:absolute;top:-200px;right:-80px;width:600px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,45,122,0.09) 0%,transparent 65%);pointer-events:none}
+    .sb{padding:clamp(64px,8vw,112px) 0}.sb+.sb{border-top:1px solid var(--line)}
+    .sl{font-family:var(--font-mono);font-size:11px;color:var(--pink);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
+    .sh{font-family:var(--font-display);font-size:clamp(26px,3vw,44px);font-weight:800;letter-spacing:-.025em;margin-bottom:20px;line-height:1.15}
+    .bt{font-size:15px;color:var(--fg-muted);line-height:1.8}.bt+.bt{margin-top:14px}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+    .fi{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}.fi:last-child{border-bottom:none}
+    .fi-dot{width:6px;height:6px;border-radius:50%;background:var(--pink);flex-shrink:0;margin-top:7px}
+    .fi-title{font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:4px;letter-spacing:-.01em}
+    .fi-desc{font-size:13px;color:var(--fg-muted);line-height:1.65}
+    .formats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+    .fmt{background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:28px}
+    .fmt-title{font-family:var(--font-display);font-size:17px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+    .fmt-duration{font-family:var(--font-mono);font-size:10px;color:var(--pink);letter-spacing:.06em;margin-bottom:12px}
+    .fmt-desc{font-size:13px;color:var(--fg-muted);line-height:1.65}
+    .who-not{background:var(--bg-3);border:1px solid var(--line);border-radius:12px;padding:40px;margin-top:40px}
+    .who-not-title{font-family:var(--font-display);font-size:20px;font-weight:700;margin-bottom:16px;letter-spacing:-.02em}
+    .who-list{display:flex;flex-direction:column;gap:10px}
+    .who-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--fg-muted)}
+    .who-item::before{content:'→';color:var(--pink);font-size:12px;flex-shrink:0}
+    .cta-strip{background:var(--pink);padding:64px 0;text-align:center;position:relative;overflow:hidden}
+    .cta-strip::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.05) 0%,transparent 60%)}
+    .cta-strip h2{font-family:var(--font-display);font-size:clamp(28px,3.5vw,52px);font-weight:900;color:#fff;margin-bottom:12px;position:relative;letter-spacing:-.03em}
+    .cta-strip p{color:rgba(255,255,255,.75);margin-bottom:28px;position:relative}
+    .cta-strip-btns{display:flex;gap:12px;justify-content:center;position:relative}
+    .btn-w{background:#fff;color:var(--pink);font-weight:600}.btn-w:hover{background:rgba(255,255,255,.9)}
+    .btn-wo{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}.btn-wo:hover{background:rgba(255,255,255,.1)}
+    @media(max-width:900px){.two-col,.formats-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div id="cursor-glow"></div>
+<div id="nav-mount"></div>
+<section class="page-hero">
+  <div class="hero-glow"></div>
+  <div class="noise-overlay"></div>
+  <div class="container">
+    <p class="t-label reveal">Leistung · 03</p>
+    <h1 class="t-h1 reveal reveal-d1" style="margin-top:8px;max-width:640px">Strategie&shy;beratung</h1>
+    <p class="t-body-lg c-muted reveal reveal-d2" style="max-width:540px;margin-top:20px">Tech-Audits, Architektur-Reviews, Make-or-Buy-Entscheidungen und Roadmaps. Substanz statt Foliensatz — ehrliche Einschätzung, konkrete Empfehlungen.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px" class="reveal reveal-d3">
+      <a href="../kontakt.html" class="btn btn-primary btn-lg">Erstgespräch buchen</a>
+      <a href="../leistungen.html" class="btn btn-secondary">Alle Leistungen</a>
+    </div>
+  </div>
+</section>
+<div class="container">
+  <div class="sb">
+    <div class="two-col">
+      <div>
+        <div class="sl reveal">Was wir beraten</div>
+        <h2 class="sh reveal reveal-d1">Konkret. Ohne Agentur-Romantik.</h2>
+        <p class="bt reveal reveal-d2">Strategieberatung bei Nuroy heißt: Wir schauen uns an, was du hast, was du brauchst und was der sinnvollste Weg dahin ist. Keine 80-Folien-Decks, die nach dem Meeting niemand mehr öffnet.</p>
+        <p class="bt reveal reveal-d2">Wir sprechen in konkreten Architektur-Entscheidungen, Tech-Stack-Empfehlungen und Make-or-Buy-Einschätzungen — weil wir danach auch das bauen, was wir empfehlen.</p>
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="fi"><div class="fi-dot"></div><div><div class="fi-title">Tech-Audits</div><div class="fi-desc">Analyse bestehender Systeme: Schulden, Risiken, Engpässe. Prioritätsliste mit konkreten Handlungsempfehlungen.</div></div></div>
+        <div class="fi"><div class="fi-dot"></div><div><div class="fi-title">Architektur-Reviews</div><div class="fi-desc">Bewertung geplanter oder bestehender Systeme: Skalierbarkeit, Maintainability, Integrations-Risiken.</div></div></div>
+        <div class="fi"><div class="fi-dot"></div><div><div class="fi-title">Make-or-Buy</div><div class="fi-desc">Ehrliche Einschätzung: Was sollte custom gebaut werden — und wo ist ein bestehendes Tool die bessere Entscheidung?</div></div></div>
+        <div class="fi"><div class="fi-dot"></div><div><div class="fi-title">Technische Roadmaps</div><div class="fi-desc">Priorisierter Plan für die nächsten 6–18 Monate. Realistisch, mit Abhängigkeiten und Ressourcenschätzung.</div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="sb" style="background:var(--bg)">
+    <div class="sl reveal">Formate</div>
+    <h2 class="sh reveal reveal-d1">Wie wir arbeiten.</h2>
+    <div class="formats-grid reveal reveal-d2">
+      <div class="fmt">
+        <div class="fmt-duration">2–3 Stunden</div>
+        <div class="fmt-title">Tech-Audit Sprint</div>
+        <div class="fmt-desc">Fokussierte Analyse eines bestehenden Systems oder einer spezifischen Entscheidung. Output: schriftlicher Report mit Handlungsempfehlungen.</div>
+      </div>
+      <div class="fmt">
+        <div class="fmt-duration">1–2 Wochen</div>
+        <div class="fmt-title">Architektur-Workshop</div>
+        <div class="fmt-desc">Discovery + Design für ein neues System. Interviews, Datenmodell-Entwurf, Stack-Entscheidung, Scope-Definition und Meilenstein-Plan.</div>
+      </div>
+      <div class="fmt">
+        <div class="fmt-duration">Laufend</div>
+        <div class="fmt-title">Technischer Beirat</div>
+        <div class="fmt-desc">Monatliches Retainer-Modell für strategische Tech-Entscheidungen, Vendor-Bewertungen und Architektur-Oversight — ohne operativen Overhead.</div>
+      </div>
+    </div>
+    <div class="who-not reveal reveal-d3">
+      <div class="who-not-title">Für wen das passt</div>
+      <div class="who-list">
+        <div class="who-item">Unternehmen, die vor einer größeren Technologie-Entscheidung stehen und eine zweite Meinung brauchen</div>
+        <div class="who-item">Gründer, die einen Tech-Lead-Ersatz für die Architektur-Phase suchen</div>
+        <div class="who-item">Unternehmen mit gewachsenen Systemen, die wissen wollen, was als nächstes zu tun ist</div>
+        <div class="who-item">Scale-ups, die entscheiden müssen: Custom bauen oder SaaS kaufen</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cta-strip">
+  <div class="container">
+    <h2 class="reveal">Brauchst du eine zweite Meinung?</h2>
+    <p class="reveal reveal-d1">Erstgespräch — kostenlos, direkt, ohne Pitch.</p>
+    <div class="cta-strip-btns reveal reveal-d2">
+      <a href="../kontakt.html" class="btn btn-w btn-lg">Termin buchen</a>
+      <a href="../arbeiten.html" class="btn btn-wo btn-lg">Referenzen ansehen</a>
+    </div>
+  </div>
+</div>
+<div id="footer-mount"></div>
+<script src="../shared/components.js?v=1776884200265"></script>
+</body>
+</html>

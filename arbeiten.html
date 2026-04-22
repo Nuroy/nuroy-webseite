@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arbeiten — Nuroy</title>
+  <meta name="description" content="Vier echte Systeme. Gebaut, ausgeliefert, im Betrieb. Portfolio von Nuroy — Software, Automation, Strategie.">
+  <link rel="stylesheet" href="shared/styles.css?v=1776884200265">
+  <style>
+    /* ── Page Header ──────────────────────── */
+    .arbeiten-header {
+      padding: calc(var(--nav-h) + 64px) 0 64px;
+      border-bottom: 1px solid var(--line);
+    }
+    .arbeiten-header-inner {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .arbeiten-sub {
+      font-size: 16px;
+      color: var(--fg-muted);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-top: 12px;
+    }
+    .scroll-hint {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--fg-dim);
+      letter-spacing: 0.08em;
+    }
+    .scroll-arrow {
+      width: 32px; height: 32px;
+      border: 1px solid var(--line-strong);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: bounce-down 2s ease-in-out infinite;
+    }
+    @keyframes bounce-down {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
+    }
+
+    /* ── Cinema ────────────────────────────── */
+    .cinema-wrapper {
+      height: 500vh; /* 5 × 100vh for 4 slides + wiggle room */
+      position: relative;
+    }
+    .cinema-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .cinema-track {
+      display: flex;
+      height: 100%;
+      will-change: transform;
+    }
+    .cinema-slide {
+      min-width: 100vw;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .slide-bg-glow {
+      position: absolute;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,45,122,0.09) 0%, transparent 65%);
+      pointer-events: none;
+      right: -100px; top: 50%;
+      transform: translateY(-50%);
+    }
+    .slide-body {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 80px;
+      align-items: center;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 80px);
+      will-change: transform, opacity;
+      transition: transform 0.05s linear, opacity 0.05s linear;
+    }
+    .slide-left {}
+    .slide-num {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .slide-num-line {
+      width: 32px; height: 1px;
+      background: var(--pink);
+    }
+    .slide-title {
+      font-family: var(--font-display);
+      font-size: clamp(44px, 6.5vw, 96px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      margin-bottom: 16px;
+    }
+    .slide-tagline {
+      font-size: clamp(16px, 1.4vw, 20px);
+      color: var(--pink);
+      font-weight: 500;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+    .slide-desc {
+      font-size: 15px;
+      color: var(--fg-muted);
+      line-height: 1.75;
+      max-width: 460px;
+      margin-bottom: 28px;
+    }
+    .slide-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+    .slide-right {}
+    .slide-mockup-frame {
+      background: var(--bg-2);
+      border: 1px solid var(--line-strong);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 80px rgba(255,45,122,0.07);
+    }
+    .mockup-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: var(--bg-3);
+      border-bottom: 1px solid var(--line);
+    }
+    .mockup-dots { display: flex; gap: 6px; }
+    .mockup-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+    .md-r { background: #FF5F57; }
+    .md-y { background: #FFBD2E; }
+    .md-g { background: #27C840; }
+    .mockup-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--fg-dim);
+      letter-spacing: 0.06em;
+    }
+    .mockup-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+    }
+    .mockup-badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      animation: blink 2s ease-in-out infinite;
+    }
+    .bd-ok { background: var(--ok); color: var(--ok); }
+    .bd-pink { background: var(--pink); color: var(--pink); }
+    .mockup-body { padding: 20px; }
+
+    /* ── Accountly Mockup ─────────────────── */
+    .acc-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .acc-stat {
+      background: var(--bg-3);
+      padding: 14px 16px;
+    }
+    .acc-stat-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--fg-dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .acc-stat-val {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+    }
+    .acc-stat-val.ok { color: var(--ok); }
+    .acc-mini-chart { margin-bottom: 16px; }
+    .acc-table-head {
+      display: grid;
+      grid-template-columns: 60px 1fr 80px 80px 70px;
+      gap: 8px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line);
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--fg-dim);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .acc-row {
+      display: grid;
+      grid-template-columns: 60px 1fr 80px 80px 70px;
+      gap: 8px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--line);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--fg-muted);
+      align-items: center;
+    }
+    .acc-row:last-child { border-bottom: none; }
+    .acc-row-id { color: var(--fg-dim); }
+    .acc-row-amount { color: var(--fg); }
+    .acc-status {
+      font-size: 9px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+    .st-ok { background: rgba(143,163,115,0.12); color: var(--ok); }
+    .st-pink { background: var(--pink-bg); color: var(--pink); }
+    .st-warn { background: rgba(209,168,92,0.12); color: var(--warn); }
+
+    /* ── Voice Agent Mockup ───────────────── */
+    .voice-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .voice-stat {
+      background: var(--bg-3);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+    .voice-stat-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--fg-dim);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .voice-stat-val {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .voice-wave-wrap {
+      background: var(--bg-3);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .voice-wave-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--pink);
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .wave-big {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      height: 48px;
+    }
+    .wb {
+      flex: 1;
+      border-radius: 2px;
+      background: var(--pink);
+      animation: wave-big 1.2s ease-in-out infinite alternate;
+    }
+    @keyframes wave-big {
+      from { transform: scaleY(1); opacity: 0.9; }
+      to   { transform: scaleY(0.15); opacity: 0.5; }
+    }
+    .transcript-box {
+      background: var(--bg-4);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      line-height: 1.7;
+      color: var(--fg-dim);
+      max-height: 100px;
+      overflow: hidden;
+    }
+    .tr-agent { color: var(--pink); }
+    .tr-kunde { color: var(--fg-muted); }
+
+    /* ── CSM Suite Mockup ─────────────────── */
+    .csm-overview {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .csm-ov-cell {
+      background: var(--bg-3);
+      padding: 12px 14px;
+      text-align: center;
+    }
+    .csm-ov-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--fg-dim);
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+    .csm-ov-val {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .csm-kanban {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .csm-col {}
+    .csm-col-header {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .ch-risk { background: rgba(255,45,122,0.1); color: var(--pink); }
+    .ch-stable { background: rgba(209,168,92,0.1); color: var(--warn); }
+    .ch-healthy { background: rgba(143,163,115,0.1); color: var(--ok); }
+    .csm-customer-card {
+      background: var(--bg-3);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      margin-bottom: 6px;
+    }
+    .csm-cc-name { font-size: 11px; font-weight: 500; margin-bottom: 4px; }
+    .csm-cc-score { font-family: var(--font-mono); font-size: 9px; color: var(--fg-dim); margin-bottom: 5px; }
+    .csm-cc-bar { height: 3px; background: var(--line); border-radius: 2px; }
+    .csm-cc-fill { height: 100%; border-radius: 2px; }
+
+    /* ── CRM Mockup ──────────────────────── */
+    .crm-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .crm-forecast {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+    .crm-forecast-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--fg-dim);
+      letter-spacing: 0.06em;
+      margin-top: 2px;
+    }
+    .crm-pipeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+    .crm-stage {}
+    .crm-stage-header {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--fg-dim);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--line);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .crm-stage-count {
+      background: var(--bg-4);
+      border-radius: 3px;
+      padding: 1px 5px;
+      font-size: 9px;
+    }
+    .crm-deal {
+      background: var(--bg-3);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 8px;
+      margin-bottom: 6px;
+      font-size: 10px;
+    }
+    .crm-deal-name { color: var(--fg-muted); margin-bottom: 3px; font-family: var(--font-mono); font-size: 9px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .crm-deal-val { font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: -0.01em; color: var(--fg); }
+    .crm-deal-win { color: var(--pink); }
+
+    /* ── Progress indicator ───────────────── */
+    .cinema-progress {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 10;
+    }
+    .cp-dot {
+      width: 6px; height: 6px;
+      border-radius: 3px;
+      background: var(--fg-dim);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .cp-dot.active {
+      width: 24px;
+      background: var(--pink);
+    }
+    .cinema-counter {
+      position: absolute;
+      bottom: 32px;
+      right: clamp(24px, 5vw, 80px);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--fg-dim);
+      letter-spacing: 0.06em;
+      z-index: 10;
+    }
+    .cc-current { color: var(--fg); }
+
+    /* ── Post-cinema CTA ──────────────────── */
+    .post-cinema {
+      padding: clamp(80px, 10vw, 140px) 0;
+      text-align: center;
+      border-top: 1px solid var(--line);
+    }
+
+    /* ── Mobile ──────────────────────────── */
+    @media (max-width: 900px) {
+      .cinema-wrapper { height: auto; }
+      .cinema-sticky {
+        position: relative;
+        height: auto;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .cinema-sticky::-webkit-scrollbar { display: none; }
+      .cinema-track { flex-direction: row; transform: none !important; }
+      .cinema-slide {
+        min-width: 100vw;
+        height: auto;
+        padding: calc(var(--nav-h) + 40px) 0 60px;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+      }
+      .slide-body { grid-template-columns: 1fr; gap: 40px; }
+      .cinema-progress {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        justify-content: center;
+        padding: 20px 0;
+      }
+      .cinema-counter { display: none; }
+      .slide-bg-glow { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="cursor-glow"></div>
+<div id="nav-mount"></div>
+
+<!-- Page Header -->
+<section class="arbeiten-header">
+  <div class="container">
+    <div class="arbeiten-header-inner">
+      <div>
+        <p class="t-label reveal">Portfolio</p>
+        <h1 class="t-h1 reveal reveal-d1" style="margin-top:8px;">Unsere Arbeiten.</h1>
+        <p class="arbeiten-sub reveal reveal-d2">Vier ausgewählte Projekte aus über 20 Systemen, die wir gebaut, ausgeliefert und in Produktion gebracht haben. Nicht alles dürfen wir zeigen — aber was hier steht, ist echt.</p>
+      </div>
+      <div class="scroll-hint reveal reveal-d3">
+        Scrollen zum Erkunden
+        <div class="scroll-arrow">
+          <svg width="14" height="14" fill="none" viewBox="0 0 14 14"><path d="M7 3v8M3.5 8l3.5 3 3.5-3" stroke="#FF2D7A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CINEMA ═══════════════════ -->
+<div class="cinema-wrapper" id="cinema">
+  <div class="cinema-sticky" id="cinema-sticky">
+
+    <div class="cinema-track" id="cinema-track">
+
+      <!-- ─── Slide 1: Accountly ─── -->
+      <div class="cinema-slide" data-index="0" style="background:var(--bg);">
+        <div class="slide-bg-glow"></div>
+        <div class="slide-body" id="sb-0">
+          <div class="slide-left">
+            <div class="slide-num t-label">
+              <span class="slide-num-line"></span>
+              01 — Buchhaltungs-SaaS
+            </div>
+            <h2 class="slide-title">Accountly</h2>
+            <p class="slide-tagline">Vom Prototyp zur produktiven Software in 11 Wochen.</p>
+            <p class="slide-desc">Eine vollständige Buchhaltungsplattform mit DATEV-Anbindung, OCR-Beleglesung und automatischem Abgleich — gebaut für einen mittelständischen Steuerkanzlei-Verbund. Kein generisches SaaS-Template, sondern exakt die Logik, die gebraucht wurde.</p>
+            <div class="slide-stack">
+              <span class="tag">Next.js</span>
+              <span class="tag">Supabase</span>
+              <span class="tag">DATEV-API</span>
+              <span class="tag">OCR</span>
+              <span class="tag">Stripe</span>
+              <span class="tag">PostgreSQL</span>
+            </div>
+            <a href="arbeiten/accountly.html" class="btn btn-primary btn-lg">
+              Case Study lesen
+              <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+          <div class="slide-right">
+            <div class="slide-mockup-frame">
+              <div class="mockup-topbar">
+                <div class="db-dots"><div class="mockup-dot md-r"></div><div class="mockup-dot md-y"></div><div class="mockup-dot md-g"></div></div>
+                <span class="mockup-title">accountly — Rechnungsverwaltung</span>
+                <div class="mockup-badge"><span class="mockup-badge-dot bd-ok"></span><span style="color:var(--ok)">Sync aktiv</span></div>
+              </div>
+              <div class="mockup-body">
+                <div class="acc-stats">
+                  <div class="acc-stat">
+                    <div class="acc-stat-label">Umsatz MTD</div>
+                    <div class="acc-stat-val">€ 84.200</div>
+                  </div>
+                  <div class="acc-stat">
+                    <div class="acc-stat-label">Ausstehend</div>
+                    <div class="acc-stat-val" style="color:var(--warn)">€ 14.750</div>
+                  </div>
+                  <div class="acc-stat">
+                    <div class="acc-stat-label">Bezahlt</div>
+                    <div class="acc-stat-val ok">€ 69.450</div>
+                  </div>
+                </div>
+                <div class="acc-mini-chart">
+                  <svg width="100%" height="50" viewBox="0 0 500 50" preserveAspectRatio="none">
+                    <defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FF2D7A" stop-opacity="0.25"/><stop offset="100%" stop-color="#FF2D7A" stop-opacity="0"/></linearGradient></defs>
+                    <path d="M0,45 C30,42 50,38 80,35 C110,32 130,40 160,36 C190,32 210,22 240,18 C270,14 290,24 320,20 C350,16 370,8 500,5 L500,50 L0,50Z" fill="url(#ag)"/>
+                    <path d="M0,45 C30,42 50,38 80,35 C110,32 130,40 160,36 C190,32 210,22 240,18 C270,14 290,24 320,20 C350,16 370,8 500,5" fill="none" stroke="#FF2D7A" stroke-width="1.5"/>
+                  </svg>
+                </div>
+                <div class="acc-table-head">
+                  <span>Nr.</span><span>Kunde</span><span>Betrag</span><span>Fällig</span><span>Status</span>
+                </div>
+                <div class="acc-row">
+                  <span class="acc-row-id">#1042</span>
+                  <span>Müller &amp; Partner GmbH</span>
+                  <span class="acc-row-amount">€ 4.200</span>
+                  <span>15.01.26</span>
+                  <span class="acc-status st-ok">bezahlt</span>
+                </div>
+                <div class="acc-row">
+                  <span class="acc-row-id">#1043</span>
+                  <span>DataForce Solutions</span>
+                  <span class="acc-row-amount">€ 8.750</span>
+                  <span>22.01.26</span>
+                  <span class="acc-status st-pink">offen</span>
+                </div>
+                <div class="acc-row">
+                  <span class="acc-row-id">#1044</span>
+                  <span>Nexum AG</span>
+                  <span class="acc-row-amount">€ 2.100</span>
+                  <span>25.01.26</span>
+                  <span class="acc-status st-ok">bezahlt</span>
+                </div>
+                <div class="acc-row">
+                  <span class="acc-row-id">#1045</span>
+                  <span>TechBase Consulting</span>
+                  <span class="acc-row-amount">€ 6.400</span>
+                  <span>28.01.26</span>
+                  <span class="acc-status st-warn">fällig</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── Slide 2: Voice Agent ─── -->
+      <div class="cinema-slide" data-index="1" style="background:var(--bg-2);">
+        <div class="slide-bg-glow" style="left:-100px; right:auto;"></div>
+        <div class="slide-body" id="sb-1">
+          <div class="slide-left">
+            <div class="slide-num t-label">
+              <span class="slide-num-line"></span>
+              02 — Telefon-Automation
+            </div>
+            <h2 class="slide-title">KI-Voice-<br>Agent</h2>
+            <p class="slide-tagline">70% weniger manueller Aufwand in der Terminierung.</p>
+            <p class="slide-desc">Ein vollautomatischer Inbound- und Outbound-Telefon-Agent für ein medizinisches Versorgungszentrum. OpenAI Realtime API trifft auf Twilio — für natürliche Gespräche, automatische Terminbuchung und CRM-Übergabe ohne menschliches Eingreifen.</p>
+            <div class="slide-stack">
+              <span class="tag">OpenAI Realtime</span>
+              <span class="tag">Twilio</span>
+              <span class="tag">n8n</span>
+              <span class="tag">Webhooks</span>
+              <span class="tag">Node.js</span>
+            </div>
+            <a href="arbeiten/voice-agent.html" class="btn btn-primary btn-lg">
+              Case Study lesen
+              <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+          <div class="slide-right">
+            <div class="slide-mockup-frame">
+              <div class="mockup-topbar">
+                <div class="db-dots"><div class="mockup-dot md-r"></div><div class="mockup-dot md-y"></div><div class="mockup-dot md-g"></div></div>
+                <span class="mockup-title">voice-agent — live call dashboard</span>
+                <div class="mockup-badge"><span class="mockup-badge-dot bd-pink"></span><span style="color:var(--pink)">Anruf aktiv</span></div>
+              </div>
+              <div class="mockup-body">
+                <div class="voice-stats">
+                  <div class="voice-stat">
+                    <div class="voice-stat-label">Anrufe heute</div>
+                    <div class="voice-stat-val" style="color:var(--fg)">47</div>
+                  </div>
+                  <div class="voice-stat">
+                    <div class="voice-stat-label">Ø Dauer</div>
+                    <div class="voice-stat-val" style="color:var(--fg)">3:42</div>
+                  </div>
+                  <div class="voice-stat">
+                    <div class="voice-stat-label">Aufnahme-Rate</div>
+                    <div class="voice-stat-val" style="color:var(--ok)">94%</div>
+                  </div>
+                </div>
+                <div class="voice-wave-wrap">
+                  <div class="voice-wave-label">
+                    <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#FF2D7A"/></svg>
+                    Live — Inbound Kanal 1
+                  </div>
+                  <div class="wave-big" id="wave-big"></div>
+                </div>
+                <div class="transcript-box">
+                  <span class="tr-agent">Agent:</span> Guten Tag, hier ist der Terminassistent der MedCare-Praxis. Wie kann ich Ihnen helfen?<br>
+                  <span class="tr-kunde">Kunde:</span> Ich brauche einen Termin beim Kardiologen, möglichst diese Woche.<br>
+                  <span class="tr-agent">Agent:</span> Natürlich. Ich sehe Kapazitäten am Donnerstag um 10:30 Uhr. Passt das für Sie?
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── Slide 3: CSM Suite ─── -->
+      <div class="cinema-slide" data-index="2" style="background:var(--bg);">
+        <div class="slide-bg-glow"></div>
+        <div class="slide-body" id="sb-2">
+          <div class="slide-left">
+            <div class="slide-num t-label">
+              <span class="slide-num-line"></span>
+              03 — Customer Success
+            </div>
+            <h2 class="slide-title">CSM-<br>Suite</h2>
+            <p class="slide-tagline">Individuelle Customer-Journey ohne Salesforce-Overhead.</p>
+            <p class="slide-desc">Eine maßgeschneiderte Customer-Success-Plattform für ein B2B-SaaS-Unternehmen — mit Health-Scoring, automatisierten Touchpoints, Slack-Integration und Kanban-Workflow. Gebaut in React und Fastify, läuft auf Railway.</p>
+            <div class="slide-stack">
+              <span class="tag">React</span>
+              <span class="tag">Fastify</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Slack API</span>
+              <span class="tag">Railway</span>
+              <span class="tag">Prisma</span>
+            </div>
+            <a href="arbeiten/csm-suite.html" class="btn btn-primary btn-lg">
+              Case Study lesen
+              <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+          <div class="slide-right">
+            <div class="slide-mockup-frame">
+              <div class="mockup-topbar">
+                <div class="db-dots"><div class="mockup-dot md-r"></div><div class="mockup-dot md-y"></div><div class="mockup-dot md-g"></div></div>
+                <span class="mockup-title">csm-suite — customer health overview</span>
+                <div class="mockup-badge"><span class="mockup-badge-dot bd-ok"></span><span style="color:var(--ok)">34 Kunden aktiv</span></div>
+              </div>
+              <div class="mockup-body">
+                <div class="csm-overview">
+                  <div class="csm-ov-cell">
+                    <div class="csm-ov-label">Gesamt</div>
+                    <div class="csm-ov-val" style="color:var(--fg)">34</div>
+                  </div>
+                  <div class="csm-ov-cell">
+                    <div class="csm-ov-label">Ø Health</div>
+                    <div class="csm-ov-val" style="color:var(--ok)">78%</div>
+                  </div>
+                  <div class="csm-ov-cell">
+                    <div class="csm-ov-label">At Risk</div>
+                    <div class="csm-ov-val" style="color:var(--pink)">5</div>
+                  </div>
+                  <div class="csm-ov-cell">
+                    <div class="csm-ov-label">Champions</div>
+                    <div class="csm-ov-val" style="color:var(--ok)">12</div>
+                  </div>
+                </div>
+                <div class="csm-kanban">
+                  <div class="csm-col">
+                    <div class="csm-col-header ch-risk">At Risk</div>
+                    <div class="csm-customer-card">
+                      <div class="csm-cc-name">DataForce GmbH</div>
+                      <div class="csm-cc-score">Health: 38 / 100</div>
+                      <div class="csm-cc-bar"><div class="csm-cc-fill" style="width:38%;background:var(--pink)"></div></div>
+                    </div>
+                    <div class="csm-customer-card">
+                      <div class="csm-cc-name">TechBase AG</div>
+                      <div class="csm-cc-score">Health: 52 / 100</div>
+                      <div class="csm-cc-bar"><div class="csm-cc-fill" style="width:52%;background:var(--warn)"></div></div>
+                    </div>
+                  </div>
+                  <div class="csm-col">
+                    <div class="csm-col-header ch-stable">Stable</div>
+                    <div class="csm-customer-card">
+                      <div class="csm-cc-name">Nexum Solutions</div>
+                      <div class="csm-cc-score">Health: 71 / 100</div>
+                      <div class="csm-cc-bar"><div class="csm-cc-fill" style="width:71%;background:var(--warn)"></div></div>
+                    </div>
+                    <div class="csm-customer-card">
+                      <div class="csm-cc-name">BridgeCo GmbH</div>
+                      <div class="csm-cc-score">Health: 68 / 100</div>
+                      <div class="csm-cc-bar"><div class="csm-cc-fill" style="width:68%;background:var(--warn)"></div></div>
+                    </div>
+                  </div>
+                  <div class="csm-col">
+                    <div class="csm-col-header ch-healthy">Champion</div>
+                    <div class="csm-customer-card">
+                      <div class="csm-cc-name">Acme Corp</div>
+                      <div class="csm-cc-score">Health: 94 / 100</div>
+                      <div class="csm-cc-bar"><div class="csm-cc-fill" style="width:94%;background:var(--ok)"></div></div>
+                    </div>
+                    <div class="csm-customer-card">
+                      <div class="csm-cc-name">VentureStack</div>
+                      <div class="csm-cc-score">Health: 89 / 100</div>
+                      <div class="csm-cc-bar"><div class="csm-cc-fill" style="width:89%;background:var(--ok)"></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── Slide 4: CRM System ─── -->
+      <div class="cinema-slide" data-index="3" style="background:var(--bg-2);">
+        <div class="slide-bg-glow" style="left:-100px; right:auto;"></div>
+        <div class="slide-body" id="sb-3">
+          <div class="slide-left">
+            <div class="slide-num t-label">
+              <span class="slide-num-line"></span>
+              04 — B2B-Pipeline
+            </div>
+            <h2 class="slide-title">CRM-<br>System</h2>
+            <p class="slide-tagline">Kein HubSpot-Kompromiss — eigene Logik, eigene Pipelines.</p>
+            <p class="slide-desc">Ein vollständiges B2B-Vertriebs-CRM mit custom Pipeline-Logik, automatischen Twilio-Follow-ups, Gmail-Integration und Deal-Forecasting. Gebaut mit Remix und Prisma, deployed auf Vercel Edge.</p>
+            <div class="slide-stack">
+              <span class="tag">Remix</span>
+              <span class="tag">Prisma</span>
+              <span class="tag">Twilio</span>
+              <span class="tag">Gmail API</span>
+              <span class="tag">Vercel Edge</span>
+            </div>
+            <a href="arbeiten/crm-system.html" class="btn btn-primary btn-lg">
+              Case Study lesen
+              <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+          <div class="slide-right">
+            <div class="slide-mockup-frame">
+              <div class="mockup-topbar">
+                <div class="db-dots"><div class="mockup-dot md-r"></div><div class="mockup-dot md-y"></div><div class="mockup-dot md-g"></div></div>
+                <span class="mockup-title">crm — sales pipeline Q1 2026</span>
+                <div class="mockup-badge"><span class="mockup-badge-dot bd-ok"></span><span style="color:var(--ok)">57 Deals</span></div>
+              </div>
+              <div class="mockup-body">
+                <div class="crm-header">
+                  <div>
+                    <div class="crm-forecast">€ 284.000</div>
+                    <div class="crm-forecast-label">Forecast Q1 2026 · Weighted Pipeline</div>
+                  </div>
+                  <div style="text-align:right">
+                    <div style="font-family:var(--font-mono);font-size:11px;color:var(--ok)">▲ +18% vs. Q4</div>
+                    <div style="font-family:var(--font-mono);font-size:9px;color:var(--fg-dim)">Conversion: 12.5%</div>
+                  </div>
+                </div>
+                <div class="crm-pipeline">
+                  <div class="crm-stage">
+                    <div class="crm-stage-header">Lead <span class="crm-stage-count">24</span></div>
+                    <div class="crm-deal"><div class="crm-deal-name">Orion Systems</div><div class="crm-deal-val">€ 8.5k</div></div>
+                    <div class="crm-deal"><div class="crm-deal-name">NovaCorp GmbH</div><div class="crm-deal-val">€ 12k</div></div>
+                  </div>
+                  <div class="crm-stage">
+                    <div class="crm-stage-header">Qualifiziert <span class="crm-stage-count">16</span></div>
+                    <div class="crm-deal"><div class="crm-deal-name">DataFlow AG</div><div class="crm-deal-val">€ 22k</div></div>
+                    <div class="crm-deal"><div class="crm-deal-name">TechBase</div><div class="crm-deal-val">€ 18k</div></div>
+                  </div>
+                  <div class="crm-stage">
+                    <div class="crm-stage-header">Proposal <span class="crm-stage-count">9</span></div>
+                    <div class="crm-deal"><div class="crm-deal-name">Meridian GmbH</div><div class="crm-deal-val">€ 45k</div></div>
+                    <div class="crm-deal"><div class="crm-deal-name">Apex Solutions</div><div class="crm-deal-val">€ 38k</div></div>
+                  </div>
+                  <div class="crm-stage">
+                    <div class="crm-stage-header">Verhandlung <span class="crm-stage-count">5</span></div>
+                    <div class="crm-deal"><div class="crm-deal-name">VentureStack</div><div class="crm-deal-val">€ 95k</div></div>
+                    <div class="crm-deal"><div class="crm-deal-name">BridgeCo</div><div class="crm-deal-val">€ 62k</div></div>
+                  </div>
+                  <div class="crm-stage">
+                    <div class="crm-stage-header">Abschluss <span class="crm-stage-count">3</span></div>
+                    <div class="crm-deal"><div class="crm-deal-name">Acme Corp</div><div class="crm-deal-val crm-deal-win">€ 140k</div></div>
+                    <div class="crm-deal"><div class="crm-deal-name">Nexum AG</div><div class="crm-deal-val crm-deal-win">€ 85k</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /cinema-track -->
+
+    <!-- Progress dots -->
+    <div class="cinema-progress" id="cinema-progress">
+      <div class="cp-dot active" data-goto="0"></div>
+      <div class="cp-dot" data-goto="1"></div>
+      <div class="cp-dot" data-goto="2"></div>
+      <div class="cp-dot" data-goto="3"></div>
+    </div>
+
+    <!-- Counter -->
+    <div class="cinema-counter">
+      <span class="cc-current" id="cc-cur">01</span>
+      <span style="color:var(--line-strong)"> / </span>
+      <span>04</span>
+    </div>
+
+  </div><!-- /cinema-sticky -->
+</div><!-- /cinema-wrapper -->
+
+<!-- Post-cinema CTA -->
+<section class="post-cinema">
+  <div class="container">
+    <p class="t-label text-center reveal">Mehr bauen</p>
+    <h2 class="t-h2 text-center reveal reveal-d1" style="margin-top:8px;">Weitere Projekte<br>kommen laufend dazu.</h2>
+    <p class="t-body-lg text-center c-muted reveal reveal-d2" style="margin-top:16px; max-width:500px; margin-left:auto; margin-right:auto;">Nuroy arbeitet kontinuierlich an neuen Projekten. Wenn du Substanz willst, sprich mit uns.</p>
+    <div style="display:flex; justify-content:center; gap:12px; margin-top:40px;" class="reveal reveal-d3">
+      <a href="../kontakt.html" class="btn btn-primary btn-lg">Erstgespräch buchen</a>
+      <a href="../index.html" class="btn btn-secondary btn-lg">Zurück zur Startseite</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-mount"></div>
+
+<script src="shared/components.js?v=1776884200265"></script>
+<script>
+  /* ── Wave bars ────────────────────────── */
+  const wb = document.getElementById('wave-big');
+  if (wb) {
+    for (let i = 0; i < 40; i++) {
+      const b = document.createElement('div');
+      b.className = 'wb';
+      const h = Math.random() * 40 + 8;
+      b.style.height = h + 'px';
+      b.style.animationDelay = (i * 0.04) + 's';
+      b.style.animationDuration = (0.6 + Math.random() * 0.8) + 's';
+      wb.appendChild(b);
+    }
+  }
+
+  /* ── Horizontal Cinema ────────────────── */
+  const wrapper = document.getElementById('cinema');
+  const track   = document.getElementById('cinema-track');
+  const slides  = Array.from(document.querySelectorAll('.cinema-slide'));
+  const dots    = Array.from(document.querySelectorAll('.cp-dot'));
+  const ccCur   = document.getElementById('cc-cur');
+  const NUM     = slides.length;
+  let lastIndex = 0;
+
+  if (window.innerWidth > 900) {
+    function updateCinema() {
+      const rect     = wrapper.getBoundingClientRect();
+      const scrolled = -rect.top;
+      const maxScroll= wrapper.offsetHeight - window.innerHeight;
+      const progress = Math.max(0, Math.min(1, scrolled / maxScroll));
+
+      // Translate track
+      const tx = -progress * (NUM - 1) * window.innerWidth;
+      track.style.transform = `translateX(${tx}px)`;
+
+      // Per-slide zoom/fade
+      const slideIdx = progress * (NUM - 1);
+      slides.forEach((slide, i) => {
+        const lp = slideIdx - i; // local progress, 0 = active
+        const body = document.getElementById(`sb-${i}`);
+        if (!body) return;
+        if (lp < -1 || lp > 1.2) { body.style.opacity = 0; return; }
+        const ep = Math.min(1, lp + 1);            // entry 0→1
+        const scale = lp <= 0
+          ? 1 + (1 - ep) * 0.06
+          : 1 - Math.max(0, lp) * 0.025;
+        const opacity = lp <= 0
+          ? Math.min(1, ep * 1.4)
+          : Math.max(0, 1 - lp * 0.35);
+        body.style.transform = `scale(${scale})`;
+        body.style.opacity = opacity;
+      });
+
+      // Update dots + counter
+      const activeIdx = Math.round(progress * (NUM - 1));
+      dots.forEach((d, i) => d.classList.toggle('active', i === activeIdx));
+      if (ccCur) ccCur.textContent = String(activeIdx + 1).padStart(2, '0');
+    }
+
+    window.addEventListener('scroll', updateCinema, { passive: true });
+    updateCinema();
+
+    // Dot navigation: scroll to that slide's position
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const goto = parseInt(dot.dataset.goto);
+        const wTop = wrapper.offsetTop;
+        const maxScroll = wrapper.offsetHeight - window.innerHeight;
+        const targetScroll = wTop + (goto / (NUM - 1)) * maxScroll;
+        window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+      });
+    });
+
+    // Keyboard navigation
+    window.addEventListener('keydown', e => {
+      const rect = wrapper.getBoundingClientRect();
+      if (rect.top > window.innerHeight || rect.bottom < 0) return;
+      const scrolled = -rect.top;
+      const maxScroll = wrapper.offsetHeight - window.innerHeight;
+      const progress = Math.max(0, Math.min(1, scrolled / maxScroll));
+      const cur = Math.round(progress * (NUM - 1));
+      let next = cur;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = Math.min(NUM - 1, cur + 1);
+      if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   next = Math.max(0, cur - 1);
+      if (next !== cur) {
+        const wTop = wrapper.offsetTop;
+        const targetScroll = wTop + (next / (NUM - 1)) * maxScroll;
+        window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+      }
+    });
+  } else {
+    // Mobile: horizontal snap-scroll updates dots
+    const sticky = document.getElementById('cinema-sticky');
+    if (sticky) {
+      let ticking = false;
+      sticky.addEventListener('scroll', function() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function() {
+          const sl = sticky.scrollLeft;
+          const sw = window.innerWidth;
+          const idx = Math.round(sl / sw);
+          dots.forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+          if (ccCur) ccCur.textContent = String(idx + 1).padStart(2, '0');
+          ticking = false;
+        });
+      }, { passive: true });
+
+      // Dot click → snap scroll
+      dots.forEach(function(dot) {
+        dot.addEventListener('click', function() {
+          var goto = parseInt(dot.dataset.goto);
+          sticky.scrollTo({ left: goto * window.innerWidth, behavior: 'smooth' });
+        });
+      });
+    }
+  }
+</script>
+
+</body>
+</html>

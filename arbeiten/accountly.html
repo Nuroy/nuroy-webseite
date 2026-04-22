@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accountly — Nuroy Arbeiten</title>
+  <link rel="stylesheet" href="../shared/styles.css?v=1776884200265">
+  <style>
+    .cs-hero { padding: calc(var(--nav-h) + 72px) 0 72px; position: relative; overflow: hidden; }
+    .cs-hero-glow { position:absolute; top:-150px; right:-100px; width:600px; height:600px; border-radius:50%; background:radial-gradient(circle,rgba(255,45,122,0.1) 0%,transparent 65%); pointer-events:none; }
+    .cs-hero-inner { display:grid; grid-template-columns:1fr 1.1fr; gap:72px; align-items:center; }
+    .cs-breadcrumb { font-family:var(--font-mono); font-size:11px; color:var(--fg-dim); letter-spacing:0.06em; margin-bottom:20px; display:flex; align-items:center; gap:8px; }
+    .cs-breadcrumb a { color:var(--fg-dim); transition:color 0.2s; }
+    .cs-breadcrumb a:hover { color:var(--pink); }
+    .cs-num { font-family:var(--font-mono); font-size:11px; color:var(--pink); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px; }
+    .cs-title { font-family:var(--font-display); font-size:clamp(52px,7vw,96px); font-weight:900; letter-spacing:-0.04em; line-height:1.0; margin-bottom:16px; }
+    .cs-tagline { font-size:clamp(16px,1.4vw,20px); color:var(--pink); font-weight:500; margin-bottom:16px; line-height:1.4; }
+    .cs-intro { font-size:15px; color:var(--fg-muted); line-height:1.75; max-width:480px; margin-bottom:28px; }
+    .cs-tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .cs-meta-bar { background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .cs-meta-inner { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+    .cs-meta-cell { padding:24px 32px; border-right:1px solid var(--line); }
+    .cs-meta-cell:last-child { border-right:none; }
+    .cs-meta-label { font-family:var(--font-mono); font-size:10px; color:var(--fg-dim); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:6px; }
+    .cs-meta-val { font-family:var(--font-display); font-size:17px; font-weight:700; letter-spacing:-0.01em; }
+    .section-block { padding:clamp(64px,8vw,112px) 0; }
+    .section-block + .section-block { border-top:1px solid var(--line); }
+    .two-col { display:grid; grid-template-columns:1fr 1.4fr; gap:72px; align-items:start; }
+    .two-col-rev { display:grid; grid-template-columns:1.4fr 1fr; gap:72px; align-items:start; }
+    .section-label { font-family:var(--font-mono); font-size:11px; color:var(--pink); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px; }
+    .section-h { font-family:var(--font-display); font-size:clamp(26px,3vw,44px); font-weight:800; letter-spacing:-0.025em; margin-bottom:20px; line-height:1.15; }
+    .body-text { font-size:15px; color:var(--fg-muted); line-height:1.8; }
+    .body-text + .body-text { margin-top:16px; }
+    .arch-diagram { background:var(--bg-2); border:1px solid var(--line); border-radius:12px; padding:32px; overflow:hidden; }
+    .result-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden; margin-top:40px; }
+    .result-cell { background:var(--bg-2); padding:32px 24px; }
+    .result-num { font-family:var(--font-display); font-size:clamp(36px,4vw,60px); font-weight:900; letter-spacing:-0.04em; color:var(--pink); text-shadow:0 0 30px rgba(255,45,122,0.4); line-height:1; margin-bottom:8px; }
+    .result-label { font-size:13px; color:var(--fg-muted); }
+    .process-list { margin-top:32px; }
+    .process-item { display:flex; gap:24px; padding:24px 0; border-bottom:1px solid var(--line); }
+    .process-item:last-child { border-bottom:none; }
+    .process-item-num { font-family:var(--font-mono); font-size:11px; color:var(--pink); letter-spacing:0.08em; width:32px; flex-shrink:0; padding-top:3px; }
+    .process-item-title { font-family:var(--font-display); font-size:17px; font-weight:700; margin-bottom:6px; letter-spacing:-0.01em; }
+    .process-item-desc { font-size:14px; color:var(--fg-muted); line-height:1.7; }
+    .stack-grid { display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
+    .stack-item { background:var(--bg-3); border:1px solid var(--line); border-radius:8px; padding:12px 16px; }
+    .stack-item-name { font-family:var(--font-display); font-size:14px; font-weight:600; margin-bottom:3px; }
+    .stack-item-role { font-family:var(--font-mono); font-size:10px; color:var(--fg-dim); letter-spacing:0.04em; }
+    .nav-next-project { background:var(--bg-2); border-top:1px solid var(--line); padding:clamp(48px,6vw,80px) 0; }
+    .nav-next-inner { display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap; }
+    .nav-next-label { font-family:var(--font-mono); font-size:11px; color:var(--fg-dim); letter-spacing:0.08em; margin-bottom:8px; }
+    .nav-next-title { font-family:var(--font-display); font-size:clamp(22px,2.5vw,36px); font-weight:800; letter-spacing:-0.025em; }
+
+    /* Dashboard mockup (case study size) */
+    .cs-mockup-frame { background:var(--bg-2); border:1px solid var(--line-strong); border-radius:14px; overflow:hidden; box-shadow:0 32px 100px rgba(0,0,0,0.55),0 0 60px rgba(255,45,122,0.07); }
+    .mockup-tb { display:flex; align-items:center; justify-content:space-between; padding:14px 20px; background:var(--bg-3); border-bottom:1px solid var(--line); }
+    .m-dots { display:flex; gap:6px; }
+    .m-dot { width:10px; height:10px; border-radius:50%; }
+    .m-r{background:#FF5F57} .m-y{background:#FFBD2E} .m-g{background:#27C840}
+    .mockup-tit { font-family:var(--font-mono); font-size:11px; color:var(--fg-dim); letter-spacing:0.05em; }
+    .mockup-bdg { display:flex; align-items:center; gap:5px; font-family:var(--font-mono); font-size:10px; }
+    .bdg-dot { width:6px; height:6px; border-radius:50%; background:var(--ok); animation:blink 2s ease-in-out infinite; }
+    .m-body { padding:20px; }
+    .m-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; margin-bottom:16px; }
+    .m-stat { background:var(--bg-3); padding:14px 14px; }
+    .m-stat-lbl { font-family:var(--font-mono); font-size:9px; color:var(--fg-dim); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:4px; }
+    .m-stat-val { font-family:var(--font-display); font-size:20px; font-weight:800; letter-spacing:-0.02em; }
+    .m-chart { margin-bottom:14px; }
+    .m-th { display:grid; grid-template-columns:60px 1fr 80px 80px 72px; gap:8px; padding:7px 0; border-bottom:1px solid var(--line); font-family:var(--font-mono); font-size:9px; color:var(--fg-dim); letter-spacing:0.05em; text-transform:uppercase; }
+    .m-row { display:grid; grid-template-columns:60px 1fr 80px 80px 72px; gap:8px; padding:9px 0; border-bottom:1px solid var(--line); font-family:var(--font-mono); font-size:11px; color:var(--fg-muted); align-items:center; }
+    .m-row:last-child { border-bottom:none; }
+    .m-id { color:var(--fg-dim); }
+    .m-amt { color:var(--fg); }
+    .m-st { font-size:9px; padding:2px 6px; border-radius:3px; }
+    .st-o{background:rgba(143,163,115,0.12);color:var(--ok)} .st-p{background:var(--pink-bg);color:var(--pink)} .st-w{background:rgba(209,168,92,0.12);color:var(--warn)}
+
+    @media(max-width:900px) {
+      .cs-hero-inner,.two-col,.two-col-rev{grid-template-columns:1fr;gap:40px}
+      .cs-meta-inner{grid-template-columns:1fr 1fr}
+      .result-grid{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:0;scrollbar-width:none}
+      .result-grid::-webkit-scrollbar{display:none}
+      .result-cell{scroll-snap-align:start;min-width:75vw;flex-shrink:0}
+
+      /* mockup responsive */
+      .cs-mockup-frame{overflow:hidden}
+      .mockup-tb{flex-wrap:wrap;gap:8px;padding:10px 14px}
+      .mockup-tit{font-size:10px}
+      .mockup-bdg{font-size:9px}
+      .m-body{padding:14px}
+      .m-stats{grid-template-columns:1fr 1fr 1fr}
+      .m-stat{padding:10px}
+      .m-stat-val{font-size:16px}
+      .m-th,.m-row{grid-template-columns:48px 1fr 64px 64px 56px;gap:4px}
+      .m-th{font-size:8px}
+      .m-row{font-size:10px}
+      .m-st{font-size:8px;padding:1px 4px}
+
+      /* nav-next stacked */
+      .nav-next-inner{flex-direction:column;align-items:flex-start}
+    }
+    @media(max-width:600px) {
+      .cs-hero{padding:calc(var(--nav-h) + 40px) 0 48px}
+      .cs-title{font-size:clamp(36px,12vw,56px)}
+      .cs-meta-inner{grid-template-columns:1fr}
+      .cs-meta-cell{border-right:none;border-bottom:1px solid var(--line);padding:16px 20px}
+      .cs-meta-cell:last-child{border-bottom:none}
+
+      /* mockup tighter */
+      .m-body{padding:10px}
+      .m-stats{grid-template-columns:1fr}
+      .m-stat-val{font-size:18px}
+      .m-th,.m-row{grid-template-columns:40px 1fr 56px;gap:4px}
+      .m-th span:nth-child(4),.m-th span:nth-child(5),
+      .m-row span:nth-child(4),.m-row span:nth-child(5){display:none}
+      .m-chart svg{height:36px}
+
+      /* process items */
+      .process-item{gap:16px}
+      .section-h{font-size:clamp(22px,6vw,32px)}
+      .stack-grid{gap:8px}
+      .stack-item{padding:10px 12px}
+    }
+  </style>
+</head>
+<body>
+<div id="cursor-glow"></div>
+<div id="nav-mount"></div>
+
+<section class="cs-hero">
+  <div class="cs-hero-glow"></div>
+  <div class="noise-overlay"></div>
+  <div class="container">
+    <div class="cs-hero-inner">
+      <div>
+        <div class="cs-breadcrumb reveal">
+          <a href="../arbeiten.html">Arbeiten</a>
+          <span>›</span>
+          <span>Accountly</span>
+        </div>
+        <div class="cs-num reveal">01 — Buchhaltungs-SaaS</div>
+        <h1 class="cs-title reveal reveal-d1">Accountly</h1>
+        <p class="cs-tagline reveal reveal-d2">Vom Prototyp zur produktiven Software in 11 Wochen.</p>
+        <p class="cs-intro reveal reveal-d3">Eine vollständige Buchhaltungsplattform mit DATEV-Anbindung, OCR-Beleglesung und automatischem Abgleich — gebaut für einen mittelständischen Steuerkanzlei-Verbund.</p>
+        <div class="cs-tags reveal reveal-d4">
+          <span class="tag">Next.js</span><span class="tag">Supabase</span><span class="tag">DATEV-API</span><span class="tag">OCR</span><span class="tag">Stripe</span><span class="tag">PostgreSQL</span>
+        </div>
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="cs-mockup-frame">
+          <div class="mockup-tb">
+            <div class="m-dots"><div class="m-dot m-r"></div><div class="m-dot m-y"></div><div class="m-dot m-g"></div></div>
+            <span class="mockup-tit">accountly — dashboard</span>
+            <div class="mockup-bdg"><span class="bdg-dot"></span><span style="color:var(--ok)">DATEV sync aktiv</span></div>
+          </div>
+          <div class="m-body">
+            <div class="m-stats">
+              <div class="m-stat"><div class="m-stat-lbl">Umsatz MTD</div><div class="m-stat-val">€ 84.200</div></div>
+              <div class="m-stat"><div class="m-stat-lbl">Ausstehend</div><div class="m-stat-val" style="color:var(--warn)">€ 14.750</div></div>
+              <div class="m-stat"><div class="m-stat-lbl">Bezahlt</div><div class="m-stat-val" style="color:var(--ok)">€ 69.450</div></div>
+            </div>
+            <div class="m-chart">
+              <svg width="100%" height="48" viewBox="0 0 500 48" preserveAspectRatio="none">
+                <defs><linearGradient id="ag2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FF2D7A" stop-opacity="0.25"/><stop offset="100%" stop-color="#FF2D7A" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0,44 C40,40 70,34 110,30 C150,26 170,36 210,32 C250,28 270,18 310,14 C350,10 380,20 420,16 C450,13 470,6 500,4 L500,48 L0,48Z" fill="url(#ag2)"/>
+                <path d="M0,44 C40,40 70,34 110,30 C150,26 170,36 210,32 C250,28 270,18 310,14 C350,10 380,20 420,16 C450,13 470,6 500,4" fill="none" stroke="#FF2D7A" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="m-th"><span>Nr.</span><span>Kunde</span><span>Betrag</span><span>Fällig</span><span>Status</span></div>
+            <div class="m-row"><span class="m-id">#1042</span><span>Müller &amp; Partner</span><span class="m-amt">€ 4.200</span><span>15.01.26</span><span class="m-st st-o">bezahlt</span></div>
+            <div class="m-row"><span class="m-id">#1043</span><span>DataForce Solutions</span><span class="m-amt">€ 8.750</span><span>22.01.26</span><span class="m-st st-p">offen</span></div>
+            <div class="m-row"><span class="m-id">#1044</span><span>Nexum AG</span><span class="m-amt">€ 2.100</span><span>25.01.26</span><span class="m-st st-o">bezahlt</span></div>
+            <div class="m-row"><span class="m-id">#1045</span><span>TechBase Consulting</span><span class="m-amt">€ 6.400</span><span>28.01.26</span><span class="m-st st-w">fällig</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cs-meta-bar">
+  <div class="container">
+    <div class="cs-meta-inner">
+      <div class="cs-meta-cell reveal"><div class="cs-meta-label">Typ</div><div class="cs-meta-val">Buchhaltungs-SaaS</div></div>
+      <div class="cs-meta-cell reveal reveal-d1"><div class="cs-meta-label">Laufzeit</div><div class="cs-meta-val">11 Wochen MVP</div></div>
+      <div class="cs-meta-cell reveal reveal-d2"><div class="cs-meta-label">Jahr</div><div class="cs-meta-val">2024</div></div>
+      <div class="cs-meta-cell reveal reveal-d3"><div class="cs-meta-label">Status</div><div class="cs-meta-val" style="color:var(--ok)">In Betrieb</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="section-block">
+    <div class="two-col">
+      <div>
+        <div class="section-label reveal">Der Kontext</div>
+        <h2 class="section-h reveal reveal-d1">Steuerkanzlei mit Excel-Problem.</h2>
+        <p class="body-text reveal reveal-d2">Ein mittelständischer Steuerkanzlei-Verbund mit acht Standorten arbeitete mit einem manuellen Mix aus Excel-Tabellen, DATEV-Exports und PDFs. Rechnungen wurden händisch erfasst, Zahlungsstatus per E-Mail nachgefasst und Belege in separaten Ordnerstrukturen archiviert.</p>
+        <p class="body-text reveal reveal-d2">Das funktionierte — bis das Volumen auf über 1.200 Rechnungen pro Monat wuchs. Ab da war klar: das System braucht Software, keine weiteren Excel-Makros.</p>
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="arch-diagram">
+          <div class="section-label" style="margin-bottom:24px;">Systemarchitektur</div>
+          <svg width="100%" viewBox="0 0 480 240" xmlns="http://www.w3.org/2000/svg" style="font-family:var(--font-mono);font-size:10px;">
+            <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#FF2D7A"/></marker></defs>
+            <!-- Browser -->
+            <rect x="10" y="90" width="100" height="48" rx="6" fill="#1C1C22" stroke="rgba(245,242,236,0.12)" stroke-width="1"/>
+            <text x="60" y="110" fill="#F5F2EC" text-anchor="middle" font-size="10" font-weight="600">Browser</text>
+            <text x="60" y="126" fill="#9A968C" text-anchor="middle" font-size="9">Next.js 14</text>
+            <!-- API -->
+            <rect x="175" y="90" width="100" height="48" rx="6" fill="#1C1C22" stroke="#FF2D7A" stroke-width="1" stroke-opacity="0.4"/>
+            <text x="225" y="110" fill="#F5F2EC" text-anchor="middle" font-size="10" font-weight="600">API Routes</text>
+            <text x="225" y="126" fill="#9A968C" text-anchor="middle" font-size="9">Next.js / Edge</text>
+            <!-- Supabase -->
+            <rect x="345" y="30" width="110" height="48" rx="6" fill="#1C1C22" stroke="rgba(245,242,236,0.12)" stroke-width="1"/>
+            <text x="400" y="51" fill="#F5F2EC" text-anchor="middle" font-size="10" font-weight="600">Supabase</text>
+            <text x="400" y="67" fill="#9A968C" text-anchor="middle" font-size="9">Auth + DB</text>
+            <!-- DATEV -->
+            <rect x="345" y="96" width="110" height="48" rx="6" fill="#1C1C22" stroke="rgba(245,242,236,0.12)" stroke-width="1"/>
+            <text x="400" y="117" fill="#F5F2EC" text-anchor="middle" font-size="10" font-weight="600">DATEV API</text>
+            <text x="400" y="133" fill="#9A968C" text-anchor="middle" font-size="9">Sync + Export</text>
+            <!-- OCR -->
+            <rect x="345" y="162" width="110" height="48" rx="6" fill="#1C1C22" stroke="rgba(245,242,236,0.12)" stroke-width="1"/>
+            <text x="400" y="183" fill="#F5F2EC" text-anchor="middle" font-size="10" font-weight="600">OCR Engine</text>
+            <text x="400" y="199" fill="#9A968C" text-anchor="middle" font-size="9">Beleglesung</text>
+            <!-- Stripe (small) -->
+            <rect x="10" y="170" width="80" height="36" rx="5" fill="#1C1C22" stroke="rgba(245,242,236,0.1)" stroke-width="1"/>
+            <text x="50" y="190" fill="#9A968C" text-anchor="middle" font-size="9">Stripe</text>
+            <text x="50" y="201" fill="#5E5A52" text-anchor="middle" font-size="8">Zahlungen</text>
+            <!-- Arrows -->
+            <line x1="110" y1="114" x2="173" y2="114" stroke="#FF2D7A" stroke-width="1.2" marker-end="url(#arr)"/>
+            <line x1="275" y1="100" x2="343" y2="68" stroke="#FF2D7A" stroke-width="1.2" marker-end="url(#arr)" stroke-opacity="0.7"/>
+            <line x1="275" y1="114" x2="343" y2="120" stroke="#FF2D7A" stroke-width="1.2" marker-end="url(#arr)" stroke-opacity="0.7"/>
+            <line x1="275" y1="128" x2="343" y2="174" stroke="#FF2D7A" stroke-width="1.2" marker-end="url(#arr)" stroke-opacity="0.7"/>
+            <line x1="90" y1="138" x2="90" y2="170" stroke="rgba(255,45,122,0.4)" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-block" style="background:var(--bg)">
+    <div class="section-label reveal">Der Stack</div>
+    <h2 class="section-h reveal reveal-d1">Technologien im Detail.</h2>
+    <div class="stack-grid reveal reveal-d2">
+      <div class="stack-item"><div class="stack-item-name">Next.js 14</div><div class="stack-item-role">Frontend · App Router · Server Actions</div></div>
+      <div class="stack-item"><div class="stack-item-name">Supabase</div><div class="stack-item-role">Auth · PostgreSQL · Row-Level-Security</div></div>
+      <div class="stack-item"><div class="stack-item-name">DATEV REST API</div><div class="stack-item-role">Stammdaten-Sync · Buchungsexport</div></div>
+      <div class="stack-item"><div class="stack-item-name">OCR Engine</div><div class="stack-item-role">Beleglesung · Positionsextraktion</div></div>
+      <div class="stack-item"><div class="stack-item-name">Stripe</div><div class="stack-item-role">Zahlungsabwicklung · Webhooks</div></div>
+      <div class="stack-item"><div class="stack-item-name">Vercel</div><div class="stack-item-role">Deployment · Edge Functions · CDN</div></div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label reveal">Der Prozess</div>
+    <h2 class="section-h reveal reveal-d1">Wie wir in 11 Wochen zur Produktion kamen.</h2>
+    <div class="process-list reveal reveal-d2">
+      <div class="process-item">
+        <span class="process-item-num">W 1–2</span>
+        <div><div class="process-item-title">Diagnose &amp; Architektur</div><div class="process-item-desc">Analyse der bestehenden Excel-Workflows, DATEV-Schnittstellen-Dokumentation, Datenmodell-Design und Entscheidung für den Tech-Stack.</div></div>
+      </div>
+      <div class="process-item">
+        <span class="process-item-num">W 3–5</span>
+        <div><div class="process-item-title">Core-Backend</div><div class="process-item-desc">Datenbankschema, Supabase Auth, DATEV-API-Integration, grundlegende CRUD-Operationen für Rechnungen und Kunden.</div></div>
+      </div>
+      <div class="process-item">
+        <span class="process-item-num">W 6–8</span>
+        <div><div class="process-item-title">Frontend &amp; OCR</div><div class="process-item-desc">Dashboard, Rechnungsansichten, OCR-Upload-Flow für Belege, automatische Feldextraktion und manuelle Korrektur-UI.</div></div>
+      </div>
+      <div class="process-item">
+        <span class="process-item-num">W 9–10</span>
+        <div><div class="process-item-title">DATEV-Sync &amp; Stripe</div><div class="process-item-desc">Vollständige DATEV-Sync-Pipeline, automatische Buchungsexporte, Stripe-Webhook-Integration für Zahlungsstatus.</div></div>
+      </div>
+      <div class="process-item">
+        <span class="process-item-num">W 11</span>
+        <div><div class="process-item-title">Rollout &amp; Onboarding</div><div class="process-item-desc">Datenmigration aus Excel, Schulung der acht Standorte, go-live mit Monitoring und direktem Support-Kanal zu Nuroy.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label reveal">Die Ergebnisse</div>
+    <h2 class="section-h reveal reveal-d1">Was sich verändert hat.</h2>
+    <p class="body-text reveal reveal-d2" style="max-width:600px">Drei Monate nach dem Launch, gemessen an den acht Standorten des Kanzlei-Verbunds.</p>
+    <div class="result-grid reveal reveal-d3">
+      <div class="result-cell"><div class="result-num">80%</div><div class="result-label">weniger Zeit für manuelle Belegerfassung</div></div>
+      <div class="result-cell"><div class="result-num">11 h</div><div class="result-label">Zeitersparnis pro Woche für die Buchhaltung</div></div>
+      <div class="result-cell"><div class="result-num">100%</div><div class="result-label">DATEV-Compliance — ohne manuelle Exports</div></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="nav-next-project">
+  <div class="container">
+    <div class="nav-next-inner">
+      <div>
+        <div class="nav-next-label reveal">Nächstes Projekt</div>
+        <div class="nav-next-title reveal reveal-d1">KI-Voice-Agent →</div>
+        <p class="body-text reveal reveal-d2" style="margin-top:8px;">Telefon-Automatisierung — 70% weniger manueller Aufwand in der Terminierung.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;" class="reveal reveal-d2">
+        <a href="voice-agent.html" class="btn btn-primary btn-lg">Nächste Case Study</a>
+        <a href="../kontakt.html" class="btn btn-secondary btn-lg">Erstgespräch buchen</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="footer-mount"></div>
+<script src="../shared/components.js?v=1776884200265"></script>
+</body>
+</html>

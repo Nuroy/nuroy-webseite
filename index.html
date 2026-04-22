@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuroy — Software · Automation · Strategie</title>
+  <meta name="description" content="Nuroy ist die Technik-Abteilung für Unternehmen, die bauen wollen, statt zu verwalten. Custom-Software, Automatisierung und Tech-Beratung im DACH-Raum.">
+  <link rel="stylesheet" href="shared/styles.css?v=1776884200265">
+  <style>
+    /* ── Hero ──────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: var(--nav-h);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute;
+      top: -200px; left: 50%;
+      transform: translateX(-50%);
+      width: 800px; height: 600px;
+      background: radial-gradient(ellipse, rgba(255,45,122,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      padding: 80px 0;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--fg-dim);
+      margin-bottom: 28px;
+    }
+    .hero-label-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--pink);
+    }
+    .hero-headline {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(56px, 7.5vw, 108px);
+      line-height: 1.0;
+      letter-spacing: -0.04em;
+      margin-bottom: 28px;
+    }
+    .hero-headline .accent {
+      color: var(--pink);
+      text-shadow: 0 0 60px rgba(255,45,122,0.5);
+    }
+    .hero-sub {
+      font-size: clamp(16px, 1.3vw, 19px);
+      color: var(--fg-muted);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 40px;
+    }
+    .hero-sub .hi { color: var(--fg); }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--fg-dim);
+      letter-spacing: 0.05em;
+    }
+    .hero-meta-sep { color: rgba(245,242,236,0.2); }
+
+    /* ── Hero Dashboard ─────────────────────── */
+    .hero-dashboard {
+      background: var(--bg-2);
+      border: 1px solid var(--line-strong);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 60px rgba(255,45,122,0.06);
+    }
+    .db-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
+      background: var(--bg-3);
+    }
+    .db-topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .db-dots { display: flex; gap: 6px; }
+    .db-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+    .db-dot-r { background: #FF5F57; }
+    .db-dot-y { background: #FFBD2E; }
+    .db-dot-g { background: #27C840; }
+    .db-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--fg-dim);
+      letter-spacing: 0.06em;
+    }
+    .db-live-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ok);
+      letter-spacing: 0.06em;
+    }
+    .db-live-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--ok);
+      animation: blink 2s ease-in-out infinite;
+    }
+    .db-chart-area {
+      padding: 20px 18px 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .db-chart-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--fg-dim);
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+    .db-chart-svg {
+      width: 100%;
+      height: 80px;
+      display: block;
+    }
+    .chart-area-path {
+      opacity: 0;
+      animation: fade-in 0.5s ease 2s forwards;
+    }
+    .chart-line-path {
+      stroke-dasharray: 700;
+      stroke-dashoffset: 700;
+      animation: draw-line 1.8s cubic-bezier(0.4,0,0.2,1) 0.6s forwards;
+    }
+    .chart-dot {
+      opacity: 0;
+      animation: fade-in 0.3s ease 2.4s forwards;
+    }
+    @keyframes draw-line { to { stroke-dashoffset: 0; } }
+    @keyframes fade-in { to { opacity: 1; } }
+
+    .db-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--line);
+    }
+    .db-metric {
+      padding: 14px 18px;
+      border-right: 1px solid var(--line);
+    }
+    .db-metric:last-child { border-right: none; }
+    .db-metric-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--fg-dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .db-metric-value {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+    }
+    .db-metric-delta {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--ok);
+      letter-spacing: 0.04em;
+      margin-top: 2px;
+    }
+    .db-feed { padding: 12px 18px; }
+    .db-feed-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--fg-dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .db-feed-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 0;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--fg-muted);
+      border-bottom: 1px solid var(--line);
+      opacity: 0;
+      animation: slide-in-row 0.4s ease forwards;
+    }
+    .db-feed-item:last-child { border-bottom: none; }
+    .db-feed-item:nth-child(1) { animation-delay: 2s; }
+    .db-feed-item:nth-child(2) { animation-delay: 2.2s; }
+    .db-feed-item:nth-child(3) { animation-delay: 2.4s; }
+    @keyframes slide-in-row {
+      from { opacity: 0; transform: translateX(-8px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    .db-feed-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .db-feed-dot--ok   { background: var(--ok); }
+    .db-feed-dot--pink { background: var(--pink); }
+    .db-feed-item-path { color: var(--fg-dim); margin-right: auto; }
+    .db-feed-item-status {
+      font-size: 9px;
+      letter-spacing: 0.06em;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+    .db-feed-item-status--ok {
+      background: rgba(143,163,115,0.1);
+      color: var(--ok);
+    }
+    .db-feed-item-status--pink {
+      background: var(--pink-bg);
+      color: var(--pink);
+    }
+
+    /* ── Manifest ───────────────────────────── */
+    .manifest {
+      background: var(--bg-2);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: clamp(80px, 12vw, 160px) 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .manifest-bg-word {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-size: clamp(120px, 20vw, 280px);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,45,122,0.08);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .manifest-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--pink);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .manifest-eyebrow::before, .manifest-eyebrow::after {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--pink);
+      opacity: 0.5;
+    }
+    .manifest-text {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 60px);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .manifest-text .hl { color: var(--pink); }
+    .manifest-rule {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, transparent, var(--pink), transparent);
+      margin: 32px auto 0;
+      display: block;
+    }
+
+    /* ── Säulen ─────────────────────────────── */
+    .services-section { position: relative; overflow: hidden; }
+
+    /* animated grid bg */
+    .services-bg-grid {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,45,122,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,45,122,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0;
+      transition: opacity 1.4s ease;
+    }
+    .services-bg-grid.visible { opacity: 1; }
+
+    /* scan sweep */
+    .services-scan {
+      position: absolute; top: 0; left: -60%; width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,45,122,0.05), transparent);
+      pointer-events: none; z-index: 1;
+    }
+    .services-scan.animate {
+      animation: scan-sweep 1.6s cubic-bezier(0.4,0,0.2,1) forwards;
+    }
+    @keyframes scan-sweep { from { left: -60%; } to { left: 110%; } }
+
+    /* top bar */
+    .services-header-bar {
+      display: flex; align-items: center; gap: 12px;
+      border: 1px solid var(--line); border-bottom: none;
+      border-radius: 14px 14px 0 0;
+      padding: 11px 20px; background: var(--bg-3);
+      position: relative; z-index: 2;
+    }
+    .shb-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--pink); animation: blink 3s ease-in-out infinite; }
+    .shb-label { font-family: var(--font-mono); font-size: 10px; color: var(--fg-dim); letter-spacing: 0.08em; }
+    .shb-right { margin-left: auto; display: flex; gap: 6px; }
+    .shb-pill { font-family: var(--font-mono); font-size: 9px; color: var(--fg-dim); background: var(--bg-4); border: 1px solid var(--line); border-radius: 3px; padding: 2px 6px; }
+
+    /* connector bar */
+    .service-connector { position: relative; height: 1px; background: var(--line); overflow: hidden; z-index: 2; }
+    .service-connector-fill {
+      position: absolute; top: 0; left: 0; height: 100%; width: 0;
+      background: linear-gradient(90deg, transparent, var(--pink), var(--pink), rgba(255,45,122,0.3));
+      transition: width 1.4s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: 0 0 12px rgba(255,45,122,0.6);
+    }
+    .service-connector-fill.full { width: 100%; }
+
+    .service-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--line); border-top: none;
+      border-radius: 0 0 14px 14px;
+      overflow: hidden;
+      position: relative; z-index: 2;
+    }
+    .service-card {
+      background: var(--bg-2);
+      padding: 40px 28px 40px;
+      border-right: 1px solid var(--line);
+      position: relative; overflow: hidden;
+      transition: background 0.4s;
+      /* entrance */
+      opacity: 0; transform: translateY(28px);
+    }
+    .service-card.entered {
+      animation: card-enter 0.65s cubic-bezier(0.2,0,0,1) forwards;
+    }
+    @keyframes card-enter { to { opacity: 1; transform: translateY(0); } }
+    .service-card:last-child { border-right: none; }
+
+    .service-card::before {
+      content: attr(data-num);
+      position: absolute; right: -10px; bottom: -30px;
+      font-family: var(--font-display); font-size: 130px; font-weight: 900;
+      letter-spacing: -0.05em; line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,45,122,0.06);
+      pointer-events: none;
+      transition: -webkit-text-stroke-color 0.4s, transform 0.4s cubic-bezier(0.2,0,0,1);
+    }
+    .service-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(145deg, rgba(255,45,122,0.05) 0%, transparent 55%);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .service-card:hover { background: var(--bg-3); }
+    .service-card:hover::before { -webkit-text-stroke-color: rgba(255,45,122,0.2); transform: translateY(-10px); }
+    .service-card:hover::after { opacity: 1; }
+
+    /* pink top accent line per card on hover */
+    .service-card-accent {
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--pink), rgba(255,45,122,0.3));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.2,0,0,1);
+    }
+    .service-card:hover .service-card-accent { transform: scaleX(1); }
+
+    .service-icon {
+      width: 40px; height: 40px; border-radius: 9px;
+      background: var(--pink-bg); border: 1px solid rgba(255,45,122,0.18);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px;
+      transition: box-shadow 0.4s, transform 0.4s cubic-bezier(0.2,0,0,1);
+      position: relative; z-index: 1;
+    }
+    .service-card:hover .service-icon { box-shadow: 0 0 24px rgba(255,45,122,0.35); transform: scale(1.1) rotate(-3deg); }
+    .service-icon svg { color: var(--pink); }
+
+    .service-card h3 {
+      font-family: var(--font-display); font-size: 19px; font-weight: 800;
+      letter-spacing: -0.02em; margin-bottom: 10px;
+      position: relative; z-index: 1;
+    }
+    .service-card p {
+      font-size: 13px; color: var(--fg-muted); line-height: 1.75;
+      position: relative; z-index: 1;
+    }
+    .service-card-tag {
+      margin-top: 20px; display: inline-flex; align-items: center; gap: 4px;
+      font-family: var(--font-mono); font-size: 10px; color: var(--pink);
+      letter-spacing: 0.06em; opacity: 0.65;
+      transition: opacity 0.3s, gap 0.3s;
+      position: relative; z-index: 1;
+    }
+    .service-card:hover .service-card-tag { opacity: 1; gap: 8px; }
+
+    /* ── Portfolio Teaser ───────────────────── */
+    .portfolio-track {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 56px;
+    }
+    .p-card {
+      background: var(--bg-2);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.2,0,0,1);
+      text-decoration: none;
+      display: block;
+    }
+    .p-card:hover {
+      border-color: rgba(255,45,122,0.3);
+      box-shadow: 0 12px 48px rgba(255,45,122,0.12);
+      transform: translateY(-4px);
+    }
+    .p-card-mockup {
+      height: 160px;
+      background: var(--bg-3);
+      overflow: hidden;
+      position: relative;
+      border-bottom: 1px solid var(--line);
+    }
+    .p-card-info { padding: 20px; }
+    .p-card-title {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+    .p-card-desc {
+      font-size: 12px;
+      color: var(--fg-muted);
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+    .p-card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    /* ── Mockup: Accountly ──────────────────── */
+    .mock-accountly { padding: 14px; }
+    .mock-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--line);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--fg-dim);
+    }
+    .mock-row:last-child { border-bottom: none; }
+    .mock-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .mock-amount { margin-left: auto; color: var(--fg-muted); }
+    .mock-status {
+      font-size: 9px;
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+    .mock-status--ok { background: rgba(143,163,115,0.15); color: var(--ok); }
+    .mock-status--pink { background: var(--pink-bg); color: var(--pink); }
+
+    /* ── Mockup: Voice Agent ────────────────── */
+    .mock-voice { padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+    .mock-waveform {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      height: 40px;
+    }
+    .mock-wave-bar {
+      width: 3px;
+      background: var(--pink);
+      border-radius: 2px;
+      animation: wave 1.2s ease-in-out infinite alternate;
+      opacity: 0.7;
+    }
+    @keyframes wave {
+      from { transform: scaleY(1); }
+      to   { transform: scaleY(0.2); }
+    }
+    .mock-transcript {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--fg-dim);
+      background: var(--bg-4);
+      border-radius: 4px;
+      padding: 6px 8px;
+      line-height: 1.5;
+    }
+    .mock-transcript .t-pink { color: var(--pink); }
+
+    /* ── Mockup: CSM ────────────────────────── */
+    .mock-csm { padding: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .mock-csm-card {
+      background: var(--bg-4);
+      border-radius: 6px;
+      padding: 8px;
+    }
+    .mock-csm-name { font-family: var(--font-mono); font-size: 9px; color: var(--fg-dim); margin-bottom: 4px; }
+    .mock-health { font-size: 11px; font-weight: 700; font-family: var(--font-display); }
+    .mock-health--high { color: var(--ok); }
+    .mock-health--mid { color: var(--warn); }
+    .mock-health--low { color: var(--pink); }
+    .mock-health-bar {
+      height: 3px;
+      border-radius: 2px;
+      background: var(--line);
+      margin-top: 4px;
+    }
+    .mock-health-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: var(--ok);
+    }
+
+    /* ── Mockup: CRM ────────────────────────── */
+    .mock-crm { padding: 14px; }
+    .mock-pipeline { display: flex; flex-direction: column; gap: 6px; }
+    .mock-stage {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--fg-dim);
+    }
+    .mock-stage-name { width: 70px; flex-shrink: 0; }
+    .mock-stage-bar-wrap {
+      flex: 1;
+      height: 14px;
+      background: var(--bg-4);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .mock-stage-bar {
+      height: 100%;
+      background: var(--pink);
+      border-radius: 3px;
+      opacity: 0.7;
+    }
+    .mock-stage-count { width: 20px; text-align: right; }
+
+    /* ── Prozess ────────────────────────────── */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 56px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+    }
+    /* connecting line across all steps */
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 52px;
+      left: calc(25% / 2);
+      right: calc(25% / 2);
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--pink), var(--pink), transparent);
+      opacity: 0.25;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .process-step {
+      padding: 40px 28px 36px;
+      background: var(--bg-2);
+      border-right: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.25s;
+    }
+    .process-step:hover { background: var(--bg-3); }
+    .process-step:last-child { border-right: none; }
+    .process-step::after { display: none; }
+    .process-num-big {
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,45,122,0.3);
+      line-height: 1;
+      margin-bottom: 20px;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+    .process-num {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--pink);
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      display: none;
+    }
+    .process-step h3 {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -0.015em;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    .process-step p { font-size: 13px; color: var(--fg-muted); line-height: 1.7; position: relative; z-index: 1; }
+
+    /* ── Stats ──────────────────────────────── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-top: 56px;
+    }
+    .stat-item {
+      background: var(--bg-2);
+      padding: 44px 36px;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.25s;
+    }
+    .stat-item:hover { background: var(--bg-3); }
+    .stat-item:first-child {
+      padding: 56px 40px;
+    }
+    .stat-item:first-child .stat-number {
+      font-size: clamp(56px, 7vw, 96px);
+    }
+    .stat-item:first-child::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(255,45,122,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 4vw, 64px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--pink);
+      text-shadow: 0 0 40px rgba(255,45,122,0.35);
+      line-height: 1;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .stat-label {
+      font-size: 14px;
+      color: var(--fg-muted);
+      font-weight: 500;
+    }
+    .stat-sub {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--fg-dim);
+      margin-top: 6px;
+      letter-spacing: 0.04em;
+      display: block;
+    }
+
+    /* ── Team ───────────────────────────────── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .team-card {
+      background: var(--bg-2);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 32px;
+      transition: border-color 0.25s;
+    }
+    .team-card:hover { border-color: rgba(255,45,122,0.25); }
+    .team-avatar {
+      width: 56px; height: 56px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--bg-4), var(--bg-3));
+      border: 1px solid var(--line-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--pink);
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .team-card-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+    .team-card-role {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--pink);
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+    }
+    .team-card-bio { font-size: 13px; color: var(--fg-muted); line-height: 1.65; }
+
+    /* ── FAQ ────────────────────────────────── */
+    .faq-list { margin-top: 56px; }
+    .faq-item {
+      border-bottom: 1px solid var(--line);
+    }
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+      cursor: pointer;
+      font-family: var(--font-display);
+      font-size: clamp(15px, 1.2vw, 18px);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      gap: 16px;
+      user-select: none;
+      transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--pink); }
+    .faq-icon {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      border: 1px solid var(--line-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.25s;
+      color: var(--fg-muted);
+    }
+    .faq-item.open .faq-icon {
+      background: var(--pink);
+      border-color: var(--pink);
+      color: #fff;
+      transform: rotate(45deg);
+    }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    .faq-a-inner {
+      padding: 0 0 24px;
+      font-size: 15px;
+      color: var(--fg-muted);
+      line-height: 1.75;
+      max-width: 720px;
+    }
+
+    /* ── Final CTA ──────────────────────────── */
+    .final-cta {
+      background: var(--pink);
+      padding: clamp(80px, 12vw, 140px) 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 60%);
+    }
+    .final-cta-headline {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 88px);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.04em;
+      color: #fff;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .final-cta-sub {
+      font-size: clamp(15px, 1.2vw, 18px);
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .final-cta-btns { display: flex; gap: 12px; justify-content: center; position: relative; }
+    .btn-white {
+      background: #fff;
+      color: var(--pink);
+      font-weight: 600;
+    }
+    .btn-white:hover {
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 0 40px rgba(0,0,0,0.2);
+      transform: translateY(-1px);
+    }
+    .btn-white-outline {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.4);
+    }
+    .btn-white-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.7);
+    }
+
+    /* ── Mobile ─────────────────────────────── */
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-right {
+        display: block;
+        transform: scale(0.9);
+        transform-origin: top center;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 40px rgba(255, 45, 122, 0.12), 0 0 60px rgba(255, 45, 122, 0.06);
+      }
+      /* Services header bar */
+      .services-header-bar {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 10px 14px;
+      }
+      .shb-right {
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        flex-shrink: 0;
+      }
+      .shb-right::-webkit-scrollbar { display: none; }
+
+      /* Service cards */
+      .service-cards { grid-template-columns: 1fr 1fr; }
+      .service-card { padding: 28px 20px; }
+      .service-card::before { font-size: 70px; right: -8px; bottom: -20px; }
+
+      /* Service card slide-in animations */
+      .service-card[data-mobile-dir="left"] { transform: translateX(-40px); }
+      .service-card[data-mobile-dir="right"] { transform: translateX(40px); }
+      .service-card[data-mobile-dir="left"].entered,
+      .service-card[data-mobile-dir="right"].entered {
+        animation: card-enter-mobile 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes card-enter-mobile {
+        0% { opacity: 0; }
+        100% { opacity: 1; transform: translateX(0) scale(1); }
+      }
+      .portfolio-track {
+        display: flex !important;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 16px;
+        padding-bottom: 8px;
+        scrollbar-width: none;
+      }
+      .portfolio-track::-webkit-scrollbar { display: none; }
+      .portfolio-track .p-card {
+        scroll-snap-align: start;
+        min-width: 85vw;
+        flex-shrink: 0;
+      }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stat-item:first-child { grid-column: auto; padding: 32px 24px; }
+      .stat-item:first-child .stat-number { font-size: clamp(36px, 10vw, 56px); }
+      .stat-item { padding: 32px 24px; }
+      .team-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .service-cards { grid-template-columns: 1fr; }
+      .service-card { padding: 24px 20px; }
+      .service-card::before { font-size: 60px; right: -5px; bottom: -16px; }
+      .shb-right { display: none; }
+      .process-steps { grid-template-columns: 1fr; }
+      .process-step::after { display: none; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="cursor-glow"></div>
+<div id="nav-mount"></div>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero">
+  <div class="noise-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-inner">
+
+      <div class="hero-left">
+        <div class="hero-label reveal">
+          <span class="hero-label-dot"></span>
+          Gegründet 2024 &mdash; 2 Jahre &mdash; DACH remote
+        </div>
+        <h1 class="hero-headline reveal reveal-d1">
+          Die<br>
+          Technik-<br>
+          <span class="accent">Abteilung.</span>
+        </h1>
+        <p class="hero-sub reveal reveal-d2">
+          Für Unternehmen, die <span class="hi">bauen</span> wollen, statt zu verwalten.<br>
+          Custom-Software, Automatisierung und Tech-Beratung aus einer Hand.
+        </p>
+        <div class="hero-ctas reveal reveal-d3">
+          <a href="kontakt.html" class="btn btn-primary btn-lg">
+            Erstgespräch buchen
+            <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="arbeiten.html" class="btn btn-secondary btn-lg">Arbeiten ansehen</a>
+        </div>
+        <div class="hero-meta reveal reveal-d4">
+          <span>10+ Experten · DACH remote</span>
+          <span class="hero-meta-sep">|</span>
+          <span>Paphos, Zypern</span>
+          <span class="hero-meta-sep">|</span>
+          <span>Remote-First</span>
+        </div>
+      </div>
+
+      <div class="hero-right reveal reveal-d2">
+        <div class="hero-dashboard">
+          <div class="db-topbar">
+            <div class="db-topbar-left">
+              <div class="db-dots">
+                <div class="db-dot db-dot-r"></div>
+                <div class="db-dot db-dot-y"></div>
+                <div class="db-dot db-dot-g"></div>
+              </div>
+              <span class="db-title">nuroy/system &mdash; production</span>
+            </div>
+            <div class="db-live-badge">
+              <span class="db-live-dot"></span>
+              Live
+            </div>
+          </div>
+
+          <div class="db-chart-area">
+            <div class="db-chart-label">Anfragen · Letzte 7 Tage</div>
+            <svg class="db-chart-svg" viewBox="0 0 400 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#FF2D7A" stop-opacity="0.35"/>
+                  <stop offset="100%" stop-color="#FF2D7A" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path class="chart-area-path"
+                d="M0,70 C20,68 30,62 50,58 C70,54 80,62 100,56 C120,50 130,40 155,36 C175,33 185,42 210,38 C230,35 240,24 265,20 C285,17 295,27 320,22 C340,18 360,10 400,8 L400,80 L0,80 Z"
+                fill="url(#cg)"/>
+              <path class="chart-line-path"
+                d="M0,70 C20,68 30,62 50,58 C70,54 80,62 100,56 C120,50 130,40 155,36 C175,33 185,42 210,38 C230,35 240,24 265,20 C285,17 295,27 320,22 C340,18 360,10 400,8"
+                fill="none" stroke="#FF2D7A" stroke-width="1.5"/>
+              <circle class="chart-dot" cx="400" cy="8" r="3" fill="#FF2D7A"/>
+            </svg>
+          </div>
+
+          <div class="db-metrics">
+            <div class="db-metric">
+              <div class="db-metric-label">Deployments</div>
+              <div class="db-metric-value" id="m1">0</div>
+              <div class="db-metric-delta">▲ +12% diese Woche</div>
+            </div>
+            <div class="db-metric">
+              <div class="db-metric-label">API-Aufrufe</div>
+              <div class="db-metric-value" id="m2">0</div>
+              <div class="db-metric-delta">▲ +8% diese Woche</div>
+            </div>
+            <div class="db-metric">
+              <div class="db-metric-label">Uptime</div>
+              <div class="db-metric-value" id="m3" style="color:var(--ok)">—</div>
+              <div class="db-metric-delta" style="color:var(--ok)">● Operational</div>
+            </div>
+          </div>
+
+          <div class="db-feed">
+            <div class="db-feed-label">Letzte Aktivität</div>
+            <div class="db-feed-item">
+              <span class="db-feed-dot db-feed-dot--ok"></span>
+              <span class="db-feed-item-path">accountly / release v2.4.1</span>
+              <span class="db-feed-item-status db-feed-item-status--ok">deployed</span>
+            </div>
+            <div class="db-feed-item">
+              <span class="db-feed-dot db-feed-dot--pink"></span>
+              <span class="db-feed-item-path">voice-agent / inbound webhook</span>
+              <span class="db-feed-item-status db-feed-item-status--pink">active</span>
+            </div>
+            <div class="db-feed-item">
+              <span class="db-feed-dot db-feed-dot--ok"></span>
+              <span class="db-feed-item-path">csm-suite / health-check</span>
+              <span class="db-feed-item-status db-feed-item-status--ok">passing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ MANIFEST ═══════════════════ -->
+<section class="manifest">
+  <div class="manifest-bg-word">BAUEN</div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="manifest-eyebrow reveal">Unsere Überzeugung</div>
+    <p class="manifest-text reveal reveal-d1">
+      Nicht jedes Unternehmen braucht mehr Marketing.<br>
+      Viele brauchen schlicht <span class="hl">bessere Technik</span> —<br>
+      gebaut von Menschen, die <span class="hl">Verantwortung</span> übernehmen.
+    </p>
+    <span class="manifest-rule reveal reveal-d2"></span>
+  </div>
+</section>
+
+<!-- ═══════════════════ LEISTUNGEN ═══════════════════ -->
+<section class="section services-section" id="services-section">
+  <div class="services-bg-grid" id="services-grid"></div>
+  <div class="services-scan" id="services-scan"></div>
+  <div class="container" style="position:relative;z-index:2">
+    <p class="t-label reveal">Leistungen</p>
+    <h2 class="t-h2 reveal reveal-d1" style="max-width:560px; margin-top:8px;">
+      Drei Säulen.<br>Ein Team. Volle Verantwortung.
+    </h2>
+    <div style="margin-top:56px">
+      <div class="services-header-bar">
+        <span class="shb-dot"></span>
+        <span class="shb-label">nuroy / leistungen — 4 Kernbereiche</span>
+        <div class="shb-right">
+          <span class="shb-pill">Software</span>
+          <span class="shb-pill">Automation</span>
+          <span class="shb-pill">Strategie</span>
+          <span class="shb-pill">Managed</span>
+        </div>
+      </div>
+      <div class="service-connector"><div class="service-connector-fill" id="service-connector-fill"></div></div>
+      <div class="service-cards" id="service-cards-grid">
+      <div class="service-card reveal reveal-d1" data-num="01">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><rect x="2" y="3" width="16" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 17h6M10 14v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Softwareentwicklung</h3>
+        <p>Custom-Software, SaaS-Plattformen, interne Tools, Backends und Integrationen. Kein Template, kein Baukastensystem.</p>
+        <span class="service-card-tag">→ /leistungen/software</span>
+      </div>
+      <div class="service-card reveal reveal-d2" data-num="02">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M4 10h2l2-4 2 8 2-5 2 3h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Automatisierung</h3>
+        <p>n8n, Make, API-Orchestrierung, Webhooks, Queues. Manuelle Prozesse werden zu Systemen, die alleine laufen.</p>
+        <span class="service-card-tag">→ /leistungen/automation</span>
+      </div>
+      <div class="service-card reveal reveal-d3" data-num="03">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M10 2L3 7v6c0 3.3 3 6 7 7 4-1 7-3.7 7-7V7L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Strategieberatung</h3>
+        <p>Tech-Audits, Architektur-Reviews, Make-or-Buy-Entscheidungen, Roadmaps. Substanz statt Foliensatz.</p>
+        <span class="service-card-tag">→ /leistungen/strategie</span>
+      </div>
+      <div class="service-card reveal reveal-d4" data-num="04">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M10 7v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Managed Tech</h3>
+        <p>Betrieb, Monitoring, Incident-Response und kontinuierliche Weiterentwicklung. Wir gehen nicht nach dem Launch.</p>
+        <span class="service-card-tag">→ Retainer-Modell</span>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PORTFOLIO TEASER ═══════════════════ -->
+<section class="section" style="background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="container">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+      <div>
+        <p class="t-label reveal">Arbeiten</p>
+        <h2 class="t-h2 reveal reveal-d1" style="margin-top:8px;">Was wir wirklich bauen.</h2>
+      </div>
+      <a href="arbeiten.html" class="btn btn-secondary reveal reveal-d1">
+        Alle Projekte ansehen
+        <svg width="14" height="14" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <div class="portfolio-track">
+
+      <!-- Accountly -->
+      <a href="arbeiten/accountly.html" class="p-card reveal reveal-d1">
+        <div class="p-card-mockup">
+          <div class="mock-accountly">
+            <div class="mock-row">
+              <span class="mock-dot" style="background:var(--ok)"></span>
+              <span>Rechnung #1042 — Müller GmbH</span>
+              <span class="mock-amount">€ 4.200</span>
+              <span class="mock-status mock-status--ok">bezahlt</span>
+            </div>
+            <div class="mock-row">
+              <span class="mock-dot" style="background:var(--pink)"></span>
+              <span>Rechnung #1043 — DataForce</span>
+              <span class="mock-amount">€ 8.750</span>
+              <span class="mock-status mock-status--pink">offen</span>
+            </div>
+            <div class="mock-row">
+              <span class="mock-dot" style="background:var(--ok)"></span>
+              <span>Rechnung #1044 — Nexum AG</span>
+              <span class="mock-amount">€ 2.100</span>
+              <span class="mock-status mock-status--ok">bezahlt</span>
+            </div>
+            <div class="mock-row">
+              <span class="mock-dot" style="background:var(--warn)"></span>
+              <span>Rechnung #1045 — TechBase</span>
+              <span class="mock-amount">€ 6.400</span>
+              <span class="mock-status" style="background:rgba(209,168,92,0.12);color:var(--warn)">fällig</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-card-info">
+          <div class="p-card-title">Accountly</div>
+          <div class="p-card-desc">Buchhaltungs-SaaS vom Prototyp zur Produktion in 11 Wochen.</div>
+          <div class="p-card-tags">
+            <span class="tag">Next.js</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">DATEV</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Voice Agent -->
+      <a href="arbeiten/voice-agent.html" class="p-card reveal reveal-d2">
+        <div class="p-card-mockup">
+          <div class="mock-voice">
+            <div class="mock-waveform" id="waveform">
+            </div>
+            <div class="mock-transcript">
+              <span class="t-pink">Agent:</span> Guten Tag, ich bin der Terminassistent von<br>
+              MedCare. Wie kann ich Ihnen helfen?<br>
+              <span style="color:var(--fg-dim)">Kunde:</span> Ich brauche einen Termin für…
+            </div>
+          </div>
+        </div>
+        <div class="p-card-info">
+          <div class="p-card-title">KI-Voice-Agent</div>
+          <div class="p-card-desc">Inbound-Automatisierung — 70% weniger manueller Aufwand.</div>
+          <div class="p-card-tags">
+            <span class="tag">OpenAI</span>
+            <span class="tag">Twilio</span>
+            <span class="tag">n8n</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- CSM Suite -->
+      <a href="arbeiten/csm-suite.html" class="p-card reveal reveal-d3">
+        <div class="p-card-mockup">
+          <div class="mock-csm">
+            <div class="mock-csm-card">
+              <div class="mock-csm-name">Acme Corp</div>
+              <div class="mock-health mock-health--high">94 / 100</div>
+              <div class="mock-health-bar"><div class="mock-health-fill" style="width:94%;background:var(--ok)"></div></div>
+            </div>
+            <div class="mock-csm-card">
+              <div class="mock-csm-name">TechBase AG</div>
+              <div class="mock-health mock-health--mid">61 / 100</div>
+              <div class="mock-health-bar"><div class="mock-health-fill" style="width:61%;background:var(--warn)"></div></div>
+            </div>
+            <div class="mock-csm-card">
+              <div class="mock-csm-name">DataForce GmbH</div>
+              <div class="mock-health mock-health--low">38 / 100</div>
+              <div class="mock-health-bar"><div class="mock-health-fill" style="width:38%;background:var(--pink)"></div></div>
+            </div>
+            <div class="mock-csm-card">
+              <div class="mock-csm-name">Nexum Solutions</div>
+              <div class="mock-health mock-health--high">87 / 100</div>
+              <div class="mock-health-bar"><div class="mock-health-fill" style="width:87%;background:var(--ok)"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="p-card-info">
+          <div class="p-card-title">CSM-Suite</div>
+          <div class="p-card-desc">Customer-Success-Plattform ohne Salesforce-Overhead.</div>
+          <div class="p-card-tags">
+            <span class="tag">React</span>
+            <span class="tag">Fastify</span>
+            <span class="tag">Postgres</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- CRM System -->
+      <a href="arbeiten/crm-system.html" class="p-card reveal reveal-d4">
+        <div class="p-card-mockup">
+          <div class="mock-crm">
+            <div class="mock-pipeline">
+              <div class="mock-stage">
+                <span class="mock-stage-name">Lead</span>
+                <div class="mock-stage-bar-wrap"><div class="mock-stage-bar" style="width:100%"></div></div>
+                <span class="mock-stage-count">24</span>
+              </div>
+              <div class="mock-stage">
+                <span class="mock-stage-name">Qualifiziert</span>
+                <div class="mock-stage-bar-wrap"><div class="mock-stage-bar" style="width:68%"></div></div>
+                <span class="mock-stage-count">16</span>
+              </div>
+              <div class="mock-stage">
+                <span class="mock-stage-name">Proposal</span>
+                <div class="mock-stage-bar-wrap"><div class="mock-stage-bar" style="width:40%"></div></div>
+                <span class="mock-stage-count">9</span>
+              </div>
+              <div class="mock-stage">
+                <span class="mock-stage-name">Verhandlung</span>
+                <div class="mock-stage-bar-wrap"><div class="mock-stage-bar" style="width:22%"></div></div>
+                <span class="mock-stage-count">5</span>
+              </div>
+              <div class="mock-stage">
+                <span class="mock-stage-name">Abschluss</span>
+                <div class="mock-stage-bar-wrap"><div class="mock-stage-bar" style="width:12%"></div></div>
+                <span class="mock-stage-count">3</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-card-info">
+          <div class="p-card-title">CRM-System</div>
+          <div class="p-card-desc">B2B-Pipeline-Software mit eigener Logik, eigenen Pipelines.</div>
+          <div class="p-card-tags">
+            <span class="tag">Remix</span>
+            <span class="tag">Prisma</span>
+            <span class="tag">Twilio</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+    <div class="scroll-dots" id="portfolio-dots"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PROZESS ═══════════════════ -->
+<section class="section">
+  <div class="container">
+    <p class="t-label reveal">Prozess</p>
+    <h2 class="t-h2 reveal reveal-d1" style="margin-top:8px;">Wie wir arbeiten.</h2>
+    <div class="process-steps">
+      <div class="process-step reveal reveal-d1">
+        <span class="process-num-big">01</span>
+        <h3>Verstehen</h3>
+        <p>Wir verstehen, was du wirklich brauchst — nicht, was du glaubst zu brauchen. Ehrliche Einschätzung vor dem ersten Sprint.</p>
+      </div>
+      <div class="process-step reveal reveal-d2">
+        <span class="process-num-big">02</span>
+        <h3>Planen</h3>
+        <p>Wir definieren den Stack, die Schnittstellen und die Grenzen des Systems, bevor wir eine Zeile schreiben.</p>
+      </div>
+      <div class="process-step reveal reveal-d3">
+        <span class="process-num-big">03</span>
+        <h3>Bauen</h3>
+        <p>Sauberer Code, echte Releases, planbare Sprints. Kein Overhead, kein Bullshit. Wöchentliche Übergaben.</p>
+      </div>
+      <div class="process-step reveal reveal-d4">
+        <span class="process-num-big">04</span>
+        <h3>Bleiben</h3>
+        <p>Wir gehen nicht nach dem Launch. Monitoring, Incident-Response und Weiterentwicklung im laufenden Betrieb.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ TICKER ═══════════════════ -->
+<div class="ticker-wrap">
+  <div class="ticker-inner" id="ticker"></div>
+</div>
+
+<!-- ═══════════════════ STATS ═══════════════════ -->
+<section class="section" style="background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-number" data-count="2">0</div>
+        <div class="stat-label">Jahre am Markt</div>
+        <div class="stat-sub">Gegründet 2024 in Zypern</div>
+      </div>
+      <div class="stat-item reveal reveal-d1">
+        <div class="stat-number" data-count="10">0</div>
+        <div class="stat-label">Experten im Team</div>
+        <div class="stat-sub">Entwickler, Designer & Strategen</div>
+      </div>
+      <div class="stat-item reveal reveal-d2">
+        <div class="stat-number" data-count="4">0</div>
+        <div class="stat-label">Kerntechnologie-Säulen</div>
+        <div class="stat-sub">Software · Auto · Strategie · Managed</div>
+      </div>
+      <div class="stat-item reveal reveal-d3">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Remote-First</div>
+        <div class="stat-sub">DACH-Kunden, global einsatzfähig</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ TEAM ═══════════════════ -->
+<section class="section">
+  <div class="container">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+      <div>
+        <p class="t-label reveal">Das Team</p>
+        <h2 class="t-h2 reveal reveal-d1" style="margin-top:8px;">Die Gründer.<br>Und ein wachsendes Team.</h2>
+      </div>
+      <a href="team.html" class="btn btn-secondary reveal reveal-d1">Alle kennenlernen</a>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal reveal-d1">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+          <div class="team-avatar" style="margin-bottom:0">J</div>
+          <span class="tag tag--pink" style="font-size:10px">Gründer</span>
+        </div>
+        <div class="team-card-name">Julius</div>
+        <div class="team-card-role">Strategie · Sales · Business Development</div>
+        <p class="team-card-bio">Verantwortlich für Kunden, Projekte und die strategische Ausrichtung. Übersetzt Geschäftsziele in technische Roadmaps — und sorgt dafür, dass Deadlines keine Theorie bleiben.</p>
+      </div>
+      <div class="team-card reveal reveal-d2">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+          <div class="team-avatar" style="margin-bottom:0">T</div>
+          <span class="tag tag--pink" style="font-size:10px">Gründer</span>
+        </div>
+        <div class="team-card-name">Timm</div>
+        <div class="team-card-role">Automation · System Architecture · No-Code/Low-Code</div>
+        <p class="team-card-bio">Baut Prozesse, die alleine laufen. Von n8n-Workflows bis zur vollständigen API-Orchestrierung — Timm denkt in Systemen, nicht in Aufgaben.</p>
+      </div>
+      <div class="team-card reveal reveal-d3">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+          <div class="team-avatar" style="margin-bottom:0">M</div>
+          <span class="tag tag--pink" style="font-size:10px">Gründer</span>
+        </div>
+        <div class="team-card-name">Max</div>
+        <div class="team-card-role">Software Engineering · Backend · System-Integration</div>
+        <p class="team-card-bio">Schreibt den Code, auf dem das Ganze läuft. Spezialisiert auf skalierbare Backends, solide Datenbankarchitekturen und Integrationen, die wirklich halten.</p>
+      </div>
+    </div>
+    <!-- More team hint -->
+    <div class="reveal" style="margin-top:20px;background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:24px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+      <div style="display:flex;align-items:center;gap:16px">
+        <div style="display:flex;gap:-4px">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--bg-4);border:2px solid var(--bg-2);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:12px;font-weight:700;color:var(--fg-muted)">+</div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-display);font-size:15px;font-weight:600;letter-spacing:-0.01em">Hinter den Gründern steht ein wachsendes Team.</div>
+          <div style="font-size:13px;color:var(--fg-muted);margin-top:2px">Entwickler, Designer und Spezialisten — je nach Projekt.</div>
+        </div>
+      </div>
+      <a href="team.html" class="btn btn-secondary" style="flex-shrink:0">Das ganze Team →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FAQ ═══════════════════ -->
+<section class="section" style="background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="container--narrow">
+    <p class="t-label reveal">FAQ</p>
+    <h2 class="t-h2 reveal reveal-d1" style="margin-top:8px; margin-bottom:0;">Häufige Fragen.</h2>
+    <div class="faq-list" style="margin-top:48px;">
+
+      <div class="faq-item">
+        <div class="faq-q">
+          Wie lange dauert ein typisches Projekt?
+          <span class="faq-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">Das hängt vom Umfang ab. Ein MVP oder ein klares internes Tool schaffen wir in 6–12 Wochen bis zur Erstversion. Komplexere Systeme mit mehreren Integrationen planen wir in der Architektur-Phase gemeinsam. Was wir nicht tun: auf Zuruf schätzen. Du bekommst eine ehrliche Einschätzung nach unserem Erstgespräch.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          Arbeitet ihr ausschließlich remote?
+          <span class="faq-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">Ja — remote-first ist bei uns kein Kompromiss, sondern Überzeugung. Wir sind in Paphos, Zypern ansässig und arbeiten mit DACH-Kunden über Videokonferenz, Notion, Linear und klare Übergabe-Strukturen. Vor-Ort-Tage sind bei Bedarf für Discovery-Workshops planbar.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          Für welche Projektgröße seid ihr geeignet?
+          <span class="faq-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">Wir arbeiten am liebsten mit Unternehmen, die etwas Konkretes bauen wollen: ein internes Tool, eine produktive SaaS-Plattform, eine Automatisierungsstrecke oder ein CRM mit eigener Logik. Unser Sweet Spot liegt bei Projekten ab 20.000 €, die mehrere Monate laufen. Einzelne Consulting-Engagements sind möglich, aber nicht unser Hauptmodell.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          Was kostet ein Erstgespräch?
+          <span class="faq-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">Das Erstgespräch ist kostenlos und dauert 45–60 Minuten. Wir sprechen über deine Ausgangssituation, das Problem und was du konkret brauchst. Wenn es passt, folgt ein Architektur-Briefing und ein Angebot. Wenn es nicht passt, sagen wir das direkt.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          Wie unterscheidet ihr euch von einer Digitalagentur?
+          <span class="faq-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">Wir sind kein Generaldienstleister. Wir bauen keine Websites, keinen Content und keine Kampagnen. Wir bauen Systeme — Software, Automatisierung, Tech-Infrastruktur. Drei Experten, direkter Draht, keine Account-Manager-Zwischenschicht. Du redest mit denen, die auch bauen.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          Bleibt ihr nach dem Launch involviert?
+          <span class="faq-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">Das ist eines unserer wichtigsten Angebote: Managed Tech. Wir übernehmen Betrieb, Monitoring, Incident-Response und Weiterentwicklung nach dem Launch. Kein Handover-Dokument, das nach drei Wochen niemand mehr kennt. Wir bleiben das Team, das das System kennt.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FINAL CTA ═══════════════════ -->
+<section class="final-cta">
+  <div class="container">
+    <h2 class="final-cta-headline reveal">Lass uns<br>bauen.</h2>
+    <p class="final-cta-sub reveal reveal-d1">30 Minuten Erstgespräch. Kein Pitch, keine Verpflichtung. Nur ein ehrliches Gespräch.</p>
+    <div class="final-cta-btns reveal reveal-d2">
+      <a href="kontakt.html" class="btn btn-white btn-lg">
+        Erstgespräch buchen
+        <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="arbeiten.html" class="btn btn-white-outline btn-lg">Arbeiten ansehen</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-mount"></div>
+
+<script src="shared/components.js?v=1776884200265"></script>
+<script>
+  /* ── Waveform bars ───────────────────── */
+  const wf = document.getElementById('waveform');
+  if (wf) {
+    const heights = [20,35,55,40,70,45,60,30,50,65,40,75,55,35,45,60,50,40,65,45,55,30,70,50,40];
+    heights.forEach((h, i) => {
+      const bar = document.createElement('div');
+      bar.className = 'mock-wave-bar';
+      bar.style.height = h + 'px';
+      bar.style.animationDelay = (i * 0.05) + 's';
+      bar.style.animationDuration = (0.8 + Math.random() * 0.8) + 's';
+      wf.appendChild(bar);
+    });
+  }
+
+  /* ── Tech stack ticker ───────────────── */
+  const stack = [
+    'Next.js','React','TypeScript','Supabase','PostgreSQL','Prisma',
+    'n8n','Make','Zapier','Fastify','Node.js','OpenAI','Twilio',
+    'Vercel','Railway','Stripe','DATEV-API','Remix','Tailwind CSS',
+    'Webhooks','Docker','Redis','tRPC','Zod','Resend'
+  ];
+  const ticker = document.getElementById('ticker');
+  if (ticker) {
+    const doubled = [...stack, ...stack];
+    doubled.forEach(s => {
+      const el = document.createElement('span');
+      el.className = 'ticker-item';
+      el.textContent = s;
+      ticker.appendChild(el);
+    });
+  }
+
+  /* ── Metric counter ──────────────────── */
+  function countUp(el, target, suffix = '') {
+    let start = 0;
+    const duration = 1200;
+    const startTime = performance.now();
+    function step(now) {
+      const p = Math.min((now - startTime) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(ease * target) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const statObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const count = parseInt(el.dataset.count);
+      if (!isNaN(count)) countUp(el, count);
+      statObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(el => statObs.observe(el));
+
+  /* ── Dashboard metric counters ───────── */
+  setTimeout(() => {
+    const m1 = document.getElementById('m1');
+    const m2 = document.getElementById('m2');
+    const m3 = document.getElementById('m3');
+    if (m1) countUp(m1, 1247);
+    if (m2) {
+      let v = 0;
+      const t = performance.now();
+      const step = now => {
+        const p = Math.min((now - t) / 1200, 1);
+        const e = 1 - Math.pow(1 - p, 3);
+        v = Math.round(e * 84200);
+        m2.textContent = (v >= 1000 ? (v/1000).toFixed(1) + 'k' : v);
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+    if (m3) {
+      setTimeout(() => { m3.textContent = '99.97%'; }, 1400);
+    }
+  }, 500);
+
+  /* ── Services section animation ────────── */
+  (function() {
+    const section = document.getElementById('services-section');
+    const grid = document.getElementById('services-grid');
+    const scan = document.getElementById('services-scan');
+    const fill = document.getElementById('service-connector-fill');
+    const cards = document.querySelectorAll('#service-cards-grid .service-card');
+    if (!section) return;
+
+    const obs = new IntersectionObserver(entries => {
+      if (!entries[0].isIntersecting) return;
+      obs.disconnect();
+
+      // 1. Grid bg fades in
+      setTimeout(() => grid && grid.classList.add('visible'), 100);
+
+      // 2. Connector line draws
+      setTimeout(() => fill && fill.classList.add('full'), 200);
+
+      // 3. Scan sweep
+      setTimeout(() => {
+        if (scan) {
+          scan.classList.add('animate');
+        }
+      }, 300);
+
+      // 4. Cards stagger in (wider stagger on mobile for dramatic slide-in)
+      const isMobile = window.innerWidth <= 900;
+      const stagger = isMobile ? 180 : 120;
+      cards.forEach((card, i) => {
+        setTimeout(() => card.classList.add('entered'), 400 + i * stagger);
+      });
+    }, { threshold: 0.2 });
+
+    obs.observe(section);
+  })();
+
+  /* ── Portfolio scroll dots (mobile) ──── */
+  (function() {
+    const track = document.querySelector('.portfolio-track');
+    const dotsWrap = document.getElementById('portfolio-dots');
+    if (!track || !dotsWrap) return;
+    const cards = track.querySelectorAll('.p-card');
+    cards.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'scroll-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+      dot.addEventListener('click', () => {
+        cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+      });
+      dotsWrap.appendChild(dot);
+    });
+    let ticking = false;
+    track.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const sl = track.scrollLeft;
+        const cw = cards[0].offsetWidth + 16;
+        const idx = Math.round(sl / cw);
+        dotsWrap.querySelectorAll('.scroll-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+        ticking = false;
+      });
+    }, { passive: true });
+  })();
+
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        const ans = item.querySelector('.faq-a');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+</body>
+</html>

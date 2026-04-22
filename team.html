@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team — Nuroy</title>
+  <link rel="stylesheet" href="shared/styles.css?v=1776884200265">
+  <style>
+    /* ── Hero ─────────────────────────────────────── */
+    .page-hero{padding:calc(var(--nav-h) + 80px) 0 80px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+    .hero-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:700px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,45,122,0.08) 0%,transparent 65%);pointer-events:none}
+    .hero-bg-grid{position:absolute;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,45,122,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,45,122,0.04) 1px,transparent 1px);background-size:48px 48px;opacity:0;transition:opacity 1.4s ease}
+    .hero-bg-grid.visible{opacity:1}
+    .hero-scan{position:absolute;top:0;left:-60%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,45,122,0.06),transparent);pointer-events:none;z-index:1}
+    .hero-scan.animate{animation:scan-sweep 1.6s cubic-bezier(0.4,0,0.2,1) forwards}
+    @keyframes scan-sweep{from{left:-60%}to{left:110%}}
+    .hero-glow-text{color:var(--pink);text-shadow:0 0 60px rgba(255,45,122,0.5),0 0 120px rgba(255,45,122,0.2)}
+
+    /* ── Team Section Header Bar ─────────────────── */
+    .team-header-bar{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+    .team-header-dot{width:8px;height:8px;border-radius:50%;background:var(--pink);box-shadow:0 0 10px rgba(255,45,122,0.5);flex-shrink:0}
+    .team-header-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-dim)}
+    .team-connector{position:relative;height:2px;background:var(--line);border-radius:1px;margin-bottom:40px;overflow:hidden}
+    .team-connector-fill{position:absolute;top:0;left:0;height:100%;width:0;background:linear-gradient(90deg,transparent,var(--pink),var(--pink),rgba(255,45,122,0.3));transition:width 1.4s cubic-bezier(0.4,0,0.2,1);box-shadow:0 0 12px rgba(255,45,122,0.6)}
+    .team-connector-fill.full{width:100%}
+
+    /* ── Team Cards ───────────────────────────────── */
+    .team-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+    .tc{background:var(--bg-2);padding:48px 40px;transition:background .25s,box-shadow .35s;position:relative;overflow:hidden;opacity:0;transform:translateY(28px)}
+    .tc.entered{animation:card-enter .65s cubic-bezier(0.2,0,0,1) forwards}
+    @keyframes card-enter{to{opacity:1;transform:translateY(0)}}
+    .tc:hover{background:var(--bg-3)}
+
+    /* Ghost Letter */
+    .tc::before{content:attr(data-ghost);position:absolute;right:-10px;bottom:-24px;font-family:var(--font-display);font-size:120px;font-weight:900;letter-spacing:-.05em;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,45,122,0.06);pointer-events:none;transition:-webkit-text-stroke-color .4s,transform .4s cubic-bezier(0.2,0,0,1)}
+    .tc:hover::before{-webkit-text-stroke-color:rgba(255,45,122,0.2);transform:translateY(-10px)}
+
+    /* Card Hover Accent Line */
+    .tc-accent{position:absolute;top:0;left:0;right:0;height:2px;background:var(--pink);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(0.2,0,0,1);box-shadow:0 0 12px rgba(255,45,122,0.4)}
+    .tc:hover .tc-accent{transform:scaleX(1)}
+
+    /* Card Hover Glow Overlay */
+    .tc::after{content:'';position:absolute;inset:0;background:linear-gradient(145deg,rgba(255,45,122,0.05) 0%,transparent 55%);opacity:0;transition:opacity .4s;pointer-events:none}
+    .tc:hover::after{opacity:1}
+
+    .tc-avatar{width:72px;height:72px;border-radius:16px;background:linear-gradient(135deg,var(--bg-4),var(--bg-3));border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:28px;font-weight:900;color:var(--pink);letter-spacing:-.02em;transition:box-shadow .4s,transform .4s cubic-bezier(0.2,0,0,1)}
+    .tc:hover .tc-avatar{box-shadow:0 0 24px rgba(255,45,122,0.35);transform:scale(1.05)}
+    .tc-role{font-family:var(--font-mono);font-size:10px;color:var(--pink);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;position:relative;z-index:1}
+    .tc-name{font-family:var(--font-display);font-size:clamp(28px,3vw,42px);font-weight:900;letter-spacing:-.03em;margin-bottom:16px;position:relative;z-index:1}
+    .tc-bio{font-size:14px;color:var(--fg-muted);line-height:1.8;margin-bottom:24px;position:relative;z-index:1}
+    .tc-skills{display:flex;flex-direction:column;gap:6px;position:relative;z-index:1}
+    .tc-skill{display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;color:var(--fg-dim)}
+    .tc-skill::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--pink);flex-shrink:0}
+
+    /* ── "Hinter den Gründern" Box ───────────────── */
+    .behind-box{margin-top:20px;background:var(--bg-3);border:1px solid var(--line);border-radius:12px;padding:32px 36px}
+    .behind-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:32px;flex-wrap:wrap}
+    .behind-counter{flex-shrink:0;text-align:center;padding:20px 32px;background:var(--bg-2);border:1px solid var(--line);border-radius:10px}
+    .behind-num{font-family:var(--font-display);font-size:48px;font-weight:900;letter-spacing:-.04em;color:var(--pink);line-height:1}
+
+    /* ── Values Section ──────────────────────────── */
+    .values-section{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:56px}
+    .vg-cell{background:var(--bg-2);padding:32px 28px;transition:box-shadow .35s,transform .35s cubic-bezier(0.2,0,0,1);position:relative;opacity:0;transform:translateY(28px)}
+    .vg-cell.entered{animation:card-enter .65s cubic-bezier(0.2,0,0,1) forwards}
+    .vg-cell:hover{box-shadow:inset 0 0 30px rgba(255,45,122,0.06);transform:translateY(-3px)}
+    .vg-num{font-family:var(--font-display);font-size:40px;font-weight:900;letter-spacing:-.04em;color:var(--pink);line-height:1;margin-bottom:12px}
+    .vg-title{font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+    .vg-desc{font-size:13px;color:var(--fg-muted);line-height:1.7}
+
+    /* ── Location Box ────────────────────────────── */
+    .location-box{background:var(--bg-3);border:1px solid var(--line);border-radius:12px;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:56px}
+    .loc-label{font-family:var(--font-mono);font-size:11px;color:var(--pink);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+    .loc-title{font-family:var(--font-display);font-size:clamp(22px,2.5vw,36px);font-weight:800;letter-spacing:-.025em;margin-bottom:12px}
+    .loc-desc{font-size:14px;color:var(--fg-muted);line-height:1.75}
+    .loc-map{border:1px solid var(--line);border-radius:8px;height:240px;overflow:hidden;position:relative}
+    .loc-map iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(1) invert(1) brightness(0.55) contrast(1.3) hue-rotate(180deg);transition:filter 0.4s}
+    .loc-map:hover iframe{filter:grayscale(0.5) invert(1) brightness(0.6) contrast(1.2) hue-rotate(180deg)}
+    .loc-map-overlay{position:absolute;inset:0;pointer-events:none;border-radius:8px;box-shadow:inset 0 0 40px rgba(10,10,12,0.5);z-index:2}
+    .loc-map-pin{position:absolute;z-index:3;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;pointer-events:none}
+    .loc-map-dot{width:12px;height:12px;border-radius:50%;background:var(--pink);box-shadow:0 0 20px rgba(255,45,122,.6)}
+    .loc-map-ring{position:absolute;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,45,122,.3);top:50%;left:50%;transform:translate(-50%,-50%);animation:ring-pulse 2.5s ease-in-out infinite}
+    @keyframes ring-pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.5}50%{transform:translate(-50%,-50%) scale(1.8);opacity:0}}
+    .loc-map-label{font-family:var(--font-mono);font-size:10px;color:var(--fg-dim);letter-spacing:.06em;text-align:center;position:absolute;bottom:12px;right:12px;z-index:3;background:rgba(10,10,12,0.7);padding:4px 8px;border-radius:4px;backdrop-filter:blur(4px)}
+
+    /* ── CTA Box ──────────────────────────────────── */
+    .cta-box{background:var(--pink);border-radius:16px;padding:56px 48px;text-align:center;margin-top:56px;position:relative;overflow:hidden}
+    .cta-box::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.06) 0%,transparent 60%)}
+    .cta-ghost-word{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-display);font-size:clamp(120px,20vw,280px);font-weight:900;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,0.08);pointer-events:none;user-select:none;white-space:nowrap;line-height:1}
+    .cta-particle{position:absolute;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.3);pointer-events:none;animation:float-particle 6s ease-in-out infinite}
+    .cta-particle:nth-child(2){width:3px;height:3px;animation-duration:8s;animation-delay:-2s}
+    .cta-particle:nth-child(3){width:5px;height:5px;animation-duration:7s;animation-delay:-4s}
+    @keyframes float-particle{
+      0%,100%{transform:translateY(0) translateX(0);opacity:0.3}
+      25%{transform:translateY(-20px) translateX(10px);opacity:0.6}
+      50%{transform:translateY(-8px) translateX(-8px);opacity:0.4}
+      75%{transform:translateY(-25px) translateX(5px);opacity:0.5}
+    }
+    .cta-box h2{font-family:var(--font-display);font-size:clamp(28px,3.5vw,52px);font-weight:900;color:#fff;letter-spacing:-.03em;margin-bottom:12px;position:relative}
+    .cta-box p{font-size:16px;color:rgba(255,255,255,.75);margin-bottom:32px;position:relative}
+    .cta-box-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
+    .btn-w{background:#fff;color:var(--pink);font-weight:600}
+    .btn-w:hover{background:rgba(255,255,255,.9);transform:translateY(-1px)}
+    .btn-wo{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+    .btn-wo:hover{background:rgba(255,255,255,.1)}
+
+    /* ── Mobile ≤900px ────────────────────────────── */
+    @media(max-width:900px){
+      .team-cards{grid-template-columns:1fr}
+      .tc{transform:translateY(28px)}
+      .tc[data-mobile-dir="left"]{transform:translateX(-40px)}
+      .tc[data-mobile-dir="right"]{transform:translateX(40px)}
+      .tc[data-mobile-dir="left"].entered,
+      .tc[data-mobile-dir="right"].entered{animation:card-enter-mobile .75s cubic-bezier(0.16,1,0.3,1) forwards}
+      @keyframes card-enter-mobile{0%{opacity:0}100%{opacity:1;transform:translateX(0)}}
+      .tc::before{font-size:60px;right:-6px;bottom:-14px}
+      .values-grid{grid-template-columns:1fr}
+      .location-box{grid-template-columns:1fr}
+      .cta-ghost-word{font-size:clamp(80px,18vw,140px)}
+      .cta-box-btns{flex-direction:column;align-items:center}
+    }
+
+    /* ── Mobile ≤600px ────────────────────────────── */
+    @media(max-width:600px){
+      .page-hero{padding:calc(var(--nav-h) + 48px) 0 48px}
+      .tc{padding:32px 24px}
+      .tc::before{font-size:48px;right:-4px;bottom:-10px}
+      .tc-avatar{width:56px;height:56px;font-size:22px;border-radius:12px}
+      .vg-num{font-size:28px}
+      .vg-cell{padding:24px 20px}
+      .location-box{padding:28px 24px;gap:32px}
+      .cta-box{padding:40px 24px}
+      .cta-ghost-word{font-size:clamp(60px,16vw,100px);-webkit-text-stroke-width:0.5px}
+      .behind-box{padding:24px 20px}
+      .behind-counter{padding:16px 24px}
+      .behind-num{font-size:36px}
+    }
+  </style>
+</head>
+<body>
+<div id="cursor-glow"></div>
+<div id="nav-mount"></div>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="page-hero">
+  <div class="hero-bg-grid" id="hero-grid"></div>
+  <div class="hero-scan" id="hero-scan"></div>
+  <div class="hero-glow"></div>
+  <div class="noise-overlay"></div>
+  <div class="container">
+    <p class="t-label reveal">Das Team</p>
+    <h1 class="t-h1 reveal reveal-d1" style="margin-top:8px;max-width:640px"><span class="hero-glow-text">Die Gründer.</span><br>Und mehr dahinter.</h1>
+    <p class="t-body-lg c-muted reveal reveal-d2" style="max-width:540px;margin-top:20px">Julius, Timm und Max haben Nuroy gegründet und führen es. Dahinter steht ein Team aus über 10 Entwicklern, Designern und Spezialisten.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════ TEAM CARDS ═══════════════════ -->
+<section class="section" id="team-section">
+  <div class="container">
+    <div class="team-header-bar">
+      <div class="team-header-dot"></div>
+      <div class="team-header-label">Team — Core</div>
+    </div>
+    <div class="team-connector">
+      <div class="team-connector-fill" id="team-connector-fill"></div>
+    </div>
+
+    <div class="team-cards" id="team-cards">
+
+      <div class="tc" data-ghost="J" data-mobile-dir="left">
+        <div class="tc-accent"></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;position:relative;z-index:1"><div class="tc-avatar" style="margin-bottom:0">J</div><span class="tag tag--pink">Gründer</span></div>
+        <div class="tc-role">Strategie · Sales · Business Dev</div>
+        <div class="tc-name">Julius</div>
+        <p class="tc-bio">Verantwortlich für Kunden, Projekte und die strategische Ausrichtung. Julius übersetzt Geschäftsziele in technische Roadmaps — und sorgt dafür, dass Deadlines keine Theorie bleiben. Er ist dein erster Ansprechpartner und bleibt es während des gesamten Projekts.</p>
+        <div class="tc-skills">
+          <div class="tc-skill">Tech-Strategie &amp; Roadmaps</div>
+          <div class="tc-skill">Make-or-Buy-Entscheidungen</div>
+          <div class="tc-skill">Projekt- &amp; Kundenführung</div>
+          <div class="tc-skill">B2B-Vertrieb &amp; Business Development</div>
+        </div>
+      </div>
+
+      <div class="tc" data-ghost="T" data-mobile-dir="right">
+        <div class="tc-accent"></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;position:relative;z-index:1"><div class="tc-avatar" style="margin-bottom:0">T</div><span class="tag tag--pink">Gründer</span></div>
+        <div class="tc-role">Automation · System Architecture · No-Code/Low-Code</div>
+        <div class="tc-name">Timm</div>
+        <p class="tc-bio">Baut Prozesse, die alleine laufen. Von n8n-Workflows bis zur vollständigen API-Orchestrierung — Timm denkt in Systemen, nicht in Aufgaben. Er analysiert, was automatisierbar ist, und baut es so, dass es wartbar bleibt.</p>
+        <div class="tc-skills">
+          <div class="tc-skill">n8n · Make · Zapier</div>
+          <div class="tc-skill">API-Orchestrierung &amp; Webhooks</div>
+          <div class="tc-skill">System-Architektur</div>
+          <div class="tc-skill">No-Code / Low-Code-Plattformen</div>
+        </div>
+      </div>
+
+      <div class="tc" data-ghost="M" data-mobile-dir="left">
+        <div class="tc-accent"></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;position:relative;z-index:1"><div class="tc-avatar" style="margin-bottom:0">M</div><span class="tag tag--pink">Gründer</span></div>
+        <div class="tc-role">Software Engineering · Backend · Integration</div>
+        <div class="tc-name">Max</div>
+        <p class="tc-bio">Schreibt den Code, auf dem das Ganze läuft. Spezialisiert auf skalierbare Backends, solide Datenbankarchitekturen und Integrationen, die wirklich halten. Wenn das System unter Last läuft, ist das Max' Handwerk.</p>
+        <div class="tc-skills">
+          <div class="tc-skill">TypeScript · Node.js · Remix · Next.js</div>
+          <div class="tc-skill">PostgreSQL · Prisma · Supabase</div>
+          <div class="tc-skill">REST &amp; GraphQL APIs</div>
+          <div class="tc-skill">System-Integration &amp; Deployment</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Broader team hint -->
+    <div class="behind-box reveal-scale">
+      <div class="behind-inner">
+        <div>
+          <p class="t-label" style="margin-bottom:10px;">Hinter den Gründern</p>
+          <h3 style="font-family:var(--font-display);font-size:clamp(18px,2vw,26px);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px;">Ein wachsendes Team aus Spezialisten.</h3>
+          <p style="font-size:14px;color:var(--fg-muted);line-height:1.75;max-width:560px;">Je nach Projekt arbeiten wir mit einem Netzwerk aus geprüften Entwicklern, Designern und Domain-Experten — fest integriert in unsere Prozesse, unter unserer Qualitätssicherung. Du hast immer Julius, Timm oder Max als direkten Ansprechpartner.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;">
+            <span class="tag">Frontend-Entwickler</span>
+            <span class="tag">Backend-Entwickler</span>
+            <span class="tag">UI/UX Designer</span>
+            <span class="tag">QA Engineers</span>
+            <span class="tag">Domain-Experten</span>
+          </div>
+        </div>
+        <div class="behind-counter">
+          <div class="behind-num" data-count-target="10">10+</div>
+          <div style="font-size:12px;color:var(--fg-muted);margin-top:4px;">Aktive Mitarbeiter &amp; Partner</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ SKILLS TICKER ═══════════════════ -->
+<div class="ticker-wrap">
+  <div class="ticker-inner" id="team-ticker"></div>
+</div>
+
+<!-- ═══════════════════ VALUES ═══════════════════ -->
+<section class="values-section section" id="values-section">
+  <div class="container">
+    <p class="t-label reveal">Wie wir arbeiten</p>
+    <h2 class="t-h2 reveal reveal-d1" style="margin-top:8px;max-width:560px">Vier Grundsätze. Keine Ausnahmen.</h2>
+    <div class="values-grid" id="values-grid">
+      <div class="vg-cell" data-val-dir="left">
+        <div class="vg-num" data-count-target="1">01</div>
+        <div class="vg-title">Direktheit</div>
+        <p class="vg-desc">Wir sagen, was wir denken — auch wenn es unbequem ist. Keine diplomatischen Umwege, kein Hochverkaufen von Komplexität, die nicht gebraucht wird.</p>
+      </div>
+      <div class="vg-cell" data-val-dir="scale">
+        <div class="vg-num" data-count-target="2">02</div>
+        <div class="vg-title">Belastbarkeit</div>
+        <p class="vg-desc">Code, der in Production läuft, muss halten. Wir bauen keine Showcases — wir bauen Systeme, auf die man sich verlassen kann, auch wenn es Freitag 17 Uhr ist.</p>
+      </div>
+      <div class="vg-cell" data-val-dir="right">
+        <div class="vg-num" data-count-target="3">03</div>
+        <div class="vg-title">Planung vor Sprint</div>
+        <p class="vg-desc">Wir schreiben keine Zeile, bevor das Datenmodell steht. Schlechte Architektur-Entscheidungen in Woche 1 kosten zehnmal so viel in Woche 8.</p>
+      </div>
+      <div class="vg-cell" data-val-dir="up">
+        <div class="vg-num" data-count-target="4">04</div>
+        <div class="vg-title">Betrieb als Pflicht</div>
+        <p class="vg-desc">Ein System, das nach dem Launch niemanden mehr interessiert, ist kein fertiges System. Wir bleiben. Das ist keine Option, das ist der Standard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ STANDORT ═══════════════════ -->
+<section class="section">
+  <div class="container">
+    <p class="t-label reveal">Standort</p>
+    <h2 class="t-h2 reveal reveal-d1" style="margin-top:8px;max-width:520px">Paphos, Zypern.<br>Remote-First DACH.</h2>
+    <div class="location-box">
+      <div class="reveal-left">
+        <div class="loc-label">Hauptsitz</div>
+        <div class="loc-title">Paphos, Zypern</div>
+        <p class="loc-desc">Nuroy ist seit 2024 in Paphos ansässig. Unsere Kunden sind im DACH-Raum. Die Zusammenarbeit läuft vollständig remote — über strukturierte Übergaben, wöchentliche Calls und asynchrone Kommunikation, die funktioniert.</p>
+        <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:10px">
+          <span class="tag">CET/CEST-kompatibel</span>
+          <span class="tag">Remote-First seit Tag 1</span>
+          <span class="tag">DACH-Fokus</span>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="loc-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52600!2d32.4!3d34.77!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14e706e0afd4e56f%3A0xeb80839f3b3a6031!2sPaphos%2C%20Cyprus!5e0!3m2!1sde!2scy!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="loc-map-overlay"></div>
+          <div class="loc-map-pin">
+            <div class="loc-map-ring"></div>
+            <div class="loc-map-dot"></div>
+          </div>
+          <div class="loc-map-label">34°46'N 32°25'E · Paphos, Cyprus</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <div class="cta-ghost-word reveal-scale">TEAM</div>
+      <div class="cta-particle" style="top:20%;left:15%"></div>
+      <div class="cta-particle" style="top:60%;left:80%"></div>
+      <div class="cta-particle" style="top:30%;left:70%"></div>
+      <h2 class="reveal-scale">Sprich mit uns.</h2>
+      <p class="reveal reveal-d1">Ein 45-minütiges Erstgespräch — kostenlos, unverbindlich, direkt mit Julius.</p>
+      <div class="cta-box-btns reveal reveal-d2">
+        <a href="kontakt.html" class="btn btn-w btn-lg">Termin buchen <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="arbeiten.html" class="btn btn-wo btn-lg">Erst die Arbeiten ansehen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-mount"></div>
+<script src="shared/components.js?v=1776884200265"></script>
+<script>
+/* ── Hero entrance animation ─────────────────── */
+(function(){
+  var grid=document.getElementById('hero-grid');
+  var scan=document.getElementById('hero-scan');
+  if(grid) setTimeout(function(){grid.classList.add('visible')},200);
+  if(scan) setTimeout(function(){scan.classList.add('animate')},400);
+})();
+
+/* ── Team section orchestrated entrance ──────── */
+(function(){
+  var section=document.getElementById('team-section');
+  var fill=document.getElementById('team-connector-fill');
+  var cards=document.querySelectorAll('#team-cards .tc');
+  if(!section) return;
+
+  var obs=new IntersectionObserver(function(entries){
+    if(!entries[0].isIntersecting) return;
+    obs.disconnect();
+
+    // 1. Connector line draws
+    setTimeout(function(){if(fill) fill.classList.add('full')},100);
+
+    // 2. Cards stagger in
+    var isMobile=window.innerWidth<=900;
+    var stagger=isMobile?180:120;
+    cards.forEach(function(card,i){
+      setTimeout(function(){card.classList.add('entered')},300+i*stagger);
+    });
+  },{threshold:0.15});
+
+  obs.observe(section);
+})();
+
+/* ── Skills Ticker ───────────────────────────── */
+(function(){
+  var stack=[
+    'TypeScript','Node.js','React','Next.js','Remix','Prisma',
+    'PostgreSQL','Supabase','n8n','Make','Zapier','Fastify',
+    'OpenAI','Vercel','Railway','Stripe','Tailwind CSS',
+    'Webhooks','Docker','Redis','tRPC','Zod'
+  ];
+  var ticker=document.getElementById('team-ticker');
+  if(!ticker) return;
+  var doubled=stack.concat(stack);
+  doubled.forEach(function(s){
+    var el=document.createElement('span');
+    el.className='ticker-item';
+    el.textContent=s;
+    ticker.appendChild(el);
+  });
+})();
+
+/* ── Values section orchestrated entrance ────── */
+(function(){
+  var section=document.getElementById('values-section');
+  var cells=document.querySelectorAll('#values-grid .vg-cell');
+  if(!section) return;
+
+  var obs=new IntersectionObserver(function(entries){
+    if(!entries[0].isIntersecting) return;
+    obs.disconnect();
+
+    var stagger=140;
+    cells.forEach(function(cell,i){
+      setTimeout(function(){cell.classList.add('entered')},100+i*stagger);
+    });
+  },{threshold:0.15});
+
+  obs.observe(section);
+})();
+
+/* ── Count-up + glow-flash ───────────────────── */
+(function(){
+  function countUpNum(el,target,suffix){
+    var duration=800;
+    var start=performance.now();
+    function step(now){
+      var p=Math.min((now-start)/duration,1);
+      var ease=1-Math.pow(1-p,3);
+      var val=Math.round(ease*target);
+      el.textContent=String(val).padStart(2,'0')+(suffix||'');
+      if(p<1){
+        requestAnimationFrame(step);
+      }else{
+        el.classList.add('glow-flash');
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  var nums=document.querySelectorAll('[data-count-target]');
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el=e.target;
+      var target=parseInt(el.dataset.countTarget);
+      var suffix=el.classList.contains('behind-num')?'+':'';
+      if(!isNaN(target)) countUpNum(el,target,suffix);
+      obs.unobserve(el);
+    });
+  },{threshold:0.5});
+  nums.forEach(function(el){obs.observe(el)});
+})();
+</script>
+</body>
+</html>

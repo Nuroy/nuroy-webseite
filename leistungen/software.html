@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Softwareentwicklung — Nuroy</title>
+  <link rel="stylesheet" href="../shared/styles.css?v=1776884200265">
+  <style>
+    .page-hero{padding:calc(var(--nav-h)+80px) 0 80px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+    .hero-glow{position:absolute;top:-150px;right:-80px;width:600px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,45,122,0.09) 0%,transparent 65%);pointer-events:none}
+    .sb{padding:clamp(64px,8vw,112px) 0}.sb+.sb{border-top:1px solid var(--line)}
+    .sl{font-family:var(--font-mono);font-size:11px;color:var(--pink);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
+    .sh{font-family:var(--font-display);font-size:clamp(26px,3vw,44px);font-weight:800;letter-spacing:-.025em;margin-bottom:20px;line-height:1.15}
+    .bt{font-size:15px;color:var(--fg-muted);line-height:1.8}.bt+.bt{margin-top:14px}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+    .feature-list{margin-top:40px}
+    .fi{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}.fi:last-child{border-bottom:none}
+    .fi-dot{width:6px;height:6px;border-radius:50%;background:var(--pink);flex-shrink:0;margin-top:7px}
+    .fi-title{font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:4px;letter-spacing:-.01em}
+    .fi-desc{font-size:13px;color:var(--fg-muted);line-height:1.65}
+    .stack-cats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+    .sc{background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:24px}
+    .sc-cat{font-family:var(--font-mono);font-size:10px;color:var(--pink);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+    .sc-items{display:flex;flex-direction:column;gap:6px}
+    .sc-item{font-size:13px;color:var(--fg-muted)}
+    .ref-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+    .ref-card{background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:24px;text-decoration:none;transition:border-color .2s,transform .2s;display:block}
+    .ref-card:hover{border-color:rgba(255,45,122,.3);transform:translateY(-2px)}
+    .ref-num{font-family:var(--font-mono);font-size:10px;color:var(--pink);letter-spacing:.06em;margin-bottom:8px}
+    .ref-title{font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:6px;letter-spacing:-.01em}
+    .ref-desc{font-size:12px;color:var(--fg-muted);line-height:1.6}
+    .cta-strip{background:var(--pink);padding:64px 0;text-align:center;position:relative;overflow:hidden}
+    .cta-strip::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.05) 0%,transparent 60%)}
+    .cta-strip h2{font-family:var(--font-display);font-size:clamp(28px,3.5vw,52px);font-weight:900;color:#fff;margin-bottom:12px;position:relative;letter-spacing:-.03em}
+    .cta-strip p{color:rgba(255,255,255,.75);margin-bottom:28px;position:relative;font-size:15px}
+    .cta-strip-btns{display:flex;gap:12px;justify-content:center;position:relative}
+    .btn-w{background:#fff;color:var(--pink);font-weight:600}.btn-w:hover{background:rgba(255,255,255,.9);transform:translateY(-1px)}
+    .btn-wo{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}.btn-wo:hover{background:rgba(255,255,255,.1)}
+    @media(max-width:900px){.two-col,.stack-cats,.ref-cards{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div id="cursor-glow"></div>
+<div id="nav-mount"></div>
+<section class="page-hero">
+  <div class="hero-glow"></div>
+  <div class="noise-overlay"></div>
+  <div class="container">
+    <p class="t-label reveal">Leistung · 01</p>
+    <h1 class="t-h1 reveal reveal-d1" style="margin-top:8px;max-width:680px">Software&shy;entwicklung</h1>
+    <p class="t-body-lg c-muted reveal reveal-d2" style="max-width:560px;margin-top:20px">Custom-Software, SaaS-Plattformen, interne Tools, Backends und System-Integrationen. Kein Template, kein Baukastensystem — nur Code, der hält.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px" class="reveal reveal-d3">
+      <a href="../kontakt.html" class="btn btn-primary btn-lg">Erstgespräch buchen</a>
+      <a href="../leistungen.html" class="btn btn-secondary">Alle Leistungen</a>
+    </div>
+  </div>
+</section>
+<div class="container">
+  <div class="sb">
+    <div class="two-col">
+      <div>
+        <div class="sl reveal">Was wir bauen</div>
+        <h2 class="sh reveal reveal-d1">Software, die wirklich gebraucht wird.</h2>
+        <p class="bt reveal reveal-d2">Wir entwickeln Custom-Software für B2B-Unternehmen, die ihre eigene Logik brauchen — nicht die Kompromisse eines generischen SaaS. Vom ersten Architektur-Gespräch bis zum laufenden Betrieb.</p>
+        <p class="bt reveal reveal-d2">Unsere Schwerpunkte: Web-Applikationen, SaaS-Plattformen, interne Verwaltungstools, Daten-Pipelines und API-Integrationen in bestehende Systeme.</p>
+      </div>
+      <div class="feature-list reveal reveal-d2">
+        <div class="fi"><div class="fi-dot"></div><div><div class="fi-title">SaaS-Plattformen</div><div class="fi-desc">Multi-Tenant-Applikationen mit Auth, Abrechnung, Onboarding und Admin-Panel.</div></div></div>
+        <div class="fi"><div class="fi-dot"></div><div><div class="fi-title">Interne Tools</div><div class="fi-desc">Dashboards, Verwaltungs-Oberflächen, Reporting-Tools — gebaut für interne Teams, nicht für Demos.</div></div></div>
+        <div class="fi"><div class="fi-dot"></div><div><div class="fi-title">API-Integrationen</div><div class="fi-desc">Verbindung von Drittsystemen — ERP, CRM, Buchhaltung, Telefonie — in eine einheitliche Datenbasis.</div></div></div>
+        <div class="fi"><div class="fi-dot"></div><div><div class="fi-title">Backends &amp; Datenmodelle</div><div class="fi-desc">Skalierbare Datenbankarchitekturen, REST- und GraphQL-APIs, Queue-Systeme für asynchrone Prozesse.</div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="sb" style="background:var(--bg)">
+    <div class="sl reveal">Tech-Stack</div>
+    <h2 class="sh reveal reveal-d1">Was wir einsetzen.</h2>
+    <div class="stack-cats reveal reveal-d2">
+      <div class="sc"><div class="sc-cat">Frontend</div><div class="sc-items"><div class="sc-item">Next.js 14 (App Router)</div><div class="sc-item">React 18</div><div class="sc-item">Remix</div><div class="sc-item">TypeScript</div><div class="sc-item">Tailwind CSS</div></div></div>
+      <div class="sc"><div class="sc-cat">Backend &amp; DB</div><div class="sc-items"><div class="sc-item">Node.js / Fastify</div><div class="sc-item">PostgreSQL</div><div class="sc-item">Prisma ORM</div><div class="sc-item">Supabase</div><div class="sc-item">Redis</div></div></div>
+      <div class="sc"><div class="sc-cat">Infrastruktur</div><div class="sc-items"><div class="sc-item">Vercel / Vercel Edge</div><div class="sc-item">Railway</div><div class="sc-item">Docker</div><div class="sc-item">GitHub Actions CI/CD</div><div class="sc-item">Sentry / Monitoring</div></div></div>
+    </div>
+  </div>
+  <div class="sb">
+    <div class="sl reveal">Referenzen</div>
+    <h2 class="sh reveal reveal-d1">Projekte aus dieser Kategorie.</h2>
+    <div class="ref-cards reveal reveal-d2">
+      <a href="../arbeiten/accountly.html" class="ref-card"><div class="ref-num">01 — SaaS</div><div class="ref-title">Accountly</div><div class="ref-desc">Buchhaltungsplattform mit DATEV-Anbindung, OCR und Stripe.</div></a>
+      <a href="../arbeiten/csm-suite.html" class="ref-card"><div class="ref-num">03 — Internal Tool</div><div class="ref-title">CSM-Suite</div><div class="ref-desc">Customer-Success-Plattform mit Health-Scoring und Kanban.</div></a>
+      <a href="../arbeiten/crm-system.html" class="ref-card"><div class="ref-num">04 — CRM</div><div class="ref-title">CRM-System</div><div class="ref-desc">B2B-Vertriebs-Pipeline mit custom Logik und Twilio-Follow-ups.</div></a>
+    </div>
+  </div>
+</div>
+<div class="cta-strip">
+  <div class="container">
+    <h2 class="reveal">Bereit zu bauen?</h2>
+    <p class="reveal reveal-d1">45 Minuten Erstgespräch. Kostenlos. Direkt mit Julius.</p>
+    <div class="cta-strip-btns reveal reveal-d2">
+      <a href="../kontakt.html" class="btn btn-w btn-lg">Erstgespräch buchen</a>
+      <a href="../arbeiten.html" class="btn btn-wo btn-lg">Referenzen ansehen</a>
+    </div>
+  </div>
+</div>
+<div id="footer-mount"></div>
+<script src="../shared/components.js?v=1776884200265"></script>
+</body>
+</html>
