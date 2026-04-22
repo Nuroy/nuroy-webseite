@@ -4,10 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Strategieberatung — Nuroy</title>
+  <!-- Favicon -->
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Strategieberatung — Nuroy">
+  <meta property="og:description" content="Tech-Strategieberatung als Leistung — Nuroy berät Unternehmen im DACH-Raum.">
+  <meta property="og:image" content="https://nuroy.de/og-image.png">
+  <meta property="og:url" content="https://nuroy.de/leistungen/strategie">
   <link rel="stylesheet" href="../shared/styles.css?v=1776884200265">
   <style>
-    .page-hero{padding:calc(var(--nav-h)+80px) 0 80px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+    .page-hero{padding:calc(var(--nav-h) + 100px) 0 80px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
     .hero-glow{position:absolute;top:-200px;right:-80px;width:600px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,45,122,0.09) 0%,transparent 65%);pointer-events:none}
+    .st-hero-split{display:grid;grid-template-columns:1fr 1.05fr;gap:64px;align-items:start}
+    .st-hero-split>:last-child{margin-top:120px}
     .sb{padding:clamp(64px,8vw,112px) 0}.sb+.sb{border-top:1px solid var(--line)}
     .sl{font-family:var(--font-mono);font-size:11px;color:var(--pink);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
     .sh{font-family:var(--font-display);font-size:clamp(26px,3vw,44px);font-weight:800;letter-spacing:-.025em;margin-bottom:20px;line-height:1.15}
@@ -34,7 +45,84 @@
     .cta-strip-btns{display:flex;gap:12px;justify-content:center;position:relative}
     .btn-w{background:#fff;color:var(--pink);font-weight:600}.btn-w:hover{background:rgba(255,255,255,.9)}
     .btn-wo{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}.btn-wo:hover{background:rgba(255,255,255,.1)}
-    @media(max-width:900px){.two-col,.formats-grid{grid-template-columns:1fr}}
+
+    /* Audit Report Mockup */
+    .st-mockup{background:var(--bg-2);border:1px solid var(--line-strong);border-radius:14px;overflow:hidden;box-shadow:0 32px 100px rgba(0,0,0,0.55),0 0 60px rgba(255,45,122,0.07)}
+    .st-mockup-tb{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--bg-3);border-bottom:1px solid var(--line)}
+    .st-dots{display:flex;gap:6px}
+    .st-dot{width:10px;height:10px;border-radius:50%}
+    .st-dr{background:#FF5F57}.st-dy{background:#FFBD2E}.st-dg{background:#27C840}
+    .st-mockup-tit{font-family:var(--font-mono);font-size:11px;color:var(--fg-dim);letter-spacing:.05em}
+    .st-mockup-bdg{font-family:var(--font-mono);font-size:10px;color:var(--fg-dim)}
+    .st-m-body{padding:20px}
+    .st-m-section{margin-bottom:16px}
+    .st-m-section:last-child{margin-bottom:0}
+    .st-m-section-title{font-family:var(--font-mono);font-size:9px;color:var(--fg-dim);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+    /* Scores */
+    .st-score{display:flex;align-items:center;gap:10px;padding:6px 0}
+    .st-score-label{font-family:var(--font-mono);font-size:10px;color:var(--fg-muted);width:110px;flex-shrink:0}
+    .st-score-bar{flex:1;height:6px;background:var(--bg-3);border-radius:3px;overflow:hidden}
+    .st-score-fill{height:100%;border-radius:3px;transition:width .6s ease}
+    .st-score-fill-ok{background:var(--ok)}
+    .st-score-fill-warn{background:var(--warn)}
+    .st-score-fill-crit{background:var(--pink)}
+    .st-score-val{font-family:var(--font-mono);font-size:10px;color:var(--fg-dim);width:32px;text-align:right;flex-shrink:0}
+    /* Findings */
+    .st-finding{display:flex;align-items:center;gap:10px;padding:6px 0;font-family:var(--font-mono);font-size:11px;color:var(--fg-muted)}
+    .st-sev{font-size:8px;padding:2px 6px;border-radius:3px;font-weight:600;letter-spacing:.04em;flex-shrink:0}
+    .st-sev-crit{background:var(--pink-bg);color:var(--pink)}
+    .st-sev-warn{background:rgba(209,168,92,0.12);color:var(--warn)}
+    .st-sev-ok{background:rgba(143,163,115,0.12);color:var(--ok)}
+    /* Recommendations */
+    .st-rec{display:flex;gap:8px;padding:5px 0;font-family:var(--font-mono);font-size:10px;color:var(--fg-muted)}
+    .st-rec-num{color:var(--pink);flex-shrink:0}
+
+    /* 4-Step Process */
+    .st-process{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:40px;position:relative}
+    .st-process::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:2px;border-top:2px dashed var(--line);z-index:0}
+    .st-pstep{text-align:center;position:relative;z-index:1}
+    .st-pstep-num{font-family:var(--font-display);font-size:clamp(32px,3vw,48px);font-weight:900;color:var(--pink);text-shadow:0 0 30px rgba(255,45,122,0.3);line-height:1;margin-bottom:8px}
+    .st-pstep-title{font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:6px;letter-spacing:-.01em}
+    .st-pstep-desc{font-size:12px;color:var(--fg-muted);line-height:1.6;max-width:180px;margin:0 auto}
+
+    /* Result Grid */
+    .st-rg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:40px}
+    .st-rc{background:var(--bg-2);padding:32px 24px}
+    .st-rn{font-family:var(--font-display);font-size:clamp(36px,4vw,60px);font-weight:900;letter-spacing:-.04em;color:var(--pink);text-shadow:0 0 30px rgba(255,45,122,0.4);line-height:1;margin-bottom:8px}
+    .st-rl{font-size:13px;color:var(--fg-muted)}
+
+    @media(max-width:900px){
+      .page-hero{overflow:hidden}
+      .st-hero-split{grid-template-columns:1fr;gap:40px}
+      .st-hero-split>:last-child{margin-top:0}
+      .two-col,.formats-grid{grid-template-columns:1fr}
+      .st-process{grid-template-columns:1fr;gap:0}
+      .st-process::before{display:none}
+      .st-pstep{display:grid;grid-template-columns:auto 1fr;gap:0 16px;text-align:left;padding:20px 0;border-bottom:1px solid var(--line)}
+      .st-pstep:last-child{border-bottom:none}
+      .st-pstep-num{grid-row:1/3;align-self:center}
+      .st-pstep-desc{max-width:none;margin:0}
+      .st-rg{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:0;scrollbar-width:none}
+      .st-rg::-webkit-scrollbar{display:none}
+      .st-rc{scroll-snap-align:start;min-width:75vw;flex-shrink:0}
+      .st-mockup{overflow:hidden;max-width:100%}
+      .st-mockup-tb{flex-wrap:wrap;gap:8px;padding:10px 14px}
+      .st-mockup-tit{font-size:10px}
+      .st-m-body{padding:14px}
+      .cta-strip h2{font-size:clamp(22px,6vw,36px)}
+      .cta-strip-btns{flex-direction:column;align-items:center}
+      .cta-strip-btns .btn{width:100%;text-align:center;justify-content:center}
+    }
+    @media(max-width:600px){
+      .page-hero{padding:calc(var(--nav-h) + 48px) 0 48px}
+      .st-m-body{padding:10px}
+      .st-score-label{width:80px;font-size:9px}
+      .st-score-bar{height:4px}
+      .st-finding{font-size:10px;flex-wrap:wrap;gap:6px}
+      .st-sev{font-size:7px;padding:1px 4px}
+      .st-rec{font-size:9px}
+      .st-pstep-num{font-size:clamp(28px,8vw,40px)}
+    }
   </style>
 </head>
 <body>
@@ -44,12 +132,61 @@
   <div class="hero-glow"></div>
   <div class="noise-overlay"></div>
   <div class="container">
-    <p class="t-label reveal">Leistung · 03</p>
-    <h1 class="t-h1 reveal reveal-d1" style="margin-top:8px;max-width:640px">Strategie&shy;beratung</h1>
-    <p class="t-body-lg c-muted reveal reveal-d2" style="max-width:540px;margin-top:20px">Tech-Audits, Architektur-Reviews, Make-or-Buy-Entscheidungen und Roadmaps. Substanz statt Foliensatz — ehrliche Einschätzung, konkrete Empfehlungen.</p>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px" class="reveal reveal-d3">
-      <a href="../kontakt.html" class="btn btn-primary btn-lg">Erstgespräch buchen</a>
-      <a href="../leistungen.html" class="btn btn-secondary">Alle Leistungen</a>
+    <div class="st-hero-split">
+      <div>
+        <p class="t-label reveal">Leistung · 03</p>
+        <h1 class="t-h1 reveal reveal-d1" style="margin-top:8px;max-width:640px">Strategie&shy;beratung</h1>
+        <p class="t-body-lg c-muted reveal reveal-d2" style="max-width:540px;margin-top:20px">Tech-Audits, Architektur-Reviews, Make-or-Buy-Entscheidungen und Roadmaps. Substanz statt Foliensatz — ehrliche Einschätzung, konkrete Empfehlungen.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px" class="reveal reveal-d3">
+          <a href="../kontakt.html" class="btn btn-primary btn-lg">Erstgespräch buchen</a>
+          <a href="../leistungen.html" class="btn btn-secondary">Alle Leistungen</a>
+        </div>
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="st-mockup">
+          <div class="st-mockup-tb">
+            <div class="st-dots"><div class="st-dot st-dr"></div><div class="st-dot st-dy"></div><div class="st-dot st-dg"></div></div>
+            <span class="st-mockup-tit">nuroy/strategie — audit report</span>
+            <span class="st-mockup-bdg">Q2 2026</span>
+          </div>
+          <div class="st-m-body">
+            <div class="st-m-section">
+              <div class="st-m-section-title">Assessment Scores</div>
+              <div class="st-score">
+                <span class="st-score-label">Architektur</span>
+                <div class="st-score-bar"><div class="st-score-fill st-score-fill-ok" style="width:70%"></div></div>
+                <span class="st-score-val">7/10</span>
+              </div>
+              <div class="st-score">
+                <span class="st-score-label">Skalierbarkeit</span>
+                <div class="st-score-bar"><div class="st-score-fill st-score-fill-warn" style="width:40%"></div></div>
+                <span class="st-score-val">4/10</span>
+              </div>
+              <div class="st-score">
+                <span class="st-score-label">Security</span>
+                <div class="st-score-bar"><div class="st-score-fill st-score-fill-ok" style="width:80%"></div></div>
+                <span class="st-score-val">8/10</span>
+              </div>
+              <div class="st-score">
+                <span class="st-score-label">DX / Maintain.</span>
+                <div class="st-score-bar"><div class="st-score-fill st-score-fill-crit" style="width:30%"></div></div>
+                <span class="st-score-val">3/10</span>
+              </div>
+            </div>
+            <div class="st-m-section">
+              <div class="st-m-section-title">Findings</div>
+              <div class="st-finding"><span class="st-sev st-sev-crit">CRITICAL</span><span>Keine CI/CD-Pipeline</span></div>
+              <div class="st-finding"><span class="st-sev st-sev-warn">WARNING</span><span>Monolithische Architektur</span></div>
+              <div class="st-finding"><span class="st-sev st-sev-ok">OK</span><span>Auth via OAuth 2.0 korrekt</span></div>
+            </div>
+            <div class="st-m-section">
+              <div class="st-m-section-title">Empfehlungen</div>
+              <div class="st-rec"><span class="st-rec-num">01</span><span>CI/CD mit GitHub Actions einführen — Prio 1</span></div>
+              <div class="st-rec"><span class="st-rec-num">02</span><span>Service-Extraktion für Payment + Notification</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -98,6 +235,37 @@
         <div class="who-item">Unternehmen mit gewachsenen Systemen, die wissen wollen, was als nächstes zu tun ist</div>
         <div class="who-item">Scale-ups, die entscheiden müssen: Custom bauen oder SaaS kaufen</div>
       </div>
+    </div>
+  </div>
+  <div class="sb">
+    <div class="sl reveal">Unser Prozess</div>
+    <h2 class="sh reveal reveal-d1">Vier Schritte zur Klarheit.</h2>
+    <div class="st-process reveal reveal-d2">
+      <div class="st-pstep">
+        <div class="st-pstep-num">01</div>
+        <div class="st-pstep-title">Assess</div>
+        <div class="st-pstep-desc">Bestandsaufnahme bestehender Systeme, Prozesse und Pain Points.</div>
+      </div>
+      <div class="st-pstep">
+        <div class="st-pstep-num">02</div>
+        <div class="st-pstep-title">Analyze</div>
+        <div class="st-pstep-desc">Tiefe Analyse von Architektur, Stack, Schulden und Skalierbarkeit.</div>
+      </div>
+      <div class="st-pstep">
+        <div class="st-pstep-num">03</div>
+        <div class="st-pstep-title">Recommend</div>
+        <div class="st-pstep-desc">Konkrete Empfehlungen mit Prioritäten, Aufwand und Trade-offs.</div>
+      </div>
+      <div class="st-pstep">
+        <div class="st-pstep-num">04</div>
+        <div class="st-pstep-title">Roadmap</div>
+        <div class="st-pstep-desc">Priorisierter Fahrplan für die nächsten 6–18 Monate.</div>
+      </div>
+    </div>
+    <div class="st-rg reveal reveal-d3">
+      <div class="st-rc"><div class="st-rn">30+</div><div class="st-rl">Audits durchgeführt</div></div>
+      <div class="st-rc"><div class="st-rn">6–18</div><div class="st-rl">Monate Roadmap-Horizont</div></div>
+      <div class="st-rc"><div class="st-rn">&lt; 1 Wo.</div><div class="st-rl">Audit-Turnaround</div></div>
     </div>
   </div>
 </div>

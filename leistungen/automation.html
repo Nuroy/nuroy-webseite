@@ -4,10 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Automatisierung — Nuroy</title>
+  <!-- Favicon -->
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Automatisierung — Nuroy">
+  <meta property="og:description" content="Automatisierung als Leistung — Nuroy baut Systeme, die Prozesse übernehmen.">
+  <meta property="og:image" content="https://nuroy.de/og-image.png">
+  <meta property="og:url" content="https://nuroy.de/leistungen/automation">
   <link rel="stylesheet" href="../shared/styles.css?v=1776884200265">
   <style>
-    .page-hero{padding:calc(var(--nav-h)+80px) 0 80px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+    .page-hero{padding:calc(var(--nav-h) + 100px) 0 80px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
     .hero-glow{position:absolute;top:-150px;left:-80px;width:600px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,45,122,0.09) 0%,transparent 65%);pointer-events:none}
+    .au-hero-split{display:grid;grid-template-columns:1fr 1.05fr;gap:64px;align-items:start}
+    .au-hero-split>:last-child{margin-top:120px}
     .sb{padding:clamp(64px,8vw,112px) 0}.sb+.sb{border-top:1px solid var(--line)}
     .sl{font-family:var(--font-mono);font-size:11px;color:var(--pink);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
     .sh{font-family:var(--font-display);font-size:clamp(26px,3vw,44px);font-weight:800;letter-spacing:-.025em;margin-bottom:20px;line-height:1.15}
@@ -23,6 +34,9 @@
     .tool-role{font-family:var(--font-mono);font-size:9px;color:var(--fg-dim);letter-spacing:.04em}
     .use-cases{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
     .uc{background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:24px}
+    .uc-flow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:14px;padding:10px 12px;background:var(--bg-3);border:1px solid var(--line);border-radius:6px}
+    .uc-flow-step{font-family:var(--font-mono);font-size:10px;color:var(--fg-muted);letter-spacing:.02em;white-space:nowrap}
+    .uc-flow-arrow{color:var(--pink);font-size:11px;flex-shrink:0}
     .uc-title{font-family:var(--font-display);font-size:15px;font-weight:700;margin-bottom:6px}
     .uc-desc{font-size:13px;color:var(--fg-muted);line-height:1.65}
     .ref-cards{display:grid;grid-template-columns:1fr;gap:12px;margin-top:40px}
@@ -38,7 +52,75 @@
     .cta-strip-btns{display:flex;gap:12px;justify-content:center;position:relative}
     .btn-w{background:#fff;color:var(--pink);font-weight:600}.btn-w:hover{background:rgba(255,255,255,.9)}
     .btn-wo{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}.btn-wo:hover{background:rgba(255,255,255,.1)}
-    @media(max-width:900px){.two-col,.tools-grid,.use-cases{grid-template-columns:1fr}}
+
+    /* Pipeline Mockup */
+    .au-mockup{background:var(--bg-2);border:1px solid var(--line-strong);border-radius:14px;overflow:hidden;box-shadow:0 32px 100px rgba(0,0,0,0.55),0 0 60px rgba(255,45,122,0.07)}
+    .au-mockup-tb{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--bg-3);border-bottom:1px solid var(--line)}
+    .au-dots{display:flex;gap:6px}
+    .au-dot{width:10px;height:10px;border-radius:50%}
+    .au-dr{background:#FF5F57}.au-dy{background:#FFBD2E}.au-dg{background:#27C840}
+    .au-mockup-tit{font-family:var(--font-mono);font-size:11px;color:var(--fg-dim);letter-spacing:.05em}
+    .au-mockup-bdg{display:flex;align-items:center;gap:5px;font-family:var(--font-mono);font-size:10px}
+    .au-bdg-dot{width:6px;height:6px;border-radius:50%;background:var(--ok);animation:blink 2s ease-in-out infinite}
+    .au-m-body{padding:20px}
+    .au-steps{display:flex;flex-direction:column;gap:0}
+    .au-step{display:flex;align-items:flex-start;gap:16px;position:relative}
+    .au-step-rail{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:24px}
+    .au-step-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;position:relative;z-index:1}
+    .au-step-dot-ok{background:var(--ok);box-shadow:0 0 8px rgba(143,163,115,0.4)}
+    .au-step-dot-run{background:var(--pink);box-shadow:0 0 10px rgba(255,45,122,0.5);animation:blink 1.5s ease-in-out infinite}
+    .au-step-dot-pending{background:var(--bg-3);border:2px solid var(--line-strong)}
+    .au-step-line{width:2px;flex:1;min-height:24px}
+    .au-step-line-ok{background:var(--ok)}
+    .au-step-line-pending{background:var(--line)}
+    .au-step-content{padding-bottom:20px;flex:1;min-width:0}
+    .au-step:last-child .au-step-content{padding-bottom:0}
+    .au-step-num{font-family:var(--font-mono);font-size:9px;color:var(--fg-dim);letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}
+    .au-step-title{font-family:var(--font-display);font-size:13px;font-weight:700;margin-bottom:2px}
+    .au-step-desc{font-family:var(--font-mono);font-size:10px;color:var(--fg-dim);letter-spacing:.02em}
+    .au-step-status{font-family:var(--font-mono);font-size:9px;padding:2px 6px;border-radius:3px;display:inline-block;margin-top:4px}
+    .au-st-ok{background:rgba(143,163,115,0.12);color:var(--ok)}
+    .au-st-run{background:var(--pink-bg);color:var(--pink)}
+    .au-st-pending{background:var(--bg-3);color:var(--fg-dim)}
+    .au-log{margin-top:16px;padding:12px;background:var(--bg-3);border:1px solid var(--line);border-radius:6px}
+    .au-log-title{font-family:var(--font-mono);font-size:9px;color:var(--fg-dim);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+    .au-log-line{font-family:var(--font-mono);font-size:10px;color:var(--fg-muted);padding:3px 0;display:flex;gap:8px}
+    .au-log-time{color:var(--fg-dim);flex-shrink:0}
+
+    /* Result Grid */
+    .au-rg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:40px}
+    .au-rc{background:var(--bg-2);padding:32px 24px}
+    .au-rn{font-family:var(--font-display);font-size:clamp(36px,4vw,60px);font-weight:900;letter-spacing:-.04em;color:var(--pink);text-shadow:0 0 30px rgba(255,45,122,0.4);line-height:1;margin-bottom:8px}
+    .au-rl{font-size:13px;color:var(--fg-muted)}
+
+    @media(max-width:900px){
+      .page-hero{overflow:hidden}
+      .au-hero-split{grid-template-columns:1fr;gap:40px}
+      .au-hero-split>:last-child{margin-top:0}
+      .two-col,.tools-grid,.use-cases{grid-template-columns:1fr}
+      .au-rg{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:0;scrollbar-width:none}
+      .au-rg::-webkit-scrollbar{display:none}
+      .au-rc{scroll-snap-align:start;min-width:75vw;flex-shrink:0}
+      .au-mockup{overflow:hidden;max-width:100%}
+      .au-mockup-tb{flex-wrap:wrap;gap:8px;padding:10px 14px}
+      .au-mockup-tit{font-size:10px}
+      .au-mockup-bdg{font-size:9px}
+      .au-m-body{padding:14px}
+      .uc-flow{gap:4px;padding:8px 10px;overflow-x:auto}
+      .uc-flow-step{font-size:9px}
+      .cta-strip h2{font-size:clamp(22px,6vw,36px)}
+      .cta-strip-btns{flex-direction:column;align-items:center}
+      .cta-strip-btns .btn{width:100%;text-align:center;justify-content:center}
+    }
+    @media(max-width:600px){
+      .page-hero{padding:calc(var(--nav-h) + 48px) 0 48px}
+      .au-m-body{padding:10px}
+      .au-step-title{font-size:12px}
+      .au-step-desc{font-size:9px}
+      .au-log{padding:8px}
+      .au-log-line{font-size:9px;flex-wrap:wrap}
+      .au-log-time{font-size:8px}
+    }
   </style>
 </head>
 <body>
@@ -48,12 +130,86 @@
   <div class="hero-glow"></div>
   <div class="noise-overlay"></div>
   <div class="container">
-    <p class="t-label reveal">Leistung · 02</p>
-    <h1 class="t-h1 reveal reveal-d1" style="margin-top:8px;max-width:640px">Automatisierung</h1>
-    <p class="t-body-lg c-muted reveal reveal-d2" style="max-width:540px;margin-top:20px">Manuelle Prozesse werden zu Systemen, die alleine laufen. n8n, Make, API-Orchestrierung, Webhooks und Queues — wir automatisieren alles, was wiederholbar ist.</p>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px" class="reveal reveal-d3">
-      <a href="../kontakt.html" class="btn btn-primary btn-lg">Erstgespräch buchen</a>
-      <a href="../leistungen.html" class="btn btn-secondary">Alle Leistungen</a>
+    <div class="au-hero-split">
+      <div>
+        <p class="t-label reveal">Leistung · 02</p>
+        <h1 class="t-h1 reveal reveal-d1" style="margin-top:8px;max-width:640px">Automati&shy;sierung</h1>
+        <p class="t-body-lg c-muted reveal reveal-d2" style="max-width:540px;margin-top:20px">Manuelle Prozesse werden zu Systemen, die alleine laufen. n8n, Make, API-Orchestrierung, Webhooks und Queues — wir automatisieren alles, was wiederholbar ist.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px" class="reveal reveal-d3">
+          <a href="../kontakt.html" class="btn btn-primary btn-lg">Erstgespräch buchen</a>
+          <a href="../leistungen.html" class="btn btn-secondary">Alle Leistungen</a>
+        </div>
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="au-mockup">
+          <div class="au-mockup-tb">
+            <div class="au-dots"><div class="au-dot au-dr"></div><div class="au-dot au-dy"></div><div class="au-dot au-dg"></div></div>
+            <span class="au-mockup-tit">nuroy/automation — pipeline</span>
+            <div class="au-mockup-bdg"><span class="au-bdg-dot"></span><span style="color:var(--ok)">Running</span></div>
+          </div>
+          <div class="au-m-body">
+            <div class="au-steps">
+              <!-- Step 1: Trigger -->
+              <div class="au-step">
+                <div class="au-step-rail">
+                  <div class="au-step-dot au-step-dot-ok"></div>
+                  <div class="au-step-line au-step-line-ok"></div>
+                </div>
+                <div class="au-step-content">
+                  <div class="au-step-num">01 Trigger</div>
+                  <div class="au-step-title">Webhook / Formular</div>
+                  <div class="au-step-desc">Eingehender Request empfangen</div>
+                  <span class="au-step-status au-st-ok">completed</span>
+                </div>
+              </div>
+              <!-- Step 2: Process -->
+              <div class="au-step">
+                <div class="au-step-rail">
+                  <div class="au-step-dot au-step-dot-ok"></div>
+                  <div class="au-step-line au-step-line-ok"></div>
+                </div>
+                <div class="au-step-content">
+                  <div class="au-step-num">02 Process</div>
+                  <div class="au-step-title">Validierung + KI-Analyse</div>
+                  <div class="au-step-desc">Daten validiert, Score: 0.94</div>
+                  <span class="au-step-status au-st-ok">completed</span>
+                </div>
+              </div>
+              <!-- Step 3: Action -->
+              <div class="au-step">
+                <div class="au-step-rail">
+                  <div class="au-step-dot au-step-dot-run"></div>
+                  <div class="au-step-line au-step-line-pending"></div>
+                </div>
+                <div class="au-step-content">
+                  <div class="au-step-num">03 Action</div>
+                  <div class="au-step-title">CRM + E-Mail + Slack</div>
+                  <div class="au-step-desc">3 Aktionen werden ausgeführt...</div>
+                  <span class="au-step-status au-st-run">running</span>
+                </div>
+              </div>
+              <!-- Step 4: Monitor -->
+              <div class="au-step">
+                <div class="au-step-rail">
+                  <div class="au-step-dot au-step-dot-pending"></div>
+                </div>
+                <div class="au-step-content">
+                  <div class="au-step-num">04 Monitor</div>
+                  <div class="au-step-title">Logging + Alerting</div>
+                  <div class="au-step-desc">Wartend auf Abschluss</div>
+                  <span class="au-step-status au-st-pending">pending</span>
+                </div>
+              </div>
+            </div>
+            <div class="au-log">
+              <div class="au-log-title">Execution Log</div>
+              <div class="au-log-line"><span class="au-log-time">14:32:01</span><span>Webhook received — payload validated</span></div>
+              <div class="au-log-line"><span class="au-log-time">14:32:02</span><span>KI-Score: 0.94 — qualified lead</span></div>
+              <div class="au-log-line"><span class="au-log-time">14:32:03</span><span style="color:var(--pink)">→ CRM entry created, sending notifications...</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -72,6 +228,11 @@
         <div class="fi"><div class="fi-dot"></div><div><div class="fi-title">Notification &amp; Alerting</div><div class="fi-desc">Intelligente Benachrichtigungen auf Basis von Daten-Schwellenwerten, Ereignissen und Zeitfenstern.</div></div></div>
         <div class="fi"><div class="fi-dot"></div><div><div class="fi-title">Dokumenten-Workflows</div><div class="fi-desc">Automatische Erstellung, Befüllung, Versand und Ablage von Rechnungen, Reports und Verträgen.</div></div></div>
       </div>
+    </div>
+    <div class="au-rg reveal reveal-d3">
+      <div class="au-rc"><div class="au-rn">12+</div><div class="au-rl">Workflows in Produktion</div></div>
+      <div class="au-rc"><div class="au-rn">85%</div><div class="au-rl">Weniger manuelle Schritte</div></div>
+      <div class="au-rc"><div class="au-rn">&lt; 3s</div><div class="au-rl">Durchschnittliche Ausführungszeit</div></div>
     </div>
   </div>
   <div class="sb" style="background:var(--bg)">
@@ -92,10 +253,46 @@
     <div class="sl reveal">Anwendungsfälle</div>
     <h2 class="sh reveal reveal-d1">Typische Projekte.</h2>
     <div class="use-cases reveal reveal-d2">
-      <div class="uc"><div class="uc-title">Inbound-Lead-Verarbeitung</div><div class="uc-desc">Lead landet im Formular → Qualifizierung per KI → CRM-Eintrag → Salesperson-Benachrichtigung → Follow-up-Sequenz. Vollautomatisch.</div></div>
-      <div class="uc"><div class="uc-title">Rechnungs-Workflow</div><div class="uc-desc">PDF-Eingang → OCR-Extraktion → Datev-Buchung → Zahlungsfreigabe → Buchungsbeleg-Ablage. Zero Manual Steps.</div></div>
-      <div class="uc"><div class="uc-title">Kunden-Onboarding</div><div class="uc-desc">Deal-Abschluss im CRM → Account-Anlage → Onboarding-E-Mail-Sequenz → Slack-Benachrichtigung → Kalender-Einladung.</div></div>
-      <div class="uc"><div class="uc-title">Reporting &amp; Alerting</div><div class="uc-desc">Tägliche KPI-Zusammenfassung, automatische Alerts bei Schwellenwerten, wöchentliche PDF-Reports an Stakeholder.</div></div>
+      <div class="uc">
+        <div class="uc-flow">
+          <span class="uc-flow-step">Formular</span><span class="uc-flow-arrow">→</span>
+          <span class="uc-flow-step">KI-Qualifizierung</span><span class="uc-flow-arrow">→</span>
+          <span class="uc-flow-step">CRM</span><span class="uc-flow-arrow">→</span>
+          <span class="uc-flow-step">Follow-up</span>
+        </div>
+        <div class="uc-title">Inbound-Lead-Verarbeitung</div>
+        <div class="uc-desc">Lead landet im Formular → Qualifizierung per KI → CRM-Eintrag → Salesperson-Benachrichtigung → Follow-up-Sequenz. Vollautomatisch.</div>
+      </div>
+      <div class="uc">
+        <div class="uc-flow">
+          <span class="uc-flow-step">PDF-Eingang</span><span class="uc-flow-arrow">→</span>
+          <span class="uc-flow-step">OCR</span><span class="uc-flow-arrow">→</span>
+          <span class="uc-flow-step">DATEV</span><span class="uc-flow-arrow">→</span>
+          <span class="uc-flow-step">Ablage</span>
+        </div>
+        <div class="uc-title">Rechnungs-Workflow</div>
+        <div class="uc-desc">PDF-Eingang → OCR-Extraktion → Datev-Buchung → Zahlungsfreigabe → Buchungsbeleg-Ablage. Zero Manual Steps.</div>
+      </div>
+      <div class="uc">
+        <div class="uc-flow">
+          <span class="uc-flow-step">Deal-Close</span><span class="uc-flow-arrow">→</span>
+          <span class="uc-flow-step">Account</span><span class="uc-flow-arrow">→</span>
+          <span class="uc-flow-step">E-Mail</span><span class="uc-flow-arrow">→</span>
+          <span class="uc-flow-step">Kalender</span>
+        </div>
+        <div class="uc-title">Kunden-Onboarding</div>
+        <div class="uc-desc">Deal-Abschluss im CRM → Account-Anlage → Onboarding-E-Mail-Sequenz → Slack-Benachrichtigung → Kalender-Einladung.</div>
+      </div>
+      <div class="uc">
+        <div class="uc-flow">
+          <span class="uc-flow-step">Daten</span><span class="uc-flow-arrow">→</span>
+          <span class="uc-flow-step">Aggregation</span><span class="uc-flow-arrow">→</span>
+          <span class="uc-flow-step">Alert</span><span class="uc-flow-arrow">→</span>
+          <span class="uc-flow-step">PDF-Report</span>
+        </div>
+        <div class="uc-title">Reporting &amp; Alerting</div>
+        <div class="uc-desc">Tägliche KPI-Zusammenfassung, automatische Alerts bei Schwellenwerten, wöchentliche PDF-Reports an Stakeholder.</div>
+      </div>
     </div>
   </div>
   <div class="sb">

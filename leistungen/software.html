@@ -4,10 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Softwareentwicklung — Nuroy</title>
+  <!-- Favicon -->
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Softwareentwicklung — Nuroy">
+  <meta property="og:description" content="Custom-Softwareentwicklung als Leistung — Nuroy baut maßgeschneiderte Systeme.">
+  <meta property="og:image" content="https://nuroy.de/og-image.png">
+  <meta property="og:url" content="https://nuroy.de/leistungen/software">
   <link rel="stylesheet" href="../shared/styles.css?v=1776884200265">
   <style>
-    .page-hero{padding:calc(var(--nav-h)+80px) 0 80px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+    .page-hero{padding:calc(var(--nav-h) + 100px) 0 80px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
     .hero-glow{position:absolute;top:-150px;right:-80px;width:600px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,45,122,0.09) 0%,transparent 65%);pointer-events:none}
+    .sw-hero-split{display:grid;grid-template-columns:1fr 1.05fr;gap:64px;align-items:start}
+    .sw-hero-split>:last-child{margin-top:120px}
     .sb{padding:clamp(64px,8vw,112px) 0}.sb+.sb{border-top:1px solid var(--line)}
     .sl{font-family:var(--font-mono);font-size:11px;color:var(--pink);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
     .sh{font-family:var(--font-display);font-size:clamp(26px,3vw,44px);font-weight:800;letter-spacing:-.025em;margin-bottom:20px;line-height:1.15}
@@ -36,7 +47,68 @@
     .cta-strip-btns{display:flex;gap:12px;justify-content:center;position:relative}
     .btn-w{background:#fff;color:var(--pink);font-weight:600}.btn-w:hover{background:rgba(255,255,255,.9);transform:translateY(-1px)}
     .btn-wo{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}.btn-wo:hover{background:rgba(255,255,255,.1)}
-    @media(max-width:900px){.two-col,.stack-cats,.ref-cards{grid-template-columns:1fr}}
+
+    /* Dashboard Mockup */
+    .sw-mockup{background:var(--bg-2);border:1px solid var(--line-strong);border-radius:14px;overflow:hidden;box-shadow:0 32px 100px rgba(0,0,0,0.55),0 0 60px rgba(255,45,122,0.07)}
+    .sw-mockup-tb{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--bg-3);border-bottom:1px solid var(--line)}
+    .sw-dots{display:flex;gap:6px}
+    .sw-dot{width:10px;height:10px;border-radius:50%}
+    .sw-dr{background:#FF5F57}.sw-dy{background:#FFBD2E}.sw-dg{background:#27C840}
+    .sw-mockup-tit{font-family:var(--font-mono);font-size:11px;color:var(--fg-dim);letter-spacing:.05em}
+    .sw-mockup-bdg{display:flex;align-items:center;gap:5px;font-family:var(--font-mono);font-size:10px}
+    .sw-bdg-dot{width:6px;height:6px;border-radius:50%;background:var(--ok);animation:blink 2s ease-in-out infinite}
+    .sw-m-body{padding:20px}
+    .sw-m-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:16px}
+    .sw-m-stat{background:var(--bg-3);padding:14px}
+    .sw-m-stat-lbl{font-family:var(--font-mono);font-size:9px;color:var(--fg-dim);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+    .sw-m-stat-val{font-family:var(--font-display);font-size:20px;font-weight:800;letter-spacing:-.02em}
+    .sw-m-chart{margin-bottom:14px}
+    @keyframes sw-draw{from{stroke-dashoffset:600}to{stroke-dashoffset:0}}
+    .sw-chart-line{stroke-dasharray:600;stroke-dashoffset:600;animation:sw-draw 2s ease-out forwards;animation-delay:.5s}
+    .sw-m-th{display:grid;grid-template-columns:1fr 1fr 80px;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-family:var(--font-mono);font-size:9px;color:var(--fg-dim);letter-spacing:.05em;text-transform:uppercase}
+    .sw-m-row{display:grid;grid-template-columns:1fr 1fr 80px;gap:8px;padding:9px 0;border-bottom:1px solid var(--line);font-family:var(--font-mono);font-size:11px;color:var(--fg-muted);align-items:center}
+    .sw-m-row:last-child{border-bottom:none}
+    .sw-st{font-size:9px;padding:2px 6px;border-radius:3px;text-align:center}
+    .sw-st-ok{background:rgba(143,163,115,0.12);color:var(--ok)}
+    .sw-st-run{background:var(--pink-bg);color:var(--pink)}
+
+    /* Result Grid */
+    .sw-rg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:40px}
+    .sw-rc{background:var(--bg-2);padding:32px 24px}
+    .sw-rn{font-family:var(--font-display);font-size:clamp(36px,4vw,60px);font-weight:900;letter-spacing:-.04em;color:var(--pink);text-shadow:0 0 30px rgba(255,45,122,0.4);line-height:1;margin-bottom:8px}
+    .sw-rl{font-size:13px;color:var(--fg-muted)}
+
+    /* Architecture Diagram */
+    .sw-arch{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:32px;overflow:hidden;margin-top:40px}
+
+    @media(max-width:900px){
+      .page-hero{overflow:hidden}
+      .sw-hero-split{grid-template-columns:1fr;gap:40px}
+      .sw-hero-split>:last-child{margin-top:0}
+      .two-col,.stack-cats,.ref-cards{grid-template-columns:1fr}
+      .sw-rg{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:0;scrollbar-width:none}
+      .sw-rg::-webkit-scrollbar{display:none}
+      .sw-rc{scroll-snap-align:start;min-width:75vw;flex-shrink:0}
+      .sw-mockup{overflow:hidden;max-width:100%}
+      .sw-mockup-tb{flex-wrap:wrap;gap:8px;padding:10px 14px}
+      .sw-mockup-tit{font-size:10px}
+      .sw-mockup-bdg{font-size:9px}
+      .sw-m-body{padding:14px}
+      .sw-m-stat{padding:10px}
+      .sw-m-stat-val{font-size:16px}
+      .sw-m-th,.sw-m-row{font-size:10px}
+      .sw-arch{overflow-x:auto;max-width:100%}
+      .cta-strip h2{font-size:clamp(22px,6vw,36px)}
+      .cta-strip-btns{flex-direction:column;align-items:center}
+      .cta-strip-btns .btn{width:100%;text-align:center;justify-content:center}
+    }
+    @media(max-width:600px){
+      .page-hero{padding:calc(var(--nav-h) + 48px) 0 48px}
+      .sw-m-stats{grid-template-columns:1fr}
+      .sw-m-stat-val{font-size:18px}
+      .sw-m-chart svg{height:36px}
+      .sw-m-th,.sw-m-row{grid-template-columns:1fr 1fr 64px;gap:4px;font-size:9px}
+    }
   </style>
 </head>
 <body>
@@ -46,12 +118,43 @@
   <div class="hero-glow"></div>
   <div class="noise-overlay"></div>
   <div class="container">
-    <p class="t-label reveal">Leistung · 01</p>
-    <h1 class="t-h1 reveal reveal-d1" style="margin-top:8px;max-width:680px">Software&shy;entwicklung</h1>
-    <p class="t-body-lg c-muted reveal reveal-d2" style="max-width:560px;margin-top:20px">Custom-Software, SaaS-Plattformen, interne Tools, Backends und System-Integrationen. Kein Template, kein Baukastensystem — nur Code, der hält.</p>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px" class="reveal reveal-d3">
-      <a href="../kontakt.html" class="btn btn-primary btn-lg">Erstgespräch buchen</a>
-      <a href="../leistungen.html" class="btn btn-secondary">Alle Leistungen</a>
+    <div class="sw-hero-split">
+      <div>
+        <p class="t-label reveal">Leistung · 01</p>
+        <h1 class="t-h1 reveal reveal-d1" style="margin-top:8px;max-width:680px">Software&shy;entwicklung</h1>
+        <p class="t-body-lg c-muted reveal reveal-d2" style="max-width:560px;margin-top:20px">Custom-Software, SaaS-Plattformen, interne Tools, Backends und System-Integrationen. Kein Template, kein Baukastensystem — nur Code, der hält.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px" class="reveal reveal-d3">
+          <a href="../kontakt.html" class="btn btn-primary btn-lg">Erstgespräch buchen</a>
+          <a href="../leistungen.html" class="btn btn-secondary">Alle Leistungen</a>
+        </div>
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="sw-mockup">
+          <div class="sw-mockup-tb">
+            <div class="sw-dots"><div class="sw-dot sw-dr"></div><div class="sw-dot sw-dy"></div><div class="sw-dot sw-dg"></div></div>
+            <span class="sw-mockup-tit">nuroy/app — dashboard</span>
+            <div class="sw-mockup-bdg"><span class="sw-bdg-dot"></span><span style="color:var(--ok)">Live</span></div>
+          </div>
+          <div class="sw-m-body">
+            <div class="sw-m-stats">
+              <div class="sw-m-stat"><div class="sw-m-stat-lbl">Nutzer</div><div class="sw-m-stat-val">2.847</div></div>
+              <div class="sw-m-stat"><div class="sw-m-stat-lbl">API-Calls</div><div class="sw-m-stat-val">142k</div></div>
+              <div class="sw-m-stat"><div class="sw-m-stat-lbl">Uptime</div><div class="sw-m-stat-val" style="color:var(--ok)">99.9%</div></div>
+            </div>
+            <div class="sw-m-chart">
+              <svg width="100%" height="48" viewBox="0 0 500 48" preserveAspectRatio="none">
+                <defs><linearGradient id="swg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FF2D7A" stop-opacity="0.25"/><stop offset="100%" stop-color="#FF2D7A" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0,44 C40,40 70,34 110,30 C150,26 170,36 210,32 C250,28 270,18 310,14 C350,10 380,20 420,16 C450,13 470,6 500,4 L500,48 L0,48Z" fill="url(#swg)"/>
+                <path class="sw-chart-line" d="M0,44 C40,40 70,34 110,30 C150,26 170,36 210,32 C250,28 270,18 310,14 C350,10 380,20 420,16 C450,13 470,6 500,4" fill="none" stroke="#FF2D7A" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="sw-m-th"><span>Service</span><span>Latency</span><span>Status</span></div>
+            <div class="sw-m-row"><span>Auth-Service</span><span style="color:var(--fg-dim)">24ms</span><span class="sw-st sw-st-ok">healthy</span></div>
+            <div class="sw-m-row"><span>Payment-Gateway</span><span style="color:var(--fg-dim)">52ms</span><span class="sw-st sw-st-ok">healthy</span></div>
+            <div class="sw-m-row"><span>Notification-Worker</span><span style="color:var(--fg-dim)">—</span><span class="sw-st sw-st-run">deploying</span></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -71,6 +174,11 @@
         <div class="fi"><div class="fi-dot"></div><div><div class="fi-title">Backends &amp; Datenmodelle</div><div class="fi-desc">Skalierbare Datenbankarchitekturen, REST- und GraphQL-APIs, Queue-Systeme für asynchrone Prozesse.</div></div></div>
       </div>
     </div>
+    <div class="sw-rg reveal reveal-d3">
+      <div class="sw-rc"><div class="sw-rn">48+</div><div class="sw-rl">Projekte ausgeliefert</div></div>
+      <div class="sw-rc"><div class="sw-rn">99.9%</div><div class="sw-rl">Durchschnittliche Uptime</div></div>
+      <div class="sw-rc"><div class="sw-rn">&lt; 72h</div><div class="sw-rl">Bug-Fix-Reaktionszeit</div></div>
+    </div>
   </div>
   <div class="sb" style="background:var(--bg)">
     <div class="sl reveal">Tech-Stack</div>
@@ -79,6 +187,37 @@
       <div class="sc"><div class="sc-cat">Frontend</div><div class="sc-items"><div class="sc-item">Next.js 14 (App Router)</div><div class="sc-item">React 18</div><div class="sc-item">Remix</div><div class="sc-item">TypeScript</div><div class="sc-item">Tailwind CSS</div></div></div>
       <div class="sc"><div class="sc-cat">Backend &amp; DB</div><div class="sc-items"><div class="sc-item">Node.js / Fastify</div><div class="sc-item">PostgreSQL</div><div class="sc-item">Prisma ORM</div><div class="sc-item">Supabase</div><div class="sc-item">Redis</div></div></div>
       <div class="sc"><div class="sc-cat">Infrastruktur</div><div class="sc-items"><div class="sc-item">Vercel / Vercel Edge</div><div class="sc-item">Railway</div><div class="sc-item">Docker</div><div class="sc-item">GitHub Actions CI/CD</div><div class="sc-item">Sentry / Monitoring</div></div></div>
+    </div>
+    <div class="sw-arch reveal reveal-d3">
+      <div class="sl" style="margin-bottom:24px">Systemarchitektur</div>
+      <svg width="100%" viewBox="0 0 520 160" xmlns="http://www.w3.org/2000/svg" style="font-family:var(--font-mono);font-size:10px;">
+        <defs><marker id="swa" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#FF2D7A"/></marker></defs>
+        <!-- Frontend -->
+        <rect x="10" y="56" width="100" height="48" rx="6" fill="#1C1C22" stroke="rgba(245,242,236,0.12)" stroke-width="1"/>
+        <text x="60" y="76" fill="#F5F2EC" text-anchor="middle" font-size="10" font-weight="600">Frontend</text>
+        <text x="60" y="92" fill="#9A968C" text-anchor="middle" font-size="9">Next.js / React</text>
+        <!-- API Layer -->
+        <rect x="170" y="56" width="100" height="48" rx="6" fill="#1C1C22" stroke="#FF2D7A" stroke-width="1" stroke-opacity="0.4"/>
+        <text x="220" y="76" fill="#F5F2EC" text-anchor="middle" font-size="10" font-weight="600">API Layer</text>
+        <text x="220" y="92" fill="#9A968C" text-anchor="middle" font-size="9">Node / Fastify</text>
+        <!-- Database -->
+        <rect x="330" y="56" width="100" height="48" rx="6" fill="#1C1C22" stroke="rgba(245,242,236,0.12)" stroke-width="1"/>
+        <text x="380" y="76" fill="#F5F2EC" text-anchor="middle" font-size="10" font-weight="600">Database</text>
+        <text x="380" y="92" fill="#9A968C" text-anchor="middle" font-size="9">PostgreSQL</text>
+        <!-- External: Stripe/CRM -->
+        <rect x="420" y="8" width="90" height="36" rx="5" fill="#1C1C22" stroke="rgba(245,242,236,0.1)" stroke-width="1"/>
+        <text x="465" y="26" fill="#9A968C" text-anchor="middle" font-size="9">Stripe / CRM</text>
+        <text x="465" y="38" fill="#5E5A52" text-anchor="middle" font-size="8">External APIs</text>
+        <!-- External: Queue/Redis -->
+        <rect x="420" y="116" width="90" height="36" rx="5" fill="#1C1C22" stroke="rgba(245,242,236,0.1)" stroke-width="1"/>
+        <text x="465" y="134" fill="#9A968C" text-anchor="middle" font-size="9">Queue / Redis</text>
+        <text x="465" y="146" fill="#5E5A52" text-anchor="middle" font-size="8">Async Jobs</text>
+        <!-- Arrows -->
+        <line x1="110" y1="80" x2="168" y2="80" stroke="#FF2D7A" stroke-width="1.2" marker-end="url(#swa)"/>
+        <line x1="270" y1="80" x2="328" y2="80" stroke="#FF2D7A" stroke-width="1.2" marker-end="url(#swa)"/>
+        <line x1="380" y1="56" x2="420" y2="38" stroke="#FF2D7A" stroke-width="1" stroke-opacity="0.6" marker-end="url(#swa)"/>
+        <line x1="380" y1="104" x2="420" y2="122" stroke="#FF2D7A" stroke-width="1" stroke-opacity="0.6" marker-end="url(#swa)"/>
+      </svg>
     </div>
   </div>
   <div class="sb">
