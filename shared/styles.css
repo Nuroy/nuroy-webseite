@@ -216,21 +216,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: 0 var(--pad-x);
 }
 .nav-logo {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: 20px;
-  letter-spacing: -0.03em;
-  color: var(--fg);
   display: flex;
   align-items: center;
-  gap: 8px;
 }
-.nav-logo-mark {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--pink);
-  box-shadow: 0 0 12px var(--pink-glow-lg);
-  flex-shrink: 0;
+.nav-logo-img {
+  height: 30px;
+  width: auto;
 }
 .nav-links {
   display: flex;
@@ -349,14 +340,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .footer-brand {}
 .footer-logo {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: 18px;
-  letter-spacing: -0.02em;
   display: flex;
   align-items: center;
-  gap: 8px;
   margin-bottom: 16px;
+}
+.footer-logo .nav-logo-img {
+  height: 26px;
+  width: auto;
 }
 .footer-tagline {
   font-size: 13px;

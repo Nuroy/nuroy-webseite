@@ -25,8 +25,7 @@
 <nav class="site-nav" id="site-nav">
   <div class="nav-inner">
     <a href="${b}index.html" class="nav-logo">
-      <span class="nav-logo-mark"></span>
-      nuroy
+      <img src="${b}assets/logo-full.png" alt="Nuroy" class="nav-logo-img">
     </a>
     <ul class="nav-links" id="nav-links">
       <li><div class="nav-link-wrap"><span class="nav-link-num">01</span><a href="${b}projekte.html" data-text="Arbeiten">Arbeiten</a></div></li>
@@ -87,8 +86,7 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <a href="${b}index.html" class="footer-logo">
-        <span class="nav-logo-mark"></span>
-        nuroy
+        <img src="${b}assets/logo-full.png" alt="Nuroy" class="nav-logo-img">
       </a>
       <p class="footer-tagline">Die Technik-Abteilung für Unternehmen, die bauen wollen, statt zu verwalten.</p>
       <p class="t-mono c-dim">Paphos, Zypern — Remote-First DACH</p>
