@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KI-Agenten | Nuroy</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="KI-Agenten — Nuroy">
+  <meta property="og:description" content="Intelligente KI-Agenten für Lead-Qualifizierung, Support, Sales und Automatisierung. Nuroy baut KI-Agents, die 24/7 arbeiten.">
+  <meta property="og:image" content="https://nuroy.de/og-image.png">
+  <meta property="og:url" content="https://nuroy.de/leistungen/ki-agenten">
+  <link rel="stylesheet" href="../shared/styles.min.css?v=1776884200265">
+  <!-- Funnel Styles (for Testimonials & Problem Section) -->
+  <link rel="stylesheet" href="../funnel/funnel-styles.min.css?v=3.9">
+  <!-- Service-specific enhanced styles -->
+  <link rel="stylesheet" href="../services/services-styles.css">
+  <link rel="stylesheet" href="../services/services-kpi-styles.css">
+  <!-- Lite YouTube Embed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js" defer></script>
+</head>
+<body>
+
+<!-- Cursor Glow -->
+<div id="cursor-glow" class="cursor-glow"></div>
+
+<!-- Nav (injected) -->
+<div id="nav-mount"></div>
+
+<!-- A. Enhanced Hero Section with MacBook Mockup -->
+<section class="service-hero-enhanced">
+  <div class="hero-content-split">
+    <div class="hero-text">
+      <p class="t-label c-pink reveal">LEISTUNG 02/07</p>
+      <h1 class="service-hero-headline reveal reveal-d1">KI-Agenten</h1>
+      <p class="service-hero-subline reveal reveal-d2">Intelligente Automatisierung. 24/7 verfügbar. Endlich skalierbar.</p>
+    </div>
+
+    <div class="service-vsl-wrapper reveal reveal-d2">
+      <div class="service-vsl-topbar">
+        <div class="vsl-topbar-dots">
+          <div class="vsl-topbar-dot red"></div>
+          <div class="vsl-topbar-dot yellow"></div>
+          <div class="vsl-topbar-dot green"></div>
+        </div>
+      </div>
+      <object id="mockup-image" type="image/svg+xml" data="../assets/services/ki-agenten/mockup-lead-qualification.svg" aria-label="KI-Agent Mockup" style="width: 100%; height: auto; display: block;">
+        <img src="../assets/services/ki-agenten/mockup-lead-qualification.svg" alt="KI-Agent Mockup">
+      </object>
+    </div>
+  </div>
+
+  <div class="hero-ctas reveal reveal-d3">
+    <a href="../kontakt.html" class="btn btn-pink-glass">Erstgespräch</a>
+    <a href="../leistungen.html" class="btn btn-glass-secondary">Alle Leistungen</a>
+  </div>
+</section>
+
+<!-- Social Proof Section (moved up after hero) -->
+<section class="social-proof-section section--sm" id="testimonials-section">
+  <div class="container">
+    <!-- Stat-Bar over Logos -->
+    <div class="social-proof-stat reveal">
+      <span class="stat-number">12+</span>
+      <span class="stat-label">erfolgreiche Projekte</span>
+      <span class="stat-divider">·</span>
+      <span class="stat-number">99.9%</span>
+      <span class="stat-label">Uptime</span>
+    </div>
+
+    <!-- Logo Row - Animated Carousel -->
+    <p class="t-small c-dim text-center mt-6 mb-3 reveal reveal-d1">Vertrauen von:</p>
+    <div class="client-logos-carousel reveal reveal-d2">
+      <div class="client-logos-track">
+        <!-- Set 1 -->
+        <img src="../assets/clients/sniffys.png" alt="Sniffys" class="client-logo-img">
+        <img src="../assets/clients/followaustria.webp" alt="Follow Austria" class="client-logo-img">
+        <img src="../assets/clients/nomo.png" alt="Nomo" class="client-logo-img">
+        <span class="client-logo-text">Skalieren zur Million</span>
+
+        <!-- Set 2 (duplicate for infinite scroll) -->
+        <img src="../assets/clients/sniffys.png" alt="Sniffys" class="client-logo-img">
+        <img src="../assets/clients/followaustria.webp" alt="Follow Austria" class="client-logo-img">
+        <img src="../assets/clients/nomo.png" alt="Nomo" class="client-logo-img">
+        <span class="client-logo-text">Skalieren zur Million</span>
+
+        <!-- Set 3 (duplicate for infinite scroll) -->
+        <img src="../assets/clients/sniffys.png" alt="Sniffys" class="client-logo-img">
+        <img src="../assets/clients/followaustria.webp" alt="Follow Austria" class="client-logo-img">
+        <img src="../assets/clients/nomo.png" alt="Nomo" class="client-logo-img">
+        <span class="client-logo-text">Skalieren zur Million</span>
+      </div>
+    </div>
+
+    <!-- Video Testimonials -->
+    <h2 class="funnel-section-headline text-center mt-8" style="color: #FF2D7A;">Was Kunden über uns sagen.</h2>
+
+    <div class="funnel-testimonials-grid" id="testimonials-grid">
+      <!-- Sniffys -->
+      <div class="funnel-testimonial-card" data-video-id="UvMFGmVZ9U8">
+        <div class="funnel-testimonial-video">
+          <lite-youtube videoid="UvMFGmVZ9U8"></lite-youtube>
+        </div>
+      </div>
+
+      <!-- Nomo (Valentin) - IN DER MITTE -->
+      <div class="funnel-testimonial-card" data-video-id="_GIMhcR781Y">
+        <div class="funnel-testimonial-video">
+          <lite-youtube videoid="_GIMhcR781Y"></lite-youtube>
+        </div>
+      </div>
+
+      <!-- Follow Austria -->
+      <div class="funnel-testimonial-card" data-video-id="YP-pHyQrUSs">
+        <div class="funnel-testimonial-video">
+          <lite-youtube videoid="YP-pHyQrUSs"></lite-youtube>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Problem Section -->
+<section class="funnel-section funnel-problem" id="problem">
+  <div class="container">
+    <h2 class="funnel-section-headline">Wenn das bekannt vorkommt …</h2>
+
+    <div class="funnel-problem-cards" id="problem-cards">
+      <div class="funnel-problem-card">
+        <svg class="funnel-problem-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+        </svg>
+        <h3>Repetitive Anfragen</h3>
+        <p>Support antwortet immer dasselbe</p>
+      </div>
+
+      <div class="funnel-problem-card">
+        <svg class="funnel-problem-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        <h3>24/7 nicht machbar</h3>
+        <p>Außerhalb der Bürozeiten keine Antworten</p>
+      </div>
+
+      <div class="funnel-problem-card">
+        <svg class="funnel-problem-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+        </svg>
+        <h3>Lead-Qualifizierung manuell</h3>
+        <p>Sales verschwendet Zeit mit unqualifizierten Leads</p>
+      </div>
+    </div>
+
+    <p class="funnel-problem-closing">… dann sind Sie nicht allein. Und Sie sind genau richtig hier.</p>
+  </div>
+</section>
+
+<!-- B. KI-Agent Showcase - Was sind KI-Agenten -->
+<section class="section dashboard-showcase">
+  <div class="container" style="max-width: 1000px;">
+    <h2 class="t-h2 reveal text-center">Was sind KI-Agenten?</h2>
+    <p class="t-body-lg reveal reveal-d1 text-center" style="max-width: 700px; margin: 16px auto 48px; color: var(--fg-muted);">
+      KI-Agenten übernehmen repetitive Aufgaben, qualifizieren Leads, beantworten Support-Anfragen und analysieren Daten – automatisch und intelligent.
+    </p>
+
+    <!-- Animated Accordion -->
+    <div class="dashboard-accordion reveal reveal-d2" id="dashboard-accordion">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- Solution Section with Wave Animation -->
+<section class="funnel-section funnel-solution" id="solution">
+  <!-- Wave Animation Background -->
+  <div id="waves-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000000; --x: -0.5rem; --y: 50%;"></div>
+
+  <!-- Content über der Animation -->
+  <div class="container" style="position: relative; z-index: 10;">
+    <div class="solution-layout">
+      <!-- LEFT: Benefit Cards Stack -->
+      <div class="dashboard-cards-stack" id="benefit-cards-stack">
+        <!-- Populated by populate-service.min.js from data.benefitCards -->
+      </div>
+
+      <!-- RIGHT: ROI Content -->
+      <div class="solution-main-content">
+        <h2 class="funnel-section-headline" id="roi-headline">Der ROI Ihrer KI-Agenten.</h2>
+        <p class="funnel-solution-subline" id="roi-subline">Weniger Support-Anfragen an Ihr Team. Mehr qualifizierte Leads.</p>
+        <div class="funnel-solution-cta">
+          <a href="../kontakt.html" class="btn btn-pink-glass">Erstgespräch buchen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Dashboard Flow Section (KI-Agent Version) -->
+<section class="funnel-section dashboard-flow-section" id="architecture">
+  <div class="container">
+    <h2 class="funnel-section-headline">Alle Ihre Systeme.<br>Direkt verbunden.</h2>
+    <p class="funnel-solution-subline">Ihre Tools, APIs und Datenquellen fließen in Echtzeit zum KI-Agenten</p>
+
+    <div class="dashboard-flow-card">
+      <svg class="dashboard-flow-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+
+        <!-- ============ 6 BASE LINES (dim, always visible) ============ -->
+        <line x1="800" y1="450" x2="260"  y2="200" class="line-base" />
+        <line x1="800" y1="450" x2="1340" y2="200" class="line-base" />
+        <line x1="800" y1="450" x2="1480" y2="450" class="line-base" />
+        <line x1="800" y1="450" x2="1340" y2="700" class="line-base" />
+        <line x1="800" y1="450" x2="260"  y2="700" class="line-base" />
+        <line x1="800" y1="450" x2="120"  y2="450" class="line-base" />
+
+        <!-- ============ OUTBOUND PULSES (center → agent) ============ -->
+        <line x1="800" y1="450" x2="260"  y2="200" class="pulse p1" />
+        <line x1="800" y1="450" x2="1340" y2="200" class="pulse p2" />
+        <line x1="800" y1="450" x2="1480" y2="450" class="pulse p3" />
+        <line x1="800" y1="450" x2="1340" y2="700" class="pulse p4" />
+        <line x1="800" y1="450" x2="260"  y2="700" class="pulse p5" />
+        <line x1="800" y1="450" x2="120"  y2="450" class="pulse p6" />
+
+        <!-- ============ INBOUND PULSES (agent → center) ============ -->
+        <line x1="260"  y1="200" x2="800" y2="450" class="pulse p7"  />
+        <line x1="1340" y1="200" x2="800" y2="450" class="pulse p8"  />
+        <line x1="1480" y1="450" x2="800" y2="450" class="pulse p9"  />
+        <line x1="1340" y1="700" x2="800" y2="450" class="pulse p10" />
+        <line x1="260"  y1="700" x2="800" y2="450" class="pulse p11" />
+        <line x1="120"  y1="450" x2="800" y2="450" class="pulse p12" />
+
+        <!-- ============ AGENT NODES + RADAR PINGS ============ -->
+        <g>
+          <circle cx="260" cy="200" r="14" class="agent-outline" />
+          <circle cx="260" cy="200" r="5"  class="agent-core" />
+          <circle cx="260" cy="200" r="14" fill="none" stroke="#ff2d87" stroke-width="1.5">
+            <animate attributeName="r" values="14;44" dur="3.2s" repeatCount="indefinite" begin="0s" />
+            <animate attributeName="opacity" values="0.7;0" dur="3.2s" repeatCount="indefinite" begin="0s" />
+          </circle>
+        </g>
+
+        <g>
+          <circle cx="1340" cy="200" r="14" class="agent-outline" />
+          <circle cx="1340" cy="200" r="5"  class="agent-core" />
+          <circle cx="1340" cy="200" r="14" fill="none" stroke="#ff2d87" stroke-width="1.5">
+            <animate attributeName="r" values="14;44" dur="3.6s" repeatCount="indefinite" begin="0.8s" />
+            <animate attributeName="opacity" values="0.7;0" dur="3.6s" repeatCount="indefinite" begin="0.8s" />
+          </circle>
+        </g>
+
+        <g>
+          <circle cx="1480" cy="450" r="14" class="agent-outline" />
+          <circle cx="1480" cy="450" r="5"  class="agent-core" />
+          <circle cx="1480" cy="450" r="14" fill="none" stroke="#ff2d87" stroke-width="1.5">
+            <animate attributeName="r" values="14;44" dur="2.8s" repeatCount="indefinite" begin="1.4s" />
+            <animate attributeName="opacity" values="0.7;0" dur="2.8s" repeatCount="indefinite" begin="1.4s" />
+          </circle>
+        </g>
+
+        <g>
+          <circle cx="1340" cy="700" r="14" class="agent-outline" />
+          <circle cx="1340" cy="700" r="5"  class="agent-core" />
+          <circle cx="1340" cy="700" r="14" fill="none" stroke="#ff2d87" stroke-width="1.5">
+            <animate attributeName="r" values="14;44" dur="3.4s" repeatCount="indefinite" begin="0.4s" />
+            <animate attributeName="opacity" values="0.7;0" dur="3.4s" repeatCount="indefinite" begin="0.4s" />
+          </circle>
+        </g>
+
+        <g>
+          <circle cx="260" cy="700" r="14" class="agent-outline" />
+          <circle cx="260" cy="700" r="5"  class="agent-core" />
+          <circle cx="260" cy="700" r="14" fill="none" stroke="#ff2d87" stroke-width="1.5">
+            <animate attributeName="r" values="14;44" dur="3.0s" repeatCount="indefinite" begin="2.0s" />
+            <animate attributeName="opacity" values="0.7;0" dur="3.0s" repeatCount="indefinite" begin="2.0s" />
+          </circle>
+        </g>
+
+        <g>
+          <circle cx="120" cy="450" r="14" class="agent-outline" />
+          <circle cx="120" cy="450" r="5"  class="agent-core" />
+          <circle cx="120" cy="450" r="14" fill="none" stroke="#ff2d87" stroke-width="1.5">
+            <animate attributeName="r" values="14;44" dur="3.3s" repeatCount="indefinite" begin="1.1s" />
+            <animate attributeName="opacity" values="0.7;0" dur="3.3s" repeatCount="indefinite" begin="1.1s" />
+          </circle>
+        </g>
+
+      </svg>
+
+      <div class="dashboard-flow-label">KI Agenten</div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Checklist -->
+<section class="funnel-section funnel-features" id="features">
+  <div class="container">
+    <h2 class="funnel-section-headline">Was Ihre KI-Agenten können.</h2>
+    <ul class="funnel-features-list" id="features-list">
+      <!-- Populated by populate-service.min.js from data.features -->
+    </ul>
+  </div>
+</section>
+
+<!-- C. Für wen - Enhanced Single Column -->
+<section class="section fuer-wen-enhanced">
+  <div class="container" style="max-width: 1100px;">
+    <div class="fuer-wen-header">
+      <h2 class="fuer-wen-title reveal">Für wen ist das?</h2>
+      <p class="fuer-wen-subtitle reveal reveal-d1">
+        KI-Agenten lohnen sich, wenn ihr repetitive Aufgaben habt<br class="hide-mobile"> und euer Team entlasten wollt.
+      </p>
+    </div>
+    <div class="fuer-wen-cards reveal reveal-d2" id="match-yes-enhanced">
+      <!-- Populated by JS - Enhanced cards -->
+    </div>
+  </div>
+</section>
+
+<!-- D. Unser Prozess - Orbital Timeline -->
+<section class="section funnel-process">
+  <div class="container">
+    <h2 class="funnel-section-headline">Fünf Schritte. 4-8 Wochen. Fertig.</h2>
+
+    <!-- Orbital Timeline Visualization -->
+    <div class="orbital-timeline-container" id="orbitalTimeline">
+      <div class="orbital-viewport">
+        <div class="orbital-center">
+          <div class="orbital-center-pulse"></div>
+          <div class="orbital-center-pulse" style="animation-delay: 0.5s;"></div>
+          <div class="orbital-center-core"></div>
+        </div>
+        <div class="orbital-track"></div>
+        <div class="orbital-nodes" id="orbitalNodes"></div>
+      </div>
+    </div>
+
+    <div class="funnel-process-steps">
+      <div class="funnel-process-step">
+        <div class="funnel-process-num">01</div>
+        <h3>STRATEGIE & ANALYSE</h3>
+        <div class="desc">1-2 Wochen Discovery</div>
+        <div class="details">Wir analysieren Ihre Anforderungen, Ziele und bestehende Systeme. Gemeinsam definieren wir die perfekte Lösung.</div>
+      </div>
+
+      <div class="funnel-process-connector"></div>
+
+      <div class="funnel-process-step">
+        <div class="funnel-process-num">02</div>
+        <h3>DESIGN & KONZEPT</h3>
+        <div class="desc">1 Woche Design & Planung</div>
+        <div class="details">Wir erstellen Wireframes, Mockups und technische Konzepte. Sie sehen genau, was Sie bekommen.</div>
+      </div>
+
+      <div class="funnel-process-connector"></div>
+
+      <div class="funnel-process-step">
+        <div class="funnel-process-num">03</div>
+        <h3>ENTWICKLUNG & INTEGRATION</h3>
+        <div class="desc">3-5 Wochen Entwicklung</div>
+        <div class="details">Agile Entwicklung mit regelmäßigen Updates. Integration in Ihre bestehenden Systeme.</div>
+      </div>
+
+      <div class="funnel-process-connector"></div>
+
+      <div class="funnel-process-step">
+        <div class="funnel-process-num">04</div>
+        <h3>TESTING & OPTIMIERUNG</h3>
+        <div class="desc">1 Woche Testing & Launch</div>
+        <div class="details">Umfangreiche Tests, Performance-Optimierung und Feinschliff für beste Qualität.</div>
+      </div>
+
+      <div class="funnel-process-connector"></div>
+
+      <div class="funnel-process-step">
+        <div class="funnel-process-num">05</div>
+        <h3>LAUNCH & SUPPORT</h3>
+        <div class="desc">Hosting & Wartung</div>
+        <div class="details">Erfolgreicher Go-Live mit Training Ihres Teams. Danach: Kontinuierlicher Support und Wartung.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- F. FAQ -->
+<section class="section faq">
+  <div class="container">
+    <h2 class="t-h2 reveal">Häufige Fragen</h2>
+    <div class="faq-list reveal reveal-d1" id="faq-container">
+      <!-- FAQ items populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- H. Final CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2 class="t-display">Bereit, das zu bauen?</h2>
+    <p class="t-body-lg" style="margin-top: 16px;">30 Minuten Erstgespräch. Kostenlos. Konkret.</p>
+    <div class="flex gap-4 justify-center mt-6" style="display: flex; gap: 16px; justify-content: center; margin-top: 32px;">
+      <a href="../kontakt.html" class="btn btn-pink-glass btn-lg">Erstgespräch</a>
+      <a href="../projekte.html" class="btn btn-glass-secondary">Referenzen</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer (injected) -->
+<div id="footer-mount"></div>
+
+<!-- Load centralized service data first -->
+<script src="../shared/data-services.min.js"></script>
+
+<!-- Testimonial Video Modal -->
+<div id="testimonial-modal" class="testimonial-modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="testimonial-modal-backdrop" aria-label="Close modal"></div>
+  <div class="testimonial-modal-content">
+    <button class="testimonial-modal-close" aria-label="Close modal">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+    <div class="testimonial-modal-video" id="testimonial-modal-video">
+      <!-- Video wird hier dynamisch injected -->
+    </div>
+  </div>
+</div>
+
+<!-- Content Data Object -->
+<script>
+// Load service content from centralized data file
+window.SERVICE_DATA = window.SERVICE_CONTENT?.['ki-agenten'] || {};
+</script>
+<script src="../shared/icons.js"></script>
+<script src="../shared/data-global.js"></script>
+<script src="../shared/populate-service.min.js"></script>
+<script src="../shared/components.min.js"></script>
+<!-- Funnel Scripts (for Testimonial Modal) -->
+<script src="../funnel/funnel-scripts.min.js" defer></script>
+<!-- Service-specific interactions -->
+<script src="../services/service-interactions.js"></script>
+<!-- Orbital Timeline -->
+<script src="../services/orbital-timeline.js"></script>
+<!-- Wave Animation -->
+<script src="../funnel/waves-animation.js"></script>
+
+</body>
+</html>

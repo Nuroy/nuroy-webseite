@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG Loading Test</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #0a0a0a;
+      color: #fff;
+    }
+    h1 { color: #FF2D7A; }
+    .test-group {
+      margin: 40px 0;
+      padding: 20px;
+      border: 1px solid #333;
+      border-radius: 8px;
+    }
+    .test-group h2 {
+      color: #00E5FF;
+      margin-top: 0;
+    }
+    img {
+      display: block;
+      max-width: 100%;
+      margin: 20px 0;
+      border: 1px solid #444;
+      background: #fff;
+    }
+    .status {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    .status.success { background: rgba(0, 255, 0, 0.1); color: #0f0; }
+    .status.error { background: rgba(255, 0, 0, 0.1); color: #f00; }
+    .status.info { background: rgba(0, 229, 255, 0.1); color: #00E5FF; }
+  </style>
+</head>
+<body>
+  <h1>SVG Loading Test - Strategy & Audit</h1>
+
+  <div class="test-group">
+    <h2>Test 1: Hero Mockup (Direct Path)</h2>
+    <div id="test1-status" class="status info">Loading...</div>
+    <img id="test1-img" src="assets/services/strategy-audit/mockup-maturity.svg" alt="Test 1">
+  </div>
+
+  <div class="test-group">
+    <h2>Test 2: Hero Mockup (With Cache Buster)</h2>
+    <div id="test2-status" class="status info">Loading...</div>
+    <img id="test2-img" src="assets/services/strategy-audit/mockup-maturity.svg?v=2" alt="Test 2">
+  </div>
+
+  <div class="test-group">
+    <h2>Test 3: Accordion Capability SVG</h2>
+    <div id="test3-status" class="status info">Loading...</div>
+    <img id="test3-img" src="assets/services/strategy-audit/capability-maturity.svg?v=2" alt="Test 3">
+  </div>
+
+  <div class="test-group">
+    <h2>Test 4: All Capability SVGs</h2>
+    <div id="test4-status" class="status info">Loading...</div>
+    <img src="assets/services/strategy-audit/capability-data-strategy.svg?v=2" alt="Data Strategy">
+    <img src="assets/services/strategy-audit/capability-ai-readiness.svg?v=2" alt="AI Readiness">
+    <img src="assets/services/strategy-audit/capability-process.svg?v=2" alt="Process">
+    <img src="assets/services/strategy-audit/capability-tech-stack.svg?v=2" alt="Tech Stack">
+  </div>
+
+  <div class="test-group">
+    <h2>Console Logs</h2>
+    <div id="console-output" style="font-family: monospace; font-size: 12px; color: #0f0;"></div>
+  </div>
+
+  <script>
+    // Override console.log to display in page
+    const consoleDiv = document.getElementById('console-output');
+    const originalLog = console.log;
+    console.log = function(...args) {
+      originalLog.apply(console, args);
+      const line = document.createElement('div');
+      line.textContent = args.join(' ');
+      consoleDiv.appendChild(line);
+    };
+
+    // Test each image
+    function testImage(imgId, statusId) {
+      const img = document.getElementById(imgId);
+      const status = document.getElementById(statusId);
+
+      img.addEventListener('load', () => {
+        status.className = 'status success';
+        status.textContent = `✓ Loaded successfully (${img.naturalWidth}x${img.naturalHeight})`;
+        console.log(`${imgId}: SUCCESS - ${img.src}`);
+      });
+
+      img.addEventListener('error', (e) => {
+        status.className = 'status error';
+        status.textContent = `✗ Failed to load`;
+        console.error(`${imgId}: FAILED - ${img.src}`, e);
+      });
+
+      console.log(`Testing ${imgId}: ${img.src}`);
+    }
+
+    // Run tests
+    testImage('test1-img', 'test1-status');
+    testImage('test2-img', 'test2-status');
+    testImage('test3-img', 'test3-status');
+
+    // Check if all files exist
+    console.log('=== SVG File Test ===');
+    console.log('Expected files:');
+    console.log('- mockup-maturity.svg');
+    console.log('- capability-maturity.svg');
+    console.log('- capability-data-strategy.svg');
+    console.log('- capability-ai-readiness.svg');
+    console.log('- capability-process.svg');
+    console.log('- capability-tech-stack.svg');
+  </script>
+</body>
+</html>

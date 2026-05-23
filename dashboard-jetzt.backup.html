@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard-Lösung für Unternehmen | Nuroy</title>
+
+  <!-- SEO: NOINDEX (Funnel-Seite nur über Ads) -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+
+  <!-- Meta Description -->
+  <meta name="description" content="Custom Dashboards für Unternehmen ab 10 Mitarbeitern. Alle Tools, eine Oberfläche. Discovery-Call buchen.">
+
+  <!-- OG Tags (für Social-Sharing aus Ads) -->
+  <meta property="og:title" content="Custom Dashboard — Alle Tools, ein System">
+  <meta property="og:description" content="3-Minuten-Video ansehen & Discovery-Call buchen.">
+  <meta property="og:image" content="https://nuroy.de/assets/funnel-og-image.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nuroy.de/dashboard-jetzt.html">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <!-- Fonts: Unbounded (Display), Geist (Body), JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Shared Design System (nur Basics) -->
+  <link rel="stylesheet" href="shared/styles.css">
+
+  <!-- Funnel-Specific Styles -->
+  <link rel="stylesheet" href="funnel/funnel-styles.css?v=3.9">
+
+  <!-- Service Styles (for Accordion) -->
+  <link rel="stylesheet" href="services/services-styles.css?v=1.1">
+
+  <!-- Lite YouTube Embed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">
+
+  <!-- Tracking: Meta Pixel (PLACEHOLDER) -->
+  <script>
+    // Meta Pixel Code
+    /*
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'PLACEHOLDER_PIXEL_ID'); // User füllt aus
+    fbq('track', 'PageView');
+    */
+  </script>
+  <noscript>
+    <!-- <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=PLACEHOLDER_PIXEL_ID&ev=PageView&noscript=1" /> -->
+  </noscript>
+
+  <!-- Google Tag Manager (PLACEHOLDER) -->
+  <script>
+    /*
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtag/js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','PLACEHOLDER_GTM_ID');
+    */
+  </script>
+</head>
+
+<body class="funnel-page">
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- Animated Background Paths (Fixed) - TEST VERSION -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="background-paths">
+  <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <!-- TEST: Einfache sichtbare Linien im Viewport -->
+    <line x1="0" y1="0" x2="1920" y2="1080" stroke="#FF2D7A" stroke-width="10"/>
+    <line x1="1920" y1="0" x2="0" y2="1080" stroke="#FF2D7A" stroke-width="10"/>
+    <line x1="960" y1="0" x2="960" y2="1080" stroke="#FF2D7A" stroke-width="10"/>
+    <line x1="0" y1="540" x2="1920" y2="540" stroke="#FF2D7A" stroke-width="10"/>
+
+    <!-- Geschwungene Pfade -->
+    <path d="M 0 540 Q 480 200, 960 540 T 1920 540"
+          stroke="#FF2D7A"
+          stroke-width="8"
+          fill="none"
+          stroke-dasharray="2000"
+          style="animation: pathFloat1 25s ease-in-out infinite;">
+    </path>
+    <path d="M 0 400 Q 480 600, 960 400 T 1920 400"
+          stroke="#FF2D7A"
+          stroke-width="8"
+          fill="none"
+          stroke-dasharray="2000"
+          style="animation: pathFloat2 28s ease-in-out infinite 2s;">
+    </path>
+    <path d="M 0 680 Q 480 400, 960 680 T 1920 680"
+          stroke="#FF2D7A"
+          stroke-width="8"
+          fill="none"
+          stroke-dasharray="2000"
+          style="animation: pathFloat3 22s ease-in-out infinite 4s;">
+    </path>
+  </svg>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- Minimal Header -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<header class="funnel-header">
+  <div class="container">
+    <img src="assets/logo-full.png" alt="Nuroy" class="funnel-logo">
+    <a href="#booking" class="btn btn-primary">Call buchen</a>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 1. Hero Section mit VSL -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="funnel-hero" id="hero">
+  <!-- Teil 1: Text-Content im Container (1100px) -->
+  <div class="funnel-hero-content">
+    <h1 class="funnel-hero-headline" id="hero-headline">Alle Ihre Daten.<br>An einem Ort.<br>Im Überblick.</h1>
+  </div>
+
+  <!-- Teil 2: Video außerhalb Container (85vw) -->
+  <div class="funnel-vsl-wrapper">
+    <!-- macOS Topbar -->
+    <div class="funnel-vsl-topbar">
+      <div class="funnel-vsl-dots">
+        <div class="funnel-vsl-dot red"></div>
+        <div class="funnel-vsl-dot yellow"></div>
+        <div class="funnel-vsl-dot green"></div>
+      </div>
+    </div>
+
+    <!-- Video -->
+    <!-- Platzhalter: User fügt Video-ID später ein -->
+    <!-- <lite-youtube videoid="PLACEHOLDER_VIMEO_ID" params="rel=0"></lite-youtube> -->
+    <div style="aspect-ratio: 16/9; background: #000; display: flex; align-items: center; justify-content: center; color: #666; font-size: 14px;">
+      [VSL-Video hier einfügen: lite-youtube mit Video-ID]
+    </div>
+  </div>
+
+  <!-- Teil 3: CTAs zurück im Container (1100px) -->
+  <div class="funnel-hero-content">
+    <div class="funnel-ctas">
+      <a href="#booking" class="btn btn-primary">Discovery-Call buchen</a>
+      <a href="#solution" class="btn btn-secondary">Wie das aussieht ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 2. Trust Bar -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="funnel-trust-bar" id="trust">
+  <div class="funnel-trust-text">Vertrauen von Unternehmen wie:</div>
+
+  <div class="funnel-trust-carousel">
+    <div class="funnel-trust-track">
+      <!-- Set 1 -->
+      <img src="assets/clients/sniffys.png" alt="Sniffys">
+      <img src="assets/clients/nomo.png" alt="Nomo">
+      <img src="assets/clients/followaustria.webp" alt="Follow Austria">
+
+      <!-- Set 2 -->
+      <img src="assets/clients/sniffys.png" alt="Sniffys">
+      <img src="assets/clients/nomo.png" alt="Nomo">
+      <img src="assets/clients/followaustria.webp" alt="Follow Austria">
+
+      <!-- Set 3 -->
+      <img src="assets/clients/sniffys.png" alt="Sniffys">
+      <img src="assets/clients/nomo.png" alt="Nomo">
+      <img src="assets/clients/followaustria.webp" alt="Follow Austria">
+
+      <!-- Set 4 -->
+      <img src="assets/clients/sniffys.png" alt="Sniffys">
+      <img src="assets/clients/nomo.png" alt="Nomo">
+      <img src="assets/clients/followaustria.webp" alt="Follow Austria">
+
+      <!-- Set 5 -->
+      <img src="assets/clients/sniffys.png" alt="Sniffys">
+      <img src="assets/clients/nomo.png" alt="Nomo">
+      <img src="assets/clients/followaustria.webp" alt="Follow Austria">
+
+      <!-- Set 6 (for extra smooth loop) -->
+      <img src="assets/clients/sniffys.png" alt="Sniffys">
+      <img src="assets/clients/nomo.png" alt="Nomo">
+      <img src="assets/clients/followaustria.webp" alt="Follow Austria">
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 3. Testimonials -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="funnel-section funnel-testimonials" id="testimonials">
+  <div class="container">
+    <h2 class="funnel-section-headline">Was Kunden über uns sagen.</h2>
+
+    <div class="funnel-testimonials-grid" id="testimonials-grid">
+      <!-- Sniffys -->
+      <div class="funnel-testimonial-card" data-video-id="UvMFGmVZ9U8">
+        <div class="funnel-testimonial-video">
+          <lite-youtube videoid="UvMFGmVZ9U8"></lite-youtube>
+        </div>
+      </div>
+
+      <!-- Nomo (Valentin) - IN DER MITTE -->
+      <div class="funnel-testimonial-card" data-video-id="_GIMhcR781Y">
+        <div class="funnel-testimonial-video">
+          <lite-youtube videoid="_GIMhcR781Y"></lite-youtube>
+        </div>
+      </div>
+
+      <!-- Follow Austria -->
+      <div class="funnel-testimonial-card" data-video-id="YP-pHyQrUSs">
+        <div class="funnel-testimonial-video">
+          <lite-youtube videoid="YP-pHyQrUSs"></lite-youtube>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 4. Das Problem -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="funnel-section funnel-problem" id="problem">
+  <div class="container">
+    <h2 class="funnel-section-headline">Wenn Ihr Reporting so aussieht …</h2>
+
+    <div class="funnel-problem-cards" id="problem-cards">
+      <div class="funnel-problem-card">
+        <svg class="funnel-problem-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+        </svg>
+        <h3>Excel-Tabellen</h3>
+        <p>Die niemand mehr aktuell hält</p>
+      </div>
+
+      <div class="funnel-problem-card">
+        <svg class="funnel-problem-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+        </svg>
+        <h3>5 Tools, 5 Wahrheiten</h3>
+        <p>Welcher Zahl vertraut man jetzt?</p>
+      </div>
+
+      <div class="funnel-problem-card">
+        <svg class="funnel-problem-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        <h3>Reportings kosten 1 Tag</h3>
+        <p>Pro Woche. Und sind trotzdem veraltet.</p>
+      </div>
+    </div>
+
+    <p class="funnel-problem-closing">… dann sind Sie nicht allein. Und Sie sind genau richtig hier.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 4.5 Was ist ein Dashboard? (Accordion) -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="funnel-section dashboard-showcase" id="dashboard-types">
+  <div class="container" style="max-width: 1000px;">
+    <h2 class="funnel-section-headline">Was ist ein Dashboard?</h2>
+    <p class="funnel-solution-subline">
+      Ein Dashboard bringt alle eure wichtigen Kennzahlen in eine zentrale Übersicht.
+      Live-Daten, individuelle Ansichten, keine Excel-Acrobatics mehr.
+    </p>
+
+    <!-- Animated Accordion -->
+    <div class="dashboard-accordion" id="funnel-dashboard-accordion">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 5. Die Lösung (Wave Animation) -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="funnel-section funnel-solution" id="solution">
+  <!-- Wave Animation Background -->
+  <div id="waves-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000000; --x: -0.5rem; --y: 50%;"></div>
+
+  <!-- Content über der Animation -->
+  <div class="container" style="position: relative; z-index: 10;">
+    <div class="solution-layout">
+      <!-- ROI/Benefits Cards - Links -->
+      <div class="dashboard-cards-stack">
+        <!-- 80% Zeitersparnis -->
+        <div class="dashboard-card benefit-card">
+          <div class="dashboard-card-icon pink">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+          </div>
+          <div class="dashboard-card-content">
+            <h3><span class="benefit-number">80%</span> Zeitersparnis</h3>
+            <p>Kein manuelles Copy-Paste mehr</p>
+          </div>
+        </div>
+
+        <!-- 100% Echtzeit -->
+        <div class="dashboard-card benefit-card">
+          <div class="dashboard-card-icon pink">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
+            </svg>
+          </div>
+          <div class="dashboard-card-content">
+            <h3><span class="benefit-number">100%</span> Echtzeit</h3>
+            <p>Ihre Daten sind immer aktuell</p>
+          </div>
+        </div>
+
+        <!-- Eine Wahrheit -->
+        <div class="dashboard-card benefit-card">
+          <div class="dashboard-card-icon pink">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+          </div>
+          <div class="dashboard-card-content">
+            <h3>Eine Wahrheit</h3>
+            <p>Alle arbeiten mit denselben Zahlen</p>
+          </div>
+        </div>
+
+        <!-- Schnellere Entscheidungen -->
+        <div class="dashboard-card benefit-card">
+          <div class="dashboard-card-icon pink">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+            </svg>
+          </div>
+          <div class="dashboard-card-content">
+            <h3>Schnellere Entscheidungen</h3>
+            <p>Erkenntnisse auf einen Blick</p>
+          </div>
+        </div>
+
+        <!-- Volle Transparenz -->
+        <div class="dashboard-card benefit-card">
+          <div class="dashboard-card-icon pink">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            </svg>
+          </div>
+          <div class="dashboard-card-content">
+            <h3>Volle Transparenz</h3>
+            <p>Jeder sieht, was er sehen soll</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content - Rechts -->
+      <div class="solution-main-content">
+        <h2 class="funnel-section-headline">Der ROI Ihres Dashboards.</h2>
+        <p class="funnel-solution-subline">Weniger Zeit für Reporting. Mehr Zeit für Wachstum.</p>
+
+        <div class="funnel-solution-cta" style="margin-top: 80px;">
+          <a href="#booking" class="btn btn-primary">Genau das wollen Sie? → Call buchen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 5.5. Dashboard Data Flow Visualization -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="funnel-section dashboard-flow-section" id="architecture">
+  <div class="container">
+    <h2 class="funnel-section-headline">Alle Ihre Daten.<br>Nahtlos verbunden.</h2>
+    <p class="funnel-solution-subline">Ihre Tools, APIs und Datenquellen fließen in Echtzeit ins Dashboard</p>
+
+    <div class="dashboard-flow-card">
+      <svg class="dashboard-flow-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+        <!-- Path 1: Top-left → right → down to center -->
+        <path class="path-base" d="M 200,150 L 600,150 Q 650,150 650,200 L 650,400 Q 650,450 700,450 L 750,450" pathLength="100" />
+        <path class="path-trace trace-1" d="M 200,150 L 600,150 Q 650,150 650,200 L 650,400 Q 650,450 700,450 L 750,450" pathLength="100" />
+
+        <!-- Path 2: Top → down → right to center -->
+        <path class="path-base" d="M 800,100 L 800,300 Q 800,350 750,350 L 750,450" pathLength="100" />
+        <path class="path-trace trace-2" d="M 800,100 L 800,300 Q 800,350 750,350 L 750,450" pathLength="100" />
+
+        <!-- Path 3: Top-right → left → down to center -->
+        <path class="path-base" d="M 1400,150 L 1000,150 Q 950,150 950,200 L 950,400 Q 950,450 900,450 L 850,450" pathLength="100" />
+        <path class="path-trace trace-3" d="M 1400,150 L 1000,150 Q 950,150 950,200 L 950,400 Q 950,450 900,450 L 850,450" pathLength="100" />
+
+        <!-- Path 4: Bottom-left → up → right to center -->
+        <path class="path-base" d="M 200,750 L 200,600 Q 200,550 250,550 L 600,550 Q 650,550 650,500 L 750,500" pathLength="100" />
+        <path class="path-trace trace-4" d="M 200,750 L 200,600 Q 200,550 250,550 L 600,550 Q 650,550 650,500 L 750,500" pathLength="100" />
+
+        <!-- Path 5: Bottom-right → up → left to center -->
+        <path class="path-base" d="M 1400,750 L 1400,600 Q 1400,550 1350,550 L 1000,550 Q 950,550 950,500 L 850,500" pathLength="100" />
+        <path class="path-trace trace-5" d="M 1400,750 L 1400,600 Q 1400,550 1350,550 L 1000,550 Q 950,550 950,500 L 850,500" pathLength="100" />
+
+        <!-- Path 6: Left middle → loop → right to center -->
+        <path class="path-base" d="M 100,450 L 300,450 Q 350,450 350,400 L 350,350 Q 350,300 400,300 L 500,300 Q 550,300 550,350 L 550,425 Q 550,450 575,450 L 750,450" pathLength="100" />
+        <path class="path-trace trace-6" d="M 100,450 L 300,450 Q 350,450 350,400 L 350,350 Q 350,300 400,300 L 500,300 Q 550,300 550,350 L 550,425 Q 550,450 575,450 L 750,450" pathLength="100" />
+
+        <!-- Path 7: Right middle → left to center -->
+        <path class="path-base" d="M 1500,450 L 1200,450 Q 1150,450 1150,475 L 1150,500 Q 1150,525 1100,525 L 1000,525 Q 950,525 950,500 L 950,475 Q 950,450 925,450 L 850,450" pathLength="100" />
+        <path class="path-trace trace-7" d="M 1500,450 L 1200,450 Q 1150,450 1150,475 L 1150,500 Q 1150,525 1100,525 L 1000,525 Q 950,525 950,500 L 950,475 Q 950,450 925,450 L 850,450" pathLength="100" />
+      </svg>
+
+      <div class="dashboard-flow-label">Dashboard</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 6. Was drin ist (Features) -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="funnel-section funnel-features" id="features">
+  <div class="container">
+    <h2 class="funnel-section-headline">Was Ihr Dashboard kann.</h2>
+
+    <div class="funnel-features-list" id="features-list">
+      <div class="funnel-feature-item">
+        <svg class="funnel-feature-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+        </svg>
+        <span>Verbindung aller Ihrer Tools (CRM, Buchhaltung, Ads, etc.)</span>
+      </div>
+      <div class="funnel-feature-item">
+        <svg class="funnel-feature-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+        </svg>
+        <span>Echtzeit-Daten — kein manuelles Updaten mehr</span>
+      </div>
+      <div class="funnel-feature-item">
+        <svg class="funnel-feature-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+        </svg>
+        <span>Custom-KPIs nach Ihren Definitionen</span>
+      </div>
+      <div class="funnel-feature-item">
+        <svg class="funnel-feature-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+        </svg>
+        <span>Branchenspezifische Module</span>
+      </div>
+      <div class="funnel-feature-item">
+        <svg class="funnel-feature-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+        </svg>
+        <span>Multi-Rollen-Views (Geschäftsführung, Vertrieb, Marketing)</span>
+      </div>
+      <div class="funnel-feature-item">
+        <svg class="funnel-feature-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+        </svg>
+        <span>Mobile-fähig</span>
+      </div>
+      <div class="funnel-feature-item">
+        <svg class="funnel-feature-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+        </svg>
+        <span>DSGVO-konformes Hosting in Deutschland</span>
+      </div>
+      <div class="funnel-feature-item">
+        <svg class="funnel-feature-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+        </svg>
+        <span>Dashboard-Reading-Bot (KI beantwortet Fragen zu Ihren Zahlen)</span>
+      </div>
+      <div class="funnel-feature-item">
+        <svg class="funnel-feature-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+        </svg>
+        <span>Export als PDF, Excel, automatisierte Reports</span>
+      </div>
+      <div class="funnel-feature-item">
+        <svg class="funnel-feature-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+        </svg>
+        <span>Continuous Development — Dashboard wächst mit Ihnen</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 7. Unser Prozess -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="funnel-section funnel-process" id="process">
+  <div class="container">
+    <h2 class="funnel-section-headline">Fünf Schritte. 6-10 Wochen. Fertig.</h2>
+
+    <!-- Orbital Timeline Visualization -->
+    <div class="orbital-timeline-container" id="orbitalTimeline">
+      <div class="orbital-viewport">
+        <div class="orbital-center">
+          <div class="orbital-center-pulse"></div>
+          <div class="orbital-center-pulse" style="animation-delay: 0.5s;"></div>
+          <div class="orbital-center-core"></div>
+        </div>
+        <div class="orbital-track"></div>
+        <div class="orbital-nodes" id="orbitalNodes"></div>
+      </div>
+    </div>
+
+    <div class="funnel-process-steps">
+      <div class="funnel-process-step">
+        <div class="funnel-process-num">01</div>
+        <h3>VERSTEHEN</h3>
+        <div class="desc">1-2 Wochen Discovery</div>
+        <div class="details">Wir analysieren Ihre Tools, KPIs und Workflows.</div>
+      </div>
+
+      <div class="funnel-process-connector"></div>
+
+      <div class="funnel-process-step">
+        <div class="funnel-process-num">02</div>
+        <h3>KONZIPIEREN</h3>
+        <div class="desc">1 Woche Design & Planung</div>
+        <div class="details">Wir erstellen Wireframes, definieren die Datenstruktur und stimmen das Konzept mit Ihnen ab.</div>
+      </div>
+
+      <div class="funnel-process-connector"></div>
+
+      <div class="funnel-process-step">
+        <div class="funnel-process-num">03</div>
+        <h3>BAUEN</h3>
+        <div class="desc">3-5 Wochen Entwicklung</div>
+        <div class="details">Sie sehen wöchentlich Fortschritt und können Feedback geben.</div>
+      </div>
+
+      <div class="funnel-process-connector"></div>
+
+      <div class="funnel-process-step">
+        <div class="funnel-process-num">04</div>
+        <h3>TESTEN</h3>
+        <div class="desc">1 Woche Testing & Launch</div>
+        <div class="details">Wir prüfen alle Datenquellen, laden Stakeholder zum Testen ein und gehen live.</div>
+      </div>
+
+      <div class="funnel-process-connector"></div>
+
+      <div class="funnel-process-step">
+        <div class="funnel-process-num">05</div>
+        <h3>BLEIBEN</h3>
+        <div class="desc">Hosting & Wartung</div>
+        <div class="details">Optional: Wir hosten, warten und entwickeln weiter.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 8. FAQ -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="funnel-section funnel-faq" id="faq">
+  <div class="container">
+    <h2 class="funnel-section-headline">Was uns oft gefragt wird.</h2>
+
+    <div class="funnel-faq-list">
+      <details class="funnel-faq-item">
+        <summary>Was kostet das ungefähr?</summary>
+        <p>Die Kosten hängen vom Umfang und Ihren individuellen Anforderungen ab. Im Discovery-Call besprechen wir Ihr Projekt und erstellen ein passgenaues Angebot.</p>
+      </details>
+
+      <details class="funnel-faq-item">
+        <summary>Wie lange dauert das Projekt?</summary>
+        <p>Die Projektdauer variiert je nach Komplexität und Anforderungen. Im Discovery-Call erstellen wir einen konkreten Zeitplan für Ihr Dashboard.</p>
+      </details>
+
+      <details class="funnel-faq-item">
+        <summary>Welche Tools können Sie anbinden?</summary>
+        <p>Alles mit API: Salesforce, HubSpot, Shopify, Google Analytics, Meta Ads, Stripe, eigene Datenbanken, ERPs – und vieles mehr. Im Discovery-Call schauen wir, was Sie nutzen.</p>
+      </details>
+
+      <details class="funnel-faq-item">
+        <summary>Was passiert, wenn wir Tools wechseln?</summary>
+        <p>Wir bauen das Dashboard so, dass neue Tools einfach integriert werden können. Bei Tool-Wechsel: 1-2 Wochen für Anbindung der neuen Quelle.</p>
+      </details>
+
+      <details class="funnel-faq-item">
+        <summary>Wo werden unsere Daten gehostet?</summary>
+        <p>In Deutschland (Frankfurt), DSGVO-konform. Alternativ: On-Premise bei Ihnen, wenn gewünscht.</p>
+      </details>
+
+      <details class="funnel-faq-item">
+        <summary>Was, wenn wir das selbst bauen wollen?</summary>
+        <p>Macht Sinn, wenn Sie ein internes Dev-Team haben. Wir können auch nur die Discovery machen & eine Tech-Spec liefern (2 Wochen, 5.000€).</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 9. Für wen es NICHT ist (Honest Disqualifier) -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="funnel-section funnel-disqualifier" id="disqualifier">
+  <div class="container">
+    <h2 class="funnel-section-headline">Wann wir NICHT die Richtigen sind.</h2>
+
+    <div class="funnel-disqualifier-list">
+      <div class="funnel-disqualifier-item">
+        Excel gibt Ihnen genug Überblick und Sie sehen Ihre Bottlenecks klar? Perfekt, dann brauchen Sie uns nicht.
+      </div>
+      <div class="funnel-disqualifier-item">
+        Sie suchen eine günstige Standardlösung von der Stange? Das können wir leider nicht bieten.
+      </div>
+      <div class="funnel-disqualifier-item">
+        Ihr Budget liegt unter 12.500 €? Dann wird's schwierig mit der Qualität, die wir liefern wollen.
+      </div>
+      <div class="funnel-disqualifier-item">
+        Sie sind noch in der "vielleicht irgendwann mal" Phase? Dann warten Sie lieber noch etwas ab.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 10. Finale CTA-Sektion (Booking mit Multi-Step) -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="funnel-booking" id="booking">
+  <div class="container">
+    <h1 class="funnel-booking-headline">Bereit, das zu bauen?</h1>
+    <p class="funnel-booking-subtext">Gespräch mit unseren Experten buchen – in 3 Schritten.</p>
+
+    <!-- Multi-Step Funnel Container -->
+    <div class="booking-funnel-container">
+
+      <!-- Progress Bar -->
+      <div class="booking-progress">
+        <div class="booking-progress-bar" id="bookingProgressBar"></div>
+      </div>
+
+      <!-- Step 1: Unternehmensname -->
+      <div class="booking-step active" id="step1">
+        <div class="booking-step-content">
+          <div class="booking-step-number">Schritt 1 von 3</div>
+          <h2 class="booking-step-title">Wie heißt Ihr Unternehmen?</h2>
+          <input
+            type="text"
+            id="companyName"
+            class="booking-input"
+            placeholder="z.B. Musterfirma GmbH"
+            autocomplete="organization"
+          >
+          <button class="booking-btn" onclick="nextStep(2)">Weiter →</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Anrufzeit -->
+      <div class="booking-step" id="step2">
+        <div class="booking-step-content">
+          <div class="booking-step-number">Schritt 2 von 3</div>
+          <h2 class="booking-step-title">Wann können wir Sie anrufen?</h2>
+          <p class="booking-step-subtitle">Kurzes Erstgespräch (10-15 Min)</p>
+          <div class="booking-options">
+            <button class="booking-option" onclick="selectCallTime('Vormittags (9-12 Uhr)')">
+              <span class="booking-option-text">Vormittags<br><small>9-12 Uhr</small></span>
+            </button>
+            <button class="booking-option" onclick="selectCallTime('Nachmittags (12-17 Uhr)')">
+              <span class="booking-option-text">Nachmittags<br><small>12-17 Uhr</small></span>
+            </button>
+            <button class="booking-option" onclick="selectCallTime('Abends (17-20 Uhr)')">
+              <span class="booking-option-text">Abends<br><small>17-20 Uhr</small></span>
+            </button>
+          </div>
+          <button class="booking-btn-back" onclick="nextStep(1)">← Zurück</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Datenquellen -->
+      <div class="booking-step" id="step3">
+        <div class="booking-step-content">
+          <div class="booking-step-number">Schritt 3 von 3</div>
+          <h2 class="booking-step-title">Wie viele Datenquellen nutzen Sie?</h2>
+          <p class="booking-step-subtitle">CRM, Analytics, Ads, ERP, etc.</p>
+          <div class="booking-options">
+            <button class="booking-option" onclick="selectDataSources('1-3 Tools')">
+              <span class="booking-option-text">1-3 Tools</span>
+            </button>
+            <button class="booking-option" onclick="selectDataSources('4-7 Tools')">
+              <span class="booking-option-text">4-7 Tools</span>
+            </button>
+            <button class="booking-option" onclick="selectDataSources('8+ Tools')">
+              <span class="booking-option-text">8+ Tools</span>
+            </button>
+          </div>
+          <button class="booking-btn-back" onclick="nextStep(2)">← Zurück</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Calendly -->
+      <div class="booking-step" id="step4">
+        <div class="booking-step-content">
+          <h2 class="booking-step-title">Perfekt! Jetzt Termin buchen.</h2>
+          <p class="booking-step-subtitle">Wir melden uns für ein kurzes Vorgespräch – danach sprechen wir im Detail über Ihr Projekt.</p>
+
+          <!-- Summary Box -->
+          <div class="booking-summary">
+            <div class="booking-summary-item">
+              <strong>Unternehmen:</strong> <span id="summaryCompany"></span>
+            </div>
+            <div class="booking-summary-item">
+              <strong>Bevorzugte Anrufzeit:</strong> <span id="summaryCallTime"></span>
+            </div>
+            <div class="booking-summary-item">
+              <strong>Datenquellen:</strong> <span id="summaryDataSources"></span>
+            </div>
+          </div>
+
+          <!-- Calendly Embed -->
+          <div class="funnel-booking-embed">
+            <p>📅 Calendly-Embed hier einfügen<br><small style="color: #999;">Einfügen: funnel-content.js → finalCTA.calendlyUrl</small></p>
+          </div>
+
+          <button class="booking-btn-back" onclick="nextStep(3)">← Zurück</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="funnel-booking-trust">
+      <div class="funnel-booking-trust-item">✓ Keine Verkaufsmasche</div>
+      <div class="funnel-booking-trust-item">✓ Konkrete Antworten auf Ihre Situation</div>
+      <div class="funnel-booking-trust-item">✓ Wenn es nicht passt, sagen wir's offen</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- Sticky CTA Bar -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="sticky-cta" id="sticky-cta">
+  <div class="container">
+    <span class="sticky-cta-text">Bereit für Ihr Dashboard?</span>
+    <a href="#booking" class="btn btn-primary">Call buchen</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- Minimal Footer -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<footer class="funnel-footer">
+  <div class="container">
+    <img src="assets/logo-full.png" alt="Nuroy" class="funnel-logo-sm">
+    <div class="funnel-footer-links">
+      <a href="impressum.html" target="_blank">Impressum</a>
+      <a href="datenschutz.html" target="_blank">Datenschutz</a>
+    </div>
+    <span class="funnel-footer-copy">© 2026 JT Nuroy Ltd, Paphos, Cyprus</span>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- Testimonial Modal -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div id="testimonial-modal" class="testimonial-modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="testimonial-modal-backdrop" aria-label="Close modal"></div>
+  <div class="testimonial-modal-content">
+    <button class="testimonial-modal-close" aria-label="Close modal">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+    <div class="testimonial-modal-video" id="testimonial-modal-video">
+      <!-- Video wird hier dynamisch injected -->
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- Scripts -->
+<!-- ══════════════════════════════════════════════════════════ -->
+
+<!-- Dashboard Modules Data -->
+<script>
+window.SERVICE_DATA = {
+  dashboardModules: [
+    {
+      title: 'Sales & Revenue Dashboard',
+      desc: 'Echtzeit-Übersicht über Umsätze, Conversions und Performance-Trends aus allen Sales-Kanälen.',
+      image: 'assets/services/dashboards/mockup-sales.svg',
+      tag: 'Vertrieb',
+      detailedDesc: 'Das Sales Dashboard vereint alle wichtigen Vertriebs-Kennzahlen in einer zentralen Übersicht.',
+      features: [
+        'Pipeline-Übersicht mit Deal-Status und Wert',
+        'Conversion-Rates pro Verkaufsphase',
+        'Team-Performance und Leaderboards',
+        'Forecast-Tracking und Zielerreichung',
+        'Integration mit CRM-Systemen (HubSpot, Salesforce)',
+        'Custom Reports für Management-Meetings'
+      ]
+    },
+    {
+      title: 'Marketing Analytics',
+      desc: 'Ad-Performance, Traffic-Quellen und ROI aller Kampagnen in einem zentralen Dashboard.',
+      image: 'assets/services/dashboards/mockup-marketing.svg',
+      tag: 'Marketing',
+      detailedDesc: 'Alle Marketing-Kampagnen auf einen Blick – von Meta Ads bis Google Analytics.',
+      features: [
+        'Cross-Channel-Performance (Meta, Google, LinkedIn, TikTok)',
+        'ROAS und Cost-per-Acquisition pro Kampagne',
+        'Traffic-Quellen und Conversion-Funnel',
+        'Ad-Creative-Performance und A/B-Tests',
+        'Budget-Tracking und Spend-Alerts',
+        'Attribution-Modelle für Multi-Touch-Tracking'
+      ]
+    },
+    {
+      title: 'Operations Dashboard',
+      desc: 'Prozess-KPIs, Team-Auslastung und Projekt-Status auf einen Blick – für effizienten Workflow.',
+      image: 'assets/services/dashboards/mockup-ops.svg',
+      tag: 'Operations',
+      detailedDesc: 'Behaltet den Überblick über alle laufenden Projekte, Team-Kapazitäten und Prozesse.',
+      features: [
+        'Kanban-Board-Ansicht für alle Projekte',
+        'Team-Auslastung und Kapazitätsplanung',
+        'Sprint-Tracking und Velocity-Metriken',
+        'Bottleneck-Identifikation und Prozess-Optimierung',
+        'SLA-Tracking und On-Time-Delivery-Rate',
+        'Integration mit Projektmanagement-Tools (Jira, Asana, ClickUp)'
+      ]
+    },
+    {
+      title: 'Customer Success',
+      desc: 'Churn-Rate, NPS, Support-Tickets und User-Engagement – alle Kundenkennzahlen zentral.',
+      image: 'assets/services/dashboards/mockup-customer.svg',
+      tag: 'CX',
+      detailedDesc: 'Versteht eure Kunden besser – mit Echtzeit-Daten zu Zufriedenheit, Retention und Support.',
+      features: [
+        'NPS-Score und CSAT-Tracking über Zeit',
+        'Churn-Rate und Retention-Metriken',
+        'Support-Ticket-Volumen und Response-Times',
+        'Customer-Health-Score pro Account',
+        'User-Engagement und Feature-Adoption',
+        'Proaktive Churn-Alerts bei gefährdeten Kunden'
+      ]
+    },
+    {
+      title: 'Finance & Controlling',
+      desc: 'Cash Flow, Burn Rate, Budget-Tracking und Forecasts – volle Kontrolle über eure Finanzen.',
+      image: 'assets/services/dashboards/mockup-finance.svg',
+      tag: 'Finance',
+      detailedDesc: 'Finanzplanung auf Autopilot – mit Live-Daten zu Cash Flow, Runway und Budget-Einhaltung.',
+      features: [
+        'Cash Flow und Runway-Berechnung',
+        'Burn Rate und MoM/YoY-Vergleiche',
+        'Budget vs. Actual pro Kostenstelle',
+        'Revenue-Forecasts und ARR/MRR-Tracking',
+        'P&L-Statements automatisiert erstellen',
+        'Integration mit Buchhaltungssoftware (DATEV, Lexoffice, QuickBooks)'
+      ]
+    }
+  ]
+};
+</script>
+
+<!-- Global Data (for testimonials) -->
+<script src="shared/data-global.js"></script>
+
+<!-- Icons Library -->
+<script src="shared/icons.js"></script>
+
+<!-- Content Data -->
+<script src="funnel/funnel-content.js"></script>
+
+<!-- Lite YouTube Embed -->
+<script src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js" defer></script>
+
+<!-- Funnel Scripts -->
+<script src="funnel/funnel-scripts.js"></script>
+
+<!-- Booking Funnel Multi-Step -->
+<script src="funnel/funnel-booking.js"></script>
+
+<!-- Orbital Timeline -->
+<script src="funnel/orbital-timeline.js"></script>
+
+<!-- Service Accordion -->
+<script src="services/service-interactions.js"></script>
+
+<!-- Calendly Widget Script (wenn Calendly verwendet wird) -->
+<!-- <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script> -->
+
+<!-- Wave Animation -->
+<script src="funnel/waves-animation.js"></script>
+
+</body>
+</html>
