@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0A0C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#121216;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#grad1)"/>
+  <text x="40" y="35" fill="#FF2D7A" font-size="12" font-family="monospace" letter-spacing="2">AI READINESS SCORECARD</text>
+
+  <rect x="40" y="70" width="1120" height="540" rx="8" fill="#1C1C22" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="60" y="100" fill="#9A968C" font-size="11" font-family="monospace" letter-spacing="1">COMPREHENSIVE AI READINESS ASSESSMENT</text>
+
+  <!-- Overall Score -->
+  <rect x="80" y="130" width="500" height="180" rx="8" fill="rgba(255,45,122,0.08)" stroke="rgba(255,45,122,0.2)" stroke-width="2"/>
+  <text x="100" y="165" fill="#FF2D7A" font-size="16" font-weight="bold">Overall AI Readiness</text>
+  <text x="290" y="240" fill="#FF2D7A" font-size="60" font-weight="bold">72</text>
+  <text x="370" y="250" fill="#9A968C" font-size="20">/100</text>
+  <text x="100" y="285" fill="#9A968C" font-size="12">Level: Intermediate</text>
+  <rect x="100" y="292" width="300" height="8" rx="4" fill="rgba(245,242,236,0.06)"/>
+  <rect x="100" y="292" width="216" height="8" rx="4" fill="#FF2D7A"/>
+
+  <!-- Category Scores -->
+  <rect x="600" y="130" width="540" height="180" rx="8" fill="rgba(245,242,236,0.02)" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="620" y="165" fill="#F5F2EC" font-size="14" font-weight="bold">Readiness by Category</text>
+
+  <rect x="620" y="185" width="250" height="35" rx="4" fill="rgba(143,163,115,0.08)"/>
+  <text x="640" y="205" fill="#F5F2EC" font-size="11">Data Infrastructure</text>
+  <text x="850" y="205" fill="#8FA373" font-size="13" font-weight="bold">85</text>
+
+  <rect x="890" y="185" width="230" height="35" rx="4" fill="rgba(255,45,122,0.08)"/>
+  <text x="910" y="205" fill="#F5F2EC" font-size="11">AI Expertise</text>
+  <text x="1090" y="205" fill="#FF2D7A" font-size="13" font-weight="bold">62</text>
+
+  <rect x="620" y="230" width="250" height="35" rx="4" fill="rgba(143,163,115,0.08)"/>
+  <text x="640" y="250" fill="#F5F2EC" font-size="11">Technology Stack</text>
+  <text x="850" y="250" fill="#8FA373" font-size="13" font-weight="bold">78</text>
+
+  <rect x="890" y="230" width="230" height="35" rx="4" fill="rgba(209,168,92,0.08)"/>
+  <text x="910" y="250" fill="#F5F2EC" font-size="11">Governance</text>
+  <text x="1090" y="250" fill="#D1A85C" font-size="13" font-weight="bold">68</text>
+
+  <rect x="620" y="275" width="250" height="35" rx="4" fill="rgba(255,45,122,0.08)"/>
+  <text x="640" y="295" fill="#F5F2EC" font-size="11">Use Cases Identified</text>
+  <text x="850" y="295" fill="#FF2D7A" font-size="13" font-weight="bold">55</text>
+
+  <!-- Assessment Criteria -->
+  <rect x="80" y="330" width="1060" height="250" rx="8" fill="rgba(245,242,236,0.02)" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="100" y="360" fill="#F5F2EC" font-size="13" font-weight="bold">Assessment Criteria</text>
+
+  <!-- Criteria Grid -->
+  <rect x="100" y="380" width="500" height="45" rx="4" fill="rgba(143,163,115,0.08)" stroke="rgba(143,163,115,0.2)" stroke-width="1"/>
+  <circle cx="120" cy="402" r="8" fill="#8FA373"/>
+  <text x="115" y="408" fill="#0A0A0C" font-size="11" font-weight="bold">✓</text>
+  <text x="145" y="397" fill="#F5F2EC" font-size="11" font-weight="bold">Data Quality &amp; Availability</text>
+  <text x="145" y="413" fill="#9A968C" font-size="9">High quality datasets ready for AI training</text>
+
+  <rect x="620" y="380" width="500" height="45" rx="4" fill="rgba(143,163,115,0.08)" stroke="rgba(143,163,115,0.2)" stroke-width="1"/>
+  <circle cx="640" cy="402" r="8" fill="#8FA373"/>
+  <text x="635" y="408" fill="#0A0A0C" font-size="11" font-weight="bold">✓</text>
+  <text x="665" y="397" fill="#F5F2EC" font-size="11" font-weight="bold">Cloud Infrastructure</text>
+  <text x="665" y="413" fill="#9A968C" font-size="9">Scalable cloud platform in place</text>
+
+  <rect x="100" y="435" width="500" height="45" rx="4" fill="rgba(255,45,122,0.08)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <circle cx="120" cy="457" r="8" fill="#D1A85C"/>
+  <text x="117" y="461" fill="#0A0A0C" font-size="11" font-weight="bold">!</text>
+  <text x="145" y="452" fill="#F5F2EC" font-size="11" font-weight="bold">AI/ML Skills Gap</text>
+  <text x="145" y="468" fill="#9A968C" font-size="9">Need to hire data scientists and ML engineers</text>
+
+  <rect x="620" y="435" width="500" height="45" rx="4" fill="rgba(255,45,122,0.08)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <circle cx="640" cy="457" r="8" fill="#D1A85C"/>
+  <text x="637" y="461" fill="#0A0A0C" font-size="11" font-weight="bold">!</text>
+  <text x="665" y="452" fill="#F5F2EC" font-size="11" font-weight="bold">Business Use Cases</text>
+  <text x="665" y="468" fill="#9A968C" font-size="9">Limited AI use cases identified and prioritized</text>
+
+  <rect x="100" y="490" width="500" height="45" rx="4" fill="rgba(209,168,92,0.08)" stroke="rgba(209,168,92,0.2)" stroke-width="1"/>
+  <circle cx="120" cy="512" r="8" fill="#8FA373"/>
+  <text x="115" y="518" fill="#0A0A0C" font-size="11" font-weight="bold">~</text>
+  <text x="145" y="507" fill="#F5F2EC" font-size="11" font-weight="bold">Data Governance Policies</text>
+  <text x="145" y="523" fill="#9A968C" font-size="9">Basic policies in place, needs enhancement</text>
+
+  <rect x="620" y="490" width="500" height="45" rx="4" fill="rgba(143,163,115,0.08)" stroke="rgba(143,163,115,0.2)" stroke-width="1"/>
+  <circle cx="640" cy="512" r="8" fill="#8FA373"/>
+  <text x="635" y="518" fill="#0A0A0C" font-size="11" font-weight="bold">✓</text>
+  <text x="665" y="507" fill="#F5F2EC" font-size="11" font-weight="bold">Executive Buy-in</text>
+  <text x="665" y="523" fill="#9A968C" font-size="9">Leadership committed to AI transformation</text>
+
+  <!-- Recommendations -->
+  <text x="100" y="560" fill="#5E5A52" font-size="10" font-family="monospace">RECOMMENDED NEXT STEPS</text>
+  <rect x="100" y="565" width="330" height="12" rx="2" fill="rgba(255,45,122,0.12)"/>
+  <text x="105" y="574" fill="#FF2D7A" font-size="9">1. Hire AI talent or partner with experts</text>
+
+  <rect x="450" y="565" width="330" height="12" rx="2" fill="rgba(255,45,122,0.12)"/>
+  <text x="455" y="574" fill="#FF2D7A" font-size="9">2. Define 3-5 high-impact AI use cases</text>
+
+  <rect x="800" y="565" width="320" height="12" rx="2" fill="rgba(255,45,122,0.12)"/>
+  <text x="805" y="574" fill="#FF2D7A" font-size="9">3. Launch pilot project within 3 months</text>
+
+  <rect x="40" y="625" width="1120" height="35" rx="6" fill="rgba(255,45,122,0.06)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="60" y="647" fill="#9A968C" font-size="11">Assessment Features:</text>
+  <text x="250" y="647" fill="#F5F2EC" font-size="11">Scoring System</text>
+  <text x="420" y="647" fill="#F5F2EC" font-size="11">Gap Analysis</text>
+  <text x="590" y="647" fill="#F5F2EC" font-size="11">Recommendations</text>
+  <text x="780" y="647" fill="#F5F2EC" font-size="11">Action Plan</text>
+</svg>

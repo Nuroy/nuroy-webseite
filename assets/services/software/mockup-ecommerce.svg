@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0A0C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#121216;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#grad1)"/>
+
+  <!-- Title Badge -->
+  <text x="40" y="35" fill="#FF2D7A" font-size="12" font-family="monospace" letter-spacing="2">E-COMMERCE CHECKOUT FLOW</text>
+
+  <!-- Main Container -->
+  <rect x="40" y="70" width="1120" height="540" rx="8" fill="#1C1C22" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+
+  <!-- Header -->
+  <rect x="40" y="70" width="1120" height="60" rx="8" fill="rgba(245,242,236,0.04)"/>
+  <text x="70" y="110" fill="#FF2D7A" font-size="16" font-weight="bold">Shop Logo</text>
+  <text x="980" y="108" fill="#9A968C" font-size="11">🔒 Sichere Zahlung</text>
+
+  <!-- Progress Steps -->
+  <rect x="350" y="90" width="500" height="30" rx="6" fill="rgba(245,242,236,0.02)"/>
+
+  <!-- Step 1 - Complete -->
+  <circle cx="400" cy="105" r="8" fill="#8FA373"/>
+  <text x="385" y="130" fill="#8FA373" font-size="9">Warenkorb</text>
+
+  <!-- Step 2 - Complete -->
+  <line x1="408" y1="105" x2="532" y2="105" stroke="#8FA373" stroke-width="2"/>
+  <circle cx="540" cy="105" r="8" fill="#8FA373"/>
+  <text x="525" y="130" fill="#8FA373" font-size="9">Lieferung</text>
+
+  <!-- Step 3 - Current -->
+  <line x1="548" y1="105" x2="672" y2="105" stroke="#FF2D7A" stroke-width="2"/>
+  <circle cx="680" cy="105" r="8" fill="#FF2D7A"/>
+  <text x="665" y="130" fill="#FF2D7A" font-size="9">Zahlung</text>
+
+  <!-- Step 4 - Pending -->
+  <line x1="688" y1="105" x2="812" y2="105" stroke="rgba(245,242,236,0.1)" stroke-width="2"/>
+  <circle cx="820" cy="105" r="8" fill="rgba(245,242,236,0.1)"/>
+  <text x="795" y="130" fill="#9A968C" font-size="9">Bestätigung</text>
+
+  <!-- Left Column - Payment Form -->
+  <rect x="70" y="160" width="660" height="420" rx="8" fill="rgba(245,242,236,0.02)" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+
+  <text x="90" y="190" fill="#F5F2EC" font-size="15" font-weight="bold">Zahlungsinformationen</text>
+
+  <!-- Payment Method Selection -->
+  <rect x="90" y="210" width="620" height="50" rx="6" fill="rgba(255,45,122,0.08)" stroke="rgba(255,45,122,0.3)" stroke-width="2"/>
+  <circle cx="115" cy="235" r="6" fill="#FF2D7A"/>
+  <text x="135" y="240" fill="#FF2D7A" font-size="12" font-weight="bold">💳 Kreditkarte</text>
+
+  <rect x="90" y="275" width="300" height="50" rx="6" fill="rgba(245,242,236,0.04)" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <circle cx="115" cy="300" r="6" fill="rgba(245,242,236,0.2)"/>
+  <text x="135" y="305" fill="#9A968C" font-size="12">PayPal</text>
+
+  <rect x="410" y="275" width="300" height="50" rx="6" fill="rgba(245,242,236,0.04)" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <circle cx="435" cy="300" r="6" fill="rgba(245,242,236,0.2)"/>
+  <text x="455" y="305" fill="#9A968C" font-size="12">Rechnung</text>
+
+  <!-- Card Details Form -->
+  <text x="90" y="360" fill="#9A968C" font-size="10">KARTENNUMMER</text>
+  <rect x="90" y="370" width="620" height="40" rx="6" fill="rgba(245,242,236,0.06)" stroke="rgba(245,242,236,0.12)" stroke-width="1"/>
+  <text x="110" y="396" fill="#F5F2EC" font-size="13">4532 1234 5678 9010</text>
+
+  <text x="90" y="440" fill="#9A968C" font-size="10">KARTENINHABER</text>
+  <rect x="90" y="450" width="620" height="40" rx="6" fill="rgba(245,242,236,0.06)" stroke="rgba(245,242,236,0.12)" stroke-width="1"/>
+  <text x="110" y="476" fill="#F5F2EC" font-size="13">Anna Schmidt</text>
+
+  <text x="90" y="520" fill="#9A968C" font-size="10">GÜLTIG BIS</text>
+  <rect x="90" y="530" width="290" height="40" rx="6" fill="rgba(245,242,236,0.06)" stroke="rgba(245,242,236,0.12)" stroke-width="1"/>
+  <text x="110" y="556" fill="#F5F2EC" font-size="13">12/26</text>
+
+  <text x="420" y="520" fill="#9A968C" font-size="10">CVC</text>
+  <rect x="420" y="530" width="290" height="40" rx="6" fill="rgba(245,242,236,0.06)" stroke="rgba(245,242,236,0.12)" stroke-width="1"/>
+  <text x="440" y="556" fill="#F5F2EC" font-size="13">***</text>
+
+  <!-- Right Column - Order Summary -->
+  <rect x="760" y="160" width="370" height="420" rx="8" fill="rgba(245,242,236,0.02)" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+
+  <text x="780" y="190" fill="#F5F2EC" font-size="15" font-weight="bold">Bestellübersicht</text>
+
+  <!-- Product Items -->
+  <rect x="780" y="210" width="330" height="80" rx="6" fill="rgba(245,242,236,0.04)"/>
+  <rect x="795" y="225" width="50" height="50" rx="6" fill="rgba(255,45,122,0.1)"/>
+  <text x="860" y="240" fill="#F5F2EC" font-size="12">Premium Plan (Jahreslizenz)</text>
+  <text x="860" y="260" fill="#9A968C" font-size="10">Menge: 1</text>
+  <text x="1030" y="255" fill="#F5F2EC" font-size="13" font-weight="bold">€2,400</text>
+
+  <rect x="780" y="305" width="330" height="80" rx="6" fill="rgba(245,242,236,0.04)"/>
+  <rect x="795" y="320" width="50" height="50" rx="6" fill="rgba(143,163,115,0.1)"/>
+  <text x="860" y="335" fill="#F5F2EC" font-size="12">Support Package</text>
+  <text x="860" y="355" fill="#9A968C" font-size="10">Menge: 1</text>
+  <text x="1050" y="350" fill="#F5F2EC" font-size="13" font-weight="bold">€600</text>
+
+  <!-- Coupon -->
+  <rect x="780" y="400" width="330" height="40" rx="6" fill="rgba(245,242,236,0.06)" stroke="rgba(245,242,236,0.12)" stroke-width="1"/>
+  <text x="800" y="425" fill="#9A968C" font-size="11">Gutscheincode eingeben</text>
+  <text x="1060" y="425" fill="#FF2D7A" font-size="11">Anwenden</text>
+
+  <!-- Price Breakdown -->
+  <line x1="780" y1="455" x2="1110" y2="455" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+
+  <text x="780" y="480" fill="#9A968C" font-size="11">Zwischensumme</text>
+  <text x="1050" y="480" fill="#9A968C" font-size="11">€3,000</text>
+
+  <text x="780" y="505" fill="#9A968C" font-size="11">MwSt. (19%)</text>
+  <text x="1060" y="505" fill="#9A968C" font-size="11">€570</text>
+
+  <line x1="780" y1="520" x2="1110" y2="520" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+
+  <text x="780" y="550" fill="#F5F2EC" font-size="14" font-weight="bold">Gesamt</text>
+  <text x="1030" y="550" fill="#FF2D7A" font-size="18" font-weight="bold">€3,570</text>
+
+  <!-- Action Button -->
+  <rect x="70" y="595" width="1060" height="50" rx="8" fill="rgba(255,45,122,0.12)" stroke="rgba(255,45,122,0.4)" stroke-width="2"/>
+  <text x="520" y="627" fill="#FF2D7A" font-size="15" font-weight="bold">Jetzt kostenpflichtig bestellen →</text>
+
+  <!-- Footer -->
+  <rect x="40" y="625" width="1120" height="35" rx="6" fill="rgba(255,45,122,0.06)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="60" y="647" fill="#9A968C" font-size="11">Payment Features:</text>
+  <text x="240" y="647" fill="#F5F2EC" font-size="11">Multiple Payment Methods</text>
+  <text x="500" y="647" fill="#F5F2EC" font-size="11">Secure Checkout</text>
+  <text x="710" y="647" fill="#F5F2EC" font-size="11">Order Summary</text>
+  <text x="900" y="647" fill="#F5F2EC" font-size="11">Coupon Codes</text>
+</svg>

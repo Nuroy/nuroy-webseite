@@ -1,0 +1,207 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#0d0d0d"/>
+
+  <!-- Card Container with pink glow -->
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="20" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="metaGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff2d87" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#ff2d87" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="googleGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8d18a" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#b8d18a" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linkedinGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5c14e" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f5c14e" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="40" y="40" width="1120" height="720" rx="18" fill="#1a1a1a" stroke="rgba(255, 45, 135, 0.3)" stroke-width="1" filter="url(#glow)"/>
+
+  <!-- Eyebrow -->
+  <text x="80" y="90" font-family="monospace" font-size="10" fill="#ff2d87" letter-spacing="0.08em">MARKETING PERFORMANCE • MULTI-CHANNEL</text>
+
+  <!-- Main Grid -->
+  <!-- Left Column: Charts -->
+  <rect x="80" y="120" width="680" height="560" rx="12" fill="#0d0d0d" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+
+  <!-- Top KPI Row -->
+  <rect x="100" y="140" width="150" height="80" rx="8" fill="rgba(255, 45, 135, 0.08)"/>
+  <text x="120" y="165" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">AD SPEND</text>
+  <text x="120" y="195" font-family="sans-serif" font-size="24" fill="#ff2d87" font-weight="700">€12.400</text>
+
+  <rect x="270" y="140" width="150" height="80" rx="8" fill="rgba(184, 209, 138, 0.08)"/>
+  <text x="290" y="165" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">CONVERSIONS</text>
+  <text x="290" y="195" font-family="sans-serif" font-size="24" fill="#b8d18a" font-weight="700">342</text>
+
+  <rect x="440" y="140" width="150" height="80" rx="8" fill="rgba(255, 45, 135, 0.08)"/>
+  <text x="460" y="165" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">ROAS</text>
+  <text x="460" y="195" font-family="sans-serif" font-size="24" fill="#ff2d87" font-weight="700">4.2×</text>
+
+  <rect x="610" y="140" width="130" height="80" rx="8" fill="rgba(255, 255, 255, 0.05)"/>
+  <text x="630" y="165" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">CPA</text>
+  <text x="630" y="195" font-family="sans-serif" font-size="24" fill="#f5f1e8" font-weight="700">€36</text>
+
+  <!-- Multi-Channel Performance Chart -->
+  <text x="100" y="255" font-family="sans-serif" font-size="14" fill="#f5f1e8" font-weight="600">Channel Performance • Mai 2026</text>
+
+  <svg x="100" y="270" width="640" height="220" viewBox="0 0 640 220">
+    <!-- Grid Lines -->
+    <line x1="0" y1="0" x2="640" y2="0" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1"/>
+    <line x1="0" y1="55" x2="640" y2="55" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1"/>
+    <line x1="0" y1="110" x2="640" y2="110" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1"/>
+    <line x1="0" y1="165" x2="640" y2="165" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1"/>
+    <line x1="0" y1="220" x2="640" y2="220" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1"/>
+
+    <!-- Y-Axis Labels -->
+    <text x="5" y="8" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.4)">€20k</text>
+    <text x="5" y="63" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.4)">€15k</text>
+    <text x="5" y="118" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.4)">€10k</text>
+    <text x="5" y="173" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.4)">€5k</text>
+    <text x="5" y="218" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.4)">€0</text>
+
+    <!-- Meta Ads (Pink) -->
+    <path d="M 60 110 L 140 105 L 220 95 L 300 85 L 380 75 L 460 70 L 540 65 L 600 60
+             L 600 220 L 60 220 Z"
+          fill="url(#metaGradient)"/>
+    <path d="M 60 110 L 140 105 L 220 95 L 300 85 L 380 75 L 460 70 L 540 65 L 600 60"
+          stroke="#ff2d87" stroke-width="3" fill="none"/>
+
+    <!-- Google Ads (Green) -->
+    <path d="M 60 140 L 140 138 L 220 130 L 300 125 L 380 120 L 460 115 L 540 112 L 600 110
+             L 600 220 L 60 220 Z"
+          fill="url(#googleGradient)"/>
+    <path d="M 60 140 L 140 138 L 220 130 L 300 125 L 380 120 L 460 115 L 540 112 L 600 110"
+          stroke="#b8d18a" stroke-width="3" fill="none"/>
+
+    <!-- LinkedIn (Yellow) -->
+    <path d="M 60 180 L 140 178 L 220 175 L 300 172 L 380 168 L 460 165 L 540 162 L 600 160
+             L 600 220 L 60 220 Z"
+          fill="url(#linkedinGradient)"/>
+    <path d="M 60 180 L 140 178 L 220 175 L 300 172 L 380 168 L 460 165 L 540 162 L 600 160"
+          stroke="#f5c14e" stroke-width="3" fill="none"/>
+
+    <!-- X-Axis Labels -->
+    <text x="60" y="235" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.4)" text-anchor="middle">1.05</text>
+    <text x="180" y="235" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.4)" text-anchor="middle">7.05</text>
+    <text x="300" y="235" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.4)" text-anchor="middle">14.05</text>
+    <text x="420" y="235" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.4)" text-anchor="middle">21.05</text>
+
+    <!-- Legend -->
+    <line x1="50" y1="195" x2="80" y2="195" stroke="#ff2d87" stroke-width="2"/>
+    <text x="90" y="199" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.7)">Meta Ads</text>
+
+    <line x1="160" y1="195" x2="190" y2="195" stroke="#b8d18a" stroke-width="2"/>
+    <text x="200" y="199" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.7)">Google Ads</text>
+
+    <line x1="290" y1="195" x2="320" y2="195" stroke="#f5c14e" stroke-width="2"/>
+    <text x="330" y="199" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.7)">LinkedIn</text>
+  </svg>
+
+  <!-- Channel Breakdown -->
+  <text x="100" y="525" font-family="sans-serif" font-size="14" fill="#f5f1e8" font-weight="600">Channel Breakdown (MTD)</text>
+
+  <!-- Meta Card -->
+  <rect x="100" y="540" width="200" height="120" rx="8" fill="rgba(255, 45, 135, 0.08)" stroke="rgba(255, 45, 135, 0.2)" stroke-width="1"/>
+  <text x="120" y="565" font-family="sans-serif" font-size="12" fill="#ff2d87" font-weight="600">Meta Ads</text>
+  <text x="120" y="590" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Spend: €6.200</text>
+  <text x="120" y="610" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Conv: 187</text>
+  <text x="120" y="630" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">ROAS: 4.8×</text>
+  <text x="120" y="650" font-family="monospace" font-size="10" fill="#ff2d87" font-weight="600">Top Performer</text>
+
+  <!-- Google Card -->
+  <rect x="320" y="540" width="200" height="120" rx="8" fill="rgba(184, 209, 138, 0.08)" stroke="rgba(184, 209, 138, 0.2)" stroke-width="1"/>
+  <text x="340" y="565" font-family="sans-serif" font-size="12" fill="#b8d18a" font-weight="600">Google Ads</text>
+  <text x="340" y="590" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Spend: €4.800</text>
+  <text x="340" y="610" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Conv: 124</text>
+  <text x="340" y="630" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">ROAS: 3.9×</text>
+  <text x="340" y="650" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.6)">Stabil</text>
+
+  <!-- LinkedIn Card -->
+  <rect x="540" y="540" width="200" height="120" rx="8" fill="rgba(245, 193, 78, 0.08)" stroke="rgba(245, 193, 78, 0.2)" stroke-width="1"/>
+  <text x="560" y="565" font-family="sans-serif" font-size="12" fill="#f5c14e" font-weight="600">LinkedIn Ads</text>
+  <text x="560" y="590" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Spend: €1.400</text>
+  <text x="560" y="610" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Conv: 31</text>
+  <text x="560" y="630" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">ROAS: 2.8×</text>
+  <text x="560" y="650" font-family="monospace" font-size="10" fill="#f5c14e">Testing</text>
+
+  <!-- Right Column: Sidebar -->
+  <!-- Attribution Model Card -->
+  <rect x="780" y="120" width="340" height="160" rx="12" fill="#0d0d0d" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+  <text x="800" y="145" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)" letter-spacing="0.05em">ATTRIBUTION MODEL</text>
+
+  <rect x="800" y="160" width="300" height="30" rx="6" fill="rgba(255, 45, 135, 0.08)"/>
+  <text x="820" y="181" font-family="sans-serif" font-size="11" fill="#f5f1e8">First-Touch: 42%</text>
+
+  <rect x="800" y="200" width="300" height="30" rx="6" fill="rgba(255, 255, 255, 0.05)"/>
+  <text x="820" y="221" font-family="sans-serif" font-size="11" fill="#f5f1e8">Linear: 31%</text>
+
+  <rect x="800" y="240" width="300" height="30" rx="6" fill="rgba(255, 255, 255, 0.05)"/>
+  <text x="820" y="261" font-family="sans-serif" font-size="11" fill="#f5f1e8">Last-Touch: 27%</text>
+
+  <!-- Funnel Card -->
+  <rect x="780" y="300" width="340" height="200" rx="12" fill="#0d0d0d" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+  <text x="800" y="325" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)" letter-spacing="0.05em">CONVERSION FUNNEL</text>
+
+  <text x="800" y="355" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Impressions</text>
+  <rect x="800" y="362" width="300" height="8" rx="4" fill="rgba(255, 255, 255, 0.05)"/>
+  <rect x="800" y="362" width="300" height="8" rx="4" fill="#ff2d87"/>
+  <text x="1005" y="370" font-family="monospace" font-size="9" fill="#ff2d87" text-anchor="end">2.4M</text>
+
+  <text x="800" y="395" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Clicks</text>
+  <rect x="800" y="402" width="300" height="8" rx="4" fill="rgba(255, 255, 255, 0.05)"/>
+  <rect x="800" y="402" width="210" height="8" rx="4" fill="#ff2d87"/>
+  <text x="1005" y="410" font-family="monospace" font-size="9" fill="#ff2d87" text-anchor="end">48.2k</text>
+
+  <text x="800" y="435" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Leads</text>
+  <rect x="800" y="442" width="300" height="8" rx="4" fill="rgba(255, 255, 255, 0.05)"/>
+  <rect x="800" y="442" width="120" height="8" rx="4" fill="#b8d18a"/>
+  <text x="1005" y="450" font-family="monospace" font-size="9" fill="#b8d18a" text-anchor="end">8.4k</text>
+
+  <text x="800" y="475" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Conversions</text>
+  <rect x="800" y="482" width="300" height="8" rx="4" fill="rgba(255, 255, 255, 0.05)"/>
+  <rect x="800" y="482" width="48" height="8" rx="4" fill="#b8d18a"/>
+  <text x="1005" y="490" font-family="monospace" font-size="9" fill="#b8d18a" text-anchor="end">342</text>
+
+  <!-- Data Sources Card -->
+  <rect x="780" y="520" width="340" height="160" rx="12" fill="#0d0d0d" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+  <text x="800" y="545" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)" letter-spacing="0.05em">CONNECTED SOURCES</text>
+
+  <rect x="800" y="560" width="300" height="30" rx="6" fill="rgba(184, 209, 138, 0.08)"/>
+  <circle cx="815" cy="575" r="4" fill="#b8d18a"/>
+  <text x="830" y="579" font-family="sans-serif" font-size="11" fill="#f5f1e8">Google Analytics 4</text>
+
+  <rect x="800" y="600" width="300" height="30" rx="6" fill="rgba(184, 209, 138, 0.08)"/>
+  <circle cx="815" cy="615" r="4" fill="#b8d18a"/>
+  <text x="830" y="619" font-family="sans-serif" font-size="11" fill="#f5f1e8">Meta Ads Manager</text>
+
+  <rect x="800" y="640" width="300" height="30" rx="6" fill="rgba(184, 209, 138, 0.08)"/>
+  <circle cx="815" cy="655" r="4" fill="#b8d18a"/>
+  <text x="830" y="659" font-family="sans-serif" font-size="11" fill="#f5f1e8">LinkedIn Campaign API</text>
+
+  <!-- Insights Row -->
+  <!-- Green Box -->
+  <rect x="80" y="700" width="340" height="50" rx="8" fill="rgba(184, 209, 138, 0.1)" stroke="rgba(184, 209, 138, 0.3)" stroke-width="1"/>
+  <text x="100" y="730" font-family="sans-serif" font-size="12" fill="#b8d18a">↑ Meta Ads ROAS +18% über Benchmark</text>
+
+  <!-- Pink Box -->
+  <rect x="440" y="700" width="340" height="50" rx="8" fill="rgba(255, 45, 135, 0.1)" stroke="rgba(255, 45, 135, 0.3)" stroke-width="1"/>
+  <text x="460" y="730" font-family="sans-serif" font-size="12" fill="#ff2d87">342 Conversions bei €36 CPA — Ziel erreicht</text>
+
+  <!-- Yellow Box -->
+  <rect x="800" y="700" width="320" height="50" rx="8" fill="rgba(245, 193, 78, 0.1)" stroke="rgba(245, 193, 78, 0.3)" stroke-width="1"/>
+  <text x="820" y="730" font-family="sans-serif" font-size="12" fill="#f5c14e">LinkedIn Budget erhöhen? (Testing)</text>
+
+  <!-- Tag Footer -->
+  <text x="80" y="785" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Features:</text>
+  <text x="145" y="785" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.7)">Multi-Channel Attribution · GA4 Integration · ROAS Tracking · Funnel Analysis · Auto-Optimization</text>
+</svg>

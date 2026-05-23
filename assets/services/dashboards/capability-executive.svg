@@ -1,0 +1,178 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#0d0d0d"/>
+
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="20" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="revenueGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff2d87" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#ff2d87" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="40" y="40" width="1120" height="720" rx="18" fill="#1a1a1a" stroke="rgba(255, 45, 135, 0.3)" stroke-width="1" filter="url(#glow)"/>
+
+  <text x="80" y="90" font-family="monospace" font-size="10" fill="#ff2d87" letter-spacing="0.08em">EXECUTIVE DASHBOARD • Q2 2026</text>
+
+  <rect x="80" y="120" width="680" height="560" rx="12" fill="#0d0d0d" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+
+  <!-- Top Financial KPIs -->
+  <text x="100" y="150" font-family="sans-serif" font-size="14" fill="#f5f1e8" font-weight="600">Financial Overview • Mai 2026</text>
+
+  <rect x="100" y="170" width="160" height="95" rx="8" fill="rgba(184, 209, 138, 0.08)"/>
+  <text x="120" y="195" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">REVENUE (MTD)</text>
+  <text x="120" y="230" font-family="sans-serif" font-size="26" fill="#b8d18a" font-weight="700">€284k</text>
+  <text x="120" y="250" font-family="monospace" font-size="11" fill="#b8d18a">↑ +18% vs. Apr</text>
+
+  <rect x="280" y="170" width="160" height="95" rx="8" fill="rgba(184, 209, 138, 0.08)"/>
+  <text x="300" y="195" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">PROFIT (MTD)</text>
+  <text x="300" y="230" font-family="sans-serif" font-size="26" fill="#b8d18a" font-weight="700">€96k</text>
+  <text x="300" y="250" font-family="monospace" font-size="11" fill="#b8d18a">34% Marge</text>
+
+  <rect x="460" y="170" width="160" height="95" rx="8" fill="rgba(255, 45, 135, 0.08)"/>
+  <text x="480" y="195" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">CASHFLOW</text>
+  <text x="480" y="230" font-family="sans-serif" font-size="26" fill="#ff2d87" font-weight="700">€142k</text>
+  <text x="480" y="250" font-family="monospace" font-size="11" fill="#ff2d87">89 Tage Runway</text>
+
+  <rect x="640" y="170" width="100" height="95" rx="8" fill="rgba(255, 255, 255, 0.05)"/>
+  <text x="660" y="195" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">BURN</text>
+  <text x="660" y="230" font-family="sans-serif" font-size="26" fill="#f5f1e8" font-weight="700">€48k</text>
+  <text x="660" y="250" font-family="monospace" font-size="11" fill="rgba(245, 241, 232, 0.6)">/Monat</text>
+
+  <!-- Revenue Trend Chart -->
+  <text x="100" y="295" font-family="sans-serif" font-size="13" fill="#f5f1e8" font-weight="600">Revenue-Trend (6 Monate)</text>
+
+  <svg x="100" y="310" width="640" height="180" viewBox="0 0 640 180">
+    <!-- Grid -->
+    <line x1="0" y1="0" x2="640" y2="0" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1"/>
+    <line x1="0" y1="45" x2="640" y2="45" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1"/>
+    <line x1="0" y1="90" x2="640" y2="90" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1"/>
+    <line x1="0" y1="135" x2="640" y2="135" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1"/>
+    <line x1="0" y1="180" x2="640" y2="180" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1"/>
+
+    <!-- Y-Axis Labels -->
+    <text x="5" y="8" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.4)">€400k</text>
+    <text x="5" y="53" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.4)">€300k</text>
+    <text x="5" y="98" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.4)">€200k</text>
+    <text x="5" y="143" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.4)">€100k</text>
+
+    <!-- Revenue Area + Line -->
+    <path d="M 80 120 L 160 115 L 240 108 L 320 100 L 400 85 L 480 70 L 560 50
+             L 560 180 L 80 180 Z"
+          fill="url(#revenueGradient)"/>
+    <path d="M 80 120 L 160 115 L 240 108 L 320 100 L 400 85 L 480 70 L 560 50"
+          stroke="#ff2d87" stroke-width="3" fill="none"/>
+
+    <!-- Data Points -->
+    <circle cx="80" cy="120" r="4" fill="#ff2d87"/>
+    <circle cx="160" cy="115" r="4" fill="#ff2d87"/>
+    <circle cx="240" cy="108" r="4" fill="#ff2d87"/>
+    <circle cx="320" cy="100" r="4" fill="#ff2d87"/>
+    <circle cx="400" cy="85" r="4" fill="#ff2d87"/>
+    <circle cx="480" cy="70" r="4" fill="#ff2d87"/>
+    <circle cx="560" cy="50" r="4" fill="#ff2d87"/>
+
+    <!-- X-Axis Labels -->
+    <text x="80" y="195" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.4)" text-anchor="middle">Dez</text>
+    <text x="160" y="195" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.4)" text-anchor="middle">Jan</text>
+    <text x="240" y="195" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.4)" text-anchor="middle">Feb</text>
+    <text x="320" y="195" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.4)" text-anchor="middle">Mär</text>
+    <text x="400" y="195" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.4)" text-anchor="middle">Apr</text>
+    <text x="480" y="195" font-family="monospace" font-size="9" fill="#ff2d87" text-anchor="middle">Mai</text>
+    <text x="560" y="195" font-family="monospace" font-size="9" fill="#ff2d87" text-anchor="middle">Jun*</text>
+  </svg>
+
+  <!-- Cross-Functional KPIs -->
+  <text x="100" y="525" font-family="sans-serif" font-size="13" fill="#f5f1e8" font-weight="600">Cross-Functional Performance</text>
+
+  <rect x="100" y="540" width="200" height="55" rx="8" fill="rgba(184, 209, 138, 0.08)"/>
+  <text x="120" y="560" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">MARKETING • ROAS</text>
+  <text x="120" y="582" font-family="sans-serif" font-size="20" fill="#b8d18a" font-weight="700">4.2×</text>
+
+  <rect x="320" y="540" width="200" height="55" rx="8" fill="rgba(184, 209, 138, 0.08)"/>
+  <text x="340" y="560" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">SALES • WIN-RATE</text>
+  <text x="340" y="582" font-family="sans-serif" font-size="20" fill="#b8d18a" font-weight="700">68%</text>
+
+  <rect x="540" y="540" width="200" height="55" rx="8" fill="rgba(255, 45, 135, 0.08)"/>
+  <text x="560" y="560" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">CX • CHURN-RATE</text>
+  <text x="560" y="582" font-family="sans-serif" font-size="20" fill="#ff2d87" font-weight="700">8.2%</text>
+
+  <rect x="100" y="605" width="200" height="55" rx="8" fill="rgba(184, 209, 138, 0.08)"/>
+  <text x="120" y="625" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">OPS • UPTIME</text>
+  <text x="120" y="647" font-family="sans-serif" font-size="20" fill="#b8d18a" font-weight="700">99.8%</text>
+
+  <rect x="320" y="605" width="200" height="55" rx="8" fill="rgba(184, 209, 138, 0.08)"/>
+  <text x="340" y="625" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">TEAM • PRODUKTIVITÄT</text>
+  <text x="340" y="647" font-family="sans-serif" font-size="20" fill="#b8d18a" font-weight="700">84%</text>
+
+  <rect x="540" y="605" width="200" height="55" rx="8" fill="rgba(184, 209, 138, 0.08)"/>
+  <text x="560" y="625" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">GROWTH • MoM</text>
+  <text x="560" y="647" font-family="sans-serif" font-size="20" fill="#b8d18a" font-weight="700">+18%</text>
+
+  <!-- Right Column -->
+  <rect x="780" y="120" width="340" height="220" rx="12" fill="#0d0d0d" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+  <text x="800" y="145" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">STRATEGIC GOALS (OKRs)</text>
+
+  <rect x="800" y="160" width="300" height="45" rx="6" fill="rgba(184, 209, 138, 0.08)"/>
+  <text x="820" y="178" font-family="sans-serif" font-size="11" fill="#f5f1e8" font-weight="600">Revenue €1.2M ARR erreichen</text>
+  <rect x="820" y="188" width="280" height="8" rx="4" fill="rgba(255, 255, 255, 0.05)"/>
+  <rect x="820" y="188" width="224" height="8" rx="4" fill="#b8d18a"/>
+  <text x="1090" y="196" font-family="monospace" font-size="9" fill="#b8d18a" text-anchor="end">80%</text>
+
+  <rect x="800" y="215" width="300" height="45" rx="6" fill="rgba(184, 209, 138, 0.08)"/>
+  <text x="820" y="233" font-family="sans-serif" font-size="11" fill="#f5f1e8" font-weight="600">50 Enterprise-Kunden gewinnen</text>
+  <rect x="820" y="243" width="280" height="8" rx="4" fill="rgba(255, 255, 255, 0.05)"/>
+  <rect x="820" y="243" width="196" height="8" rx="4" fill="#b8d18a"/>
+  <text x="1090" y="251" font-family="monospace" font-size="9" fill="#b8d18a" text-anchor="end">70%</text>
+
+  <rect x="800" y="270" width="300" height="45" rx="6" fill="rgba(255, 45, 135, 0.08)"/>
+  <text x="820" y="288" font-family="sans-serif" font-size="11" fill="#f5f1e8" font-weight="600">Churn unter 5% senken</text>
+  <rect x="820" y="298" width="280" height="8" rx="4" fill="rgba(255, 255, 255, 0.05)"/>
+  <rect x="820" y="298" width="112" height="8" rx="4" fill="#ff2d87"/>
+  <text x="1090" y="306" font-family="monospace" font-size="9" fill="#ff2d87" text-anchor="end">40%</text>
+
+  <rect x="780" y="360" width="340" height="160" rx="12" fill="#0d0d0d" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+  <text x="800" y="385" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">TEAM OVERVIEW</text>
+
+  <text x="800" y="415" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Headcount</text>
+  <text x="1100" y="415" font-family="monospace" font-size="14" fill="#f5f1e8" font-weight="700" text-anchor="end">42</text>
+
+  <text x="800" y="445" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Burn/Employee</text>
+  <text x="1100" y="445" font-family="monospace" font-size="14" fill="#ff2d87" font-weight="700" text-anchor="end">€1.1k</text>
+
+  <text x="800" y="475" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Revenue/Employee</text>
+  <text x="1100" y="475" font-family="monospace" font-size="14" fill="#b8d18a" font-weight="700" text-anchor="end">€6.8k</text>
+
+  <text x="800" y="505" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Team-Produktivität</text>
+  <rect x="800" y="512" width="300" height="8" rx="4" fill="rgba(255, 255, 255, 0.05)"/>
+  <rect x="800" y="512" width="252" height="8" rx="4" fill="#b8d18a"/>
+  <text x="1100" y="530" font-family="monospace" font-size="11" fill="#b8d18a" text-anchor="end">84%</text>
+
+  <rect x="780" y="540" width="340" height="140" rx="12" fill="#0d0d0d" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+  <text x="800" y="565" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">CRITICAL ALERTS</text>
+
+  <rect x="800" y="580" width="300" height="30" rx="6" fill="rgba(255, 45, 135, 0.08)"/>
+  <circle cx="815" cy="595" r="4" fill="#ff2d87"/>
+  <text x="830" y="599" font-family="sans-serif" font-size="11" fill="#f5f1e8">Churn-Rate über Ziel (8.2% vs. 5%)</text>
+
+  <rect x="800" y="620" width="300" height="30" rx="6" fill="rgba(245, 193, 78, 0.08)"/>
+  <circle cx="815" cy="635" r="4" fill="#f5c14e"/>
+  <text x="830" y="639" font-family="sans-serif" font-size="11" fill="#f5f1e8">Cashflow-Runway bei 89 Tagen</text>
+
+  <rect x="80" y="700" width="340" height="50" rx="8" fill="rgba(184, 209, 138, 0.1)" stroke="rgba(184, 209, 138, 0.3)" stroke-width="1"/>
+  <text x="100" y="730" font-family="sans-serif" font-size="12" fill="#b8d18a">↑ Revenue +18% MoM — starkes Wachstum!</text>
+
+  <rect x="440" y="700" width="340" height="50" rx="8" fill="rgba(255, 45, 135, 0.1)" stroke="rgba(255, 45, 135, 0.3)" stroke-width="1"/>
+  <text x="460" y="730" font-family="sans-serif" font-size="12" fill="#ff2d87">⚠️ Churn-Reduktion braucht Fokus (40% OKR)</text>
+
+  <rect x="800" y="700" width="320" height="50" rx="8" fill="rgba(184, 209, 138, 0.1)" stroke="rgba(184, 209, 138, 0.3)" stroke-width="1"/>
+  <text x="820" y="730" font-family="sans-serif" font-size="12" fill="#b8d18a">80% OKR-Completion — sehr gut!</text>
+
+  <text x="80" y="785" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Features:</text>
+  <text x="145" y="785" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.7)">Revenue Trend · OKR Tracking · Cross-Functional KPIs · Team Metrics · Critical Alerts</text>
+</svg>

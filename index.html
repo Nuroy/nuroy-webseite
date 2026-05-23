@@ -6,8 +6,8 @@
   <title>Nuroy — Software · Automation · Strategie</title>
   <meta name="description" content="Nuroy ist die Technik-Abteilung für Unternehmen, die bauen wollen, statt zu verwalten. Custom-Software, Automatisierung und Tech-Beratung im DACH-Raum.">
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/assets/logo-icon.png">
-  <link rel="apple-touch-icon" href="/assets/logo-icon.png">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/favicon.png">
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Nuroy — Software · Automation · Strategie">
@@ -26,6 +26,7 @@
       padding-top: var(--nav-h);
       position: relative;
       overflow: hidden;
+      background: #000000;
     }
     .hero-glow {
       position: absolute;
@@ -34,6 +35,14 @@
       width: 800px; height: 600px;
       background: radial-gradient(ellipse, rgba(255,45,122,0.12) 0%, transparent 70%);
       pointer-events: none;
+      z-index: 1;
+    }
+    .hero .noise-overlay {
+      z-index: 1;
+    }
+    .hero .container {
+      position: relative;
+      z-index: 10;
     }
     .hero-inner {
       display: grid;
@@ -52,8 +61,12 @@
       font-size: 11px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--fg-dim);
+      color: var(--fg);
       margin-bottom: 28px;
+      text-shadow:
+        0 2px 8px rgba(0, 0, 0, 1),
+        0 4px 16px rgba(0, 0, 0, 0.9),
+        0 8px 24px rgba(0, 0, 0, 0.8);
     }
     .hero-label-dot {
       width: 6px; height: 6px;
@@ -67,19 +80,40 @@
       line-height: 1.0;
       letter-spacing: -0.04em;
       margin-bottom: 28px;
+      text-shadow:
+        0 3px 12px rgba(0, 0, 0, 1),
+        0 6px 24px rgba(0, 0, 0, 0.9),
+        0 12px 40px rgba(0, 0, 0, 0.7),
+        0 0 50px rgba(255, 45, 122, 0.2);
     }
     .hero-headline .accent {
       color: var(--pink);
-      text-shadow: 0 0 60px rgba(255,45,122,0.5);
+      text-shadow:
+        0 3px 12px rgba(0, 0, 0, 1),
+        0 6px 24px rgba(0, 0, 0, 0.9),
+        0 12px 40px rgba(0, 0, 0, 0.7),
+        0 0 80px rgba(255, 45, 122, 0.7),
+        0 0 140px rgba(255, 45, 122, 0.4);
     }
     .hero-sub {
       font-size: clamp(16px, 1.3vw, 19px);
-      color: var(--fg-muted);
+      color: var(--fg);
+      font-weight: 500;
       line-height: 1.7;
       max-width: 480px;
       margin-bottom: 40px;
+      text-shadow:
+        0 2px 10px rgba(0, 0, 0, 1),
+        0 4px 20px rgba(0, 0, 0, 0.9),
+        0 8px 32px rgba(0, 0, 0, 0.7);
     }
-    .hero-sub .hi { color: var(--fg); }
+    .hero-sub .hi {
+      color: var(--fg);
+      text-shadow:
+        0 2px 10px rgba(0, 0, 0, 1),
+        0 4px 20px rgba(0, 0, 0, 0.95),
+        0 8px 32px rgba(0, 0, 0, 0.8);
+    }
     .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
     .hero-meta {
       display: flex;
@@ -87,8 +121,12 @@
       gap: 16px;
       font-family: var(--font-mono);
       font-size: 11px;
-      color: var(--fg-dim);
+      color: var(--fg);
       letter-spacing: 0.05em;
+      text-shadow:
+        0 2px 8px rgba(0, 0, 0, 1),
+        0 4px 16px rgba(0, 0, 0, 0.9),
+        0 8px 24px rgba(0, 0, 0, 0.8);
     }
     .hero-meta-sep { color: rgba(245,242,236,0.2); }
 
@@ -387,6 +425,10 @@
       transition: background 0.4s;
       /* entrance */
       opacity: 0; transform: translateY(28px);
+      /* link styles */
+      display: block;
+      text-decoration: none;
+      color: inherit;
     }
     .service-card.entered {
       animation: card-enter 0.65s cubic-bezier(0.2,0,0,1) forwards;
@@ -881,6 +923,9 @@
     /* ── Mobile ─────────────────────────────── */
     @media (max-width: 960px) {
       .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      #waves-container {
+        opacity: 0.7;
+      }
       .hero-right {
         display: block;
         transform: scale(0.9);
@@ -1030,6 +1075,12 @@
     }
 
     @media (max-width: 600px) {
+      #waves-container {
+        opacity: 0.6;  /* Sichtbarer Hintergrund auf Mobile, näher an Desktop */
+      }
+      /* .hero {
+        background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
+      } */
       .service-cards { grid-template-columns: 1fr; }
       .service-card { padding: 24px 20px; }
       .service-card::before { font-size: 60px; right: -5px; bottom: -16px; }
@@ -1055,6 +1106,7 @@
 <section class="hero">
   <div class="noise-overlay"></div>
   <div class="hero-glow"></div>
+  <div id="waves-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000000; --x: -0.5rem; --y: 50%;"></div>
   <div class="container">
     <div class="hero-inner">
 
@@ -1235,53 +1287,77 @@
   <div class="container" style="position:relative;z-index:2">
     <p class="t-label reveal">Leistungen</p>
     <h2 class="t-h2 reveal reveal-d1" style="max-width:560px; margin-top:8px;">
-      Drei Säulen.<br>Ein Team. Volle Verantwortung.
+      Sieben Bereiche.<br>Ein Team. Volle Verantwortung.
     </h2>
     <div style="margin-top:56px">
       <div class="services-header-bar">
         <span class="shb-dot"></span>
-        <span class="shb-label">nuroy / leistungen — 4 Kernbereiche</span>
+        <span class="shb-label">nuroy / leistungen — 7 Bereiche</span>
         <div class="shb-right">
+          <span class="shb-pill">Dashboards</span>
+          <span class="shb-pill">KI-Agenten</span>
           <span class="shb-pill">Software</span>
-          <span class="shb-pill">Automation</span>
-          <span class="shb-pill">Strategie</span>
-          <span class="shb-pill">Managed</span>
+          <span class="shb-pill">Daten</span>
         </div>
       </div>
       <div class="service-connector"><div class="service-connector-fill" id="service-connector-fill"></div></div>
       <div class="service-cards" id="service-cards-grid">
-      <div class="service-card reveal reveal-d1" data-num="01">
+      <a href="leistungen/dashboards.html" class="service-card reveal reveal-d1" data-num="01">
         <div class="service-icon">
-          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><rect x="2" y="3" width="16" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 17h6M10 14v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <svg width="20" height="20" fill="none" viewBox="0 0 22 22" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2 11h2.25c.621 0 1.125.504 1.125 1.125v5.75c0 .621-.504 1.125-1.125 1.125H2M8 7h2.25c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125H8M14 3h2.25c.621 0 1.125.504 1.125 1.125v13.75c0 .621-.504 1.125-1.125 1.125H14"/></svg>
         </div>
-        <h3>Softwareentwicklung</h3>
-        <p>Custom-Software, SaaS-Plattformen, interne Tools, Backends und Integrationen. Kein Template, kein Baukastensystem.</p>
+        <h3>Custom Dashboards</h3>
+        <p>Daten aus allen Tools an einem Ort. Live. Übersichtlich. Auf eure KPIs zugeschnitten.</p>
+        <span class="service-card-tag">→ /leistungen/dashboards</span>
+      </a>
+      <a href="leistungen/ki-agenten.html" class="service-card reveal reveal-d2" data-num="02">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 22 22" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16v1.007a3 3 0 0 1-.879 2.122L6.5 20h7l-.621-.621A3 3 0 0 1 12 17.257V16m6-12V12a2.25 2.25 0 0 1-2.25 2.25h-9A2.25 2.25 0 0 1 4.5 12V4m13.5 0A2.25 2.25 0 0 0 15.75 1.75h-9A2.25 2.25 0 0 0 4.5 4m13.5 0V10a2.25 2.25 0 0 1-2.25 2.25h-9A2.25 2.25 0 0 1 4.5 10V4"/></svg>
+        </div>
+        <h3>KI-Agenten & Automatisierungen</h3>
+        <p>Workflows automatisieren. KI-Agenten für Vertrieb, Support und interne Prozesse.</p>
+        <span class="service-card-tag">→ /leistungen/ki-agenten</span>
+      </a>
+      <a href="leistungen/software.html" class="service-card reveal reveal-d3" data-num="03">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 22 22" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16 5 20 10l-4 5m-8 0L4 10l4-5m5.5-3-3.5 14"/></svg>
+        </div>
+        <h3>Custom Software-Entwicklung</h3>
+        <p>SaaS-Produkte, interne Tools, Kunden-Plattformen. Von der Idee bis zum Live-Betrieb.</p>
         <span class="service-card-tag">→ /leistungen/software</span>
-      </div>
-      <div class="service-card reveal reveal-d2" data-num="02">
+      </a>
+      <a href="leistungen/ki-integration.html" class="service-card reveal reveal-d4" data-num="04">
         <div class="service-icon">
-          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M4 10h2l2-4 2 8 2-5 2 3h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="20" height="20" fill="none" viewBox="0 0 22 22" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15h3m0 0h3m-3 0v-3m0 3v3M5 9h2.25A2.25 2.25 0 0 0 9.5 6.75V4.5A2.25 2.25 0 0 0 7.25 2.25H5A2.25 2.25 0 0 0 2.75 4.5v2.25A2.25 2.25 0 0 0 5 9Zm0 9h2.25A2.25 2.25 0 0 0 9.5 15.75v-2.25a2.25 2.25 0 0 0-2.25-2.25H5a2.25 2.25 0 0 0-2.25 2.25v2.25A2.25 2.25 0 0 0 5 18Zm9-9h2.25A2.25 2.25 0 0 0 18.5 6.75V4.5a2.25 2.25 0 0 0-2.25-2.25H14a2.25 2.25 0 0 0-2.25 2.25v2.25A2.25 2.25 0 0 0 14 9Z"/></svg>
         </div>
-        <h3>Automatisierung</h3>
-        <p>n8n, Make, API-Orchestrierung, Webhooks, Queues. Manuelle Prozesse werden zu Systemen, die alleine laufen.</p>
-        <span class="service-card-tag">→ /leistungen/automation</span>
-      </div>
-      <div class="service-card reveal reveal-d3" data-num="03">
+        <h3>KI-Integration</h3>
+        <p>Lead-Scoring, Churn-Prediction, Sentiment-Analyse – direkt in euren Tools.</p>
+        <span class="service-card-tag">→ /leistungen/ki-integration</span>
+      </a>
+      <a href="leistungen/company-ai.html" class="service-card reveal reveal-d5" data-num="05">
         <div class="service-icon">
-          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M10 2L3 7v6c0 3.3 3 6 7 7 4-1 7-3.7 7-7V7L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          <svg width="20" height="20" fill="none" viewBox="0 0 22 22" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 13 9 18 7 21l-1-3 2-5Zm-1-5 .813 2.846A4.5 4.5 0 0 0 11 13.937l2.846.813L16 18l-2.846.813A4.5 4.5 0 0 0 10 21.937L9 24l-.813-2.846A4.5 4.5 0 0 0 5 18.937L2.154 18l2.846-.813A4.5 4.5 0 0 0 8 14.063L8.813 11.154Z"/></svg>
         </div>
-        <h3>Strategieberatung</h3>
-        <p>Tech-Audits, Architektur-Reviews, Make-or-Buy-Entscheidungen, Roadmaps. Substanz statt Foliensatz.</p>
-        <span class="service-card-tag">→ /leistungen/strategie</span>
-      </div>
-      <div class="service-card reveal reveal-d4" data-num="04">
+        <h3>Interne Company-AI</h3>
+        <p>Euer eigener KI-Assistent. Trainiert auf eure Dokumente, Prozesse und euer Wissen.</p>
+        <span class="service-card-tag">→ /leistungen/company-ai</span>
+      </a>
+      <a href="leistungen/datenintegration.html" class="service-card reveal reveal-d6" data-num="06">
         <div class="service-icon">
-          <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M10 7v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <svg width="20" height="20" fill="none" viewBox="0 0 22 22" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M18 5c0 2.278-3.694 4.125-8.25 4.125S1.5 7.278 1.5 5m16.5 0c0-2.278-3.694-4.125-8.25-4.125S1.5 2.722 1.5 5m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V5m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/></svg>
         </div>
-        <h3>Managed Tech</h3>
-        <p>Betrieb, Monitoring, Incident-Response und kontinuierliche Weiterentwicklung. Wir gehen nicht nach dem Launch.</p>
-        <span class="service-card-tag">→ Retainer-Modell</span>
-      </div>
+        <h3>Datenintegration & ETL-Pipelines</h3>
+        <p>Datensilos auflösen. Alle Quellen synchronisieren. Ein Data Warehouse für alles.</p>
+        <span class="service-card-tag">→ /leistungen/datenintegration</span>
+      </a>
+      <a href="leistungen/strategy-audit.html" class="service-card reveal reveal-d7" data-num="07">
+        <div class="service-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 22 22" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.879 6.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M18 11a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM11 15h.008v.008H11V15Z"/></svg>
+        </div>
+        <h3>Strategy & Audit</h3>
+        <p>2-wöchige Discovery-Phase. Tool-Stack prüfen. Roadmap definieren. Richtung finden.</p>
+        <span class="service-card-tag">→ /leistungen/strategy-audit</span>
+      </a>
       </div>
     </div>
   </div>
@@ -1659,6 +1735,7 @@
 
 <div id="footer-mount"></div>
 
+<script src="funnel/waves-animation.js"></script>
 <script src="shared/components.js?v=1776884200265"></script>
 <script>
   /* ── Waveform bars ───────────────────── */

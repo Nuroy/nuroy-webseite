@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0A0C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#121216;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#grad1)"/>
+  <text x="40" y="35" fill="#FF2D7A" font-size="12" font-family="monospace" letter-spacing="2">PROCESS OPTIMIZATION • BEFORE &amp; AFTER</text>
+
+  <rect x="40" y="70" width="1120" height="540" rx="8" fill="#1C1C22" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="60" y="100" fill="#9A968C" font-size="11" font-family="monospace" letter-spacing="1">INVOICE PROCESSING WORKFLOW COMPARISON</text>
+
+  <!-- Before: Manual Process -->
+  <rect x="80" y="130" width="520" height="430" rx="6" fill="rgba(154,150,140,0.08)" stroke="rgba(154,150,140,0.2)" stroke-width="1"/>
+  <text x="100" y="160" fill="#9A968C" font-size="14" font-weight="bold">BEFORE: Manual Process</text>
+
+  <!-- Step 1 -->
+  <rect x="100" y="180" width="180" height="80" rx="6" fill="rgba(154,150,140,0.12)" stroke="rgba(154,150,140,0.3)" stroke-width="1"/>
+  <text x="120" y="205" fill="#9A968C" font-size="11" font-weight="bold">1. Receive Invoice</text>
+  <text x="120" y="222" fill="#F5F2EC" font-size="9">Email arrives</text>
+  <text x="120" y="236" fill="#F5F2EC" font-size="9">Print document</text>
+  <text x="120" y="250" fill="#D1A85C" font-size="8">⏱ 10 min</text>
+
+  <path d="M 190 260 L 190 290" stroke="#9A968C" stroke-width="2"/>
+  <polygon points="190,290 185,283 195,283" fill="#9A968C"/>
+
+  <!-- Step 2 -->
+  <rect x="100" y="290" width="180" height="80" rx="6" fill="rgba(154,150,140,0.12)" stroke="rgba(154,150,140,0.3)" stroke-width="1"/>
+  <text x="120" y="315" fill="#9A968C" font-size="11" font-weight="bold">2. Manual Entry</text>
+  <text x="120" y="332" fill="#F5F2EC" font-size="9">Type into system</text>
+  <text x="120" y="346" fill="#F5F2EC" font-size="9">Data verification</text>
+  <text x="120" y="360" fill="#D1A85C" font-size="8">⏱ 15 min</text>
+
+  <path d="M 280 330 L 320 330" stroke="#9A968C" stroke-width="2"/>
+  <polygon points="320,330 313,325 313,335" fill="#9A968C"/>
+
+  <!-- Step 3 -->
+  <rect x="320" y="180" width="260" height="80" rx="6" fill="rgba(154,150,140,0.12)" stroke="rgba(154,150,140,0.3)" stroke-width="1"/>
+  <text x="340" y="205" fill="#9A968C" font-size="11" font-weight="bold">3. Approval Routing</text>
+  <text x="340" y="222" fill="#F5F2EC" font-size="9">Email to manager</text>
+  <text x="340" y="236" fill="#F5F2EC" font-size="9">Wait for response</text>
+  <text x="340" y="250" fill="#D1A85C" font-size="8">⏱ 2-5 days</text>
+
+  <path d="M 450 260 L 450 290" stroke="#9A968C" stroke-width="2"/>
+  <polygon points="450,290 445,283 455,283" fill="#9A968C"/>
+
+  <!-- Step 4 -->
+  <rect x="320" y="290" width="260" height="80" rx="6" fill="rgba(154,150,140,0.12)" stroke="rgba(154,150,140,0.3)" stroke-width="1"/>
+  <text x="340" y="315" fill="#9A968C" font-size="11" font-weight="bold">4. Payment Processing</text>
+  <text x="340" y="332" fill="#F5F2EC" font-size="9">Manual bank transfer</text>
+  <text x="340" y="346" fill="#F5F2EC" font-size="9">File documentation</text>
+  <text x="340" y="360" fill="#D1A85C" font-size="8">⏱ 30 min</text>
+
+  <!-- Issues -->
+  <rect x="100" y="390" width="480" height="150" rx="6" fill="rgba(245,242,236,0.02)" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="120" y="415" fill="#D1A85C" font-size="11" font-weight="bold">⚠ Issues with Manual Process:</text>
+  <text x="120" y="435" fill="#F5F2EC" font-size="10">• Average processing time: 2-5 days</text>
+  <text x="120" y="453" fill="#F5F2EC" font-size="10">• Error rate: 8%</text>
+  <text x="120" y="471" fill="#F5F2EC" font-size="10">• Cost per invoice: €12.50</text>
+  <text x="120" y="489" fill="#F5F2EC" font-size="10">• Labor intensive: 55 min per invoice</text>
+  <text x="120" y="507" fill="#F5F2EC" font-size="10">• No real-time visibility</text>
+  <text x="120" y="525" fill="#F5F2EC" font-size="10">• Duplicate payments risk</text>
+
+  <!-- After: Automated Process -->
+  <rect x="620" y="130" width="520" height="430" rx="6" fill="rgba(143,163,115,0.08)" stroke="rgba(143,163,115,0.2)" stroke-width="1"/>
+  <text x="640" y="160" fill="#8FA373" font-size="14" font-weight="bold">AFTER: Automated Process</text>
+
+  <!-- Step 1 Auto -->
+  <rect x="640" y="180" width="180" height="60" rx="6" fill="rgba(143,163,115,0.12)" stroke="rgba(143,163,115,0.3)" stroke-width="1"/>
+  <text x="660" y="203" fill="#8FA373" font-size="11" font-weight="bold">1. Auto-Capture</text>
+  <text x="660" y="218" fill="#F5F2EC" font-size="9">AI extracts data</text>
+  <text x="660" y="231" fill="#8FA373" font-size="8">⏱ 30 sec</text>
+
+  <path d="M 730 240 L 730 260" stroke="#8FA373" stroke-width="2"/>
+  <polygon points="730,260 725,253 735,253" fill="#8FA373"/>
+
+  <!-- Step 2 Auto -->
+  <rect x="640" y="260" width="180" height="60" rx="6" fill="rgba(143,163,115,0.12)" stroke="rgba(143,163,115,0.3)" stroke-width="1"/>
+  <text x="660" y="283" fill="#8FA373" font-size="11" font-weight="bold">2. Auto-Validate</text>
+  <text x="660" y="298" fill="#F5F2EC" font-size="9">Smart checks</text>
+  <text x="660" y="311" fill="#8FA373" font-size="8">⏱ 10 sec</text>
+
+  <path d="M 820 290 L 860 290" stroke="#8FA373" stroke-width="2"/>
+  <polygon points="860,290 853,285 853,295" fill="#8FA373"/>
+
+  <!-- Step 3 Auto -->
+  <rect x="860" y="180" width="260" height="60" rx="6" fill="rgba(143,163,115,0.12)" stroke="rgba(143,163,115,0.3)" stroke-width="1"/>
+  <text x="880" y="203" fill="#8FA373" font-size="11" font-weight="bold">3. Smart Routing</text>
+  <text x="880" y="218" fill="#F5F2EC" font-size="9">Auto-route to approver</text>
+  <text x="880" y="231" fill="#8FA373" font-size="8">⏱ 2 hours</text>
+
+  <path d="M 990 240 L 990 260" stroke="#8FA373" stroke-width="2"/>
+  <polygon points="990,260 985,253 995,253" fill="#8FA373"/>
+
+  <!-- Step 4 Auto -->
+  <rect x="860" y="260" width="260" height="60" rx="6" fill="rgba(143,163,115,0.12)" stroke="rgba(143,163,115,0.3)" stroke-width="1"/>
+  <text x="880" y="283" fill="#8FA373" font-size="11" font-weight="bold">4. Auto-Payment</text>
+  <text x="880" y="298" fill="#F5F2EC" font-size="9">Scheduled transfer</text>
+  <text x="880" y="311" fill="#8FA373" font-size="8">⏱ 1 min</text>
+
+  <!-- Benefits -->
+  <rect x="640" y="340" width="480" height="200" rx="6" fill="rgba(245,242,236,0.02)" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="660" y="365" fill="#8FA373" font-size="11" font-weight="bold">✓ Benefits of Automation:</text>
+  <text x="660" y="385" fill="#F5F2EC" font-size="10">• Average processing time: 2-4 hours ↓ 95%</text>
+  <text x="660" y="403" fill="#F5F2EC" font-size="10">• Error rate: 0.2% ↓ 97.5%</text>
+  <text x="660" y="421" fill="#F5F2EC" font-size="10">• Cost per invoice: €0.80 ↓ 93.6%</text>
+  <text x="660" y="439" fill="#F5F2EC" font-size="10">• Labor time: 2 min ↓ 96%</text>
+  <text x="660" y="457" fill="#F5F2EC" font-size="10">• Real-time dashboards ✓</text>
+  <text x="660" y="475" fill="#F5F2EC" font-size="10">• Duplicate detection: 100% ✓</text>
+  <text x="660" y="493" fill="#F5F2EC" font-size="10">• Annual savings: €96,000</text>
+  <text x="660" y="520" fill="#FF2D7A" font-size="12" font-weight="bold">ROI: 8 months payback period</text>
+
+  <rect x="40" y="625" width="1120" height="35" rx="6" fill="rgba(255,45,122,0.06)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="60" y="647" fill="#9A968C" font-size="11">Analysis Features:</text>
+  <text x="240" y="647" fill="#F5F2EC" font-size="11">Before/After Comparison</text>
+  <text x="460" y="647" fill="#F5F2EC" font-size="11">Time Savings</text>
+  <text x="630" y="647" fill="#F5F2EC" font-size="11">Cost Reduction</text>
+  <text x="820" y="647" fill="#F5F2EC" font-size="11">ROI Calculation</text>
+</svg>

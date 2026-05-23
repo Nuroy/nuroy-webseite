@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company AI | Nuroy</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Company AI — Nuroy">
+  <meta property="og:description" content="Company AI: Eure eigene KI, trainiert auf euer Unternehmenswissen.">
+  <meta property="og:image" content="https://nuroy.de/og-image.png">
+  <meta property="og:url" content="https://nuroy.de/leistungen/company-ai">
+  <link rel="stylesheet" href="../shared/styles.min.css?v=1776884200265">
+  <!-- Funnel Styles (for Testimonials & Problem Section) -->
+  <link rel="stylesheet" href="../funnel/funnel-styles.min.css?v=3.9">
+  <!-- Service-specific enhanced styles -->
+  <link rel="stylesheet" href="../services/services-styles.css">
+  <link rel="stylesheet" href="../services/services-kpi-styles.css">
+  <!-- Lite YouTube Embed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js" defer></script>
+</head>
+<body>
+
+<!-- Cursor Glow -->
+<div id="cursor-glow" class="cursor-glow"></div>
+
+<!-- Nav (injected) -->
+<div id="nav-mount"></div>
+
+<!-- A. Enhanced Hero Section with MacBook Mockup -->
+<section class="service-hero-enhanced">
+  <div class="hero-content-split">
+    <div class="hero-text">
+      <p class="t-label c-pink reveal">LEISTUNG 05/07</p>
+      <h1 class="service-hero-headline reveal reveal-d1" id="hero-headline">Company AI</h1>
+      <p class="service-hero-subline reveal reveal-d2" id="hero-subline">Eure eigene KI. Trainiert auf euer Wissen. Nur für euer Team.</p>
+    </div>
+
+    <div class="service-vsl-wrapper reveal reveal-d2">
+      <div class="service-vsl-topbar">
+        <div class="vsl-topbar-dots">
+          <div class="vsl-topbar-dot red"></div>
+          <div class="vsl-topbar-dot yellow"></div>
+          <div class="vsl-topbar-dot green"></div>
+        </div>
+      </div>
+      <object id="mockup-image" type="image/svg+xml" data="../assets/services/company-ai/mockup-knowledge.svg" aria-label="Company AI Mockup" style="width: 100%; height: auto; display: block;">
+        <img src="../assets/services/company-ai/mockup-knowledge.svg" alt="Company AI Mockup">
+      </object>
+    </div>
+  </div>
+
+  <div class="hero-ctas reveal reveal-d3">
+    <a href="../kontakt.html" class="btn btn-pink-glass">Erstgespräch</a>
+    <a href="../leistungen.html" class="btn btn-glass-secondary">Alle Leistungen</a>
+  </div>
+</section>
+
+<!-- Social Proof Section (moved up after hero) -->
+<section class="social-proof-section section--sm" id="testimonials-section">
+  <div class="container">
+    <!-- Stat-Bar over Logos -->
+    <div class="social-proof-stat reveal">
+      <span class="stat-number">12+</span>
+      <span class="stat-label">erfolgreiche Projekte</span>
+      <span class="stat-divider">·</span>
+      <span class="stat-number">99.9%</span>
+      <span class="stat-label">Uptime</span>
+    </div>
+
+    <!-- Logo Row - Animated Carousel -->
+    <p class="t-small c-dim text-center mt-6 mb-3 reveal reveal-d1">Vertrauen von:</p>
+    <div class="client-logos-carousel reveal reveal-d2">
+      <div class="client-logos-track">
+        <!-- Set 1 -->
+        <img src="../assets/clients/sniffys.png" alt="Sniffys" class="client-logo-img">
+        <img src="../assets/clients/followaustria.webp" alt="Follow Austria" class="client-logo-img">
+        <img src="../assets/clients/nomo.png" alt="Nomo" class="client-logo-img">
+        <span class="client-logo-text">Skalieren zur Million</span>
+
+        <!-- Set 2 (duplicate for infinite scroll) -->
+        <img src="../assets/clients/sniffys.png" alt="Sniffys" class="client-logo-img">
+        <img src="../assets/clients/followaustria.webp" alt="Follow Austria" class="client-logo-img">
+        <img src="../assets/clients/nomo.png" alt="Nomo" class="client-logo-img">
+        <span class="client-logo-text">Skalieren zur Million</span>
+
+        <!-- Set 3 (duplicate for infinite scroll) -->
+        <img src="../assets/clients/sniffys.png" alt="Sniffys" class="client-logo-img">
+        <img src="../assets/clients/followaustria.webp" alt="Follow Austria" class="client-logo-img">
+        <img src="../assets/clients/nomo.png" alt="Nomo" class="client-logo-img">
+        <span class="client-logo-text">Skalieren zur Million</span>
+      </div>
+    </div>
+
+    <!-- Video Testimonials -->
+    <h2 class="funnel-section-headline text-center mt-8" style="color: #FF2D7A;">Was Kunden über uns sagen.</h2>
+
+    <div class="funnel-testimonials-grid" id="testimonials-grid">
+      <!-- Sniffys -->
+      <div class="funnel-testimonial-card" data-video-id="UvMFGmVZ9U8">
+        <div class="funnel-testimonial-video">
+          <lite-youtube videoid="UvMFGmVZ9U8"></lite-youtube>
+        </div>
+      </div>
+
+      <!-- Nomo (Valentin) - IN DER MITTE -->
+      <div class="funnel-testimonial-card" data-video-id="_GIMhcR781Y">
+        <div class="funnel-testimonial-video">
+          <lite-youtube videoid="_GIMhcR781Y"></lite-youtube>
+        </div>
+      </div>
+
+      <!-- Follow Austria -->
+      <div class="funnel-testimonial-card" data-video-id="YP-pHyQrUSs">
+        <div class="funnel-testimonial-video">
+          <lite-youtube videoid="YP-pHyQrUSs"></lite-youtube>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Problem Section -->
+<section class="funnel-section funnel-problem" id="problem">
+  <div class="container">
+    <h2 class="funnel-section-headline">Wenn das bekannt vorkommt …</h2>
+
+    <div class="funnel-problem-cards" id="problem-cards">
+      <div class="funnel-problem-card reveal">
+        <svg class="funnel-problem-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+        </svg>
+        <h3>Wissen versteckt</h3>
+        <p>Wichtige Infos sind in Notion, Confluence, E-Mails verstreut.</p>
+      </div>
+
+      <div class="funnel-problem-card reveal reveal-d1">
+        <svg class="funnel-problem-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+        </svg>
+        <h3>Immer dieselben Fragen</h3>
+        <p>Euer Team fragt ständig dasselbe – HR und IT ertrinken in Anfragen.</p>
+      </div>
+
+      <div class="funnel-problem-card reveal reveal-d2">
+        <svg class="funnel-problem-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        <h3>Onboarding dauert ewig</h3>
+        <p>Neue Mitarbeiter brauchen Wochen, um produktiv zu werden.</p>
+      </div>
+    </div>
+
+    <p class="funnel-problem-closing">… dann sind Sie nicht allein. Und Sie sind genau richtig hier.</p>
+  </div>
+</section>
+
+<!-- B. KI-Agent Showcase - Was sind KI-Agenten -->
+<section class="section dashboard-showcase">
+  <div class="container" style="max-width: 1000px;">
+    <h2 class="t-h2 reveal text-center" id="showcase-title">Was ist Company AI?</h2>
+    <p class="t-body-lg reveal reveal-d1 text-center" id="showcase-subtitle" style="max-width: 700px; margin: 16px auto 48px; color: var(--fg-muted);">
+      Eine KI, die euer Unternehmenswissen versteht, interne Fragen beantwortet und Prozesse automatisiert – speziell für euer Team.
+    </p>
+
+    <!-- Animated Accordion -->
+    <div class="dashboard-accordion reveal reveal-d2" id="dashboard-accordion">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- Solution Section with Wave Animation -->
+<section class="funnel-section funnel-solution" id="solution">
+  <!-- Wave Animation Background -->
+  <div id="waves-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000000; --x: -0.5rem; --y: 50%;"></div>
+
+  <!-- Content über der Animation -->
+  <div class="container" style="position: relative; z-index: 10;">
+    <div class="solution-layout">
+      <!-- LEFT: Benefit Cards Stack -->
+      <div class="dashboard-cards-stack" id="benefit-cards-stack">
+        <!-- Populated by populate-service.js from data.benefitCards -->
+      </div>
+
+      <!-- RIGHT: ROI Content -->
+      <div class="solution-main-content">
+        <h2 class="funnel-section-headline" id="roi-headline">Der ROI Ihrer Company AI.</h2>
+        <p class="funnel-solution-subline" id="roi-subline">Weniger Support-Anfragen an Ihr Team. Mehr qualifizierte Leads.</p>
+        <div class="funnel-solution-cta">
+          <a href="../kontakt.html" class="btn btn-pink-glass">Erstgespräch buchen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Company-AI Knowledge Flow Section -->
+<section class="funnel-section dashboard-flow-section company-ai-section" id="architecture">
+  <div class="container">
+    <h2 class="funnel-section-headline">Internes Wissen.<br>Immer verfügbar.</h2>
+    <p class="funnel-solution-subline">Ihre Mitarbeiter finden Antworten in Sekunden statt Stunden</p>
+
+    <div class="dashboard-flow-card">
+      <svg class="dashboard-flow-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet">
+
+        <!-- ============ KNOWLEDGE SOURCES — bigger, icon-prominent ============ -->
+
+        <!-- WIKI (book) -->
+        <g>
+          <rect x="80"  y="60" width="180" height="180" rx="14" class="source-box" />
+          <rect x="80"  y="60" width="180" height="180" rx="14" class="source-glow sg1" />
+          <path d="M 130 110 L 130 195 L 210 195 L 210 110 Z" class="source-icon" />
+          <line x1="170" y1="110" x2="170" y2="195" class="source-icon" />
+          <line x1="145" y1="135" x2="162" y2="135" class="source-icon" />
+          <line x1="145" y1="155" x2="162" y2="155" class="source-icon" />
+          <line x1="145" y1="175" x2="158" y2="175" class="source-icon" />
+          <line x1="178" y1="135" x2="195" y2="135" class="source-icon" />
+          <line x1="178" y1="155" x2="195" y2="155" class="source-icon" />
+          <line x1="178" y1="175" x2="192" y2="175" class="source-icon" />
+          <text x="170" y="228" class="source-label">WIKI</text>
+        </g>
+
+        <!-- DOCS (stacked documents) -->
+        <g>
+          <rect x="510" y="60" width="180" height="180" rx="14" class="source-box" />
+          <rect x="510" y="60" width="180" height="180" rx="14" class="source-glow sg2" />
+          <path d="M 555 105 L 595 105 L 620 130 L 620 195 L 555 195 Z" class="source-icon" />
+          <path d="M 595 105 L 595 130 L 620 130" class="source-icon" />
+          <path d="M 575 125 L 615 125 L 640 150 L 640 215 L 575 215 Z" class="source-icon" fill="#161616" />
+          <path d="M 615 125 L 615 150 L 640 150" class="source-icon" />
+          <line x1="585" y1="165" x2="630" y2="165" class="source-icon" />
+          <line x1="585" y1="180" x2="630" y2="180" class="source-icon" />
+          <line x1="585" y1="195" x2="618" y2="195" class="source-icon" />
+          <text x="600" y="228" class="source-label">DOCS</text>
+        </g>
+
+        <!-- CHAT (speech bubble) -->
+        <g>
+          <rect x="910" y="60" width="180" height="180" rx="14" class="source-box" />
+          <rect x="910" y="60" width="180" height="180" rx="14" class="source-glow sg3" />
+          <path d="M 945 115 Q 945 100 960 100 L 1040 100 Q 1055 100 1055 115 L 1055 170 Q 1055 185 1040 185 L 990 185 L 965 210 L 965 185 L 960 185 Q 945 185 945 170 Z" class="source-icon" />
+          <circle cx="975"  cy="142" r="4" class="source-icon-fill" />
+          <circle cx="1000" cy="142" r="4" class="source-icon-fill" />
+          <circle cx="1025" cy="142" r="4" class="source-icon-fill" />
+          <text x="1000" y="228" class="source-label">CHAT</text>
+        </g>
+
+        <!-- DRIVE (folder) -->
+        <g>
+          <rect x="1340" y="60" width="180" height="180" rx="14" class="source-box" />
+          <rect x="1340" y="60" width="180" height="180" rx="14" class="source-glow sg4" />
+          <path d="M 1375 125 L 1400 125 L 1415 140 L 1485 140 Q 1495 140 1495 150 L 1495 195 Q 1495 205 1485 205 L 1375 205 Q 1365 205 1365 195 L 1365 135 Q 1365 125 1375 125 Z" class="source-icon" />
+          <line x1="1385" y1="160" x2="1475" y2="160" class="source-icon" opacity="0.5" />
+          <text x="1430" y="228" class="source-label">DRIVE</text>
+        </g>
+
+        <!-- ============ KNOWLEDGE FLOW LINES (sources → core) ============ -->
+        <line x1="170"  y1="240" x2="800" y2="430" class="knowledge-line" />
+        <line x1="600"  y1="240" x2="800" y2="430" class="knowledge-line" />
+        <line x1="1000" y1="240" x2="800" y2="430" class="knowledge-line" />
+        <line x1="1430" y1="240" x2="800" y2="430" class="knowledge-line" />
+
+        <!-- Animated pulses traveling down to AI core -->
+        <line x1="170"  y1="240" x2="800" y2="430" class="knowledge-pulse kp1" />
+        <line x1="600"  y1="240" x2="800" y2="430" class="knowledge-pulse kp2" />
+        <line x1="1000" y1="240" x2="800" y2="430" class="knowledge-pulse kp3" />
+        <line x1="1430" y1="240" x2="800" y2="430" class="knowledge-pulse kp4" />
+
+        <!-- ============ ANSWER PULSES (core → questioners) ============ -->
+        <line x1="800" y1="470" x2="280"  y2="630" class="answer-pulse ap-left" />
+        <line x1="800" y1="470" x2="1320" y2="630" class="answer-pulse ap-right" />
+        <line x1="800" y1="470" x2="800"  y2="810" class="answer-pulse ap-bot-l" />
+
+        <!-- ============ EMPLOYEE QUESTION BUBBLES ============ -->
+
+        <!-- LEFT -->
+        <g class="q-left">
+          <rect x="120" y="595" width="320" height="70" rx="35" class="bubble" />
+          <circle cx="155" cy="630" r="5" class="bubble-dot" />
+          <text x="175" y="624" class="bubble-text">Wie läuft das</text>
+          <text x="175" y="645" class="bubble-text">Onboarding ab?</text>
+        </g>
+
+        <!-- RIGHT -->
+        <g class="q-right">
+          <rect x="1160" y="595" width="320" height="70" rx="35" class="bubble" />
+          <circle cx="1195" cy="630" r="5" class="bubble-dot" />
+          <text x="1215" y="624" class="bubble-text">Wo finde ich den</text>
+          <text x="1215" y="645" class="bubble-text">Urlaubsantrag?</text>
+        </g>
+
+        <!-- BOTTOM CENTER -->
+        <g class="q-bot-l">
+          <rect x="640" y="775" width="320" height="70" rx="35" class="bubble" />
+          <circle cx="675" cy="810" r="5" class="bubble-dot" />
+          <text x="695" y="804" class="bubble-text">Reisekosten-</text>
+          <text x="695" y="825" class="bubble-text">richtlinie 2025?</text>
+        </g>
+
+      </svg>
+
+      <div class="dashboard-flow-label company-ai-label">Company-AI</div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Checklist -->
+<section class="funnel-section funnel-features" id="features">
+  <div class="container">
+    <h2 class="funnel-section-headline">Was Company AI kann.</h2>
+    <ul class="funnel-features-list" id="features-list">
+      <!-- Populated by populate-service.js from data.features -->
+    </ul>
+  </div>
+</section>
+
+<!-- C. Für wen - Enhanced Single Column -->
+<section class="section fuer-wen-enhanced">
+  <div class="container" style="max-width: 1100px;">
+    <div class="fuer-wen-header">
+      <h2 class="fuer-wen-title reveal">Für wen ist das?</h2>
+      <p class="fuer-wen-subtitle reveal reveal-d1" id="fuer-wen-subtitle">
+        Company AI lohnt sich, wenn euer Team immer wieder dieselben Fragen stellt.
+      </p>
+    </div>
+    <div class="fuer-wen-cards reveal reveal-d2" id="match-yes-enhanced">
+      <!-- Populated by JS - Enhanced cards -->
+    </div>
+  </div>
+</section>
+
+<!-- D. Unser Prozess - Orbital Timeline -->
+<section class="section funnel-process">
+  <div class="container">
+    <h2 class="funnel-section-headline" id="process-headline">Fünf Schritte. 8-12 Wochen. Fertig.</h2>
+
+    <!-- Orbital Timeline Visualization -->
+    <div class="orbital-timeline-container" id="orbitalTimeline">
+      <div class="orbital-viewport">
+        <div class="orbital-center">
+          <div class="orbital-center-pulse"></div>
+          <div class="orbital-center-pulse" style="animation-delay: 0.5s;"></div>
+          <div class="orbital-center-core"></div>
+        </div>
+        <div class="orbital-track"></div>
+        <div class="orbital-nodes" id="orbitalNodes"></div>
+      </div>
+    </div>
+
+    <div class="funnel-process-steps">
+      <div class="funnel-process-step">
+        <div class="funnel-process-num">01</div>
+        <h3>STRATEGIE & ANALYSE</h3>
+        <div class="desc">1-2 Wochen Discovery</div>
+        <div class="details">Wir analysieren Ihre Anforderungen, Ziele und bestehende Systeme. Gemeinsam definieren wir die perfekte Lösung.</div>
+      </div>
+
+      <div class="funnel-process-connector"></div>
+
+      <div class="funnel-process-step">
+        <div class="funnel-process-num">02</div>
+        <h3>DESIGN & KONZEPT</h3>
+        <div class="desc">1 Woche Design & Planung</div>
+        <div class="details">Wir erstellen Wireframes, Mockups und technische Konzepte. Sie sehen genau, was Sie bekommen.</div>
+      </div>
+
+      <div class="funnel-process-connector"></div>
+
+      <div class="funnel-process-step">
+        <div class="funnel-process-num">03</div>
+        <h3>ENTWICKLUNG & INTEGRATION</h3>
+        <div class="desc">3-5 Wochen Entwicklung</div>
+        <div class="details">Agile Entwicklung mit regelmäßigen Updates. Integration in Ihre bestehenden Systeme.</div>
+      </div>
+
+      <div class="funnel-process-connector"></div>
+
+      <div class="funnel-process-step">
+        <div class="funnel-process-num">04</div>
+        <h3>TESTING & OPTIMIERUNG</h3>
+        <div class="desc">1 Woche Testing & Launch</div>
+        <div class="details">Umfangreiche Tests, Performance-Optimierung und Feinschliff für beste Qualität.</div>
+      </div>
+
+      <div class="funnel-process-connector"></div>
+
+      <div class="funnel-process-step">
+        <div class="funnel-process-num">05</div>
+        <h3>LAUNCH & SUPPORT</h3>
+        <div class="desc">Hosting & Wartung</div>
+        <div class="details">Erfolgreicher Go-Live mit Training Ihres Teams. Danach: Kontinuierlicher Support und Wartung.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- F. FAQ -->
+<section class="section faq">
+  <div class="container">
+    <h2 class="t-h2 reveal">Häufige Fragen</h2>
+    <div class="faq-list reveal reveal-d1" id="faq-container">
+      <!-- FAQ items populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- H. Final CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2 class="t-display">Bereit, das zu bauen?</h2>
+    <p class="t-body-lg" style="margin-top: 16px;">30 Minuten Erstgespräch. Kostenlos. Konkret.</p>
+    <div class="flex gap-4 justify-center mt-6" style="display: flex; gap: 16px; justify-content: center; margin-top: 32px;">
+      <a href="../kontakt.html" class="btn btn-pink-glass btn-lg">Erstgespräch</a>
+      <a href="../projekte.html" class="btn btn-glass-secondary">Referenzen</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer (injected) -->
+<div id="footer-mount"></div>
+
+<!-- Load centralized service data first -->
+<script src="../shared/data-services.js"></script>
+
+<!-- Testimonial Video Modal -->
+<div id="testimonial-modal" class="testimonial-modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="testimonial-modal-backdrop" aria-label="Close modal"></div>
+  <div class="testimonial-modal-content">
+    <button class="testimonial-modal-close" aria-label="Close modal">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+    <div class="testimonial-modal-video" id="testimonial-modal-video">
+      <!-- Video wird hier dynamisch injected -->
+    </div>
+  </div>
+</div>
+
+<!-- Content Data Object -->
+<script>
+// Load service content from centralized data file
+window.SERVICE_DATA = window.SERVICE_CONTENT?.['company-ai'] || {};
+</script>
+<script src="../shared/icons.js"></script>
+<script src="../shared/data-global.js"></script>
+<script src="../shared/populate-service.js"></script>
+<script src="../shared/components.js"></script>
+<!-- Funnel Scripts (for Testimonial Modal) -->
+<script src="../funnel/funnel-scripts.min.js" defer></script>
+<!-- Service-specific interactions -->
+<script src="../services/service-interactions.js"></script>
+<!-- Orbital Timeline -->
+<script src="../services/orbital-timeline.js"></script>
+<!-- Wave Animation -->
+<script src="../funnel/waves-animation.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0A0C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#121216;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#grad1)"/>
+
+  <!-- Title Badge -->
+  <text x="40" y="35" fill="#FF2D7A" font-size="12" font-family="monospace" letter-spacing="2">MODEL TRAINING DASHBOARD</text>
+
+  <!-- Training Progress -->
+  <rect x="40" y="70" width="760" height="300" rx="8" fill="#1C1C22" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="60" y="100" fill="#9A968C" font-size="11" font-family="monospace" letter-spacing="1">TRAINING PROGRESS • EPOCH 147/200</text>
+
+  <!-- Loss Chart -->
+  <rect x="60" y="120" width="720" height="230" rx="6" fill="rgba(245,242,236,0.02)" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+
+  <!-- Grid -->
+  <path d="M 90 140 L 760 140" stroke="rgba(245,242,236,0.05)" stroke-width="1"/>
+  <path d="M 90 185 L 760 185" stroke="rgba(245,242,236,0.05)" stroke-width="1"/>
+  <path d="M 90 230 L 760 230" stroke="rgba(245,242,236,0.05)" stroke-width="1"/>
+  <path d="M 90 275 L 760 275" stroke="rgba(245,242,236,0.05)" stroke-width="1"/>
+  <path d="M 90 320 L 760 320" stroke="rgba(245,242,236,0.05)" stroke-width="1"/>
+
+  <!-- Y-axis -->
+  <text x="80" y="145" fill="#5E5A52" font-size="9" text-anchor="end">1.0</text>
+  <text x="80" y="190" fill="#5E5A52" font-size="9" text-anchor="end">0.75</text>
+  <text x="80" y="235" fill="#5E5A52" font-size="9" text-anchor="end">0.5</text>
+  <text x="80" y="280" fill="#5E5A52" font-size="9" text-anchor="end">0.25</text>
+  <text x="80" y="325" fill="#5E5A52" font-size="9" text-anchor="end">0.0</text>
+
+  <!-- Training Loss Line -->
+  <path d="M 100 160 L 150 175 L 200 195 L 250 210 L 300 222 L 350 230 L 400 236 L 450 240 L 500 243 L 550 245 L 600 246 L 650 247 L 700 247 L 750 248"
+        stroke="#FF2D7A" stroke-width="2.5" fill="none"/>
+
+  <!-- Validation Loss Line -->
+  <path d="M 100 165 L 150 182 L 200 202 L 250 218 L 300 230 L 350 239 L 400 246 L 450 251 L 500 254 L 550 256 L 600 258 L 650 259 L 700 260 L 750 260"
+        stroke="#8FA373" stroke-width="2.5" fill="none"/>
+
+  <!-- Current Point -->
+  <circle cx="700" cy="247" r="5" fill="#FF2D7A"/>
+  <circle cx="700" cy="260" r="5" fill="#8FA373"/>
+
+  <!-- Legend -->
+  <rect x="100" y="330" width="130" height="15" rx="3" fill="rgba(245,242,236,0.04)"/>
+  <path d="M 110 337 L 130 337" stroke="#FF2D7A" stroke-width="2"/>
+  <text x="140" y="340" fill="#9A968C" font-size="9">Training Loss</text>
+
+  <rect x="250" y="330" width="150" height="15" rx="3" fill="rgba(245,242,236,0.04)"/>
+  <path d="M 260 337 L 280 337" stroke="#8FA373" stroke-width="2"/>
+  <text x="290" y="340" fill="#9A968C" font-size="9">Validation Loss</text>
+
+  <!-- Stats Cards -->
+  <rect x="820" y="70" width="340" height="300" rx="8" fill="#1C1C22" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="840" y="100" fill="#9A968C" font-size="11" font-family="monospace" letter-spacing="1">TRAINING METRICS</text>
+
+  <rect x="840" y="120" width="300" height="55" rx="4" fill="rgba(255,45,122,0.08)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="860" y="142" fill="#9A968C" font-size="10">Current Loss</text>
+  <text x="860" y="163" fill="#FF2D7A" font-size="20" font-weight="bold">0.0324</text>
+
+  <rect x="840" y="185" width="300" height="55" rx="4" fill="rgba(143,163,115,0.08)" stroke="rgba(143,163,115,0.2)" stroke-width="1"/>
+  <text x="860" y="207" fill="#9A968C" font-size="10">Accuracy</text>
+  <text x="860" y="228" fill="#8FA373" font-size="20" font-weight="bold">94.2%</text>
+
+  <rect x="840" y="250" width="145" height="55" rx="4" fill="rgba(245,242,236,0.04)"/>
+  <text x="860" y="272" fill="#9A968C" font-size="10">Epoch</text>
+  <text x="860" y="293" fill="#F5F2EC" font-size="18" font-weight="bold">147/200</text>
+
+  <rect x="995" y="250" width="145" height="55" rx="4" fill="rgba(245,242,236,0.04)"/>
+  <text x="1015" y="272" fill="#9A968C" font-size="10">ETA</text>
+  <text x="1015" y="293" fill="#F5F2EC" font-size="18" font-weight="bold">2.4h</text>
+
+  <rect x="840" y="315" width="300" height="45" rx="4" fill="rgba(245,242,236,0.02)"/>
+  <text x="860" y="335" fill="#9A968C" font-size="9">GPU Utilization: 94%</text>
+  <rect x="860" y="342" width="260" height="8" rx="4" fill="rgba(245,242,236,0.06)"/>
+  <rect x="860" y="342" width="244" height="8" rx="4" fill="#FF2D7A"/>
+
+  <!-- Hyperparameters -->
+  <rect x="40" y="390" width="560" height="220" rx="8" fill="#1C1C22" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="60" y="420" fill="#9A968C" font-size="11" font-family="monospace" letter-spacing="1">HYPERPARAMETERS</text>
+
+  <rect x="60" y="435" width="260" height="40" rx="4" fill="rgba(245,242,236,0.04)"/>
+  <text x="80" y="452" fill="#9A968C" font-size="10">Learning Rate</text>
+  <text x="80" y="467" fill="#F5F2EC" font-size="11" font-family="monospace">0.0001</text>
+
+  <rect x="340" y="435" width="240" height="40" rx="4" fill="rgba(245,242,236,0.04)"/>
+  <text x="360" y="452" fill="#9A968C" font-size="10">Batch Size</text>
+  <text x="360" y="467" fill="#F5F2EC" font-size="11" font-family="monospace">32</text>
+
+  <rect x="60" y="485" width="260" height="40" rx="4" fill="rgba(245,242,236,0.04)"/>
+  <text x="80" y="502" fill="#9A968C" font-size="10">Optimizer</text>
+  <text x="80" y="517" fill="#F5F2EC" font-size="11" font-family="monospace">AdamW</text>
+
+  <rect x="340" y="485" width="240" height="40" rx="4" fill="rgba(245,242,236,0.04)"/>
+  <text x="360" y="502" fill="#9A968C" font-size="10">Weight Decay</text>
+  <text x="360" y="517" fill="#F5F2EC" font-size="11" font-family="monospace">0.01</text>
+
+  <rect x="60" y="535" width="260" height="40" rx="4" fill="rgba(245,242,236,0.04)"/>
+  <text x="80" y="552" fill="#9A968C" font-size="10">Training Samples</text>
+  <text x="80" y="567" fill="#F5F2EC" font-size="11" font-family="monospace">12,847</text>
+
+  <rect x="340" y="535" width="240" height="40" rx="4" fill="rgba(245,242,236,0.04)"/>
+  <text x="360" y="552" fill="#9A968C" font-size="10">Validation Split</text>
+  <text x="360" y="567" fill="#F5F2EC" font-size="11" font-family="monospace">20%</text>
+
+  <!-- Model Info -->
+  <rect x="620" y="390" width="540" height="220" rx="8" fill="#1C1C22" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="640" y="420" fill="#9A968C" font-size="11" font-family="monospace" letter-spacing="1">MODEL INFORMATION</text>
+
+  <rect x="640" y="435" width="500" height="35" rx="4" fill="rgba(245,242,236,0.04)"/>
+  <text x="660" y="450" fill="#9A968C" font-size="10">Base Model</text>
+  <text x="660" y="463" fill="#F5F2EC" font-size="11" font-family="monospace">GPT-4-base (fine-tuned)</text>
+
+  <rect x="640" y="478" width="500" height="35" rx="4" fill="rgba(245,242,236,0.04)"/>
+  <text x="660" y="493" fill="#9A968C" font-size="10">Model Size</text>
+  <text x="660" y="506" fill="#F5F2EC" font-size="11" font-family="monospace">1.2B parameters</text>
+
+  <rect x="640" y="521" width="240" height="35" rx="4" fill="rgba(245,242,236,0.04)"/>
+  <text x="660" y="536" fill="#9A968C" font-size="10">Started</text>
+  <text x="660" y="549" fill="#F5F2EC" font-size="11" font-family="monospace">2024-05-22 10:15</text>
+
+  <rect x="900" y="521" width="240" height="35" rx="4" fill="rgba(255,45,122,0.08)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="920" y="536" fill="#9A968C" font-size="10">Status</text>
+  <text x="920" y="549" fill="#FF2D7A" font-size="11" font-weight="bold" font-family="monospace">TRAINING...</text>
+
+  <rect x="640" y="564" width="500" height="35" rx="4" fill="rgba(245,242,236,0.02)"/>
+  <text x="660" y="585" fill="#9A968C" font-size="9">Checkpoint saved: epoch_147.ckpt • Best: epoch_142.ckpt (val_loss: 0.0315)</text>
+
+  <!-- Footer -->
+  <rect x="40" y="625" width="1120" height="35" rx="6" fill="rgba(255,45,122,0.06)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="60" y="647" fill="#9A968C" font-size="11">AI Features:</text>
+  <text x="210" y="647" fill="#F5F2EC" font-size="11">Real-time Monitoring</text>
+  <text x="400" y="647" fill="#F5F2EC" font-size="11">Loss Tracking</text>
+  <text x="590" y="647" fill="#F5F2EC" font-size="11">Hyperparameter Tuning</text>
+  <text x="810" y="647" fill="#F5F2EC" font-size="11">Checkpoint Management</text>
+</svg>

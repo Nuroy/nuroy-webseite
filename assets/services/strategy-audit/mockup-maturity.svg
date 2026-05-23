@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0A0C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#121216;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#grad1)"/>
+  <text x="40" y="35" fill="#FF2D7A" font-size="12" font-family="monospace" letter-spacing="2">DIGITAL MATURITY MATRIX</text>
+
+  <rect x="40" y="70" width="1120" height="540" rx="8" fill="#1C1C22" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="60" y="100" fill="#9A968C" font-size="11" font-family="monospace" letter-spacing="1">ASSESSMENT ACROSS 6 DIMENSIONS</text>
+
+  <!-- Radar Chart -->
+  <svg x="100" y="130" width="500" height="450">
+    <!-- Background grid -->
+    <polygon points="250,50 400,150 400,300 250,400 100,300 100,150" fill="none" stroke="rgba(245,242,236,0.05)" stroke-width="1"/>
+    <polygon points="250,100 350,175 350,275 250,350 150,275 150,175" fill="none" stroke="rgba(245,242,236,0.05)" stroke-width="1"/>
+    <polygon points="250,150 300,200 300,250 250,300 200,250 200,200" fill="none" stroke="rgba(245,242,236,0.05)" stroke-width="1"/>
+
+    <!-- Axis lines -->
+    <line x1="250" y1="225" x2="250" y2="50" stroke="rgba(245,242,236,0.1)" stroke-width="1"/>
+    <line x1="250" y1="225" x2="400" y2="150" stroke="rgba(245,242,236,0.1)" stroke-width="1"/>
+    <line x1="250" y1="225" x2="400" y2="300" stroke="rgba(245,242,236,0.1)" stroke-width="1"/>
+    <line x1="250" y1="225" x2="250" y2="400" stroke="rgba(245,242,236,0.1)" stroke-width="1"/>
+    <line x1="250" y1="225" x2="100" y2="300" stroke="rgba(245,242,236,0.1)" stroke-width="1"/>
+    <line x1="250" y1="225" x2="100" y2="150" stroke="rgba(245,242,236,0.1)" stroke-width="1"/>
+
+    <!-- Current State -->
+    <polygon points="250,100 350,175 320,260 250,310 180,265 150,185" fill="rgba(255,45,122,0.15)" stroke="#FF2D7A" stroke-width="2"/>
+
+    <!-- Data points -->
+    <circle cx="250" cy="100" r="6" fill="#FF2D7A"/>
+    <circle cx="350" cy="175" r="6" fill="#FF2D7A"/>
+    <circle cx="320" cy="260" r="6" fill="#FF2D7A"/>
+    <circle cx="250" cy="310" r="6" fill="#FF2D7A"/>
+    <circle cx="180" cy="265" r="6" fill="#FF2D7A"/>
+    <circle cx="150" cy="185" r="6" fill="#FF2D7A"/>
+
+    <!-- Labels -->
+    <text x="250" y="40" fill="#F5F2EC" font-size="11" text-anchor="middle">Strategy</text>
+    <text x="420" y="155" fill="#F5F2EC" font-size="11">Technology</text>
+    <text x="420" y="310" fill="#F5F2EC" font-size="11">Data</text>
+    <text x="250" y="430" fill="#F5F2EC" font-size="11" text-anchor="middle">Processes</text>
+    <text x="60" y="310" fill="#F5F2EC" font-size="11" text-anchor="end">Culture</text>
+    <text x="60" y="155" fill="#F5F2EC" font-size="11" text-anchor="end">Skills</text>
+
+    <!-- Scores -->
+    <text x="250" y="85" fill="#FF2D7A" font-size="10" font-weight="bold" text-anchor="middle">75</text>
+    <text x="365" y="168" fill="#FF2D7A" font-size="10" font-weight="bold">80</text>
+    <text x="335" y="270" fill="#FF2D7A" font-size="10" font-weight="bold">65</text>
+    <text x="250" y="330" fill="#FF2D7A" font-size="10" font-weight="bold">60</text>
+    <text x="165" y="275" fill="#FF2D7A" font-size="10" font-weight="bold">55</text>
+    <text x="135" y="195" fill="#FF2D7A" font-size="10" font-weight="bold">50</text>
+  </svg>
+
+  <!-- Dimension Details -->
+  <rect x="620" y="130" width="520" height="450" rx="6" fill="rgba(245,242,236,0.02)" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="640" y="160" fill="#F5F2EC" font-size="13" font-weight="bold">Maturity Levels</text>
+
+  <!-- Dimension 1 -->
+  <rect x="640" y="180" width="480" height="50" rx="4" fill="rgba(245,242,236,0.04)"/>
+  <text x="660" y="200" fill="#F5F2EC" font-size="11" font-weight="bold">Strategy</text>
+  <text x="660" y="218" fill="#9A968C" font-size="9">Digital vision &amp; roadmap defined</text>
+  <rect x="900" y="192" width="220" height="12" rx="6" fill="rgba(245,242,236,0.06)"/>
+  <rect x="900" y="192" width="165" height="12" rx="6" fill="#FF2D7A"/>
+  <text x="1050" y="214" fill="#FF2D7A" font-size="10" font-weight="bold">75/100</text>
+
+  <!-- Dimension 2 -->
+  <rect x="640" y="240" width="480" height="50" rx="4" fill="rgba(245,242,236,0.04)"/>
+  <text x="660" y="260" fill="#F5F2EC" font-size="11" font-weight="bold">Technology</text>
+  <text x="660" y="278" fill="#9A968C" font-size="9">Modern infrastructure &amp; tools</text>
+  <rect x="900" y="252" width="220" height="12" rx="6" fill="rgba(245,242,236,0.06)"/>
+  <rect x="900" y="252" width="176" height="12" rx="6" fill="#8FA373"/>
+  <text x="1050" y="274" fill="#8FA373" font-size="10" font-weight="bold">80/100</text>
+
+  <!-- Dimension 3 -->
+  <rect x="640" y="300" width="480" height="50" rx="4" fill="rgba(245,242,236,0.04)"/>
+  <text x="660" y="320" fill="#F5F2EC" font-size="11" font-weight="bold">Data</text>
+  <text x="660" y="338" fill="#9A968C" font-size="9">Data governance &amp; quality</text>
+  <rect x="900" y="312" width="220" height="12" rx="6" fill="rgba(245,242,236,0.06)"/>
+  <rect x="900" y="312" width="143" height="12" rx="6" fill="#D1A85C"/>
+  <text x="1050" y="334" fill="#D1A85C" font-size="10" font-weight="bold">65/100</text>
+
+  <!-- Dimension 4 -->
+  <rect x="640" y="360" width="480" height="50" rx="4" fill="rgba(245,242,236,0.04)"/>
+  <text x="660" y="380" fill="#F5F2EC" font-size="11" font-weight="bold">Processes</text>
+  <text x="660" y="398" fill="#9A968C" font-size="9">Automation &amp; optimization</text>
+  <rect x="900" y="372" width="220" height="12" rx="6" fill="rgba(245,242,236,0.06)"/>
+  <rect x="900" y="372" width="132" height="12" rx="6" fill="#D1A85C"/>
+  <text x="1050" y="394" fill="#D1A85C" font-size="10" font-weight="bold">60/100</text>
+
+  <!-- Dimension 5 -->
+  <rect x="640" y="420" width="480" height="50" rx="4" fill="rgba(245,242,236,0.04)"/>
+  <text x="660" y="440" fill="#F5F2EC" font-size="11" font-weight="bold">Culture</text>
+  <text x="660" y="458" fill="#9A968C" font-size="9">Digital mindset &amp; agility</text>
+  <rect x="900" y="432" width="220" height="12" rx="6" fill="rgba(245,242,236,0.06)"/>
+  <rect x="900" y="432" width="121" height="12" rx="6" fill="#9A968C"/>
+  <text x="1050" y="454" fill="#9A968C" font-size="10" font-weight="bold">55/100</text>
+
+  <!-- Dimension 6 -->
+  <rect x="640" y="480" width="480" height="50" rx="4" fill="rgba(245,242,236,0.04)"/>
+  <text x="660" y="500" fill="#F5F2EC" font-size="11" font-weight="bold">Skills</text>
+  <text x="660" y="518" fill="#9A968C" font-size="9">Digital competencies &amp; training</text>
+  <rect x="900" y="492" width="220" height="12" rx="6" fill="rgba(245,242,236,0.06)"/>
+  <rect x="900" y="492" width="110" height="12" rx="6" fill="#9A968C"/>
+  <text x="1050" y="514" fill="#9A968C" font-size="10" font-weight="bold">50/100</text>
+
+  <!-- Overall Score -->
+  <rect x="640" y="545" width="480" height="25" rx="4" fill="rgba(255,45,122,0.08)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="660" y="563" fill="#FF2D7A" font-size="12" font-weight="bold">Overall Maturity Score: 64/100</text>
+  <text x="960" y="563" fill="#9A968C" font-size="10">Level: Emerging</text>
+
+  <rect x="40" y="625" width="1120" height="35" rx="6" fill="rgba(255,45,122,0.06)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="60" y="647" fill="#9A968C" font-size="11">Assessment Features:</text>
+  <text x="250" y="647" fill="#F5F2EC" font-size="11">6 Dimensions</text>
+  <text x="420" y="647" fill="#F5F2EC" font-size="11">Visual Radar</text>
+  <text x="590" y="647" fill="#F5F2EC" font-size="11">Detailed Scoring</text>
+  <text x="780" y="647" fill="#F5F2EC" font-size="11">Gap Analysis</text>
+</svg>

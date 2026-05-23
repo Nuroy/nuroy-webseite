@@ -29,7 +29,75 @@
     </a>
     <ul class="nav-links" id="nav-links">
       <li><div class="nav-link-wrap"><span class="nav-link-num">01</span><a href="${b}projekte.html" data-text="Arbeiten">Arbeiten</a></div></li>
-      <li><div class="nav-link-wrap"><span class="nav-link-num">02</span><a href="${b}leistungen.html" data-text="Leistungen">Leistungen</a></div></li>
+      <li class="nav-item-with-mega">
+        <div class="nav-link-wrap">
+          <span class="nav-link-num">02</span>
+          <a href="${b}leistungen.html" data-text="Leistungen" class="nav-trigger-mega">
+            Leistungen
+          </a>
+        </div>
+
+        <div class="mega-menu" id="mega-menu-leistungen">
+          <div class="mega-menu-inner">
+            <div class="mega-services-grid">
+              <a href="${b}leistungen/dashboards.html" class="mega-service-item">
+                <span class="mega-num">01</span>
+                <div>
+                  <h4 class="mega-title">Custom Dashboards</h4>
+                  <p class="mega-desc">Daten sichtbar machen. Entscheidungen schneller treffen.</p>
+                </div>
+              </a>
+              <a href="${b}leistungen/ki-agenten.html" class="mega-service-item">
+                <span class="mega-num">02</span>
+                <div>
+                  <h4 class="mega-title">KI-Agenten & Automatisierungen</h4>
+                  <p class="mega-desc">Routineaufgaben automatisieren. Zeit für Wichtiges gewinnen.</p>
+                </div>
+              </a>
+              <a href="${b}leistungen/software.html" class="mega-service-item">
+                <span class="mega-num">03</span>
+                <div>
+                  <h4 class="mega-title">Custom Software-Entwicklung</h4>
+                  <p class="mega-desc">Maßgeschneiderte Lösungen. Keine Kompromisse.</p>
+                </div>
+              </a>
+              <a href="${b}leistungen/ki-integration.html" class="mega-service-item">
+                <span class="mega-num">04</span>
+                <div>
+                  <h4 class="mega-title">KI-Integration</h4>
+                  <p class="mega-desc">KI in bestehende Systeme integrieren.</p>
+                </div>
+              </a>
+              <a href="${b}leistungen/company-ai.html" class="mega-service-item">
+                <span class="mega-num">05</span>
+                <div>
+                  <h4 class="mega-title">Interne Company-AI</h4>
+                  <p class="mega-desc">Ihr Wissen, ein KI-Assistent.</p>
+                </div>
+              </a>
+              <a href="${b}leistungen/datenintegration.html" class="mega-service-item">
+                <span class="mega-num">06</span>
+                <div>
+                  <h4 class="mega-title">Datenintegration & ETL</h4>
+                  <p class="mega-desc">Datensilos auflösen. Ein System, alle Quellen.</p>
+                </div>
+              </a>
+              <a href="${b}leistungen/strategy-audit.html" class="mega-service-item">
+                <span class="mega-num">07</span>
+                <div>
+                  <h4 class="mega-title">Strategy & Audit</h4>
+                  <p class="mega-desc">Tech-Stack prüfen. Roadmap definieren.</p>
+                </div>
+              </a>
+            </div>
+            <div class="mega-footer">
+              <a href="${b}leistungen.html" class="mega-footer-link">
+                Alle Leistungen ansehen →
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>
       <li><div class="nav-link-wrap"><span class="nav-link-num">03</span><a href="${b}team.html" data-text="Team">Team</a></div></li>
       <li><div class="nav-link-wrap"><span class="nav-link-num">04</span><a href="${b}kontakt.html" data-text="Kontakt">Kontakt</a></div></li>
       <span class="nav-hover-pill" id="nav-hover-pill"></span>
@@ -105,9 +173,13 @@
       <p class="footer-col-label">Leistungen</p>
       <ul>
         <li><a href="${b}leistungen.html">Übersicht</a></li>
-        <li><a href="${b}leistungen/software.html">Softwareentwicklung</a></li>
-        <li><a href="${b}leistungen/automation.html">Automatisierung</a></li>
-        <li><a href="${b}leistungen/strategie.html">Strategieberatung</a></li>
+        <li><a href="${b}leistungen/dashboards.html">Custom Dashboards</a></li>
+        <li><a href="${b}leistungen/ki-agenten.html">KI-Agenten</a></li>
+        <li><a href="${b}leistungen/software.html">Software-Entwicklung</a></li>
+        <li><a href="${b}leistungen/ki-integration.html">KI-Integration</a></li>
+        <li><a href="${b}leistungen/company-ai.html">Company-AI</a></li>
+        <li><a href="${b}leistungen/datenintegration.html">Datenintegration</a></li>
+        <li><a href="${b}leistungen/strategy-audit.html">Strategy & Audit</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -259,12 +331,22 @@
   }
 
   function initNavScroll() {
-    const nav = document.getElementById('site-nav');
+    const nav = document.querySelector('.site-nav');
     if (!nav) return;
+
+    let lastScroll = 0;
+
     window.addEventListener('scroll', () => {
-      nav.style.borderBottomColor = window.scrollY > 20
-        ? 'rgba(245,242,236,0.10)'
-        : 'rgba(245,242,236,0.07)';
+      const currentScroll = window.scrollY;
+
+      // Navbar Status basierend auf Scroll-Position
+      if (currentScroll > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+
+      lastScroll = currentScroll;
     }, { passive: true });
   }
 
@@ -513,6 +595,50 @@
     }, T.EXIT);
   }
 
+  function initMegaMenu() {
+    const megaMenuItem = document.querySelector('.nav-item-with-mega');
+    const megaTrigger = document.querySelector('.nav-trigger-mega');
+    const megaMenu = document.querySelector('.mega-menu');
+
+    if (!megaMenuItem || !megaTrigger || !megaMenu) return;
+
+    let isOpen = false;
+    let closeTimeout = null;
+
+    // Click on "Leistungen" now navigates to the page
+    // No e.preventDefault() - let the link work normally
+    megaTrigger.addEventListener('click', function(e) {
+      // Link will navigate to leistungen.html
+      // No need to prevent default or toggle menu
+    });
+
+    // Close mega menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!megaMenuItem.contains(e.target) && isOpen) {
+        isOpen = false;
+        megaMenuItem.classList.remove('mega-menu-open');
+      }
+    });
+
+    // Hover functionality: show mega menu on hover with delay
+    megaMenuItem.addEventListener('mouseenter', function() {
+      // Clear any pending close timeout
+      if (closeTimeout) {
+        clearTimeout(closeTimeout);
+        closeTimeout = null;
+      }
+      megaMenuItem.classList.add('mega-menu-hover');
+    });
+
+    megaMenuItem.addEventListener('mouseleave', function() {
+      // Add a small delay before closing to allow user to move to the menu
+      closeTimeout = setTimeout(function() {
+        megaMenuItem.classList.remove('mega-menu-hover');
+        closeTimeout = null;
+      }, 150); // 150ms delay
+    });
+  }
+
   function initMobileNav() {
     const burger = document.getElementById('nav-burger');
     const menu = document.getElementById('mobile-menu');
@@ -556,9 +682,9 @@
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-      inject(); initPreloader(); initCursorGlow(); initScrollReveal(); initNavScroll(); initNavPill(); initMobileNav();
+      inject(); initPreloader(); initCursorGlow(); initScrollReveal(); initNavScroll(); initNavPill(); initMegaMenu(); initMobileNav();
     });
   } else {
-    inject(); initPreloader(); initCursorGlow(); initScrollReveal(); initNavScroll(); initNavPill(); initMobileNav();
+    inject(); initPreloader(); initCursorGlow(); initScrollReveal(); initNavScroll(); initNavPill(); initMegaMenu(); initMobileNav();
   }
 })();

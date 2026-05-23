@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Funnel-Seite: NICHT indexieren (nur über Ads erreichbar)
+Disallow: /dashboard-jetzt.html
+Disallow: /funnel/
+
+# Sitemap
+Sitemap: https://nuroy.de/sitemap.xml

@@ -1,0 +1,167 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#0d0d0d"/>
+
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="20" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect x="40" y="40" width="1120" height="720" rx="18" fill="#1a1a1a" stroke="rgba(255, 45, 135, 0.3)" stroke-width="1" filter="url(#glow)"/>
+
+  <text x="80" y="90" font-family="monospace" font-size="10" fill="#ff2d87" letter-spacing="0.08em">DOCUMENT AI • INTELLIGENT OCR &amp; EXTRACTION</text>
+
+  <rect x="80" y="120" width="680" height="560" rx="12" fill="#0d0d0d" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+
+  <!-- Document Preview -->
+  <text x="100" y="150" font-family="sans-serif" font-size="14" fill="#f5f1e8" font-weight="600">Rechnung_2024-042.pdf</text>
+
+  <rect x="620" y="135" width="100" height="24" rx="6" fill="rgba(184, 209, 138, 0.15)"/>
+  <circle cx="635" cy="147" r="3" fill="#b8d18a"/>
+  <text x="645" y="151" font-family="monospace" font-size="10" fill="#b8d18a">Verarbeitet</text>
+
+  <!-- Document Image -->
+  <rect x="100" y="170" width="300" height="400" rx="8" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1"/>
+
+  <!-- Mock Document Content -->
+  <text x="120" y="200" font-family="sans-serif" font-size="12" fill="rgba(245, 241, 232, 0.7)" font-weight="700">RECHNUNG</text>
+  <rect x="120" y="210" width="260" height="1" fill="rgba(255, 255, 255, 0.1)"/>
+
+  <text x="120" y="235" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">TechFlow GmbH</text>
+  <text x="120" y="250" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">Musterstraße 123</text>
+  <text x="120" y="265" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">10115 Berlin</text>
+
+  <!-- Highlight extracted fields -->
+  <rect x="115" y="285" width="110" height="18" rx="3" fill="rgba(255, 45, 135, 0.2)" stroke="rgba(255, 45, 135, 0.4)" stroke-width="1"/>
+  <text x="120" y="298" font-family="monospace" font-size="9" fill="#ff2d87" font-weight="700">Rechnungsnr: 2024-042</text>
+
+  <rect x="115" y="310" width="75" height="18" rx="3" fill="rgba(184, 209, 138, 0.2)" stroke="rgba(184, 209, 138, 0.4)" stroke-width="1"/>
+  <text x="120" y="323" font-family="monospace" font-size="9" fill="#b8d18a" font-weight="700">Datum: 15.05.2026</text>
+
+  <text x="120" y="355" font-family="monospace" font-size="8" fill="rgba(245, 241, 232, 0.4)">Position</text>
+  <text x="280" y="355" font-family="monospace" font-size="8" fill="rgba(245, 241, 232, 0.4)">Betrag</text>
+
+  <rect x="120" y="360" width="260" height="1" fill="rgba(255, 255, 255, 0.05)"/>
+
+  <text x="120" y="378" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">Softwareentwicklung</text>
+  <text x="320" y="378" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)" text-anchor="end">€3.200</text>
+
+  <text x="120" y="398" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">Beratung (8h)</text>
+  <text x="320" y="398" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)" text-anchor="end">€1.200</text>
+
+  <rect x="120" y="410" width="260" height="1" fill="rgba(255, 255, 255, 0.05)"/>
+
+  <rect x="115" y="420" width="105" height="18" rx="3" fill="rgba(255, 45, 135, 0.2)" stroke="rgba(255, 45, 135, 0.4)" stroke-width="1"/>
+  <text x="120" y="433" font-family="monospace" font-size="9" fill="#ff2d87" font-weight="700">Gesamt: €4.400</text>
+
+  <rect x="115" y="450" width="95" height="18" rx="3" fill="rgba(245, 193, 78, 0.2)" stroke="rgba(245, 193, 78, 0.4)" stroke-width="1"/>
+  <text x="120" y="463" font-family="monospace" font-size="9" fill="#f5c14e" font-weight="700">Fällig: 30.05.2026</text>
+
+  <!-- AI Confidence Indicator -->
+  <rect x="100" y="580" width="300" height="45" rx="6" fill="rgba(184, 209, 138, 0.08)"/>
+  <text x="120" y="600" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">KI-Konfidenz</text>
+  <rect x="120" y="607" width="260" height="8" rx="4" fill="rgba(255, 255, 255, 0.05)"/>
+  <rect x="120" y="607" width="247" height="8" rx="4" fill="#b8d18a"/>
+  <text x="375" y="615" font-family="monospace" font-size="11" fill="#b8d18a" text-anchor="end" font-weight="700">95%</text>
+
+  <!-- Extracted Data Panel -->
+  <text x="420" y="195" font-family="sans-serif" font-size="14" fill="#f5f1e8" font-weight="600">Extrahierte Daten</text>
+
+  <!-- Field 1 -->
+  <rect x="420" y="210" width="320" height="55" rx="8" fill="rgba(255, 255, 255, 0.03)"/>
+  <text x="440" y="230" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">RECHNUNGSNUMMER</text>
+  <text x="440" y="252" font-family="monospace" font-size="14" fill="#ff2d87" font-weight="700">2024-042</text>
+
+  <!-- Field 2 -->
+  <rect x="420" y="275" width="320" height="55" rx="8" fill="rgba(255, 255, 255, 0.03)"/>
+  <text x="440" y="295" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">RECHNUNGSDATUM</text>
+  <text x="440" y="317" font-family="monospace" font-size="14" fill="#b8d18a" font-weight="700">15.05.2026</text>
+
+  <!-- Field 3 -->
+  <rect x="420" y="340" width="320" height="55" rx="8" fill="rgba(255, 255, 255, 0.03)"/>
+  <text x="440" y="360" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">GESAMTBETRAG</text>
+  <text x="440" y="382" font-family="monospace" font-size="14" fill="#ff2d87" font-weight="700">€4.400,00</text>
+
+  <!-- Field 4 -->
+  <rect x="420" y="405" width="320" height="55" rx="8" fill="rgba(255, 255, 255, 0.03)"/>
+  <text x="440" y="425" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">FÄLLIGKEITSDATUM</text>
+  <text x="440" y="447" font-family="monospace" font-size="14" fill="#f5c14e" font-weight="700">30.05.2026</text>
+
+  <!-- Field 5 -->
+  <rect x="420" y="470" width="320" height="55" rx="8" fill="rgba(255, 255, 255, 0.03)"/>
+  <text x="440" y="490" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">LIEFERANT</text>
+  <text x="440" y="512" font-family="monospace" font-size="14" fill="#f5f1e8" font-weight="700">TechFlow GmbH</text>
+
+  <!-- Actions -->
+  <text x="420" y="555" font-family="sans-serif" font-size="13" fill="#f5f1e8" font-weight="600">Aktionen</text>
+
+  <rect x="420" y="565" width="150" height="35" rx="6" fill="rgba(184, 209, 138, 0.15)" stroke="rgba(184, 209, 138, 0.3)" stroke-width="1"/>
+  <text x="495" y="588" font-family="sans-serif" font-size="11" fill="#b8d18a" text-anchor="middle" font-weight="600">✓ In ERP übernehmen</text>
+
+  <rect x="590" y="565" width="150" height="35" rx="6" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1"/>
+  <text x="665" y="588" font-family="sans-serif" font-size="11" fill="#f5f1e8" text-anchor="middle" font-weight="600">Als JSON exportieren</text>
+
+  <rect x="420" y="610" width="320" height="35" rx="6" fill="rgba(255, 45, 135, 0.08)"/>
+  <text x="440" y="633" font-family="sans-serif" font-size="11" fill="#ff2d87">⚠️ Zahlung überfällig in 7 Tagen</text>
+
+  <!-- Right Column -->
+  <rect x="780" y="120" width="340" height="200" rx="12" fill="#0d0d0d" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+  <text x="800" y="145" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">PROCESSING STATS</text>
+
+  <text x="800" y="175" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Dokumente verarbeitet (MTD)</text>
+  <text x="1100" y="175" font-family="monospace" font-size="14" fill="#b8d18a" text-anchor="end" font-weight="700">1,842</text>
+
+  <text x="800" y="205" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Ø Verarbeitungszeit</text>
+  <text x="1100" y="205" font-family="monospace" font-size="14" fill="#ff2d87" text-anchor="end" font-weight="700">2.3s</text>
+
+  <text x="800" y="235" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Ø Genauigkeit</text>
+  <rect x="800" y="242" width="300" height="8" rx="4" fill="rgba(255, 255, 255, 0.05)"/>
+  <rect x="800" y="242" width="285" height="8" rx="4" fill="#b8d18a"/>
+  <text x="1100" y="260" font-family="monospace" font-size="11" fill="#b8d18a" text-anchor="end" font-weight="700">95%</text>
+
+  <text x="800" y="290" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Heute gespart</text>
+  <text x="1100" y="290" font-family="monospace" font-size="14" fill="#b8d18a" text-anchor="end" font-weight="700">~4.2h</text>
+
+  <rect x="780" y="340" width="340" height="180" rx="12" fill="#0d0d0d" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+  <text x="800" y="365" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">UNTERSTÜTZTE DOKUMENTE</text>
+
+  <rect x="800" y="380" width="300" height="30" rx="6" fill="rgba(184, 209, 138, 0.08)"/>
+  <circle cx="815" cy="395" r="4" fill="#b8d18a"/>
+  <text x="830" y="399" font-family="sans-serif" font-size="11" fill="#f5f1e8">📄 Rechnungen (PDF, Scans)</text>
+
+  <rect x="800" y="420" width="300" height="30" rx="6" fill="rgba(184, 209, 138, 0.08)"/>
+  <circle cx="815" cy="435" r="4" fill="#b8d18a"/>
+  <text x="830" y="439" font-family="sans-serif" font-size="11" fill="#f5f1e8">📋 Verträge &amp; Angebote</text>
+
+  <rect x="800" y="460" width="300" height="30" rx="6" fill="rgba(184, 209, 138, 0.08)"/>
+  <circle cx="815" cy="475" r="4" fill="#b8d18a"/>
+  <text x="830" y="479" font-family="sans-serif" font-size="11" fill="#f5f1e8">✉️ E-Mails &amp; Briefe</text>
+
+  <rect x="780" y="540" width="340" height="140" rx="12" fill="#0d0d0d" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+  <text x="800" y="565" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">KI-MODELLE</text>
+
+  <text x="800" y="595" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">OCR Engine</text>
+  <text x="1100" y="595" font-family="monospace" font-size="12" fill="#f5f1e8" text-anchor="end">Tesseract 5.0</text>
+
+  <text x="800" y="625" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Layout Analysis</text>
+  <text x="1100" y="625" font-family="monospace" font-size="12" fill="#f5f1e8" text-anchor="end">LayoutLM v3</text>
+
+  <text x="800" y="655" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Entity Extraction</text>
+  <text x="1100" y="655" font-family="monospace" font-size="12" fill="#f5f1e8" text-anchor="end">GPT-4</text>
+
+  <rect x="80" y="700" width="340" height="50" rx="8" fill="rgba(184, 209, 138, 0.1)" stroke="rgba(184, 209, 138, 0.3)" stroke-width="1"/>
+  <text x="100" y="730" font-family="sans-serif" font-size="12" fill="#b8d18a">↑ 1.842 Dokumente automatisch verarbeitet</text>
+
+  <rect x="440" y="700" width="340" height="50" rx="8" fill="rgba(255, 45, 135, 0.1)" stroke="rgba(255, 45, 135, 0.3)" stroke-width="1"/>
+  <text x="460" y="730" font-family="sans-serif" font-size="12" fill="#ff2d87">⚡ 2.3s Verarbeitungszeit — blitzschnell</text>
+
+  <rect x="800" y="700" width="320" height="50" rx="8" fill="rgba(184, 209, 138, 0.1)" stroke="rgba(184, 209, 138, 0.3)" stroke-width="1"/>
+  <text x="820" y="730" font-family="sans-serif" font-size="12" fill="#b8d18a">95% Genauigkeit — sehr präzise</text>
+
+  <text x="80" y="785" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Features:</text>
+  <text x="145" y="785" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.7)">OCR · Layout Analysis · Entity Extraction · Multi-Language · PDF/Scan Support · ERP Integration</text>
+</svg>

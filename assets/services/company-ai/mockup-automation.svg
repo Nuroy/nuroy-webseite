@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0A0C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#121216;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#grad1)"/>
+
+  <!-- Title Badge -->
+  <text x="40" y="35" fill="#FF2D7A" font-size="12" font-family="monospace" letter-spacing="2">DOCUMENT ROUTING WORKFLOW</text>
+
+  <!-- Workflow Diagram -->
+  <rect x="40" y="70" width="1120" height="540" rx="8" fill="#1C1C22" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="60" y="100" fill="#9A968C" font-size="11" font-family="monospace" letter-spacing="1">AUTOMATED INVOICE PROCESSING</text>
+
+  <!-- Step 1: Incoming -->
+  <rect x="80" y="130" width="200" height="100" rx="8" fill="rgba(143,163,115,0.12)" stroke="rgba(143,163,115,0.4)" stroke-width="2"/>
+  <text x="100" y="158" fill="#8FA373" font-size="12" font-weight="bold">1. INCOMING</text>
+  <text x="100" y="178" fill="#F5F2EC" font-size="11">Invoice received</text>
+  <text x="100" y="193" fill="#9A968C" font-size="9">Email: invoices@</text>
+  <text x="100" y="208" fill="#9A968C" font-size="9">company.com</text>
+  <circle cx="250" cy="180" r="12" fill="#8FA373"/>
+  <text x="244" y="186" fill="#0A0A0C" font-size="11" font-weight="bold">✓</text>
+
+  <!-- Arrow -->
+  <path d="M 280 180 L 350 180" stroke="#FF2D7A" stroke-width="2" fill="none"/>
+  <polygon points="350,180 343,175 343,185" fill="#FF2D7A"/>
+  <text x="295" y="172" fill="#FF2D7A" font-size="9">AI Trigger</text>
+
+  <!-- Step 2: Extract -->
+  <rect x="360" y="130" width="200" height="100" rx="8" fill="rgba(255,45,122,0.12)" stroke="rgba(255,45,122,0.4)" stroke-width="2"/>
+  <text x="380" y="158" fill="#FF2D7A" font-size="12" font-weight="bold">2. EXTRACT</text>
+  <text x="380" y="178" fill="#F5F2EC" font-size="11">OCR Processing</text>
+  <text x="380" y="193" fill="#9A968C" font-size="9">• Vendor name</text>
+  <text x="380" y="208" fill="#9A968C" font-size="9">• Amount, Date</text>
+  <circle cx="530" cy="180" r="12" fill="#FF2D7A"/>
+  <text x="524" y="186" fill="#0A0A0C" font-size="11" font-weight="bold">✓</text>
+
+  <!-- Arrow -->
+  <path d="M 560 180 L 630 180" stroke="#FF2D7A" stroke-width="2" fill="none"/>
+  <polygon points="630,180 623,175 623,185" fill="#FF2D7A"/>
+  <text x="572" y="172" fill="#FF2D7A" font-size="9">Auto-route</text>
+
+  <!-- Step 3: Validate -->
+  <rect x="640" y="130" width="200" height="100" rx="8" fill="rgba(255,45,122,0.12)" stroke="rgba(255,45,122,0.4)" stroke-width="2"/>
+  <text x="660" y="158" fill="#FF2D7A" font-size="12" font-weight="bold">3. VALIDATE</text>
+  <text x="660" y="178" fill="#F5F2EC" font-size="11">AI Checks</text>
+  <text x="660" y="193" fill="#9A968C" font-size="9">• Duplicate check</text>
+  <text x="660" y="208" fill="#9A968C" font-size="9">• PO matching</text>
+  <circle cx="810" cy="180" r="12" fill="#FF2D7A"/>
+  <text x="804" y="186" fill="#0A0A0C" font-size="11" font-weight="bold">✓</text>
+
+  <!-- Arrow -->
+  <path d="M 840 180 L 910 180" stroke="#FF2D7A" stroke-width="2" fill="none"/>
+  <polygon points="910,180 903,175 903,185" fill="#FF2D7A"/>
+  <text x="852" y="172" fill="#FF2D7A" font-size="9">If valid</text>
+
+  <!-- Step 4: Approve -->
+  <rect x="920" y="130" width="200" height="100" rx="8" fill="rgba(209,168,92,0.12)" stroke="rgba(209,168,92,0.4)" stroke-width="2"/>
+  <text x="940" y="158" fill="#D1A85C" font-size="12" font-weight="bold">4. APPROVE</text>
+  <text x="940" y="178" fill="#F5F2EC" font-size="11">Route to manager</text>
+  <text x="940" y="193" fill="#9A968C" font-size="9">Slack notification</text>
+  <text x="940" y="208" fill="#9A968C" font-size="9">sent</text>
+  <circle cx="1090" cy="180" r="12" fill="#D1A85C"/>
+  <text x="1086" y="186" fill="#0A0A0C" font-size="11" font-weight="bold">⏳</text>
+
+  <!-- Decision Branch - If Invalid -->
+  <path d="M 740 230 L 740 310" stroke="#9A968C" stroke-width="2" fill="none" stroke-dasharray="4,4"/>
+  <polygon points="740,310 735,303 745,303" fill="#9A968C"/>
+  <text x="750" y="270" fill="#9A968C" font-size="9">If invalid</text>
+
+  <!-- Exception Handling -->
+  <rect x="640" y="310" width="200" height="80" rx="8" fill="rgba(154,150,140,0.12)" stroke="rgba(154,150,140,0.4)" stroke-width="2"/>
+  <text x="660" y="338" fill="#9A968C" font-size="12" font-weight="bold">EXCEPTION</text>
+  <text x="660" y="358" fill="#F5F2EC" font-size="11">Manual review</text>
+  <text x="660" y="373" fill="#9A968C" font-size="9">Alert sent to finance</text>
+
+  <!-- Step 5: Payment -->
+  <rect x="920" y="270" width="200" height="100" rx="8" fill="rgba(143,163,115,0.12)" stroke="rgba(143,163,115,0.4)" stroke-width="2"/>
+  <text x="940" y="298" fill="#8FA373" font-size="12" font-weight="bold">5. PAYMENT</text>
+  <text x="940" y="318" fill="#F5F2EC" font-size="11">ERP Integration</text>
+  <text x="940" y="333" fill="#9A968C" font-size="9">Auto-schedule</text>
+  <text x="940" y="348" fill="#9A968C" font-size="9">payment</text>
+  <circle cx="1090" cy="320" r="12" fill="#8FA373"/>
+  <text x="1084" y="326" fill="#0A0A0C" font-size="11" font-weight="bold">✓</text>
+
+  <!-- Arrow from Approve to Payment -->
+  <path d="M 1020 230 L 1020 270" stroke="#8FA373" stroke-width="2" fill="none"/>
+  <polygon points="1020,270 1015,263 1025,263" fill="#8FA373"/>
+  <text x="1028" y="255" fill="#8FA373" font-size="9">Approved</text>
+
+  <!-- Stats Panel -->
+  <rect x="80" y="410" width="1040" height="180" rx="8" fill="rgba(245,242,236,0.02)" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="100" y="440" fill="#9A968C" font-size="11" font-family="monospace" letter-spacing="1">AUTOMATION STATS</text>
+
+  <rect x="100" y="460" width="240" height="110" rx="6" fill="rgba(255,45,122,0.08)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="120" y="485" fill="#9A968C" font-size="10">Invoices This Month</text>
+  <text x="120" y="510" fill="#FF2D7A" font-size="24" font-weight="bold">1,247</text>
+  <text x="120" y="535" fill="#8FA373" font-size="10">↑ 98% automated</text>
+  <text x="120" y="555" fill="#9A968C" font-size="9">Only 2% manual review</text>
+
+  <rect x="360" y="460" width="240" height="110" rx="6" fill="rgba(143,163,115,0.08)" stroke="rgba(143,163,115,0.2)" stroke-width="1"/>
+  <text x="380" y="485" fill="#9A968C" font-size="10">Time Saved</text>
+  <text x="380" y="510" fill="#8FA373" font-size="24" font-weight="bold">160h</text>
+  <text x="380" y="535" fill="#8FA373" font-size="10">↑ per month</text>
+  <text x="380" y="555" fill="#9A968C" font-size="9">Avg 8 min per invoice</text>
+
+  <rect x="620" y="460" width="240" height="110" rx="6" fill="rgba(209,168,92,0.08)" stroke="rgba(209,168,92,0.2)" stroke-width="1"/>
+  <text x="640" y="485" fill="#9A968C" font-size="10">Accuracy Rate</text>
+  <text x="640" y="510" fill="#D1A85C" font-size="24" font-weight="bold">99.2%</text>
+  <text x="640" y="535" fill="#9A968C" font-size="10">Error rate: 0.8%</text>
+  <text x="640" y="555" fill="#9A968C" font-size="9">Duplicate detection: 100%</text>
+
+  <rect x="880" y="460" width="240" height="110" rx="6" fill="rgba(245,242,236,0.04)"/>
+  <text x="900" y="485" fill="#9A968C" font-size="10">Avg Processing Time</text>
+  <text x="900" y="510" fill="#F5F2EC" font-size="24" font-weight="bold">2.4min</text>
+  <text x="900" y="535" fill="#9A968C" font-size="10">From receipt to approval</text>
+  <text x="900" y="555" fill="#9A968C" font-size="9">vs 2 days manual</text>
+
+  <!-- Footer -->
+  <rect x="40" y="625" width="1120" height="35" rx="6" fill="rgba(255,45,122,0.06)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="60" y="647" fill="#9A968C" font-size="11">AI Features:</text>
+  <text x="210" y="647" fill="#F5F2EC" font-size="11">Document Routing</text>
+  <text x="400" y="647" fill="#F5F2EC" font-size="11">Data Extraction</text>
+  <text x="590" y="647" fill="#F5F2EC" font-size="11">Validation Rules</text>
+  <text x="780" y="647" fill="#F5F2EC" font-size="11">Smart Workflow</text>
+</svg>

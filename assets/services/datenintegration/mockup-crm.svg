@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0A0C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#121216;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#grad1)"/>
+
+  <!-- Title Badge -->
+  <text x="40" y="35" fill="#FF2D7A" font-size="12" font-family="monospace" letter-spacing="2">CRM INTEGRATION FLOW</text>
+
+  <!-- Integration Diagram -->
+  <rect x="40" y="70" width="1120" height="540" rx="8" fill="#1C1C22" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="60" y="100" fill="#9A968C" font-size="11" font-family="monospace" letter-spacing="1">SALESFORCE ↔ YOUR SYSTEM • BIDIRECTIONAL SYNC</text>
+
+  <!-- Source: Salesforce -->
+  <rect x="80" y="140" width="280" height="400" rx="8" fill="rgba(245,242,236,0.02)" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="100" y="170" fill="#F5F2EC" font-size="14" font-weight="bold">Salesforce CRM</text>
+  <text x="100" y="188" fill="#9A968C" font-size="9">Source System</text>
+
+  <!-- Data Objects -->
+  <rect x="100" y="210" width="240" height="60" rx="6" fill="rgba(255,45,122,0.08)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="120" y="230" fill="#FF2D7A" font-size="11" font-weight="bold">Contacts (2,847)</text>
+  <text x="120" y="248" fill="#9A968C" font-size="9">Fields: Name, Email, Phone, Company</text>
+  <text x="120" y="262" fill="#8FA373" font-size="8">✓ Last synced: 2 min ago</text>
+
+  <rect x="100" y="285" width="240" height="60" rx="6" fill="rgba(255,45,122,0.08)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="120" y="305" fill="#FF2D7A" font-size="11" font-weight="bold">Leads (1,247)</text>
+  <text x="120" y="323" fill="#9A968C" font-size="9">Fields: Status, Source, Score</text>
+  <text x="120" y="337" fill="#8FA373" font-size="8">✓ Last synced: 5 min ago</text>
+
+  <rect x="100" y="360" width="240" height="60" rx="6" fill="rgba(255,45,122,0.08)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="120" y="380" fill="#FF2D7A" font-size="11" font-weight="bold">Opportunities (389)</text>
+  <text x="120" y="398" fill="#9A968C" font-size="9">Fields: Amount, Stage, Close Date</text>
+  <text x="120" y="412" fill="#8FA373" font-size="8">✓ Last synced: 1 min ago</text>
+
+  <rect x="100" y="435" width="240" height="60" rx="6" fill="rgba(255,45,122,0.08)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="120" y="455" fill="#FF2D7A" font-size="11" font-weight="bold">Activities (4,892)</text>
+  <text x="120" y="473" fill="#9A968C" font-size="9">Fields: Type, Date, Subject</text>
+  <text x="120" y="487" fill="#8FA373" font-size="8">✓ Last synced: 3 min ago</text>
+
+  <!-- Sync Engine (Middle) -->
+  <rect x="400" y="240" width="280" height="200" rx="8" fill="rgba(255,45,122,0.08)" stroke="rgba(255,45,122,0.2)" stroke-width="2"/>
+  <text x="420" y="270" fill="#FF2D7A" font-size="14" font-weight="bold">Sync Engine</text>
+  <text x="420" y="288" fill="#9A968C" font-size="9">Real-time bidirectional sync</text>
+
+  <!-- Arrows - Salesforce to Sync -->
+  <path d="M 360 240 L 400 280" stroke="#FF2D7A" stroke-width="2" fill="none"/>
+  <polygon points="400,280 395,272 392,281" fill="#FF2D7A"/>
+  <path d="M 360 320 L 400 320" stroke="#FF2D7A" stroke-width="2" fill="none"/>
+  <polygon points="400,320 393,315 393,325" fill="#FF2D7A"/>
+  <path d="M 360 400 L 400 360" stroke="#FF2D7A" stroke-width="2" fill="none"/>
+  <polygon points="400,360 392,359 395,368" fill="#FF2D7A"/>
+
+  <!-- Sync Status -->
+  <rect x="420" y="305" width="240" height="50" rx="4" fill="rgba(143,163,115,0.12)" stroke="rgba(143,163,115,0.3)" stroke-width="1"/>
+  <circle cx="440" cy="330" r="8" fill="#8FA373"/>
+  <text x="460" y="326" fill="#F5F2EC" font-size="11" font-weight="bold">Active</text>
+  <text x="460" y="342" fill="#9A968C" font-size="9">Syncing 24/7 • 234 records/min</text>
+
+  <!-- Sync Rules -->
+  <text x="420" y="380" fill="#5E5A52" font-size="9" font-family="monospace">SYNC RULES</text>
+  <text x="420" y="397" fill="#F5F2EC" font-size="9">✓ Conflict resolution: Last update wins</text>
+  <text x="420" y="412" fill="#F5F2EC" font-size="9">✓ Duplicate detection: Email matching</text>
+  <text x="420" y="427" fill="#F5F2EC" font-size="9">✓ Field mapping: Auto-configured</text>
+
+  <!-- Arrows - Sync to Target -->
+  <path d="M 680 280 L 720 240" stroke="#8FA373" stroke-width="2" fill="none"/>
+  <polygon points="720,240 718,249 713,241" fill="#8FA373"/>
+  <path d="M 680 320 L 720 320" stroke="#8FA373" stroke-width="2" fill="none"/>
+  <polygon points="720,320 713,315 713,325" fill="#8FA373"/>
+  <path d="M 680 360 L 720 400" stroke="#8FA373" stroke-width="2" fill="none"/>
+  <polygon points="720,400 713,392 718,401" fill="#8FA373"/>
+
+  <!-- Target: Your System -->
+  <rect x="720" y="140" width="280" height="400" rx="8" fill="rgba(245,242,236,0.02)" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="740" y="170" fill="#F5F2EC" font-size="14" font-weight="bold">Your Database</text>
+  <text x="740" y="188" fill="#9A968C" font-size="9">Target System</text>
+
+  <!-- Synced Data -->
+  <rect x="740" y="210" width="240" height="60" rx="6" fill="rgba(143,163,115,0.08)" stroke="rgba(143,163,115,0.2)" stroke-width="1"/>
+  <text x="760" y="230" fill="#8FA373" font-size="11" font-weight="bold">customers</text>
+  <text x="760" y="248" fill="#9A968C" font-size="9">Mapped from: Contacts + Leads</text>
+  <text x="760" y="262" fill="#9A968C" font-size="8">2,847 records</text>
+
+  <rect x="740" y="285" width="240" height="60" rx="6" fill="rgba(143,163,115,0.08)" stroke="rgba(143,163,115,0.2)" stroke-width="1"/>
+  <text x="760" y="305" fill="#8FA373" font-size="11" font-weight="bold">deals</text>
+  <text x="760" y="323" fill="#9A968C" font-size="9">Mapped from: Opportunities</text>
+  <text x="760" y="337" fill="#9A968C" font-size="8">389 records</text>
+
+  <rect x="740" y="360" width="240" height="60" rx="6" fill="rgba(143,163,115,0.08)" stroke="rgba(143,163,115,0.2)" stroke-width="1"/>
+  <text x="760" y="380" fill="#8FA373" font-size="11" font-weight="bold">interactions</text>
+  <text x="760" y="398" fill="#9A968C" font-size="9">Mapped from: Activities</text>
+  <text x="760" y="412" fill="#9A968C" font-size="8">4,892 records</text>
+
+  <rect x="740" y="435" width="240" height="60" rx="6" fill="rgba(143,163,115,0.08)" stroke="rgba(143,163,115,0.2)" stroke-width="1"/>
+  <text x="760" y="455" fill="#8FA373" font-size="11" font-weight="bold">custom_fields</text>
+  <text x="760" y="473" fill="#9A968C" font-size="9">Your proprietary data</text>
+  <text x="760" y="487" fill="#D1A85C" font-size="8">⟳ Syncs back to Salesforce</text>
+
+  <!-- Reverse Sync Arrow -->
+  <path d="M 540 450 L 540 480 L 400 480 L 400 440" stroke="#D1A85C" stroke-width="2" fill="none" stroke-dasharray="4,4"/>
+  <polygon points="400,440 395,447 405,447" fill="#D1A85C"/>
+  <text x="450" y="495" fill="#D1A85C" font-size="9">Bidirectional sync</text>
+
+  <!-- Stats -->
+  <rect x="1020" y="140" width="120" height="100" rx="6" fill="rgba(255,45,122,0.08)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="1035" y="165" fill="#9A968C" font-size="9">Today</text>
+  <text x="1035" y="188" fill="#FF2D7A" font-size="20" font-weight="bold">8,347</text>
+  <text x="1035" y="208" fill="#9A968C" font-size="9">records</text>
+  <text x="1035" y="225" fill="#8FA373" font-size="8">↑ synced</text>
+
+  <rect x="1020" y="255" width="120" height="100" rx="6" fill="rgba(143,163,115,0.08)" stroke="rgba(143,163,115,0.2)" stroke-width="1"/>
+  <text x="1035" y="280" fill="#9A968C" font-size="9">Accuracy</text>
+  <text x="1035" y="303" fill="#8FA373" font-size="20" font-weight="bold">99.9%</text>
+  <text x="1035" y="323" fill="#9A968C" font-size="9">success</text>
+  <text x="1035" y="340" fill="#9A968C" font-size="8">3 errors</text>
+
+  <rect x="1020" y="370" width="120" height="100" rx="6" fill="rgba(245,242,236,0.04)"/>
+  <text x="1035" y="395" fill="#9A968C" font-size="9">Latency</text>
+  <text x="1035" y="418" fill="#F5F2EC" font-size="20" font-weight="bold">&lt; 1s</text>
+  <text x="1035" y="438" fill="#9A968C" font-size="9">avg sync</text>
+  <text x="1035" y="455" fill="#9A968C" font-size="8">real-time</text>
+
+  <!-- Footer -->
+  <rect x="40" y="625" width="1120" height="35" rx="6" fill="rgba(255,45,122,0.06)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="60" y="647" fill="#9A968C" font-size="11">Integration Features:</text>
+  <text x="240" y="647" fill="#F5F2EC" font-size="11">Bidirectional Sync</text>
+  <text x="430" y="647" fill="#F5F2EC" font-size="11">Field Mapping</text>
+  <text x="610" y="647" fill="#F5F2EC" font-size="11">Conflict Resolution</text>
+  <text x="820" y="647" fill="#F5F2EC" font-size="11">Real-time Updates</text>
+</svg>

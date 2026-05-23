@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0A0C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#121216;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#grad1)"/>
+
+  <!-- Title Badge -->
+  <text x="40" y="35" fill="#FF2D7A" font-size="12" font-family="monospace" letter-spacing="2">EMPLOYEE AI ASSISTANT</text>
+
+  <!-- Main Interface -->
+  <rect x="40" y="70" width="1120" height="540" rx="8" fill="#1C1C22" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+
+  <!-- Today's Overview -->
+  <rect x="60" y="100" width="1080" height="80" rx="6" fill="rgba(255,45,122,0.08)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="80" y="125" fill="#FF2D7A" font-size="14" font-weight="bold">Good morning, Anna!</text>
+  <text x="80" y="145" fill="#F5F2EC" font-size="11">Here's your day at a glance:</text>
+  <text x="80" y="165" fill="#9A968C" font-size="10">5 meetings • 12 pending tasks • 3 urgent emails • Budget review due Friday</text>
+
+  <!-- Left Panel: Calendar &amp; Tasks -->
+  <rect x="60" y="200" width="520" height="390" rx="6" fill="rgba(245,242,236,0.02)" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="80" y="225" fill="#F5F2EC" font-size="12" font-weight="bold">Today's Schedule</text>
+
+  <!-- Calendar Events -->
+  <rect x="80" y="240" width="480" height="70" rx="4" fill="rgba(255,45,122,0.08)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <rect x="90" y="250" width="4" height="50" rx="2" fill="#FF2D7A"/>
+  <text x="105" y="263" fill="#9A968C" font-size="9">9:00 AM - 10:00 AM</text>
+  <text x="105" y="280" fill="#F5F2EC" font-size="12" font-weight="bold">Team Standup</text>
+  <text x="105" y="296" fill="#9A968C" font-size="9">📍 Conference Room A • 8 attendees</text>
+
+  <rect x="80" y="320" width="480" height="70" rx="4" fill="rgba(143,163,115,0.08)" stroke="rgba(143,163,115,0.2)" stroke-width="1"/>
+  <rect x="90" y="330" width="4" height="50" rx="2" fill="#8FA373"/>
+  <text x="105" y="343" fill="#9A968C" font-size="9">11:30 AM - 12:30 PM</text>
+  <text x="105" y="360" fill="#F5F2EC" font-size="12" font-weight="bold">Client Call: TechCorp</text>
+  <text x="105" y="376" fill="#9A968C" font-size="9">📞 Video • AI Prep: Review contract details</text>
+
+  <rect x="80" y="400" width="480" height="70" rx="4" fill="rgba(245,242,236,0.04)" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <rect x="90" y="410" width="4" height="50" rx="2" fill="#9A968C"/>
+  <text x="105" y="423" fill="#9A968C" font-size="9">2:00 PM - 3:00 PM</text>
+  <text x="105" y="440" fill="#F5F2EC" font-size="12" font-weight="bold">Budget Review Meeting</text>
+  <text x="105" y="456" fill="#9A968C" font-size="9">📍 Office • Documents ready to present</text>
+
+  <!-- Tasks Section -->
+  <text x="80" y="500" fill="#F5F2EC" font-size="12" font-weight="bold">Priority Tasks</text>
+
+  <rect x="80" y="510" width="480" height="35" rx="4" fill="rgba(245,242,236,0.04)"/>
+  <circle cx="100" cy="527" r="6" fill="rgba(245,242,236,0.2)"/>
+  <text x="120" y="523" fill="#F5F2EC" font-size="10">Approve expense reports (3 pending)</text>
+  <rect x="490" y="518" width="60" height="18" rx="3" fill="rgba(209,168,92,0.12)"/>
+  <text x="497" y="529" fill="#D1A85C" font-size="8">DUE TODAY</text>
+
+  <rect x="80" y="553" width="480" height="35" rx="4" fill="rgba(245,242,236,0.04)"/>
+  <circle cx="100" cy="570" r="6" fill="rgba(245,242,236,0.2)"/>
+  <text x="120" y="566" fill="#F5F2EC" font-size="10">Review Q2 sales report</text>
+  <text x="120" y="579" fill="#9A968C" font-size="8">AI Summary available</text>
+
+  <!-- Right Panel: AI Suggestions -->
+  <rect x="600" y="200" width="540" height="390" rx="6" fill="rgba(245,242,236,0.02)" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="620" y="225" fill="#F5F2EC" font-size="12" font-weight="bold">AI Suggestions</text>
+
+  <!-- Suggestion 1 -->
+  <rect x="620" y="240" width="500" height="100" rx="4" fill="rgba(255,45,122,0.08)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <circle cx="640" cy="265" r="10" fill="#FF2D7A"/>
+  <text x="636" y="271" fill="#0A0A0C" font-size="12" font-weight="bold">!</text>
+  <text x="665" y="260" fill="#FF2D7A" font-size="11" font-weight="bold">Client Call Preparation</text>
+  <text x="665" y="278" fill="#F5F2EC" font-size="9">I've prepared a summary for your 11:30 AM call with TechCorp:</text>
+  <text x="665" y="293" fill="#F5F2EC" font-size="9">• Last interaction: May 10 (contract discussion)</text>
+  <text x="665" y="308" fill="#F5F2EC" font-size="9">• Open items: Pricing tier, implementation timeline</text>
+  <rect x="665" y="318" width="100" height="18" rx="3" fill="rgba(255,45,122,0.15)"/>
+  <text x="672" y="329" fill="#FF2D7A" font-size="8">VIEW BRIEF</text>
+
+  <!-- Suggestion 2 -->
+  <rect x="620" y="355" width="500" height="85" rx="4" fill="rgba(143,163,115,0.08)" stroke="rgba(143,163,115,0.2)" stroke-width="1"/>
+  <circle cx="640" cy="378" r="10" fill="#8FA373"/>
+  <text x="637" y="383" fill="#0A0A0C" font-size="11" font-weight="bold">✓</text>
+  <text x="665" y="373" fill="#8FA373" font-size="11" font-weight="bold">Time Block Recommendation</text>
+  <text x="665" y="391" fill="#F5F2EC" font-size="9">You have 2 hours of free time this afternoon. Suggested focus:</text>
+  <text x="665" y="406" fill="#F5F2EC" font-size="9">• Deep work on Q3 planning (blocked in your calendar)</text>
+  <text x="665" y="421" fill="#F5F2EC" font-size="9">• No meetings scheduled - ideal for concentrated work</text>
+
+  <!-- Suggestion 3 -->
+  <rect x="620" y="455" width="500" height="70" rx="4" fill="rgba(209,168,92,0.08)" stroke="rgba(209,168,92,0.2)" stroke-width="1"/>
+  <circle cx="640" cy="475" r="10" fill="#D1A85C"/>
+  <text x="637" y="481" fill="#0A0A0C" font-size="12" font-weight="bold">📧</text>
+  <text x="665" y="470" fill="#D1A85C" font-size="11" font-weight="bold">Priority Emails</text>
+  <text x="665" y="488" fill="#F5F2EC" font-size="9">3 emails need your attention before EOD:</text>
+  <text x="665" y="503" fill="#F5F2EC" font-size="9">• Budget approval from CFO • Vendor contract • Team update</text>
+
+  <!-- Suggestion 4 -->
+  <rect x="620" y="540" width="500" height="50" rx="4" fill="rgba(245,242,236,0.04)"/>
+  <circle cx="640" cy="560" r="10" fill="#9A968C"/>
+  <text x="636" y="566" fill="#F5F2EC" font-size="11" font-weight="bold">📊</text>
+  <text x="665" y="555" fill="#F5F2EC" font-size="11" font-weight="bold">Weekly Report Ready</text>
+  <text x="665" y="573" fill="#9A968C" font-size="9">Your team performance report for this week has been generated</text>
+
+  <!-- Footer -->
+  <rect x="40" y="625" width="1120" height="35" rx="6" fill="rgba(255,45,122,0.06)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="60" y="647" fill="#9A968C" font-size="11">AI Features:</text>
+  <text x="210" y="647" fill="#F5F2EC" font-size="11">Smart Scheduling</text>
+  <text x="400" y="647" fill="#F5F2EC" font-size="11">Meeting Prep</text>
+  <text x="590" y="647" fill="#F5F2EC" font-size="11">Task Prioritization</text>
+  <text x="780" y="647" fill="#F5F2EC" font-size="11">Proactive Suggestions</text>
+</svg>

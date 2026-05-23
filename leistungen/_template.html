@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[SERVICE_TITLE] | Nuroy</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="[SERVICE_TITLE] — Nuroy">
+  <meta property="og:description" content="[SERVICE_DESCRIPTION]">
+  <meta property="og:image" content="https://nuroy.de/og-image.png">
+  <meta property="og:url" content="https://nuroy.de/leistungen/[SERVICE_SLUG]">
+  <link rel="stylesheet" href="../shared/styles.css?v=1776884200265">
+  <!-- Lite YouTube Embed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js" defer></script>
+</head>
+<body>
+
+<!-- Cursor Glow -->
+<div id="cursor-glow" class="cursor-glow"></div>
+
+<!-- Nav (injected) -->
+<div id="nav-mount"></div>
+
+<!-- A. Hero Section -->
+<section class="service-hero section">
+  <div class="container">
+    <p class="t-label c-pink reveal" id="hero-eyebrow">LEISTUNG 01/07</p>
+    <h1 class="t-display reveal reveal-d1" id="hero-headline">Service Name</h1>
+    <p class="t-body-lg c-muted reveal reveal-d2" id="hero-subline">Tagline goes here</p>
+    <div class="hero-ctas reveal reveal-d3">
+      <a href="../kontakt.html" class="btn btn-primary btn-lg">Erstgespräch</a>
+      <a href="../leistungen.html" class="btn btn-secondary">Alle Leistungen</a>
+    </div>
+  </div>
+</section>
+
+<!-- B. Sneak-Peek Section -->
+<section class="section sneak-peek">
+  <div class="container">
+    <h2 class="t-h2 reveal" id="sneak-headline">Wie sieht das aus?</h2>
+    <p class="t-body c-muted reveal reveal-d1" id="sneak-context">Context...</p>
+    <div class="mockup-preview reveal reveal-d2" id="mockup-container">
+      <!-- Mockup content populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- C. Was wir bauen (3×3 grid) -->
+<section class="section was-wir-bauen">
+  <div class="container">
+    <h2 class="t-h2 reveal">Was drin sein kann.</h2>
+    <div class="grid-3 gap-4 reveal reveal-d1" id="features-grid">
+      <!-- 9 feature cards populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- D. Für wen -->
+<section class="section fuer-wen">
+  <div class="container">
+    <h2 class="t-h2 reveal">Für wen ist das?</h2>
+    <div class="grid-2 gap-6 reveal reveal-d1">
+      <div>
+        <h3 class="t-h3 mb-4">Das passt, wenn du:</h3>
+        <div class="flex flex-col gap-3" id="match-yes">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+      <div>
+        <h3 class="t-h3 mb-4">Nicht für dich, wenn:</h3>
+        <div class="flex flex-col gap-3" id="match-no">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- E. Unser Prozess -->
+<section class="section unser-prozess">
+  <div class="container">
+    <h2 class="t-h2 reveal">Wie wir arbeiten</h2>
+    <div class="process-steps reveal reveal-d1" id="process-timeline">
+      <!-- 3 steps populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- F. Testimonials -->
+<section class="section testimonials">
+  <div class="container">
+    <h2 class="t-h2 reveal">Was Kunden sagen</h2>
+    <div class="testimonial-grid reveal reveal-d1" id="testimonials-container">
+      <!-- Populated by JS from global testimonials -->
+    </div>
+  </div>
+</section>
+
+<!-- G. FAQ -->
+<section class="section faq">
+  <div class="container">
+    <h2 class="t-h2 reveal">Häufige Fragen</h2>
+    <div class="faq-list reveal reveal-d1" id="faq-container">
+      <!-- FAQ items populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- H. Verwandte Leistungen -->
+<section class="section related-services">
+  <div class="container">
+    <h2 class="t-h2 reveal">Schau dir auch das an</h2>
+    <div class="grid-3 gap-4 reveal reveal-d1" id="related-container">
+      <!-- Related service cards populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- I. Final CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2 class="t-display">Bereit, das zu bauen?</h2>
+    <p class="t-body-lg" style="margin-top: 16px;">30 Minuten Erstgespräch. Kostenlos. Konkret.</p>
+    <div class="flex gap-4 justify-center mt-6" style="display: flex; gap: 16px; justify-content: center; margin-top: 32px;">
+      <a href="../kontakt.html" class="btn btn-primary btn-lg">Erstgespräch</a>
+      <a href="../projekte.html" class="btn btn-secondary">Referenzen</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer (injected) -->
+<div id="footer-mount"></div>
+
+<!-- Content Data Object -->
+<script>
+const SERVICE_DATA = {
+  meta: {
+    number: '01',
+    total: '07',
+    title: 'Service Name',
+    tagline: 'One-line tagline',
+  },
+  hero: {
+    headline: 'Service Name',
+    subline: 'Longer description',
+  },
+  sneakPeek: {
+    headline: 'Headline',
+    context: 'Context paragraph',
+    mockupType: 'dashboard', // or 'flow', 'code', 'diagram'
+  },
+  features: [
+    { icon: 'chart', title: 'Feature 1', desc: 'Description' },
+    { icon: 'code', title: 'Feature 2', desc: 'Description' },
+    { icon: 'robot', title: 'Feature 3', desc: 'Description' },
+    { icon: 'filter', title: 'Feature 4', desc: 'Description' },
+    { icon: 'users', title: 'Feature 5', desc: 'Description' },
+    { icon: 'bell', title: 'Feature 6', desc: 'Description' },
+    { icon: 'download', title: 'Feature 7', desc: 'Description' },
+    { icon: 'mobile', title: 'Feature 8', desc: 'Description' },
+    { icon: 'integration', title: 'Feature 9', desc: 'Description' },
+  ],
+  forWho: {
+    yes: ['Point 1', 'Point 2', 'Point 3'],
+    no: ['Point 1', 'Point 2', 'Point 3'],
+  },
+  process: [
+    { num: '01', title: 'Verstehen', desc: 'Description', duration: '1 Woche' },
+    { num: '02', title: 'Bauen', desc: 'Description', duration: '2-4 Wochen' },
+    { num: '03', title: 'Bleiben', desc: 'Description', duration: 'Optional' },
+  ],
+  testimonials: ['sniffys', 'followaustria'], // IDs from global pool
+  faq: [
+    { q: 'Question?', a: 'Answer paragraph.' },
+    { q: 'Question?', a: 'Answer paragraph.' },
+    { q: 'Question?', a: 'Answer paragraph.' },
+  ],
+  related: ['ki-agenten', 'datenintegration'], // Service IDs
+};
+</script>
+
+<!-- Populate content from data object -->
+<script src="../shared/data-global.js"></script>
+<script src="../shared/populate-service.js"></script>
+<script src="../shared/components.js"></script>
+
+</body>
+</html>

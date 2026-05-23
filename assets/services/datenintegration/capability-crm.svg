@@ -1,0 +1,152 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#0d0d0d"/>
+
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="20" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect x="40" y="40" width="1120" height="720" rx="18" fill="#1a1a1a" stroke="rgba(255, 45, 135, 0.3)" stroke-width="1" filter="url(#glow)"/>
+
+  <text x="80" y="90" font-family="monospace" font-size="10" fill="#ff2d87" letter-spacing="0.08em">CRM INTEGRATION • HUBSPOT SYNC</text>
+
+  <rect x="80" y="120" width="680" height="560" rx="12" fill="#0d0d0d" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+
+  <text x="100" y="150" font-family="sans-serif" font-size="14" fill="#f5f1e8" font-weight="600">HubSpot CRM → Company Database</text>
+
+  <rect x="540" y="135" width="180" height="24" rx="6" fill="rgba(184, 209, 138, 0.15)"/>
+  <circle cx="555" cy="147" r="3" fill="#b8d18a"/>
+  <text x="565" y="151" font-family="monospace" font-size="10" fill="#b8d18a">Sync aktiv • Alle 5min</text>
+
+  <!-- Sync Stats -->
+  <rect x="100" y="170" width="200" height="85" rx="8" fill="rgba(184, 209, 138, 0.08)"/>
+  <text x="120" y="195" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">KONTAKTE SYNC</text>
+  <text x="120" y="230" font-family="sans-serif" font-size="26" fill="#b8d18a" font-weight="700">1,247</text>
+  <text x="120" y="248" font-family="monospace" font-size="11" fill="#b8d18a">+42 neue heute</text>
+
+  <rect x="320" y="170" width="200" height="85" rx="8" fill="rgba(255, 45, 135, 0.08)"/>
+  <text x="340" y="195" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">DEALS SYNC</text>
+  <text x="340" y="230" font-family="sans-serif" font-size="26" fill="#ff2d87" font-weight="700">342</text>
+  <text x="340" y="248" font-family="monospace" font-size="11" fill="#ff2d87">€2.4M Pipeline</text>
+
+  <rect x="540" y="170" width="200" height="85" rx="8" fill="rgba(255, 255, 255, 0.05)"/>
+  <text x="560" y="195" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">LETZTE SYNC</text>
+  <text x="560" y="230" font-family="sans-serif" font-size="26" fill="#f5f1e8" font-weight="700">2min</text>
+  <text x="560" y="248" font-family="monospace" font-size="11" fill="rgba(245, 241, 232, 0.6)">ago</text>
+
+  <!-- Sync Log Table -->
+  <text x="100" y="290" font-family="sans-serif" font-size="13" fill="#f5f1e8" font-weight="600">Letzte Sync-Aktivitäten</text>
+
+  <!-- Table Header -->
+  <rect x="100" y="305" width="640" height="35" rx="6" fill="rgba(255, 255, 255, 0.05)"/>
+  <text x="120" y="328" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)" font-weight="600">ZEIT</text>
+  <text x="240" y="328" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)" font-weight="600">OBJEKT</text>
+  <text x="420" y="328" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)" font-weight="600">AKTION</text>
+  <text x="600" y="328" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)" font-weight="600">STATUS</text>
+
+  <!-- Row 1 -->
+  <rect x="100" y="350" width="640" height="45" rx="6" fill="rgba(184, 209, 138, 0.05)"/>
+  <text x="120" y="377" font-family="monospace" font-size="11" fill="rgba(245, 241, 232, 0.7)">10:42</text>
+  <text x="240" y="377" font-family="sans-serif" font-size="11" fill="#f5f1e8">Contact: Julia Decker</text>
+  <text x="420" y="377" font-family="monospace" font-size="11" fill="rgba(245, 241, 232, 0.7)">UPDATE</text>
+  <circle cx="610" cy="372" r="4" fill="#b8d18a"/>
+  <text x="625" y="377" font-family="monospace" font-size="11" fill="#b8d18a">Success</text>
+
+  <!-- Row 2 -->
+  <rect x="100" y="405" width="640" height="45" rx="6" fill="rgba(184, 209, 138, 0.05)"/>
+  <text x="120" y="432" font-family="monospace" font-size="11" fill="rgba(245, 241, 232, 0.7)">10:41</text>
+  <text x="240" y="432" font-family="sans-serif" font-size="11" fill="#f5f1e8">Deal: TechFlow • €24k</text>
+  <text x="420" y="432" font-family="monospace" font-size="11" fill="rgba(245, 241, 232, 0.7)">CREATE</text>
+  <circle cx="610" cy="427" r="4" fill="#b8d18a"/>
+  <text x="625" y="432" font-family="monospace" font-size="11" fill="#b8d18a">Success</text>
+
+  <!-- Row 3 -->
+  <rect x="100" y="460" width="640" height="45" rx="6" fill="rgba(255, 45, 135, 0.05)"/>
+  <text x="120" y="487" font-family="monospace" font-size="11" fill="rgba(245, 241, 232, 0.7)">10:40</text>
+  <text x="240" y="487" font-family="sans-serif" font-size="11" fill="#f5f1e8">Company: CloudOps GmbH</text>
+  <text x="420" y="487" font-family="monospace" font-size="11" fill="rgba(245, 241, 232, 0.7)">UPDATE</text>
+  <circle cx="610" cy="482" r="4" fill="#ff2d87"/>
+  <text x="625" y="487" font-family="monospace" font-size="11" fill="#ff2d87">Retry</text>
+
+  <!-- Row 4 -->
+  <rect x="100" y="515" width="640" height="45" rx="6" fill="rgba(184, 209, 138, 0.05)"/>
+  <text x="120" y="542" font-family="monospace" font-size="11" fill="rgba(245, 241, 232, 0.7)">10:37</text>
+  <text x="240" y="542" font-family="sans-serif" font-size="11" fill="#f5f1e8">Contact: Max Schmidt</text>
+  <text x="420" y="542" font-family="monospace" font-size="11" fill="rgba(245, 241, 232, 0.7)">CREATE</text>
+  <circle cx="610" cy="537" r="4" fill="#b8d18a"/>
+  <text x="625" y="542" font-family="monospace" font-size="11" fill="#b8d18a">Success</text>
+
+  <!-- Field Mapping -->
+  <text x="100" y="590" font-family="sans-serif" font-size="13" fill="#f5f1e8" font-weight="600">Field Mapping</text>
+
+  <rect x="100" y="605" width="300" height="35" rx="6" fill="rgba(255, 255, 255, 0.03)"/>
+  <text x="120" y="627" font-family="monospace" font-size="11" fill="#ff2d87">HubSpot.email</text>
+  <text x="280" y="627" font-family="monospace" font-size="11" fill="rgba(245, 241, 232, 0.5)">→</text>
+  <text x="310" y="627" font-family="monospace" font-size="11" fill="#b8d18a">DB.contact_email</text>
+
+  <rect x="440" y="605" width="300" height="35" rx="6" fill="rgba(255, 255, 255, 0.03)"/>
+  <text x="460" y="627" font-family="monospace" font-size="11" fill="#ff2d87">HubSpot.deal_amount</text>
+  <text x="660" y="627" font-family="monospace" font-size="11" fill="rgba(245, 241, 232, 0.5)">→</text>
+  <text x="690" y="627" font-family="monospace" font-size="11" fill="#b8d18a">DB.revenue</text>
+
+  <!-- Right Column -->
+  <rect x="780" y="120" width="340" height="200" rx="12" fill="#0d0d0d" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+  <text x="800" y="145" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">SYNC PERFORMANCE</text>
+
+  <text x="800" y="175" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Erfolgsrate (24h)</text>
+  <rect x="800" y="182" width="300" height="8" rx="4" fill="rgba(255, 255, 255, 0.05)"/>
+  <rect x="800" y="182" width="291" height="8" rx="4" fill="#b8d18a"/>
+  <text x="1100" y="200" font-family="monospace" font-size="11" fill="#b8d18a" text-anchor="end" font-weight="700">97%</text>
+
+  <text x="800" y="230" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Ø Sync-Dauer</text>
+  <text x="1100" y="230" font-family="monospace" font-size="14" fill="#ff2d87" text-anchor="end" font-weight="700">1.8s</text>
+
+  <text x="800" y="260" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Records sync/Tag</text>
+  <text x="1100" y="260" font-family="monospace" font-size="14" fill="#f5f1e8" text-anchor="end" font-weight="700">~840</text>
+
+  <text x="800" y="290" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Fehler (24h)</text>
+  <text x="1100" y="290" font-family="monospace" font-size="14" fill="#ff2d87" text-anchor="end" font-weight="700">3</text>
+
+  <rect x="780" y="340" width="340" height="180" rx="12" fill="#0d0d0d" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+  <text x="800" y="365" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">SYNC CONFIGURATION</text>
+
+  <text x="800" y="395" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Intervall</text>
+  <text x="1100" y="395" font-family="monospace" font-size="12" fill="#b8d18a" text-anchor="end" font-weight="700">5 Minuten</text>
+
+  <text x="800" y="425" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Sync-Richtung</text>
+  <text x="1100" y="425" font-family="monospace" font-size="12" fill="#f5f1e8" text-anchor="end">Bidirektional</text>
+
+  <text x="800" y="455" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Konflikt-Auflösung</text>
+  <text x="1100" y="455" font-family="monospace" font-size="12" fill="#f5f1e8" text-anchor="end">HubSpot führend</text>
+
+  <text x="800" y="485" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Webhook-Events</text>
+  <text x="1100" y="485" font-family="monospace" font-size="12" fill="#b8d18a" text-anchor="end" font-weight="700">Aktiv</text>
+
+  <rect x="780" y="540" width="340" height="140" rx="12" fill="#0d0d0d" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1"/>
+  <text x="800" y="565" font-family="monospace" font-size="9" fill="rgba(245, 241, 232, 0.5)">SYNC OBJEKTE</text>
+
+  <rect x="800" y="580" width="300" height="30" rx="6" fill="rgba(184, 209, 138, 0.08)"/>
+  <circle cx="815" cy="595" r="4" fill="#b8d18a"/>
+  <text x="830" y="599" font-family="sans-serif" font-size="11" fill="#b8d18a">✓ Contacts (1,247)</text>
+
+  <rect x="800" y="620" width="300" height="30" rx="6" fill="rgba(184, 209, 138, 0.08)"/>
+  <circle cx="815" cy="635" r="4" fill="#b8d18a"/>
+  <text x="830" y="639" font-family="sans-serif" font-size="11" fill="#b8d18a">✓ Deals (342) • Companies (218)</text>
+
+  <rect x="80" y="700" width="340" height="50" rx="8" fill="rgba(184, 209, 138, 0.1)" stroke="rgba(184, 209, 138, 0.3)" stroke-width="1"/>
+  <text x="100" y="730" font-family="sans-serif" font-size="12" fill="#b8d18a">↑ 1.247 Kontakte automatisch sync</text>
+
+  <rect x="440" y="700" width="340" height="50" rx="8" fill="rgba(255, 45, 135, 0.1)" stroke="rgba(255, 45, 135, 0.3)" stroke-width="1"/>
+  <text x="460" y="730" font-family="sans-serif" font-size="12" fill="#ff2d87">⚡ 1.8s Sync-Zeit — Echtzeit-Sync</text>
+
+  <rect x="800" y="700" width="320" height="50" rx="8" fill="rgba(184, 209, 138, 0.1)" stroke="rgba(184, 209, 138, 0.3)" stroke-width="1"/>
+  <text x="820" y="730" font-family="sans-serif" font-size="12" fill="#b8d18a">97% Erfolgsrate — sehr stabil</text>
+
+  <text x="80" y="785" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.5)">Features:</text>
+  <text x="145" y="785" font-family="monospace" font-size="10" fill="rgba(245, 241, 232, 0.7)">HubSpot API · Bidirectional Sync · Field Mapping · Webhooks · Conflict Resolution · Error Handling</text>
+</svg>

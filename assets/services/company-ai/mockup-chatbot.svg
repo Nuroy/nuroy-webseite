@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0A0C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#121216;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#grad1)"/>
+
+  <!-- Title Badge -->
+  <text x="40" y="35" fill="#FF2D7A" font-size="12" font-family="monospace" letter-spacing="2">INTERNAL COMPANY Q&amp;A CHATBOT</text>
+
+  <!-- Chat Interface -->
+  <rect x="40" y="70" width="1120" height="540" rx="8" fill="#1C1C22" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+
+  <!-- Chat Header -->
+  <rect x="40" y="70" width="1120" height="60" rx="8" fill="rgba(255,45,122,0.08)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <circle cx="70" cy="100" r="15" fill="#FF2D7A"/>
+  <text x="73" y="107" fill="#0A0A0C" font-size="14" font-weight="bold">AI</text>
+  <text x="100" y="95" fill="#F5F2EC" font-size="14" font-weight="bold">Company Assistant</text>
+  <text x="100" y="113" fill="#8FA373" font-size="10">● Online • Powered by GPT-4</text>
+
+  <!-- Chat Messages -->
+
+  <!-- User Message 1 -->
+  <rect x="700" y="150" width="420" height="65" rx="8" fill="rgba(245,242,236,0.08)" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="720" y="168" fill="#9A968C" font-size="9">You • 10:23 AM</text>
+  <text x="720" y="188" fill="#F5F2EC" font-size="11">What's the process for ordering new</text>
+  <text x="720" y="203" fill="#F5F2EC" font-size="11">office equipment?</text>
+
+  <!-- Bot Response 1 -->
+  <rect x="80" y="235" width="520" height="135" rx="8" fill="rgba(255,45,122,0.08)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="100" y="253" fill="#FF2D7A" font-size="9">Company Assistant • 10:23 AM</text>
+  <text x="100" y="275" fill="#F5F2EC" font-size="11">To order new office equipment:</text>
+  <text x="100" y="295" fill="#F5F2EC" font-size="11">1. Fill out the Equipment Request Form in the portal</text>
+  <text x="100" y="310" fill="#F5F2EC" font-size="11">2. Get approval from your department manager</text>
+  <text x="100" y="325" fill="#F5F2EC" font-size="11">3. Submit to the Office Manager (anna@company.com)</text>
+  <text x="100" y="345" fill="#9A968C" font-size="9">📄 Source: Office Equipment Policy (updated March 2024)</text>
+  <text x="100" y="360" fill="#8FA373" font-size="9">✓ Confidence: 96%</text>
+
+  <!-- User Message 2 -->
+  <rect x="700" y="390" width="420" height="50" rx="8" fill="rgba(245,242,236,0.08)" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="720" y="408" fill="#9A968C" font-size="9">You • 10:24 AM</text>
+  <text x="720" y="428" fill="#F5F2EC" font-size="11">Who is the Office Manager?</text>
+
+  <!-- Bot Response 2 -->
+  <rect x="80" y="460" width="460" height="95" rx="8" fill="rgba(255,45,122,0.08)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="100" y="478" fill="#FF2D7A" font-size="9">Company Assistant • 10:24 AM</text>
+  <text x="100" y="500" fill="#F5F2EC" font-size="11">The Office Manager is Anna Schmidt.</text>
+  <text x="100" y="518" fill="#F5F2EC" font-size="11">📧 Email: anna.schmidt@company.com</text>
+  <text x="100" y="533" fill="#F5F2EC" font-size="11">📞 Extension: 234</text>
+  <text x="100" y="548" fill="#9A968C" font-size="9">📄 Source: Company Directory</text>
+
+  <!-- Input Box -->
+  <rect x="60" y="570" width="1080" height="25" rx="6" fill="rgba(245,242,236,0.04)" stroke="rgba(245,242,236,0.08)" stroke-width="1"/>
+  <text x="80" y="587" fill="#9A968C" font-size="11">Type your question...</text>
+  <circle cx="1110" cy="582" r="10" fill="#FF2D7A"/>
+  <text x="1107" y="587" fill="#0A0A0C" font-size="12" font-weight="bold">→</text>
+
+  <!-- Footer -->
+  <rect x="40" y="625" width="1120" height="35" rx="6" fill="rgba(255,45,122,0.06)" stroke="rgba(255,45,122,0.2)" stroke-width="1"/>
+  <text x="60" y="647" fill="#9A968C" font-size="11">AI Features:</text>
+  <text x="210" y="647" fill="#F5F2EC" font-size="11">Conversational Interface</text>
+  <text x="420" y="647" fill="#F5F2EC" font-size="11">Source Attribution</text>
+  <text x="620" y="647" fill="#F5F2EC" font-size="11">Context Memory</text>
+  <text x="820" y="647" fill="#F5F2EC" font-size="11">24/7 Availability</text>
+</svg>

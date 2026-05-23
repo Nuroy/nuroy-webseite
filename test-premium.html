@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Test</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="shared/styles.css">
+  <link rel="stylesheet" href="funnel/funnel-styles.css">
+
+  <style>
+    body { background: #FAFAF7; padding: 40px 0; }
+    .test-section { margin: 60px 0; }
+    .test-title { text-align: center; font-size: 24px; margin-bottom: 40px; font-weight: 700; }
+  </style>
+</head>
+<body>
+
+<div class="test-section">
+  <h2 class="test-title">Trust Bar Test (Logos sollten 56px hoch sein)</h2>
+  <section class="funnel-trust-bar">
+    <div class="funnel-trust-text">Vertrauen von Unternehmen wie:</div>
+    <div class="funnel-trust-logos">
+      <img src="assets/clients/sniffys.png" alt="Sniffys">
+      <img src="assets/clients/nomo.png" alt="Nomo">
+    </div>
+  </section>
+</div>
+
+<div class="test-section">
+  <h2 class="test-title">Testimonials Test (Kreisbogen mit Pink Glow beim Hover)</h2>
+  <section class="funnel-section funnel-testimonials">
+    <div class="funnel-testimonials-grid">
+      <div class="funnel-testimonial-card">
+        <div style="padding: 60px 20px; text-align: center; background: #E8E8E0;">
+          <strong>Card 1</strong><br>
+          Sollte 20px HOCH sein<br>
+          (translateY -20px)
+        </div>
+      </div>
+
+      <div class="funnel-testimonial-card">
+        <div style="padding: 60px 20px; text-align: center; background: #E8E8E0;">
+          <strong>Card 2</strong><br>
+          Sollte 20px TIEF sein<br>
+          (translateY +20px)
+        </div>
+      </div>
+
+      <div class="funnel-testimonial-card">
+        <div style="padding: 60px 20px; text-align: center; background: #E8E8E0;">
+          <strong>Card 3</strong><br>
+          Sollte 20px HOCH sein<br>
+          (translateY -20px)
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div style="text-align: center; margin: 40px 0; padding: 20px; background: white;">
+  <strong>DevTools-Check:</strong><br>
+  Rechtsklick auf Logo → "Untersuchen" → Sollte <code>height: 56px</code> zeigen<br>
+  Rechtsklick auf Card 2 → "Untersuchen" → Sollte <code>transform: perspective(1200px) translateY(20px)</code> zeigen
+</div>
+
+</body>
+</html>
