@@ -1,4 +1,15 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/contact", "destination": "/kontakt", "permanent": true },
+    { "source": "/work", "destination": "/arbeiten", "permanent": true },
+    { "source": "/work/accountly", "destination": "/arbeiten/accountly", "permanent": true },
+    { "source": "/work/crm", "destination": "/arbeiten/crm-system", "permanent": true },
+    { "source": "/work/voice-agent", "destination": "/arbeiten/voice-agent", "permanent": true },
+    { "source": "/work/csm-suite", "destination": "/arbeiten/csm-suite", "permanent": true },
+    { "source": "/work/:slug*", "destination": "/arbeiten", "permanent": true },
+    { "source": "/blog", "destination": "/", "permanent": true },
+    { "source": "/blog/:slug*", "destination": "/", "permanent": true }
+  ]
 }
