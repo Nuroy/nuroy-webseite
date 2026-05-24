@@ -183,6 +183,21 @@
       </ul>
     </div>
     <div class="footer-col">
+      <p class="footer-col-label">Branchen</p>
+      <ul>
+        <li><a href="${b}branchen/marketing-agentur.html">Marketing-Agentur</a></li>
+        <li><a href="${b}branchen/ecommerce.html">E-Commerce</a></li>
+        <li><a href="${b}branchen/steuerberater.html">Steuerberater</a></li>
+        <li><a href="${b}branchen/saas.html">B2B SaaS</a></li>
+        <li><a href="${b}branchen/handwerk.html">Handwerk</a></li>
+        <li><a href="${b}branchen/vertriebs-agentur.html">Vertriebs-Agentur</a></li>
+        <li><a href="${b}branchen/coaches.html">Coaches / Info-Produkte</a></li>
+        <li><a href="${b}branchen/anwaltskanzlei.html">Anwaltskanzlei</a></li>
+        <li><a href="${b}branchen/immobilienmakler.html">Immobilienmakler</a></li>
+        <li><a href="${b}branchen/personalvermittlung.html">Personalvermittlung</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
       <p class="footer-col-label">Unternehmen</p>
       <ul>
         <li><a href="${b}team.html">Team</a></li>

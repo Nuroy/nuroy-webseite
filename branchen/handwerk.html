@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard für Handwerksbetriebe — Baustellen, Aufträge, Material live | Nuroy</title>
+  <meta name="description" content="Custom Dashboard für Handwerksbetriebe: Baustellen-Status, Aufträge, Material, Mitarbeiter-Auslastung und Liquidität in Echtzeit. Streit, pds, ToolSense, DATEV integriert. Ab 12.500 €.">
+  <meta name="keywords" content="dashboard handwerk, handwerksbetrieb software, baustellen cockpit, auftragsverwaltung handwerk dashboard, handwerker software individuell, material tracking baustelle, mitarbeiter auslastung handwerk, sanitär elektro digitalisierung">
+  <meta name="author" content="Nuroy (JT NUROY LTD)">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="geo.region" content="CY-04">
+  <meta name="geo.placename" content="Paphos">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+  <link rel="canonical" href="https://nuroy.de/branchen/handwerk">
+  <link rel="alternate" hreflang="de-DE" href="https://nuroy.de/branchen/handwerk">
+  <link rel="alternate" hreflang="de-AT" href="https://nuroy.de/branchen/handwerk">
+  <link rel="alternate" hreflang="de-CH" href="https://nuroy.de/branchen/handwerk">
+  <link rel="alternate" hreflang="x-default" href="https://nuroy.de/branchen/handwerk">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nuroy">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="Dashboard für Handwerksbetriebe | Nuroy">
+  <meta property="og:description" content="Baustellen-Status, Aufträge, Material, Mitarbeiter-Auslastung und Liquidität in Echtzeit.">
+  <meta property="og:image" content="https://nuroy.de/og-image.png">
+  <meta property="og:url" content="https://nuroy.de/branchen/handwerk">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dashboard für Handwerksbetriebe | Nuroy">
+  <meta name="twitter:description" content="Baustellen, Aufträge, Material und Mitarbeiter in einem Live-Cockpit.">
+  <meta name="twitter:image" content="https://nuroy.de/og-image.png">
+  <link rel="stylesheet" href="../shared/styles.min.css">
+  <link rel="stylesheet" href="../funnel/funnel-styles.min.css">
+  <link rel="stylesheet" href="../services/services-styles.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nuroy.de/#organization","name":"Nuroy","legalName":"JT NUROY LTD","url":"https://nuroy.de/","logo":{"@type":"ImageObject","url":"https://nuroy.de/assets/favicon.png","width":512,"height":512},"email":"kontakt@nuroy.de","foundingDate":"2024","address":{"@type":"PostalAddress","streetAddress":"Taxiarchon 25, House 2","postalCode":"8036","addressLocality":"Paphos","addressCountry":"CY"},"identifier":"HE 479463"},{"@type":"ProfessionalService","@id":"https://nuroy.de/#service","provider":{"@id":"https://nuroy.de/#organization"},"serviceType":["Custom Dashboard Development","KI-Integration"],"offers":{"@type":"Offer","priceCurrency":"EUR","priceSpecification":{"@type":"PriceSpecification","minPrice":"12500","priceCurrency":"EUR"}}},{"@type":"WebSite","@id":"https://nuroy.de/#website","url":"https://nuroy.de/","name":"Nuroy","publisher":{"@id":"https://nuroy.de/#organization"},"inLanguage":"de-DE"},{"@type":"Service","@id":"https://nuroy.de/branchen/handwerk#service","name":"Dashboard für Handwerksbetriebe","alternateName":["Baustellen-Cockpit","Auftragsdashboard Handwerk","Handwerker-Software individuell","SHK-Dashboard","Elektro-Betrieb Cockpit"],"description":"Individuelles Dashboard für Handwerksbetriebe im DACH-Raum (Sanitär, Elektro, Tischlerei, Maler, Dachdecker, Garten- und Landschaftsbau). Baustellenstatus, Auftragspipeline, Material-Status, Mitarbeiter-Auslastung, Liquidität und Forecast in einem Cockpit. Integriert mit Branchensoftware (Streit, pds, M-SOFT, Sander & Doll), ToolSense, Buchhaltung (DATEV, Lexware) und mobilen Apps.","provider":{"@id":"https://nuroy.de/#organization"},"serviceType":"Trades Business Dashboard","category":["Handwerk-Software","Baustellen-Management","Auftragsverwaltung"],"areaServed":[{"@type":"Country","name":"Deutschland"},{"@type":"Country","name":"Österreich"},{"@type":"Country","name":"Schweiz"}],"audience":{"@type":"BusinessAudience","audienceType":"Handwerksbetriebe ab 10 Mitarbeiter im DACH-Raum"},"offers":{"@type":"Offer","priceCurrency":"EUR","priceSpecification":{"@type":"PriceSpecification","minPrice":"12500","priceCurrency":"EUR"}}},{"@type":"WebPage","@id":"https://nuroy.de/branchen/handwerk#webpage","url":"https://nuroy.de/branchen/handwerk","name":"Dashboard für Handwerksbetriebe | Nuroy","isPartOf":{"@id":"https://nuroy.de/#website"},"about":{"@id":"https://nuroy.de/branchen/handwerk#service"},"inLanguage":"de-DE","breadcrumb":{"@id":"https://nuroy.de/branchen/handwerk#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://nuroy.de/branchen/handwerk#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://nuroy.de/"},{"@type":"ListItem","position":2,"name":"Branchen","item":"https://nuroy.de/branchen"},{"@type":"ListItem","position":3,"name":"Handwerk","item":"https://nuroy.de/branchen/handwerk"}]},{"@type":"FAQPage","@id":"https://nuroy.de/branchen/handwerk#faqpage","mainEntity":[{"@type":"Question","name":"Funktioniert das mit unserer Branchensoftware (Streit, pds, etc.)?","acceptedAnswer":{"@type":"Answer","text":"Ja. Wir integrieren mit den DACH-Standard-Branchenlösungen: Streit V.1, pds Handwerk, M-SOFT, Sander & Doll, Label Software, MOS'aik. Daten werden per API oder Datenbank-Export gezogen, ohne dass ihr eure bestehende Software wechseln müsst — das Dashboard wird zusätzlich darüber gelegt."}},{"@type":"Question","name":"Können auch mobile Daten von der Baustelle einfließen?","acceptedAnswer":{"@type":"Answer","text":"Ja. Wir können mobile Apps (eure bestehende oder neu gebaut), digitale Stundenzettel (Clockodo, Crewmeister), Foto-Uploads von der Baustelle, GPS-Tracking der Servicewagen und IoT-Sensoren (ToolSense, Trackunit) integrieren. Live-Daten von 5–8 Baustellen parallel sind kein Problem."}},{"@type":"Question","name":"Welche KPIs sind für Handwerksbetriebe besonders wertvoll?","acceptedAnswer":{"@type":"Answer","text":"Baustellen-Status mit Ampel, Soll-Ist-Vergleich pro Baustelle, Materialkosten vs. Kalkulation, Mitarbeiter-Auslastung mit Über-/Unterstundenwarnung, Auftragspipeline (Angebote/Auftragseingang/Backlog), Liquidität mit Zahlungsforecast, offene Forderungen, Servicewagen-Auslastung."}},{"@type":"Question","name":"Funktioniert das auch für kleine Betriebe mit 10–25 Mitarbeitern?","acceptedAnswer":{"@type":"Answer","text":"Ja, das ist sogar unser Sweet Spot. Größere Betriebe haben oft SAP oder eigene IT-Abteilungen. Kleine Handwerksbetriebe (10–25 Mitarbeiter, 2–10 Mio. € Umsatz) profitieren am stärksten von Custom-Dashboards, weil Standard-Branchensoftware zwar Operations abdeckt, aber keine strategische Übersicht für den Inhaber bietet."}},{"@type":"Question","name":"Was kostet ein Handwerker-Dashboard?","acceptedAnswer":{"@type":"Answer","text":"Custom Handwerker-Dashboards starten bei 12.500 €. Endpreis hängt ab von Anzahl der angebundenen Systeme, mobiler Anbindung (Apps, IoT), Hosting-Anforderungen und Schulungsumfang. Festpreis nach Discovery, keine Lizenzgebühren pro Nutzer. Förderung über BAFA / KfW Digital-Zuschüsse oft möglich."}}]}]}
+  </script>
+</head>
+<body>
+
+<div id="cursor-glow" class="cursor-glow"></div>
+<div id="nav-mount"></div>
+
+<section class="service-hero-enhanced">
+  <div class="hero-content-split">
+    <div class="hero-text">
+      <p class="t-label c-pink reveal">BRANCHE 05/10</p>
+      <h1 class="service-hero-headline reveal reveal-d1">Dashboard für Handwerksbetriebe</h1>
+      <p class="service-hero-subline reveal reveal-d2">Baustellen, Aufträge, Material und Mitarbeiter — ein Cockpit für den Chef, statt 5 Programme nebeneinander.</p>
+    </div>
+  </div>
+  <div class="hero-ctas reveal reveal-d3">
+    <a href="../kontakt.html" class="btn btn-pink-glass">Erstgespräch buchen</a>
+    <a href="../leistungen/dashboards.html" class="btn btn-glass-secondary">Mehr zu Custom Dashboards</a>
+  </div>
+</section>
+
+<section class="funnel-section funnel-problem">
+  <div class="container">
+    <h2 class="funnel-section-headline">Wenn das bekannt vorkommt …</h2>
+    <div class="funnel-problem-cards">
+      <div class="funnel-problem-card reveal">
+        <h3>Streit V.1 sagt nicht alles</h3>
+        <p>Eure Branchensoftware kann viel — aber strategische Übersicht für den Inhaber, mit Liquidität, Marge pro Baustelle und Forecast? Fehlt.</p>
+      </div>
+      <div class="funnel-problem-card reveal reveal-d1">
+        <h3>Baustellen außer Kontrolle</h3>
+        <p>Wo stehen wir auf Baustelle X? Wie viel Material wurde wirklich verbaut? Stunden überzogen? Antworten gibt es abends beim Polier per Anruf.</p>
+      </div>
+      <div class="funnel-problem-card reveal reveal-d2">
+        <h3>Mitarbeiter im Blindflug</h3>
+        <p>Wer hat zu viele Überstunden? Wer ist krank? Welcher Geselle ist diese Woche unausgelastet? Excel aus dem Büro, eine Woche alt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width: 1000px;">
+    <h2 class="t-h2 reveal text-center">Was euer Handwerks-Cockpit zeigt</h2>
+    <p class="t-body-lg reveal reveal-d1 text-center" style="max-width: 700px; margin: 16px auto 48px; color: var(--fg-muted);">
+      Übersicht für den Inhaber, Werkzeug für den Polier — auf Bürotablet und Handy.
+    </p>
+    <ul class="funnel-features-list">
+      <li><strong>Baustellen-Cockpit:</strong> Alle aktiven Baustellen mit Ampel-Status, Fortschritt, Soll-Ist-Vergleich</li>
+      <li><strong>Marge pro Baustelle:</strong> Kalkulierte vs. tatsächliche Stunden, Material, Subunternehmer — live</li>
+      <li><strong>Materialfluss:</strong> Bestellungen, Lieferungen, Lagerstand, Material auf Baustellen — mit Foto-Belegen</li>
+      <li><strong>Mitarbeiter-Auslastung:</strong> Stunden pro Mitarbeiter, Überstunden, Krankheit, Urlaubsplanung</li>
+      <li><strong>Auftragspipeline:</strong> Angebote raus, Auftragseingang, Backlog in Wochen, Auslastung der nächsten 3 Monate</li>
+      <li><strong>Liquidität:</strong> Bestand, offene Rechnungen, Zahlungsziele, 30/60/90-Tage-Forecast</li>
+      <li><strong>Servicewagen-Tracking:</strong> Wo sind die Fahrzeuge, wer ist wo im Einsatz (mit Telematik-Anbindung)</li>
+      <li><strong>Kundenzufriedenheit:</strong> Automatisches Feedback nach Auftragsabschluss, Reklamationsquote pro Geselle</li>
+    </ul>
+  </div>
+</section>
+
+<section class="funnel-section">
+  <div class="container">
+    <h2 class="funnel-section-headline">Typische Integrationen für Handwerksbetriebe</h2>
+    <p class="funnel-solution-subline">Eure bestehenden Tools bleiben — das Dashboard wird darüber gelegt.</p>
+    <div class="reveal" style="max-width: 900px; margin: 48px auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; font-size: 14px; color: var(--fg-muted);">
+      <div><strong style="color: var(--fg);">Branchensoftware:</strong><br>Streit V.1 · pds Handwerk · M-SOFT · Sander &amp; Doll · MOS'aik · Label</div>
+      <div><strong style="color: var(--fg);">Zeit &amp; Mobil:</strong><br>Clockodo · Crewmeister · ZEP · MeisterTask · Hero-App</div>
+      <div><strong style="color: var(--fg);">IoT &amp; Telematik:</strong><br>ToolSense · Trackunit · Webfleet · Geotab · Vimcar</div>
+      <div><strong style="color: var(--fg);">Material &amp; Großhandel:</strong><br>Sonepar · Würth · Hagebau · Reichelt · IDS Connect</div>
+      <div><strong style="color: var(--fg);">Buchhaltung:</strong><br>DATEV · Lexware · sevDesk · pds Konnektor</div>
+      <div><strong style="color: var(--fg);">Kommunikation:</strong><br>WhatsApp Business · MS 365 · Outlook · Threema</div>
+    </div>
+  </div>
+</section>
+
+<section class="section faq">
+  <div class="container">
+    <h2 class="t-h2 reveal">Häufige Fragen aus dem Handwerk</h2>
+    <div class="faq-list reveal reveal-d1" style="margin-top:48px;">
+
+      <div class="faq-item">
+        <div class="faq-q">
+          Funktioniert das mit unserer Branchensoftware (Streit, pds, etc.)?
+          <span class="faq-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">Ja. Wir integrieren mit den DACH-Standard-Branchenlösungen: Streit V.1, pds Handwerk, M-SOFT, Sander &amp; Doll, Label Software, MOS'aik. Daten werden per API oder Datenbank-Export gezogen, ohne dass ihr eure bestehende Software wechseln müsst — das Dashboard wird zusätzlich darüber gelegt.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          Können auch mobile Daten von der Baustelle einfließen?
+          <span class="faq-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">Ja. Wir können mobile Apps (eure bestehende oder neu gebaut), digitale Stundenzettel (Clockodo, Crewmeister), Foto-Uploads von der Baustelle, GPS-Tracking der Servicewagen und IoT-Sensoren (ToolSense, Trackunit) integrieren. Live-Daten von 5–8 Baustellen parallel sind kein Problem.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          Welche KPIs sind für Handwerksbetriebe besonders wertvoll?
+          <span class="faq-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">Baustellen-Status mit Ampel, Soll-Ist-Vergleich pro Baustelle, Materialkosten vs. Kalkulation, Mitarbeiter-Auslastung mit Über-/Unterstundenwarnung, Auftragspipeline (Angebote/Auftragseingang/Backlog), Liquidität mit Zahlungsforecast, offene Forderungen, Servicewagen-Auslastung.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          Funktioniert das auch für kleine Betriebe mit 10–25 Mitarbeitern?
+          <span class="faq-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">Ja, das ist sogar unser Sweet Spot. Größere Betriebe haben oft SAP oder eigene IT-Abteilungen. Kleine Handwerksbetriebe (10–25 Mitarbeiter, 2–10 Mio. € Umsatz) profitieren am stärksten von Custom-Dashboards, weil Standard-Branchensoftware zwar Operations abdeckt, aber keine strategische Übersicht für den Inhaber bietet.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          Was kostet ein Handwerker-Dashboard?
+          <span class="faq-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">Custom Handwerker-Dashboards starten bei 12.500 €. Endpreis hängt ab von Anzahl der angebundenen Systeme, mobiler Anbindung (Apps, IoT), Hosting-Anforderungen und Schulungsumfang. Festpreis nach Discovery, keine Lizenzgebühren pro Nutzer. Förderung über BAFA / KfW Digital-Zuschüsse oft möglich.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="container">
+    <h2 class="t-display">Bereit für euer Handwerks-Cockpit?</h2>
+    <p class="t-body-lg" style="margin-top: 16px;">30 Minuten kostenloses Erstgespräch. Handwerks-Dashboard ab 12.500 €.</p>
+    <div style="display: flex; gap: 16px; justify-content: center; margin-top: 32px; flex-wrap: wrap;">
+      <a href="../kontakt.html" class="btn btn-pink-glass btn-lg">Erstgespräch buchen</a>
+      <a href="../leistungen/dashboards.html" class="btn btn-glass-secondary btn-lg">Mehr zu Custom Dashboards</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-mount"></div>
+<script src="../shared/components.js"></script>
+
+</body>
+</html>

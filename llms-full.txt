@@ -111,6 +111,50 @@ Wir sind kein Generaldienstleister. Keine Websites, kein Content-Marketing, kein
 ### Wie läuft das Erstgespräch?
 Kostenlos, 45–60 Minuten, per Videokonferenz. Wir sprechen über Ausgangssituation, Problem, gewünschtes Ergebnis. Wenn es passt, folgt ein Architektur-Briefing und ein Angebot. Wenn es nicht passt, sagen wir das direkt — wir verkaufen keine Projekte, die nicht passen.
 
+## Branchen-spezifische Dashboard-Lösungen
+
+Nuroy bietet 10 branchen-spezifische Dashboard-Landingpages, jeweils mit echten Pain Points, KPIs, Integrationen und FAQs:
+
+### Dashboard für Marketing-Agenturen
+**URL:** https://nuroy.de/branchen/marketing-agentur
+Multi-Client-ROAS, Multi-Channel-Performance, Marge pro Kunde mit Buchhaltungs-Anbindung, White-Label-Kundenportal. Integriert Meta Ads, Google Ads, TikTok Ads, LinkedIn Ads, GA4, HubSpot, Pipedrive, sevDesk, Lexware. Spart der Agentur den Monday-Reporting-Marathon.
+
+### Dashboard für E-Commerce & Online-Händler
+**URL:** https://nuroy.de/branchen/ecommerce
+Shopify, Shopware 5/6, WooCommerce, JTL, plentymarkets, Amazon (SP-API), eBay, Otto, Kaufland. Marge pro Produkt (Verkaufspreis − EK − Adspend − Versand), Lager-Reichweite, Retouren-Analyse mit KI-Klassifizierung, OSS-Steuer-Cockpit, CLV-Tracking.
+
+### Dashboard für Steuerberater & Kanzleien
+**URL:** https://nuroy.de/branchen/steuerberater
+DATEV-Live-Integration (BWA-Live-View, Liquidität, Fristen), Mandantenportal als White-Label, Mitarbeiter-Auslastung, Honorar-Marge pro Mandat, Anomalie-Erkennung für ungewöhnliche Buchungen. § 43e BRAO konform, BSI-C5-fähig, Mandantengeheimnis abgesichert.
+
+### Dashboard für B2B SaaS
+**URL:** https://nuroy.de/branchen/saas
+MRR-Movements (New/Expansion/Contraction/Churned), NRR, GRR, Logo-Churn, Customer-Churn, CAC, LTV, CAC-Payback, Activation-Funnel, Cohort-Retention, Magic Number. Hybride Pricing-Modelle (Subscription + Usage + Enterprise) mit Multi-Currency. Integriert Stripe, Chargebee, HubSpot, Mixpanel, Amplitude.
+
+### Dashboard für Handwerksbetriebe
+**URL:** https://nuroy.de/branchen/handwerk
+Baustellen-Cockpit mit Ampel-Status, Marge pro Baustelle (kalkulierte vs. tatsächliche Stunden + Material), Mitarbeiter-Auslastung, Material-Tracking mit Foto-Belegen, Servicewagen-Telematik. Integriert Streit V.1, pds Handwerk, M-SOFT, Clockodo, ToolSense. Förderung über BAFA/KfW-Digital-Zuschüsse möglich.
+
+### Dashboard für Vertriebs-Agenturen
+**URL:** https://nuroy.de/branchen/vertriebs-agentur
+Setter/Closer-Performance live (Calls/Tag, Connect-Rate, Setups, Show-Rate, Close-Rate, AOV), Multi-Client-Pipelines, automatische Provisionsabrechnung, KI-Call-Coaching aus Transkripten. Integriert Pipedrive, Close, GoHighLevel, Aircall, JustCall, Apollo, OpenAI Whisper.
+
+### Dashboard für Coaches & Info-Produkte
+**URL:** https://nuroy.de/branchen/coaches
+Komplette Customer Journey vom Ad-Klick bis zum Refund: Funnel-Conversion über ClickFunnels/Funnelcockpit, Webinar-Performance (WebinarJam, Stealth Seminar, Demio), Setter/Closer-Pipeline, Affiliate-Tracking, Member-Activation, Refund-Quote pro Funnel. Integriert Digistore24, Copecart, ablefy, ActiveCampaign, Klick-Tipp.
+
+### Dashboard für Anwaltskanzleien
+**URL:** https://nuroy.de/branchen/anwaltskanzlei
+Akten-Status, Fristen-Cockpit mit Ampel und Eskalation, Mandatsmarge (Stundenzettel vs. RVG), Anwalts-Auslastung, beA-Statistik (nur Metadaten). Integriert RA-MICRO, Advoware, DATEV Anwalt, AnNoText, ReNoStar. § 43e BRAO und § 203 StGB konform, EU-Hosting mit Pseudonymisierung.
+
+### Dashboard für Immobilienmakler
+**URL:** https://nuroy.de/branchen/immobilienmakler
+Objekt-Pipeline (Akquise → Listing → Besichtigung → Notar → Abschluss), Portal-Performance auf ImmoScout24/Immowelt/Immonet, Provisions-Forecast 30/60/90 Tage, Makler-Auslastung, Akquise-Pipeline. Integriert onOffice, Propstack, FlowFact, ImmoSolve, Sprengnetter, PriceHubble.
+
+### Dashboard für Personalvermittlung & Recruiting
+**URL:** https://nuroy.de/branchen/personalvermittlung
+ATS-Pipeline pro Mandat, Time-to-Hire & Time-to-Fill, Quellen-ROI (LinkedIn, Xing, Indeed, Stepstone, Active Sourcing), Recruiter-Performance, Vermittlungs-Marge mit Garantiezeit-Logik und Clawback-Tracking, Garantiezeit-Survival-Rate. Integriert Personio, recruitee, Workable, Greenhouse, Lever, LinkedIn Recruiter, Xing TalentManager.
+
 ## Typische Use Cases
 
 - **E-Commerce-Unternehmen:** Live-Dashboard mit Umsatz, Lagerbestand, Conversion, Werbeausgaben aus Shopify, Meta Ads, Google Ads, Buchhaltung (sevDesk).

@@ -18,6 +18,21 @@
 - [Alle Leistungen](https://nuroy.de/leistungen): 7 Leistungsfelder im Überblick
 - [Kontakt & Erstgespräch](https://nuroy.de/kontakt): Kostenloses 45–60-minütiges Erstgespräch, transparente Einschätzung
 
+## Branchen-spezifische Dashboard-Lösungen
+
+Nuroy entwickelt Custom Dashboards mit KI speziell für diese 10 Branchen im DACH-Raum. Jede Seite enthält branchen-typische Pain Points, KPIs, Integrationen und FAQs:
+
+- [Dashboard für Marketing-Agenturen](https://nuroy.de/branchen/marketing-agentur): Multi-Client-ROAS, Kampagnen-Performance, Marge pro Kunde, Meta/Google/TikTok Ads
+- [Dashboard für E-Commerce & Online-Händler](https://nuroy.de/branchen/ecommerce): Shopify, Shopware, Amazon, Marge pro Produkt, Lager, Retouren
+- [Dashboard für Steuerberater & Kanzleien](https://nuroy.de/branchen/steuerberater): DATEV-Live-Integration, Mandantenportal, Fristen, Auslastung, BWA-Live-View
+- [Dashboard für B2B SaaS](https://nuroy.de/branchen/saas): MRR, ARR, NRR, Churn, CAC Payback, Cohort-Analyse, Stripe & Mixpanel
+- [Dashboard für Handwerksbetriebe](https://nuroy.de/branchen/handwerk): Baustellen-Cockpit, Aufträge, Material, Mitarbeiter, Liquidität
+- [Dashboard für Vertriebs-Agenturen](https://nuroy.de/branchen/vertriebs-agentur): Setter/Closer-Performance, Cold-Call-Pipeline, Provisionen, KI-Coaching
+- [Dashboard für Coaches & Info-Produkte](https://nuroy.de/branchen/coaches): Funnel-Conversion, Setter, Affiliates, Member-Activation, Refund-Tracking
+- [Dashboard für Anwaltskanzleien](https://nuroy.de/branchen/anwaltskanzlei): Akten, Fristen, Mandatsmarge, RA-MICRO/Advoware-Integration, § 43e BRAO konform
+- [Dashboard für Immobilienmakler](https://nuroy.de/branchen/immobilienmakler): Objekt-Pipeline, Provisionen, Portal-Performance, onOffice/Propstack
+- [Dashboard für Personalvermittlung & Recruiting](https://nuroy.de/branchen/personalvermittlung): ATS-Pipeline, Time-to-Hire, Quellen-ROI, Vermittlungs-Marge, Garantiezeit
+
 ## Referenzen & Case Studies
 
 - [Arbeiten / Portfolio](https://nuroy.de/arbeiten): Übersicht aller realisierten Projekte
