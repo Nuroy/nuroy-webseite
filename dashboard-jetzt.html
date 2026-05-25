@@ -54,15 +54,14 @@
   <!-- Service Styles (for Accordion) -->
   <link rel="preload" href="services/services-styles.min.css?v=1.1" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
-  <!-- Qualification Flow Styles -->
-  <link rel="preload" href="funnel/funnel-qualification.css?v=1.0" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <!-- Qualification Flow Styles (Critical - load blocking) -->
+  <link rel="stylesheet" href="funnel/funnel-qualification.css?v=1.1">
 
   <!-- Fallback for browsers without JS -->
   <noscript>
     <link rel="stylesheet" href="shared/styles.min.css">
     <link rel="stylesheet" href="funnel/funnel-styles.min.css?v=3.9">
     <link rel="stylesheet" href="services/services-styles.min.css?v=1.1">
-    <link rel="stylesheet" href="funnel/funnel-qualification.css?v=1.0">
   </noscript>
 
   <!-- Lite YouTube Embed -->
@@ -690,28 +689,28 @@
         </div>
       </div>
 
-      <!-- Frage 2: Jahresumsatz -->
+      <!-- Frage 2: Unternehmensgröße -->
       <div class="qualification-step" id="qualification-step-2">
         <div class="qualification-progress">Schritt 2 von 2</div>
         <div class="qualification-eyebrow">Letzte Frage —</div>
-        <h2 class="qualification-headline">In welcher Größenordnung bewegt sich euer Jahresumsatz?</h2>
-        <p class="qualification-subtext">Das hilft uns, ein für euch passendes Setup vorzuschlagen. Komplett vertraulich — wird nur zur Vorbereitung verwendet.</p>
+        <h2 class="qualification-headline">Wie etabliert ist euer Unternehmen bereits?</h2>
+        <p class="qualification-subtext">Damit wir direkt passend vorbereitet sind und die richtigen Lösungsansätze mitbringen. Bleibt natürlich komplett unter uns.</p>
 
         <div class="qualification-options">
-          <button class="qualification-option" onclick="selectRevenueRange('revenue-0-250k')">
-            Bis 250.000 €
+          <button class="qualification-option" onclick="selectRevenueRange('revenue-0-100k')">
+            Noch in der Startphase
           </button>
-          <button class="qualification-option" onclick="selectRevenueRange('revenue-250k-1m')">
-            250.000 € – 1 Mio €
+          <button class="qualification-option" onclick="selectRevenueRange('revenue-100k-500k')">
+            Solide etabliert (ca. 100–500k €/Jahr)
           </button>
-          <button class="qualification-option" onclick="selectRevenueRange('revenue-1m-5m')">
-            1 – 5 Mio €
+          <button class="qualification-option" onclick="selectRevenueRange('revenue-500k-2m')">
+            Wachsendes Unternehmen (ca. 500k–2 Mio €/Jahr)
           </button>
-          <button class="qualification-option" onclick="selectRevenueRange('revenue-5m-plus')">
-            Mehr als 5 Mio €
+          <button class="qualification-option" onclick="selectRevenueRange('revenue-2m-plus')">
+            Größeres Unternehmen (über 2 Mio €/Jahr)
           </button>
           <button class="qualification-option" onclick="selectRevenueRange('revenue-prefer-not-say')">
-            Sag ich lieber im Gespräch
+            Bespreche ich lieber direkt mit euch
           </button>
         </div>
 

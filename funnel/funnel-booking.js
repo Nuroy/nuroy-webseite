@@ -44,10 +44,10 @@ function getAnswer(key) {
 function isQualified(toolsCount, revenueRange) {
   // Disqualifizierung bei:
   // - "Nur 1-2 Tools"
-  // - "Bis 250.000 €"
+  // - "Noch in der Startphase" (unter 100k €)
 
   if (toolsCount === 'tools-1-2') return false;
-  if (revenueRange === 'revenue-0-250k') return false;
+  if (revenueRange === 'revenue-0-100k') return false;
 
   return true;
 }
@@ -123,8 +123,8 @@ function determineDisqualificationReason() {
   if (toolsCount === 'tools-1-2') {
     return 'Zu wenige Tools (1-2)';
   }
-  if (revenueRange === 'revenue-0-250k') {
-    return 'Jahresumsatz zu niedrig (unter 250k €)';
+  if (revenueRange === 'revenue-0-100k') {
+    return 'Noch in Startphase (unter 100k €)';
   }
   return 'Unbekannt';
 }
