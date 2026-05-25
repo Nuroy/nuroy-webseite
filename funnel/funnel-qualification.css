@@ -7,9 +7,11 @@
 /* ═══ CONTAINER ═══ */
 
 .qualification-container {
-  max-width: 680px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #FF2D7A 0%, #E02569 100%);
+  position: relative;
 }
 
 .qualification-step {
@@ -41,9 +43,9 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
   font-weight: 500;
-  color: #999;
+  color: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   margin-bottom: 40px;
 }
 
@@ -53,10 +55,10 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 13px;
   font-weight: 500;
-  color: #FF2D7A;
+  color: rgba(255, 255, 255, 0.85);
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-bottom: 20px;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
   text-align: center;
 }
 
@@ -64,87 +66,156 @@
 
 .qualification-headline {
   font-family: 'Unbounded', system-ui, sans-serif;
-  font-size: clamp(24px, 5vw, 32px);
-  font-weight: 800;
-  line-height: 1.2;
-  color: #1A1A1A;
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 900;
+  line-height: 1.15;
+  color: #FFFFFF;
   text-align: center;
-  margin: 0 0 16px 0;
+  margin: 0 0 20px 0;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* ═══ SUBTEXT ═══ */
 
 .qualification-subtext {
   font-family: 'Geist', system-ui, sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.6;
-  color: #666;
+  color: rgba(255, 255, 255, 0.9);
   text-align: center;
-  margin: 0 0 40px 0;
-  max-width: 500px;
+  margin: 0 0 48px 0;
+  max-width: 580px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* ═══ OPTIONEN (Antwort-Karten) ═══ */
+/* ═══ OPTIONEN (Antwort-Karten) - MIT ANIMATIONEN! ═══ */
 
 .qualification-options {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   margin-bottom: 40px;
 }
 
 .qualification-option {
   width: 100%;
-  padding: 22px 28px;
-  background: #FAFAF7;
-  border: 2px solid #E8E8E0;
-  border-radius: 12px;
+  padding: 24px 32px;
+
+  /* Glasmorphism Background - weiß/cream auf pink */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(250, 250, 247, 0.9) 100%
+  );
+
+  /* Glaseffekt */
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+
+  /* Border mit leichter Transparenz */
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+
+  /* Triple Shadow wie bei btn-primary */
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    0 0 24px rgba(255, 45, 122, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+
   font-family: 'Geist', system-ui, sans-serif;
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
   line-height: 1.4;
   color: #1A1A1A;
   text-align: center;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Smooth transitions */
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
+  isolation: isolate;
 }
 
+/* Shimmer Effect (wie bei btn-primary) */
 .qualification-option::before {
   content: '';
   position: absolute;
-  left: 0;
   top: 0;
+  left: -100%;
+  width: 100%;
   height: 100%;
-  width: 4px;
-  background: #FF2D7A;
-  transform: scaleY(0);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  transform-origin: bottom;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 45, 122, 0.15) 50%,
+    transparent 100%
+  );
+  transition: left 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
 }
 
+/* HOVER - Lift + Scale + Glow */
 .qualification-option:hover {
-  background: #FFF;
-  border-color: #FF2D7A;
-  transform: translateX(4px);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 250, 250, 0.98) 100%
+  );
+
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+
+  /* Lift + Scale wie btn-primary */
+  transform: translateY(-4px) scale(1.02);
+
+  /* Stärkerer Glow */
+  box-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.2),
+    0 0 48px rgba(255, 45, 122, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
+/* Shimmer sweep on hover */
 .qualification-option:hover::before {
-  transform: scaleY(1);
+  left: 100%;
 }
 
+/* ACTIVE - Press Effect */
+.qualification-option:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.2),
+    0 0 24px rgba(255, 45, 122, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.15);
+  transition-duration: 0.1s;
+}
+
+/* SELECTED STATE */
 .qualification-option.selected {
-  background: #FFF;
-  border-color: #FF2D7A;
-  border-width: 2px;
-}
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 250, 250, 1) 100%
+  );
 
-.qualification-option.selected::before {
-  transform: scaleY(1);
+  border: 3px solid rgba(255, 45, 122, 0.8);
+
+  box-shadow:
+    0 6px 24px rgba(0, 0, 0, 0.18),
+    0 0 40px rgba(255, 45, 122, 0.5),
+    inset 0 0 0 1px rgba(255, 45, 122, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+  transform: translateY(-2px);
 }
 
 /* ═══ ZURÜCK-BUTTON ═══ */
@@ -156,17 +227,20 @@
   font-family: 'Geist', system-ui, sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #666;
-  background: none;
-  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
   cursor: pointer;
-  padding: 8px 12px;
+  padding: 10px 16px;
   margin-top: 20px;
   transition: all 0.2s ease;
 }
 
 .qualification-back:hover {
-  color: #FF2D7A;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
   transform: translateX(-4px);
 }
 
@@ -368,23 +442,30 @@
 /* ═══ RESPONSIVE ═══ */
 
 @media (max-width: 640px) {
-  .qualification-container,
+  .qualification-container {
+    padding: 40px 20px;
+  }
+
   .calendly-container,
   .contact-form-container {
     padding: 30px 16px;
   }
 
   .qualification-headline {
-    font-size: 22px;
+    font-size: 24px;
   }
 
   .qualification-subtext {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .qualification-option {
-    padding: 18px 22px;
-    font-size: 16px;
+    padding: 20px 24px;
+    font-size: 17px;
+  }
+
+  .qualification-option:hover {
+    transform: translateY(-3px) scale(1.01);
   }
 
   .calendly-headline {
