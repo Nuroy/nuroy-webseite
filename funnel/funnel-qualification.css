@@ -10,7 +10,7 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 60px 20px;
-  background: linear-gradient(135deg, #FF2D7A 0%, #E02569 100%);
+  background: #FAFAF7;
   position: relative;
 }
 
@@ -43,7 +43,7 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.7);
+  color: #999;
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 40px;
@@ -55,7 +55,7 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 13px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  color: #FF2D7A;
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 24px;
@@ -69,10 +69,9 @@
   font-size: clamp(28px, 5vw, 40px);
   font-weight: 900;
   line-height: 1.15;
-  color: #FFFFFF;
+  color: #1A1A1A;
   text-align: center;
   margin: 0 0 20px 0;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* ═══ SUBTEXT ═══ */
@@ -81,7 +80,7 @@
   font-family: 'Geist', system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
+  color: #666;
   text-align: center;
   margin: 0 0 48px 0;
   max-width: 580px;
@@ -102,27 +101,17 @@
   width: 100%;
   padding: 24px 32px;
 
-  /* Glasmorphism Background - weiß/cream auf pink */
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(250, 250, 247, 0.9) 100%
-  );
+  /* Clean white background */
+  background: #FFFFFF;
 
-  /* Glaseffekt */
-  backdrop-filter: blur(12px) saturate(150%);
-  -webkit-backdrop-filter: blur(12px) saturate(150%);
-
-  /* Border mit leichter Transparenz */
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  /* Subtile Border */
+  border: 2px solid #E8E8E0;
   border-radius: 16px;
 
-  /* Triple Shadow wie bei btn-primary */
+  /* Shadow mit Pink-Glow */
   box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.15),
-    0 0 24px rgba(255, 45, 122, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    0 0 0 rgba(255, 45, 122, 0);
 
   font-family: 'Geist', system-ui, sans-serif;
   font-size: 18px;
@@ -160,28 +149,18 @@
   z-index: 1;
 }
 
-/* HOVER - Lift + Scale + Glow */
+/* HOVER - Lift + Scale + Pink Glow */
 .qualification-option:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 250, 250, 0.98) 100%
-  );
+  background: #FFFFFF;
 
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-
-  /* Lift + Scale wie btn-primary */
+  /* Lift + Scale */
   transform: translateY(-4px) scale(1.02);
 
-  /* Stärkerer Glow */
+  /* Pink Border + Glow */
+  border-color: #FF2D7A;
   box-shadow:
-    0 8px 28px rgba(0, 0, 0, 0.2),
-    0 0 48px rgba(255, 45, 122, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-
-  border-color: rgba(255, 255, 255, 0.5);
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    0 0 32px rgba(255, 45, 122, 0.25);
 }
 
 /* Shimmer sweep on hover */
@@ -193,27 +172,19 @@
 .qualification-option:active {
   transform: translateY(-1px) scale(0.98);
   box-shadow:
-    0 2px 12px rgba(0, 0, 0, 0.2),
-    0 0 24px rgba(255, 45, 122, 0.3),
-    inset 0 2px 4px rgba(0, 0, 0, 0.15);
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    0 0 16px rgba(255, 45, 122, 0.2);
   transition-duration: 0.1s;
 }
 
 /* SELECTED STATE */
 .qualification-option.selected {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 250, 250, 1) 100%
-  );
-
-  border: 3px solid rgba(255, 45, 122, 0.8);
+  background: #FFFFFF;
+  border: 3px solid #FF2D7A;
 
   box-shadow:
-    0 6px 24px rgba(0, 0, 0, 0.18),
-    0 0 40px rgba(255, 45, 122, 0.5),
-    inset 0 0 0 1px rgba(255, 45, 122, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    0 6px 20px rgba(0, 0, 0, 0.12),
+    0 0 32px rgba(255, 45, 122, 0.35);
 
   transform: translateY(-2px);
 }
@@ -227,9 +198,9 @@
   font-family: 'Geist', system-ui, sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.8);
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #666;
+  background: #FFFFFF;
+  border: 2px solid #E8E8E0;
   border-radius: 8px;
   cursor: pointer;
   padding: 10px 16px;
@@ -238,9 +209,9 @@
 }
 
 .qualification-back:hover {
-  color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
+  color: #FF2D7A;
+  background: #FFFFFF;
+  border-color: #FF2D7A;
   transform: translateX(-4px);
 }
 
@@ -251,7 +222,7 @@
   max-width: 1000px;
   margin: 0 auto;
   padding: 60px 20px 80px;
-  background: linear-gradient(135deg, #FF2D7A 0%, #E02569 100%);
+  background: #FAFAF7;
 }
 
 .calendly-container.active {
@@ -267,7 +238,7 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 13px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  color: #FF2D7A;
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 20px;
@@ -278,9 +249,8 @@
   font-size: clamp(32px, 6vw, 48px);
   font-weight: 900;
   line-height: 1.1;
-  color: #FFFFFF;
+  color: #1A1A1A;
   margin: 0;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 
 #calendly-embed {
@@ -289,7 +259,8 @@
   border-radius: 16px;
   overflow: hidden;
   background: #FFFFFF;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 2px solid #E8E8E0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 /* ═══ KONTAKTFORMULAR (Soft-No) ═══ */
@@ -299,7 +270,7 @@
   max-width: 700px;
   margin: 0 auto;
   padding: 60px 20px 80px;
-  background: linear-gradient(135deg, #FF2D7A 0%, #E02569 100%);
+  background: #FAFAF7;
 }
 
 .contact-form-container.active {
@@ -316,16 +287,15 @@
   font-size: clamp(28px, 5vw, 40px);
   font-weight: 900;
   line-height: 1.2;
-  color: #FFFFFF;
+  color: #1A1A1A;
   margin: 0 0 24px 0;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 
 .contact-form-subtext {
   font-family: 'Geist', system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
+  color: #666;
   margin: 0;
 }
 
@@ -347,12 +317,12 @@
   font-family: 'Geist', system-ui, sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #1A1A1A;
 }
 
 .form-label-optional {
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.7);
+  color: #999;
   font-size: 13px;
 }
 
@@ -363,20 +333,20 @@
   font-family: 'Geist', system-ui, sans-serif;
   font-size: 16px;
   color: #1A1A1A;
-  background: rgba(255, 255, 255, 0.95);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: #FFFFFF;
+  border: 2px solid #E8E8E0;
   border-radius: 12px;
   transition: all 0.2s ease;
   box-sizing: border-box;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: rgba(255, 255, 255, 0.6);
+  border-color: #FF2D7A;
   background: #FFFFFF;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(255, 45, 122, 0.12);
 }
 
 .form-textarea {
@@ -391,38 +361,36 @@
   font-family: 'Geist', system-ui, sans-serif;
   font-size: 18px;
   font-weight: 700;
-  color: #1A1A1A;
+  color: #FFFFFF;
 
-  /* Weiß/Cream Button wie die Qualification-Options */
+  /* Pink Gradient wie btn-primary */
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.98) 0%,
-    rgba(250, 250, 247, 0.95) 100%
+    #FF2D7A 0%,
+    #E02569 100%
   );
 
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  border: none;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   margin-top: 16px;
 
   box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.15),
-    0 0 24px rgba(255, 45, 122, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    0 4px 16px rgba(0, 0, 0, 0.12),
+    0 0 24px rgba(255, 45, 122, 0.3);
 }
 
 .form-submit:hover {
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 250, 250, 0.98) 100%
+    #FF4088 0%,
+    #F02E75 100%
   );
   transform: translateY(-3px) scale(1.01);
   box-shadow:
-    0 8px 28px rgba(0, 0, 0, 0.2),
-    0 0 48px rgba(255, 45, 122, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    0 8px 24px rgba(0, 0, 0, 0.15),
+    0 0 40px rgba(255, 45, 122, 0.5);
 }
 
 .form-submit:active {
@@ -430,8 +398,8 @@
 }
 
 .form-submit:disabled {
-  background: rgba(200, 200, 200, 0.5);
-  color: rgba(0, 0, 0, 0.4);
+  background: #CCC;
+  color: #999;
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
@@ -442,17 +410,11 @@
 .contact-form-success {
   display: none;
   padding: 48px 40px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.98) 0%,
-    rgba(250, 250, 247, 0.95) 100%
-  );
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: #FFFFFF;
+  border: 2px solid #E8E8E0;
   border-radius: 16px;
   text-align: center;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.15),
-    0 0 48px rgba(255, 45, 122, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .contact-form-success.active {
@@ -476,7 +438,7 @@
   font-family: 'Geist', system-ui, sans-serif;
   font-size: 17px;
   line-height: 1.6;
-  color: #333;
+  color: #666;
   margin: 0;
 }
 
