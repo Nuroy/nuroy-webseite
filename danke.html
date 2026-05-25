@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termin bestätigt | Nuroy</title>
+
+  <!-- SEO: NOINDEX (Danke-Seite nicht indexieren) -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <!-- Fonts: Unbounded (Display), Geist (Body), JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Config -->
+  <script src="config/funnel-config.js"></script>
+
+  <!-- Tracking: Meta Pixel Base Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+
+    // Pixel ID aus Config lesen
+    const pixelId = window.NUROY_CONFIG?.META_PIXEL_ID;
+    if (pixelId && !pixelId.includes('PLACEHOLDER')) {
+      fbq('init', pixelId);
+      fbq('track', 'PageView');
+    }
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=1012481877892496&ev=PageView&noscript=1" />
+  </noscript>
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════ */
+    /* DANKE-SEITE STYLES */
+    /* ═══════════════════════════════════════════════════════════ */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #FAFAF7;
+      color: #1A1A1A;
+      line-height: 1.6;
+    }
+
+    /* ═══ HEADER ═══ */
+
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(250, 250, 247, 0.95);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo {
+      height: 32px;
+      width: auto;
+    }
+
+    /* ═══ HERO ═══ */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 20px 80px;
+      text-align: center;
+    }
+
+    .bauhaus-element {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .bauhaus-circle {
+      width: 120px;
+      height: 120px;
+      border: 8px solid #FF2D7A;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .bauhaus-line {
+      position: absolute;
+      width: 80px;
+      height: 8px;
+      background: #FF2D7A;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      color: #FF2D7A;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 24px;
+    }
+
+    .headline {
+      font-family: 'Unbounded', system-ui, sans-serif;
+      font-size: clamp(48px, 10vw, 72px);
+      font-weight: 900;
+      line-height: 1.1;
+      color: #1A1A1A;
+      margin-bottom: 24px;
+    }
+
+    .subtext {
+      font-size: clamp(18px, 3vw, 22px);
+      line-height: 1.6;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto 60px;
+    }
+
+    /* ═══ CARDS SECTION ═══ */
+
+    .cards-section {
+      max-width: 900px;
+      margin: 0 auto 80px;
+      padding: 0 20px;
+    }
+
+    .cards-headline {
+      font-family: 'Unbounded', system-ui, sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: #FFF;
+      border: 2px solid #E8E8E0;
+      border-radius: 12px;
+      padding: 32px;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: #FF2D7A;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-number {
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      background: #FF2D7A;
+      color: #FFF;
+      font-family: 'Unbounded', system-ui, sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-family: 'Unbounded', system-ui, sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .card-text {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    /* ═══ TIP BOX ═══ */
+
+    .tip-box {
+      max-width: 700px;
+      margin: 0 auto 80px;
+      padding: 32px;
+      background: #FFF;
+      border: 3px solid #FF2D7A;
+      border-radius: 12px;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    .tip-title {
+      font-family: 'Unbounded', system-ui, sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: #FF2D7A;
+      margin-bottom: 12px;
+    }
+
+    .tip-text {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1A1A1A;
+    }
+
+    /* ═══ FOOTER ═══ */
+
+    .footer {
+      padding: 40px 20px;
+      background: #FFF;
+      border-top: 1px solid #E8E8E0;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-logo {
+      height: 28px;
+      width: auto;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .footer-link {
+      font-size: 14px;
+      color: #666;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-link:hover {
+      color: #FF2D7A;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: #999;
+    }
+
+    /* ═══ RESPONSIVE ═══ */
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 100px 20px 60px;
+      }
+
+      .bauhaus-element {
+        width: 80px;
+        height: 80px;
+      }
+
+      .bauhaus-circle {
+        width: 80px;
+        height: 80px;
+        border-width: 6px;
+      }
+
+      .bauhaus-line {
+        width: 60px;
+        height: 6px;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tip-box {
+        padding: 24px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- HEADER -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<header class="header">
+  <div class="header-container">
+    <img src="assets/logo-full.png" alt="Nuroy" class="logo">
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- HERO -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <!-- Bauhaus Element -->
+  <div class="bauhaus-element">
+    <div class="bauhaus-circle">
+      <div class="bauhaus-line"></div>
+    </div>
+  </div>
+
+  <div class="eyebrow">BUCHUNG BESTÄTIGT</div>
+  <h1 class="headline">Dein Termin steht.</h1>
+  <p class="subtext">
+    Wir haben dir gerade eine Bestätigung per E-Mail geschickt — inklusive Kalendereinladung und Zoom-Link.
+  </p>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- WAS JETZT PASSIERT -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="cards-section">
+  <h2 class="cards-headline">Was jetzt passiert:</h2>
+
+  <div class="cards-grid">
+    <!-- Karte 1 -->
+    <div class="card">
+      <div class="card-number">1</div>
+      <h3 class="card-title">Check deine Mail</h3>
+      <p class="card-text">
+        Du bekommst gleich eine Bestätigung mit allen Infos. Schau auch im Spam-Ordner, falls sie nicht ankommt.
+      </p>
+    </div>
+
+    <!-- Karte 2 -->
+    <div class="card">
+      <div class="card-number">2</div>
+      <h3 class="card-title">Reminder 24h vorher</h3>
+      <p class="card-text">
+        Wir schicken dir 24 Stunden und 1 Stunde vor dem Termin nochmal eine kurze Erinnerung.
+      </p>
+    </div>
+
+    <!-- Karte 3 -->
+    <div class="card">
+      <div class="card-number">3</div>
+      <h3 class="card-title">Wir freuen uns</h3>
+      <p class="card-text">
+        Vor dem Termin schauen wir uns kurz an, was du beim Buchen eingetragen hast, damit wir direkt produktiv reingehen können.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- TIP BOX -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="tip-box">
+  <div class="tip-title">Tipp für unser Gespräch:</div>
+  <p class="tip-text">
+    Falls du schnell zur Hand hast, welche Tools ihr aktuell nutzt (CRM, Buchhaltung, Werbung etc.) — bring das gerne mit. Hilft uns, schneller konkret zu werden.
+  </p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- FOOTER -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-container">
+    <img src="assets/logo-full.png" alt="Nuroy" class="footer-logo">
+    <div class="footer-links">
+      <a href="impressum.html" class="footer-link">Impressum</a>
+      <a href="datenschutz.html" class="footer-link">Datenschutz</a>
+    </div>
+    <span class="footer-copy">© 2026 JT Nuroy Ltd, Paphos, Cyprus</span>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- TRACKING & CONVERSION EVENTS -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<script>
+  // ═══════════════════════════════════════════════════════════
+  // CONVERSION TRACKING
+  // ═══════════════════════════════════════════════════════════
+
+  (function() {
+    const config = window.NUROY_CONFIG;
+
+    // Booking-Details aus sessionStorage holen
+    const bookingConfirmed = sessionStorage.getItem('nuroy_booking_confirmed');
+    const bookingEvent = sessionStorage.getItem('nuroy_booking_event');
+
+    if (bookingConfirmed === 'true') {
+      console.log('✅ Booking confirmed via Calendly');
+
+      if (bookingEvent) {
+        try {
+          const eventData = JSON.parse(bookingEvent);
+          console.log('📅 Booking Event Data:', eventData);
+        } catch (e) {
+          console.warn('Could not parse booking event data');
+        }
+      }
+    }
+
+    // ─────────────────────────────────────────────────────────
+    // META PIXEL CONVERSION EVENT
+    // ─────────────────────────────────────────────────────────
+
+    if (typeof fbq !== 'undefined' && config?.META_PIXEL_CONVERSION_EVENT) {
+      const eventName = config.META_PIXEL_CONVERSION_EVENT;
+
+      fbq('track', eventName, {
+        content_name: 'Dashboard Consultation Booking',
+        content_category: 'consultation',
+        value: 0,
+        currency: 'EUR'
+      });
+
+      console.log(`✅ Meta Pixel Event gefeuert: ${eventName}`);
+    } else {
+      console.warn('⚠️  Meta Pixel nicht geladen oder nicht konfiguriert');
+    }
+
+    // ─────────────────────────────────────────────────────────
+    // GOOGLE ADS CONVERSION TRACKING
+    // ─────────────────────────────────────────────────────────
+
+    // TODO: Google Ads Conversion-Tag einbauen
+    /*
+    if (config?.GOOGLE_ADS_CONVERSION_ID && config?.GOOGLE_ADS_CONVERSION_LABEL) {
+      const conversionId = config.GOOGLE_ADS_CONVERSION_ID;
+      const conversionLabel = config.GOOGLE_ADS_CONVERSION_LABEL;
+
+      // gtag wird vom Google Ads Pixel geladen (muss im Head eingebunden sein)
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'conversion', {
+          'send_to': `${conversionId}/${conversionLabel}`,
+          'value': 0,
+          'currency': 'EUR'
+        });
+
+        console.log('✅ Google Ads Conversion Event gefeuert');
+      } else {
+        console.warn('⚠️  Google Ads gtag nicht geladen');
+      }
+    }
+    */
+
+    // ─────────────────────────────────────────────────────────
+    // GOOGLE TAG MANAGER EVENT
+    // ─────────────────────────────────────────────────────────
+
+    // dataLayer-Push für GTM (falls genutzt)
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'booking_confirmed',
+      page_type: 'thank_you',
+      booking_data: bookingEvent ? JSON.parse(bookingEvent) : null
+    });
+
+    console.log('✅ dataLayer Event pushed: booking_confirmed');
+  })();
+</script>
+
+</body>
+</html>
