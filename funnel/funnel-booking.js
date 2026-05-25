@@ -24,6 +24,17 @@ const STORAGE_KEYS = {
   QUALIFICATION_STATUS: 'nuroy_qualification_status'
 };
 
+const EVENTS = {
+  QUALIFICATION_STARTED: 'qualification_started',
+  TOOLS_SELECTED: 'tools_selected',
+  REVENUE_SELECTED: 'revenue_selected',
+  QUALIFIED: 'qualified_for_calendly',
+  UNQUALIFIED: 'unqualified_soft_no',
+  CALENDLY_SHOWN: 'calendly_shown',
+  CALENDLY_LOADED: 'calendly_loaded',
+  BOOKING_COMPLETED: 'booking_completed'
+};
+
 /**
  * Speichert Antwort in sessionStorage
  */
@@ -82,13 +93,88 @@ function showStep(stepNumber) {
  * Zeigt Calendly-Widget
  */
 function showCalendly() {
-  document.getElementById('qualification-container').style.display = 'none';
-  document.getElementById('calendly-container').style.display = 'block';
+  const container = document.getElementById('calendly-container');
+  const qualificationContainer = document.getElementById('qualification-container');
+  const embedContainer = document.getElementById('calendly-embed');
 
-  // Calendly initialisieren
-  initCalendly();
+  // 1. Loading-State anzeigen (bevor Calendly lädt)
+  embedContainer.innerHTML = `
+    <div style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 600px;
+      background: #FAFAF7;
+      border-radius: 16px;
+    ">
+      <div style="
+        width: 64px;
+        height: 64px;
+        border: 4px solid #E8E8E0;
+        border-top-color: #FF2D7A;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      "></div>
+      <p style="
+        margin-top: 24px;
+        font-family: 'Geist', system-ui, sans-serif;
+        font-size: 16px;
+        color: #666;
+      ">Calendly wird geladen...</p>
+      <style>
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+      </style>
+    </div>
+  `;
 
-  // Kein Scroll - bleibt an Stelle
+  // 2. Smooth Fade-out der Qualifizierung
+  qualificationContainer.style.transition = 'opacity 0.4s ease-out';
+  qualificationContainer.style.opacity = '0';
+
+  setTimeout(() => {
+    qualificationContainer.classList.remove('active');
+    qualificationContainer.style.display = 'none';
+
+    // 3. Calendly-Container einblenden
+    container.style.opacity = '0';
+    container.classList.add('active');
+    container.style.display = 'block';
+
+    // Smooth Fade-in
+    requestAnimationFrame(() => {
+      container.style.transition = 'opacity 0.5s ease-in';
+      container.style.opacity = '1';
+    });
+
+    // 4. Auto-Scroll zum Calendly-Widget (sanft)
+    setTimeout(() => {
+      const headerHeight = 80; // Fixed header height
+      const containerTop = container.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+      window.scrollTo({
+        top: containerTop,
+        behavior: 'smooth'
+      });
+
+      console.log('✅ Auto-scrolled to Calendly widget');
+    }, 100);
+
+    // 5. Calendly initialisieren (nach kurzem Delay für smooth UX)
+    setTimeout(() => {
+      initCalendly();
+    }, 300);
+
+  }, 400); // Warte auf Fade-out
+
+  // Track event
+  if (typeof window.dataLayer !== 'undefined') {
+    window.dataLayer.push({
+      event: EVENTS.CALENDLY_SHOWN
+    });
+  }
 }
 
 /**
@@ -223,6 +309,21 @@ function initCalendly() {
       utmCampaign: 'qualification_flow'
     }
   });
+
+  // Success-Tracking nach Calendly-Load
+  setTimeout(() => {
+    const iframe = document.querySelector('#calendly-embed iframe');
+    if (iframe) {
+      console.log('✅ Calendly iframe successfully loaded');
+
+      // Track successful Calendly load
+      if (typeof window.dataLayer !== 'undefined') {
+        window.dataLayer.push({
+          event: EVENTS.CALENDLY_LOADED
+        });
+      }
+    }
+  }, 2000);
 }
 
 
@@ -377,6 +478,34 @@ function initContactForm() {
 
 
 // ═══════════════════════════════════════════════════════════════
+// CALENDLY PREFETCH
+// ═══════════════════════════════════════════════════════════════
+
+/**
+ * Prefetch Calendly-Ressourcen für schnellere Anzeige
+ */
+function prefetchCalendly() {
+  console.log('🚀 Prefetching Calendly resources...');
+
+  // Calendly-Domain preconnect (DNS + TLS bereits vorbereiten)
+  const preconnect = document.createElement('link');
+  preconnect.rel = 'preconnect';
+  preconnect.href = 'https://calendly.com';
+  preconnect.crossOrigin = 'anonymous';
+  document.head.appendChild(preconnect);
+
+  // Calendly Assets preconnect
+  const preconnectAssets = document.createElement('link');
+  preconnectAssets.rel = 'preconnect';
+  preconnectAssets.href = 'https://assets.calendly.com';
+  preconnectAssets.crossOrigin = 'anonymous';
+  document.head.appendChild(preconnectAssets);
+
+  console.log('✅ Calendly preconnect links added');
+}
+
+
+// ═══════════════════════════════════════════════════════════════
 // INITIALISIERUNG
 // ═══════════════════════════════════════════════════════════════
 
@@ -389,6 +518,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial: Zeige Step 1
   showStep(1);
+
+  // Calendly-Script vorladen für schnellere Anzeige
+  prefetchCalendly();
 
   console.log('✅ Booking-Flow initialisiert');
 });

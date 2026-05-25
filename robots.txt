@@ -5,5 +5,8 @@ Allow: /
 Disallow: /dashboard-jetzt.html
 Disallow: /funnel/
 
+# Danke-Seite: NICHT indexieren (nur nach Booking erreichbar)
+Disallow: /danke.html
+
 # Sitemap
 Sitemap: https://nuroy.de/sitemap.xml
