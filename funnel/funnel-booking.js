@@ -74,11 +74,7 @@ function showStep(stepNumber) {
     targetStep.classList.add('active');
     currentStep = stepNumber;
 
-    // Smooth scroll zur Booking-Sektion
-    document.getElementById('booking').scrollIntoView({
-      behavior: 'smooth',
-      block: 'center'
-    });
+    // KEIN Scroll - bleibt an gleicher Stelle für smoother Übergang
   }
 }
 
@@ -92,11 +88,7 @@ function showCalendly() {
   // Calendly initialisieren
   initCalendly();
 
-  // Smooth scroll
-  document.getElementById('booking').scrollIntoView({
-    behavior: 'smooth',
-    block: 'start'
-  });
+  // Kein Scroll - bleibt an Stelle
 }
 
 /**
@@ -106,11 +98,7 @@ function showContactForm() {
   document.getElementById('qualification-container').style.display = 'none';
   document.getElementById('contact-form-container').style.display = 'block';
 
-  // Smooth scroll
-  document.getElementById('booking').scrollIntoView({
-    behavior: 'smooth',
-    block: 'start'
-  });
+  // Kein Scroll - bleibt an Stelle
 }
 
 /**
