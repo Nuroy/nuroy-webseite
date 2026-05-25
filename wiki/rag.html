@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAG (Retrieval-Augmented Generation) — Definition und Einsatz | Nuroy Wiki</title>
+  <meta name="description" content="Was ist RAG? Retrieval-Augmented Generation einfach erklärt — wie KIs mit eigenem Firmenwissen verknüpft werden. Definition, Anwendungsfälle, FAQ.">
+  <meta name="keywords" content="rag retrieval augmented generation, was ist rag, rag definition, rag llm, vector database, eigene ki mit firmenwissen, company ai rag">
+  <meta name="author" content="Nuroy (JT NUROY LTD)">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+  <link rel="canonical" href="https://nuroy.de/wiki/rag">
+  <link rel="alternate" hreflang="de-DE" href="https://nuroy.de/wiki/rag">
+  <link rel="alternate" hreflang="de-AT" href="https://nuroy.de/wiki/rag">
+  <link rel="alternate" hreflang="de-CH" href="https://nuroy.de/wiki/rag">
+  <link rel="alternate" hreflang="x-default" href="https://nuroy.de/wiki/rag">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Nuroy">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="RAG (Retrieval-Augmented Generation) — Definition | Nuroy Wiki">
+  <meta property="og:description" content="Was ist RAG? Wie KIs mit eigenem Firmenwissen verknüpft werden — Definition und Anwendungsfälle.">
+  <meta property="og:image" content="https://nuroy.de/og-image.png">
+  <meta property="og:url" content="https://nuroy.de/wiki/rag">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RAG — Retrieval-Augmented Generation erklärt | Nuroy Wiki">
+  <meta name="twitter:description" content="Wie KIs mit Firmenwissen verknüpft werden — RAG einfach erklärt.">
+  <meta name="twitter:image" content="https://nuroy.de/og-image.png">
+  <link rel="stylesheet" href="../shared/styles.css?v=1776884200265">
+  <style>
+    .wiki-article{padding:calc(var(--nav-h) + 64px) 0 64px;max-width:780px;margin:0 auto}
+    .wiki-breadcrumb{font-family:var(--font-mono);font-size:11px;color:var(--fg-dim);letter-spacing:0.06em;margin-bottom:24px}
+    .wiki-breadcrumb a{color:var(--fg-dim)}.wiki-breadcrumb a:hover{color:var(--pink)}
+    .wiki-h1{font-family:var(--font-display);font-size:clamp(40px,5vw,64px);font-weight:900;letter-spacing:-0.03em;line-height:1.05;margin-bottom:24px}
+    .wiki-tldr{padding:24px 28px;background:var(--bg-2);border-left:3px solid var(--pink);border-radius:0 12px 12px 0;font-size:17px;line-height:1.7;color:var(--fg);margin:32px 0 48px}
+    .wiki-tldr-label{font-family:var(--font-mono);font-size:11px;color:var(--pink);letter-spacing:0.1em;margin-bottom:8px;display:block}
+    .wiki-section{margin-top:48px}
+    .wiki-section h2{font-family:var(--font-display);font-size:28px;font-weight:700;letter-spacing:-0.02em;margin-bottom:16px}
+    .wiki-section h3{font-family:var(--font-display);font-size:20px;font-weight:600;margin-top:24px;margin-bottom:10px}
+    .wiki-section p{font-size:16px;line-height:1.75;color:var(--fg-muted);margin-bottom:16px}
+    .wiki-section ul{margin:16px 0 16px 24px;color:var(--fg-muted);font-size:16px;line-height:1.75}
+    .wiki-section li{margin-bottom:8px}
+    .wiki-related{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .wiki-related a{padding:8px 14px;background:var(--bg-2);border:1px solid var(--line);border-radius:20px;font-size:13px;color:var(--fg-muted);text-decoration:none;transition:all 0.2s}
+    .wiki-related a:hover{border-color:var(--pink);color:var(--pink)}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nuroy.de/#organization","name":"Nuroy","legalName":"JT NUROY LTD","url":"https://nuroy.de/","logo":{"@type":"ImageObject","url":"https://nuroy.de/assets/favicon.png","width":512,"height":512},"email":"kontakt@nuroy.de","foundingDate":"2024","address":{"@type":"PostalAddress","streetAddress":"Taxiarchon 25, House 2","postalCode":"8036","addressLocality":"Paphos","addressCountry":"CY"},"identifier":"HE 479463"},{"@type":"WebSite","@id":"https://nuroy.de/#website","url":"https://nuroy.de/","name":"Nuroy","publisher":{"@id":"https://nuroy.de/#organization"},"inLanguage":"de-DE"},{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/rag#term","name":"RAG (Retrieval-Augmented Generation)","alternateName":["Retrieval-Augmented Generation","RAG-System","Knowledge-Grounded AI"],"description":"RAG (Retrieval-Augmented Generation) ist ein Architekturmuster, bei dem ein großes Sprachmodell (LLM) seine Antworten nicht nur aus dem Trainingswissen, sondern zusätzlich aus einer externen, durchsuchbaren Wissensbasis ableitet — typischerweise einer Vektor-Datenbank mit eigenen Firmendokumenten. RAG ist die Standard-Methode, um KIs mit unternehmensspezifischem Wissen zu verbinden.","url":"https://nuroy.de/wiki/rag","inDefinedTermSet":"https://nuroy.de/wiki#termset"},{"@type":"Article","@id":"https://nuroy.de/wiki/rag#article","headline":"RAG (Retrieval-Augmented Generation) — Definition und Einsatz","description":"Was ist RAG? Wie KIs mit eigenem Firmenwissen verknüpft werden.","image":"https://nuroy.de/og-image.png","author":{"@id":"https://nuroy.de/#organization"},"publisher":{"@id":"https://nuroy.de/#organization"},"datePublished":"2026-05-25","dateModified":"2026-05-25","mainEntityOfPage":{"@id":"https://nuroy.de/wiki/rag#webpage"},"about":{"@id":"https://nuroy.de/wiki/rag#term"},"inLanguage":"de-DE"},{"@type":"WebPage","@id":"https://nuroy.de/wiki/rag#webpage","url":"https://nuroy.de/wiki/rag","name":"RAG (Retrieval-Augmented Generation) — Definition und Einsatz | Nuroy Wiki","isPartOf":{"@id":"https://nuroy.de/#website"},"inLanguage":"de-DE","breadcrumb":{"@id":"https://nuroy.de/wiki/rag#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://nuroy.de/wiki/rag#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://nuroy.de/"},{"@type":"ListItem","position":2,"name":"Wiki","item":"https://nuroy.de/wiki"},{"@type":"ListItem","position":3,"name":"RAG","item":"https://nuroy.de/wiki/rag"}]},{"@type":"FAQPage","@id":"https://nuroy.de/wiki/rag#faqpage","mainEntity":[{"@type":"Question","name":"Was ist RAG in einem Satz?","acceptedAnswer":{"@type":"Answer","text":"RAG (Retrieval-Augmented Generation) ist ein KI-Muster, bei dem ein Sprachmodell für jede Antwort zuerst in einer externen Wissensbasis nachschaut, relevante Dokumente abruft und die Antwort darauf basierend formuliert — statt nur aus dem allgemeinen Trainingswissen zu schöpfen."}},{"@type":"Question","name":"Warum nicht einfach das LLM mit Firmendaten neu trainieren?","acceptedAnswer":{"@type":"Answer","text":"Fine-Tuning eines LLM ist teuer (zehntausende bis Millionen Euro), langsam (Wochen bis Monate) und unflexibel (jede neue Information erfordert neues Training). RAG ist Bruchteile günstiger, sofort aktuell (neue Dokumente sind in Minuten verfügbar) und gibt Quellenangaben — ein riesiger Vorteil für Vertrauenswürdigkeit und Compliance."}},{"@type":"Question","name":"Was ist eine Vektor-Datenbank?","acceptedAnswer":{"@type":"Answer","text":"Eine Vektor-Datenbank speichert Dokumente nicht als Text, sondern als hochdimensionale Zahlenvektoren (Embeddings), die die Bedeutung repräsentieren. Suchen funktionieren nach semantischer Ähnlichkeit, nicht nach Stichworten. Bekannte Vector-DBs: Pinecone, Weaviate, Qdrant, Chroma, pgvector (PostgreSQL-Erweiterung)."}},{"@type":"Question","name":"Was kann RAG für ein KMU konkret leisten?","acceptedAnswer":{"@type":"Answer","text":"Interne Chatbots, die auf alle Wikis, Verträge und Dokumentationen Zugriff haben und Mitarbeiter-Fragen mit Quellenangabe beantworten. Support-Bots, die echte Produkthandbücher zitieren. Vertriebs-Assistenten, die auf alle früheren Angebote zurückgreifen. Compliance-Helfer, die Verträge auf Klauseln prüfen."}},{"@type":"Question","name":"Ist RAG DSGVO-konform?","acceptedAnswer":{"@type":"Answer","text":"Ja, wenn korrekt umgesetzt. Eigene Daten bleiben in eigener Infrastruktur (EU-Hosting), nur die Anfrage und relevante Dokumentauszüge gehen an das LLM. AVV mit dem LLM-Anbieter, kein Training mit Kundendaten, Pseudonymisierung wo möglich. Bei besonders sensiblen Daten On-Premise-LLMs oder EU-gehostete Open-Source-Modelle wählen."}}]}]}
+  </script>
+</head>
+<body>
+
+<div id="cursor-glow" class="cursor-glow"></div>
+<div id="nav-mount"></div>
+
+<article class="wiki-article container">
+  <div class="wiki-breadcrumb">
+    <a href="../">Start</a> / <a href="../wiki.html">Wiki</a> / RAG
+  </div>
+
+  <h1 class="wiki-h1">RAG (Retrieval-Augmented Generation)</h1>
+
+  <div class="wiki-tldr">
+    <span class="wiki-tldr-label">DEFINITION</span>
+    RAG (Retrieval-Augmented Generation) ist ein Architekturmuster, bei dem ein großes Sprachmodell (LLM) seine Antworten nicht nur aus dem Trainingswissen, sondern zusätzlich aus einer externen, durchsuchbaren Wissensbasis ableitet — typischerweise einer Vektor-Datenbank mit eigenen Firmendokumenten. RAG ist die Standard-Methode, um KIs mit unternehmensspezifischem Wissen zu verbinden.
+  </div>
+
+  <section class="wiki-section">
+    <h2>Wie funktioniert RAG technisch?</h2>
+    <p>Eine RAG-Architektur besteht aus drei Komponenten:</p>
+    <ul>
+      <li><strong>1. Indexierung:</strong> Alle Firmendokumente (Wikis, Verträge, E-Mails, PDFs) werden in kleine Abschnitte zerlegt, in numerische Vektoren ("Embeddings") umgewandelt und in einer Vektor-Datenbank gespeichert.</li>
+      <li><strong>2. Retrieval:</strong> Bei einer Nutzeranfrage wird zunächst in der Vektor-Datenbank nach den relevantesten Dokumentauszügen gesucht — basierend auf semantischer Ähnlichkeit, nicht nur Stichworten.</li>
+      <li><strong>3. Generation:</strong> Die Anfrage plus die gefundenen Dokumentauszüge werden an das LLM (z.B. Claude, GPT) übergeben. Das LLM formuliert dann eine Antwort auf Basis dieser konkreten Quellen — und kann die Quellen sogar zitieren.</li>
+    </ul>
+  </section>
+
+  <section class="wiki-section">
+    <h2>Warum RAG statt Fine-Tuning?</h2>
+    <p>Es gibt theoretisch zwei Wege, eine KI mit Firmenwissen zu kombinieren: Fine-Tuning (das Modell neu trainieren) oder RAG. In der Praxis ist RAG fast immer besser:</p>
+    <ul>
+      <li><strong>Kosten:</strong> RAG-Setup liegt bei einigen Tausend Euro, Fine-Tuning eines mittelgroßen LLMs bei 50.000 € aufwärts.</li>
+      <li><strong>Aktualität:</strong> Bei RAG ist ein neues Dokument in Minuten verfügbar — bei Fine-Tuning braucht es ein neues Training.</li>
+      <li><strong>Quellenangaben:</strong> RAG kann sagen "diese Antwort kommt aus Dokument X, Abschnitt Y" — Fine-Tuning ist eine Blackbox.</li>
+      <li><strong>Compliance:</strong> Bei RAG bleiben Daten kontrollierbar — bei Fine-Tuning wandert Wissen ins Modell und ist schwer zu entfernen ("Recht auf Vergessen" wird kritisch).</li>
+    </ul>
+  </section>
+
+  <section class="wiki-section">
+    <h2>Typische Anwendungsfälle</h2>
+    <h3>1. Interner Firmen-Chatbot ("Company AI")</h3>
+    <p>Mitarbeiter fragen in Klartext: "Wie ist unsere Urlaubsregel für Teilzeitkräfte?", "Welche Klauseln stehen typisch in unseren Lieferantenverträgen?", "Was war das Ergebnis des letzten Strategie-Meetings?" Die KI antwortet mit Quellenangabe aus Wiki, Verträgen, Notion.</p>
+    <h3>2. Customer Support mit Produkt-Wissen</h3>
+    <p>Support-Bot kennt das komplette Produkthandbuch, alle Changelog-Einträge und alle bisherigen Support-Tickets. Beantwortet 70% der Standardfragen autonom, eskaliert komplexe Fälle mit vorbereitetem Kontext.</p>
+    <h3>3. Vertriebs-Recherche</h3>
+    <p>Sales-Assistent durchsucht alle früheren Angebote, Calls und CRM-Notizen, um vor einem neuen Termin den relevanten Kontext zusammenzustellen.</p>
+  </section>
+
+  <section class="wiki-section">
+    <h2>Häufige Fragen</h2>
+    <h3>Was ist eine Vektor-Datenbank?</h3>
+    <p>Eine spezielle Datenbank, die Dokumente als hochdimensionale Zahlenvektoren speichert. Bekannte Optionen: Pinecone, Weaviate, Qdrant, Chroma, pgvector (PostgreSQL-Erweiterung). Für KMU reicht oft pgvector — eine schlanke Lösung ohne Extra-Tool.</p>
+    <h3>Ist RAG DSGVO-konform?</h3>
+    <p>Ja, wenn korrekt umgesetzt. Eigene Daten bleiben in eigener Infrastruktur (EU-Hosting), nur die Anfrage und relevante Dokumentauszüge gehen an das LLM. AVV mit dem LLM-Anbieter, kein Training mit Kundendaten, Pseudonymisierung wo möglich.</p>
+    <h3>Was kostet ein RAG-System für KMU?</h3>
+    <p>Eine <a href="../leistungen/company-ai.html">Company-AI mit RAG</a> startet typischerweise bei 12.500 € im Setup. Laufende Kosten: LLM-API-Gebühren (typisch 50–500 €/Monat) plus Hosting für die Vektor-Datenbank.</p>
+  </section>
+
+  <section class="wiki-section">
+    <h2>Verwandte Begriffe</h2>
+    <div class="wiki-related">
+      <a href="ki-agent.html">KI-Agent</a>
+      <a href="custom-software.html">Custom Software</a>
+      <a href="api-first.html">API-First</a>
+      <a href="single-source-of-truth.html">Single Source of Truth</a>
+    </div>
+  </section>
+</article>
+
+<section class="final-cta">
+  <div class="container">
+    <h2 class="t-display">RAG-System für euer Unternehmen?</h2>
+    <p class="t-body-lg" style="margin-top: 16px;">Company-AI mit RAG ab 12.500 €. 30 Minuten kostenloses Erstgespräch.</p>
+    <div style="display: flex; gap: 16px; justify-content: center; margin-top: 32px; flex-wrap: wrap;">
+      <a href="../kontakt.html" class="btn btn-pink-glass btn-lg">Erstgespräch buchen</a>
+      <a href="../leistungen/company-ai.html" class="btn btn-glass-secondary btn-lg">Mehr zu Company AI</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-mount"></div>
+<script src="../shared/components.js?v=1776884200265"></script>
+
+</body>
+</html>

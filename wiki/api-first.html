@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API-First — Definition und Bedeutung für Custom Software | Nuroy Wiki</title>
+  <meta name="description" content="Was bedeutet API-First? Definition, Unterschiede zu klassischer Architektur, Vorteile für moderne Custom Software und FAQ.">
+  <meta name="keywords" content="api first definition, was ist api first, api first design, headless architektur, api first vs ui first">
+  <meta name="author" content="Nuroy (JT NUROY LTD)">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+  <link rel="canonical" href="https://nuroy.de/wiki/api-first">
+  <link rel="alternate" hreflang="de-DE" href="https://nuroy.de/wiki/api-first">
+  <link rel="alternate" hreflang="de-AT" href="https://nuroy.de/wiki/api-first">
+  <link rel="alternate" hreflang="de-CH" href="https://nuroy.de/wiki/api-first">
+  <link rel="alternate" hreflang="x-default" href="https://nuroy.de/wiki/api-first">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Nuroy">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="API-First — Definition und Bedeutung | Nuroy Wiki">
+  <meta property="og:description" content="Was bedeutet API-First? Definition, Vorteile für Custom Software, FAQ.">
+  <meta property="og:image" content="https://nuroy.de/og-image.png">
+  <meta property="og:url" content="https://nuroy.de/wiki/api-first">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="API-First — Definition & Bedeutung | Nuroy Wiki">
+  <meta name="twitter:description" content="Was bedeutet API-First? Vorteile für moderne Custom Software.">
+  <meta name="twitter:image" content="https://nuroy.de/og-image.png">
+  <link rel="stylesheet" href="../shared/styles.css?v=1776884200265">
+  <style>
+    .wiki-article{padding:calc(var(--nav-h) + 64px) 0 64px;max-width:780px;margin:0 auto}
+    .wiki-breadcrumb{font-family:var(--font-mono);font-size:11px;color:var(--fg-dim);letter-spacing:0.06em;margin-bottom:24px}
+    .wiki-breadcrumb a{color:var(--fg-dim)}.wiki-breadcrumb a:hover{color:var(--pink)}
+    .wiki-h1{font-family:var(--font-display);font-size:clamp(40px,5vw,64px);font-weight:900;letter-spacing:-0.03em;line-height:1.05;margin-bottom:24px}
+    .wiki-tldr{padding:24px 28px;background:var(--bg-2);border-left:3px solid var(--pink);border-radius:0 12px 12px 0;font-size:17px;line-height:1.7;color:var(--fg);margin:32px 0 48px}
+    .wiki-tldr-label{font-family:var(--font-mono);font-size:11px;color:var(--pink);letter-spacing:0.1em;margin-bottom:8px;display:block}
+    .wiki-section{margin-top:48px}
+    .wiki-section h2{font-family:var(--font-display);font-size:28px;font-weight:700;letter-spacing:-0.02em;margin-bottom:16px}
+    .wiki-section h3{font-family:var(--font-display);font-size:20px;font-weight:600;margin-top:24px;margin-bottom:10px}
+    .wiki-section p{font-size:16px;line-height:1.75;color:var(--fg-muted);margin-bottom:16px}
+    .wiki-section ul{margin:16px 0 16px 24px;color:var(--fg-muted);font-size:16px;line-height:1.75}
+    .wiki-section li{margin-bottom:8px}
+    .wiki-related{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .wiki-related a{padding:8px 14px;background:var(--bg-2);border:1px solid var(--line);border-radius:20px;font-size:13px;color:var(--fg-muted);text-decoration:none;transition:all 0.2s}
+    .wiki-related a:hover{border-color:var(--pink);color:var(--pink)}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nuroy.de/#organization","name":"Nuroy","legalName":"JT NUROY LTD","url":"https://nuroy.de/","logo":{"@type":"ImageObject","url":"https://nuroy.de/assets/favicon.png","width":512,"height":512},"email":"kontakt@nuroy.de","foundingDate":"2024","address":{"@type":"PostalAddress","streetAddress":"Taxiarchon 25, House 2","postalCode":"8036","addressLocality":"Paphos","addressCountry":"CY"},"identifier":"HE 479463"},{"@type":"WebSite","@id":"https://nuroy.de/#website","url":"https://nuroy.de/","name":"Nuroy","publisher":{"@id":"https://nuroy.de/#organization"},"inLanguage":"de-DE"},{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/api-first#term","name":"API-First","alternateName":["API First Design","API-First Architektur","Headless"],"description":"API-First ist ein Architekturansatz, bei dem zuerst die Programmierschnittstelle (API) entworfen wird, bevor irgendeine Oberfläche (UI) gebaut wird. Alle Funktionen sind über die API erreichbar — UI, Mobile-App und Drittsysteme sind nur Konsumenten dieser API. Das macht Software flexibel, integrierbar und zukunftssicher.","url":"https://nuroy.de/wiki/api-first","inDefinedTermSet":"https://nuroy.de/wiki#termset"},{"@type":"Article","@id":"https://nuroy.de/wiki/api-first#article","headline":"API-First — Definition und Bedeutung für Custom Software","description":"Was bedeutet API-First? Definition, Vorteile, FAQ.","image":"https://nuroy.de/og-image.png","author":{"@id":"https://nuroy.de/#organization"},"publisher":{"@id":"https://nuroy.de/#organization"},"datePublished":"2026-05-25","dateModified":"2026-05-25","mainEntityOfPage":{"@id":"https://nuroy.de/wiki/api-first#webpage"},"about":{"@id":"https://nuroy.de/wiki/api-first#term"},"inLanguage":"de-DE"},{"@type":"WebPage","@id":"https://nuroy.de/wiki/api-first#webpage","url":"https://nuroy.de/wiki/api-first","name":"API-First — Definition und Bedeutung für Custom Software | Nuroy Wiki","isPartOf":{"@id":"https://nuroy.de/#website"},"inLanguage":"de-DE","breadcrumb":{"@id":"https://nuroy.de/wiki/api-first#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://nuroy.de/wiki/api-first#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://nuroy.de/"},{"@type":"ListItem","position":2,"name":"Wiki","item":"https://nuroy.de/wiki"},{"@type":"ListItem","position":3,"name":"API-First","item":"https://nuroy.de/wiki/api-first"}]},{"@type":"FAQPage","@id":"https://nuroy.de/wiki/api-first#faqpage","mainEntity":[{"@type":"Question","name":"Was bedeutet API-First?","acceptedAnswer":{"@type":"Answer","text":"API-First ist ein Architekturansatz, bei dem zuerst die Programmierschnittstelle (API) entworfen wird, bevor UI oder Mobile-App gebaut werden. Alle Funktionen sind über die API erreichbar — alle Frontends sind nur Konsumenten."}},{"@type":"Question","name":"Was ist der Vorteil von API-First?","acceptedAnswer":{"@type":"Answer","text":"Flexibilität: Mehrere Frontends (Web, Mobile, Voice) können dieselbe Logik nutzen. Integrierbarkeit: Drittsysteme können sauber andocken. Zukunftssicherheit: Neue Kanäle (z.B. KI-Agenten) müssen nicht von Grund auf neu integriert werden. Testbarkeit: APIs sind einfacher zu testen als UIs."}},{"@type":"Question","name":"Ist API-First teurer in der Entwicklung?","acceptedAnswer":{"@type":"Answer","text":"Kurzfristig: ja, ca. 10–20% mehr Aufwand für saubere API-Definition und Dokumentation. Langfristig: deutlich günstiger, weil Erweiterungen und Integrationen schneller umsetzbar sind. Bei Nuroy ist API-First der Standard für Custom Software."}}]}]}
+  </script>
+</head>
+<body>
+
+<div id="cursor-glow" class="cursor-glow"></div>
+<div id="nav-mount"></div>
+
+<article class="wiki-article container">
+  <div class="wiki-breadcrumb">
+    <a href="../">Start</a> / <a href="../wiki.html">Wiki</a> / API-First
+  </div>
+
+  <h1 class="wiki-h1">API-First</h1>
+
+  <div class="wiki-tldr">
+    <span class="wiki-tldr-label">DEFINITION</span>
+    API-First ist ein Architekturansatz, bei dem zuerst die Programmierschnittstelle (API) entworfen wird, bevor irgendeine Oberfläche (UI) gebaut wird. Alle Funktionen sind über die API erreichbar — UI, Mobile-App und Drittsysteme sind nur Konsumenten dieser API. Das macht Software flexibel, integrierbar und zukunftssicher.
+  </div>
+
+  <section class="wiki-section">
+    <h2>Was bedeutet API-First konkret?</h2>
+    <p>Klassische Software wurde traditionell von der UI her gedacht: erst die Maske, dann die Logik dahinter. <strong>API-First</strong> dreht das um: Zuerst wird genau definiert, welche Funktionen das System anbieten soll — als API-Endpunkte. Erst danach wird eine UI darauf gebaut. Die UI ist nur einer von vielen möglichen Konsumenten der API.</p>
+    <p>Das hat einen praktischen Effekt: Eine API-First-gebaute Software kann nicht nur über die eigene Web-Oberfläche bedient werden, sondern auch über mobile Apps, andere Systeme via Webhook, KI-Agenten, Voice-Interfaces oder zukünftige Kanäle, die heute noch nicht existieren.</p>
+  </section>
+
+  <section class="wiki-section">
+    <h2>Vorteile von API-First</h2>
+    <ul>
+      <li><strong>Multi-Channel:</strong> Web, Mobile, Voice, Integration in Slack — alle nutzen die gleiche API</li>
+      <li><strong>Integrierbarkeit:</strong> Drittsysteme können sauber andocken (z.B. CRM mit Buchhaltung verbinden)</li>
+      <li><strong>Zukunftssicherheit:</strong> Neue Kanäle (KI-Agenten, Bots) erfordern keine Neuentwicklung</li>
+      <li><strong>Testbarkeit:</strong> APIs sind einfacher und schneller zu testen als UI</li>
+      <li><strong>Klare Verantwortlichkeiten:</strong> Backend und Frontend können parallel entwickelt werden</li>
+      <li><strong>Wiederverwendbarkeit:</strong> Einmal definierte API wird vielfach genutzt</li>
+    </ul>
+  </section>
+
+  <section class="wiki-section">
+    <h2>Häufige Fragen</h2>
+    <h3>Ist API-First teurer?</h3>
+    <p>Kurzfristig 10–20% mehr Aufwand für saubere API-Definition und Dokumentation. Langfristig deutlich günstiger, weil Erweiterungen und Integrationen schneller umsetzbar sind. Bei <a href="../leistungen/software.html">Nuroy ist API-First der Standard</a> für Custom Software.</p>
+    <h3>Was ist der Unterschied zu Headless?</h3>
+    <p>Eng verwandt. Headless heißt: Backend und Frontend sind technisch entkoppelt. API-First ist eher die Denkweise: API zuerst designen, dann alles andere drum herum. Die meisten Headless-Systeme sind API-First, aber nicht alle API-First-Systeme sind klassisch "headless".</p>
+    <h3>Welche API-Standards sind aktuell?</h3>
+    <p>REST ist weiterhin Standard. GraphQL wird häufiger bei komplexen Frontend-Anforderungen. gRPC für hochperformante Microservices. OpenAPI/Swagger für Dokumentation. Bei KMU-Custom-Software meist REST mit OpenAPI-Dokumentation.</p>
+  </section>
+
+  <section class="wiki-section">
+    <h2>Verwandte Begriffe</h2>
+    <div class="wiki-related">
+      <a href="webhook.html">Webhook</a>
+      <a href="custom-software.html">Custom Software</a>
+      <a href="multi-tenant.html">Multi-Tenant</a>
+      <a href="etl-pipeline.html">ETL-Pipeline</a>
+    </div>
+  </section>
+</article>
+
+<section class="final-cta">
+  <div class="container">
+    <h2 class="t-display">Custom Software mit API-First-Architektur?</h2>
+    <p class="t-body-lg" style="margin-top: 16px;">Bei Nuroy ist API-First Standard. 30 Minuten kostenloses Erstgespräch.</p>
+    <div style="display: flex; gap: 16px; justify-content: center; margin-top: 32px; flex-wrap: wrap;">
+      <a href="../kontakt.html" class="btn btn-pink-glass btn-lg">Erstgespräch buchen</a>
+      <a href="../leistungen/software.html" class="btn btn-glass-secondary btn-lg">Mehr zu Software-Entwicklung</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-mount"></div>
+<script src="../shared/components.js?v=1776884200265"></script>
+
+</body>
+</html>

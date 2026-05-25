@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETL-Pipeline — Definition, Tools und Einsatz im Dashboard | Nuroy Wiki</title>
+  <meta name="description" content="Was ist eine ETL-Pipeline? Extract, Transform, Load erklärt, Tool-Übersicht (Airbyte, Fivetran), Unterschied zu ELT und FAQ für KMU-Dashboards.">
+  <meta name="keywords" content="etl pipeline definition, was ist etl, extract transform load, etl vs elt, datenintegration etl, airbyte fivetran">
+  <meta name="author" content="Nuroy (JT NUROY LTD)">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+  <link rel="canonical" href="https://nuroy.de/wiki/etl-pipeline">
+  <link rel="alternate" hreflang="de-DE" href="https://nuroy.de/wiki/etl-pipeline">
+  <link rel="alternate" hreflang="de-AT" href="https://nuroy.de/wiki/etl-pipeline">
+  <link rel="alternate" hreflang="de-CH" href="https://nuroy.de/wiki/etl-pipeline">
+  <link rel="alternate" hreflang="x-default" href="https://nuroy.de/wiki/etl-pipeline">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Nuroy">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="ETL-Pipeline — Definition und Tools | Nuroy Wiki">
+  <meta property="og:description" content="Was ist eine ETL-Pipeline? Extract, Transform, Load erklärt mit Tool-Übersicht.">
+  <meta property="og:image" content="https://nuroy.de/og-image.png">
+  <meta property="og:url" content="https://nuroy.de/wiki/etl-pipeline">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ETL-Pipeline — Definition & Tools | Nuroy Wiki">
+  <meta name="twitter:description" content="Was ist eine ETL-Pipeline? Extract, Transform, Load — für KMU-Dashboards erklärt.">
+  <meta name="twitter:image" content="https://nuroy.de/og-image.png">
+  <link rel="stylesheet" href="../shared/styles.css?v=1776884200265">
+  <style>
+    .wiki-article{padding:calc(var(--nav-h) + 64px) 0 64px;max-width:780px;margin:0 auto}
+    .wiki-breadcrumb{font-family:var(--font-mono);font-size:11px;color:var(--fg-dim);letter-spacing:0.06em;margin-bottom:24px}
+    .wiki-breadcrumb a{color:var(--fg-dim)}.wiki-breadcrumb a:hover{color:var(--pink)}
+    .wiki-h1{font-family:var(--font-display);font-size:clamp(40px,5vw,64px);font-weight:900;letter-spacing:-0.03em;line-height:1.05;margin-bottom:24px}
+    .wiki-tldr{padding:24px 28px;background:var(--bg-2);border-left:3px solid var(--pink);border-radius:0 12px 12px 0;font-size:17px;line-height:1.7;color:var(--fg);margin:32px 0 48px}
+    .wiki-tldr-label{font-family:var(--font-mono);font-size:11px;color:var(--pink);letter-spacing:0.1em;margin-bottom:8px;display:block}
+    .wiki-section{margin-top:48px}
+    .wiki-section h2{font-family:var(--font-display);font-size:28px;font-weight:700;letter-spacing:-0.02em;margin-bottom:16px}
+    .wiki-section h3{font-family:var(--font-display);font-size:20px;font-weight:600;margin-top:24px;margin-bottom:10px}
+    .wiki-section p{font-size:16px;line-height:1.75;color:var(--fg-muted);margin-bottom:16px}
+    .wiki-section ul{margin:16px 0 16px 24px;color:var(--fg-muted);font-size:16px;line-height:1.75}
+    .wiki-section li{margin-bottom:8px}
+    .wiki-related{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .wiki-related a{padding:8px 14px;background:var(--bg-2);border:1px solid var(--line);border-radius:20px;font-size:13px;color:var(--fg-muted);text-decoration:none;transition:all 0.2s}
+    .wiki-related a:hover{border-color:var(--pink);color:var(--pink)}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nuroy.de/#organization","name":"Nuroy","legalName":"JT NUROY LTD","url":"https://nuroy.de/","logo":{"@type":"ImageObject","url":"https://nuroy.de/assets/favicon.png","width":512,"height":512},"email":"kontakt@nuroy.de","foundingDate":"2024","address":{"@type":"PostalAddress","streetAddress":"Taxiarchon 25, House 2","postalCode":"8036","addressLocality":"Paphos","addressCountry":"CY"},"identifier":"HE 479463"},{"@type":"WebSite","@id":"https://nuroy.de/#website","url":"https://nuroy.de/","name":"Nuroy","publisher":{"@id":"https://nuroy.de/#organization"},"inLanguage":"de-DE"},{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/etl-pipeline#term","name":"ETL-Pipeline","alternateName":["ETL","Extract Transform Load","Datenintegrations-Pipeline"],"description":"Eine ETL-Pipeline (Extract, Transform, Load) ist ein automatisierter Datenfluss, der Daten aus verschiedenen Quellsystemen extrahiert (E), in ein einheitliches Format transformiert (T) und in ein Zielsystem wie ein Data Warehouse oder Dashboard lädt (L). ETL ist die Grundlage jeder ernsthaften Business-Intelligence-Lösung.","url":"https://nuroy.de/wiki/etl-pipeline","inDefinedTermSet":"https://nuroy.de/wiki#termset","sameAs":"https://de.wikipedia.org/wiki/ETL-Prozess"},{"@type":"Article","@id":"https://nuroy.de/wiki/etl-pipeline#article","headline":"ETL-Pipeline — Definition, Tools und Einsatz im Dashboard","description":"Was ist eine ETL-Pipeline? Extract, Transform, Load erklärt mit Tool-Übersicht.","image":"https://nuroy.de/og-image.png","author":{"@id":"https://nuroy.de/#organization"},"publisher":{"@id":"https://nuroy.de/#organization"},"datePublished":"2026-05-25","dateModified":"2026-05-25","mainEntityOfPage":{"@id":"https://nuroy.de/wiki/etl-pipeline#webpage"},"about":{"@id":"https://nuroy.de/wiki/etl-pipeline#term"},"inLanguage":"de-DE"},{"@type":"WebPage","@id":"https://nuroy.de/wiki/etl-pipeline#webpage","url":"https://nuroy.de/wiki/etl-pipeline","name":"ETL-Pipeline — Definition, Tools und Einsatz im Dashboard | Nuroy Wiki","isPartOf":{"@id":"https://nuroy.de/#website"},"inLanguage":"de-DE","breadcrumb":{"@id":"https://nuroy.de/wiki/etl-pipeline#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://nuroy.de/wiki/etl-pipeline#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://nuroy.de/"},{"@type":"ListItem","position":2,"name":"Wiki","item":"https://nuroy.de/wiki"},{"@type":"ListItem","position":3,"name":"ETL-Pipeline","item":"https://nuroy.de/wiki/etl-pipeline"}]},{"@type":"FAQPage","@id":"https://nuroy.de/wiki/etl-pipeline#faqpage","mainEntity":[{"@type":"Question","name":"Was bedeutet ETL?","acceptedAnswer":{"@type":"Answer","text":"ETL steht für Extract, Transform, Load. Drei Schritte: (1) Extract — Daten aus Quellsystemen wie CRM, ERP, Shop abrufen. (2) Transform — Daten bereinigen, vereinheitlichen, anreichern, berechnete Felder erzeugen. (3) Load — die aufbereiteten Daten in ein Zielsystem wie Data Warehouse oder Dashboard schreiben."}},{"@type":"Question","name":"Was ist der Unterschied zwischen ETL und ELT?","acceptedAnswer":{"@type":"Answer","text":"Bei ETL erfolgt die Transformation vor dem Laden — Daten kommen schon bereinigt im Zielsystem an. Bei ELT (Extract, Load, Transform) werden Rohdaten zuerst geladen und erst dann im Zielsystem transformiert. ELT ist moderner, profitiert von leistungsfähigen Cloud-Data-Warehouses und ist flexibler bei sich ändernden Anforderungen."}},{"@type":"Question","name":"Welche ETL-Tools sind verbreitet?","acceptedAnswer":{"@type":"Answer","text":"Open-Source: Airbyte, Apache Airflow, dbt (für Transformation), Singer. Kommerziell: Fivetran, Stitch, Matillion, Talend, Informatica. Für KMU-Custom-Lösungen reichen oft schlankere Stacks wie Airbyte + dbt + PostgreSQL, statt teure Enterprise-Tools."}},{"@type":"Question","name":"Wann braucht man eine ETL-Pipeline?","acceptedAnswer":{"@type":"Answer","text":"Sobald Daten aus zwei oder mehr Systemen für gemeinsame Auswertungen kombiniert werden müssen. Beispiel: Verkäufe aus Shopify mit Werbekosten aus Meta Ads und Buchhaltungs-Daten aus DATEV verbinden, um Marge pro Produkt zu berechnen. Ohne ETL gibt es nur manuelle Excel-Exporte und Inkonsistenzen."}},{"@type":"Question","name":"Wie oft sollte eine ETL-Pipeline laufen?","acceptedAnswer":{"@type":"Answer","text":"Hängt vom Use Case ab: Für Finanz-Dashboards reicht typischerweise stündlich oder einmal pro Tag. Für operative Cockpits (Vertrieb, Marketing) alle 15 Minuten. Für Real-Time-Dashboards (Live-Werbung, Trading) Streaming-Ansätze statt klassischem ETL. Höhere Frequenz heißt höhere Infrastruktur-Kosten — sinnvoll abwägen."}}]}]}
+  </script>
+</head>
+<body>
+
+<div id="cursor-glow" class="cursor-glow"></div>
+<div id="nav-mount"></div>
+
+<article class="wiki-article container">
+  <div class="wiki-breadcrumb">
+    <a href="../">Start</a> / <a href="../wiki.html">Wiki</a> / ETL-Pipeline
+  </div>
+
+  <h1 class="wiki-h1">ETL-Pipeline</h1>
+
+  <div class="wiki-tldr">
+    <span class="wiki-tldr-label">DEFINITION</span>
+    Eine ETL-Pipeline (Extract, Transform, Load) ist ein automatisierter Datenfluss, der Daten aus verschiedenen Quellsystemen extrahiert (E), in ein einheitliches Format transformiert (T) und in ein Zielsystem wie ein Data Warehouse oder Dashboard lädt (L). ETL ist die Grundlage jeder ernsthaften Business-Intelligence-Lösung.
+  </div>
+
+  <section class="wiki-section">
+    <h2>Was ist eine ETL-Pipeline?</h2>
+    <p>Eine <strong>ETL-Pipeline</strong> ist die "Verkehrsader" zwischen den Datenquellen eines Unternehmens und der Stelle, wo die Daten gebraucht werden — typischerweise einem Data Warehouse oder einem <a href="kpi-dashboard.html">KPI-Dashboard</a>. Ohne ETL bleiben Daten in ihren Silos: Verkäufe im Shop, Buchungen in DATEV, Leads im CRM. Mit ETL fließen sie automatisch zusammen.</p>
+    <p>Die drei Schritte:</p>
+    <ul>
+      <li><strong>Extract:</strong> Daten aus den Quellen werden abgerufen — über APIs, Datenbank-Queries, Datei-Exporte oder Webhooks.</li>
+      <li><strong>Transform:</strong> Daten werden bereinigt (Duplikate, Tippfehler), vereinheitlicht (gleiche Felder aus verschiedenen Systemen mappen), angereichert (z.B. EUR aus USD umrechnen) und berechnet (Deckungsbeitrag aus Verkaufspreis − Einkaufspreis − Versand).</li>
+      <li><strong>Load:</strong> Die fertigen Daten werden in das Ziel-System geschrieben — ein Data Warehouse (z.B. PostgreSQL, BigQuery, Snowflake) oder direkt in ein Dashboard.</li>
+    </ul>
+  </section>
+
+  <section class="wiki-section">
+    <h2>ETL vs. ELT — der moderne Ansatz</h2>
+    <p>Klassisches ETL transformiert vor dem Laden — sinnvoll wenn das Zielsystem schwach ist. Mit modernen Cloud-Data-Warehouses (BigQuery, Snowflake) ist das nicht mehr nötig. Heute wird oft <strong>ELT</strong> (Extract, Load, Transform) gemacht: Rohdaten landen zuerst im Warehouse, Transformationen passieren dort als SQL.</p>
+    <p>Vorteile von ELT: flexibler bei sich ändernden Anforderungen, bessere Nachvollziehbarkeit (Rohdaten bleiben erhalten), oft günstiger durch elastische Cloud-Skalierung.</p>
+  </section>
+
+  <section class="wiki-section">
+    <h2>Verbreitete ETL-/ELT-Tools</h2>
+    <ul>
+      <li><strong>Airbyte:</strong> Open-Source, 350+ Connectoren, im DACH-Mittelstand beliebt.</li>
+      <li><strong>Fivetran:</strong> Kommerziell, sehr robust, ab ~120 €/Monat.</li>
+      <li><strong>dbt (data build tool):</strong> Standard für Transformation per SQL, Open-Source.</li>
+      <li><strong>Apache Airflow:</strong> Workflow-Orchestrierung, Open-Source.</li>
+      <li><strong>Stitch, Matillion, Talend, Informatica:</strong> Enterprise-Tools.</li>
+    </ul>
+    <p>Für KMU-Custom-Lösungen reichen oft schlankere Stacks wie Airbyte + dbt + PostgreSQL, statt teure Enterprise-Tools.</p>
+  </section>
+
+  <section class="wiki-section">
+    <h2>Häufige Fragen</h2>
+    <h3>Wann braucht man eine ETL-Pipeline?</h3>
+    <p>Sobald Daten aus zwei oder mehr Systemen für gemeinsame Auswertungen kombiniert werden müssen. Beispiel: Verkäufe aus Shopify mit Werbekosten aus Meta Ads und DATEV-Buchungen verbinden, um Marge pro Produkt zu berechnen.</p>
+    <h3>Wie oft sollte eine ETL-Pipeline laufen?</h3>
+    <p>Für Finanz-Dashboards stündlich oder täglich. Für operative Cockpits alle 15 Minuten. Für Real-Time-Anwendungen Streaming-Ansätze statt klassischem ETL.</p>
+    <h3>Was sind typische Probleme in ETL-Projekten?</h3>
+    <p>Schema-Changes in Quellsystemen (Felder werden umbenannt), API-Rate-Limits, Datenqualitätsprobleme (Duplikate, inkonsistente Formate), Zeitzonen-Chaos, fehlende Idempotenz (gleiche Daten doppelt geladen). Gute Pipelines haben Monitoring, Retry-Logik und klare Fehler-Alerts.</p>
+  </section>
+
+  <section class="wiki-section">
+    <h2>Verwandte Begriffe</h2>
+    <div class="wiki-related">
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="kpi-dashboard.html">KPI Dashboard</a>
+      <a href="single-source-of-truth.html">Single Source of Truth</a>
+      <a href="webhook.html">Webhook</a>
+      <a href="api-first.html">API-First</a>
+    </div>
+  </section>
+</article>
+
+<section class="final-cta">
+  <div class="container">
+    <h2 class="t-display">Datenintegration für euer Dashboard?</h2>
+    <p class="t-body-lg" style="margin-top: 16px;">Custom ETL-Pipelines als Teil unserer Dashboard-Lösungen. 30 Minuten kostenloses Erstgespräch.</p>
+    <div style="display: flex; gap: 16px; justify-content: center; margin-top: 32px; flex-wrap: wrap;">
+      <a href="../kontakt.html" class="btn btn-pink-glass btn-lg">Erstgespräch buchen</a>
+      <a href="../leistungen/datenintegration.html" class="btn btn-glass-secondary btn-lg">Mehr zu Datenintegration</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-mount"></div>
+<script src="../shared/components.js?v=1776884200265"></script>
+
+</body>
+</html>

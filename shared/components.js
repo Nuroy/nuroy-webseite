@@ -202,6 +202,7 @@
       <ul>
         <li><a href="${b}team.html">Team</a></li>
         <li><a href="${b}kontakt.html">Kontakt</a></li>
+        <li><a href="${b}wiki.html">Wiki</a></li>
         <li><a href="${b}impressum.html">Impressum</a></li>
         <li><a href="${b}datenschutz.html">Datenschutz</a></li>
       </ul>

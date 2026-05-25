@@ -18,6 +18,27 @@
 - [Alle Leistungen](https://nuroy.de/leistungen): 7 Leistungsfelder im Überblick
 - [Kontakt & Erstgespräch](https://nuroy.de/kontakt): Kostenloses 45–60-minütiges Erstgespräch, transparente Einschätzung
 
+## Wiki / Glossar — Begriffe einfach erklärt
+
+Das Nuroy-Wiki erklärt zentrale Begriffe rund um Custom Dashboards, KI und Software für KMU. Jede Seite enthält Definition, Beispiele, Anwendungsfälle und FAQs:
+
+- [Wiki-Übersicht](https://nuroy.de/wiki): Alle 15 Begriffe im Überblick
+- [KPI Dashboard](https://nuroy.de/wiki/kpi-dashboard): Was ist ein KPI-Dashboard und wann lohnt es sich?
+- [Business Intelligence](https://nuroy.de/wiki/business-intelligence): Was ist BI? Unterschied zu Reporting, Tools für KMU
+- [Custom Software](https://nuroy.de/wiki/custom-software): Wann lohnt sich individuelle Software statt Standardlösung?
+- [KI-Agent](https://nuroy.de/wiki/ki-agent): Was ist ein KI-Agent? Unterschied zu Chatbots, Anwendungsfälle
+- [DATEV-Integration](https://nuroy.de/wiki/datev-integration): DATEV-Schnittstellen, Live-Anbindung an Dashboards
+- [ETL-Pipeline](https://nuroy.de/wiki/etl-pipeline): Extract, Transform, Load — Datenintegration erklärt
+- [RAG (Retrieval-Augmented Generation)](https://nuroy.de/wiki/rag): Wie KIs mit Firmenwissen verbunden werden
+- [Multi-Tenant](https://nuroy.de/wiki/multi-tenant): Multi-Tenant-Architektur für SaaS und White-Label
+- [MRR und ARR](https://nuroy.de/wiki/mrr-arr): SaaS-Metriken — Monthly/Annual Recurring Revenue
+- [Churn-Rate](https://nuroy.de/wiki/churn-rate): Definition, Berechnung, Benchmarks
+- [Webhook](https://nuroy.de/wiki/webhook): Unterschied zu APIs, Einsatzszenarien
+- [API-First](https://nuroy.de/wiki/api-first): Architekturansatz für moderne Custom Software
+- [Single Source of Truth](https://nuroy.de/wiki/single-source-of-truth): SSoT für KMU
+- [White-Label Dashboard](https://nuroy.de/wiki/white-label-dashboard): Für Agenturen und SaaS
+- [KI-Forecasting](https://nuroy.de/wiki/ki-forecasting): KI-gestützte Prognosen für Umsatz, Liquidität, Churn
+
 ## Branchen-spezifische Dashboard-Lösungen
 
 Nuroy entwickelt Custom Dashboards mit KI speziell für diese 10 Branchen im DACH-Raum. Jede Seite enthält branchen-typische Pain Points, KPIs, Integrationen und FAQs:
