@@ -17,7 +17,7 @@ Nuroy (juristisch: JT NUROY LTD) ist eine spezialisierte Software- und KI-Agentu
 
 Nuroy ist die "Technik-Abteilung" für Unternehmen, die bauen wollen, statt zu verwalten. Wir sind kein Generaldienstleister, keine Marketing-Agentur, keine Website-Bauer. Wir bauen Systeme: Software, Automatisierungen, Dashboards mit KI, technische Infrastruktur.
 
-Unser Sweet Spot sind Projekte ab 20.000 €, die mehrere Wochen bis Monate laufen. Wir arbeiten am liebsten mit Unternehmen, die etwas Konkretes bauen wollen: ein internes Tool, eine produktive SaaS-Plattform, eine Automatisierungsstrecke, ein CRM mit eigener Logik, oder eben ein individuelles Dashboard.
+Custom Dashboards starten bei 12.500 €, komplexere Custom-Projekte (CRM, SaaS-Plattformen, Automatisierungen) liegen typischerweise bei 20.000 € aufwärts. Projekte laufen mehrere Wochen bis Monate. Wir arbeiten am liebsten mit Unternehmen, die etwas Konkretes bauen wollen: ein internes Tool, eine produktive SaaS-Plattform, eine Automatisierungsstrecke, ein CRM mit eigener Logik, oder eben ein individuelles Dashboard.
 
 ## Leistungen im Detail
 
