@@ -168,7 +168,10 @@
     .cards-section {
       max-width: 1200px;
       margin: 0 auto 100px;
-      padding: 0 20px;
+      padding: 0 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .cards-headline {
@@ -197,6 +200,9 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 28px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .card {
@@ -355,19 +361,23 @@
 
     .tip-box {
       max-width: 750px;
-      margin: 0 auto 100px;
+      margin: 0 auto 100px auto;
       padding: 40px 44px;
       background: linear-gradient(135deg, #FFF5F9 0%, #FFFFFF 100%);
       border: 2px solid #FF2D7A;
       border-radius: 20px;
-      margin-left: 20px;
-      margin-right: 20px;
       position: relative;
       overflow: hidden;
       box-shadow:
         0 8px 32px rgba(255, 45, 122, 0.15),
         0 2px 8px rgba(255, 45, 122, 0.1),
         inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+
+    /* Wrapper für Tip Box Zentrierung */
+    .tip-box {
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .tip-box::before {
