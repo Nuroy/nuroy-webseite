@@ -254,13 +254,20 @@
 }
 
 #calendly-embed {
-  min-height: 800px;
-  height: 800px;
+  min-height: 1100px;
+  width: 100%;
   border-radius: 16px;
-  overflow: hidden;
+  overflow: visible; /* Allow content to expand */
   background: #FFFFFF;
   border: 2px solid #E8E8E0;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Ensure iframe inside expands properly */
+#calendly-embed iframe {
+  min-height: 1100px !important;
+  width: 100% !important;
+  border: none;
 }
 
 /* ═══ KONTAKTFORMULAR (Soft-No) ═══ */
@@ -475,8 +482,11 @@
   }
 
   #calendly-embed {
-    min-height: 700px;
-    height: 700px;
+    min-height: 1000px;
+  }
+
+  #calendly-embed iframe {
+    min-height: 1000px !important;
   }
 
   .form-input,
