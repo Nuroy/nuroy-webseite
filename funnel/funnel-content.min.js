@@ -110,7 +110,7 @@ window.FUNNEL_CONTENT = {
     ]
   },
 
-  testimonials: ['sniffys', 'followaustria', 'skalieren'], // IDs aus GLOBAL_TESTIMONIALS
+  testimonials: ['sniffys', 'skalieren'], // IDs aus GLOBAL_TESTIMONIALS
 
   faq: {
     headline: 'Was uns oft gefragt wird.',
