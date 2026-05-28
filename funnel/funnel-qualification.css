@@ -467,7 +467,8 @@
   }
 
   .qualification-container {
-    padding: 40px 24px;
+    max-width: 95%;
+    padding: 32px 16px;
     border-radius: 16px;
   }
 
