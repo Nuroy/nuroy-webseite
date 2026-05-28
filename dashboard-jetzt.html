@@ -205,20 +205,23 @@
     </div>
 
     <!-- Video -->
-    <!-- Wistia Embed (Responsive) -->
-    <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
-      <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-        <div class="wistia_embed wistia_async_1f9acgpdn0 seo=true videoFoam=true" style="height:100%;position:relative;width:100%">
-          <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
-            <img src="https://fast.wistia.com/embed/medias/1f9acgpdn0/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
-          </div>
-        </div>
-      </div>
+    <!-- Wistia iframe Embed (Mobile-Safe) -->
+    <div style="position:relative;padding-top:56.25%;border-radius:12px;overflow:hidden;background:#000">
+      <iframe src="https://fast.wistia.net/embed/iframe/1f9acgpdn0?seo=true&videoFoam=true"
+              allowtransparency="true"
+              frameborder="0"
+              scrolling="no"
+              class="wistia_embed"
+              name="wistia_embed"
+              allowfullscreen
+              mozallowfullscreen
+              webkitallowfullscreen
+              oallowfullscreen
+              msallowfullscreen
+              style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:12px">
+      </iframe>
     </div>
   </div>
-
-  <!-- Wistia Script (loaded once) -->
-  <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
 
   <!-- Teil 3: CTAs zurück im Container (1100px) -->
   <div class="funnel-hero-content">
