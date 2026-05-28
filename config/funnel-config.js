@@ -108,7 +108,7 @@ window.NUROY_CONFIG = {
    * Diese Leads haben den Qualifizierungs-Flow nicht bestanden
    * und werden stattdessen über das Kontaktformular erfasst
    */
-  UNQUALIFIED_LEADS_WEBHOOK: 'WEBHOOK_URL_PLACEHOLDER' // TODO: Vom Marketing-Team
+  UNQUALIFIED_LEADS_WEBHOOK: 'https://crm.nuroy.de/api/webhook/leads-nq'
 
 };
 

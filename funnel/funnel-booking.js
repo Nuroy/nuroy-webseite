@@ -4,7 +4,7 @@
  * ═══════════════════════════════════════════════════════════════
  *
  * 2-Schritt-Qualifizierungs-Flow:
- * - Frage 1: Tool-Anzahl
+ * - Frage 1: Interesse (Ja/Nein)
  * - Frage 2: Jahresumsatz
  *
  * Verzweigung:
@@ -52,12 +52,12 @@ function getAnswer(key) {
 /**
  * Prüft, ob Lead qualifiziert ist
  */
-function isQualified(toolsCount, revenueRange) {
+function isQualified(interest, revenueRange) {
   // Disqualifizierung bei:
-  // - "Nur 1-2 Tools"
+  // - Interesse = "Nein"
   // - "Noch in der Startphase" (unter 100k €)
 
-  if (toolsCount === 'tools-1-2') return false;
+  if (interest === 'no') return false;
   if (revenueRange === 'revenue-0-100k') return false;
 
   return true;
@@ -191,11 +191,11 @@ function showContactForm() {
  * Ermittelt den Disqualifizierungs-Grund basierend auf den Antworten
  */
 function determineDisqualificationReason() {
-  const toolsCount = getAnswer(STORAGE_KEYS.TOOLS_COUNT);
+  const interest = getAnswer(STORAGE_KEYS.TOOLS_COUNT); // Interest wird unter TOOLS_COUNT gespeichert
   const revenueRange = getAnswer(STORAGE_KEYS.REVENUE_RANGE);
 
-  if (toolsCount === 'tools-1-2') {
-    return 'Zu wenige Tools (1-2)';
+  if (interest === 'no') {
+    return 'Kein Interesse angegeben';
   }
   if (revenueRange === 'revenue-0-100k') {
     return 'Noch in Startphase (unter 100k €)';
@@ -205,11 +205,11 @@ function determineDisqualificationReason() {
 
 
 // ═══════════════════════════════════════════════════════════════
-// FRAGE 1: TOOL-ANZAHL
+// FRAGE 1: INTERESSE
 // ═══════════════════════════════════════════════════════════════
 
-function selectToolsCount(value) {
-  saveAnswer(STORAGE_KEYS.TOOLS_COUNT, value);
+function selectInterest(value) {
+  saveAnswer(STORAGE_KEYS.TOOLS_COUNT, value); // Speichern unter TOOLS_COUNT Key für Kompatibilität
 
   // Visual feedback
   document.querySelectorAll('#qualification-step-1 .qualification-option').forEach(btn => {
@@ -217,8 +217,8 @@ function selectToolsCount(value) {
   });
   event.target.closest('.qualification-option').classList.add('selected');
 
-  // Disqualifizierung bei "Nur 1-2 Tools"
-  if (value === 'tools-1-2') {
+  // Disqualifizierung bei "Nein"
+  if (value === 'no') {
     saveAnswer(STORAGE_KEYS.QUALIFICATION_STATUS, 'disqualified');
 
     setTimeout(() => {
@@ -227,7 +227,7 @@ function selectToolsCount(value) {
     return;
   }
 
-  // Weiter zu Frage 2
+  // Bei "Ja": Weiter zu Frage 2 (Umsatz)
   setTimeout(() => {
     showStep(2);
   }, 400);
@@ -248,8 +248,8 @@ function selectRevenueRange(value) {
   event.target.closest('.qualification-option').classList.add('selected');
 
   // Qualifizierungsprüfung
-  const toolsCount = getAnswer(STORAGE_KEYS.TOOLS_COUNT);
-  const qualified = isQualified(toolsCount, value);
+  const interest = getAnswer(STORAGE_KEYS.TOOLS_COUNT); // Interest wird unter TOOLS_COUNT gespeichert
+  const qualified = isQualified(interest, value);
 
   saveAnswer(STORAGE_KEYS.QUALIFICATION_STATUS, qualified ? 'qualified' : 'disqualified');
 
@@ -268,6 +268,11 @@ function selectRevenueRange(value) {
 // ═══════════════════════════════════════════════════════════════
 
 function initCalendly() {
+  const embedContainer = document.getElementById('calendly-embed');
+
+  // Container leeren (entfernt Loading-Spinner)
+  embedContainer.innerHTML = '';
+
   // Prüfen ob Calendly-Script geladen ist
   if (typeof Calendly === 'undefined') {
     console.error('❌ Calendly-Script nicht geladen. Bitte <script src="https://assets.calendly.com/assets/external/widget.js" async></script> im HTML einbinden.');
@@ -280,7 +285,7 @@ function initCalendly() {
     console.warn('⚠️  Calendly-URL noch nicht konfiguriert. Siehe config/funnel-config.js');
 
     // Fallback: Zeige Platzhalter-Nachricht
-    document.getElementById('calendly-embed').innerHTML = `
+    embedContainer.innerHTML = `
       <div style="padding: 60px 20px; text-align: center; background: #FAFAF7; border-radius: 12px; border: 2px dashed #E8E8E0;">
         <p style="color: #999; font-size: 14px; margin: 0;">
           📅 Calendly-Widget wird hier angezeigt<br>

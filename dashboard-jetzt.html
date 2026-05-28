@@ -174,11 +174,18 @@
     </div>
 
     <!-- Video -->
-    <!-- Platzhalter: User fügt Video-ID später ein -->
-    <!-- <lite-youtube videoid="PLACEHOLDER_VIMEO_ID" params="rel=0"></lite-youtube> -->
-    <div style="aspect-ratio: 16/9; background: #000; display: flex; align-items: center; justify-content: center; color: #666; font-size: 14px;">
-      [VSL-Video hier einfügen: lite-youtube mit Video-ID]
-    </div>
+    <!-- Wistia VSL Video -->
+    <script src="https://fast.wistia.com/player.js" async></script>
+    <script src="https://fast.wistia.com/embed/1f9acgpdn0.js" async type="module"></script>
+    <style>
+      wistia-player[media-id='1f9acgpdn0']:not(:defined) {
+        background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/1f9acgpdn0/swatch');
+        display: block;
+        filter: blur(5px);
+        padding-top: 56.25%;
+      }
+    </style>
+    <wistia-player media-id="1f9acgpdn0" aspect="1.7777777777777777"></wistia-player>
   </div>
 
   <!-- Teil 3: CTAs zurück im Container (1100px) -->
@@ -198,27 +205,27 @@
 
   <div class="funnel-trust-carousel">
     <div class="funnel-trust-track">
-      <!-- Set 1 -->
+      <!-- Original Set (wird mehrfach wiederholt für nahtlosen Loop) -->
+      <img src="assets/clients/sniffys.png" alt="Sniffys">
+      <img src="assets/clients/nomo.png" alt="Nomo">
+      <img src="assets/clients/sniffys.png" alt="Sniffys">
+      <img src="assets/clients/nomo.png" alt="Nomo">
+      <img src="assets/clients/sniffys.png" alt="Sniffys">
+      <img src="assets/clients/nomo.png" alt="Nomo">
+      <img src="assets/clients/sniffys.png" alt="Sniffys">
+      <img src="assets/clients/nomo.png" alt="Nomo">
       <img src="assets/clients/sniffys.png" alt="Sniffys">
       <img src="assets/clients/nomo.png" alt="Nomo">
 
-      <!-- Set 2 -->
+      <!-- Duplicate Set für nahtlosen Loop -->
       <img src="assets/clients/sniffys.png" alt="Sniffys">
       <img src="assets/clients/nomo.png" alt="Nomo">
-
-      <!-- Set 3 -->
       <img src="assets/clients/sniffys.png" alt="Sniffys">
       <img src="assets/clients/nomo.png" alt="Nomo">
-
-      <!-- Set 4 -->
       <img src="assets/clients/sniffys.png" alt="Sniffys">
       <img src="assets/clients/nomo.png" alt="Nomo">
-
-      <!-- Set 5 -->
       <img src="assets/clients/sniffys.png" alt="Sniffys">
       <img src="assets/clients/nomo.png" alt="Nomo">
-
-      <!-- Set 6 (for extra smooth loop) -->
       <img src="assets/clients/sniffys.png" alt="Sniffys">
       <img src="assets/clients/nomo.png" alt="Nomo">
     </div>
@@ -244,6 +251,13 @@
       <div class="funnel-testimonial-card" data-video-id="_GIMhcR781Y">
         <div class="funnel-testimonial-video">
           <lite-youtube videoid="_GIMhcR781Y"></lite-youtube>
+        </div>
+      </div>
+
+      <!-- Follow Austria -->
+      <div class="funnel-testimonial-card" data-video-id="YP-pHyQrUSs">
+        <div class="funnel-testimonial-video">
+          <lite-youtube videoid="YP-pHyQrUSs"></lite-youtube>
         </div>
       </div>
 
@@ -637,9 +651,6 @@
         Sie suchen eine günstige Standardlösung von der Stange? Das können wir leider nicht bieten.
       </div>
       <div class="funnel-disqualifier-item">
-        Ihr Budget liegt unter 12.500 €? Dann wird's schwierig mit der Qualität, die wir liefern wollen.
-      </div>
-      <div class="funnel-disqualifier-item">
         Sie sind noch in der "vielleicht irgendwann mal" Phase? Dann warten Sie lieber noch etwas ab.
       </div>
     </div>
@@ -657,25 +668,19 @@
     <!-- Qualifizierungs-Flow Container -->
     <div class="qualification-container" id="qualification-container">
 
-      <!-- Frage 1: Tool-Anzahl -->
+      <!-- Frage 1: Interesse -->
       <div class="qualification-step active" id="qualification-step-1">
         <div class="qualification-progress">Schritt 1 von 2</div>
         <div class="qualification-eyebrow">Damit wir gleich konkret werden können —</div>
-        <h2 class="qualification-headline">Wie viele Tools würdet ihr gern in einem Dashboard zusammenführen?</h2>
-        <p class="qualification-subtext">Zähl alles mit: CRM, Buchhaltung, Werbe-Plattformen, Shops, Analytics-Tools, eigene Software. Alles, was Daten produziert.</p>
+        <h2 class="qualification-headline">Ich habe Interesse mehr zu erfahren, wie ich alle meine Daten im Überblick habe.</h2>
+        <p class="qualification-subtext">Nur wenn du wirklich Interesse hast, geht's weiter zur Terminbuchung.</p>
 
         <div class="qualification-options">
-          <button class="qualification-option" onclick="selectToolsCount('tools-1-2')">
-            Nur 1–2 Tools
+          <button class="qualification-option" onclick="selectInterest('yes')">
+            Ja
           </button>
-          <button class="qualification-option" onclick="selectToolsCount('tools-3-5')">
-            3–5 Tools
-          </button>
-          <button class="qualification-option" onclick="selectToolsCount('tools-6-10')">
-            6–10 Tools
-          </button>
-          <button class="qualification-option" onclick="selectToolsCount('tools-10-plus')">
-            Mehr als 10 Tools
+          <button class="qualification-option" onclick="selectInterest('no')">
+            Nein
           </button>
         </div>
       </div>
