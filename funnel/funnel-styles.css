@@ -2205,6 +2205,13 @@
     height: 68px;
   }
 
+  /* Header-Button auf Mobile kleiner machen */
+  .funnel-header .btn-primary {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
   .funnel-hero {
     /* KORRIGIERT: Hero-Höhe auch auf Mobile angepasst */
     min-height: 50rem; /* 800px auf Mobile — kleiner aber immer noch groß genug */
