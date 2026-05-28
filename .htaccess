@@ -1,3 +1,19 @@
+# URL Rewriting - .html Endungen entfernen
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Wenn eine .html Datei direkt aufgerufen wird, auf Version ohne .html umleiten
+  RewriteCond %{THE_REQUEST} ^GET\ /[^?\s]*\.html
+  RewriteRule ^(.*)\.html$ /$1 [R=301,L,NE]
+
+  # Wenn URL ohne .html aufgerufen wird, intern .html hinzufügen
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
 # Gzip/Brotli Kompression
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript image/svg+xml
