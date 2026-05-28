@@ -9,9 +9,14 @@
 .qualification-container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 60px 20px;
-  background: #FAFAF7;
+  padding: 60px 40px;
+  background: #FFFFFF;
   position: relative;
+  border-radius: 20px;
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.08),
+    0 0 60px rgba(255, 45, 122, 0.15);
+  border: 1px solid rgba(255, 45, 122, 0.1);
 }
 
 .qualification-step {
@@ -459,6 +464,11 @@
   .calendly-container,
   .contact-form-container {
     padding: 40px 20px 60px;
+  }
+
+  .qualification-container {
+    padding: 40px 24px;
+    border-radius: 16px;
   }
 
   .qualification-headline,

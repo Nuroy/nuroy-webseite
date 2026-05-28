@@ -1514,17 +1514,37 @@
 
 /* ── FAQ Section ───────────────────────────────────────── */
 .funnel-faq {
-  background: #F4F4F0;
+  background: white;
 }
 
 .funnel-faq-list {
   max-width: 800px;
   margin: 48px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .funnel-faq-item {
-  border-bottom: 1px solid #E8E8E0;
-  padding: 20px 0;
+  background: #FAFAF7;
+  border: 1px solid #E8E8E0;
+  border-left: 4px solid rgba(255, 45, 122, 0.3);
+  border-radius: 12px;
+  padding: 24px 28px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInUp 0.6s ease backwards;
+}
+
+.funnel-faq-item:hover {
+  border-left-color: #FF2D7A;
+  box-shadow: 0 4px 20px rgba(255, 45, 122, 0.08);
+  background: #FFFFFF;
+}
+
+.funnel-faq-item[open] {
+  border-left-color: #FF2D7A;
+  background: #FFFFFF;
+  box-shadow: 0 8px 32px rgba(255, 45, 122, 0.12);
 }
 
 .funnel-faq-item summary {
@@ -1537,6 +1557,11 @@
   justify-content: space-between;
   align-items: center;
   gap: 16px;
+  transition: color 0.2s ease;
+}
+
+.funnel-faq-item:hover summary {
+  color: #FF2D7A;
 }
 
 .funnel-faq-item summary::-webkit-details-marker {
@@ -1545,23 +1570,45 @@
 
 .funnel-faq-item summary::after {
   content: '+';
-  font-size: 24px;
-  color: var(--pink);
-  transition: transform 0.2s;
+  font-size: 28px;
+  color: #FF2D7A;
+  font-weight: 300;
+  transition: transform 0.3s ease;
   flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 45, 122, 0.08);
+  border-radius: 8px;
+}
+
+.funnel-faq-item:hover summary::after {
+  background: rgba(255, 45, 122, 0.15);
+  transform: scale(1.1);
 }
 
 .funnel-faq-item[open] summary::after {
   transform: rotate(45deg);
+  background: rgba(255, 45, 122, 0.15);
 }
 
 .funnel-faq-item p {
-  margin-top: 12px;
+  margin-top: 16px;
   color: #6B6B66;
   line-height: 1.7;
   font-size: 16px;
   padding-right: 40px;
 }
+
+/* Staggered animation delays for FAQ items */
+.funnel-faq-item:nth-child(1) { animation-delay: 0.1s; }
+.funnel-faq-item:nth-child(2) { animation-delay: 0.15s; }
+.funnel-faq-item:nth-child(3) { animation-delay: 0.2s; }
+.funnel-faq-item:nth-child(4) { animation-delay: 0.25s; }
+.funnel-faq-item:nth-child(5) { animation-delay: 0.3s; }
+.funnel-faq-item:nth-child(6) { animation-delay: 0.35s; }
 
 /* ── Disqualifier Section ──────────────────────────────── */
 .funnel-disqualifier {
@@ -1973,6 +2020,17 @@
     font-size: 18px;
     margin-bottom: 32px;
   }
+
+  .funnel-booking-trust {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 400px;
+  }
+
+  .funnel-booking-trust-item {
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 /* Extra kompakt für sehr kleine Bildschirme */
@@ -2028,14 +2086,37 @@
 }
 
 .funnel-booking-trust {
-  display: flex;
-  gap: 32px;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 32px auto 0;
+  padding: 0 20px;
 }
 
 .funnel-booking-trust-item {
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+}
+
+.funnel-booking-trust-item::before {
+  content: '✓';
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 /* ── Sticky CTA Bar ────────────────────────────────────── */
@@ -2073,32 +2154,38 @@
 
 /* ── Minimal Footer ────────────────────────────────────── */
 .funnel-footer {
-  padding: 40px var(--pad-x);
-  background: #F4F4F0;
-  border-top: 2px solid var(--pink);
+  padding: 48px var(--pad-x);
+  background: #1A1A1A;
+  color: #FFFFFF;
+  border-top: 3px solid var(--pink);
 }
 
 .funnel-footer .container {
   max-width: var(--max-w);
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 32px;
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
 }
 
 .funnel-logo-sm {
   height: 24px;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+  margin: 0 auto;
 }
 
 .funnel-footer-links {
   display: flex;
   gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .funnel-footer-links a {
   font-size: 14px;
-  color: #6B6B66;
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -2109,7 +2196,7 @@
 
 .funnel-footer-copy {
   font-size: 13px;
-  color: #6B6B66;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 /* ── Mobile Responsive ─────────────────────────────────── */
@@ -2364,6 +2451,30 @@
 
   .funnel-disqualifier-description {
     font-size: 15px;
+  }
+
+  /* FAQ Section: Mobile adjustments */
+  .funnel-faq-list {
+    gap: 12px;
+  }
+
+  .funnel-faq-item {
+    padding: 20px;
+  }
+
+  .funnel-faq-item summary {
+    font-size: 16px;
+  }
+
+  .funnel-faq-item summary::after {
+    font-size: 24px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .funnel-faq-item p {
+    font-size: 15px;
+    padding-right: 0;
   }
 }
 
