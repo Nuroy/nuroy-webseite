@@ -1,0 +1,105 @@
+{
+  "rewrites": [
+    {
+      "source": "/dashboard-jetzt",
+      "destination": "/dashboard-jetzt.html"
+    },
+    {
+      "source": "/leistungen/software",
+      "destination": "/leistungen/software.html"
+    },
+    {
+      "source": "/leistungen/datenintegration",
+      "destination": "/leistungen/datenintegration.html"
+    },
+    {
+      "source": "/leistungen/company-ai",
+      "destination": "/leistungen/company-ai.html"
+    },
+    {
+      "source": "/leistungen/ki-agenten",
+      "destination": "/leistungen/ki-agenten.html"
+    },
+    {
+      "source": "/leistungen/ki-integration",
+      "destination": "/leistungen/ki-integration.html"
+    },
+    {
+      "source": "/leistungen/strategy-audit",
+      "destination": "/leistungen/strategy-audit.html"
+    },
+    {
+      "source": "/leistungen/dashboards",
+      "destination": "/leistungen/dashboards.html"
+    },
+    {
+      "source": "/leistungen",
+      "destination": "/leistungen.html"
+    },
+    {
+      "source": "/team",
+      "destination": "/team.html"
+    },
+    {
+      "source": "/kontakt",
+      "destination": "/kontakt.html"
+    },
+    {
+      "source": "/arbeiten",
+      "destination": "/arbeiten.html"
+    },
+    {
+      "source": "/projekte",
+      "destination": "/projekte.html"
+    },
+    {
+      "source": "/danke",
+      "destination": "/danke.html"
+    },
+    {
+      "source": "/impressum",
+      "destination": "/impressum.html"
+    },
+    {
+      "source": "/datenschutz",
+      "destination": "/datenschutz.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*).html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
+      ]
+    }
+  ]
+}
