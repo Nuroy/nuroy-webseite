@@ -2476,6 +2476,27 @@
     font-size: 15px;
     padding-right: 0;
   }
+
+  /* Booking Trust Elements: Stack vertical on mobile */
+  .funnel-booking-trust {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+    max-width: 100%;
+    padding: 0 12px;
+  }
+
+  .funnel-booking-trust-item {
+    justify-content: flex-start;
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .funnel-booking-trust-item::before {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
 }
 
   .funnel-section-headline {
