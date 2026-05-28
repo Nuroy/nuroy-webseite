@@ -1938,6 +1938,8 @@
 /* Responsive - Optimiert für eine Bildschirmhöhe */
 @media (max-width: 768px) {
   .booking-funnel-container {
+    max-width: 95%;
+    width: 95%;
     padding: 20px 16px;
     margin-bottom: 24px;
   }
