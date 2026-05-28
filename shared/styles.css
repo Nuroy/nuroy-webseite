@@ -650,6 +650,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   to { transform: translateX(-50%); }
 }
 
+/* Tablet/Mobile: Kleinerer Nav-Button */
+@media (max-width: 1100px) {
+  .nav-cta {
+    padding: 7px 14px;
+    font-size: 12px;
+  }
+}
+
 /* Mobile: Faster animation, smaller logos */
 @media (max-width: 900px) {
   .client-logos-track {
