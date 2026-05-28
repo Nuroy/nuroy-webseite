@@ -647,10 +647,10 @@
 
 .funnel-trust-track {
   display: flex;
-  gap: 80px; /* Generous spacing for clean look */
+  gap: 64px; /* Tighter spacing for fuller look with 14 logos */
   align-items: center;
   width: max-content;
-  animation: trust-scroll 45s linear infinite;
+  animation: trust-scroll 90s linear infinite; /* Slower animation for 14 logos (was 45s for 2) */
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
@@ -699,8 +699,8 @@
   }
 
   .funnel-trust-track {
-    gap: 64px;
-    animation-duration: 40s;
+    gap: 56px;
+    animation-duration: 75s; /* Adjusted for 14 logos (was 40s) */
   }
 
   .funnel-trust-track img {
@@ -721,8 +721,8 @@
   }
 
   .funnel-trust-track {
-    gap: 56px;
-    animation-duration: 35s;
+    gap: 48px;
+    animation-duration: 60s; /* Adjusted for 14 logos (was 35s) */
   }
 
   .funnel-trust-track img {
