@@ -5,6 +5,10 @@
       "destination": "/dashboard-jetzt.html"
     },
     {
+      "source": "/lp/dashboard",
+      "destination": "/lp/dashboard.html"
+    },
+    {
       "source": "/leistungen/software",
       "destination": "/leistungen/software.html"
     },
