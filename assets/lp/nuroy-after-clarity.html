@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>After: Dashboard-Klarheit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f6f4ee;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Schibsted Grotesk',sans-serif;overflow:hidden}
+.frame{width:100%;max-width:620px;aspect-ratio:4/3;container-type:size;container-name:c}
+.scene{width:100%;height:100%;background:#fff;border-radius:3cqw;box-shadow:0 2cqw 8cqw rgba(0,0,0,.08);position:relative;overflow:hidden;padding:6cqw}
+.title{position:absolute;top:5cqw;left:50%;transform:translateX(-50%);font-family:'Bricolage Grotesque',sans-serif;font-size:4cqw;font-weight:800;color:#1a1a22;letter-spacing:-.02em;text-align:center;white-space:nowrap}
+.sources{position:absolute;top:16cqw;left:50%;transform:translateX(-50%);display:flex;gap:2cqw;align-items:center}
+.source-chip{background:#fff;border:0.25cqw solid #1aa06d;border-radius:1.5cqw;padding:1.2cqw 2.5cqw;font-size:1.6cqw;font-weight:600;color:#1a1a22;display:flex;align-items:center;gap:1cqw;font-family:'IBM Plex Mono',monospace;box-shadow:0 0.5cqw 2cqw rgba(26,160,109,.1)}
+.dot{width:1cqw;height:1cqw;background:#1aa06d;border-radius:50%;animation:pop 1.5s ease-in-out infinite}
+.central-card{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border:0.4cqw solid #1aa06d;border-radius:3cqw;padding:4cqw 6cqw;box-shadow:0 2cqw 8cqw rgba(26,160,109,.15);text-align:center;min-width:40cqw}
+.central-card .label{font-size:1.8cqw;color:#1aa06d;margin-bottom:1.5cqw;font-family:'IBM Plex Mono',monospace;letter-spacing:.05em;font-weight:600}
+.central-card .value{font-size:6cqw;font-weight:800;font-family:'Bricolage Grotesque',sans-serif;color:#1a1a22;line-height:1.1}
+.central-card .sublabel{font-size:1.4cqw;color:#666;margin-top:1cqw;font-style:italic}
+.sparkline{margin-top:2.5cqw;width:100%;height:8cqw}
+.badge{position:absolute;bottom:8cqw;left:50%;transform:translateX(-50%);background:#fff;border:0.25cqw solid #2bd4a8;border-radius:2cqw;padding:2cqw 4cqw;font-family:'IBM Plex Mono',monospace;font-size:1.6cqw;color:#1a1a22;box-shadow:0 1cqw 3cqw rgba(43,212,168,.12);display:flex;align-items:center;gap:1.5cqw}
+.badge .check{color:#1aa06d;font-size:2cqw;font-weight:800}
+@keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+@keyframes flow{0%{offset-distance:0%}100%{offset-distance:100%}}
+.particle{width:0.8cqw;height:0.8cqw;background:#1aa06d;border-radius:50%;position:absolute;opacity:0.6;animation:flow 2.5s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="frame">
+<div class="scene">
+<div class="title">Reporting mit Nuroy-Dashboard</div>
+<div class="sources">
+<div class="source-chip"><span class="dot"></span>Excel</div>
+<div class="source-chip"><span class="dot"></span>HubSpot</div>
+<div class="source-chip"><span class="dot"></span>Close</div>
+<div class="source-chip"><span class="dot"></span>DATEV</div>
+<div class="source-chip"><span class="dot"></span>Stripe</div>
+</div>
+<svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path id="p1" d="M 20,80 Q 35,200 240,240" fill="none"/>
+<path id="p2" d="M 180,80 Q 200,150 240,240" fill="none"/>
+<path id="p3" d="M 310,80 Q 310,150 250,240" fill="none"/>
+<path id="p4" d="M 440,80 Q 400,150 260,240" fill="none"/>
+<path id="p5" d="M 580,80 Q 500,200 270,240" fill="none"/>
+</defs>
+<circle r="0.8cqw" fill="#1aa06d" opacity="0.6"><animateMotion dur="2.2s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion></circle>
+<circle r="0.8cqw" fill="#1aa06d" opacity="0.6"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion></circle>
+<circle r="0.8cqw" fill="#1aa06d" opacity="0.6"><animateMotion dur="2.6s" repeatCount="indefinite"><mpath href="#p3"/></animateMotion></circle>
+<circle r="0.8cqw" fill="#1aa06d" opacity="0.6"><animateMotion dur="2.5s" repeatCount="indefinite"><mpath href="#p4"/></animateMotion></circle>
+<circle r="0.8cqw" fill="#1aa06d" opacity="0.6"><animateMotion dur="2.8s" repeatCount="indefinite"><mpath href="#p5"/></animateMotion></circle>
+</svg>
+<div class="central-card">
+<div class="label">Eine Wahrheit</div>
+<div class="value" id="mainValue">€0</div>
+<div class="sublabel">Umsatz YTD</div>
+<svg class="sparkline" viewBox="0 0 100 30" preserveAspectRatio="none">
+<polyline id="spark" points="0,28 10,26 20,24 30,23 40,20 50,18 55,15 60,14 70,12 80,9 90,6 100,4" fill="none" stroke="#1aa06d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke-dasharray:200;stroke-dashoffset:200;animation:draw 1.6s ease-out forwards"/>
+</svg>
+</div>
+<div class="badge">
+<span class="check">✓</span>
+<span>Reporting-Zeit: ~10 Min. statt 1 Tag</span>
+</div>
+</div>
+</div>
+<script>
+const target=142300;
+const duration=2400;
+const start=Date.now();
+function count(){
+const now=Date.now();
+const elapsed=now-start;
+const progress=Math.min(elapsed/duration,1);
+const easeOut=1-Math.pow(1-progress,3);
+const current=Math.floor(easeOut*target);
+document.getElementById('mainValue').textContent='€'+current.toLocaleString('de-DE');
+if(progress<1)requestAnimationFrame(count);
+}
+count();
+const spark=document.getElementById('spark');
+const wave=()=>{
+const points=spark.getAttribute('points').split(' ').map(p=>{
+const[x,y]=p.split(',').map(Number);
+return[x,y+Math.sin(Date.now()/500+x/10)*0.3];
+});
+spark.setAttribute('points',points.map(p=>p.join(',')).join(' '));
+requestAnimationFrame(wave);
+};
+setTimeout(()=>{
+if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches)wave();
+},1600);
+</script>
+<style>
+@keyframes draw{to{stroke-dashoffset:0}}
+</style>
+</body>
+</html>

@@ -620,8 +620,8 @@
   inset: 0;
   background: linear-gradient(90deg,
     rgba(18, 18, 22, 1) 0%,
-    transparent 15%,
-    transparent 85%,
+    transparent 20%,
+    transparent 80%,
     rgba(18, 18, 22, 1) 100%
   );
   pointer-events: none;
@@ -645,27 +645,37 @@
   z-index: 1;
 }
 
+/* Gap between two rows */
+.funnel-trust-carousel + .funnel-trust-carousel {
+  margin-top: 16px;
+}
+
 .funnel-trust-track {
   display: flex;
-  gap: 64px; /* Tighter spacing for fuller look with 19 logos */
+  gap: 80px; /* Increased gap for better spacing */
   align-items: center;
   width: max-content;
-  animation: trust-scroll 110s linear infinite; /* Slower animation for 19 logos */
+  animation: trust-scroll 100s linear infinite; /* Slower for better visibility */
   will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
+/* Reverse animation for second row */
+.funnel-trust-track-reverse {
+  animation: trust-scroll-reverse 100s linear infinite;
+}
+
 .funnel-trust-track:hover {
   animation-play-state: paused;
 }
 
-/* CRITICAL FIX: Inverted white logos */
+/* CRITICAL FIX: Inverted white logos - INCREASED SIZE for better visibility */
 .funnel-trust-track img {
-  height: 48px;
+  height: 42px; /* Increased from 32px for better presence */
   width: auto;
-  max-width: 180px;
+  max-width: 200px;
   object-fit: contain;
   flex-shrink: 0;
 
@@ -692,19 +702,32 @@
   100% { transform: translateX(-50%); }
 }
 
+@keyframes trust-scroll-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
 /* ─ Tablet Responsive (601px - 900px) ───────────────────── */
 @media (min-width: 601px) and (max-width: 900px) {
   .funnel-trust-bar {
     padding: 48px var(--pad-x);
   }
 
+  .funnel-trust-carousel + .funnel-trust-carousel {
+    margin-top: 14px;
+  }
+
   .funnel-trust-track {
-    gap: 56px;
-    animation-duration: 90s; /* Adjusted for 19 logos */
+    gap: 64px;
+    animation-duration: 85s;
+  }
+
+  .funnel-trust-track-reverse {
+    animation-duration: 85s;
   }
 
   .funnel-trust-track img {
-    height: 44px;
+    height: 36px;
     max-width: 170px;
   }
 }
@@ -720,14 +743,22 @@
     margin-bottom: 32px;
   }
 
+  .funnel-trust-carousel + .funnel-trust-carousel {
+    margin-top: 12px;
+  }
+
   .funnel-trust-track {
     gap: 48px;
-    animation-duration: 75s; /* Adjusted for 19 logos */
+    animation-duration: 70s;
+  }
+
+  .funnel-trust-track-reverse {
+    animation-duration: 70s;
   }
 
   .funnel-trust-track img {
-    height: 40px;
-    max-width: 150px;
+    height: 30px;
+    max-width: 140px;
   }
 }
 
@@ -736,7 +767,11 @@
   .funnel-trust-track {
     animation: none !important;
     justify-content: center;
-    gap: 64px;
+    gap: 56px;
+  }
+
+  .funnel-trust-track-reverse {
+    animation: none !important;
   }
 }
 
