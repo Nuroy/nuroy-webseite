@@ -368,7 +368,7 @@
       <div style="text-align: center;">
         <!-- Geteilte Headline -->
         <h1 style="font-family: var(--font-display); font-size: clamp(48px, 6vw, 72px); line-height: 1.05; margin-bottom: 32px; font-weight: 900; color: #1a1a1a; letter-spacing: -0.02em;">
-          Vor lauter Software den Überblick über deine Zahlen verloren?
+          Vor lauter Software den <span style="color: var(--pink);">Überblick</span> über deine Zahlen <span style="color: var(--pink);">verloren</span>?
         </h1>
 
         <!-- Subline -->
@@ -495,6 +495,11 @@
 </section>
 
 <style>
+/* Trust-Bar Überschrift immer in Pink */
+#trust .funnel-trust-text {
+  color: var(--pink) !important;
+}
+
 /* Mobile Optimierung für Trust-Bar Sektion */
 @media (max-width: 768px) {
   #trust {
