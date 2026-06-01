@@ -501,14 +501,9 @@
     padding: 40px 0 !important;
   }
 
-  /* Gradient auf Mobile entfernen für bessere Sichtbarkeit */
+  /* Gradient auf Mobile komplett entfernen */
   #trust.funnel-trust-bar::before {
-    background: linear-gradient(90deg,
-      rgba(18, 18, 22, 1) 0%,
-      transparent 8%,
-      transparent 92%,
-      rgba(18, 18, 22, 1) 100%
-    ) !important;
+    display: none !important;
   }
 
   .funnel-trust-text {
@@ -522,13 +517,14 @@
   }
 
   .funnel-trust-track {
-    gap: 40px !important;
+    gap: 50px !important;
   }
 
   .funnel-trust-track img {
-    max-height: 36px !important;
+    max-height: 40px !important;
     margin: 0 !important;
-    opacity: 0.9 !important;
+    opacity: 1 !important;
+    filter: brightness(1.1) !important;
   }
 
   #trust .container p {
@@ -543,14 +539,9 @@
     padding: 32px 0 !important;
   }
 
-  /* Gradient auf kleinen Mobiles fast komplett entfernen */
+  /* Gradient auch auf kleinen Mobiles komplett weg */
   #trust.funnel-trust-bar::before {
-    background: linear-gradient(90deg,
-      rgba(18, 18, 22, 1) 0%,
-      transparent 5%,
-      transparent 95%,
-      rgba(18, 18, 22, 1) 100%
-    ) !important;
+    display: none !important;
   }
 
   .funnel-trust-text {
@@ -559,12 +550,13 @@
   }
 
   .funnel-trust-track {
-    gap: 32px !important;
+    gap: 40px !important;
   }
 
   .funnel-trust-track img {
-    max-height: 32px !important;
+    max-height: 38px !important;
     opacity: 1 !important;
+    filter: brightness(1.1) !important;
   }
 
   #trust .container {
