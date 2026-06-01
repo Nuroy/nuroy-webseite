@@ -499,17 +499,24 @@
 @media (max-width: 768px) {
   #trust {
     padding: 40px 0 !important;
+    background: #0a0a0c !important;
   }
 
-  /* Gradient auf Mobile komplett entfernen */
+  /* Gradient auf Mobile mit dunklem Hintergrund */
   #trust.funnel-trust-bar::before {
-    display: none !important;
+    background: linear-gradient(90deg,
+      rgba(10, 10, 12, 1) 0%,
+      transparent 10%,
+      transparent 90%,
+      rgba(10, 10, 12, 1) 100%
+    ) !important;
   }
 
   .funnel-trust-text {
     font-size: 14px !important;
     margin-bottom: 28px !important;
     padding: 0 20px;
+    color: #F5F2EC !important;
   }
 
   .funnel-trust-carousel {
@@ -523,30 +530,38 @@
   .funnel-trust-track img {
     max-height: 40px !important;
     margin: 0 !important;
-    opacity: 1 !important;
-    filter: brightness(1.1) !important;
+    opacity: 0.9 !important;
+    filter: brightness(0) invert(1) !important;
   }
 
   #trust .container p {
     font-size: 10px !important;
     padding: 0 20px;
     line-height: 1.6;
+    color: #9A968C !important;
   }
 }
 
 @media (max-width: 480px) {
   #trust {
     padding: 32px 0 !important;
+    background: #0a0a0c !important;
   }
 
-  /* Gradient auch auf kleinen Mobiles komplett weg */
+  /* Gradient mit dunklem Hintergrund */
   #trust.funnel-trust-bar::before {
-    display: none !important;
+    background: linear-gradient(90deg,
+      rgba(10, 10, 12, 1) 0%,
+      transparent 8%,
+      transparent 92%,
+      rgba(10, 10, 12, 1) 100%
+    ) !important;
   }
 
   .funnel-trust-text {
     font-size: 13px !important;
     margin-bottom: 24px !important;
+    color: #F5F2EC !important;
   }
 
   .funnel-trust-track {
@@ -555,8 +570,8 @@
 
   .funnel-trust-track img {
     max-height: 38px !important;
-    opacity: 1 !important;
-    filter: brightness(1.1) !important;
+    opacity: 0.9 !important;
+    filter: brightness(0) invert(1) !important;
   }
 
   #trust .container {
@@ -566,6 +581,7 @@
   #trust .container p {
     font-size: 9px !important;
     letter-spacing: 0.06em !important;
+    color: #9A968C !important;
   }
 }
 </style>
