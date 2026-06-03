@@ -43,7 +43,7 @@ window.NUROY_CONFIG = {
    * Die numerische Pixel-ID (15-stellig)
    * Zu finden im Meta Business Manager unter Events Manager
    */
-  META_PIXEL_ID: '1012481877892496',
+  META_PIXEL_ID: '1324978372925476',
 
   /**
    * Welches Event soll auf der Danke-Seite gefeuert werden?
