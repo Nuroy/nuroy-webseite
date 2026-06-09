@@ -108,6 +108,16 @@ window.NUROY_CONFIG = {
    */
   LEADS_EMAIL: 'leads@nuroy.de',
 
+  // ─────────────────────────────────────────────────────────────
+  // ANALYTICS
+  // ─────────────────────────────────────────────────────────────
+
+  /**
+   * Endpoint für anonyme Funnel-Analytics
+   * Vercel Serverless Function, die Daten an Google Sheets weiterleitet
+   */
+  ANALYTICS_ENDPOINT: '/api/track',
+
   /**
    * Webhook-URL für unqualifizierte Leads
    * Diese Leads haben den Qualifizierungs-Flow nicht bestanden
