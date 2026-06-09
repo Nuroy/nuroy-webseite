@@ -400,13 +400,19 @@ function initContactForm() {
 
     // Config-Prüfung
     const config = window.NUROY_CONFIG;
-    if (!config || config.FORM_SERVICE_ENDPOINT.includes('PLACEHOLDER')) {
+    if (!config || !config.FORM_SERVICE_ENDPOINT || config.FORM_SERVICE_ENDPOINT.includes('PLACEHOLDER')) {
       console.error('❌ Form-Service-Endpoint nicht konfiguriert');
       alert('Formular noch nicht konfiguriert. Bitte später erneut versuchen.');
       submitBtn.disabled = false;
       submitBtn.textContent = originalBtnText;
       return;
     }
+
+    // Web3Forms Access Key hinzufügen
+    if (config.WEB3FORMS_ACCESS_KEY) {
+      formData.append('access_key', config.WEB3FORMS_ACCESS_KEY);
+    }
+    formData.append('subject', 'Funnel Lead (Soft-No)');
 
     try {
       // Form-Daten an Service senden

@@ -95,7 +95,12 @@ window.NUROY_CONFIG = {
    * - Web3Forms: https://api.web3forms.com/submit
    * - FormSubmit: https://formsubmit.co/YOUR_EMAIL
    */
-  FORM_SERVICE_ENDPOINT: 'WEBHOOK_URL_PLACEHOLDER', // TODO: Morgen vom Marketing-Team
+  FORM_SERVICE_ENDPOINT: 'https://api.web3forms.com/submit',
+
+  /**
+   * Web3Forms Access Key (gleicher Key wie kontakt.html)
+   */
+  WEB3FORMS_ACCESS_KEY: '74d2105c-8e01-4666-8eb4-f48b370b4caa',
 
   /**
    * Interne E-Mail-Adresse für Soft-No-Leads
