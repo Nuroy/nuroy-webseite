@@ -42,7 +42,7 @@
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=1012481877892496&ev=PageView&noscript=1" />
+         src="https://www.facebook.com/tr?id=1324978372925476&ev=PageView&noscript=1" />
   </noscript>
 
   <style>
@@ -656,7 +656,13 @@
         currency: 'EUR'
       });
 
-      console.log(`✅ Meta Pixel Event gefeuert: ${eventName}`);
+      // Lead-Event — nur hier, nur für qualifizierte Leads mit Buchung
+      fbq('track', 'Lead', {
+        content_name: 'Qualified Booking',
+        content_category: 'calendly_booked'
+      });
+
+      console.log(`✅ Meta Pixel Events gefeuert: ${eventName} + Lead`);
     } else {
       console.warn('⚠️  Meta Pixel nicht geladen oder nicht konfiguriert');
     }
