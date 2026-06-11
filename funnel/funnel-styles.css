@@ -2250,9 +2250,8 @@
   }
 
   .funnel-hero {
-    /* KORRIGIERT: Hero-Höhe auch auf Mobile angepasst */
-    min-height: 50rem; /* 800px auf Mobile — kleiner aber immer noch groß genug */
-    padding: 100px var(--pad-x) 48px;  /* Bottom-Padding reduziert */
+    min-height: auto;
+    padding: 100px var(--pad-x) 32px;
   }
 
   .funnel-hero-trust {

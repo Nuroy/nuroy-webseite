@@ -121,12 +121,19 @@
     });
   }
 
-  // ── VSL-Tracking ──────────────────────────────────────────
-  // lite-youtube-embed feuert dieses Event
+  // ── VSL-Tracking (Wistia) ──────────────────────────────────
+  // Wistia API: erkennt play (inkl. autoplay)
+  window._wq = window._wq || [];
+  window._wq.push({ id: '_all', onReady: function(video) {
+    video.bind('play', function() {
+      vslPlayed = true;
+    });
+  }});
+
+  // Fallback: lite-youtube (falls auf anderen Seiten verwendet)
   window.addEventListener('liteYouTubeIframeLoaded', function () {
     vslPlayed = true;
   });
-  // Fallback: lite-youtube click
   document.addEventListener('click', function (e) {
     if (e.target && e.target.closest && e.target.closest('lite-youtube')) {
       vslPlayed = true;
