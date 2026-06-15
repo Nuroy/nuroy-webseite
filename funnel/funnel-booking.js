@@ -175,6 +175,17 @@ function showCalendly() {
       event: EVENTS.CALENDLY_SHOWN
     });
   }
+
+  // Meta Pixel: Lead-Event beim Erreichen der Buchungsansicht (qualifiziert).
+  // Nur einmal pro Seitenaufruf feuern (Schedule folgt erst nach echter Buchung auf danke.html).
+  if (typeof fbq === 'function' && !window._nuroyLeadFired) {
+    window._nuroyLeadFired = true;
+    fbq('track', 'Lead', {
+      content_name: 'Qualified Booking View',
+      content_category: 'calendly_shown'
+    });
+    console.log('✅ Meta Pixel Event gefeuert: Lead (Buchungsansicht)');
+  }
 }
 
 /**

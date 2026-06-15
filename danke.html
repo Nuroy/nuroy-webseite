@@ -656,13 +656,11 @@
         currency: 'EUR'
       });
 
-      // Lead-Event — nur hier, nur für qualifizierte Leads mit Buchung
-      fbq('track', 'Lead', {
-        content_name: 'Qualified Booking',
-        content_category: 'calendly_booked'
-      });
+      // Hinweis: Das Lead-Event feuert bereits beim Erreichen der Buchungsansicht
+      // (showCalendly in funnel-booking.js) — hier auf der Danke-Seite nur noch Schedule,
+      // um Doppelzählung zu vermeiden.
 
-      console.log(`✅ Meta Pixel Events gefeuert: ${eventName} + Lead`);
+      console.log(`✅ Meta Pixel Event gefeuert: ${eventName}`);
     } else {
       console.warn('⚠️  Meta Pixel nicht geladen oder nicht konfiguriert');
     }
