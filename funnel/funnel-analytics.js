@@ -225,8 +225,12 @@
 
     var sectionKeys = Object.keys(sectionsSet);
 
+    var email = '';
+    try { email = sessionStorage.getItem('nuroy_email') || ''; } catch (e) { /* ignore */ }
+
     return {
       session_id: sessionId,
+      email: email,
       page: window.location.pathname,
       device: detectDevice(),
       browser: detectBrowser(),

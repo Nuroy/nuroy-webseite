@@ -1367,25 +1367,27 @@
 <section class="funnel-booking" id="booking">
   <div class="container">
     <h1 class="funnel-booking-headline">Bereit, das zu bauen?</h1>
-    <p class="funnel-booking-subtext">Zwei kurze Fragen, dann geht's los.</p>
+    <p class="funnel-booking-subtext">Ihre E-Mail, eine kurze Frage — dann geht's los.</p>
 
     <!-- Qualifizierungs-Flow Container (1:1 aus dashboard-jetzt.html) -->
     <div class="qualification-container" id="qualification-container">
 
-      <!-- Frage 1: Interesse -->
+      <!-- Schritt 1: E-Mail -->
       <div class="qualification-step active" id="qualification-step-1">
         <div class="qualification-progress">Schritt 1 von 2</div>
-        <div class="qualification-eyebrow">Damit wir gleich konkret werden können —</div>
-        <h2 class="qualification-headline">Ich habe Interesse mehr zu erfahren, wie ich alle meine Daten im Überblick habe.</h2>
-        <p class="qualification-subtext">Nur wenn Sie wirklich Interesse haben, geht's weiter zur Terminbuchung.</p>
+        <div class="qualification-eyebrow">Damit wir Ihnen direkt etwas mitgeben können —</div>
+        <h2 class="qualification-headline">Wohin dürfen wir Ihre Dashboard-Insights schicken?</h2>
+        <p class="qualification-subtext">Tragen Sie Ihre E-Mail ein — wir unterstützen Sie vorab mit konkreten Informationen zu Ihrem Setup. Danach geht's direkt zur Terminbuchung.</p>
 
         <div class="qualification-options">
-          <button class="qualification-option" onclick="selectInterest('yes')">
-            Ja
-          </button>
-          <button class="qualification-option" onclick="selectInterest('no')">
-            Nein
-          </button>
+          <div class="form-field">
+            <input class="form-input" type="email" id="qualification-email" name="email"
+                   placeholder="ihre@email.de" required autocomplete="email" inputmode="email"
+                   onkeydown="if(event.key==='Enter'){event.preventDefault();submitEmail();}">
+            <p class="qualification-email-error" id="qualification-email-error"
+               style="display:none;color:#E02569;font-size:14px;margin:6px 0 0;">Bitte geben Sie eine gültige E-Mail-Adresse ein.</p>
+          </div>
+          <button class="form-submit" type="button" onclick="submitEmail()">Weiter →</button>
         </div>
       </div>
 
@@ -1514,7 +1516,7 @@
 <!-- ══════════════════════════════════════════════════════════ -->
 
 <!-- Booking Funnel & Qualification Flow (1:1 aus dashboard-jetzt.html) -->
-<script src="../funnel/funnel-booking.min.js?v=1.1" defer></script>
+<script src="../funnel/funnel-booking.min.js?v=1.2" defer></script>
 
 <!-- Funnel Scripts (Trust-Bar-Animation, etc.) -->
 <script src="../funnel/funnel-scripts.min.js" defer></script>
@@ -1529,7 +1531,7 @@
 <script src="dashboard-roi-counter.min.js?v=1.1" defer></script>
 
 <!-- Funnel Analytics -->
-<script src="../funnel/funnel-analytics.min.js?v=1.1" defer></script>
+<script src="../funnel/funnel-analytics.min.js?v=1.2" defer></script>
 
 </body>
 </html>

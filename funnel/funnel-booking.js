@@ -17,6 +17,7 @@
 // ═══════════════════════════════════════════════════════════════
 
 const STORAGE_KEYS = {
+  EMAIL: 'nuroy_email',
   TOOLS_COUNT: 'nuroy_tools_count',
   REVENUE_RANGE: 'nuroy_revenue_range',
   BOOKING_CONFIRMED: 'nuroy_booking_confirmed',
@@ -87,6 +88,43 @@ function showStep(stepNumber) {
 
     // KEIN Scroll - bleibt an gleicher Stelle für smoother Übergang
   }
+}
+
+/**
+ * Schritt 1: E-Mail erfassen, Lead-Event feuern, weiter zu Frage 2
+ */
+function submitEmail() {
+  const input = document.getElementById('qualification-email');
+  const errorEl = document.getElementById('qualification-email-error');
+  const email = (input && input.value ? input.value : '').trim();
+
+  // Validierung
+  const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (!valid) {
+    if (errorEl) errorEl.style.display = 'block';
+    if (input) input.focus();
+    return;
+  }
+  if (errorEl) errorEl.style.display = 'none';
+
+  saveAnswer(STORAGE_KEYS.EMAIL, email);
+
+  // Meta Pixel: Lead-Event beim Absenden der E-Mail (einmal pro Seitenaufruf).
+  if (typeof fbq === 'function' && !window._nuroyLeadFired) {
+    window._nuroyLeadFired = true;
+    fbq('track', 'Lead', {
+      content_name: 'Email Submitted',
+      content_category: 'funnel_email'
+    });
+    console.log('✅ Meta Pixel Event gefeuert: Lead (E-Mail abgesendet)');
+  }
+
+  // dataLayer-Push (GTM)
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: 'email_submitted' });
+
+  // Weiter zu Frage 2 (Umsatz)
+  showStep(2);
 }
 
 /**
@@ -169,22 +207,11 @@ function showCalendly() {
 
   }, 400); // Warte auf Fade-out
 
-  // Track event
+  // Track event (Lead-Event feuert bereits beim E-Mail-Schritt, siehe submitEmail)
   if (typeof window.dataLayer !== 'undefined') {
     window.dataLayer.push({
       event: EVENTS.CALENDLY_SHOWN
     });
-  }
-
-  // Meta Pixel: Lead-Event beim Erreichen der Buchungsansicht (qualifiziert).
-  // Nur einmal pro Seitenaufruf feuern (Schedule folgt erst nach echter Buchung auf danke.html).
-  if (typeof fbq === 'function' && !window._nuroyLeadFired) {
-    window._nuroyLeadFired = true;
-    fbq('track', 'Lead', {
-      content_name: 'Qualified Booking View',
-      content_category: 'calendly_shown'
-    });
-    console.log('✅ Meta Pixel Event gefeuert: Lead (Buchungsansicht)');
   }
 }
 
@@ -312,6 +339,7 @@ function initCalendly() {
     url: config.CALENDLY_URL,
     parentElement: document.getElementById('calendly-embed'),
     prefill: {
+      email: getAnswer(STORAGE_KEYS.EMAIL) || undefined,
       customAnswers: {
         // TODO: Diese Keys müssen mit den tatsächlichen Calendly Question-IDs matchen
         // Sobald Calendly-Account konfiguriert ist, hier die echten IDs eintragen
