@@ -55,6 +55,9 @@
       border-radius: 12px;
       background: rgba(255, 45, 122, 0.02);
       overflow: hidden;
+      /* Perf: render/animate iframes only near viewport (no visual change when visible) */
+      content-visibility: auto;
+      contain-intrinsic-size: auto 480px;
     }
     .asset-slot img {
       display: block;
@@ -396,7 +399,7 @@
 
       <!-- RECHTE SPALTE: Dashboard Visual (ANIMATED) -->
       <div>
-        <div style="aspect-ratio: 1/1; max-width: 600px; margin: 0 auto; border: 2px dashed rgba(255, 45, 122, 0.3); border-radius: 18px; overflow: hidden; background: #0a0a0f;">
+        <div style="aspect-ratio: 1/1; max-width: 600px; margin: 0 auto; border: 2px dashed rgba(255, 45, 122, 0.3); border-radius: 18px; overflow: hidden; background: #0a0a0f; content-visibility: auto; contain-intrinsic-size: auto 600px;">
           <iframe src="../assets/lp/nuroy-dashboard-mockup.html"
                   title="Nuroy Custom Dashboard — Live Demo"
                   width="600"
