@@ -1,25 +1,27 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard-Lösung — Alle Daten im Überblick | Nuroy</title>
+  <title>Custom Dashboard — All Your Data at a Glance | Nuroy</title>
 
-  <!-- SEO: NOINDEX (Funnel-Seite nur über Ads) -->
+  <!-- SEO: NOINDEX (ad-only funnel page) -->
   <meta name="robots" content="noindex, nofollow, noarchive">
 
   <!-- Meta Description -->
-  <meta name="description" content="Custom Dashboard für Unternehmen ab 100k € Jahresumsatz. Alle Tools, eine Oberfläche, Echtzeit-KPIs. Kostenloses Erstgespräch buchen.">
+  <meta name="description" content="Custom dashboard for companies from €100k+ annual revenue. All your tools, one interface, real-time KPIs. German company, exclusively German developers. Book a free 60-minute strategy call on Google Meet.">
 
   <!-- Facebook Domain Verification -->
   <meta name="facebook-domain-verification" content="685dxfgmj3yn96tljrpdoyqb4mtl2c" />
 
-  <!-- OG Tags (für Social-Sharing aus Ads) -->
-  <meta property="og:title" content="Custom Dashboard — Alle Daten im Überblick">
-  <meta property="og:description" content="Schluss mit Excel-Chaos und Tool-Hopping. Kostenloses Erstgespräch buchen.">
+  <!-- OG Tags (for social sharing from ads) -->
+  <meta property="og:title" content="Custom Dashboard — All Your Data at a Glance">
+  <meta property="og:description" content="No more Excel chaos and tool hopping. German company, exclusively German developers. Book a free 60-minute strategy call on Google Meet.">
   <meta property="og:image" content="https://nuroy.de/assets/lp/og-image.webp">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://nuroy.de/lp/dashboard.html">
+  <meta property="og:url" content="https://nuroy.de/lp/dashboard-en.html">
+  <link rel="alternate" hreflang="de" href="https://nuroy.de/lp/dashboard.html">
+  <link rel="alternate" hreflang="en" href="https://nuroy.de/lp/dashboard-en.html">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../assets/favicon.png">
@@ -317,6 +319,12 @@
 
   <!-- Funnel Config (MUST load before tracking scripts) -->
   <script src="../config/funnel-config.js"></script>
+  <script>
+    // English funnel: separate Calendly link (60-min strategy call on Google Meet)
+    if (window.NUROY_CONFIG) {
+      window.NUROY_CONFIG.CALENDLY_URL = 'https://calendly.com/termin-nuroy/nuroy-free-dashboard-strategy-call?hide_gdpr_banner=1';
+    }
+  </script>
 
   <!-- Tracking: Meta Pixel (1:1 from dashboard-jetzt.html) -->
   <script>
@@ -353,7 +361,7 @@
 <header class="funnel-header">
   <div class="container">
     <img src="../assets/logo-full.png" alt="Nuroy" class="funnel-logo">
-    <a href="#booking" class="btn btn-primary">Kostenloses Erstgespräch</a>
+    <a href="#booking" class="btn btn-primary">Book your free strategy call</a>
   </div>
 </header>
 
@@ -368,36 +376,36 @@
       <div style="text-align: center;">
         <!-- Geteilte Headline -->
         <h1 style="font-family: var(--font-display); font-size: clamp(48px, 6vw, 72px); line-height: 1.05; margin-bottom: 32px; font-weight: 900; color: #1a1a1a; letter-spacing: -0.02em;">
-          Vor lauter Software den <span style="color: var(--pink);">Überblick</span> über deine Zahlen <span style="color: var(--pink);">verloren</span>?
+          Too much software and you've <span style="color: var(--pink);">lost track</span> of your <span style="color: var(--pink);">numbers</span>?
         </h1>
 
         <!-- Subline -->
         <p style="font-size: 18px; line-height: 1.65; margin-bottom: 56px; color: var(--fg-muted);">
-          Schluss mit widersprüchlichen Zahlen und veralteten Reports. Ihr Custom Dashboard bringt alle Tools in eine Echtzeit-Oberfläche gebaut für Ihre Workflows.
+          Put an end to conflicting numbers and outdated reports. Your custom dashboard brings all your tools into one real-time interface — built for your workflows.
         </p>
 
         <!-- CTA mit Zeitangabe -->
         <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 32px;">
-          <a href="#booking" class="btn btn-primary btn-lg" style="font-size: 16px; padding: 18px 32px;">Kostenloses Erstgespräch →</a>
+          <a href="#booking" class="btn btn-primary btn-lg" style="font-size: 16px; padding: 18px 32px;">Book your free strategy call →</a>
           <span style="display: flex; align-items: center; gap: 8px; font-family: var(--font-sans); font-size: 13px; color: var(--fg-dim);">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="16" height="16">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
-            Antwort innerhalb von 24h
+            Free 60-min strategy call · on Google Meet
           </span>
         </div>
 
         <!-- Social Proof Line -->
         <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
           <span style="width: 8px; height: 8px; background: var(--ok); border-radius: 50%; animation: pulse 2s ease-in-out infinite;"></span>
-          <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-dim);">Vertrauen von 50+ Unternehmen</span>
+          <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-dim);">German company · exclusively German developers · GDPR-compliant</span>
         </div>
       </div>
 
       <!-- RECHTE SPALTE: Dashboard Visual (ANIMATED) -->
       <div>
         <div style="aspect-ratio: 1/1; max-width: 600px; margin: 0 auto; border: 2px dashed rgba(255, 45, 122, 0.3); border-radius: 18px; overflow: hidden; background: #0a0a0f;">
-          <iframe src="../assets/lp/nuroy-dashboard-mockup.html"
+          <iframe src="../assets/lp/nuroy-dashboard-mockup-en.html"
                   title="Nuroy Custom Dashboard — Live Demo"
                   width="600"
                   height="600"
@@ -430,7 +438,7 @@
 
 <!-- Logo-Marquee (Teil des Hero-Clusters) -->
 <section class="funnel-trust-bar" id="trust" style="padding: 60px 0; background: var(--bg-1);"
-  <div class="funnel-trust-text" style="color: #FF2D7A !important;">Vertrauen von Unternehmen wie:</div>
+  <div class="funnel-trust-text" style="color: #FF2D7A !important;">Trusted by companies like:</div>
 
   <!-- Zeile 1: Rechts nach Links -->
   <div class="funnel-trust-carousel">
@@ -490,7 +498,7 @@
 
   <!-- DSGVO-Trust-Zeile (Teil des Hero-Clusters) -->
   <div class="container" style="text-align: center; margin-top: 40px;">
-    <p style="font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); letter-spacing: 0.08em;">DSGVO-KONFORM · HOSTING IN DEUTSCHLAND</p>
+    <p style="font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); letter-spacing: 0.08em;">GDPR-COMPLIANT · GERMAN ENGINEERING TEAM · HOSTED WHEREVER YOU NEED — EU, US OR YOUR OWN CLOUD</p>
   </div>
 </section>
 
@@ -596,10 +604,10 @@
 <!-- ══════════════════════════════════════════════════════════ -->
 <section class="funnel-section funnel-problem" id="problem">
   <div class="container">
-    <h2 class="funnel-section-headline">Wenn Ihr Reporting so aussieht …</h2>
+    <h2 class="funnel-section-headline">When your reporting looks like this …</h2>
 
     <!-- Einleitungssatz (neu, empathisch) -->
-    <p style="text-align: center; max-width: 700px; margin: 0 auto 40px; font-size: 18px; color: var(--fg-muted);">Kennen Sie das? Sie wollen einfach nur wissen, wie Ihr Unternehmen läuft — aber stattdessen …</p>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 40px; font-size: 18px; color: var(--fg-muted);">Sound familiar? You just want to know how your business is doing — but instead …</p>
 
     <div class="funnel-problem-cards" id="problem-cards">
       <div class="funnel-problem-card">
@@ -614,8 +622,8 @@
             <path d="M56 21 L64 29 M64 21 L56 29" stroke="white" stroke-width="3" stroke-linecap="round"/>
           </svg>
         </div>
-        <h3>Excel-Tabellen, die keiner pflegt</h3>
-        <p>Montagmorgen: Sie öffnen die Reporting-Datei. Letzte Aktualisierung: vor 3 Wochen.</p>
+        <h3>Spreadsheets nobody maintains</h3>
+        <p>Monday morning: you open the reporting file. Last updated: 3 weeks ago.</p>
       </div>
 
       <div class="funnel-problem-card">
@@ -628,8 +636,8 @@
             <text x="40" y="40" font-size="32" fill="#ff2d7a" font-weight="bold" text-anchor="middle" font-family="Arial">?</text>
           </svg>
         </div>
-        <h3>5 Tools, 5 Wahrheiten</h3>
-        <p>Im Meeting fragt jemand nach der aktuellen Conversion-Rate. Sie sagen: "Ich schau nach und melde mich."</p>
+        <h3>5 tools, 5 versions of the truth</h3>
+        <p>In a meeting someone asks for the current conversion rate. You say: "Let me check and get back to you."</p>
       </div>
 
       <div class="funnel-problem-card">
@@ -646,15 +654,15 @@
             <circle cx="65" cy="40" r="2" fill="#ff2d7a"/>
           </svg>
         </div>
-        <h3>1 Tag Reporting pro Woche</h3>
-        <p>… und am Ende haben Sie Zahlen, die schon wieder veraltet sind, sobald Sie sie verschicken.</p>
+        <h3>1 day of reporting per week</h3>
+        <p>… and in the end you have numbers that are already outdated the moment you send them.</p>
       </div>
     </div>
 
-    <p class="funnel-problem-closing">… dann sind Sie nicht allein. Und Sie sind <strong>genau richtig hier</strong>.</p>
+    <p class="funnel-problem-closing">… then you're not alone. And you're <strong>exactly in the right place</strong>.</p>
 
     <div style="text-align: center; margin-top: 48px;">
-      <a href="#booking" class="btn btn-primary">Das kann besser gehen →</a>
+      <a href="#booking" class="btn btn-primary">This can be done better →</a>
     </div>
   </div>
 </section>
@@ -664,15 +672,15 @@
 <!-- ══════════════════════════════════════════════════════════ -->
 <section class="funnel-section funnel-solution" id="solution" style="background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
   <div class="container">
-    <h2 class="funnel-section-headline">Die Lösung: Alles, was Sie sehen ohne danach zu suchen.</h2>
+    <h2 class="funnel-section-headline">The solution: everything you need to see without searching for it.</h2>
     <p class="funnel-solution-subline" style="text-align: center; max-width: 800px; margin: 0 auto 60px; font-size: 18px; color: var(--fg-muted);">
-      Alle Ihre Tools, APIs und Datenquellen fließen in Echtzeit in eine zentrale Oberfläche. Angepasst an Ihre Branche. Gebaut für Ihre Workflows. <strong>Und das können Sie damit tun:</strong>
+      All your tools, APIs and data sources flow into one central interface in real time. Tailored to your industry. Built for your workflows. <strong>And here's what you can do with it:</strong>
     </p>
 
     <!-- ASSET-SLOT: integration-flow (animiert) -->
     <div class="asset-slot" data-asset="integration-flow" style="aspect-ratio:16/9; max-width: 980px; margin: 0 auto 60px;">
-      <iframe src="../assets/lp/nuroy-integration-flow.html"
-              title="Datenquellen fließen ins Nuroy-Dashboard"
+      <iframe src="../assets/lp/nuroy-integration-flow-en.html"
+              title="Data sources flowing into the Nuroy dashboard"
               style="width:100%; aspect-ratio:16/9; border:0; border-radius:18px; display:block;"
               loading="lazy"></iframe>
     </div>
@@ -686,8 +694,8 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
           </svg>
         </div>
-        <h3 class="funnel-feature-title">Tool-Verbindungen</h3>
-        <p class="funnel-feature-description">Salesforce, HubSpot, Google Analytics, Stripe, Ihr ERP — alles an einem Ort, ohne ständig zwischen Tabs zu wechseln.</p>
+        <h3 class="funnel-feature-title">Tool connections</h3>
+        <p class="funnel-feature-description">Salesforce, HubSpot, Google Analytics, Stripe, your ERP — all in one place, without constantly switching between tabs.</p>
       </div>
 
       <!-- Capability 2: Echtzeit-Daten -->
@@ -697,8 +705,8 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
           </svg>
         </div>
-        <h3 class="funnel-feature-title">Echtzeit-Daten</h3>
-        <p class="funnel-feature-description">Kein manuelles Updaten mehr. Ihre Zahlen aktualisieren sich automatisch — Sie sehen immer den aktuellen Stand.</p>
+        <h3 class="funnel-feature-title">Real-time data</h3>
+        <p class="funnel-feature-description">No more manual updating. Your numbers refresh automatically — you always see the current state.</p>
       </div>
 
       <!-- Capability 3: Custom KPIs -->
@@ -709,7 +717,7 @@
           </svg>
         </div>
         <h3 class="funnel-feature-title">Custom KPIs</h3>
-        <p class="funnel-feature-description">Definieren Sie Ihre eigenen Kennzahlen, genau so, wie Sie sie brauchen — nicht wie ein Standard-Tool es vorgibt.</p>
+        <p class="funnel-feature-description">Define your own metrics, exactly the way you need them — not the way an off-the-shelf tool dictates.</p>
       </div>
 
       <!-- Capability 4: Multi-Rollen-Views -->
@@ -719,8 +727,8 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
           </svg>
         </div>
-        <h3 class="funnel-feature-title">Multi-Rollen-Views</h3>
-        <p class="funnel-feature-description">Geschäftsführung, Vertrieb und Marketing sehen jeweils genau die Zahlen, die für sie zählen — ohne Filter-Gefummel.</p>
+        <h3 class="funnel-feature-title">Multi-role views</h3>
+        <p class="funnel-feature-description">Leadership, sales and marketing each see exactly the numbers that matter to them — no fiddling with filters.</p>
       </div>
 
       <!-- Capability 5: Mobile-Ready -->
@@ -730,8 +738,8 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
           </svg>
         </div>
-        <h3 class="funnel-feature-title">Mobile-Ready</h3>
-        <p class="funnel-feature-description">Unterwegs schnell die aktuellen Zahlen checken? Kein Problem — das Dashboard funktioniert auf jedem Gerät.</p>
+        <h3 class="funnel-feature-title">Mobile-ready</h3>
+        <p class="funnel-feature-description">Need to check your latest numbers on the go? No problem — the dashboard works on every device.</p>
       </div>
 
       <!-- Capability 6: DSGVO-konform -->
@@ -741,8 +749,8 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
           </svg>
         </div>
-        <h3 class="funnel-feature-title">DSGVO-konform</h3>
-        <p class="funnel-feature-description">Hosting in Deutschland, volle DSGVO-Konformität — Ihre Daten bleiben, wo sie hingehören.</p>
+        <h3 class="funnel-feature-title">German engineering, GDPR-compliant</h3>
+        <p class="funnel-feature-description">A German company with exclusively German developers, fully GDPR-compliant — hosted wherever you need it (EU, US or your own infrastructure). Your data stays where it belongs.</p>
       </div>
     </div>
 
@@ -752,9 +760,9 @@
          ══════════════════════════════════════════════════════════ -->
     <div class="roi-calculator" id="roi-calculator">
       <!-- Section Header -->
-      <h3 class="roi-calculator__headline">Was kostet Sie Ihr Reporting wirklich?</h3>
+      <h3 class="roi-calculator__headline">What is your reporting really costing you?</h3>
       <p class="roi-calculator__intro">
-        Ziehen Sie die Schieberegler und sehen Sie live, wie viel Geld Sie monatlich verlieren.
+        Drag the sliders and see in real time how much money you're losing every month.
       </p>
 
       <!-- Calculator Panel (2-column grid: inputs | visuals) -->
@@ -766,7 +774,7 @@
           <!-- Slider 1: Mitarbeiter -->
           <div class="roi-slider">
             <label class="roi-slider__label" for="roi-employees">
-              <span class="roi-slider__label-text">Mitarbeiter mit Reporting-Aufgaben</span>
+              <span class="roi-slider__label-text">Employees with reporting tasks</span>
               <output class="roi-slider__value" id="roi-employees-value">8</output>
             </label>
             <input
@@ -777,7 +785,7 @@
               max="50"
               value="8"
               step="1"
-              aria-label="Anzahl Mitarbeiter mit Reporting-Aufgaben"
+              aria-label="Number of employees with reporting tasks"
             />
             <div class="roi-slider__range">
               <span>1</span>
@@ -788,7 +796,7 @@
           <!-- Slider 2: Stunden/Woche -->
           <div class="roi-slider">
             <label class="roi-slider__label" for="roi-hours">
-              <span class="roi-slider__label-text">Stunden pro Woche für Reporting</span>
+              <span class="roi-slider__label-text">Hours per week on reporting</span>
               <output class="roi-slider__value" id="roi-hours-value">5</output>
             </label>
             <input
@@ -799,7 +807,7 @@
               max="20"
               value="5"
               step="0.5"
-              aria-label="Stunden pro Woche für manuelles Reporting"
+              aria-label="Hours per week on manual reporting"
             />
             <div class="roi-slider__range">
               <span>1h</span>
@@ -810,7 +818,7 @@
           <!-- Slider 3: Stundensatz -->
           <div class="roi-slider">
             <label class="roi-slider__label" for="roi-rate">
-              <span class="roi-slider__label-text">Durchschnittlicher Stundensatz</span>
+              <span class="roi-slider__label-text">Average hourly rate</span>
               <output class="roi-slider__value" id="roi-rate-value">55 €</output>
             </label>
             <input
@@ -821,7 +829,7 @@
               max="150"
               value="55"
               step="5"
-              aria-label="Durchschnittlicher Stundensatz in Euro"
+              aria-label="Average hourly rate in euros"
             />
             <div class="roi-slider__range">
               <span>25€</span>
@@ -831,9 +839,9 @@
 
           <!-- Big Cost Counter -->
           <div class="roi-counter">
-            <div class="roi-counter__label">Kosten ohne Dashboard</div>
-            <div class="roi-counter__value" id="roi-cost-month">€9.500</div>
-            <div class="roi-counter__sublabel">pro Monat</div>
+            <div class="roi-counter__label">Cost without a dashboard</div>
+            <div class="roi-counter__value" id="roi-cost-month">€9,500</div>
+            <div class="roi-counter__sublabel">per month</div>
           </div>
         </div>
 
@@ -841,16 +849,16 @@
         <div class="roi-calculator__visuals">
           <!-- Before/After Bars (SVG) -->
           <div class="roi-visual-wrapper">
-            <h4 class="roi-visual-title">Vorher / Nachher</h4>
-            <svg id="roi-bars-svg" class="roi-bars" viewBox="0 0 400 240" role="img" aria-label="Balkendiagramm: Kosten ohne vs. mit Nuroy Dashboard">
+            <h4 class="roi-visual-title">Before / After</h4>
+            <svg id="roi-bars-svg" class="roi-bars" viewBox="0 0 400 240" role="img" aria-label="Bar chart: cost without vs. with the Nuroy dashboard">
               <!-- Dynamisch via JS gezeichnet -->
             </svg>
           </div>
 
           <!-- 12-Month Cumulative Curve (SVG) -->
           <div class="roi-visual-wrapper">
-            <h4 class="roi-visual-title">Kumulierte Kosten über 12 Monate</h4>
-            <svg id="roi-curve-svg" class="roi-curve" viewBox="0 0 400 200" role="img" aria-label="Liniendiagramm: Kumulative Kosten über 12 Monate">
+            <h4 class="roi-visual-title">Cumulative cost over 12 months</h4>
+            <svg id="roi-curve-svg" class="roi-curve" viewBox="0 0 400 200" role="img" aria-label="Line chart: cumulative cost over 12 months">
               <!-- Dynamisch via JS gezeichnet -->
             </svg>
           </div>
@@ -859,26 +867,26 @@
 
       <!-- Dynamic Explainer Text -->
       <div class="roi-explainer">
-        <p>Bei <strong id="explainer-employees">8 Mitarbeitern</strong>,
-           die je <strong id="explainer-hours">5 Std./Woche</strong>
-           mit manuellem Reporting verbringen,
-           verlieren Sie rund <strong id="explainer-cost-month">€9.500 pro Monat</strong>
-           — das sind <strong id="explainer-cost-year">€114.000 im Jahr</strong>.
-           Mit unserem Dashboard sparen Sie ca. <strong id="explainer-saving-month">€7.600 pro Monat</strong>.*</p>
-        <p class="roi-explainer__disclaimer">*Modell-Annahme: 80% Zeitersparnis durch Automatisierung. Tatsächliche Werte können variieren.</p>
+        <p>With <strong id="explainer-employees">8 employees</strong>
+           each spending <strong id="explainer-hours">5 hrs/week</strong>
+           on manual reporting,
+           you lose around <strong id="explainer-cost-month">€9,500 per month</strong>
+           — that's <strong id="explainer-cost-year">€114,000 per year</strong>.
+           With our dashboard you save roughly <strong id="explainer-saving-month">€7,600 per month</strong>.*</p>
+        <p class="roi-explainer__disclaimer">*Model assumption: 80% time saved through automation. Actual figures may vary.</p>
       </div>
 
       <!-- Zusätzlicher Disclaimer -->
       <div style="text-align: center; margin-top: 32px; padding: 0 20px;">
         <p style="font-family: var(--font-mono); font-size: 10px; color: var(--fg-dim); line-height: 1.5; letter-spacing: 0.02em;">
-          Hinweis: Dies ist eine vereinfachte Hochrechnung zur Veranschaulichung. Die tatsächlichen Kosten und Einsparungen hängen von Ihren individuellen Anforderungen, Prozessen und der Komplexität Ihrer Datenlandschaft ab. Eine genaue Kalkulation erstellen wir gemeinsam im Erstgespräch.
+          Note: This is a simplified projection for illustration. Your actual costs and savings depend on your individual requirements, processes and the complexity of your data landscape. We'll work out an exact calculation together in your strategy call.
         </p>
       </div>
 
       <!-- CTA Button -->
       <div style="text-align: center; margin-top: 48px;">
         <a href="#booking" class="btn btn-primary btn-lg" style="display: inline-block; font-size: 18px; padding: 20px 40px; text-decoration: none;">
-          Jetzt Erstgespräch buchen →
+          Book your free strategy call →
         </a>
       </div>
     </div>
@@ -1036,60 +1044,60 @@
 
 <section class="funnel-section" id="before-after">
   <div class="container">
-    <h2 class="funnel-section-headline">Was sich ändert und was das spart.</h2>
-    <p style="text-align: center; max-width: 700px; margin: 0 auto 60px; font-size: 18px; color: var(--fg-muted);">Links das tägliche Chaos. Rechts Klarheit in Echtzeit. Unten die Rechnung.</p>
+    <h2 class="funnel-section-headline">What changes — and what it saves.</h2>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 60px; font-size: 18px; color: var(--fg-muted);">On the left, the daily chaos. On the right, clarity in real time. Below, the math.</p>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 60px;">
       <!-- BEFORE -->
       <div class="comparison-card before" style="background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px; padding: 32px;">
-        <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 24px; color: var(--warn);">Ohne Nuroy-Dashboard</h3>
+        <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 24px; color: var(--warn);">Without the Nuroy dashboard</h3>
 
         <!-- ASSET-SLOT: before -->
         <figure class="asset-slot" data-asset="before" style="aspect-ratio:4/3; margin-bottom: 24px;">
           <iframe
-            src="../assets/lp/nuroy-before-chaos.html"
-            title="Reporting ohne Dashboard"
+            src="../assets/lp/nuroy-before-chaos-en.html"
+            title="Reporting without a dashboard"
             style="width:100%; aspect-ratio:4/3; border:0; border-radius:14px;"
             loading="lazy"
           ></iframe>
         </figure>
 
         <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 2;">
-          <li>❌ Excel-Tabellen manuell pflegen: 6 bis 8 Stunden pro Woche</li>
-          <li>❌ Zahlen stimmen nie überein, jedes Tool zeigt andere Werte</li>
-          <li>❌ Reporting kostet 1 Tag pro Woche und ist trotzdem veraltet</li>
-          <li>❌ Entscheidungen verzögert, weil niemand den aktuellen Stand kennt</li>
-          <li>❌ Jeder arbeitet mit eigenen Daten, keine gemeinsame Wahrheit</li>
+          <li>❌ Maintaining spreadsheets manually: 6 to 8 hours per week</li>
+          <li>❌ Numbers never match — every tool shows different values</li>
+          <li>❌ Reporting costs 1 day per week and is still outdated</li>
+          <li>❌ Decisions delayed because nobody knows the current state</li>
+          <li>❌ Everyone works with their own data, no shared truth</li>
         </ul>
       </div>
 
       <!-- AFTER -->
       <div class="comparison-card after" style="background: var(--bg-2); border: 1px solid var(--pink); border-radius: 12px; padding: 32px;">
-        <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 24px; color: var(--ok);">Mit Nuroy-Dashboard</h3>
+        <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 24px; color: var(--ok);">With the Nuroy dashboard</h3>
 
         <!-- ASSET-SLOT: after -->
         <figure class="asset-slot" data-asset="after" style="aspect-ratio:4/3; margin-bottom: 24px;">
           <iframe
-            src="../assets/lp/nuroy-after-clarity.html"
-            title="Reporting mit Nuroy-Dashboard"
+            src="../assets/lp/nuroy-after-clarity-en.html"
+            title="Reporting with the Nuroy dashboard"
             style="width:100%; aspect-ratio:4/3; border:0; border-radius:14px;"
             loading="lazy"
           ></iframe>
         </figure>
 
         <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 2;">
-          <li>✅ Automatische Updates in Echtzeit: Dashboard refreshen dauert 30 Sekunden</li>
-          <li>✅ Eine Quelle, eine Wahrheit: alle sehen dieselben KPIs</li>
-          <li>✅ Reporting in 5 Minuten statt 1 Tag</li>
-          <li>✅ Schnelle, datenbasierte Entscheidungen ohne "ich schau nach"</li>
-          <li>✅ Alle sehen dieselben KPIs: Transparenz im ganzen Team</li>
+          <li>✅ Automatic real-time updates: refreshing the dashboard takes 30 seconds</li>
+          <li>✅ One source, one truth: everyone sees the same KPIs</li>
+          <li>✅ Reporting in 5 minutes instead of 1 day</li>
+          <li>✅ Fast, data-driven decisions without "let me check"</li>
+          <li>✅ Everyone sees the same KPIs: transparency across the whole team</li>
         </ul>
       </div>
     </div>
 
     <!-- NEU: ROI-Rechnung -->
     <div class="roi-section">
-      <h3 class="roi-headline">Die Rechnung ist einfach:</h3>
+      <h3 class="roi-headline">The math is simple:</h3>
 
       <div class="roi-grid">
 
@@ -1102,14 +1110,14 @@
               <line x1="6" y1="20" x2="6" y2="16"></line>
             </svg>
           </div>
-          <span class="roi-label">Kosten heute</span>
+          <span class="roi-label">Cost today</span>
           <div class="roi-value">
-            <span data-count-to="114000">0</span> €<span style="font-size: 0.6em; color: var(--fg-dim); margin-left: 4px;">/Jahr</span>
+            <span data-count-to="114000">0</span> €<span style="font-size: 0.6em; color: var(--fg-dim); margin-left: 4px;">/year</span>
           </div>
           <div class="roi-desc">
-            <strong>Beispielrechnung:</strong><br>
-            8 Mitarbeiter × 5 Std./Woche × 55 €/Std. = <strong style="color: var(--fg);">≈ 9.500 € / Monat</strong><br>
-            <span style="font-size: 13px; color: var(--fg-dim); display: block; margin-top: 8px;">Das sind rund <strong>173 Arbeitsstunden im Monat</strong>, die in Tabellen statt in Wertschöpfung fließen.</span>
+            <strong>Example calculation:</strong><br>
+            8 employees × 5 hrs/week × €55/hr = <strong style="color: var(--fg);">≈ €9,500 / month</strong><br>
+            <span style="font-size: 13px; color: var(--fg-dim); display: block; margin-top: 8px;">That's around <strong>173 working hours a month</strong> flowing into spreadsheets instead of real value.</span>
           </div>
         </div>
 
@@ -1122,14 +1130,14 @@
               <line x1="15" y1="9" x2="9" y2="15"></line>
             </svg>
           </div>
-          <span class="roi-label">Investition</span>
+          <span class="roi-label">Investment</span>
           <div class="roi-value" style="font-size: 20px; line-height: 1.3;">
-            Einmaliges Setup<br>
-            <span style="font-size: 16px; font-weight: 600; color: var(--fg-muted);">+ opt. Hosting/Wartung</span>
+            One-time setup<br>
+            <span style="font-size: 16px; font-weight: 600; color: var(--fg-muted);">+ optional hosting/maintenance</span>
           </div>
           <div class="roi-desc">
-            <strong>Konkreter Festpreis nach dem Erstgespräch</strong> — abhängig von Tools & Umfang.<br>
-            <span style="font-size: 13px; color: var(--fg-dim); display: block; margin-top: 8px;">Einmalige Investition steht wiederkehrenden Kosten gegenüber.</span>
+            <strong>A concrete fixed price after the strategy call</strong> — depending on tools & scope.<br>
+            <span style="font-size: 13px; color: var(--fg-dim); display: block; margin-top: 8px;">A one-time investment versus recurring costs.</span>
           </div>
         </div>
 
@@ -1141,14 +1149,14 @@
               <polyline points="17 6 23 6 23 12"></polyline>
             </svg>
           </div>
-          <span class="roi-label">Ersparnis</span>
+          <span class="roi-label">Savings</span>
           <div class="roi-value">
-            <span data-count-to="91000">0</span> €<span style="font-size: 0.6em; color: var(--fg-dim); margin-left: 4px;">/Jahr</span>
+            <span data-count-to="91000">0</span> €<span style="font-size: 0.6em; color: var(--fg-dim); margin-left: 4px;">/year</span>
           </div>
           <div class="roi-desc">
-            <strong style="color: var(--ok);">≈ 80% zurückgewonnen</strong>, die wieder in echte Arbeit fließen.<br>
-            <span style="font-size: 13px; color: var(--fg-dim); display: block; margin-top: 8px;"><strong>Amortisation meist innerhalb weniger Monate</strong> — danach spart das Dashboard Monat für Monat.</span><br>
-            <span style="font-size: 13px; color: var(--fg-muted); display: block; margin-top: 4px;">Plus schnellere Entscheidungen und eine Datenbasis, der alle vertrauen.</span>
+            <strong style="color: var(--ok);">≈ 80% reclaimed</strong>, flowing back into real work.<br>
+            <span style="font-size: 13px; color: var(--fg-dim); display: block; margin-top: 8px;"><strong>Usually pays for itself within a few months</strong> — after that the dashboard saves you money month after month.</span><br>
+            <span style="font-size: 13px; color: var(--fg-muted); display: block; margin-top: 4px;">Plus faster decisions and a data foundation everyone trusts.</span>
           </div>
         </div>
 
@@ -1156,7 +1164,7 @@
     </div>
 
     <div style="text-align: center; margin-top: 60px;">
-      <a href="#booking" class="btn btn-primary btn-lg">Vom Chaos zur Klarheit →</a>
+      <a href="#booking" class="btn btn-primary btn-lg">From chaos to clarity →</a>
     </div>
   </div>
 </section>
@@ -1275,7 +1283,7 @@
 <!-- ══════════════════════════════════════════════════════════ -->
 <section class="funnel-section funnel-testimonials" id="testimonials">
   <div class="container">
-    <h2 class="funnel-section-headline">Was Kunden über uns sagen.</h2>
+    <h2 class="funnel-section-headline">What clients say about us.</h2>
 
     <div class="funnel-testimonials-grid" id="testimonials-grid">
       <!-- Sniffys -->
@@ -1347,13 +1355,13 @@
   }
 </style>
   <div class="wrap">
-    <div class="head reveal"><span class="eyebrow">So läuft's ab</span><h2>Fünf Schritte. 6–10 Wochen. Fertig.</h2></div>
+    <div class="head reveal"><span class="eyebrow">How it works</span><h2>Five steps. 6–10 weeks. Done.</h2></div>
     <div class="steps">
-      <div class="step reveal"><div class="sn">01</div><h3>Verstehen</h3><div class="dur">1–2 Wochen</div><p>Wir analysieren Ihre Tools, KPIs und Workflows.</p></div>
-      <div class="step reveal"><div class="sn">02</div><h3>Konzipieren</h3><div class="dur">1 Woche</div><p>Wireframes, Datenstruktur, Konzept abgestimmt.</p></div>
-      <div class="step reveal"><div class="sn">03</div><h3>Bauen</h3><div class="dur">3–5 Wochen</div><p>Wöchentlicher Fortschritt, laufendes Feedback.</p></div>
-      <div class="step reveal"><div class="sn">04</div><h3>Testen</h3><div class="dur">1 Woche</div><p>Datenquellen geprüft, Stakeholder testen, Go-Live.</p></div>
-      <div class="step reveal"><div class="sn">05</div><h3>Bleiben</h3><div class="dur">Optional</div><p>Hosting, Wartung & Weiterentwicklung.</p></div>
+      <div class="step reveal"><div class="sn">01</div><h3>Understand</h3><div class="dur">1–2 weeks</div><p>We analyze your tools, KPIs and workflows.</p></div>
+      <div class="step reveal"><div class="sn">02</div><h3>Design</h3><div class="dur">1 week</div><p>Wireframes, data structure, concept aligned.</p></div>
+      <div class="step reveal"><div class="sn">03</div><h3>Build</h3><div class="dur">3–5 weeks</div><p>Weekly progress, continuous feedback.</p></div>
+      <div class="step reveal"><div class="sn">04</div><h3>Test</h3><div class="dur">1 week</div><p>Data sources verified, stakeholders test, go-live.</p></div>
+      <div class="step reveal"><div class="sn">05</div><h3>Stay</h3><div class="dur">Optional</div><p>Hosting, maintenance & ongoing development.</p></div>
     </div>
   </div>
 <script>
@@ -1366,57 +1374,57 @@
 <!-- ══════════════════════════════════════════════════════════ -->
 <section class="funnel-booking" id="booking">
   <div class="container">
-    <h1 class="funnel-booking-headline">Bereit, das zu bauen?</h1>
-    <p class="funnel-booking-subtext">Ihre E-Mail, eine kurze Frage — dann geht's los.</p>
+    <h1 class="funnel-booking-headline">Ready to build this?</h1>
+    <p class="funnel-booking-subtext">Your email, one quick question — then pick a time for your free 60-min strategy call.</p>
 
     <!-- Qualifizierungs-Flow Container (1:1 aus dashboard-jetzt.html) -->
     <div class="qualification-container" id="qualification-container">
 
       <!-- Schritt 1: E-Mail -->
       <div class="qualification-step active" id="qualification-step-1">
-        <div class="qualification-progress">Schritt 1 von 2</div>
-        <div class="qualification-eyebrow">Wir möchten Sie unterstützen —</div>
-        <h2 class="qualification-headline">Wie erreichen wir Sie am besten?</h2>
-        <p class="qualification-subtext">Mit Ihrer E-Mail können wir Sie gezielt zu Ihrem Setup unterstützen und Ihren Termin vorbereiten. Kein Spam, kein Newsletter.</p>
+        <div class="qualification-progress">Step 1 of 2</div>
+        <div class="qualification-eyebrow">We'd like to support you —</div>
+        <h2 class="qualification-headline">How can we best reach you?</h2>
+        <p class="qualification-subtext">With your email we can support you specifically for your setup and prepare your strategy call. No spam, no newsletter.</p>
 
         <div class="qualification-options">
           <div class="form-field">
             <input class="form-input" type="email" id="qualification-email" name="email"
-                   placeholder="ihre@email.de" required autocomplete="email" inputmode="email"
+                   placeholder="you@email.com" required autocomplete="email" inputmode="email"
                    onkeydown="if(event.key==='Enter'){event.preventDefault();submitEmail();}">
             <p class="qualification-email-error" id="qualification-email-error"
-               style="display:none;color:#E02569;font-size:14px;margin:6px 0 0;">Bitte geben Sie eine gültige E-Mail-Adresse ein.</p>
+               style="display:none;color:#E02569;font-size:14px;margin:6px 0 0;">Please enter a valid email address.</p>
           </div>
-          <button class="form-submit" type="button" onclick="submitEmail()">Weiter →</button>
+          <button class="form-submit" type="button" onclick="submitEmail()">Continue →</button>
         </div>
       </div>
 
       <!-- Frage 2: Unternehmensgröße -->
       <div class="qualification-step" id="qualification-step-2">
-        <div class="qualification-progress">Schritt 2 von 2</div>
-        <div class="qualification-eyebrow">Letzte Frage —</div>
-        <h2 class="qualification-headline">Wie etabliert ist Ihr Unternehmen bereits?</h2>
-        <p class="qualification-subtext">Damit wir direkt passend vorbereitet sind und die richtigen Lösungsansätze mitbringen. Bleibt natürlich komplett unter uns.</p>
+        <div class="qualification-progress">Step 2 of 2</div>
+        <div class="qualification-eyebrow">Last question —</div>
+        <h2 class="qualification-headline">How established is your company already?</h2>
+        <p class="qualification-subtext">So we come prepared and bring the right solutions. Stays completely between us, of course.</p>
 
         <div class="qualification-options">
           <button class="qualification-option" onclick="selectRevenueRange('revenue-0-100k')">
-            Noch in der Startphase
+            Still in the early stage
           </button>
           <button class="qualification-option" onclick="selectRevenueRange('revenue-100k-500k')">
-            Solide etabliert (ca. 100 bis 500k € pro Jahr)
+            Solidly established (approx. €100k to €500k per year)
           </button>
           <button class="qualification-option" onclick="selectRevenueRange('revenue-500k-2m')">
-            Wachsendes Unternehmen (ca. 500k bis 2 Mio € pro Jahr)
+            Growing company (approx. €500k to €2M per year)
           </button>
           <button class="qualification-option" onclick="selectRevenueRange('revenue-2m-plus')">
-            Größeres Unternehmen (über 2 Mio € pro Jahr)
+            Larger company (over €2M per year)
           </button>
           <button class="qualification-option" onclick="selectRevenueRange('revenue-prefer-not-say')">
-            Bespreche ich lieber direkt mit Ihnen
+            I'd rather discuss this directly with you
           </button>
         </div>
 
-        <button class="qualification-back" onclick="showStep(1)">← Zurück</button>
+        <button class="qualification-back" onclick="showStep(1)">← Back</button>
       </div>
 
     </div>
@@ -1424,8 +1432,8 @@
     <!-- Calendly Container (wird nach Qualifizierung angezeigt) -->
     <div class="calendly-container" id="calendly-container">
       <div class="calendly-header">
-        <div class="calendly-eyebrow">Wählen Sie Ihren Termin</div>
-        <h2 class="calendly-headline">Bereit. Lassen Sie uns sprechen.</h2>
+        <div class="calendly-eyebrow">Your free strategy call · 60 min · Google Meet</div>
+        <h2 class="calendly-headline">Pick a time that suits you.</h2>
       </div>
 
       <!-- Calendly Inline Widget -->
@@ -1435,9 +1443,9 @@
     <!-- Kontaktformular Container (Soft-No) -->
     <div class="contact-form-container" id="contact-form-container">
       <div class="contact-form-header">
-        <h2 class="contact-form-headline">Lassen Sie uns persönlich abstimmen, was zu Ihnen passt.</h2>
+        <h2 class="contact-form-headline">Let's figure out what fits you, personally.</h2>
         <p class="contact-form-subtext">
-          Für Ihr Setup schauen wir uns am besten erst Ihre Situation in Ruhe an und melden uns dann mit einem passenden Vorschlag — statt Sie jetzt durch ein Standard-Gespräch zu schicken. Tragen Sie sich ein, und einer aus dem Team meldet sich innerhalb von 1 bis 2 Werktagen.
+          For your setup, it's best we first look at your situation in detail and then come back with a tailored proposal — instead of putting you through a standard call right now. Leave your details and someone from the team will get back to you within 1 to 2 business days.
         </p>
       </div>
 
@@ -1449,50 +1457,50 @@
         </div>
 
         <div class="form-field">
-          <label class="form-label" for="contact-email">E-Mail *</label>
+          <label class="form-label" for="contact-email">Email *</label>
           <input class="form-input" type="email" id="contact-email" name="email" required>
         </div>
 
         <div class="form-field">
-          <label class="form-label" for="contact-company">Firma *</label>
+          <label class="form-label" for="contact-company">Company *</label>
           <input class="form-input" type="text" id="contact-company" name="company" required>
         </div>
 
         <div class="form-field">
           <label class="form-label" for="contact-phone">
-            Telefon <span class="form-label-optional">(optional)</span>
+            Phone <span class="form-label-optional">(optional)</span>
           </label>
           <input class="form-input" type="tel" id="contact-phone" name="phone">
         </div>
 
         <div class="form-field">
           <label class="form-label" for="contact-message">
-            Kurze Beschreibung eurer Situation <span class="form-label-optional">(optional)</span>
+            Short description of your situation <span class="form-label-optional">(optional)</span>
           </label>
           <textarea
             class="form-textarea"
             id="contact-message"
             name="message"
-            placeholder="Was ist gerade die größte Reporting- oder Tool-Herausforderung?"
+            placeholder="What's your biggest reporting or tooling challenge right now?"
           ></textarea>
         </div>
 
-        <button class="form-submit" type="submit">Absenden</button>
+        <button class="form-submit" type="submit">Send</button>
       </form>
 
       <!-- Success Message -->
       <div class="contact-form-success" id="contact-form-success">
         <div class="success-icon">✓</div>
-        <h3 class="success-headline">Danke!</h3>
-        <p class="success-text">Wir melden uns innerhalb von 1 bis 2 Werktagen bei Ihnen. Bis dahin: schöne Zeit.</p>
+        <h3 class="success-headline">Thank you!</h3>
+        <p class="success-text">We'll get back to you within 1 to 2 business days. Until then, take care.</p>
       </div>
     </div>
 
     <!-- Trust Elemente -->
     <div class="funnel-booking-trust">
-      <div class="funnel-booking-trust-item">✓ Keine Verkaufsmasche</div>
-      <div class="funnel-booking-trust-item">✓ Konkrete Antworten auf Ihre Situation</div>
-      <div class="funnel-booking-trust-item">✓ Wenn es nicht passt, sagen wir's offen</div>
+      <div class="funnel-booking-trust-item">✓ No sales pitch</div>
+      <div class="funnel-booking-trust-item">✓ Concrete answers for your situation</div>
+      <div class="funnel-booking-trust-item">✓ If it's not a fit, we'll say so openly</div>
     </div>
   </div>
 </section>
@@ -1504,8 +1512,8 @@
   <div class="container">
     <img src="../assets/logo-full.png" alt="Nuroy" class="funnel-logo-sm" loading="lazy" style="height: 24px; margin-bottom: 16px;">
     <div class="funnel-footer-links" style="display: flex; gap: 24px; font-size: 13px; color: var(--fg-dim); margin-bottom: 12px;">
-      <a href="../impressum.html" target="_blank">Impressum</a>
-      <a href="../datenschutz.html" target="_blank">Datenschutz</a>
+      <a href="../impressum.html" target="_blank">Imprint</a>
+      <a href="../datenschutz.html" target="_blank">Privacy Policy</a>
     </div>
     <span class="funnel-footer-copy" style="font-size: 12px; color: var(--fg-dim);">© 2026 JT Nuroy Ltd, Paphos, Cyprus</span>
   </div>

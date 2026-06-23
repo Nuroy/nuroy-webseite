@@ -23,6 +23,12 @@
     DEBOUNCE_DELAY: 100,         // ms Debounce für Slider
   };
 
+  // Sprache: Deutsch ist Default, Englisch wenn <html lang="en">
+  const RT = {
+    de: { without: 'Ohne Dashboard', with: 'Mit Nuroy', savings: 'Ihre Ersparnis', perMonth: 'pro Monat', perYear: 'im Jahr', employees: 'Mitarbeitern', hoursWeek: 'Std./Woche' },
+    en: { without: 'Without dashboard', with: 'With Nuroy', savings: 'Your savings', perMonth: 'per month', perYear: 'per year', employees: 'employees', hoursWeek: 'hrs/week' }
+  }[(document.documentElement.lang || 'de').toLowerCase().indexOf('en') === 0 ? 'en' : 'de'];
+
   // ═════════════════════════════════════════════
   // STATE
   // ═════════════════════════════════════════════
@@ -170,7 +176,7 @@
     label1.setAttribute('text-anchor', 'middle');
     label1.setAttribute('font-size', '12');
     label1.setAttribute('fill', 'var(--fg-muted)');
-    label1.textContent = 'Ohne Dashboard';
+    label1.textContent = RT.without;
     svg.appendChild(label1);
 
     // Value Label 1
@@ -201,7 +207,7 @@
     label2.setAttribute('text-anchor', 'middle');
     label2.setAttribute('font-size', '12');
     label2.setAttribute('fill', 'var(--fg-muted)');
-    label2.textContent = 'Mit Nuroy';
+    label2.textContent = RT.with;
     svg.appendChild(label2);
 
     // Value Label 2
@@ -246,7 +252,7 @@
     savingLabel.setAttribute('font-weight', '600');
     savingLabel.setAttribute('fill', '#F5F2EC'); // Weiß für bessere Lesbarkeit
     savingLabel.setAttribute('class', 'saving-label');
-    savingLabel.textContent = 'Ihre Ersparnis';
+    savingLabel.textContent = RT.savings;
     svg.appendChild(savingLabel);
 
     // Value Label Ersparnis
@@ -409,7 +415,7 @@
     legendLabel1.setAttribute('font-size', '12');
     legendLabel1.setAttribute('fill', '#F5F2EC');
     legendLabel1.setAttribute('class', 'legend-label');
-    legendLabel1.textContent = 'Ohne Dashboard';
+    legendLabel1.textContent = RT.without;
     svg.appendChild(legendLabel1);
 
     // Legend Item 2: Mit Nuroy
@@ -427,7 +433,7 @@
     legendLabel2.setAttribute('font-size', '12');
     legendLabel2.setAttribute('fill', '#F5F2EC');
     legendLabel2.setAttribute('class', 'legend-label');
-    legendLabel2.textContent = 'Mit Nuroy';
+    legendLabel2.textContent = RT.with;
     svg.appendChild(legendLabel2);
   }
 
@@ -449,11 +455,11 @@
     tweenNumber(costDisplay, previousCost, state.costPerMonth, CONFIG.TWEEN_DURATION, formatEUR);
 
     // Explainer-Text aktualisieren (bold values)
-    document.getElementById('explainer-employees').textContent = state.employees + ' Mitarbeitern';
-    document.getElementById('explainer-hours').textContent = state.hoursPerWeek + ' Std./Woche';
-    document.getElementById('explainer-cost-month').textContent = formatEUR(state.costPerMonth) + ' pro Monat';
-    document.getElementById('explainer-cost-year').textContent = formatEUR(state.costPerYear) + ' im Jahr';
-    document.getElementById('explainer-saving-month').textContent = formatEUR(state.savingPerMonth) + ' pro Monat';
+    document.getElementById('explainer-employees').textContent = state.employees + ' ' + RT.employees;
+    document.getElementById('explainer-hours').textContent = state.hoursPerWeek + ' ' + RT.hoursWeek;
+    document.getElementById('explainer-cost-month').textContent = formatEUR(state.costPerMonth) + ' ' + RT.perMonth;
+    document.getElementById('explainer-cost-year').textContent = formatEUR(state.costPerYear) + ' ' + RT.perYear;
+    document.getElementById('explainer-saving-month').textContent = formatEUR(state.savingPerMonth) + ' ' + RT.perMonth;
 
     // SVGs neu zeichnen
     drawBars();

@@ -9,6 +9,10 @@
       "destination": "/lp/dashboard.html"
     },
     {
+      "source": "/lp/dashboard-en",
+      "destination": "/lp/dashboard-en.html"
+    },
+    {
       "source": "/leistungen/software",
       "destination": "/leistungen/software.html"
     },

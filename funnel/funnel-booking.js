@@ -36,6 +36,25 @@ const EVENTS = {
   BOOKING_COMPLETED: 'booking_completed'
 };
 
+// ═══════════════════════════════════════════════════════════════
+// SPRACHE (Deutsch ist Default; Englisch wenn <html lang="en">)
+// ═══════════════════════════════════════════════════════════════
+var NUROY_LANG = (document.documentElement.lang || 'de').toLowerCase().indexOf('en') === 0 ? 'en' : 'de';
+var NUROY_T = {
+  de: {
+    calendlyLoading: 'Calendly wird geladen...',
+    sending: 'Wird gesendet...',
+    disqNoInterest: 'Kein Interesse angegeben',
+    disqEarlyStage: 'Noch in Startphase (unter 100k €)'
+  },
+  en: {
+    calendlyLoading: 'Loading Calendly...',
+    sending: 'Sending...',
+    disqNoInterest: 'No interest indicated',
+    disqEarlyStage: 'Still in early stage (under €100k)'
+  }
+}[NUROY_LANG];
+
 /**
  * Speichert Antwort in sessionStorage
  */
@@ -159,7 +178,7 @@ function showCalendly() {
         font-family: 'Geist', system-ui, sans-serif;
         font-size: 16px;
         color: #666;
-      ">Calendly wird geladen...</p>
+      ">${NUROY_T.calendlyLoading}</p>
       <style>
         @keyframes spin {
           to { transform: rotate(360deg); }
@@ -233,10 +252,10 @@ function determineDisqualificationReason() {
   const revenueRange = getAnswer(STORAGE_KEYS.REVENUE_RANGE);
 
   if (interest === 'no') {
-    return 'Kein Interesse angegeben';
+    return NUROY_T.disqNoInterest;
   }
   if (revenueRange === 'revenue-0-100k') {
-    return 'Noch in Startphase (unter 100k €)';
+    return NUROY_T.disqEarlyStage;
   }
   return 'Unbekannt';
 }
@@ -426,7 +445,7 @@ function initContactForm() {
 
     // Loading-State
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Wird gesendet...';
+    submitBtn.textContent = NUROY_T.sending;
 
     // Form-Daten sammeln
     const formData = new FormData(form);
