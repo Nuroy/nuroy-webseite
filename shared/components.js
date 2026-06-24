@@ -9,7 +9,7 @@
 
   // Compute absolute root path (e.g. '/projects/abc123/') so nav links always resolve correctly
   function getRootPath() {
-    const pathname = window.location.pathname; // e.g. /projects/abc/arbeiten/accountly.html
+    const pathname = window.location.pathname; // e.g. /projects/abc/arbeiten/accountly
     const parts = pathname.split('/');
     parts.pop(); // remove filename
     if (_scriptSrc.startsWith('../')) {
@@ -624,7 +624,7 @@
     // Click on "Leistungen" now navigates to the page
     // No e.preventDefault() - let the link work normally
     megaTrigger.addEventListener('click', function(e) {
-      // Link will navigate to leistungen.html
+      // Link will navigate to leistungen
       // No need to prevent default or toggle menu
     });
 

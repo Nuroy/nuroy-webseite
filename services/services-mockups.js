@@ -166,7 +166,7 @@ function renderTable(rows) {
 }
 
 /**
- * Example usage for dashboards.html
+ * Example usage for dashboards
  */
 const DASHBOARD_MOCKUP_DATA = {
   main: {

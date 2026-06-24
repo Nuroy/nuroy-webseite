@@ -98,7 +98,7 @@ window.NUROY_CONFIG = {
   FORM_SERVICE_ENDPOINT: 'https://api.web3forms.com/submit',
 
   /**
-   * Web3Forms Access Key (gleicher Key wie kontakt.html)
+   * Web3Forms Access Key (gleicher Key wie kontakt)
    */
   WEB3FORMS_ACCESS_KEY: '74d2105c-8e01-4666-8eb4-f48b370b4caa',
 

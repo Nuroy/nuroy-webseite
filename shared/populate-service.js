@@ -74,7 +74,7 @@
   const featuresList = document.getElementById('features-list');
 
   if ((featuresGrid || featuresList) && data.features) {
-    // Grid-style (for _template.html)
+    // Grid-style (for _template)
     if (featuresGrid) {
       console.log('[populate-service] Populating', data.features.length, 'features (grid)...');
       featuresGrid.innerHTML = '';
@@ -97,7 +97,7 @@
       console.log('[populate-service] ✓ Features grid populated');
     }
 
-    // List-style (for strategy-audit.html and others)
+    // List-style (for strategy-audit and others)
     if (featuresList) {
       console.log('[populate-service] Populating', data.features.length, 'features (list)...');
       featuresList.innerHTML = '';

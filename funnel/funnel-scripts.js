@@ -58,7 +58,7 @@
       const section = this.closest('section');
       const location = section ? section.id : 'unknown';
 
-      // Track: cta_click (Lead-Event entfernt — feuert jetzt nur auf danke.html)
+      // Track: cta_click (Lead-Event entfernt — feuert jetzt nur auf danke)
       if (typeof gtag !== 'undefined') {
         gtag('event', 'cta_click', { location: location });
       }
@@ -68,7 +68,7 @@
 
   // ────────────────────────────────────────────────────────────
   // Calendly Widget Event — ENTFERNT
-  // Schedule-Event feuert jetzt nur 1x auf danke.html
+  // Schedule-Event feuert jetzt nur 1x auf danke
   // (funnel-booking.js handhabt den Calendly-Redirect)
   // ────────────────────────────────────────────────────────────
 
