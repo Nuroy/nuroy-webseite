@@ -58,10 +58,7 @@
       const section = this.closest('section');
       const location = section ? section.id : 'unknown';
 
-      // Track: cta_click
-      if (typeof fbq !== 'undefined') {
-        fbq('track', 'Lead', { source: location });
-      }
+      // Track: cta_click (Lead-Event entfernt — feuert jetzt nur auf danke.html)
       if (typeof gtag !== 'undefined') {
         gtag('event', 'cta_click', { location: location });
       }
@@ -70,24 +67,10 @@
   });
 
   // ────────────────────────────────────────────────────────────
-  // Calendly Widget Event (if Calendly is used)
+  // Calendly Widget Event — ENTFERNT
+  // Schedule-Event feuert jetzt nur 1x auf danke.html
+  // (funnel-booking.js handhabt den Calendly-Redirect)
   // ────────────────────────────────────────────────────────────
-  if (typeof Calendly !== 'undefined') {
-    window.addEventListener('message', function(e) {
-      if (e.data.event && e.data.event.indexOf('calendly') === 0) {
-        if (e.data.event === 'calendly.event_scheduled') {
-          // Track: booking_completed
-          if (typeof fbq !== 'undefined') {
-            fbq('track', 'Schedule', { value: 0, currency: 'EUR' });
-          }
-          if (typeof gtag !== 'undefined') {
-            gtag('event', 'conversion', { send_to: 'AW-PLACEHOLDER/booking' });
-          }
-          console.log('[Funnel Tracking] Call scheduled');
-        }
-      }
-    });
-  }
 
   // ────────────────────────────────────────────────────────────
   // Solution Mockup Variants (Tab-Switcher)

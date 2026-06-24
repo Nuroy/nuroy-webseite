@@ -1,0 +1,474 @@
+/* ============================================================
+   ROI-CALCULATOR — Interaktiver "Was kostet Ihr Reporting?"
+   Ersetzt statisches Integration-Flow Visual
+   Design: Pink-Glows, Dark Panel, Smooth Animations
+   ============================================================ */
+
+/* ══════════════════════════════════════════════════════════
+   CALCULATOR CONTAINER
+   ══════════════════════════════════════════════════════════ */
+
+.roi-calculator {
+  margin-top: 80px;
+  padding: 60px 40px;
+  background: var(--bg-2); /* Dunkles Panel */
+  border: 1px solid var(--line-strong);
+  border-radius: 16px;
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.12),
+    0 0 60px rgba(255, 45, 122, 0.08); /* Pink-Glow */
+}
+
+.roi-calculator__headline {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 16px;
+  color: var(--fg);
+}
+
+.roi-calculator__intro {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 48px;
+  font-size: clamp(15px, 1.2vw, 18px);
+  color: var(--fg-muted);
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════════════════════════════════
+   CALCULATOR PANEL (2-Column Grid)
+   ══════════════════════════════════════════════════════════ */
+
+.roi-calculator__panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Side-by-side auf Desktop */
+  gap: 60px;
+  margin-bottom: 48px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   LEFT COLUMN: INPUT CONTROLS
+   ══════════════════════════════════════════════════════════ */
+
+.roi-calculator__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   CUSTOM RANGE SLIDER
+   ───────────────────────────────────────────────────────── */
+
+.roi-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.roi-slider__label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.roi-slider__label-text {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.roi-slider__value {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--pink);
+  min-width: 60px;
+  text-align: right;
+}
+
+/* Range Input (Custom Styling) */
+.roi-slider__input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: var(--bg-4);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Track (Firefox) */
+.roi-slider__input::-moz-range-track {
+  width: 100%;
+  height: 6px;
+  background: var(--bg-4);
+  border-radius: 3px;
+}
+
+/* Thumb (Webkit) */
+.roi-slider__input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background: var(--pink);
+  border-radius: 50%;
+  cursor: grab;
+  box-shadow: 0 2px 8px rgba(255, 45, 122, 0.4);
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Thumb (Firefox) */
+.roi-slider__input::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background: var(--pink);
+  border: none;
+  border-radius: 50%;
+  cursor: grab;
+  box-shadow: 0 2px 8px rgba(255, 45, 122, 0.4);
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Hover/Active States */
+.roi-slider__input::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 16px rgba(255, 45, 122, 0.6);
+}
+
+.roi-slider__input::-moz-range-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 16px rgba(255, 45, 122, 0.6);
+}
+
+.roi-slider__input::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.05);
+}
+
+.roi-slider__input::-moz-range-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.05);
+}
+
+/* Focus State (Accessibility) */
+.roi-slider__input:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 4px;
+}
+
+/* Range Labels (Min/Max) */
+.roi-slider__range {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--fg-dim);
+  margin-top: -4px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   BIG COST COUNTER (mit Glow)
+   ───────────────────────────────────────────────────────── */
+
+.roi-counter {
+  margin-top: 24px;
+  padding: 32px 24px;
+  background: rgba(255, 45, 122, 0.04);
+  border: 1px solid rgba(255, 45, 122, 0.16);
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow-Effect (animiert bei Value-Change) */
+.roi-counter::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 45, 122, 0.15) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.roi-counter:has(.roi-counter__value.animating)::before {
+  opacity: 1; /* Glow bei Animation */
+}
+
+.roi-counter__label {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.roi-counter__value {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 900;
+  color: var(--pink);
+  text-shadow: 0 0 40px rgba(255, 45, 122, 0.4);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.2s ease;
+}
+
+.roi-counter__value.animating {
+  transform: scale(1.05);
+}
+
+.roi-counter__sublabel {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--fg-dim);
+  margin-top: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ══════════════════════════════════════════════════════════
+   RIGHT COLUMN: VISUALIZATIONS
+   ══════════════════════════════════════════════════════════ */
+
+.roi-calculator__visuals {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.roi-visual-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.roi-visual-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--fg);
+  letter-spacing: -0.01em;
+}
+
+/* ─────────────────────────────────────────────────────────
+   SVG VISUALIZATIONS (Common Styles)
+   ───────────────────────────────────────────────────────── */
+
+.roi-bars,
+.roi-curve {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* SVG Text Styling */
+.roi-bars text,
+.roi-curve text {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  fill: var(--fg-muted);
+  user-select: none;
+}
+
+/* Legend Labels: White for better readability */
+.roi-curve text.legend-label {
+  fill: #F5F2EC !important;
+  font-weight: 500;
+}
+
+/* Saving Labels (Bar Chart): White for better readability */
+.roi-bars text.saving-label {
+  fill: #F5F2EC !important;
+}
+
+/* SVG Grid Lines */
+.roi-bars .grid-line,
+.roi-curve .grid-line {
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+}
+
+/* Bars: Transitions */
+.roi-bars rect {
+  transition: height 0.4s cubic-bezier(0.2, 0, 0, 1),
+              y 0.4s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Curve: Smooth Path Animation */
+.roi-curve path {
+  transition: d 0.4s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.roi-curve polyline {
+  transition: points 0.4s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* ══════════════════════════════════════════════════════════
+   EXPLAINER TEXT
+   ══════════════════════════════════════════════════════════ */
+
+.roi-explainer {
+  padding: 24px;
+  background: rgba(255, 45, 122, 0.02);
+  border-left: 4px solid var(--pink);
+  border-radius: 8px;
+  margin-bottom: 32px;
+}
+
+.roi-explainer p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--fg);
+  margin-bottom: 12px;
+}
+
+.roi-explainer p:last-child {
+  margin-bottom: 0;
+}
+
+.roi-explainer strong {
+  color: var(--pink);
+  font-weight: 600;
+}
+
+.roi-explainer__disclaimer {
+  font-size: 13px;
+  color: var(--fg-dim);
+  font-style: italic;
+  margin-top: 8px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   CTA BUTTON
+   ══════════════════════════════════════════════════════════ */
+
+.roi-calculator__cta {
+  text-align: center;
+}
+
+.roi-calculator__cta .btn {
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE: TABLET & MOBILE
+   ══════════════════════════════════════════════════════════ */
+
+@media (max-width: 968px) {
+  .roi-calculator {
+    padding: 48px 32px;
+  }
+
+  .roi-calculator__panel {
+    grid-template-columns: 1fr; /* Stacked auf Tablet/Mobile */
+    gap: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .roi-calculator {
+    margin-top: 60px;
+    padding: 40px 24px;
+  }
+
+  .roi-calculator__headline {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .roi-calculator__intro {
+    font-size: 15px;
+    margin-bottom: 32px;
+  }
+
+  .roi-calculator__panel {
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+
+  .roi-calculator__inputs {
+    gap: 28px;
+  }
+
+  /* Größere Tap-Targets auf Mobile */
+  .roi-slider__input::-webkit-slider-thumb {
+    width: 32px;
+    height: 32px;
+  }
+
+  .roi-slider__input::-moz-range-thumb {
+    width: 32px;
+    height: 32px;
+  }
+
+  .roi-counter {
+    padding: 24px 20px;
+    margin-top: 16px;
+  }
+
+  .roi-counter__value {
+    font-size: 32px;
+  }
+
+  .roi-explainer {
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+
+  .roi-explainer p {
+    font-size: 14px;
+  }
+
+  .roi-calculator__cta .btn {
+    font-size: 15px;
+    padding: 14px 28px;
+    width: 100%; /* Full-width auf Mobile */
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   ACCESSIBILITY: REDUCED MOTION
+   ══════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .roi-counter__value,
+  .roi-bars *,
+  .roi-curve * {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .roi-counter::before {
+    display: none;
+  }
+
+  .roi-slider__input::-webkit-slider-thumb,
+  .roi-slider__input::-moz-range-thumb {
+    transition: none !important;
+  }
+}

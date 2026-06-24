@@ -1,0 +1,566 @@
+/**
+ * ═══════════════════════════════════════════════════════════════
+ * NUROY FUNNEL — QUALIFIZIERUNGS-FLOW STYLES
+ * ═══════════════════════════════════════════════════════════════
+ */
+
+/* ═══ CONTAINER ═══ */
+
+.qualification-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  background: #FFFFFF;
+  position: relative;
+  border-radius: 20px;
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.08),
+    0 0 60px rgba(255, 45, 122, 0.15);
+  border: 1px solid rgba(255, 45, 122, 0.1);
+}
+
+.qualification-step {
+  display: none;
+  animation: slideInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.qualification-step.active {
+  display: block;
+}
+
+/* ═══ SLIDE ANIMATION ═══ */
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ═══ PROGRESS INDICATOR ═══ */
+
+.qualification-progress {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+}
+
+/* ═══ EYEBROW (Kleine Überschrift) ═══ */
+
+.qualification-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  color: #FF2D7A;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* ═══ HEADLINE ═══ */
+
+.qualification-headline {
+  font-family: 'Unbounded', system-ui, sans-serif;
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 900;
+  line-height: 1.15;
+  color: #1A1A1A;
+  text-align: center;
+  margin: 0 0 20px 0;
+  text-wrap: balance; /* Verhindert extrem kurze Zeilen */
+}
+
+/* ═══ SUBTEXT ═══ */
+
+.qualification-subtext {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #666;
+  text-align: center;
+  margin: 0 0 48px 0;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ═══ OPTIONEN (Antwort-Karten) - MIT ANIMATIONEN! ═══ */
+
+.qualification-options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.qualification-option {
+  width: 100%;
+  padding: 24px 32px;
+
+  /* Clean white background */
+  background: #FFFFFF;
+
+  /* Subtile Border */
+  border: 2px solid #E8E8E0;
+  border-radius: 16px;
+
+  /* Shadow mit Pink-Glow */
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    0 0 0 rgba(255, 45, 122, 0);
+
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #1A1A1A;
+  text-align: center;
+  cursor: pointer;
+
+  /* Smooth transitions */
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  isolation: isolate;
+}
+
+/* Shimmer Effect (wie bei btn-primary) */
+.qualification-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 45, 122, 0.15) 50%,
+    transparent 100%
+  );
+  transition: left 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* HOVER - Lift + Scale + Pink Glow */
+.qualification-option:hover {
+  background: #FFFFFF;
+
+  /* Lift + Scale */
+  transform: translateY(-4px) scale(1.02);
+
+  /* Pink Border + Glow */
+  border-color: #FF2D7A;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    0 0 32px rgba(255, 45, 122, 0.25);
+}
+
+/* Shimmer sweep on hover */
+.qualification-option:hover::before {
+  left: 100%;
+}
+
+/* ACTIVE - Press Effect */
+.qualification-option:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    0 0 16px rgba(255, 45, 122, 0.2);
+  transition-duration: 0.1s;
+}
+
+/* SELECTED STATE */
+.qualification-option.selected {
+  background: #FFFFFF;
+  border: 3px solid #FF2D7A;
+
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.12),
+    0 0 32px rgba(255, 45, 122, 0.35);
+
+  transform: translateY(-2px);
+}
+
+/* ═══ ZURÜCK-BUTTON ═══ */
+
+.qualification-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  background: #FFFFFF;
+  border: 2px solid #E8E8E0;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 10px 16px;
+  margin-top: 20px;
+  transition: all 0.2s ease;
+}
+
+.qualification-back:hover {
+  color: #FF2D7A;
+  background: #FFFFFF;
+  border-color: #FF2D7A;
+  transform: translateX(-4px);
+}
+
+/* ═══ CALENDLY CONTAINER ═══ */
+
+.calendly-container {
+  display: none;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 20px 80px;
+  background: #FAFAF7;
+}
+
+.calendly-container.active {
+  display: block;
+}
+
+.calendly-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.calendly-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  color: #FF2D7A;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.calendly-headline {
+  font-family: 'Unbounded', system-ui, sans-serif;
+  font-size: clamp(32px, 6vw, 48px);
+  font-weight: 900;
+  line-height: 1.1;
+  color: #1A1A1A;
+  margin: 0;
+}
+
+#calendly-embed {
+  min-height: 700px; /* Reduziert - Calendly passt sich an */
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden; /* Verhindert doppelte Scrollbars */
+  background: #FFFFFF;
+  border: 2px solid #E8E8E0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+#calendly-embed iframe {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 700px !important;
+  border: none;
+  display: block;
+  /* Calendly iframe ist responsive - kein festes height nötig */
+}
+
+/* ═══ KONTAKTFORMULAR (Soft-No) ═══ */
+
+.contact-form-container {
+  display: none;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 20px 80px;
+  background: #FAFAF7;
+}
+
+.contact-form-container.active {
+  display: block;
+}
+
+.contact-form-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.contact-form-headline {
+  font-family: 'Unbounded', system-ui, sans-serif;
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 900;
+  line-height: 1.2;
+  color: #1A1A1A;
+  margin: 0 0 24px 0;
+}
+
+.contact-form-subtext {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+}
+
+/* ═══ FORM FIELDS ═══ */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-label {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+
+.form-label-optional {
+  font-weight: 400;
+  color: #999;
+  font-size: 13px;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 16px 20px;
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 16px;
+  color: #1A1A1A;
+  background: #FFFFFF;
+  border: 2px solid #E8E8E0;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #FF2D7A;
+  background: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(255, 45, 122, 0.12);
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+  font-family: 'Geist', system-ui, sans-serif;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 20px 32px;
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #FFFFFF;
+
+  /* Pink Gradient wie btn-primary */
+  background: linear-gradient(
+    135deg,
+    #FF2D7A 0%,
+    #E02569 100%
+  );
+
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 16px;
+
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.12),
+    0 0 24px rgba(255, 45, 122, 0.3);
+}
+
+.form-submit:hover {
+  background: linear-gradient(
+    135deg,
+    #FF4088 0%,
+    #F02E75 100%
+  );
+  transform: translateY(-3px) scale(1.01);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.15),
+    0 0 40px rgba(255, 45, 122, 0.5);
+}
+
+.form-submit:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+.form-submit:disabled {
+  background: #CCC;
+  color: #999;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ═══ SUCCESS MESSAGE ═══ */
+
+.contact-form-success {
+  display: none;
+  padding: 48px 40px;
+  background: #FFFFFF;
+  border: 2px solid #E8E8E0;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form-success.active {
+  display: block;
+}
+
+.success-icon {
+  font-size: 64px;
+  margin-bottom: 24px;
+}
+
+.success-headline {
+  font-family: 'Unbounded', system-ui, sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #1A1A1A;
+  margin: 0 0 16px 0;
+}
+
+.success-text {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+}
+
+/* ═══ RESPONSIVE ═══ */
+
+/* Tablets und größere Phones (unter 768px) */
+@media (max-width: 768px) {
+  .qualification-container {
+    max-width: 95%;
+    padding: 40px 24px;
+    border-radius: 16px;
+    margin: 0 12px;
+  }
+
+  .qualification-headline {
+    font-size: clamp(1.5rem, 5.5vw, 1.875rem); /* 24px - 30px */
+    line-height: 1.25;
+  }
+
+  .calendly-headline {
+    font-size: clamp(1.625rem, 6vw, 2rem); /* 26px - 32px */
+  }
+
+  .contact-form-headline {
+    font-size: clamp(1.5rem, 5vw, 1.75rem); /* 24px - 28px */
+  }
+}
+
+/* Kleine Phones (unter 480px) */
+@media (max-width: 480px) {
+  .qualification-container {
+    max-width: 95%;
+    padding: 32px 16px;
+    border-radius: 12px;
+    margin: 0 8px;
+  }
+
+  .qualification-progress {
+    font-size: 11px;
+    margin-bottom: 24px;
+  }
+
+  .qualification-eyebrow {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+
+  .qualification-headline {
+    font-size: clamp(1.25rem, 5vw, 1.5rem); /* 20px - 24px */
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+
+  .calendly-headline {
+    font-size: clamp(1.5rem, 6vw, 1.75rem); /* 24px - 28px */
+  }
+
+  .contact-form-headline {
+    font-size: clamp(1.375rem, 5vw, 1.625rem); /* 22px - 26px */
+  }
+
+  .qualification-subtext,
+  .contact-form-subtext {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 36px;
+  }
+
+  .qualification-options {
+    gap: 12px;
+  }
+
+  .qualification-option {
+    padding: 18px 20px;
+    min-height: 56px; /* Touch-freundlich */
+    font-size: 16px;
+    border-radius: 12px;
+  }
+
+  .qualification-option:hover {
+    transform: translateY(-2px) scale(1.01);
+  }
+
+  #calendly-embed {
+    min-height: 600px;
+  }
+
+  #calendly-embed iframe {
+    min-height: 600px !important;
+  }
+
+  .form-input,
+  .form-textarea {
+    font-size: 16px;
+    padding: 14px 16px;
+  }
+
+  .form-submit {
+    font-size: 17px;
+    padding: 18px 28px;
+    min-height: 56px; /* Touch-freundlich */
+  }
+}
+
+/* ═══ DARK MODE SUPPORT (Optional) ═══ */
+
+@media (prefers-color-scheme: dark) {
+  /* Falls später Dark Mode gewünscht ist, hier anpassen */
+}

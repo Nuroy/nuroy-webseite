@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Dashboard — All Your Data at a Glance | Nuroy</title>
+
+  <!-- SEO: NOINDEX (ad-only funnel page) -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+
+  <!-- Meta Description -->
+  <meta name="description" content="Custom dashboard for companies from €100k+ annual revenue. All your tools, one interface, real-time KPIs. German company, exclusively German developers. Book a free 60-minute strategy call on Google Meet.">
+
+  <!-- Facebook Domain Verification -->
+  <meta name="facebook-domain-verification" content="685dxfgmj3yn96tljrpdoyqb4mtl2c" />
+
+  <!-- OG Tags (for social sharing from ads) -->
+  <meta property="og:title" content="Custom Dashboard — All Your Data at a Glance">
+  <meta property="og:description" content="No more Excel chaos and tool hopping. German company, exclusively German developers. Book a free 60-minute strategy call on Google Meet.">
+  <meta property="og:image" content="https://nuroy.de/assets/lp/og-image.webp">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nuroy.de/lp/dashboard-en.html">
+  <link rel="alternate" hreflang="de" href="https://nuroy.de/lp/dashboard.html">
+  <link rel="alternate" hreflang="en" href="https://nuroy.de/lp/dashboard-en.html">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+
+  <!-- Fonts: Unbounded (Display), Geist (Body), JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  </noscript>
+
+  <!-- Shared Design System -->
+  <link rel="stylesheet" href="../shared/styles.min.css">
+
+  <!-- Funnel-Specific Styles -->
+  <link rel="stylesheet" href="../funnel/funnel-styles.min.css?v=4.2">
+  <link rel="stylesheet" href="../funnel/funnel-qualification.min.css?v=3.1">
+
+  <!-- Lite YouTube Embed -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">
+
+  <!-- ROI Calculator Styles -->
+  <link rel="stylesheet" href="roi-calculator.min.css?v=1.1">
+
+  <!-- Asset Slot Styles -->
+  <style>
+    .asset-slot {
+      position: relative;
+      display: block;
+      margin: 0 auto;
+      border: 2px dashed rgba(255, 45, 122, 0.3);
+      border-radius: 12px;
+      background: rgba(255, 45, 122, 0.02);
+      overflow: hidden;
+      /* Perf: render/animate iframes only near viewport (no visual change when visible) */
+      content-visibility: auto;
+      contain-intrinsic-size: auto 480px;
+    }
+    .asset-slot img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .asset-slot iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: inherit;
+    }
+    .asset-slot__label {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: rgba(255, 45, 122, 0.7);
+      background: rgba(250, 250, 247, 0.95);
+      padding: 4px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+    /* Hide labels when images are in place */
+    .asset-slot img[src*=".webp"]:not([src*="PLACEHOLDER"]) + .asset-slot__label,
+    .asset-slot img[src*=".jpg"]:not([src*="PLACEHOLDER"]) + .asset-slot__label,
+    .asset-slot img[src*=".png"]:not([src*="PLACEHOLDER"]) + .asset-slot__label {
+      display: none;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       ROI Rechnung - Enhanced Design
+       ═══════════════════════════════════════════════════════════ */
+
+    .roi-section {
+      margin-top: 80px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .roi-headline {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 48px;
+      color: var(--fg);
+    }
+
+    .roi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+
+    /* Base ROI Box */
+    .roi-box {
+      position: relative;
+      background: var(--bg-2);
+      border: 1px solid var(--line-strong);
+      border-radius: 16px;
+      padding: 40px 32px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.2, 0, 0, 1);
+      overflow: hidden;
+    }
+
+    /* Gradient Overlay (subtle) */
+    .roi-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at top,
+        var(--glow-color, rgba(255, 45, 122, 0.08)) 0%,
+        transparent 70%
+      );
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .roi-box:hover::before {
+      opacity: 1;
+    }
+
+    .roi-box:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent-color, var(--pink));
+      box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.3),
+        0 0 40px var(--glow-color, var(--pink-glow));
+    }
+
+    /* Icon */
+    .roi-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      display: inline-block;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .roi-icon svg {
+      display: block;
+      color: var(--accent-color, var(--pink));
+    }
+
+    .roi-box:hover .roi-icon {
+      transform: scale(1.2) rotate(-8deg);
+    }
+
+    /* Label (Uppercase) */
+    .roi-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--fg-dim);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    /* Main Value */
+    .roi-value {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      color: var(--accent-color, var(--pink));
+      line-height: 1.1;
+    }
+
+    /* Description */
+    .roi-desc {
+      font-size: 15px;
+      color: var(--fg-muted);
+      line-height: 1.7;
+    }
+
+    .roi-desc strong {
+      color: var(--fg);
+      font-weight: 600;
+    }
+
+    /* Variant: KOSTEN (Red/Warn) */
+    .roi-box--kosten {
+      --accent-color: #e5484d;
+      --glow-color: rgba(229, 72, 77, 0.15);
+    }
+
+    .roi-box--kosten .roi-value {
+      color: #e5484d;
+    }
+
+    /* Variant: INVESTITION (Pink) */
+    .roi-box--investition {
+      --accent-color: var(--pink);
+      --glow-color: var(--pink-glow-lg);
+    }
+
+    .roi-box--investition .roi-value {
+      color: var(--pink);
+    }
+
+    /* Variant: ERSPARNIS (Green/Ok) */
+    .roi-box--ersparnis {
+      --accent-color: var(--ok);
+      --glow-color: rgba(143, 163, 115, 0.2);
+    }
+
+    .roi-box--ersparnis .roi-value {
+      color: var(--ok);
+    }
+
+    /* Placeholder TODOs - Pink + Pulsing */
+    .roi-box .placeholder {
+      color: var(--pink);
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+
+    .roi-box .placeholder::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border: 2px dashed var(--pink);
+      border-radius: 6px;
+      opacity: 0.3;
+      animation: pulse-border 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-border {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.05); }
+    }
+
+    /* Entry Animation (Scroll Reveal) */
+    .roi-box {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideInUp 0.7s cubic-bezier(0.2, 0, 0, 1) forwards;
+    }
+
+    .roi-box:nth-child(1) { animation-delay: 0.1s; }
+    .roi-box:nth-child(2) { animation-delay: 0.2s; }
+    .roi-box:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes slideInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 600px) {
+      .roi-box {
+        padding: 32px 24px;
+      }
+
+      .roi-icon {
+        font-size: 40px;
+      }
+
+      .roi-icon svg {
+        width: 40px;
+        height: 40px;
+      }
+
+      .roi-value {
+        font-size: 24px;
+      }
+
+      .roi-desc {
+        font-size: 14px;
+      }
+
+      /* Investitions-Box spezifisch: kleinere Schrift auf Mobile */
+      .roi-box--investition .roi-value {
+        font-size: 18px;
+      }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      .roi-box,
+      .roi-icon,
+      .placeholder::after {
+        animation: none !important;
+        transition-duration: 0.1s !important;
+      }
+    }
+  </style>
+
+  <!-- Funnel Config (MUST load before tracking scripts) -->
+  <script src="../config/funnel-config.js"></script>
+  <script>
+    // English funnel: separate Calendly link (60-min strategy call on Google Meet)
+    if (window.NUROY_CONFIG) {
+      window.NUROY_CONFIG.CALENDLY_URL = 'https://calendly.com/termin-nuroy/nuroy-free-dashboard-strategy-call?hide_gdpr_banner=1';
+    }
+  </script>
+
+  <!-- Tracking: Meta Pixel (1:1 from dashboard-jetzt.html) -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+
+    // Pixel ID aus Config lesen
+    const pixelId = window.NUROY_CONFIG?.META_PIXEL_ID;
+    if (pixelId && !pixelId.includes('PLACEHOLDER')) {
+      fbq('init', pixelId);
+      fbq('track', 'PageView');
+    }
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=1324978372925476&ev=PageView&noscript=1" />
+  </noscript>
+
+  <!-- Calendly Widget Script -->
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</head>
+
+<body class="funnel-page">
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 1. Sticky Header (minimal) -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<header class="funnel-header">
+  <div class="container">
+    <img src="../assets/logo-full.png" alt="Nuroy" class="funnel-logo">
+    <a href="#booking" class="btn btn-primary">Book your free strategy call</a>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SEKTION 1: HERO-CLUSTER (Split-Screen: Text links, Visual rechts) -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="funnel-hero" id="hero" style="padding: 140px 0 80px; min-height: 90vh; display: flex; align-items: center;">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 0.9fr 1fr; gap: 60px; align-items: center;">
+
+      <!-- LINKE SPALTE: Content -->
+      <div style="text-align: center;">
+        <!-- Geteilte Headline -->
+        <h1 style="font-family: var(--font-display); font-size: clamp(48px, 6vw, 72px); line-height: 1.05; margin-bottom: 32px; font-weight: 900; color: #1a1a1a; letter-spacing: -0.02em;">
+          Too much software and you've <span style="color: var(--pink);">lost track</span> of your <span style="color: var(--pink);">numbers</span>?
+        </h1>
+
+        <!-- Subline -->
+        <p style="font-size: 18px; line-height: 1.65; margin-bottom: 56px; color: var(--fg-muted);">
+          Put an end to conflicting numbers and outdated reports. Your custom dashboard brings all your tools into one real-time interface — built for your workflows.
+        </p>
+
+        <!-- CTA mit Zeitangabe -->
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 32px;">
+          <a href="#booking" class="btn btn-primary btn-lg" style="font-size: 16px; padding: 18px 32px;">Book your free strategy call →</a>
+          <span style="display: flex; align-items: center; gap: 8px; font-family: var(--font-sans); font-size: 13px; color: var(--fg-dim);">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="16" height="16">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+            Free 60-min strategy call · on Google Meet
+          </span>
+        </div>
+
+        <!-- Social Proof Line -->
+        <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+          <span style="width: 8px; height: 8px; background: var(--ok); border-radius: 50%; animation: pulse 2s ease-in-out infinite;"></span>
+          <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-dim);">German company · exclusively German developers · GDPR-compliant</span>
+        </div>
+      </div>
+
+      <!-- RECHTE SPALTE: Dashboard Visual (ANIMATED) -->
+      <div>
+        <div style="aspect-ratio: 1/1; max-width: 600px; margin: 0 auto; border: 2px dashed rgba(255, 45, 122, 0.3); border-radius: 18px; overflow: hidden; background: #0a0a0f; content-visibility: auto; contain-intrinsic-size: auto 600px;">
+          <iframe src="../assets/lp/nuroy-dashboard-mockup-en.html"
+                  title="Nuroy Custom Dashboard — Live Demo"
+                  width="600"
+                  height="600"
+                  style="width: 100%; height: 100%; border: none; border-radius: 16px; display: block;"
+                  loading="eager"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Mobile: Stack vertically */
+@media (max-width: 968px) {
+  #hero .container > div {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  #hero h1 {
+    font-size: clamp(36px, 8vw, 48px) !important;
+  }
+}
+</style>
+
+<!-- Logo-Marquee (Teil des Hero-Clusters) -->
+<section class="funnel-trust-bar" id="trust" style="padding: 60px 0; background: var(--bg-1);"
+  <div class="funnel-trust-text" style="color: #FF2D7A !important;">Trusted by companies like:</div>
+
+  <!-- Zeile 1: Rechts nach Links -->
+  <div class="funnel-trust-carousel">
+    <div class="funnel-trust-track">
+      <!-- Original Set Row 1 -->
+      <img src="../assets/clients/sniffys.png" alt="Sniffys" width="702" height="395" loading="lazy">
+      <img src="../assets/clients/pulsetrack.png" alt="PulseTrack" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/logo-icon-1.svg" alt="Partner Logo" width="100" height="90" loading="lazy">
+      <img src="../assets/clients/flowmetrix.png" alt="FlowMetrix" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/nomo.png" alt="Nomo" width="600" height="600" loading="lazy">
+      <img src="../assets/clients/apexflow.png" alt="ApexFlow" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/iftrue.svg" alt="Fahrtreu" width="191" height="48" loading="lazy">
+      <img src="../assets/clients/connectiq.png" alt="ConnectIQ" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/streamcore.png" alt="StreamCore" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/logo-icon-2.svg" alt="Partner Logo" width="100" height="100" loading="lazy">
+
+      <!-- Duplicate Set Row 1 -->
+      <img src="../assets/clients/sniffys.png" alt="Sniffys" width="702" height="395" loading="lazy">
+      <img src="../assets/clients/pulsetrack.png" alt="PulseTrack" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/logo-icon-1.svg" alt="Partner Logo" width="100" height="90" loading="lazy">
+      <img src="../assets/clients/flowmetrix.png" alt="FlowMetrix" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/nomo.png" alt="Nomo" width="600" height="600" loading="lazy">
+      <img src="../assets/clients/apexflow.png" alt="ApexFlow" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/iftrue.svg" alt="Fahrtreu" width="191" height="48" loading="lazy">
+      <img src="../assets/clients/connectiq.png" alt="ConnectIQ" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/streamcore.png" alt="StreamCore" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/logo-icon-2.svg" alt="Partner Logo" width="100" height="100" loading="lazy">
+    </div>
+  </div>
+
+  <!-- Zeile 2: Links nach Rechts -->
+  <div class="funnel-trust-carousel">
+    <div class="funnel-trust-track funnel-trust-track-reverse">
+      <!-- Original Set Row 2 -->
+      <img src="../assets/clients/vitalpulse.png" alt="VitalPulse" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/technova.png" alt="TechNova" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/quantalab.png" alt="QuantaLab" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/logo-icon-3.svg" alt="Partner Logo" width="100" height="93" loading="lazy">
+      <img src="../assets/clients/vertexhub.png" alt="VertexHub" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/horizontech.png" alt="HorizonTech" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/prismdata.png" alt="PrismData" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/logo-icon-4.svg" alt="Partner Logo" width="100" height="101" loading="lazy">
+      <img src="../assets/clients/momentumpro.png" alt="MomentumPro" width="800" height="200" loading="lazy">
+
+      <!-- Duplicate Set Row 2 -->
+      <img src="../assets/clients/vitalpulse.png" alt="VitalPulse" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/technova.png" alt="TechNova" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/quantalab.png" alt="QuantaLab" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/logo-icon-3.svg" alt="Partner Logo" width="100" height="93" loading="lazy">
+      <img src="../assets/clients/vertexhub.png" alt="VertexHub" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/horizontech.png" alt="HorizonTech" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/prismdata.png" alt="PrismData" width="800" height="200" loading="lazy">
+      <img src="../assets/clients/logo-icon-4.svg" alt="Partner Logo" width="100" height="101" loading="lazy">
+      <img src="../assets/clients/momentumpro.png" alt="MomentumPro" width="800" height="200" loading="lazy">
+    </div>
+  </div>
+
+  <!-- DSGVO-Trust-Zeile (Teil des Hero-Clusters) -->
+  <div class="container" style="text-align: center; margin-top: 40px;">
+    <p style="font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); letter-spacing: 0.08em;">GDPR-COMPLIANT · GERMAN ENGINEERING TEAM · HOSTED WHEREVER YOU NEED — EU, US OR YOUR OWN CLOUD</p>
+  </div>
+</section>
+
+<style>
+/* Trust-Bar Überschrift immer in Pink */
+#trust .funnel-trust-text {
+  color: var(--pink) !important;
+}
+
+/* Mobile Optimierung für Trust-Bar Sektion */
+@media (max-width: 768px) {
+  #trust {
+    padding: 40px 0 !important;
+    background: #0a0a0c !important;
+  }
+
+  /* Gradient auf Mobile mit dunklem Hintergrund */
+  #trust.funnel-trust-bar::before {
+    background: linear-gradient(90deg,
+      rgba(10, 10, 12, 1) 0%,
+      transparent 10%,
+      transparent 90%,
+      rgba(10, 10, 12, 1) 100%
+    ) !important;
+  }
+
+  .funnel-trust-text {
+    font-size: 14px !important;
+    margin-bottom: 28px !important;
+    padding: 0 20px;
+    color: var(--pink) !important;
+  }
+
+  .funnel-trust-carousel {
+    margin-bottom: 20px !important;
+  }
+
+  .funnel-trust-track {
+    gap: 50px !important;
+  }
+
+  .funnel-trust-track img {
+    max-height: 40px !important;
+    margin: 0 !important;
+    opacity: 0.9 !important;
+    filter: brightness(0) invert(1) !important;
+  }
+
+  #trust .container p {
+    font-size: 10px !important;
+    padding: 0 20px;
+    line-height: 1.6;
+    color: var(--pink) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #trust {
+    padding: 32px 0 !important;
+    background: #0a0a0c !important;
+  }
+
+  /* Gradient mit dunklem Hintergrund */
+  #trust.funnel-trust-bar::before {
+    background: linear-gradient(90deg,
+      rgba(10, 10, 12, 1) 0%,
+      transparent 8%,
+      transparent 92%,
+      rgba(10, 10, 12, 1) 100%
+    ) !important;
+  }
+
+  .funnel-trust-text {
+    font-size: 13px !important;
+    margin-bottom: 24px !important;
+    color: var(--pink) !important;
+  }
+
+  .funnel-trust-track {
+    gap: 40px !important;
+  }
+
+  .funnel-trust-track img {
+    max-height: 38px !important;
+    opacity: 0.9 !important;
+    filter: brightness(0) invert(1) !important;
+  }
+
+  #trust .container {
+    margin-top: 28px !important;
+  }
+
+  #trust .container p {
+    font-size: 9px !important;
+    letter-spacing: 0.06em !important;
+    color: var(--pink) !important;
+  }
+}
+</style>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SEKTION 2: PROBLEM (emotional & konkret) -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="funnel-section funnel-problem" id="problem">
+  <div class="container">
+    <h2 class="funnel-section-headline">When your reporting looks like this …</h2>
+
+    <!-- Einleitungssatz (neu, empathisch) -->
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 40px; font-size: 18px; color: var(--fg-muted);">Sound familiar? You just want to know how your business is doing — but instead …</p>
+
+    <div class="funnel-problem-cards" id="problem-cards">
+      <div class="funnel-problem-card">
+        <!-- Icon: Excel-Tabellen-Chaos -->
+        <div style="width: 80px; height: 80px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="15" width="60" height="50" rx="4" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+            <line x1="10" y1="30" x2="70" y2="30" stroke="#4caf50" stroke-width="2"/>
+            <line x1="10" y1="45" x2="70" y2="45" stroke="#4caf50" stroke-width="2"/>
+            <line x1="35" y1="15" x2="35" y2="65" stroke="#4caf50" stroke-width="2"/>
+            <circle cx="60" cy="25" r="12" fill="#ff2d7a"/>
+            <path d="M56 21 L64 29 M64 21 L56 29" stroke="white" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Spreadsheets nobody maintains</h3>
+        <p>Monday morning: you open the reporting file. Last updated: 3 weeks ago.</p>
+      </div>
+
+      <div class="funnel-problem-card">
+        <!-- Icon: Multiple Tools / Widersprüche -->
+        <div style="width: 80px; height: 80px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="35" r="18" fill="#bbdefb" stroke="#2196f3" stroke-width="2" opacity="0.7"/>
+            <circle cx="50" cy="35" r="18" fill="#fff9c4" stroke="#ffc107" stroke-width="2" opacity="0.7"/>
+            <circle cx="40" cy="50" r="18" fill="#ffccbc" stroke="#ff5722" stroke-width="2" opacity="0.7"/>
+            <text x="40" y="40" font-size="32" fill="#ff2d7a" font-weight="bold" text-anchor="middle" font-family="Arial">?</text>
+          </svg>
+        </div>
+        <h3>5 tools, 5 versions of the truth</h3>
+        <p>In a meeting someone asks for the current conversion rate. You say: "Let me check and get back to you."</p>
+      </div>
+
+      <div class="funnel-problem-card">
+        <!-- Icon: Zeitfresser / Uhr -->
+        <div style="width: 80px; height: 80px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="28" fill="#fce4ec" stroke="#ff2d7a" stroke-width="3"/>
+            <circle cx="40" cy="40" r="3" fill="#ff2d7a"/>
+            <line x1="40" y1="40" x2="40" y2="20" stroke="#ff2d7a" stroke-width="3" stroke-linecap="round"/>
+            <line x1="40" y1="40" x2="55" y2="40" stroke="#ff2d7a" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="40" cy="15" r="2" fill="#ff2d7a"/>
+            <circle cx="40" cy="65" r="2" fill="#ff2d7a"/>
+            <circle cx="15" cy="40" r="2" fill="#ff2d7a"/>
+            <circle cx="65" cy="40" r="2" fill="#ff2d7a"/>
+          </svg>
+        </div>
+        <h3>1 day of reporting per week</h3>
+        <p>… and in the end you have numbers that are already outdated the moment you send them.</p>
+      </div>
+    </div>
+
+    <p class="funnel-problem-closing">… then you're not alone. And you're <strong>exactly in the right place</strong>.</p>
+
+    <div style="text-align: center; margin-top: 48px;">
+      <a href="#booking" class="btn btn-primary">This can be done better →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SEKTION 4: DIE LÖSUNG (Mechanismus + Capabilities + Integrationen) -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="funnel-section funnel-solution" id="solution" style="background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+  <div class="container">
+    <h2 class="funnel-section-headline">The solution: everything you need to see without searching for it.</h2>
+    <p class="funnel-solution-subline" style="text-align: center; max-width: 800px; margin: 0 auto 60px; font-size: 18px; color: var(--fg-muted);">
+      All your tools, APIs and data sources flow into one central interface in real time. Tailored to your industry. Built for your workflows. <strong>And here's what you can do with it:</strong>
+    </p>
+
+    <!-- ASSET-SLOT: integration-flow (animiert) -->
+    <div class="asset-slot" data-asset="integration-flow" style="aspect-ratio:16/9; max-width: 980px; margin: 0 auto 60px;">
+      <iframe src="../assets/lp/nuroy-integration-flow-en.html"
+              title="Data sources flowing into the Nuroy dashboard"
+              style="width:100%; aspect-ratio:16/9; border:0; border-radius:18px; display:block;"
+              loading="lazy"></iframe>
+    </div>
+
+    <!-- Capabilities Grid (6 statt 10) -->
+    <div class="funnel-features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; margin-top: 60px;">
+      <!-- Capability 1: Tool-Verbindungen -->
+      <div class="funnel-feature-card">
+        <div class="funnel-feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
+          </svg>
+        </div>
+        <h3 class="funnel-feature-title">Tool connections</h3>
+        <p class="funnel-feature-description">Salesforce, HubSpot, Google Analytics, Stripe, your ERP — all in one place, without constantly switching between tabs.</p>
+      </div>
+
+      <!-- Capability 2: Echtzeit-Daten -->
+      <div class="funnel-feature-card">
+        <div class="funnel-feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
+          </svg>
+        </div>
+        <h3 class="funnel-feature-title">Real-time data</h3>
+        <p class="funnel-feature-description">No more manual updating. Your numbers refresh automatically — you always see the current state.</p>
+      </div>
+
+      <!-- Capability 3: Custom KPIs -->
+      <div class="funnel-feature-card">
+        <div class="funnel-feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+          </svg>
+        </div>
+        <h3 class="funnel-feature-title">Custom KPIs</h3>
+        <p class="funnel-feature-description">Define your own metrics, exactly the way you need them — not the way an off-the-shelf tool dictates.</p>
+      </div>
+
+      <!-- Capability 4: Multi-Rollen-Views -->
+      <div class="funnel-feature-card">
+        <div class="funnel-feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+          </svg>
+        </div>
+        <h3 class="funnel-feature-title">Multi-role views</h3>
+        <p class="funnel-feature-description">Leadership, sales and marketing each see exactly the numbers that matter to them — no fiddling with filters.</p>
+      </div>
+
+      <!-- Capability 5: Mobile-Ready -->
+      <div class="funnel-feature-card">
+        <div class="funnel-feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+          </svg>
+        </div>
+        <h3 class="funnel-feature-title">Mobile-ready</h3>
+        <p class="funnel-feature-description">Need to check your latest numbers on the go? No problem — the dashboard works on every device.</p>
+      </div>
+
+      <!-- Capability 6: DSGVO-konform -->
+      <div class="funnel-feature-card">
+        <div class="funnel-feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+          </svg>
+        </div>
+        <h3 class="funnel-feature-title">German engineering, GDPR-compliant</h3>
+        <p class="funnel-feature-description">A German company with exclusively German developers, fully GDPR-compliant — hosted wherever you need it (EU, US or your own infrastructure). Your data stays where it belongs.</p>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════
+         ROI-CALCULATOR: Interaktiver "Was kostet Ihr Reporting?"
+         Ersetzt statisches Integration-Flow Visual
+         ══════════════════════════════════════════════════════════ -->
+    <div class="roi-calculator" id="roi-calculator">
+      <!-- Section Header -->
+      <h3 class="roi-calculator__headline">What is your reporting really costing you?</h3>
+      <p class="roi-calculator__intro">
+        Drag the sliders and see in real time how much money you're losing every month.
+      </p>
+
+      <!-- Calculator Panel (2-column grid: inputs | visuals) -->
+      <div class="roi-calculator__panel">
+
+        <!-- LEFT: Input Controls -->
+        <div class="roi-calculator__inputs">
+
+          <!-- Slider 1: Mitarbeiter -->
+          <div class="roi-slider">
+            <label class="roi-slider__label" for="roi-employees">
+              <span class="roi-slider__label-text">Employees with reporting tasks</span>
+              <output class="roi-slider__value" id="roi-employees-value">8</output>
+            </label>
+            <input
+              type="range"
+              id="roi-employees"
+              class="roi-slider__input"
+              min="1"
+              max="50"
+              value="8"
+              step="1"
+              aria-label="Number of employees with reporting tasks"
+            />
+            <div class="roi-slider__range">
+              <span>1</span>
+              <span>50</span>
+            </div>
+          </div>
+
+          <!-- Slider 2: Stunden/Woche -->
+          <div class="roi-slider">
+            <label class="roi-slider__label" for="roi-hours">
+              <span class="roi-slider__label-text">Hours per week on reporting</span>
+              <output class="roi-slider__value" id="roi-hours-value">5</output>
+            </label>
+            <input
+              type="range"
+              id="roi-hours"
+              class="roi-slider__input"
+              min="1"
+              max="20"
+              value="5"
+              step="0.5"
+              aria-label="Hours per week on manual reporting"
+            />
+            <div class="roi-slider__range">
+              <span>1h</span>
+              <span>20h</span>
+            </div>
+          </div>
+
+          <!-- Slider 3: Stundensatz -->
+          <div class="roi-slider">
+            <label class="roi-slider__label" for="roi-rate">
+              <span class="roi-slider__label-text">Average hourly rate</span>
+              <output class="roi-slider__value" id="roi-rate-value">55 €</output>
+            </label>
+            <input
+              type="range"
+              id="roi-rate"
+              class="roi-slider__input"
+              min="25"
+              max="150"
+              value="55"
+              step="5"
+              aria-label="Average hourly rate in euros"
+            />
+            <div class="roi-slider__range">
+              <span>25€</span>
+              <span>150€</span>
+            </div>
+          </div>
+
+          <!-- Big Cost Counter -->
+          <div class="roi-counter">
+            <div class="roi-counter__label">Cost without a dashboard</div>
+            <div class="roi-counter__value" id="roi-cost-month">€9,500</div>
+            <div class="roi-counter__sublabel">per month</div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Visualizations -->
+        <div class="roi-calculator__visuals">
+          <!-- Before/After Bars (SVG) -->
+          <div class="roi-visual-wrapper">
+            <h4 class="roi-visual-title">Before / After</h4>
+            <svg id="roi-bars-svg" class="roi-bars" viewBox="0 0 400 240" role="img" aria-label="Bar chart: cost without vs. with the Nuroy dashboard">
+              <!-- Dynamisch via JS gezeichnet -->
+            </svg>
+          </div>
+
+          <!-- 12-Month Cumulative Curve (SVG) -->
+          <div class="roi-visual-wrapper">
+            <h4 class="roi-visual-title">Cumulative cost over 12 months</h4>
+            <svg id="roi-curve-svg" class="roi-curve" viewBox="0 0 400 200" role="img" aria-label="Line chart: cumulative cost over 12 months">
+              <!-- Dynamisch via JS gezeichnet -->
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamic Explainer Text -->
+      <div class="roi-explainer">
+        <p>With <strong id="explainer-employees">8 employees</strong>
+           each spending <strong id="explainer-hours">5 hrs/week</strong>
+           on manual reporting,
+           you lose around <strong id="explainer-cost-month">€9,500 per month</strong>
+           — that's <strong id="explainer-cost-year">€114,000 per year</strong>.
+           With our dashboard you save roughly <strong id="explainer-saving-month">€7,600 per month</strong>.*</p>
+        <p class="roi-explainer__disclaimer">*Model assumption: 80% time saved through automation. Actual figures may vary.</p>
+      </div>
+
+      <!-- Zusätzlicher Disclaimer -->
+      <div style="text-align: center; margin-top: 32px; padding: 0 20px;">
+        <p style="font-family: var(--font-mono); font-size: 10px; color: var(--fg-dim); line-height: 1.5; letter-spacing: 0.02em;">
+          Note: This is a simplified projection for illustration. Your actual costs and savings depend on your individual requirements, processes and the complexity of your data landscape. We'll work out an exact calculation together in your strategy call.
+        </p>
+      </div>
+
+      <!-- CTA Button -->
+      <div style="text-align: center; margin-top: 48px;">
+        <a href="#booking" class="btn btn-primary btn-lg" style="display: inline-block; font-size: 18px; padding: 20px 40px; text-decoration: none;">
+          Book your free strategy call →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SEKTION 3: VORHER/NACHHER + ROI (kombiniert) -->
+<!-- ══════════════════════════════════════════════════════════ -->
+
+<style>
+/* Dark Background für Before/After Section */
+#before-after {
+  background: var(--bg-2);
+  padding: 80px 0;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+/* Headline in Brandfarbe (Pink) */
+#before-after .funnel-section-headline {
+  color: var(--pink) !important;
+}
+
+/* Unterüberschrift in Weiß */
+#before-after > .container > p {
+  color: #F5F2EC !important;
+}
+
+/* Helle Karten */
+#before-after .comparison-card {
+  background: #F5F2EC !important;
+  border-color: var(--line) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Mit Nuroy Karte - Pink Border */
+#before-after .comparison-card.after {
+  border: 2px solid var(--pink) !important;
+}
+
+/* Dunkle Textfarben auf hellem Hintergrund */
+#before-after .comparison-card h3 {
+  color: var(--bg-2) !important;
+}
+
+#before-after .comparison-card li {
+  color: var(--bg-2) !important;
+}
+
+/* Warn/OK Colors für Headlines beibehalten */
+#before-after .comparison-card.before h3 {
+  color: var(--warn) !important;
+}
+
+#before-after .comparison-card.after h3 {
+  color: var(--ok) !important;
+}
+
+/* ROI Boxen auch hell */
+#before-after .roi-box {
+  background: #F5F2EC !important;
+  border-color: var(--line-strong) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+#before-after .roi-box * {
+  color: var(--bg-2) !important;
+}
+
+#before-after .roi-box strong {
+  color: var(--pink) !important;
+}
+
+/* Headline in Section */
+#before-after h3:not(.comparison-card h3) {
+  color: var(--fg) !important;
+}
+
+/* Asset Slot Labels in hellen Karten */
+#before-after .comparison-card .asset-slot__label {
+  background: rgba(18, 18, 22, 0.8) !important;
+  color: #F5F2EC !important;
+}
+
+/* Schönere animierte Listen */
+#before-after .comparison-card ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#before-after .comparison-card li {
+  padding: 14px 18px !important;
+  margin-bottom: 10px !important;
+  background: rgba(18, 18, 22, 0.04) !important;
+  border-radius: 8px !important;
+  border-left: 3px solid transparent !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  color: var(--bg-2) !important;
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: slideInFade 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Before Card - Red accent */
+#before-after .comparison-card.before li {
+  border-left-color: rgba(209, 168, 92, 0.3) !important;
+}
+
+#before-after .comparison-card.before li:hover {
+  background: rgba(209, 168, 92, 0.08) !important;
+  border-left-color: var(--warn) !important;
+  transform: translateX(6px);
+  box-shadow: 0 4px 12px rgba(209, 168, 92, 0.1);
+}
+
+/* After Card - Green accent */
+#before-after .comparison-card.after li {
+  border-left-color: rgba(63, 230, 192, 0.3) !important;
+}
+
+#before-after .comparison-card.after li:hover {
+  background: rgba(63, 230, 192, 0.08) !important;
+  border-left-color: #3fe6c0 !important;
+  transform: translateX(6px);
+  box-shadow: 0 4px 12px rgba(63, 230, 192, 0.1);
+}
+
+@keyframes slideInFade {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  #before-after .comparison-card li {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  #before-after .comparison-card li:hover {
+    transform: none;
+  }
+}
+</style>
+
+<section class="funnel-section" id="before-after">
+  <div class="container">
+    <h2 class="funnel-section-headline">What changes — and what it saves.</h2>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 60px; font-size: 18px; color: var(--fg-muted);">On the left, the daily chaos. On the right, clarity in real time. Below, the math.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 60px;">
+      <!-- BEFORE -->
+      <div class="comparison-card before" style="background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px; padding: 32px;">
+        <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 24px; color: var(--warn);">Without the Nuroy dashboard</h3>
+
+        <!-- ASSET-SLOT: before -->
+        <figure class="asset-slot" data-asset="before" style="aspect-ratio:4/3; margin-bottom: 24px;">
+          <iframe
+            src="../assets/lp/nuroy-before-chaos-en.html"
+            title="Reporting without a dashboard"
+            style="width:100%; aspect-ratio:4/3; border:0; border-radius:14px;"
+            loading="lazy"
+          ></iframe>
+        </figure>
+
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 2;">
+          <li>❌ Maintaining spreadsheets manually: 6 to 8 hours per week</li>
+          <li>❌ Numbers never match — every tool shows different values</li>
+          <li>❌ Reporting costs 1 day per week and is still outdated</li>
+          <li>❌ Decisions delayed because nobody knows the current state</li>
+          <li>❌ Everyone works with their own data, no shared truth</li>
+        </ul>
+      </div>
+
+      <!-- AFTER -->
+      <div class="comparison-card after" style="background: var(--bg-2); border: 1px solid var(--pink); border-radius: 12px; padding: 32px;">
+        <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 24px; color: var(--ok);">With the Nuroy dashboard</h3>
+
+        <!-- ASSET-SLOT: after -->
+        <figure class="asset-slot" data-asset="after" style="aspect-ratio:4/3; margin-bottom: 24px;">
+          <iframe
+            src="../assets/lp/nuroy-after-clarity-en.html"
+            title="Reporting with the Nuroy dashboard"
+            style="width:100%; aspect-ratio:4/3; border:0; border-radius:14px;"
+            loading="lazy"
+          ></iframe>
+        </figure>
+
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 2;">
+          <li>✅ Automatic real-time updates: refreshing the dashboard takes 30 seconds</li>
+          <li>✅ One source, one truth: everyone sees the same KPIs</li>
+          <li>✅ Reporting in 5 minutes instead of 1 day</li>
+          <li>✅ Fast, data-driven decisions without "let me check"</li>
+          <li>✅ Everyone sees the same KPIs: transparency across the whole team</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- NEU: ROI-Rechnung -->
+    <div class="roi-section">
+      <h3 class="roi-headline">The math is simple:</h3>
+
+      <div class="roi-grid">
+
+        <!-- Box 1: Kosten heute -->
+        <div class="roi-box roi-box--kosten">
+          <div class="roi-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="20" x2="12" y2="10"></line>
+              <line x1="18" y1="20" x2="18" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="16"></line>
+            </svg>
+          </div>
+          <span class="roi-label">Cost today</span>
+          <div class="roi-value">
+            <span data-count-to="114000">0</span> €<span style="font-size: 0.6em; color: var(--fg-dim); margin-left: 4px;">/year</span>
+          </div>
+          <div class="roi-desc">
+            <strong>Example calculation:</strong><br>
+            8 employees × 5 hrs/week × €55/hr = <strong style="color: var(--fg);">≈ €9,500 / month</strong><br>
+            <span style="font-size: 13px; color: var(--fg-dim); display: block; margin-top: 8px;">That's around <strong>173 working hours a month</strong> flowing into spreadsheets instead of real value.</span>
+          </div>
+        </div>
+
+        <!-- Box 2: Investition -->
+        <div class="roi-box roi-box--investition">
+          <div class="roi-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="9" y1="9" x2="15" y2="15"></line>
+              <line x1="15" y1="9" x2="9" y2="15"></line>
+            </svg>
+          </div>
+          <span class="roi-label">Investment</span>
+          <div class="roi-value" style="font-size: 20px; line-height: 1.3;">
+            One-time setup<br>
+            <span style="font-size: 16px; font-weight: 600; color: var(--fg-muted);">+ optional hosting/maintenance</span>
+          </div>
+          <div class="roi-desc">
+            <strong>A concrete fixed price after the strategy call</strong> — depending on tools & scope.<br>
+            <span style="font-size: 13px; color: var(--fg-dim); display: block; margin-top: 8px;">A one-time investment versus recurring costs.</span>
+          </div>
+        </div>
+
+        <!-- Box 3: Ersparnis -->
+        <div class="roi-box roi-box--ersparnis">
+          <div class="roi-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+              <polyline points="17 6 23 6 23 12"></polyline>
+            </svg>
+          </div>
+          <span class="roi-label">Savings</span>
+          <div class="roi-value">
+            <span data-count-to="91000">0</span> €<span style="font-size: 0.6em; color: var(--fg-dim); margin-left: 4px;">/year</span>
+          </div>
+          <div class="roi-desc">
+            <strong style="color: var(--ok);">≈ 80% reclaimed</strong>, flowing back into real work.<br>
+            <span style="font-size: 13px; color: var(--fg-dim); display: block; margin-top: 8px;"><strong>Usually pays for itself within a few months</strong> — after that the dashboard saves you money month after month.</span><br>
+            <span style="font-size: 13px; color: var(--fg-muted); display: block; margin-top: 4px;">Plus faster decisions and a data foundation everyone trusts.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 60px;">
+      <a href="#booking" class="btn btn-primary btn-lg">From chaos to clarity →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Mobile Optimierung für Die Lösung Sektion */
+@media (max-width: 768px) {
+  #solution .funnel-section-headline {
+    font-size: 28px !important;
+    line-height: 1.2 !important;
+    padding: 0 20px;
+    margin-bottom: 24px !important;
+  }
+
+  #solution .funnel-solution-subline {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    padding: 0 20px;
+    margin-bottom: 40px !important;
+  }
+
+  /* Integration Flow Iframe */
+  #solution .asset-slot[data-asset="integration-flow"] {
+    margin-bottom: 40px !important;
+    padding: 0 20px;
+  }
+
+  #solution .asset-slot[data-asset="integration-flow"] iframe {
+    border-radius: 12px !important;
+  }
+
+  /* Capabilities Grid - 1 Spalte auf Mobile */
+  #solution .funnel-features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    margin-top: 40px !important;
+    padding: 0 20px;
+  }
+
+  #solution .funnel-feature-card {
+    padding: 24px !important;
+  }
+
+  #solution .funnel-feature-title {
+    font-size: 18px !important;
+    margin-bottom: 12px !important;
+  }
+
+  #solution .funnel-feature-description {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* ROI Calculator auf Mobile */
+  #solution .roi-calculator {
+    padding: 32px 20px !important;
+  }
+
+  #solution .roi-calculator__headline {
+    font-size: 24px !important;
+    margin-bottom: 16px !important;
+  }
+
+  #solution .roi-calculator__intro {
+    font-size: 14px !important;
+    margin-bottom: 32px !important;
+  }
+
+  #solution .roi-calculator__panel {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #solution .funnel-section-headline {
+    font-size: 24px !important;
+    line-height: 1.15 !important;
+  }
+
+  #solution .funnel-solution-subline {
+    font-size: 15px !important;
+  }
+
+  #solution .funnel-features-grid {
+    gap: 20px !important;
+  }
+
+  #solution .funnel-feature-card {
+    padding: 20px !important;
+  }
+
+  #solution .funnel-feature-icon {
+    width: 40px !important;
+    height: 40px !important;
+    margin-bottom: 12px !important;
+  }
+
+  #solution .funnel-feature-icon svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  #solution .roi-calculator {
+    padding: 24px 16px !important;
+  }
+
+  #solution .roi-calculator__headline {
+    font-size: 20px !important;
+  }
+}
+</style>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SEKTION 5: TESTIMONIALS (Video-Testimonials) -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="funnel-section funnel-testimonials" id="testimonials">
+  <div class="container">
+    <h2 class="funnel-section-headline">What clients say about us.</h2>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 40px; font-size: 18px; color: var(--fg-muted);">Straight from our German-speaking clients — the same German team that will build your dashboard. (Videos are in German.)</p>
+
+    <div class="funnel-testimonials-grid" id="testimonials-grid">
+      <!-- Sniffys -->
+      <div class="funnel-testimonial-card" data-video-id="UvMFGmVZ9U8">
+        <div class="funnel-testimonial-video">
+          <lite-youtube videoid="UvMFGmVZ9U8"></lite-youtube>
+        </div>
+      </div>
+
+      <!-- Nomo (Valentin) - IN DER MITTE -->
+      <div class="funnel-testimonial-card" data-video-id="_GIMhcR781Y">
+        <div class="funnel-testimonial-video">
+          <lite-youtube videoid="_GIMhcR781Y"></lite-youtube>
+        </div>
+      </div>
+
+      <!-- Follow Austria -->
+      <div class="funnel-testimonial-card" data-video-id="YP-pHyQrUSs">
+        <div class="funnel-testimonial-video">
+          <lite-youtube videoid="YP-pHyQrUSs"></lite-youtube>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SEKTION 6: SO LÄUFT'S AB (Prozess mit Kreisen) -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- NUROY · SEKTION · PROZESS — eigenständiger Custom-Code-Block -->
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<div class="nxs8" id="prozess">
+<style>
+  .nxs8{--pink:#FF2D7A;--ink:#0A0A0C;--line:rgba(255,255,255,.09);--text:#F5F2EC;--muted:#9A968C;
+    font-family:'Satoshi',-apple-system,sans-serif;background:var(--ink);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .nxs8 *{box-sizing:border-box;margin:0;padding:0}
+  .nxs8 .wrap{max-width:1140px;margin:0 auto;padding:84px 22px}
+  .nxs8 .head{text-align:center;max-width:680px;margin:0 auto 48px}
+  .nxs8 .eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--pink);display:inline-flex;align-items:center;gap:9px;margin-bottom:16px}
+  .nxs8 .eyebrow::before{content:"";width:26px;height:1.5px;background:var(--pink)}
+  .nxs8 h2{font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(1.9rem,5.2vw,3rem);letter-spacing:-.02em;line-height:1.05}
+  .nxs8 .steps{display:grid;grid-template-columns:repeat(5,1fr);position:relative}
+  .nxs8 .steps::before{content:"";position:absolute;top:26px;left:8%;right:8%;height:2px;background:linear-gradient(90deg,var(--pink),rgba(255,45,122,.15))}
+  .nxs8 .step{text-align:center;padding:0 12px;position:relative}
+  .nxs8 .sn{width:54px;height:54px;border-radius:50%;background:var(--ink);border:2px solid var(--pink);color:var(--pink);font-family:'Clash Display',sans-serif;font-weight:600;font-size:1.2rem;display:grid;place-items:center;margin:0 auto 20px;position:relative;z-index:1}
+  .nxs8 .step h3{font-family:'Clash Display',sans-serif;font-weight:600;font-size:1rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px}
+  .nxs8 .dur{font-size:.78rem;color:var(--pink);font-weight:600;margin-bottom:8px}.nxs8 .step p{font-size:.86rem;color:var(--muted)}
+  .nxs8 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .nxs8 .reveal.in{opacity:1;transform:none}
+  @media(max-width:900px){.nxs8 .steps{grid-template-columns:1fr 1fr;gap:32px 0}.nxs8 .steps::before{display:none}}
+  @media(max-width:760px){.nxs8 .wrap{padding:60px 22px}}
+
+  /* Mobile: 1 Spalte untereinander */
+  @media(max-width:600px){
+    .nxs8 .steps{grid-template-columns:1fr !important;gap:40px 0 !important;max-width:400px;margin:0 auto}
+    .nxs8 .step{padding:0 20px}
+    .nxs8 h2{font-size:clamp(1.5rem,8vw,2rem) !important}
+    .nxs8 .eyebrow{font-size:11px}
+  }
+
+  @media(max-width:480px){
+    .nxs8 .wrap{padding:48px 16px !important}
+    .nxs8 .steps{gap:36px 0 !important}
+    .nxs8 .step{padding:0 16px}
+    .nxs8 .sn{width:48px;height:48px;font-size:1rem}
+    .nxs8 .step h3{font-size:0.9rem}
+    .nxs8 .dur{font-size:0.72rem}
+    .nxs8 .step p{font-size:0.8rem}
+  }
+</style>
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow">How it works</span><h2>Five steps. 6–10 weeks. Done.</h2></div>
+    <div class="steps">
+      <div class="step reveal"><div class="sn">01</div><h3>Understand</h3><div class="dur">1–2 weeks</div><p>We analyze your tools, KPIs and workflows.</p></div>
+      <div class="step reveal"><div class="sn">02</div><h3>Design</h3><div class="dur">1 week</div><p>Wireframes, data structure, concept aligned.</p></div>
+      <div class="step reveal"><div class="sn">03</div><h3>Build</h3><div class="dur">3–5 weeks</div><p>Weekly progress, continuous feedback.</p></div>
+      <div class="step reveal"><div class="sn">04</div><h3>Test</h3><div class="dur">1 week</div><p>Data sources verified, stakeholders test, go-live.</p></div>
+      <div class="step reveal"><div class="sn">05</div><h3>Stay</h3><div class="dur">Optional</div><p>Hosting, maintenance & ongoing development.</p></div>
+    </div>
+  </div>
+<script>
+(function(){var w=document.querySelector('.nxs8');if(!w)return;var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.15});w.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});})();
+</script>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SEKTION 8: BOOKING (Conversion-Block, unverändert) -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="funnel-booking" id="booking">
+  <div class="container">
+    <h1 class="funnel-booking-headline">Ready to build this?</h1>
+    <p class="funnel-booking-subtext">Your email, one quick question — then pick a time for your free 60-min strategy call.</p>
+
+    <!-- Qualifizierungs-Flow Container (1:1 aus dashboard-jetzt.html) -->
+    <div class="qualification-container" id="qualification-container">
+
+      <!-- Schritt 1: E-Mail -->
+      <div class="qualification-step active" id="qualification-step-1">
+        <div class="qualification-progress">Step 1 of 2</div>
+        <div class="qualification-eyebrow">We'd like to support you —</div>
+        <h2 class="qualification-headline">How can we best reach you?</h2>
+        <p class="qualification-subtext">With your email we can support you specifically for your setup and prepare your strategy call. No spam, no newsletter.</p>
+
+        <div class="qualification-options">
+          <div class="form-field">
+            <input class="form-input" type="email" id="qualification-email" name="email"
+                   placeholder="you@email.com" required autocomplete="email" inputmode="email"
+                   onkeydown="if(event.key==='Enter'){event.preventDefault();submitEmail();}">
+            <p class="qualification-email-error" id="qualification-email-error"
+               style="display:none;color:#E02569;font-size:14px;margin:6px 0 0;">Please enter a valid email address.</p>
+          </div>
+          <button class="form-submit" type="button" onclick="submitEmail()">Continue →</button>
+        </div>
+      </div>
+
+      <!-- Frage 2: Unternehmensgröße -->
+      <div class="qualification-step" id="qualification-step-2">
+        <div class="qualification-progress">Step 2 of 2</div>
+        <div class="qualification-eyebrow">Last question —</div>
+        <h2 class="qualification-headline">How established is your company already?</h2>
+        <p class="qualification-subtext">So we come prepared and bring the right solutions. Stays completely between us, of course.</p>
+
+        <div class="qualification-options">
+          <button class="qualification-option" onclick="selectRevenueRange('revenue-0-100k')">
+            Still in the early stage
+          </button>
+          <button class="qualification-option" onclick="selectRevenueRange('revenue-100k-500k')">
+            Solidly established (approx. €100k to €500k per year)
+          </button>
+          <button class="qualification-option" onclick="selectRevenueRange('revenue-500k-2m')">
+            Growing company (approx. €500k to €2M per year)
+          </button>
+          <button class="qualification-option" onclick="selectRevenueRange('revenue-2m-plus')">
+            Larger company (over €2M per year)
+          </button>
+          <button class="qualification-option" onclick="selectRevenueRange('revenue-prefer-not-say')">
+            I'd rather discuss this directly with you
+          </button>
+        </div>
+
+        <button class="qualification-back" onclick="showStep(1)">← Back</button>
+      </div>
+
+    </div>
+
+    <!-- Calendly Container (wird nach Qualifizierung angezeigt) -->
+    <div class="calendly-container" id="calendly-container">
+      <div class="calendly-header">
+        <div class="calendly-eyebrow">Your free strategy call · 60 min · Google Meet</div>
+        <h2 class="calendly-headline">Pick a time that suits you.</h2>
+      </div>
+
+      <!-- Calendly Inline Widget -->
+      <div id="calendly-embed"></div>
+    </div>
+
+    <!-- Kontaktformular Container (Soft-No) -->
+    <div class="contact-form-container" id="contact-form-container">
+      <div class="contact-form-header">
+        <h2 class="contact-form-headline">Let's figure out what fits you, personally.</h2>
+        <p class="contact-form-subtext">
+          For your setup, it's best we first look at your situation in detail and then come back with a tailored proposal — instead of putting you through a standard call right now. Leave your details and someone from the team will get back to you within 1 to 2 business days.
+        </p>
+      </div>
+
+      <!-- Kontaktformular -->
+      <form class="contact-form" id="contact-form">
+        <div class="form-field">
+          <label class="form-label" for="contact-name">Name *</label>
+          <input class="form-input" type="text" id="contact-name" name="name" required>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="contact-email">Email *</label>
+          <input class="form-input" type="email" id="contact-email" name="email" required>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="contact-company">Company *</label>
+          <input class="form-input" type="text" id="contact-company" name="company" required>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="contact-phone">
+            Phone <span class="form-label-optional">(optional)</span>
+          </label>
+          <input class="form-input" type="tel" id="contact-phone" name="phone">
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="contact-message">
+            Short description of your situation <span class="form-label-optional">(optional)</span>
+          </label>
+          <textarea
+            class="form-textarea"
+            id="contact-message"
+            name="message"
+            placeholder="What's your biggest reporting or tooling challenge right now?"
+          ></textarea>
+        </div>
+
+        <button class="form-submit" type="submit">Send</button>
+      </form>
+
+      <!-- Success Message -->
+      <div class="contact-form-success" id="contact-form-success">
+        <div class="success-icon">✓</div>
+        <h3 class="success-headline">Thank you!</h3>
+        <p class="success-text">We'll get back to you within 1 to 2 business days. Until then, take care.</p>
+      </div>
+    </div>
+
+    <!-- Trust Elemente -->
+    <div class="funnel-booking-trust">
+      <div class="funnel-booking-trust-item">✓ No sales pitch</div>
+      <div class="funnel-booking-trust-item">✓ Concrete answers for your situation</div>
+      <div class="funnel-booking-trust-item">✓ If it's not a fit, we'll say so openly</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SEKTION 9: FOOTER (unverändert) -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<footer class="funnel-footer">
+  <div class="container">
+    <img src="../assets/logo-full.png" alt="Nuroy" class="funnel-logo-sm" loading="lazy" style="height: 24px; margin-bottom: 16px;">
+    <div class="funnel-footer-links" style="display: flex; gap: 24px; font-size: 13px; color: var(--fg-dim); margin-bottom: 12px;">
+      <a href="../impressum.html" target="_blank">Imprint</a>
+      <a href="../datenschutz.html" target="_blank">Privacy Policy</a>
+    </div>
+    <span class="funnel-footer-copy" style="font-size: 12px; color: var(--fg-dim);">© 2026 JT Nuroy Ltd, Paphos, Cyprus</span>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- Scripts -->
+<!-- ══════════════════════════════════════════════════════════ -->
+
+<!-- Booking Funnel & Qualification Flow (1:1 aus dashboard-jetzt.html) -->
+<script src="../funnel/funnel-booking.min.js?v=1.3" defer></script>
+
+<!-- Funnel Scripts (Trust-Bar-Animation, etc.) -->
+<script src="../funnel/funnel-scripts.min.js" defer></script>
+
+<!-- ROI Calculator Script -->
+<script src="roi-calculator.min.js?v=1.2" defer></script>
+
+<!-- Lite YouTube Embed -->
+<script src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js" defer></script>
+
+<!-- ROI Count-Up Animation Script -->
+<script src="dashboard-roi-counter.min.js?v=1.1" defer></script>
+
+<!-- Funnel Analytics -->
+<script src="../funnel/funnel-analytics.min.js?v=1.2" defer></script>
+
+</body>
+</html>
+
+<!--
+═══════════════════════════════════════════════════════════════════════
+ASSET-MANIFEST — Bild-Assets zum Erstellen
+═══════════════════════════════════════════════════════════════════════
+
+Alle Bilder müssen als WebP im Ordner `assets/lp/` gespeichert werden.
+Format: WebP (optimiert für Web, kleine Dateigröße)
+Alle Maße sind in Pixeln (width × height).
+
+─────────────────────────────────────────────────────────────────────
+HERO
+─────────────────────────────────────────────────────────────────────
+hero-illustration.webp
+  • Maße: 1600 × 900 (16:9)
+  • Zweck: Hero-Visual — Nuroy Custom Dashboard mit dunklem UI, Live-KPI-Kacheln
+  • Alt-Text: Nuroy Custom Dashboard mit Live-KPIs und dunklem UI
+  • loading: eager (Above the Fold)
+
+─────────────────────────────────────────────────────────────────────
+PROBLEM-SEKTION
+─────────────────────────────────────────────────────────────────────
+problem-1.webp
+  • Maße: 400 × 400 (1:1)
+  • Zweck: Icon/Illustration für "Excel-Tabellen"
+  • Alt-Text: Excel-Chaos Icon
+
+problem-2.webp
+  • Maße: 400 × 400 (1:1)
+  • Zweck: Icon/Illustration für "5 Tools, 5 Wahrheiten"
+  • Alt-Text: Daten-Widersprüche Icon
+
+problem-3.webp
+  • Maße: 400 × 400 (1:1)
+  • Zweck: Icon/Illustration für "Reportings kosten 1 Tag"
+  • Alt-Text: Zeitfresser Icon
+
+─────────────────────────────────────────────────────────────────────
+LÖSUNG & MECHANISMUS
+─────────────────────────────────────────────────────────────────────
+dashboard-mockup.webp
+  • Maße: 1200 × 800 (3:2)
+  • Zweck: Große Dashboard-Mockup-Ansicht — zentrale Produktdarstellung
+  • Alt-Text: Nuroy Dashboard Mockup mit Echtzeit-KPIs
+
+─────────────────────────────────────────────────────────────────────
+BEFORE/AFTER
+─────────────────────────────────────────────────────────────────────
+before.webp
+  • Maße: 800 × 600 (4:3)
+  • Zweck: "Vorher"-Visual — Reporting ohne Dashboard (Excel-Chaos)
+  • Alt-Text: Reporting ohne Dashboard
+
+after.webp
+  • Maße: 800 × 600 (4:3)
+  • Zweck: "Nachher"-Visual — Reporting mit Dashboard (Clean, Echtzeit)
+  • Alt-Text: Reporting mit Dashboard
+
+─────────────────────────────────────────────────────────────────────
+TESTIMONIALS (Fotos)
+─────────────────────────────────────────────────────────────────────
+testimonial-1.webp
+  • Maße: 200 × 200 (1:1, kreisrund)
+  • Zweck: Testimonial-Foto Kunde 1
+  • Alt-Text: Testimonial Foto
+
+testimonial-2.webp
+  • Maße: 200 × 200 (1:1, kreisrund)
+  • Zweck: Testimonial-Foto Kunde 2
+  • Alt-Text: Testimonial Foto
+
+testimonial-3.webp
+  • Maße: 200 × 200 (1:1, kreisrund)
+  • Zweck: Testimonial-Foto Kunde 3
+  • Alt-Text: Testimonial Foto
+
+─────────────────────────────────────────────────────────────────────
+INTEGRATIONEN
+─────────────────────────────────────────────────────────────────────
+integration-flow.webp
+  • Maße: 1200 × 700 (12:7)
+  • Zweck: Integration Flow Visualization — Datenströme ins Dashboard
+  • Alt-Text: Integration Flow Visualization
+
+─────────────────────────────────────────────────────────────────────
+OG-IMAGE (für Social-Sharing)
+─────────────────────────────────────────────────────────────────────
+og-image.webp
+  • Maße: 1200 × 630 (OG-Standard)
+  • Zweck: Open Graph Image für Social-Media-Sharing
+  • Alt-Text: Nuroy Dashboard — Alle Daten im Überblick
+
+─────────────────────────────────────────────────────────────────────
+ICONS (bevorzugt Inline-SVG statt Bild-Assets)
+─────────────────────────────────────────────────────────────────────
+Die folgenden Icons sind bereits als Inline-SVG direkt im HTML eingebaut:
+  • benefit-icon-1..5 (Zeitersparnis, Echtzeit, Wahrheit, Entscheidungen, Transparenz)
+  • capability-icon-1..10 (Features-Grid)
+  • process-icon-1..5 (nicht verwendet, da Timeline nur Nummern nutzt)
+
+Für Icons sind KEINE zusätzlichen Bild-Assets nötig.
+
+═══════════════════════════════════════════════════════════════════════
+GESAMT: 13 WebP-Dateien zum Erstellen
+═══════════════════════════════════════════════════════════════════════
+
+-->

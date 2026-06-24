@@ -110,7 +110,7 @@ window.FUNNEL_CONTENT = {
     ]
   },
 
-  testimonials: ['sniffys', 'followaustria', 'skalieren'], // IDs aus GLOBAL_TESTIMONIALS
+  testimonials: ['sniffys', 'skalieren'], // IDs aus GLOBAL_TESTIMONIALS
 
   faq: {
     headline: 'Was uns oft gefragt wird.',
@@ -159,7 +159,7 @@ window.FUNNEL_CONTENT = {
     trustPoints: [
       '✓ Keine Verkaufsmasche',
       '✓ Konkrete Antworten auf Ihre Situation',
-      '✓ Wenn es nicht passt, sagen wir's offen'
+      '✓ Wenn es nicht passt, sagen wir\'s offen'
     ]
   }
 };
