@@ -420,7 +420,7 @@ function initCalendlyEventListener() {
 
       // Redirect zur Danke-Seite
       setTimeout(() => {
-        window.location.href = '/danke.html';
+        window.location.href = '/danke';
       }, 500);
     }
   });

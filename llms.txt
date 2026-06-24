@@ -74,4 +74,4 @@ Nuroy entwickelt Custom Dashboards mit KI speziell für diese 10 Branchen im DAC
 
 ## Optional
 
-- [Dashboard-Funnel (Ads-only)](https://nuroy.de/dashboard-jetzt.html): Geschlossene Landingpage, nicht crawlen
+- [Dashboard-Funnel (Ads-only)](https://nuroy.de/dashboard-jetzt): Geschlossene Landingpage, nicht crawlen

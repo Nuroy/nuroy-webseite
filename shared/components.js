@@ -24,15 +24,15 @@
     return `
 <nav class="site-nav" id="site-nav">
   <div class="nav-inner">
-    <a href="${b}index.html" class="nav-logo">
+    <a href="${b}" class="nav-logo">
       <img src="${b}assets/logo-full.png" alt="Nuroy" class="nav-logo-img">
     </a>
     <ul class="nav-links" id="nav-links">
-      <li><div class="nav-link-wrap"><span class="nav-link-num">01</span><a href="${b}projekte.html" data-text="Arbeiten">Arbeiten</a></div></li>
+      <li><div class="nav-link-wrap"><span class="nav-link-num">01</span><a href="${b}projekte" data-text="Arbeiten">Arbeiten</a></div></li>
       <li class="nav-item-with-mega">
         <div class="nav-link-wrap">
           <span class="nav-link-num">02</span>
-          <a href="${b}leistungen.html" data-text="Leistungen" class="nav-trigger-mega">
+          <a href="${b}leistungen" data-text="Leistungen" class="nav-trigger-mega">
             Leistungen
           </a>
         </div>
@@ -40,49 +40,49 @@
         <div class="mega-menu" id="mega-menu-leistungen">
           <div class="mega-menu-inner">
             <div class="mega-services-grid">
-              <a href="${b}leistungen/dashboards.html" class="mega-service-item">
+              <a href="${b}leistungen/dashboards" class="mega-service-item">
                 <span class="mega-num">01</span>
                 <div>
                   <h4 class="mega-title">Custom Dashboards</h4>
                   <p class="mega-desc">Daten sichtbar machen. Entscheidungen schneller treffen.</p>
                 </div>
               </a>
-              <a href="${b}leistungen/ki-agenten.html" class="mega-service-item">
+              <a href="${b}leistungen/ki-agenten" class="mega-service-item">
                 <span class="mega-num">02</span>
                 <div>
                   <h4 class="mega-title">KI-Agenten & Automatisierungen</h4>
                   <p class="mega-desc">Routineaufgaben automatisieren. Zeit für Wichtiges gewinnen.</p>
                 </div>
               </a>
-              <a href="${b}leistungen/software.html" class="mega-service-item">
+              <a href="${b}leistungen/software" class="mega-service-item">
                 <span class="mega-num">03</span>
                 <div>
                   <h4 class="mega-title">Custom Software-Entwicklung</h4>
                   <p class="mega-desc">Maßgeschneiderte Lösungen. Keine Kompromisse.</p>
                 </div>
               </a>
-              <a href="${b}leistungen/ki-integration.html" class="mega-service-item">
+              <a href="${b}leistungen/ki-integration" class="mega-service-item">
                 <span class="mega-num">04</span>
                 <div>
                   <h4 class="mega-title">KI-Integration</h4>
                   <p class="mega-desc">KI in bestehende Systeme integrieren.</p>
                 </div>
               </a>
-              <a href="${b}leistungen/company-ai.html" class="mega-service-item">
+              <a href="${b}leistungen/company-ai" class="mega-service-item">
                 <span class="mega-num">05</span>
                 <div>
                   <h4 class="mega-title">Interne Company-AI</h4>
                   <p class="mega-desc">Ihr Wissen, ein KI-Assistent.</p>
                 </div>
               </a>
-              <a href="${b}leistungen/datenintegration.html" class="mega-service-item">
+              <a href="${b}leistungen/datenintegration" class="mega-service-item">
                 <span class="mega-num">06</span>
                 <div>
                   <h4 class="mega-title">Datenintegration & ETL</h4>
                   <p class="mega-desc">Datensilos auflösen. Ein System, alle Quellen.</p>
                 </div>
               </a>
-              <a href="${b}leistungen/strategy-audit.html" class="mega-service-item">
+              <a href="${b}leistungen/strategy-audit" class="mega-service-item">
                 <span class="mega-num">07</span>
                 <div>
                   <h4 class="mega-title">Strategy & Audit</h4>
@@ -91,15 +91,15 @@
               </a>
             </div>
             <div class="mega-footer">
-              <a href="${b}leistungen.html" class="mega-footer-link">
+              <a href="${b}leistungen" class="mega-footer-link">
                 Alle Leistungen ansehen →
               </a>
             </div>
           </div>
         </div>
       </li>
-      <li><div class="nav-link-wrap"><span class="nav-link-num">03</span><a href="${b}team.html" data-text="Team">Team</a></div></li>
-      <li><div class="nav-link-wrap"><span class="nav-link-num">04</span><a href="${b}kontakt.html" data-text="Kontakt">Kontakt</a></div></li>
+      <li><div class="nav-link-wrap"><span class="nav-link-num">03</span><a href="${b}team" data-text="Team">Team</a></div></li>
+      <li><div class="nav-link-wrap"><span class="nav-link-num">04</span><a href="${b}kontakt" data-text="Kontakt">Kontakt</a></div></li>
       <span class="nav-hover-pill" id="nav-hover-pill"></span>
     </ul>
     <div class="nav-right">
@@ -107,7 +107,7 @@
         <span class="nav-status-dot"></span>
         Alle Systeme operational
       </span>
-      <a href="${b}kontakt.html" class="btn btn-primary nav-cta">Erstgespräch</a>
+      <a href="${b}kontakt" class="btn btn-primary nav-cta">Erstgespräch</a>
       <button class="nav-burger" id="nav-burger" aria-label="Menü öffnen">
         <span></span><span></span><span></span>
       </button>
@@ -119,29 +119,29 @@
 <div class="mobile-menu" id="mobile-menu">
   <div class="mobile-menu-inner">
     <nav class="mobile-nav-links">
-      <a href="${b}projekte.html" class="mobile-nav-link" data-text="Arbeiten" data-num="01">
+      <a href="${b}projekte" class="mobile-nav-link" data-text="Arbeiten" data-num="01">
         <span class="mnl-num">01</span>
         <span class="mnl-text">Arbeiten</span>
         <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <a href="${b}leistungen.html" class="mobile-nav-link" data-text="Leistungen" data-num="02">
+      <a href="${b}leistungen" class="mobile-nav-link" data-text="Leistungen" data-num="02">
         <span class="mnl-num">02</span>
         <span class="mnl-text">Leistungen</span>
         <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <a href="${b}team.html" class="mobile-nav-link" data-text="Team" data-num="03">
+      <a href="${b}team" class="mobile-nav-link" data-text="Team" data-num="03">
         <span class="mnl-num">03</span>
         <span class="mnl-text">Team</span>
         <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <a href="${b}kontakt.html" class="mobile-nav-link" data-text="Kontakt" data-num="04">
+      <a href="${b}kontakt" class="mobile-nav-link" data-text="Kontakt" data-num="04">
         <span class="mnl-num">04</span>
         <span class="mnl-text">Kontakt</span>
         <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </nav>
     <div class="mobile-menu-footer">
-      <a href="${b}kontakt.html" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px">Erstgespräch buchen →</a>
+      <a href="${b}kontakt" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px">Erstgespräch buchen →</a>
       <p class="mobile-menu-meta">Paphos, Zypern · Remote-First DACH</p>
     </div>
   </div>
@@ -153,7 +153,7 @@
 <footer class="site-footer">
   <div class="footer-grid">
     <div class="footer-brand">
-      <a href="${b}index.html" class="footer-logo">
+      <a href="${b}" class="footer-logo">
         <img src="${b}assets/logo-full.png" alt="Nuroy" class="nav-logo-img">
       </a>
       <p class="footer-tagline">Die Technik-Abteilung für Unternehmen, die bauen wollen, statt zu verwalten.</p>
@@ -162,49 +162,49 @@
     <div class="footer-col">
       <p class="footer-col-label">Arbeiten</p>
       <ul>
-        <li><a href="${b}projekte.html">Alle Projekte</a></li>
-        <li><a href="${b}arbeiten/accountly.html">Accountly</a></li>
-        <li><a href="${b}arbeiten/voice-agent.html">KI-Voice-Agent</a></li>
-        <li><a href="${b}arbeiten/csm-suite.html">CSM-Suite</a></li>
-        <li><a href="${b}arbeiten/crm-system.html">CRM-System</a></li>
+        <li><a href="${b}projekte">Alle Projekte</a></li>
+        <li><a href="${b}arbeiten/accountly">Accountly</a></li>
+        <li><a href="${b}arbeiten/voice-agent">KI-Voice-Agent</a></li>
+        <li><a href="${b}arbeiten/csm-suite">CSM-Suite</a></li>
+        <li><a href="${b}arbeiten/crm-system">CRM-System</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <p class="footer-col-label">Leistungen</p>
       <ul>
-        <li><a href="${b}leistungen.html">Übersicht</a></li>
-        <li><a href="${b}leistungen/dashboards.html">Custom Dashboards</a></li>
-        <li><a href="${b}leistungen/ki-agenten.html">KI-Agenten</a></li>
-        <li><a href="${b}leistungen/software.html">Software-Entwicklung</a></li>
-        <li><a href="${b}leistungen/ki-integration.html">KI-Integration</a></li>
-        <li><a href="${b}leistungen/company-ai.html">Company-AI</a></li>
-        <li><a href="${b}leistungen/datenintegration.html">Datenintegration</a></li>
-        <li><a href="${b}leistungen/strategy-audit.html">Strategy & Audit</a></li>
+        <li><a href="${b}leistungen">Übersicht</a></li>
+        <li><a href="${b}leistungen/dashboards">Custom Dashboards</a></li>
+        <li><a href="${b}leistungen/ki-agenten">KI-Agenten</a></li>
+        <li><a href="${b}leistungen/software">Software-Entwicklung</a></li>
+        <li><a href="${b}leistungen/ki-integration">KI-Integration</a></li>
+        <li><a href="${b}leistungen/company-ai">Company-AI</a></li>
+        <li><a href="${b}leistungen/datenintegration">Datenintegration</a></li>
+        <li><a href="${b}leistungen/strategy-audit">Strategy & Audit</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <p class="footer-col-label">Branchen</p>
       <ul>
-        <li><a href="${b}branchen/marketing-agentur.html">Marketing-Agentur</a></li>
-        <li><a href="${b}branchen/ecommerce.html">E-Commerce</a></li>
-        <li><a href="${b}branchen/steuerberater.html">Steuerberater</a></li>
-        <li><a href="${b}branchen/saas.html">B2B SaaS</a></li>
-        <li><a href="${b}branchen/handwerk.html">Handwerk</a></li>
-        <li><a href="${b}branchen/vertriebs-agentur.html">Vertriebs-Agentur</a></li>
-        <li><a href="${b}branchen/coaches.html">Coaches / Info-Produkte</a></li>
-        <li><a href="${b}branchen/anwaltskanzlei.html">Anwaltskanzlei</a></li>
-        <li><a href="${b}branchen/immobilienmakler.html">Immobilienmakler</a></li>
-        <li><a href="${b}branchen/personalvermittlung.html">Personalvermittlung</a></li>
+        <li><a href="${b}branchen/marketing-agentur">Marketing-Agentur</a></li>
+        <li><a href="${b}branchen/ecommerce">E-Commerce</a></li>
+        <li><a href="${b}branchen/steuerberater">Steuerberater</a></li>
+        <li><a href="${b}branchen/saas">B2B SaaS</a></li>
+        <li><a href="${b}branchen/handwerk">Handwerk</a></li>
+        <li><a href="${b}branchen/vertriebs-agentur">Vertriebs-Agentur</a></li>
+        <li><a href="${b}branchen/coaches">Coaches / Info-Produkte</a></li>
+        <li><a href="${b}branchen/anwaltskanzlei">Anwaltskanzlei</a></li>
+        <li><a href="${b}branchen/immobilienmakler">Immobilienmakler</a></li>
+        <li><a href="${b}branchen/personalvermittlung">Personalvermittlung</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <p class="footer-col-label">Unternehmen</p>
       <ul>
-        <li><a href="${b}team.html">Team</a></li>
-        <li><a href="${b}kontakt.html">Kontakt</a></li>
-        <li><a href="${b}wiki.html">Wiki</a></li>
-        <li><a href="${b}impressum.html">Impressum</a></li>
-        <li><a href="${b}datenschutz.html">Datenschutz</a></li>
+        <li><a href="${b}team">Team</a></li>
+        <li><a href="${b}kontakt">Kontakt</a></li>
+        <li><a href="${b}wiki">Wiki</a></li>
+        <li><a href="${b}impressum">Impressum</a></li>
+        <li><a href="${b}datenschutz">Datenschutz</a></li>
       </ul>
     </div>
   </div>
@@ -240,11 +240,11 @@
       footerEl.parentNode.removeChild(footerEl);
     }
 
-    // Mark active nav link
-    const path = window.location.pathname;
+    // Mark active nav link (clean-URL aware)
+    const path = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
     document.querySelectorAll('.nav-links a').forEach(a => {
-      const href = a.getAttribute('href').replace('/index.html', '/');
-      if (href !== '/index.html' && href !== '/' && path.includes(href.replace(/^\//, ''))) {
+      const linkPath = a.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+      if (linkPath !== '/' && (path === linkPath || path.startsWith(linkPath + '/'))) {
         a.classList.add('active');
       }
     });
