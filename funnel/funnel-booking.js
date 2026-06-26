@@ -129,7 +129,7 @@ function submitEmail() {
   saveAnswer(STORAGE_KEYS.EMAIL, email);
 
   // Meta Pixel: Lead-Event beim Absenden der E-Mail (einmal pro Seitenaufruf).
-  if (typeof fbq === 'function' && !window._nuroyLeadFired) {
+  if (typeof fbq === 'function' && !window._nuroyLeadFired && !navigator.webdriver) {
     window._nuroyLeadFired = true;
     fbq('track', 'Lead', {
       content_name: 'Email Submitted',

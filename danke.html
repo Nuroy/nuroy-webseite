@@ -35,7 +35,7 @@
 
     // Pixel ID aus Config lesen
     const pixelId = window.NUROY_CONFIG?.META_PIXEL_ID;
-    if (pixelId && !pixelId.includes('PLACEHOLDER')) {
+    if (pixelId && !pixelId.includes('PLACEHOLDER') && !navigator.webdriver) {
       fbq('init', pixelId);
       fbq('track', 'PageView');
     }
@@ -646,7 +646,7 @@
     // META PIXEL CONVERSION EVENT
     // ─────────────────────────────────────────────────────────
 
-    if (typeof fbq !== 'undefined' && config?.META_PIXEL_CONVERSION_EVENT) {
+    if (typeof fbq !== 'undefined' && config?.META_PIXEL_CONVERSION_EVENT && !navigator.webdriver) {
       const eventName = config.META_PIXEL_CONVERSION_EVENT;
 
       fbq('track', eventName, {

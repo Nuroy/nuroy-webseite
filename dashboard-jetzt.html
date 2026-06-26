@@ -92,7 +92,7 @@
 
     // Pixel ID aus Config lesen
     const pixelId = window.NUROY_CONFIG?.META_PIXEL_ID;
-    if (pixelId && !pixelId.includes('PLACEHOLDER')) {
+    if (pixelId && !pixelId.includes('PLACEHOLDER') && !navigator.webdriver) {
       fbq('init', pixelId);
       fbq('track', 'PageView');
     }
@@ -190,8 +190,8 @@
 <section class="funnel-hero" id="hero">
   <!-- Teil 1: Text-Content im Container (1100px) -->
   <div class="funnel-hero-content">
-    <h1 class="funnel-hero-headline" id="hero-headline">Alle Ihre Daten.<br>An einem Ort.<br>Im Überblick.</h1>
-    <p class="funnel-hero-subline">Wir bauen Ihr Dashboard, das alle Ihre Tools und Softwares übersichtlich an einem Punkt verbindet. Fertig in 14 Tagen, ohne IT Aufwand.</p>
+    <h1 class="funnel-hero-headline" id="hero-headline">Alle Ihre Zahlen.<br>In einem <span style="color: var(--pink)">Dashboard</span>.</h1>
+    <p class="funnel-hero-subline">Ihr Custom Dashboard verbindet alle Tools und Software an einem Punkt — fertig in 14 Tagen, ohne IT-Aufwand.</p>
   </div>
 
   <!-- Teil 2: Video außerhalb Container (85vw) -->
@@ -945,6 +945,16 @@
 </div>
 
 <!-- ══════════════════════════════════════════════════════════ -->
+<!-- Sticky Mobile CTA -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div id="sticky-cta" class="sticky-cta">
+  <div class="container">
+    <span class="sticky-cta-text">Bereit für Ihr Dashboard?</span>
+    <a href="#booking" class="btn btn-primary">Termin buchen →</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
 <!-- Scripts -->
 <!-- ══════════════════════════════════════════════════════════ -->
 
@@ -1049,7 +1059,7 @@ window.SERVICE_DATA = {
 <script src="funnel/funnel-scripts.min.js" defer></script>
 
 <!-- Booking Funnel & Qualification Flow -->
-<script src="funnel/funnel-booking.min.js?v=1.3" defer></script>
+<script src="funnel/funnel-booking.min.js?v=1.4" defer></script>
 
 <!-- Orbital Timeline -->
 <script src="funnel/orbital-timeline.min.js" defer></script>

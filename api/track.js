@@ -83,6 +83,17 @@ module.exports = async function handler(req, res) {
     }
   }
 
+  // Erweiterter Bot-Filter (Crawler-Wellen ohne Bot-UA):
+  // - LCP ~23.000 ms ist die typische Signatur der FB-Ad-Review-/Scraper-Bots
+  // - ein literales '+' in der UTM-Campaign = un-decodierte UTM (automatisierter Aufruf)
+  var lcpVal = parseInt(body.lcp, 10);
+  if (!isNaN(lcpVal) && lcpVal >= 20000) {
+    return res.status(204).end();
+  }
+  if (typeof body.utm_campaign === 'string' && body.utm_campaign.indexOf('+') !== -1) {
+    return res.status(204).end();
+  }
+
   // Datum + Uhrzeit (UTC)
   var now = new Date();
   body.date = now.toISOString().substring(0, 10);
