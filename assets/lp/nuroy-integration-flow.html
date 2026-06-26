@@ -207,7 +207,29 @@
     if(reduce){el.textContent=pre+nf.format(target);return;}
     (function s(t){var p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);el.textContent=pre+nf.format(Math.round(target*e));
       if(p<1)requestAnimationFrame(s);else el.textContent=pre+nf.format(target);})(t0);}
-  setTimeout(function(){up(document.getElementById('m1'),248500,'€',2600);up(document.getElementById('m2'),3842,'',2600);},1400);
+  // KPI-Loop: ruhig 0 -> Ziel hoch, kurz halten, sanft zurueck, wiederholen
+  var m1El=document.getElementById('m1'), m2El=document.getElementById('m2');
+  function setKpi(el,val,pre){el.textContent=(pre||'')+nf.format(Math.round(val));}
+  if(reduce){ setKpi(m1El,350000,'€'); setKpi(m2El,5000,''); }
+  else {
+    var RISE=6000, HOLD=1500, FALL=700;
+    function loop(){
+      var t0=performance.now();
+      (function rise(t){var p=Math.min(1,(t-t0)/RISE),e=1-Math.pow(1-p,3);
+        setKpi(m1El,350000*e,'€'); setKpi(m2El,5000*e,'');
+        if(p<1){requestAnimationFrame(rise);return;}
+        setKpi(m1El,350000,'€'); setKpi(m2El,5000,'');
+        setTimeout(function(){var f0=performance.now();
+          (function fall(tt){var q=Math.min(1,(tt-f0)/FALL),d=q*q;
+            setKpi(m1El,350000*(1-d),'€'); setKpi(m2El,5000*(1-d),'');
+            if(q<1){requestAnimationFrame(fall);return;}
+            setKpi(m1El,0,'€'); setKpi(m2El,0,''); requestAnimationFrame(loop);
+          })(f0);
+        }, HOLD);
+      })(t0);
+    }
+    setTimeout(loop, 800);
+  }
 
   // Mini-Chart einzeichnen + fortlaufend leicht steigen
   var hcLine=document.getElementById('hcLine'),hcArea=document.getElementById('hcArea'),r=(function(s){return function(){s=(s*9301+49297)%233280;return s/233280;};})(7);
@@ -218,9 +240,7 @@
   var Ln=hcLine.getTotalLength();hcLine.style.strokeDasharray=Ln;hcLine.style.strokeDashoffset=reduce?0:Ln;
   hcLine.style.transition='stroke-dashoffset 1.6s cubic-bezier(.2,.7,.2,1) 1.2s';
   requestAnimationFrame(function(){hcLine.style.strokeDashoffset=0;});
-  if(!reduce){setInterval(build,3200);
-    setInterval(function(){var m1=document.getElementById('m1'),m2=document.getElementById('m2');
-      up(m1,248500+Math.floor(Math.random()*4000),'€',900);up(m2,3842+Math.floor(Math.random()*60),'',900);},3600);}
+  if(!reduce){setInterval(build,3200);}
 })();
 </script>
 
