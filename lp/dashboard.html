@@ -1343,106 +1343,181 @@
 <!-- ══════════════════════════════════════════════════════════ -->
 <section class="funnel-booking" id="booking">
   <div class="container">
-    <h2 class="funnel-booking-headline">Bereit, das zu bauen?</h2>
-    <p class="funnel-booking-subtext">Ihre E-Mail — dann sehen Sie direkt freie Termine.</p>
+    <h2 class="funnel-booking-headline">Sehen Sie, was bei Ihnen möglich ist.</h2>
+    <p class="funnel-booking-subtext">Kostenlos &amp; unverbindlich — wir zeigen, wie Ihr Dashboard aussehen könnte.</p>
 
-    <!-- Qualifizierungs-Flow Container (1:1 aus dashboard-jetzt) -->
     <div class="qualification-container" id="qualification-container">
-
-      <!-- Schritt 1: E-Mail -->
       <div class="qualification-step active" id="qualification-step-1">
-        <div class="qualification-eyebrow">Kostenloses Erstgespräch —</div>
-        <h2 class="qualification-headline">E-Mail eintragen, Termin wählen.</h2>
-        <p class="qualification-subtext">Tragen Sie Ihre E-Mail ein — danach sehen Sie sofort freie Termine. Kein Spam, kein Newsletter.</p>
+        <div class="qualification-eyebrow">30-Min-Erstgespräch —</div>
+        <h2 class="qualification-headline">Wir rufen Sie an.</h2>
 
-        <div class="qualification-options">
+        <form class="qualification-options cb-form" id="callback-form" novalidate>
           <div class="form-field">
-            <input class="form-input" type="email" id="qualification-email" name="email"
-                   placeholder="ihre@email.de" required autocomplete="email" inputmode="email"
-                   onkeydown="if(event.key==='Enter'){event.preventDefault();lpSubmitEmail();}">
-            <p class="qualification-email-error" id="qualification-email-error"
-               style="display:none;color:#E02569;font-size:14px;margin:6px 0 0;">Bitte geben Sie eine gültige E-Mail-Adresse ein.</p>
+            <input class="form-input" type="text" id="cb-name" name="name" placeholder="Ihr Name" required autocomplete="name">
           </div>
-          <button class="form-submit" type="button" onclick="lpSubmitEmail()">Freie Termine anzeigen →</button>
+          <div class="form-field">
+            <input class="form-input" type="tel" id="cb-phone" name="phone" placeholder="Ihre Telefonnummer" required autocomplete="tel" inputmode="tel">
+          </div>
+          <div class="cb-when">
+            <span class="cb-when-label">Wann sollen wir anrufen?</span>
+            <div class="cb-times">
+              <button type="button" class="cb-time" data-time="Vormittag">Vormittag</button>
+              <button type="button" class="cb-time" data-time="Mittag">Mittag</button>
+              <button type="button" class="cb-time" data-time="Abend">Abend</button>
+              <button type="button" class="cb-time is-sel" data-time="egal">egal</button>
+            </div>
+          </div>
+          <p class="cb-error" id="cb-error" style="display:none;">Bitte Name und eine gültige Telefonnummer angeben.</p>
+          <button class="form-submit" type="submit">Rückruf anfordern →</button>
+          <p class="cb-fineprint">Kein Spam · Antwort in 24 h · DSGVO-konform</p>
+        </form>
+
+        <button type="button" class="cb-alt" id="cb-show-calendly">Lieber selbst einen Termin wählen? ›</button>
+
+        <div class="cb-success" id="cb-success" style="display:none;">
+          <div class="cb-success-ic">✓</div>
+          <h3 class="cb-success-h">Danke!</h3>
+          <p class="cb-success-t" id="cb-success-t">Wir rufen Sie an — meist noch heute.</p>
         </div>
       </div>
-
     </div>
 
-    <!-- Calendly Container (wird nach Qualifizierung angezeigt) -->
+    <!-- Calendly (Zweitweg — versteckt bis zum Klick auf den Link, revealed via showCalendly()) -->
     <div class="calendly-container" id="calendly-container">
       <div class="calendly-header">
         <div class="calendly-eyebrow">Wählen Sie Ihren Termin</div>
         <h2 class="calendly-headline">Bereit. Lassen Sie uns sprechen.</h2>
       </div>
-
-      <!-- Calendly Inline Widget -->
       <div id="calendly-embed"></div>
     </div>
 
-    <!-- Kontaktformular Container (Soft-No) -->
-    <div class="contact-form-container" id="contact-form-container">
-      <div class="contact-form-header">
-        <h2 class="contact-form-headline">Lassen Sie uns persönlich abstimmen, was zu Ihnen passt.</h2>
-        <p class="contact-form-subtext">
-          Für Ihr Setup schauen wir uns am besten erst Ihre Situation in Ruhe an und melden uns dann mit einem passenden Vorschlag — statt Sie jetzt durch ein Standard-Gespräch zu schicken. Tragen Sie sich ein, und einer aus dem Team meldet sich innerhalb von 1 bis 2 Werktagen.
-        </p>
-      </div>
-
-      <!-- Kontaktformular -->
-      <form class="contact-form" id="contact-form">
-        <div class="form-field">
-          <label class="form-label" for="contact-name">Name *</label>
-          <input class="form-input" type="text" id="contact-name" name="name" required>
-        </div>
-
-        <div class="form-field">
-          <label class="form-label" for="contact-email">E-Mail *</label>
-          <input class="form-input" type="email" id="contact-email" name="email" required>
-        </div>
-
-        <div class="form-field">
-          <label class="form-label" for="contact-company">Firma *</label>
-          <input class="form-input" type="text" id="contact-company" name="company" required>
-        </div>
-
-        <div class="form-field">
-          <label class="form-label" for="contact-phone">
-            Telefon <span class="form-label-optional">(optional)</span>
-          </label>
-          <input class="form-input" type="tel" id="contact-phone" name="phone">
-        </div>
-
-        <div class="form-field">
-          <label class="form-label" for="contact-message">
-            Kurze Beschreibung eurer Situation <span class="form-label-optional">(optional)</span>
-          </label>
-          <textarea
-            class="form-textarea"
-            id="contact-message"
-            name="message"
-            placeholder="Was ist gerade die größte Reporting- oder Tool-Herausforderung?"
-          ></textarea>
-        </div>
-
-        <button class="form-submit" type="submit">Absenden</button>
-      </form>
-
-      <!-- Success Message -->
-      <div class="contact-form-success" id="contact-form-success">
-        <div class="success-icon">✓</div>
-        <h3 class="success-headline">Danke!</h3>
-        <p class="success-text">Wir melden uns innerhalb von 1 bis 2 Werktagen bei Ihnen. Bis dahin: schöne Zeit.</p>
-      </div>
-    </div>
-
-    <!-- Trust Elemente -->
     <div class="funnel-booking-trust">
-      <div class="funnel-booking-trust-item">✓ Keine Verkaufsmasche</div>
-      <div class="funnel-booking-trust-item">✓ Konkrete Antworten auf Ihre Situation</div>
-      <div class="funnel-booking-trust-item">✓ Wenn es nicht passt, sagen wir's offen</div>
+      <div class="funnel-booking-trust-item">Keine Verkaufsmasche</div>
+      <div class="funnel-booking-trust-item">Konkrete Antworten auf Ihre Situation</div>
+      <div class="funnel-booking-trust-item">Wenn es nicht passt, sagen wir's offen</div>
     </div>
   </div>
+
+  <style>
+    /* Kompakter — kürzere Booking-Sektion */
+    #booking{ padding-top:56px; padding-bottom:56px; }
+    #booking .funnel-booking-subtext{ font-size:18px; margin-bottom:26px; max-width:540px; margin-left:auto; margin-right:auto; }
+    #booking .qualification-container{ padding:36px 28px; }
+    #booking .qualification-eyebrow{ margin-bottom:14px; }
+    #booking .qualification-headline{ margin:0 0 18px; }
+    #booking .funnel-booking-trust{ margin-top:30px; gap:10px; }
+    #booking .funnel-booking-trust-item{ font-size:14px; }
+    @media (max-width:600px){
+      #booking{ padding-top:40px; padding-bottom:40px; }
+      #booking .funnel-booking-subtext{ font-size:16px; margin-bottom:22px; }
+      #booking .qualification-container{ padding:28px 20px; }
+    }
+    #booking .cb-form{ display:flex; flex-direction:column; gap:12px; max-width:440px; margin:0 auto; }
+    #booking .cb-when{ text-align:left; margin-top:2px; }
+    #booking .cb-when-label{ display:block; font-family:var(--font-mono); font-size:12px; letter-spacing:.04em; color:#8a8478; margin-bottom:8px; }
+    #booking .cb-times{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+    @media (max-width:480px){ #booking .cb-times{ grid-template-columns:repeat(2,1fr); } }
+    #booking .cb-time{ padding:11px 8px; border-radius:10px; border:1.5px solid rgba(26,26,26,.16); background:#fff; color:#5b574e; font-family:var(--font-mono); font-size:13px; cursor:pointer; transition:border-color .2s, background .2s, color .2s; }
+    #booking .cb-time:hover{ border-color:rgba(26,26,26,.32); }
+    #booking .cb-time.is-sel{ border-color:var(--pink); background:rgba(255,45,122,.08); color:var(--pink); font-weight:700; }
+    #booking .cb-error{ color:#d01f5e; font-size:14px; margin:2px 0 0; text-align:left; }
+    #booking .cb-fineprint{ font-family:var(--font-mono); font-size:11px; letter-spacing:.03em; color:#a8a298; text-align:center; margin:6px 0 0; }
+    #booking .cb-alt{ display:block; margin:18px auto 0; background:none; border:0; color:#6b675f; font-size:13px; text-decoration:underline; text-underline-offset:3px; cursor:pointer; }
+    #booking .cb-alt:hover{ color:#1a1a1a; }
+    #booking .cb-success{ text-align:center; max-width:440px; margin:0 auto; padding:8px 0; }
+    #booking .cb-success-ic{ width:52px; height:52px; margin:0 auto 14px; border-radius:50%; background:rgba(255,45,122,.1); color:var(--pink); font-size:26px; display:grid; place-items:center; }
+    #booking .cb-success-h{ font-family:var(--font-display); font-weight:800; font-size:24px; color:#1a1a1a; margin:0 0 8px; }
+    #booking .cb-success-t{ font-size:16px; line-height:1.6; color:#5b574e; margin:0; }
+  </style>
+  <script>
+    (function(){
+      var cfg = window.NUROY_CONFIG || {};
+      var form = document.getElementById('callback-form');
+      if(!form) return;
+      var timeBtns = [].slice.call(form.querySelectorAll('.cb-time'));
+      var chosen = 'egal';
+      timeBtns.forEach(function(b){ b.addEventListener('click', function(){
+        timeBtns.forEach(function(x){ x.classList.remove('is-sel'); });
+        b.classList.add('is-sel'); chosen = b.getAttribute('data-time');
+      }); });
+
+      var errEl = document.getElementById('cb-error');
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        var name = (form.querySelector('[name="name"]').value || '').trim();
+        var phoneRaw = (form.querySelector('[name="phone"]').value || '').trim();
+        if(name.length < 2 || phoneRaw.replace(/[^0-9+]/g,'').length < 6){
+          errEl.textContent = 'Bitte Name und eine gültige Telefonnummer angeben.';
+          errEl.style.display='block'; return;
+        }
+        errEl.style.display='none';
+        var btn = form.querySelector('.form-submit');
+        var origLabel = btn.textContent;
+        btn.disabled = true; btn.textContent = 'Wird gesendet…';
+        var msg = 'Rückruf gewünscht: ' + chosen;
+
+        try {
+          // 1) web3forms -> E-Mail an euch (Pflicht-Kanal — Erfolg wird hieran gemessen)
+          var ok = true;
+          if(cfg.FORM_SERVICE_ENDPOINT && cfg.FORM_SERVICE_ENDPOINT.indexOf('PLACEHOLDER') < 0){
+            var fd = new FormData();
+            fd.append('access_key', cfg.WEB3FORMS_ACCESS_KEY || '');
+            fd.append('subject', 'Rückruf-Anfrage — Nuroy Dashboard-LP');
+            fd.append('name', name);
+            fd.append('phone', phoneRaw);
+            fd.append('message', msg);
+            fd.append('call_time', chosen);
+            fd.append('source', 'callback_request');
+            ok = (await fetch(cfg.FORM_SERVICE_ENDPOINT, { method:'POST', body:fd, headers:{ Accept:'application/json' } })).ok;
+          }
+          if(!ok) throw new Error('web3forms_not_ok');
+
+          // 2) CRM-Webhook (Google Sheet, best effort) — Anrufzeit in message, getaggt als callback_request
+          try {
+            var hook = cfg.UNQUALIFIED_LEADS_WEBHOOK;
+            if(hook && hook.indexOf('PLACEHOLDER') < 0){
+              fetch(hook, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({
+                name: name, phone: phoneRaw, email: '', message: msg, call_time: chosen,
+                source: 'callback_request', qualification_status: 'callback', timestamp: new Date().toISOString()
+              }) });
+            }
+          } catch(err){}
+
+          // 3) Tracking
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event:'callback_requested', call_time: chosen });
+          if(typeof fbq === 'function' && !window._nuroyLeadFired && !navigator.webdriver){
+            window._nuroyLeadFired = true;
+            fbq('track','Lead',{ content_name:'Callback Requested', content_category:'funnel_callback' });
+          }
+
+          // 4) Erfolg — erst nach bestätigtem web3forms-OK
+          form.style.display = 'none';
+          var alt = document.getElementById('cb-show-calendly'); if(alt) alt.style.display = 'none';
+          var t = document.getElementById('cb-success-t');
+          if(t) t.textContent = (chosen === 'egal')
+            ? 'Wir rufen Sie an — meist noch heute.'
+            : ('Wir rufen Sie am ' + chosen + ' an — meist noch heute.');
+          document.getElementById('cb-success').style.display = 'block';
+        } catch(err){
+          // Fehlschlag: kein falsches „Danke" — Button zurück + Hinweis
+          btn.disabled = false; btn.textContent = origLabel;
+          errEl.textContent = 'Senden fehlgeschlagen — bitte erneut versuchen.';
+          errEl.style.display = 'block';
+        }
+      });
+
+      // Zweitweg: Calendly selbst wählen (nutzt die bestehende showCalendly() aus funnel-booking.min.js)
+      var calLink = document.getElementById('cb-show-calendly');
+      if(calLink){ calLink.addEventListener('click', function(){
+        if(typeof showCalendly !== 'function') return;
+        showCalendly();
+        calLink.style.display = 'none';
+        var cont = document.getElementById('calendly-container');
+        if(cont){ setTimeout(function(){ cont.scrollIntoView({ behavior:'smooth', block:'start' }); }, 80); }
+      }); }
+    })();
+  </script>
 </section>
 
 <!-- ══════════════════════════════════════════════════════════ -->
