@@ -24,12 +24,12 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../assets/favicon.png">
 
-  <!-- Fonts: Unbounded (Display), Geist (Body), JetBrains Mono -->
+  <!-- Fonts: Geist (Display + Body), JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   </noscript>
 
   <!-- Shared Design System -->
@@ -39,11 +39,14 @@
   <link rel="stylesheet" href="../funnel/funnel-styles.min.css?v=4.2">
   <link rel="stylesheet" href="../funnel/funnel-qualification.min.css?v=3.1">
 
+  <!-- LP-Headline-Font: Geist (überschreibt globales Unbounded nur auf dieser Seite) -->
+  <style>:root{--font-display:'Geist',system-ui,sans-serif;}</style>
+
   <!-- Lite YouTube Embed -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">
 
-  <!-- ROI Calculator Styles -->
-  <link rel="stylesheet" href="roi-calculator.min.css?v=1.1">
+  <!-- ROI Calculator (Slider) entfernt -->
+
 
   <!-- Asset Slot Styles -->
   <style>
@@ -351,63 +354,51 @@
 <body class="funnel-page">
 
 <!-- ══════════════════════════════════════════════════════════ -->
-<!-- 1. Sticky Header (minimal) -->
+<!-- 1. Logo (statisch, im Fluss — scrollt mit, kein fixed Overlay) -->
 <!-- ══════════════════════════════════════════════════════════ -->
-<header class="funnel-header">
-  <div class="container">
-    <img src="../assets/logo-full.png" alt="Nuroy" class="funnel-logo">
-    <a href="#booking" class="btn btn-primary">Kostenloses Erstgespräch</a>
-  </div>
-</header>
+<div style="padding: 30px var(--pad-x) 0; display: flex; justify-content: center;">
+  <img src="../assets/logo-full.png" alt="Nuroy" style="height: 72px;">
+</div>
 
 <!-- ══════════════════════════════════════════════════════════ -->
 <!-- SEKTION 1: HERO-CLUSTER (Split-Screen: Text links, Visual rechts) -->
 <!-- ══════════════════════════════════════════════════════════ -->
-<section class="funnel-hero" id="hero" style="padding: 140px 0 80px; min-height: 90vh; display: flex; align-items: center;">
+<section class="funnel-hero" id="hero" style="padding: 32px 0 64px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;">
   <div class="container">
-    <div style="display: grid; grid-template-columns: 0.9fr 1fr; gap: 60px; align-items: center;">
+    <div style="max-width: 800px; margin: 0 auto; text-align: center;">
 
-      <!-- LINKE SPALTE: Content -->
-      <div style="text-align: center;">
-        <!-- Geteilte Headline -->
-        <h1 style="font-family: var(--font-display); font-size: clamp(44px, 5.5vw, 66px); line-height: 1.14; margin-bottom: 32px; font-weight: 900; color: #1a1a1a; letter-spacing: -0.02em; text-wrap: balance;">
-          Alle Tools, alle Zahlen<br>in Ihrem <span style="color: var(--pink);">Custom Dashboard</span>.
-        </h1>
+      <!-- Headline (Angebot-first, Richtung A) -->
+      <h1 style="font-family: var(--font-display); font-size: clamp(40px, 5.5vw, 64px); line-height: 1.12; margin-bottom: 26px; font-weight: 900; color: #1a1a1a; letter-spacing: -0.02em; text-wrap: balance;">
+        Alle Zahlen Ihres Betriebs<br><span style="color: var(--pink);">live auf einem Schirm</span>.
+      </h1>
 
-        <!-- Subline -->
-        <p style="font-size: 18px; line-height: 1.65; margin-bottom: 56px; color: var(--fg-muted);">
-          Schluss mit widersprüchlichen Zahlen und veralteten Reports. Ihr Custom Dashboard bringt alle Tools in eine Echtzeit-Oberfläche gebaut für Ihre Workflows.
-        </p>
+      <!-- Subline -->
+      <p style="font-size: 19px; line-height: 1.6; margin: 0 auto 34px; max-width: 620px; color: var(--fg-muted);">
+        Ein individuelles Dashboard verbindet Ihre Tools und zeigt, was kippt — solange Sie noch reagieren können.
+      </p>
 
-        <!-- CTA mit Zeitangabe -->
-        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 32px;">
-          <a href="#booking" class="btn btn-primary btn-lg" style="font-size: 16px; padding: 18px 32px;">Kostenloses Erstgespräch →</a>
-          <span style="display: flex; align-items: center; gap: 8px; font-family: var(--font-sans); font-size: 13px; color: var(--fg-dim);">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="16" height="16">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-            </svg>
-            Antwort innerhalb von 24h
-          </span>
-        </div>
-
-        <!-- Social Proof Line -->
-        <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
-          <span style="width: 8px; height: 8px; background: var(--ok); border-radius: 50%; animation: pulse 2s ease-in-out infinite;"></span>
-          <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-dim);">Vertrauen von 50+ Unternehmen</span>
+      <!-- CTA (ein Fokus: Primär weich; Buchen als untergeordneter Ghost-Button) -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 24px;">
+        <a href="#showcase" class="btn btn-primary btn-lg" style="font-size: 16px; padding: 18px 36px;">Beispiel-Dashboards ansehen →</a>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 7px;">
+          <a href="#booking" class="btn hero-cta-ghost">Lieber direkt sprechen?</a>
+          <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--fg-dim);">30-Min-Gespräch · kostenlos &amp; unverbindlich</span>
         </div>
       </div>
 
-      <!-- RECHTE SPALTE: Dashboard Visual (ANIMATED) -->
-      <div>
-        <div style="aspect-ratio: 1/1; max-width: 600px; margin: 0 auto; border: 2px dashed rgba(255, 45, 122, 0.3); border-radius: 18px; overflow: hidden; background: #0a0a0f; content-visibility: auto; contain-intrinsic-size: auto 600px;">
-          <iframe src="../assets/lp/nuroy-dashboard-mockup"
-                  title="Nuroy Custom Dashboard — Live Demo"
-                  width="600"
-                  height="600"
-                  style="width: 100%; height: 100%; border: none; border-radius: 16px; display: block;"
-                  loading="eager"></iframe>
-        </div>
+      <!-- Trust-Zeile (schlank) -->
+      <div style="display: flex; align-items: center; justify-content: center; gap: 10px 20px; flex-wrap: wrap; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-dim);">
+        <span style="display:inline-flex;align-items:center;gap:7px;">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="14" height="14"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+          Antwort in 24 h
+        </span>
+        <span>DSGVO-konform · EU-gehostet</span>
       </div>
+
+      <!-- Scroll-Cue: zieht den Blick ins Showcase -->
+      <a href="#showcase" class="hero-scroll-cue" aria-label="Weiter zu den Beispiel-Dashboards" style="display: inline-flex; margin-top: 40px; color: var(--fg-dim); animation: heroScrollCue 1.8s ease-in-out infinite;">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -418,6 +409,15 @@
   50% { opacity: 0.5; }
 }
 
+@keyframes heroScrollCue {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-cue { animation: none; }
+}
+
 /* Mobile: Stack vertically */
 @media (max-width: 968px) {
   #hero .container > div {
@@ -426,75 +426,644 @@
   }
 
   #hero h1 {
-    font-size: clamp(36px, 8vw, 48px) !important;
+    font-size: clamp(42px, 9vw, 52px) !important;
   }
+}
+
+/* Sheen-Sweep auf ALLEN Primär-CTAs (Glow-Pulse + Hover-Shimmer kommen aus funnel-styles) */
+.btn-primary { position: relative; overflow: hidden; }
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 45%;
+  background: linear-gradient(100deg, transparent 0%, rgba(255,255,255,0.55) 50%, transparent 100%);
+  transform: translateX(-160%) skewX(-18deg);
+  animation: heroCtaSheen 5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+@keyframes heroCtaSheen {
+  0%   { transform: translateX(-160%) skewX(-18deg); }
+  16%  { transform: translateX(320%) skewX(-18deg); }
+  100% { transform: translateX(320%) skewX(-18deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary::after { animation: none; display: none; }
+}
+
+/* Hero Zweit-CTA: untergeordneter Ghost/Outline-Button (kein ::before-Shimmer) */
+#hero .hero-cta-ghost {
+  background: transparent;
+  color: #1a1a1a;
+  border: 1.5px solid rgba(26,26,26,0.22);
+  box-shadow: none;
+  padding: 12px 24px;
+  font-size: 14.5px;
+  font-weight: 600;
+}
+#hero .hero-cta-ghost:hover {
+  border-color: rgba(26,26,26,0.42);
+  background: rgba(26,26,26,0.035);
+  transform: translateY(-1px);
 }
 </style>
 
-<!-- Logo-Marquee (Teil des Hero-Clusters) -->
-<section class="funnel-trust-bar" id="trust" style="padding: 60px 0; background: var(--bg-1);"
-  <div class="funnel-trust-text" style="color: #FF2D7A !important;">Vertrauen von Unternehmen wie:</div>
+<!-- Kunden-Logos (echt, Infinite-Marquee) -->
+<section id="kunden" style="padding: 44px 0; background: #efece3; border-top: 1px solid rgba(26,26,26,0.06); border-bottom: 1px solid rgba(26,26,26,0.06);">
+  <div class="container" style="text-align: center;">
+    <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #8a8478; margin-bottom: 26px;">Vertrauen von Unternehmen wie</div>
+    <div class="km-viewport">
+      <div class="km-track">
+        <div class="km-group">
+          <img src="../assets/clients/sniffys.png" alt="Sniffys" style="height: 26px;" loading="lazy">
+          <img src="../assets/clients/nomo.png" alt="Nomo" style="height: 28px;" loading="lazy">
+          <img src="../assets/clients/followaustria.webp" alt="FollowAustria" style="height: 22px;" loading="lazy">
+          <img src="../assets/clients/breece.png" alt="breece" style="height: 24px;" loading="lazy">
+          <img src="../assets/clients/connect-collect.png" alt="Connect &amp; Collect" style="height: 34px;" loading="lazy">
+          <img src="../assets/clients/vsacademy.png" alt="VSAcademy" style="height: 28px;" loading="lazy">
+          <img src="../assets/clients/closingmastery.png" alt="ClosingMastery" style="height: 32px;" loading="lazy">
+        </div>
+        <div class="km-group" aria-hidden="true">
+          <img src="../assets/clients/sniffys.png" alt="" style="height: 26px;" loading="lazy">
+          <img src="../assets/clients/nomo.png" alt="" style="height: 28px;" loading="lazy">
+          <img src="../assets/clients/followaustria.webp" alt="" style="height: 22px;" loading="lazy">
+          <img src="../assets/clients/breece.png" alt="" style="height: 24px;" loading="lazy">
+          <img src="../assets/clients/connect-collect.png" alt="" style="height: 34px;" loading="lazy">
+          <img src="../assets/clients/vsacademy.png" alt="" style="height: 28px;" loading="lazy">
+          <img src="../assets/clients/closingmastery.png" alt="" style="height: 32px;" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- Zeile 1: Rechts nach Links -->
-  <div class="funnel-trust-carousel">
-    <div class="funnel-trust-track">
-      <!-- Original Set Row 1 -->
-      <img src="../assets/clients/sniffys.png" alt="Sniffys" width="702" height="395" loading="lazy">
-      <img src="../assets/clients/pulsetrack.png" alt="PulseTrack" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/logo-icon-1.svg" alt="Partner Logo" width="100" height="90" loading="lazy">
-      <img src="../assets/clients/flowmetrix.png" alt="FlowMetrix" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/nomo.png" alt="Nomo" width="600" height="600" loading="lazy">
-      <img src="../assets/clients/apexflow.png" alt="ApexFlow" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/iftrue.svg" alt="Fahrtreu" width="191" height="48" loading="lazy">
-      <img src="../assets/clients/connectiq.png" alt="ConnectIQ" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/streamcore.png" alt="StreamCore" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/logo-icon-2.svg" alt="Partner Logo" width="100" height="100" loading="lazy">
+<style>
+  /* Kunden-Logos: nativer Endlos-Marquee (kein React/framer-motion) */
+  #kunden .km-viewport{
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+    mask-image:linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  }
+  #kunden .km-track{ display:flex; width:max-content; animation:kmScroll 28s linear infinite; }
+  #kunden .km-viewport:hover .km-track{ animation-play-state:paused; }
+  #kunden .km-group{ display:flex; align-items:center; gap:46px; padding-right:46px; }
+  #kunden .km-group img{ width:auto; object-fit:contain; opacity:0.55; filter:brightness(0); flex:none; user-select:none; pointer-events:none; }
+  /* -50% = exakt eine Gruppenbreite (inkl. trailing gap) => nahtloser Loop */
+  @keyframes kmScroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce){
+    #kunden .km-track{ animation:none; flex-wrap:wrap; justify-content:center; width:auto; }
+    #kunden .km-group{ flex-wrap:wrap; justify-content:center; padding-right:0; }
+    #kunden .km-group[aria-hidden="true"]{ display:none; }
+  }
+</style>
 
-      <!-- Duplicate Set Row 1 -->
-      <img src="../assets/clients/sniffys.png" alt="Sniffys" width="702" height="395" loading="lazy">
-      <img src="../assets/clients/pulsetrack.png" alt="PulseTrack" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/logo-icon-1.svg" alt="Partner Logo" width="100" height="90" loading="lazy">
-      <img src="../assets/clients/flowmetrix.png" alt="FlowMetrix" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/nomo.png" alt="Nomo" width="600" height="600" loading="lazy">
-      <img src="../assets/clients/apexflow.png" alt="ApexFlow" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/iftrue.svg" alt="Fahrtreu" width="191" height="48" loading="lazy">
-      <img src="../assets/clients/connectiq.png" alt="ConnectIQ" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/streamcore.png" alt="StreamCore" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/logo-icon-2.svg" alt="Partner Logo" width="100" height="100" loading="lazy">
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SEKTION 2: PROBLEM — Scrollytelling (Scroll-Scrub, 3 Akte) -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="funnel-section funnel-problem" id="problem">
+  <div class="container prob-intro">
+    <h2 class="funnel-section-headline">Wenn Ihr Reporting so aussieht …</h2>
+    <p class="prob-intro-sub">Kennen Sie das? Sie wollen einfach nur wissen, wie Ihr Unternehmen läuft — aber stattdessen …</p>
+  </div>
+
+  <!-- Gepinnte Bühne: Scroll scrubbt 3 Akte. Mobile = kürzerer Track. reduced-motion = statisch. -->
+  <div class="prob-track">
+    <div class="prob-stage" data-beat="1">
+      <div class="prob-rail" aria-hidden="true"><span></span></div>
+
+      <!-- AKT 1 — Excel veraltet beim Scrollen -->
+      <article class="beat beat--excel">
+        <div class="prob-art">
+          <div class="xl">
+            <div class="xl-wash" aria-hidden="true"></div>
+            <div class="xl-bar"><span class="xl-dot"></span><span class="xl-name">Reporting_final_v7.xlsx</span></div>
+            <div class="xl-grid">
+              <span class="xl-h">Monat</span><span class="xl-h xl-num">Umsatz</span><span class="xl-h xl-num">Marge</span>
+              <span>Jan</span><span class="xl-num">48.200&nbsp;€</span><span class="xl-num xl-pos">31&nbsp;%</span>
+              <span>Feb</span><span class="xl-num">52.900&nbsp;€</span><span class="xl-num xl-pos">29&nbsp;%</span>
+              <span>Mär</span><span class="xl-num">47.100&nbsp;€</span><span class="xl-num xl-pos">33&nbsp;%</span>
+            </div>
+            <div class="xl-foot"><span class="xl-cursor"></span>Zuletzt aktualisiert:&nbsp;<span class="xl-ages" data-i="0"><b>heute</b><b>vor 4&nbsp;Tagen</b><b>vor 1&nbsp;Woche</b><b>vor 2&nbsp;Wochen</b><b>vor 3&nbsp;Wochen</b></span></div>
+          </div>
+        </div>
+        <h3 class="beat-h">Excel-Tabellen, die keiner pflegt</h3>
+        <p class="beat-p">Montagmorgen: Sie öffnen die Reporting-Datei — und sie ist längst kalt.</p>
+      </article>
+
+      <!-- AKT 2 — 5 Werte werden nacheinander genannt -->
+      <article class="beat beat--conflict">
+        <div class="prob-art">
+          <div class="cf">
+            <div class="cf-cap">Conversion-Rate?</div>
+            <div class="cf-tile cf1"><span class="cf-lbl">laut CRM</span><span class="cf-val">2,1&nbsp;%</span></div>
+            <div class="cf-tile cf2"><span class="cf-lbl">laut GA4</span><span class="cf-val">3,4&nbsp;%</span></div>
+            <div class="cf-tile cf3"><span class="cf-lbl">laut Stripe</span><span class="cf-val">1,8&nbsp;%</span></div>
+            <div class="cf-tile cf4"><span class="cf-lbl">laut Excel</span><span class="cf-val">2,9&nbsp;%</span></div>
+            <div class="cf-tile cf5"><span class="cf-lbl">laut Ads</span><span class="cf-val">4,0&nbsp;%</span></div>
+            <span class="cf-q">?</span>
+          </div>
+        </div>
+        <h3 class="beat-h">5 Tools, 5 Wahrheiten</h3>
+        <p class="beat-p">Im Meeting fragt jemand nach der Conversion-Rate. Sie sagen: „Ich schau nach und melde mich."</p>
+      </article>
+
+      <!-- AKT 3 — Montag erstellt → gammelt über die Woche -->
+      <article class="beat beat--week">
+        <div class="prob-art">
+          <div class="wk">
+            <div class="wk-cap">Montag erstellt — bis Freitag Geschichte</div>
+            <div class="wk-board">
+              <div class="wk-days"><span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span></div>
+              <div class="wk-line"><span class="wk-head"></span></div>
+              <div class="wk-doc">
+                <div class="wk-wash" aria-hidden="true"></div>
+                <div class="wk-doc-rows"><i></i><i></i><i></i></div>
+                <div class="wk-doc-name">Report&nbsp;·&nbsp;Mo</div>
+                <span class="wk-doc-stamp">veraltet</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h3 class="beat-h">1 Tag Reporting pro Woche</h3>
+        <p class="beat-p">Montags gebaut — und bis Freitag sind die Zahlen schon wieder Geschichte.</p>
+      </article>
     </div>
   </div>
 
-  <!-- Zeile 2: Links nach Rechts -->
-  <div class="funnel-trust-carousel">
-    <div class="funnel-trust-track funnel-trust-track-reverse">
-      <!-- Original Set Row 2 -->
-      <img src="../assets/clients/vitalpulse.png" alt="VitalPulse" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/technova.png" alt="TechNova" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/quantalab.png" alt="QuantaLab" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/logo-icon-3.svg" alt="Partner Logo" width="100" height="93" loading="lazy">
-      <img src="../assets/clients/vertexhub.png" alt="VertexHub" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/horizontech.png" alt="HorizonTech" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/prismdata.png" alt="PrismData" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/logo-icon-4.svg" alt="Partner Logo" width="100" height="101" loading="lazy">
-      <img src="../assets/clients/momentumpro.png" alt="MomentumPro" width="800" height="200" loading="lazy">
+  <!-- Auflösung -->
+  <div class="container prob-outro">
+    <p class="prob-agitate p-reveal">Das Teure ist nicht die fehlende Tabelle. Es ist die Entscheidung, die Sie auf <span style="color:var(--pink)">veralteten Zahlen</span> treffen — und später teuer korrigieren.</p>
+    <p class="funnel-problem-closing p-reveal">… dann sind Sie nicht allein. Und Sie sind <strong>genau richtig hier</strong>.</p>
+    <div class="p-reveal" style="text-align:center; margin-top:40px;">
+      <a href="#showcase" class="btn btn-primary">Das kann besser gehen →</a>
+    </div>
+  </div>
+</section>
 
-      <!-- Duplicate Set Row 2 -->
-      <img src="../assets/clients/vitalpulse.png" alt="VitalPulse" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/technova.png" alt="TechNova" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/quantalab.png" alt="QuantaLab" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/logo-icon-3.svg" alt="Partner Logo" width="100" height="93" loading="lazy">
-      <img src="../assets/clients/vertexhub.png" alt="VertexHub" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/horizontech.png" alt="HorizonTech" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/prismdata.png" alt="PrismData" width="800" height="200" loading="lazy">
-      <img src="../assets/clients/logo-icon-4.svg" alt="Partner Logo" width="100" height="101" loading="lazy">
-      <img src="../assets/clients/momentumpro.png" alt="MomentumPro" width="800" height="200" loading="lazy">
+<style>
+  /* ===== PROBLEM · Scroll-Scrub ==============================================
+     Ein rAF-Treiber setzt --p (0..1) + --a1/--a2/--a3 (lokaler Akt-Fortschritt)
+     auf .prob-stage. Alles unten liest diese Vars und scrubbt via transform/opacity.
+     reduced-motion: kein Scrub, gestapelte Endzustände.                        */
+  #problem .prob-intro{ text-align:center; }
+  #problem .prob-intro-sub{ max-width:700px; margin:14px auto 0; font-size:18px; color:var(--fg-muted); }
+
+  #problem .prob-track{ position:relative; height:300svh; }
+  #problem .prob-stage{
+    position:sticky; top:0; height:100svh; overflow:hidden;
+    display:grid; place-items:center; background:#fafaf7;
+    --p:0; --a1:0; --a2:0; --a3:0;
+  }
+  /* Fortschritts-Schiene (scrubbt mit --p) */
+  #problem .prob-rail{ position:absolute; top:0; left:0; right:0; height:2px; background:rgba(26,26,26,.06); }
+  #problem .prob-rail span{ display:block; height:100%; background:var(--pink); transform-origin:left; transform:scaleX(var(--p)); }
+
+  /* Akte gestapelt; Sichtbarkeit per data-beat (kurzer Crossfade), Inhalt scrubbt per --aX */
+  #problem .beat{
+    position:absolute; inset:0; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:26px; padding:0 24px; text-align:center;
+    opacity:0; transition:opacity .45s ease; pointer-events:none;
+  }
+  #problem .prob-stage[data-beat="1"] .beat--excel,
+  #problem .prob-stage[data-beat="2"] .beat--conflict,
+  #problem .prob-stage[data-beat="3"] .beat--week{ opacity:1; }
+  #problem .prob-art{ display:grid; place-items:center; min-height:210px; }
+  #problem .beat-h{ font-family:var(--font-display); font-weight:800; font-size:clamp(24px,4vw,34px); letter-spacing:-.02em; color:var(--pink); margin:0; }
+  #problem .beat-p{ max-width:540px; margin:0 auto; font-size:17px; line-height:1.6; color:var(--fg-muted); }
+
+  /* ---- AKT 1: Excel veraltet (--a1) ---- */
+  #problem .xl{ position:relative; width:300px; border-radius:12px; overflow:hidden; background:#fff; border:1px solid rgba(26,26,26,.10); box-shadow:0 20px 48px -28px rgba(0,0,0,.45); }
+  #problem .xl-wash{ position:absolute; inset:0; z-index:3; pointer-events:none; background:#8c8a82; mix-blend-mode:saturation; opacity:var(--a1); }
+  #problem .xl-bar{ display:flex; align-items:center; gap:8px; padding:9px 12px; background:#e9e7e1; border-bottom:1px solid rgba(26,26,26,.08); }
+  #problem .xl-dot{ width:9px; height:9px; border-radius:50%; background:#3fae6b; }
+  #problem .xl-name{ font-family:var(--font-mono); font-size:11px; color:#5f7a68; }
+  #problem .xl-grid{ display:grid; grid-template-columns:1.05fr 1fr .8fr; background:#fff; font-family:var(--font-mono); font-size:10px; }
+  #problem .xl-grid span{ display:flex; align-items:center; height:23px; padding:0 8px; border-right:1px solid rgba(26,26,26,.06); border-bottom:1px solid rgba(26,26,26,.06); color:#5b574e; white-space:nowrap; overflow:hidden; }
+  #problem .xl-grid .xl-h{ background:#f3f1ec; color:#8a8478; }
+  #problem .xl-grid .xl-num{ justify-content:flex-end; font-variant-numeric:tabular-nums; }
+  #problem .xl-grid .xl-pos{ color:#3fae6b; }
+  #problem .xl-foot{ display:flex; align-items:center; padding:10px 12px; font-family:var(--font-mono); font-size:10.5px; color:#8a8478; background:#faf9f6; white-space:nowrap; }
+  #problem .xl-cursor{ width:2px; height:11px; background:#3fae6b; margin-right:6px; opacity:calc(1 - var(--a1)); }
+  #problem .xl-ages{ position:relative; display:inline-block; min-width:96px; height:14px; }
+  #problem .xl-ages b{ position:absolute; left:0; top:0; font-weight:700; opacity:0; transition:opacity .25s ease; }
+  #problem .xl-ages[data-i="0"] b:nth-child(1),
+  #problem .xl-ages[data-i="1"] b:nth-child(2),
+  #problem .xl-ages[data-i="2"] b:nth-child(3),
+  #problem .xl-ages[data-i="3"] b:nth-child(4),
+  #problem .xl-ages[data-i="4"] b:nth-child(5){ opacity:1; }
+  #problem .xl-ages b:nth-child(1){ color:#3fae6b; }
+  #problem .xl-ages b:nth-child(4),#problem .xl-ages b:nth-child(5){ color:var(--pink); }
+
+  /* ---- AKT 2: 5 Werte nacheinander (--a2) ---- */
+  #problem .cf{ position:relative; width:300px; height:210px; }
+  #problem .cf-cap{ position:absolute; left:50%; top:-2px; transform:translateX(-50%); font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#8a8478; }
+  #problem .cf-tile{
+    position:absolute; left:50%; top:50%; width:104px; padding:9px 10px; border-radius:11px;
+    background:#fff; border:1px solid rgba(26,26,26,.10); box-shadow:0 12px 28px -18px rgba(0,0,0,.4);
+    display:flex; flex-direction:column; align-items:center; gap:2px;
+    --tk:clamp(0, calc((var(--a2) - var(--t0)) / .34), 1);
+    opacity:var(--tk);
+    transform:translate(calc(-50% + var(--dx) * var(--tk)), calc(-50% + var(--dy) * var(--tk))) rotate(calc(var(--rz) * var(--tk)));
+  }
+  #problem .cf-lbl{ font-family:var(--font-mono); font-size:9px; color:#a8a298; }
+  #problem .cf-val{ font-family:var(--font-display); font-weight:800; font-size:22px; }
+  #problem .cf1{ --t0:0.00; --dx:-118px; --dy:-58px; --rz:-7deg; } #problem .cf1 .cf-val{ color:#1a1a1a; }
+  #problem .cf2{ --t0:0.15; --dx:100px;  --dy:-72px; --rz:5deg;  } #problem .cf2 .cf-val{ color:var(--pink); }
+  #problem .cf3{ --t0:0.30; --dx:-132px; --dy:14px;  --rz:-3deg; } #problem .cf3 .cf-val{ color:#2f7fd1; }
+  #problem .cf4{ --t0:0.45; --dx:116px;  --dy:24px;  --rz:6deg;  } #problem .cf4 .cf-val{ color:#c98a18; }
+  #problem .cf5{ --t0:0.60; --dx:-20px;  --dy:74px;  --rz:-2deg; } #problem .cf5 .cf-val{ color:#1a1a1a; }
+  #problem .cf-q{ position:absolute; left:50%; top:50%; font-family:var(--font-display); font-weight:800; font-size:34px; color:var(--pink);
+    --qk:clamp(0, calc((var(--a2) - .72) / .2), 1);
+    opacity:var(--qk); transform:translate(-50%,-50%) scale(calc(.5 + .5 * var(--qk))); }
+
+  /* ---- AKT 3: Montag erstellt → gammelt (--a3) ---- */
+  #problem .wk{ position:relative; display:flex; flex-direction:column; align-items:center; gap:16px; }
+  #problem .wk-cap{ font-family:var(--font-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#8a8478; }
+  #problem .wk-board{ position:relative; width:236px; }
+  #problem .wk-days{ display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:11px; color:#8a8478; padding:0 4px; }
+  #problem .wk-line{ position:relative; height:3px; margin:7px 0 16px; border-radius:99px; background:rgba(26,26,26,.08); }
+  #problem .wk-head{ position:absolute; top:50%; left:6px; width:11px; height:11px; border-radius:50%; background:var(--pink); transform:translate(calc(var(--a3) * 212px), -50%); box-shadow:0 0 0 4px rgba(255,45,122,.18); }
+  #problem .wk-doc{ position:relative; width:150px; margin:0 auto; border-radius:10px; overflow:hidden; background:#fff; border:1px solid rgba(26,26,26,.10); box-shadow:0 14px 30px -20px rgba(0,0,0,.4); padding:12px; }
+  #problem .wk-wash{ position:absolute; inset:0; z-index:3; pointer-events:none; background:#8c8a82; mix-blend-mode:saturation; opacity:var(--a3); }
+  #problem .wk-doc-rows{ display:flex; flex-direction:column; gap:5px; margin-bottom:8px; }
+  #problem .wk-doc-rows i{ height:5px; border-radius:99px; background:linear-gradient(90deg,#8FA373,#c98a18); }
+  #problem .wk-doc-rows i:nth-child(2){ width:80%; } #problem .wk-doc-rows i:nth-child(3){ width:60%; }
+  #problem .wk-doc-name{ font-family:var(--font-mono); font-size:10px; color:#8a8478; }
+  #problem .wk-doc-stamp{ position:absolute; left:50%; top:44%; font-family:var(--font-display); font-weight:800; font-size:17px; letter-spacing:.05em; text-transform:uppercase; color:var(--pink); border:2.5px solid var(--pink); border-radius:6px; padding:2px 9px; z-index:4; white-space:nowrap; pointer-events:none;
+    --sk:clamp(0, calc((var(--a3) - .5) / .35), 1);
+    opacity:calc(var(--sk) * .92); transform:translate(-50%,-50%) rotate(-11deg) scale(calc(.55 + .45 * var(--sk))); }
+
+  /* ---- Outro-Reveals ---- */
+  #problem .prob-outro{ padding-top:24px; }
+  #problem .p-reveal{ opacity:0; transform:translateY(26px); transition:opacity .55s cubic-bezier(.16,1,.3,1), transform .55s cubic-bezier(.16,1,.3,1); }
+  #problem .p-reveal.is-in{ opacity:1; transform:none; }
+  #problem .prob-agitate{ text-align:center; max-width:680px; margin:0 auto; font-size:20px; line-height:1.5; color:#1a1a1a; font-weight:600; }
+  #problem .funnel-problem-closing{ margin-top:18px; }
+
+  /* Mobile: kürzerer Track (sanfterer Pin), Artwork etwas kleiner */
+  @media (max-width:767px){
+    #problem .prob-track{ height:260svh; }
+    #problem .cf{ width:280px; transform:scale(.92); }
+    #problem .xl{ width:280px; }
+  }
+
+  /* ===== REDUCED MOTION: kein Pin, gestapelt, Endzustände ===== */
+  @media (prefers-reduced-motion: reduce){
+    #problem .prob-track{ height:auto; }
+    #problem .prob-stage{ position:static; height:auto; overflow:visible; display:block; background:transparent; }
+    #problem .prob-rail{ display:none; }
+    #problem .beat{ position:relative; inset:auto; opacity:1; transition:none; margin:0 auto 56px; max-width:440px; padding:0; }
+    #problem .xl-wash{ opacity:.85; } #problem .xl-cursor{ opacity:0; } #problem .xl-ages{ data-i:4; }
+    #problem .xl-ages b{ opacity:0; } #problem .xl-ages b:nth-child(5){ opacity:1; }
+    #problem .cf{ width:100%; height:auto; display:grid; grid-template-columns:repeat(3,1fr); gap:10px; padding-top:22px; }
+    #problem .cf-cap{ position:static; transform:none; grid-column:1/-1; margin-bottom:2px; }
+    #problem .cf-tile{ position:static; left:auto; top:auto; width:auto; opacity:1; transform:none; }
+    #problem .cf-q{ position:static; left:auto; top:auto; transform:none; opacity:1; align-self:center; justify-self:center; }
+    #problem .wk-head{ transform:translate(212px,-50%); }
+    #problem .wk-wash{ opacity:.85; } #problem .wk-doc-stamp{ opacity:1; transform:rotate(-9deg) scale(1); }
+    #problem .p-reveal{ opacity:1; transform:none; transition:none; }
+  }
+</style>
+<script>
+  (function () {
+    var stage = document.querySelector('#problem .prob-stage');
+    var track = document.querySelector('#problem .prob-track');
+    var ages  = document.querySelector('#problem .xl-ages');
+    var reduce = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches:false };
+
+    if (stage && track && !reduce.matches) {
+      var ticking = false;
+      var clamp = function (v) { return v < 0 ? 0 : v > 1 ? 1 : v; };
+      var update = function () {
+        ticking = false;
+        var r = track.getBoundingClientRect();
+        var scrollable = r.height - window.innerHeight;
+        if (scrollable <= 0) return;
+        var p  = clamp(-r.top / scrollable);
+        var a1 = clamp(p / 0.34);
+        var a2 = clamp((p - 0.33) / 0.34);
+        var a3 = clamp((p - 0.66) / 0.34);
+        var beat = p < 0.345 ? '1' : p < 0.675 ? '2' : '3';
+        var s = stage.style;
+        s.setProperty('--p',  p.toFixed(4));
+        s.setProperty('--a1', a1.toFixed(4));
+        s.setProperty('--a2', a2.toFixed(4));
+        s.setProperty('--a3', a3.toFixed(4));
+        if (stage.getAttribute('data-beat') !== beat) stage.setAttribute('data-beat', beat);
+        if (ages) { var i = Math.min(4, Math.floor(a1 * 4.999)); ages.setAttribute('data-i', i); }
+      };
+      var onScroll = function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      update();
+    }
+
+    // Outro-Reveals
+    var els = document.querySelectorAll('#problem .p-reveal');
+    if (!els.length) return;
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('is-in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
+    }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SEKTION 3: ECHTES PROJEKT — REGYVA SHOWCASE -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="showcase" style="padding: 82px 0; background: #f6f3ec; border-top: 1px solid rgba(26,26,26,0.07); border-bottom: 1px solid rgba(26,26,26,0.07);">
+  <div class="container">
+
+    <!-- 1+2 · Header (Outcome-led) -->
+    <div class="rgv-head">
+      <div class="rgv-eyebrow">Ein echtes Nuroy-Projekt</div>
+      <h2 class="rgv-h2">Ein ganzes Coaching-Business — <span>auf einen Blick.</span></h2>
+      <div class="rgv-dek">Regyva — Sales &amp; Coaching Cockpit</div>
+      <p class="rgv-sub">Werbung, Vertrieb und Provisionen in einem System — Klarheit statt Chaos.</p>
+    </div>
+
+    <!-- 3 · Ergebnis-/Fähigkeits-Streifen (ersetzt die Capability-Karten) -->
+    <div class="rgv-results">
+      <div class="rgv-stat"><b>ab dem 1. Klick</b><span>Lückenlos von der Anzeige bis zum Kauf</span></div>
+      <div class="rgv-stat"><b>Echtzeit</b><span>jede Zahl automatisch, immer aktuell</span></div>
+      <div class="rgv-stat"><b>KI-Insights</b><span>zeigt, wo sich mehr Einsatz lohnt</span></div>
+      <div class="rgv-stat"><b>1 Oberfläche</b><span>CRM, Ads, Affiliates &amp; Provisionen vereint</span></div>
+    </div>
+
+    <!-- 4 · Vorher → Nachher -->
+    <div class="showcase-story">
+      <div class="story-card">
+        <div class="story-eyebrow">Vorher</div>
+        <p>Daten überall: <strong>CRM</strong>, <strong>Facebook-Ads</strong>, Affiliates, Provisionen — verstreut über Tools und Tabellen. Stundenlange Excel-Arbeit, fehleranfällig, kein Live-Überblick.</p>
+      </div>
+      <div class="story-card story-card--solution">
+        <div class="story-eyebrow">Nachher</div>
+        <p><strong>Alle Quellen automatisch</strong> in einem System, jede Zahl in Echtzeit. Provisionen je Closer &amp; Affiliate, dazu <strong>KI</strong>-Hinweise, wo sich Einsatz lohnt. Statt Excel: <strong>ein Blick</strong>.</p>
+      </div>
+    </div>
+
+    <!-- 5 · Integrations-Grid (echte Logos + Wortmarken, Rahmen-Zellen) -->
+    <div class="rgv-int">
+      <div class="rgv-int-h">Verbindet alle Quellen zu einem Bild</div>
+      <div class="rgv-grid">
+        <div class="rgv-cell"><img class="rgv-logo" src="../assets/lp/logos/hubspot.svg" alt="HubSpot" loading="lazy"></div>
+        <div class="rgv-cell"><img class="rgv-logo" src="../assets/lp/logos/meta.svg" alt="Meta Ads" loading="lazy"></div>
+        <div class="rgv-cell"><img class="rgv-logo" src="../assets/lp/logos/googleads.svg" alt="Google Ads" loading="lazy"></div>
+        <div class="rgv-cell"><span class="rgv-word">Close</span></div>
+        <div class="rgv-cell"><span class="rgv-word">LearningSuite</span></div>
+        <div class="rgv-cell"><span class="rgv-api"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg>eigene&nbsp;APIs</span></div>
+      </div>
+    </div>
+
+    <!-- 6 · Screenshot-Galerie (echte Regyva-Screens) -->
+    <div class="shotgal">
+      <div class="shotscroll" id="shotscroll">
+        <figure class="shot">
+          <div class="rgv-browser"><button class="shotframe" type="button" data-full="../assets/lp/regyva-crm-dashboard.webp" aria-label="Screenshot vergrößern"><img src="../assets/lp/regyva-crm-dashboard.webp" alt="Regyva — CRM-Dashboard" width="2000" height="1123" loading="lazy"><span class="shotgal-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>Vergrößern</span></button></div>
+          <figcaption>Pipeline &amp; Conversion auf einen Blick</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="rgv-browser"><button class="shotframe" type="button" data-full="../assets/lp/regyva-paid-ads.webp" aria-label="Screenshot vergrößern"><img src="../assets/lp/regyva-paid-ads.webp" alt="Regyva — Paid Ads" width="2000" height="1125" loading="lazy"><span class="shotgal-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>Vergrößern</span></button></div>
+          <figcaption>Spend &amp; ROAS live aus Meta &amp; Google</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="rgv-browser"><button class="shotframe" type="button" data-full="../assets/lp/regyva-provisionen.webp" aria-label="Screenshot vergrößern"><img src="../assets/lp/regyva-provisionen.webp" alt="Regyva — Provisionen" width="2000" height="1124" loading="lazy"><span class="shotgal-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>Vergrößern</span></button></div>
+          <figcaption>Auszahlung je Closer mit einem Klick freigeben</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="rgv-browser"><button class="shotframe" type="button" data-full="../assets/lp/regyva-affiliates.webp" aria-label="Screenshot vergrößern"><img src="../assets/lp/regyva-affiliates.webp" alt="Regyva — Affiliates" width="2000" height="1121" loading="lazy"><span class="shotgal-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>Vergrößern</span></button></div>
+          <figcaption>Jede Provision automatisch berechnet</figcaption>
+        </figure>
+      </div>
+      <button class="shotarrow shotprev" type="button" aria-label="Vorheriger Screenshot">‹</button>
+      <button class="shotarrow shotnext" type="button" aria-label="Nächster Screenshot">›</button>
+      <div class="shotdots" id="shotdots">
+        <button class="shotdot is-active" type="button" aria-label="Screen 1"></button>
+        <button class="shotdot" type="button" aria-label="Screen 2"></button>
+        <button class="shotdot" type="button" aria-label="Screen 3"></button>
+        <button class="shotdot" type="button" aria-label="Screen 4"></button>
+      </div>
+    </div>
+
+    <p class="rgv-galnote"><em>Alle Zahlen sind Testdaten — keine echten Kundendaten.</em></p>
+
+    <!-- 7 · Ein CTA -->
+    <div style="text-align:center; margin-top:34px;">
+      <a href="#booking" class="btn btn-primary btn-lg" style="display:inline-block; font-size:17px; padding:18px 36px; text-decoration:none;">30-Min-Gespräch →</a>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="shotgal-lb" id="shotgal-lb" aria-hidden="true">
+      <button class="shotgal-lb-close" id="shotgal-lb-close" type="button" aria-label="Schließen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      <img id="shotgal-lb-img" src="" alt="Regyva Screenshot — Großansicht">
     </div>
   </div>
 
-  <!-- DSGVO-Trust-Zeile (Teil des Hero-Clusters) -->
-  <div class="container" style="text-align: center; margin-top: 40px;">
-    <p style="font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); letter-spacing: 0.08em;">DSGVO-KONFORM · HOSTING IN DEUTSCHLAND</p>
+  <style>
+    /* Header */
+    #showcase .rgv-head{ text-align:center; max-width:760px; margin:0 auto 34px; }
+    #showcase .rgv-eyebrow{ font-family:var(--font-mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--pink); margin-bottom:14px; }
+    #showcase .rgv-h2{ font-family:var(--font-display); font-weight:800; font-size:clamp(27px,3.8vw,40px); line-height:1.14; letter-spacing:-.02em; color:#1a1a1a; margin:0 0 10px; text-wrap:balance; }
+    #showcase .rgv-h2 span{ color:var(--pink); }
+    #showcase .rgv-dek{ font-family:var(--font-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#8a8478; margin-bottom:14px; }
+    #showcase .rgv-sub{ font-size:17px; line-height:1.6; color:#5b574e; margin:0 auto; max-width:620px; }
+
+    /* Ergebnis-Streifen */
+    #showcase .rgv-results{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; max-width:1000px; margin:0 auto 40px; }
+    #showcase .rgv-stat{ background:#fff; border:1px solid rgba(26,26,26,.09); border-radius:14px; padding:18px 16px; box-shadow:0 12px 30px -22px rgba(0,0,0,.2); }
+    #showcase .rgv-stat b{ display:block; font-family:var(--font-display); font-weight:800; font-size:19px; letter-spacing:-.01em; color:var(--pink); margin-bottom:7px; }
+    #showcase .rgv-stat span{ font-size:13px; line-height:1.5; color:#5b574e; }
+
+    /* Vorher/Nachher */
+    #showcase .showcase-story{ display:grid; grid-template-columns:1fr 1fr; gap:18px; max-width:900px; margin:0 auto 34px; }
+    #showcase .story-card{ background:#fff; border:1px solid rgba(26,26,26,0.09); border-radius:16px; padding:24px 26px; box-shadow:0 12px 30px -18px rgba(0,0,0,0.18); }
+    #showcase .story-card--solution{ border-color:rgba(255,45,122,0.35); }
+    #showcase .story-eyebrow{ font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--pink); margin-bottom:10px; }
+    #showcase .story-card p{ font-size:15px; line-height:1.65; color:#5b574e; margin:0; }
+    #showcase .story-card strong{ color:#1a1a1a; font-weight:700; }
+
+    /* Tool-Zeile */
+    #showcase .rgv-int{ max-width:620px; margin:0 auto 30px; }
+    #showcase .rgv-int-h{ text-align:center; font-family:var(--font-mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:#8a8478; margin-bottom:12px; }
+    #showcase .rgv-grid{ display:grid; grid-template-columns:repeat(2,1fr); border-top:1px solid rgba(26,26,26,.13); border-left:1px solid rgba(26,26,26,.13); }
+    #showcase .rgv-cell{ position:relative; display:grid; place-items:center; min-height:52px; padding:10px 12px; border-right:1px solid rgba(26,26,26,.13); border-bottom:1px solid rgba(26,26,26,.13); }
+    #showcase .rgv-cell::after{ content:"+"; position:absolute; right:0; bottom:0; transform:translate(50%,50%); color:rgba(26,26,26,.22); font-family:var(--font-mono); font-size:13px; line-height:1; pointer-events:none; }
+    #showcase .rgv-logo{ height:16px; width:auto; max-width:78%; opacity:.6; }
+    #showcase .rgv-word{ font-family:var(--font-display); font-weight:700; font-size:13px; letter-spacing:-.01em; color:#5b574e; }
+    #showcase .rgv-api{ display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:11px; color:#5b574e; }
+    @media(min-width:600px){ #showcase .rgv-grid{ grid-template-columns:repeat(3,1fr); } }
+
+    /* Galerie */
+    #showcase .shotgal{ position:relative; max-width:1040px; margin:0 auto; }
+    #showcase .shotscroll{ position:relative; display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; -webkit-overflow-scrolling:touch; scrollbar-width:none; padding:2px 0; }
+    #showcase .shotscroll::-webkit-scrollbar{ display:none; }
+    #showcase .shot{ flex:0 0 100%; scroll-snap-align:center; margin:0; }
+    #showcase .shot figcaption{ text-align:center; margin-top:13px; font-family:var(--font-mono); font-size:12px; letter-spacing:.03em; color:#5b574e; }
+    #showcase .rgv-browser{ border-radius:14px; overflow:hidden; background:#0a0a0c; box-shadow:0 30px 70px -30px rgba(0,0,0,0.5); }
+    #showcase .shotframe{ display:block; width:100%; padding:0; border:0; cursor:zoom-in; position:relative; overflow:hidden; background:#0a0a0c; line-height:0; }
+    #showcase .shotframe img{ width:100%; height:auto; display:block; aspect-ratio:2000/1123; }
+    #showcase .shotgal-zoom{ position:absolute; right:14px; bottom:14px; display:inline-flex; align-items:center; gap:7px; font-family:var(--font-body); font-size:12.5px; font-weight:700; color:#1a1a1a; background:rgba(255,255,255,0.92); border-radius:99px; padding:8px 13px; box-shadow:0 6px 18px -6px rgba(0,0,0,0.5); }
+    #showcase .shotgal-zoom svg{ width:14px; height:14px; }
+    #showcase .shotdots{ display:flex; justify-content:center; gap:8px; margin-top:16px; }
+    #showcase .shotdot{ width:8px; height:8px; border-radius:99px; border:0; padding:0; background:rgba(26,26,26,.18); cursor:pointer; transition:background .25s,width .25s; }
+    #showcase .shotdot.is-active{ background:var(--pink); width:22px; }
+    #showcase .shotarrow{ position:absolute; top:calc(50% - 14px); transform:translateY(-50%); width:42px; height:42px; border-radius:50%; border:1px solid rgba(26,26,26,.12); background:rgba(255,255,255,0.92); color:#1a1a1a; font-size:24px; line-height:1; cursor:pointer; display:none; align-items:center; justify-content:center; z-index:3; box-shadow:0 8px 22px -10px rgba(0,0,0,.4); }
+    #showcase .shotarrow:hover{ background:#fff; }
+    #showcase .shotprev{ left:-6px; }
+    #showcase .shotnext{ right:-6px; }
+    @media(min-width:760px){ #showcase .shotarrow{ display:flex; } }
+    #showcase .rgv-galnote{ text-align:center; margin-top:14px; font-size:12px; color:#a8a298; font-family:var(--font-mono); letter-spacing:0.03em; }
+    #showcase .rgv-galnote em{ font-style:normal; color:#8a8478; }
+    #showcase .shotgal-lb{ position:fixed; inset:0; z-index:99999; background:rgba(6,6,8,0.94); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); display:none; align-items:center; justify-content:center; padding:24px; overflow:auto; }
+    #showcase .shotgal-lb.open{ display:flex; }
+    #showcase .shotgal-lb img{ max-width:96vw; max-height:90vh; width:auto; height:auto; border-radius:10px; box-shadow:0 20px 60px -20px rgba(0,0,0,0.8); }
+    #showcase .shotgal-lb-close{ position:fixed; top:18px; right:18px; appearance:none; cursor:pointer; border:1px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.1); color:#fff; border-radius:10px; width:44px; height:44px; display:grid; place-items:center; }
+    #showcase .shotgal-lb-close svg{ width:20px; height:20px; }
+
+    @media(max-width:768px){
+      #showcase{ padding:60px 0; }
+      #showcase .rgv-results{ grid-template-columns:1fr 1fr; }
+      #showcase .showcase-story{ grid-template-columns:1fr; }
+      #showcase .shotgal-zoom{ font-size:11px; padding:6px 11px; right:10px; bottom:10px; }
+    }
+    @media(max-width:460px){
+      #showcase .rgv-results{ grid-template-columns:1fr; }
+    }
+  </style>
+
+  <script>
+  (function(){
+    var scroll=document.getElementById('shotscroll'); if(!scroll) return;
+    var shots=[].slice.call(scroll.querySelectorAll('.shot'));
+    var dots=[].slice.call(document.querySelectorAll('#showcase .shotdot'));
+    var lb=document.getElementById('shotgal-lb');
+    var lbImg=document.getElementById('shotgal-lb-img');
+
+    function go(i){
+      i=Math.max(0, Math.min(shots.length-1, i));
+      var s=shots[i];
+      scroll.scrollTo({ left: s.offsetLeft - (scroll.clientWidth - s.offsetWidth)/2, behavior:'smooth' });
+    }
+    function current(){
+      if(shots.length<2) return 0;
+      var step=shots[1].offsetLeft - shots[0].offsetLeft;
+      return Math.max(0, Math.min(shots.length-1, Math.round(scroll.scrollLeft/step)));
+    }
+    var ticking=false;
+    scroll.addEventListener('scroll', function(){
+      if(!ticking){ ticking=true; requestAnimationFrame(function(){
+        ticking=false; var i=current();
+        dots.forEach(function(d,j){ d.classList.toggle('is-active', j===i); });
+      }); }
+    }, {passive:true});
+
+    dots.forEach(function(d,i){ d.addEventListener('click', function(){ go(i); }); });
+    var prev=document.querySelector('#showcase .shotprev'), next=document.querySelector('#showcase .shotnext');
+    if(prev) prev.addEventListener('click', function(){ go(current()-1); });
+    if(next) next.addEventListener('click', function(){ go(current()+1); });
+
+    // Lightbox je Frame
+    scroll.querySelectorAll('.shotframe').forEach(function(f){
+      f.addEventListener('click', function(){
+        lbImg.src=f.getAttribute('data-full');
+        lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
+        document.documentElement.style.overflow='hidden';
+      });
+    });
+    function closeLb(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.documentElement.style.overflow=''; }
+    document.getElementById('shotgal-lb-close').addEventListener('click', closeLb);
+    lb.addEventListener('click', function(e){ if(e.target===lb) closeLb(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape'&&lb.classList.contains('open')) closeLb(); });
+  })();
+  </script>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SEKTION 4: ROI — was das Reporting kostet & spart -->
+<!-- ══════════════════════════════════════════════════════════ -->
+
+<style>
+/* ROI-Sektion (dunkler Block) */
+#before-after {
+  background: var(--bg-2);
+  padding: 80px 0;
+  border-bottom: 1px solid var(--line-strong);
+}
+#before-after .funnel-section-headline { color: var(--pink) !important; }
+#before-after > .container > p { color: #F5F2EC !important; }
+#before-after .roi-headline { color: var(--fg) !important; }
+
+/* ROI-Boxen: hell auf dunkel + gestaffeltes Scroll-Reveal */
+#before-after .roi-box {
+  background: #F5F2EC !important;
+  border-color: var(--line-strong) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
+}
+#before-after .roi-box:nth-child(2) { transition-delay: 90ms; }
+#before-after .roi-box:nth-child(3) { transition-delay: 180ms; }
+#before-after .roi-box.is-in { opacity: 1; transform: none; }
+#before-after .roi-box * { color: var(--bg-2) !important; }
+#before-after .roi-box strong { color: var(--pink) !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  #before-after .roi-box { opacity: 1; transform: none; transition: none; }
+}
+</style>
+
+<section class="funnel-section" id="before-after">
+  <div class="container" style="max-width:760px;">
+    <h2 class="funnel-section-headline">Was Sie Ihr Reporting wirklich kostet.</h2>
+
+    <p class="roi-lead roi-rv">Klar, da sind die Stunden: ein ganzer Tag pro Woche fürs manuelle Zusammensuchen. Rund <strong class="roi-num"><span data-count-to="20800">0</span>&nbsp;€</strong> im Jahr — nur fürs Sortieren von Zahlen.</p>
+
+    <div class="roi-pain roi-rv">
+      <p class="roi-pain-lead">Aber das Teure steht in keiner Zeiterfassung.</p>
+      <p class="roi-pain-body">Es sind die Entscheidungen, die Sie auf <strong>falschen oder veralteten Zahlen</strong> treffen:</p>
+      <ul class="roi-pain-list">
+        <li>Budget in den falschen Kanal gesteckt.</li>
+        <li>Einen Closer falsch eingeschätzt.</li>
+        <li>Einen kippenden Trend zu spät erkannt.</li>
+      </ul>
+      <p class="roi-pain-punch">Ein einziger falscher Call kostet mehr als ein ganzes Jahr Reporting.</p>
+    </div>
+
+    <p class="roi-bridge roi-rv">Datenchaos ist kein Komfort-Problem — es ist ein Risiko. Und es entscheidet mit, wohin Ihr Geld fließt.</p>
+
+    <div class="roi-rv" style="text-align:center; margin-top:42px;">
+      <a href="#booking" class="btn btn-primary btn-lg">Vom Chaos zur Klarheit →</a>
+    </div>
   </div>
+
+  <style>
+    #before-after .roi-lead{ text-align:center; max-width:600px; margin:0 auto 40px; font-size:18px; line-height:1.6; color:var(--fg-muted); }
+    #before-after .roi-num{ color:var(--pink); font-family:var(--font-display); font-weight:800; font-size:1.15em; white-space:nowrap; }
+    #before-after .roi-pain{ max-width:600px; margin:0 auto; padding:26px 28px; border-radius:16px; background:rgba(255,45,122,0.045); border:1px solid rgba(245,242,236,0.12); }
+    #before-after .roi-pain-lead{ font-family:var(--font-display); font-weight:800; font-size:clamp(20px,2.6vw,26px); letter-spacing:-.01em; color:var(--fg); margin:0 0 10px; }
+    #before-after .roi-pain-body{ font-size:16px; line-height:1.6; color:var(--fg-muted); margin:0 0 14px; }
+    #before-after .roi-pain-body strong{ color:var(--pink); }
+    #before-after .roi-pain-list{ list-style:none; margin:0 0 18px; padding:0; }
+    #before-after .roi-pain-list li{ position:relative; padding-left:24px; font-size:15px; line-height:1.5; color:#cfcabf; margin-bottom:8px; }
+    #before-after .roi-pain-list li::before{ content:"\2715"; position:absolute; left:0; top:0; color:rgba(255,45,122,0.5); font-weight:700; }
+    #before-after .roi-pain-punch{ font-family:var(--font-display); font-weight:800; font-size:clamp(18px,2.4vw,23px); line-height:1.3; letter-spacing:-.01em; color:var(--fg); margin:0; }
+    #before-after .roi-bridge{ text-align:center; max-width:600px; margin:34px auto 0; font-size:16px; line-height:1.6; color:var(--fg-muted); }
+    #before-after .roi-rv{ opacity:0; transform:translateY(24px); transition:opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1); }
+    #before-after .roi-rv.is-in{ opacity:1; transform:none; }
+    @media (prefers-reduced-motion: reduce){ #before-after .roi-rv{ opacity:1; transform:none; transition:none; } }
+  </style>
+  <script>
+    (function(){
+      var els=[].slice.call(document.querySelectorAll('#before-after .roi-rv'));
+      if(!els.length) return;
+      if(!('IntersectionObserver' in window)){ els.forEach(function(e){ e.classList.add('is-in'); }); return; }
+      var io=new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('is-in'); io.unobserve(x.target); } }); }, { threshold:0.2, rootMargin:'0px 0px -8% 0px' });
+      els.forEach(function(e){ io.observe(e); });
+    })();
+  </script>
 </section>
 
 <style>
@@ -594,575 +1163,11 @@
 }
 </style>
 
-<!-- ══════════════════════════════════════════════════════════ -->
-<!-- SEKTION 2: PROBLEM (emotional & konkret) -->
-<!-- ══════════════════════════════════════════════════════════ -->
-<section class="funnel-section funnel-problem" id="problem">
-  <div class="container">
-    <h2 class="funnel-section-headline">Wenn Ihr Reporting so aussieht …</h2>
 
-    <!-- Einleitungssatz (neu, empathisch) -->
-    <p style="text-align: center; max-width: 700px; margin: 0 auto 40px; font-size: 18px; color: var(--fg-muted);">Kennen Sie das? Sie wollen einfach nur wissen, wie Ihr Unternehmen läuft — aber stattdessen …</p>
 
-    <div class="funnel-problem-cards" id="problem-cards">
-      <div class="funnel-problem-card">
-        <!-- Icon: Excel-Tabellen-Chaos -->
-        <div style="width: 80px; height: 80px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
-          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="10" y="15" width="60" height="50" rx="4" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
-            <line x1="10" y1="30" x2="70" y2="30" stroke="#4caf50" stroke-width="2"/>
-            <line x1="10" y1="45" x2="70" y2="45" stroke="#4caf50" stroke-width="2"/>
-            <line x1="35" y1="15" x2="35" y2="65" stroke="#4caf50" stroke-width="2"/>
-            <circle cx="60" cy="25" r="12" fill="#ff2d7a"/>
-            <path d="M56 21 L64 29 M64 21 L56 29" stroke="white" stroke-width="3" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>Excel-Tabellen, die keiner pflegt</h3>
-        <p>Montagmorgen: Sie öffnen die Reporting-Datei. Letzte Aktualisierung: vor 3 Wochen.</p>
-      </div>
+<!-- (Sektion „Die Lösung" in das Showcase verschmolzen — Integrations-Flow entfernt, Capabilities dort) -->
 
-      <div class="funnel-problem-card">
-        <!-- Icon: Multiple Tools / Widersprüche -->
-        <div style="width: 80px; height: 80px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
-          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="30" cy="35" r="18" fill="#bbdefb" stroke="#2196f3" stroke-width="2" opacity="0.7"/>
-            <circle cx="50" cy="35" r="18" fill="#fff9c4" stroke="#ffc107" stroke-width="2" opacity="0.7"/>
-            <circle cx="40" cy="50" r="18" fill="#ffccbc" stroke="#ff5722" stroke-width="2" opacity="0.7"/>
-            <text x="40" y="40" font-size="32" fill="#ff2d7a" font-weight="bold" text-anchor="middle" font-family="Arial">?</text>
-          </svg>
-        </div>
-        <h3>5 Tools, 5 Wahrheiten</h3>
-        <p>Im Meeting fragt jemand nach der aktuellen Conversion-Rate. Sie sagen: "Ich schau nach und melde mich."</p>
-      </div>
 
-      <div class="funnel-problem-card">
-        <!-- Icon: Zeitfresser / Uhr -->
-        <div style="width: 80px; height: 80px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
-          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="40" cy="40" r="28" fill="#fce4ec" stroke="#ff2d7a" stroke-width="3"/>
-            <circle cx="40" cy="40" r="3" fill="#ff2d7a"/>
-            <line x1="40" y1="40" x2="40" y2="20" stroke="#ff2d7a" stroke-width="3" stroke-linecap="round"/>
-            <line x1="40" y1="40" x2="55" y2="40" stroke="#ff2d7a" stroke-width="3" stroke-linecap="round"/>
-            <circle cx="40" cy="15" r="2" fill="#ff2d7a"/>
-            <circle cx="40" cy="65" r="2" fill="#ff2d7a"/>
-            <circle cx="15" cy="40" r="2" fill="#ff2d7a"/>
-            <circle cx="65" cy="40" r="2" fill="#ff2d7a"/>
-          </svg>
-        </div>
-        <h3>1 Tag Reporting pro Woche</h3>
-        <p>… und am Ende haben Sie Zahlen, die schon wieder veraltet sind, sobald Sie sie verschicken.</p>
-      </div>
-    </div>
-
-    <p class="funnel-problem-closing">… dann sind Sie nicht allein. Und Sie sind <strong>genau richtig hier</strong>.</p>
-
-    <div style="text-align: center; margin-top: 48px;">
-      <a href="#booking" class="btn btn-primary">Das kann besser gehen →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════ -->
-<!-- SEKTION 4: DIE LÖSUNG (Mechanismus + Capabilities + Integrationen) -->
-<!-- ══════════════════════════════════════════════════════════ -->
-<section class="funnel-section funnel-solution" id="solution" style="background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
-  <div class="container">
-    <h2 class="funnel-section-headline">Die Lösung: Alles, was Sie sehen ohne danach zu suchen.</h2>
-    <p class="funnel-solution-subline" style="text-align: center; max-width: 800px; margin: 0 auto 60px; font-size: 18px; color: var(--fg-muted);">
-      Alle Ihre Tools, APIs und Datenquellen fließen in Echtzeit in eine zentrale Oberfläche. Angepasst an Ihre Branche. Gebaut für Ihre Workflows. <strong>Und das können Sie damit tun:</strong>
-    </p>
-
-    <!-- ASSET-SLOT: integration-flow (animiert) -->
-    <div class="asset-slot" data-asset="integration-flow" style="aspect-ratio:16/9; max-width: 980px; margin: 0 auto 60px;">
-      <iframe src="../assets/lp/nuroy-integration-flow?v=2"
-              title="Datenquellen fließen ins Nuroy-Dashboard"
-              style="width:100%; aspect-ratio:16/9; border:0; border-radius:18px; display:block;"
-              loading="lazy"></iframe>
-    </div>
-
-    <!-- Capabilities Grid (6 statt 10) -->
-    <div class="funnel-features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; margin-top: 60px;">
-      <!-- Capability 1: Tool-Verbindungen -->
-      <div class="funnel-feature-card">
-        <div class="funnel-feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
-          </svg>
-        </div>
-        <h3 class="funnel-feature-title">Tool-Verbindungen</h3>
-        <p class="funnel-feature-description">Salesforce, HubSpot, Google Analytics, Stripe, Ihr ERP — alles an einem Ort, ohne ständig zwischen Tabs zu wechseln.</p>
-      </div>
-
-      <!-- Capability 2: Echtzeit-Daten -->
-      <div class="funnel-feature-card">
-        <div class="funnel-feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
-          </svg>
-        </div>
-        <h3 class="funnel-feature-title">Echtzeit-Daten</h3>
-        <p class="funnel-feature-description">Kein manuelles Updaten mehr. Ihre Zahlen aktualisieren sich automatisch — Sie sehen immer den aktuellen Stand.</p>
-      </div>
-
-      <!-- Capability 3: Custom KPIs -->
-      <div class="funnel-feature-card">
-        <div class="funnel-feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-          </svg>
-        </div>
-        <h3 class="funnel-feature-title">Custom KPIs</h3>
-        <p class="funnel-feature-description">Definieren Sie Ihre eigenen Kennzahlen, genau so, wie Sie sie brauchen — nicht wie ein Standard-Tool es vorgibt.</p>
-      </div>
-
-      <!-- Capability 4: Multi-Rollen-Views -->
-      <div class="funnel-feature-card">
-        <div class="funnel-feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
-          </svg>
-        </div>
-        <h3 class="funnel-feature-title">Multi-Rollen-Views</h3>
-        <p class="funnel-feature-description">Geschäftsführung, Vertrieb und Marketing sehen jeweils genau die Zahlen, die für sie zählen — ohne Filter-Gefummel.</p>
-      </div>
-
-      <!-- Capability 5: Mobile-Ready -->
-      <div class="funnel-feature-card">
-        <div class="funnel-feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-          </svg>
-        </div>
-        <h3 class="funnel-feature-title">Mobile-Ready</h3>
-        <p class="funnel-feature-description">Unterwegs schnell die aktuellen Zahlen checken? Kein Problem — das Dashboard funktioniert auf jedem Gerät.</p>
-      </div>
-
-      <!-- Capability 6: DSGVO-konform -->
-      <div class="funnel-feature-card">
-        <div class="funnel-feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
-          </svg>
-        </div>
-        <h3 class="funnel-feature-title">DSGVO-konform</h3>
-        <p class="funnel-feature-description">Hosting in Deutschland, volle DSGVO-Konformität — Ihre Daten bleiben, wo sie hingehören.</p>
-      </div>
-    </div>
-
-    <!-- ══════════════════════════════════════════════════════════
-         ROI-CALCULATOR: Interaktiver "Was kostet Ihr Reporting?"
-         Ersetzt statisches Integration-Flow Visual
-         ══════════════════════════════════════════════════════════ -->
-    <div class="roi-calculator" id="roi-calculator">
-      <!-- Section Header -->
-      <h3 class="roi-calculator__headline">Was kostet Sie Ihr Reporting wirklich?</h3>
-      <p class="roi-calculator__intro">
-        Ziehen Sie die Schieberegler und sehen Sie live, wie viel Geld Sie monatlich verlieren.
-      </p>
-
-      <!-- Calculator Panel (2-column grid: inputs | visuals) -->
-      <div class="roi-calculator__panel">
-
-        <!-- LEFT: Input Controls -->
-        <div class="roi-calculator__inputs">
-
-          <!-- Slider 1: Mitarbeiter -->
-          <div class="roi-slider">
-            <label class="roi-slider__label" for="roi-employees">
-              <span class="roi-slider__label-text">Mitarbeiter mit Reporting-Aufgaben</span>
-              <output class="roi-slider__value" id="roi-employees-value">8</output>
-            </label>
-            <input
-              type="range"
-              id="roi-employees"
-              class="roi-slider__input"
-              min="1"
-              max="50"
-              value="8"
-              step="1"
-              aria-label="Anzahl Mitarbeiter mit Reporting-Aufgaben"
-            />
-            <div class="roi-slider__range">
-              <span>1</span>
-              <span>50</span>
-            </div>
-          </div>
-
-          <!-- Slider 2: Stunden/Woche -->
-          <div class="roi-slider">
-            <label class="roi-slider__label" for="roi-hours">
-              <span class="roi-slider__label-text">Stunden pro Woche für Reporting</span>
-              <output class="roi-slider__value" id="roi-hours-value">5</output>
-            </label>
-            <input
-              type="range"
-              id="roi-hours"
-              class="roi-slider__input"
-              min="1"
-              max="20"
-              value="5"
-              step="0.5"
-              aria-label="Stunden pro Woche für manuelles Reporting"
-            />
-            <div class="roi-slider__range">
-              <span>1h</span>
-              <span>20h</span>
-            </div>
-          </div>
-
-          <!-- Slider 3: Stundensatz -->
-          <div class="roi-slider">
-            <label class="roi-slider__label" for="roi-rate">
-              <span class="roi-slider__label-text">Durchschnittlicher Stundensatz</span>
-              <output class="roi-slider__value" id="roi-rate-value">55 €</output>
-            </label>
-            <input
-              type="range"
-              id="roi-rate"
-              class="roi-slider__input"
-              min="25"
-              max="150"
-              value="55"
-              step="5"
-              aria-label="Durchschnittlicher Stundensatz in Euro"
-            />
-            <div class="roi-slider__range">
-              <span>25€</span>
-              <span>150€</span>
-            </div>
-          </div>
-
-          <!-- Big Cost Counter -->
-          <div class="roi-counter">
-            <div class="roi-counter__label">Kosten ohne Dashboard</div>
-            <div class="roi-counter__value" id="roi-cost-month">€9.500</div>
-            <div class="roi-counter__sublabel">pro Monat</div>
-          </div>
-        </div>
-
-        <!-- RIGHT: Visualizations -->
-        <div class="roi-calculator__visuals">
-          <!-- Before/After Bars (SVG) -->
-          <div class="roi-visual-wrapper">
-            <h4 class="roi-visual-title">Vorher / Nachher</h4>
-            <svg id="roi-bars-svg" class="roi-bars" viewBox="0 0 400 240" role="img" aria-label="Balkendiagramm: Kosten ohne vs. mit Nuroy Dashboard">
-              <!-- Dynamisch via JS gezeichnet -->
-            </svg>
-          </div>
-
-          <!-- 12-Month Cumulative Curve (SVG) -->
-          <div class="roi-visual-wrapper">
-            <h4 class="roi-visual-title">Kumulierte Kosten über 12 Monate</h4>
-            <svg id="roi-curve-svg" class="roi-curve" viewBox="0 0 400 200" role="img" aria-label="Liniendiagramm: Kumulative Kosten über 12 Monate">
-              <!-- Dynamisch via JS gezeichnet -->
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dynamic Explainer Text -->
-      <div class="roi-explainer">
-        <p>Bei <strong id="explainer-employees">8 Mitarbeitern</strong>,
-           die je <strong id="explainer-hours">5 Std./Woche</strong>
-           mit manuellem Reporting verbringen,
-           verlieren Sie rund <strong id="explainer-cost-month">€9.500 pro Monat</strong>
-           — das sind <strong id="explainer-cost-year">€114.000 im Jahr</strong>.
-           Mit unserem Dashboard sparen Sie ca. <strong id="explainer-saving-month">€7.600 pro Monat</strong>.*</p>
-        <p class="roi-explainer__disclaimer">*Modell-Annahme: 80% Zeitersparnis durch Automatisierung. Tatsächliche Werte können variieren.</p>
-      </div>
-
-      <!-- Zusätzlicher Disclaimer -->
-      <div style="text-align: center; margin-top: 32px; padding: 0 20px;">
-        <p style="font-family: var(--font-mono); font-size: 10px; color: var(--fg-dim); line-height: 1.5; letter-spacing: 0.02em;">
-          Hinweis: Dies ist eine vereinfachte Hochrechnung zur Veranschaulichung. Die tatsächlichen Kosten und Einsparungen hängen von Ihren individuellen Anforderungen, Prozessen und der Komplexität Ihrer Datenlandschaft ab. Eine genaue Kalkulation erstellen wir gemeinsam im Erstgespräch.
-        </p>
-      </div>
-
-      <!-- CTA Button -->
-      <div style="text-align: center; margin-top: 48px;">
-        <a href="#booking" class="btn btn-primary btn-lg" style="display: inline-block; font-size: 18px; padding: 20px 40px; text-decoration: none;">
-          Jetzt Erstgespräch buchen →
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════ -->
-<!-- SEKTION 3: VORHER/NACHHER + ROI (kombiniert) -->
-<!-- ══════════════════════════════════════════════════════════ -->
-
-<style>
-/* Dark Background für Before/After Section */
-#before-after {
-  background: var(--bg-2);
-  padding: 80px 0;
-  border-bottom: 1px solid var(--line-strong);
-}
-
-/* Headline in Brandfarbe (Pink) */
-#before-after .funnel-section-headline {
-  color: var(--pink) !important;
-}
-
-/* Unterüberschrift in Weiß */
-#before-after > .container > p {
-  color: #F5F2EC !important;
-}
-
-/* Helle Karten */
-#before-after .comparison-card {
-  background: #F5F2EC !important;
-  border-color: var(--line) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* Mit Nuroy Karte - Pink Border */
-#before-after .comparison-card.after {
-  border: 2px solid var(--pink) !important;
-}
-
-/* Dunkle Textfarben auf hellem Hintergrund */
-#before-after .comparison-card h3 {
-  color: var(--bg-2) !important;
-}
-
-#before-after .comparison-card li {
-  color: var(--bg-2) !important;
-}
-
-/* Warn/OK Colors für Headlines beibehalten */
-#before-after .comparison-card.before h3 {
-  color: var(--warn) !important;
-}
-
-#before-after .comparison-card.after h3 {
-  color: var(--ok) !important;
-}
-
-/* ROI Boxen auch hell */
-#before-after .roi-box {
-  background: #F5F2EC !important;
-  border-color: var(--line-strong) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-#before-after .roi-box * {
-  color: var(--bg-2) !important;
-}
-
-#before-after .roi-box strong {
-  color: var(--pink) !important;
-}
-
-/* Headline in Section */
-#before-after h3:not(.comparison-card h3) {
-  color: var(--fg) !important;
-}
-
-/* Asset Slot Labels in hellen Karten */
-#before-after .comparison-card .asset-slot__label {
-  background: rgba(18, 18, 22, 0.8) !important;
-  color: #F5F2EC !important;
-}
-
-/* Schönere animierte Listen */
-#before-after .comparison-card ul {
-  list-style: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-#before-after .comparison-card li {
-  padding: 14px 18px !important;
-  margin-bottom: 10px !important;
-  background: rgba(18, 18, 22, 0.04) !important;
-  border-radius: 8px !important;
-  border-left: 3px solid transparent !important;
-  font-size: 15px !important;
-  line-height: 1.7 !important;
-  color: var(--bg-2) !important;
-  opacity: 0;
-  transform: translateX(-30px);
-  animation: slideInFade 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Before Card - Red accent */
-#before-after .comparison-card.before li {
-  border-left-color: rgba(209, 168, 92, 0.3) !important;
-}
-
-#before-after .comparison-card.before li:hover {
-  background: rgba(209, 168, 92, 0.08) !important;
-  border-left-color: var(--warn) !important;
-  transform: translateX(6px);
-  box-shadow: 0 4px 12px rgba(209, 168, 92, 0.1);
-}
-
-/* After Card - Green accent */
-#before-after .comparison-card.after li {
-  border-left-color: rgba(63, 230, 192, 0.3) !important;
-}
-
-#before-after .comparison-card.after li:hover {
-  background: rgba(63, 230, 192, 0.08) !important;
-  border-left-color: #3fe6c0 !important;
-  transform: translateX(6px);
-  box-shadow: 0 4px 12px rgba(63, 230, 192, 0.1);
-}
-
-@keyframes slideInFade {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Reduced Motion Support */
-@media (prefers-reduced-motion: reduce) {
-  #before-after .comparison-card li {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-
-  #before-after .comparison-card li:hover {
-    transform: none;
-  }
-}
-</style>
-
-<section class="funnel-section" id="before-after">
-  <div class="container">
-    <h2 class="funnel-section-headline">Was sich ändert und was das spart.</h2>
-    <p style="text-align: center; max-width: 700px; margin: 0 auto 60px; font-size: 18px; color: var(--fg-muted);">Links das tägliche Chaos. Rechts Klarheit in Echtzeit. Unten die Rechnung.</p>
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 60px;">
-      <!-- BEFORE -->
-      <div class="comparison-card before" style="background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px; padding: 32px;">
-        <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 24px; color: var(--warn);">Ohne Nuroy-Dashboard</h3>
-
-        <!-- ASSET-SLOT: before -->
-        <figure class="asset-slot" data-asset="before" style="aspect-ratio:4/3; margin-bottom: 24px;">
-          <iframe
-            src="../assets/lp/nuroy-before-chaos"
-            title="Reporting ohne Dashboard"
-            style="width:100%; aspect-ratio:4/3; border:0; border-radius:14px;"
-            loading="lazy"
-          ></iframe>
-        </figure>
-
-        <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 2;">
-          <li>❌ Excel-Tabellen manuell pflegen: 6 bis 8 Stunden pro Woche</li>
-          <li>❌ Zahlen stimmen nie überein, jedes Tool zeigt andere Werte</li>
-          <li>❌ Reporting kostet 1 Tag pro Woche und ist trotzdem veraltet</li>
-          <li>❌ Entscheidungen verzögert, weil niemand den aktuellen Stand kennt</li>
-          <li>❌ Jeder arbeitet mit eigenen Daten, keine gemeinsame Wahrheit</li>
-        </ul>
-      </div>
-
-      <!-- AFTER -->
-      <div class="comparison-card after" style="background: var(--bg-2); border: 1px solid var(--pink); border-radius: 12px; padding: 32px;">
-        <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 24px; color: var(--ok);">Mit Nuroy-Dashboard</h3>
-
-        <!-- ASSET-SLOT: after -->
-        <figure class="asset-slot" data-asset="after" style="aspect-ratio:4/3; margin-bottom: 24px;">
-          <iframe
-            src="../assets/lp/nuroy-after-clarity"
-            title="Reporting mit Nuroy-Dashboard"
-            style="width:100%; aspect-ratio:4/3; border:0; border-radius:14px;"
-            loading="lazy"
-          ></iframe>
-        </figure>
-
-        <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 2;">
-          <li>✅ Automatische Updates in Echtzeit: Dashboard refreshen dauert 30 Sekunden</li>
-          <li>✅ Eine Quelle, eine Wahrheit: alle sehen dieselben KPIs</li>
-          <li>✅ Reporting in 5 Minuten statt 1 Tag</li>
-          <li>✅ Schnelle, datenbasierte Entscheidungen ohne "ich schau nach"</li>
-          <li>✅ Alle sehen dieselben KPIs: Transparenz im ganzen Team</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- NEU: ROI-Rechnung -->
-    <div class="roi-section">
-      <h3 class="roi-headline">Die Rechnung ist einfach:</h3>
-
-      <div class="roi-grid">
-
-        <!-- Box 1: Kosten heute -->
-        <div class="roi-box roi-box--kosten">
-          <div class="roi-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="20" x2="12" y2="10"></line>
-              <line x1="18" y1="20" x2="18" y2="4"></line>
-              <line x1="6" y1="20" x2="6" y2="16"></line>
-            </svg>
-          </div>
-          <span class="roi-label">Kosten heute</span>
-          <div class="roi-value">
-            <span data-count-to="114000">0</span> €<span style="font-size: 0.6em; color: var(--fg-dim); margin-left: 4px;">/Jahr</span>
-          </div>
-          <div class="roi-desc">
-            <strong>Beispielrechnung:</strong><br>
-            8 Mitarbeiter × 5 Std./Woche × 55 €/Std. = <strong style="color: var(--fg);">≈ 9.500 € / Monat</strong><br>
-            <span style="font-size: 13px; color: var(--fg-dim); display: block; margin-top: 8px;">Das sind rund <strong>173 Arbeitsstunden im Monat</strong>, die in Tabellen statt in Wertschöpfung fließen.</span>
-          </div>
-        </div>
-
-        <!-- Box 2: Investition -->
-        <div class="roi-box roi-box--investition">
-          <div class="roi-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="9" y1="9" x2="15" y2="15"></line>
-              <line x1="15" y1="9" x2="9" y2="15"></line>
-            </svg>
-          </div>
-          <span class="roi-label">Investition</span>
-          <div class="roi-value" style="font-size: 20px; line-height: 1.3;">
-            Einmaliges Setup<br>
-            <span style="font-size: 16px; font-weight: 600; color: var(--fg-muted);">+ opt. Hosting/Wartung</span>
-          </div>
-          <div class="roi-desc">
-            <strong>Konkreter Festpreis nach dem Erstgespräch</strong> — abhängig von Tools & Umfang.<br>
-            <span style="font-size: 13px; color: var(--fg-dim); display: block; margin-top: 8px;">Einmalige Investition steht wiederkehrenden Kosten gegenüber.</span>
-          </div>
-        </div>
-
-        <!-- Box 3: Ersparnis -->
-        <div class="roi-box roi-box--ersparnis">
-          <div class="roi-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-              <polyline points="17 6 23 6 23 12"></polyline>
-            </svg>
-          </div>
-          <span class="roi-label">Ersparnis</span>
-          <div class="roi-value">
-            <span data-count-to="91000">0</span> €<span style="font-size: 0.6em; color: var(--fg-dim); margin-left: 4px;">/Jahr</span>
-          </div>
-          <div class="roi-desc">
-            <strong style="color: var(--ok);">≈ 80% zurückgewonnen</strong>, die wieder in echte Arbeit fließen.<br>
-            <span style="font-size: 13px; color: var(--fg-dim); display: block; margin-top: 8px;"><strong>Amortisation meist innerhalb weniger Monate</strong> — danach spart das Dashboard Monat für Monat.</span><br>
-            <span style="font-size: 13px; color: var(--fg-muted); display: block; margin-top: 4px;">Plus schnellere Entscheidungen und eine Datenbasis, der alle vertrauen.</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div style="text-align: center; margin-top: 60px;">
-      <a href="#booking" class="btn btn-primary btn-lg">Vom Chaos zur Klarheit →</a>
-    </div>
-  </div>
-</section>
 
 <style>
 /* Mobile Optimierung für Die Lösung Sektion */
@@ -1280,23 +1285,22 @@
 <!-- ══════════════════════════════════════════════════════════ -->
 <!-- SEKTION 6: SO LÄUFT'S AB (Prozess mit Kreisen) -->
 <!-- ══════════════════════════════════════════════════════════ -->
-<!-- NUROY · SEKTION · PROZESS — eigenständiger Custom-Code-Block -->
-<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<!-- NUROY · SEKTION · PROZESS — eigenständiger Custom-Code-Block (nutzt globale Geist-Fonts) -->
 <div class="nxs8" id="prozess">
 <style>
   .nxs8{--pink:#FF2D7A;--ink:#0A0A0C;--line:rgba(255,255,255,.09);--text:#F5F2EC;--muted:#9A968C;
-    font-family:'Satoshi',-apple-system,sans-serif;background:var(--ink);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased}
+    font-family:var(--font-body);background:var(--ink);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased}
   .nxs8 *{box-sizing:border-box;margin:0;padding:0}
   .nxs8 .wrap{max-width:1140px;margin:0 auto;padding:84px 22px}
   .nxs8 .head{text-align:center;max-width:680px;margin:0 auto 48px}
   .nxs8 .eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--pink);display:inline-flex;align-items:center;gap:9px;margin-bottom:16px}
   .nxs8 .eyebrow::before{content:"";width:26px;height:1.5px;background:var(--pink)}
-  .nxs8 h2{font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(1.9rem,5.2vw,3rem);letter-spacing:-.02em;line-height:1.05}
-  .nxs8 .steps{display:grid;grid-template-columns:repeat(5,1fr);position:relative}
+  .nxs8 h2{font-family:var(--font-display);font-weight:800;font-size:clamp(1.9rem,5.2vw,3rem);letter-spacing:-.02em;line-height:1.05}
+  .nxs8 .steps{display:grid;grid-template-columns:repeat(3,1fr);position:relative}
   .nxs8 .steps::before{content:"";position:absolute;top:26px;left:8%;right:8%;height:2px;background:linear-gradient(90deg,var(--pink),rgba(255,45,122,.15))}
   .nxs8 .step{text-align:center;padding:0 12px;position:relative}
-  .nxs8 .sn{width:54px;height:54px;border-radius:50%;background:var(--ink);border:2px solid var(--pink);color:var(--pink);font-family:'Clash Display',sans-serif;font-weight:600;font-size:1.2rem;display:grid;place-items:center;margin:0 auto 20px;position:relative;z-index:1}
-  .nxs8 .step h3{font-family:'Clash Display',sans-serif;font-weight:600;font-size:1rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px}
+  .nxs8 .sn{width:54px;height:54px;border-radius:50%;background:var(--ink);border:2px solid var(--pink);color:var(--pink);font-family:var(--font-display);font-weight:600;font-size:1.2rem;display:grid;place-items:center;margin:0 auto 20px;position:relative;z-index:1}
+  .nxs8 .step h3{font-family:var(--font-display);font-weight:600;font-size:1rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px}
   .nxs8 .dur{font-size:.78rem;color:var(--pink);font-weight:600;margin-bottom:8px}.nxs8 .step p{font-size:.86rem;color:var(--muted)}
   .nxs8 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
   .nxs8 .reveal.in{opacity:1;transform:none}
@@ -1322,13 +1326,11 @@
   }
 </style>
   <div class="wrap">
-    <div class="head reveal"><span class="eyebrow">So läuft's ab</span><h2>Fünf Schritte. 6–10 Wochen. Fertig.</h2></div>
+    <div class="head reveal"><span class="eyebrow">So läuft's ab</span><h2>In 6–10 Wochen zu Ihrem Dashboard.</h2></div>
     <div class="steps">
-      <div class="step reveal"><div class="sn">01</div><h3>Verstehen</h3><div class="dur">1–2 Wochen</div><p>Wir analysieren Ihre Tools, KPIs und Workflows.</p></div>
-      <div class="step reveal"><div class="sn">02</div><h3>Konzipieren</h3><div class="dur">1 Woche</div><p>Wireframes, Datenstruktur, Konzept abgestimmt.</p></div>
-      <div class="step reveal"><div class="sn">03</div><h3>Bauen</h3><div class="dur">3–5 Wochen</div><p>Wöchentlicher Fortschritt, laufendes Feedback.</p></div>
-      <div class="step reveal"><div class="sn">04</div><h3>Testen</h3><div class="dur">1 Woche</div><p>Datenquellen geprüft, Stakeholder testen, Go-Live.</p></div>
-      <div class="step reveal"><div class="sn">05</div><h3>Bleiben</h3><div class="dur">Optional</div><p>Hosting, Wartung & Weiterentwicklung.</p></div>
+      <div class="step reveal"><div class="sn">01</div><h3>Verstehen &amp; Konzipieren</h3><div class="dur">1–3 Wochen</div><p>Tools, KPIs &amp; Konzept gemeinsam abgestimmt.</p></div>
+      <div class="step reveal"><div class="sn">02</div><h3>Bauen</h3><div class="dur">3–5 Wochen</div><p>Wöchentlicher Fortschritt, laufendes Feedback.</p></div>
+      <div class="step reveal"><div class="sn">03</div><h3>Live &amp; Betreuung</h3><div class="dur">Go-Live + optional</div><p>Geprüft, live — optional Hosting &amp; Wartung.</p></div>
     </div>
   </div>
 <script>
@@ -1341,57 +1343,28 @@
 <!-- ══════════════════════════════════════════════════════════ -->
 <section class="funnel-booking" id="booking">
   <div class="container">
-    <h1 class="funnel-booking-headline">Bereit, das zu bauen?</h1>
-    <p class="funnel-booking-subtext">Ihre E-Mail, eine kurze Frage — dann geht's los.</p>
+    <h2 class="funnel-booking-headline">Bereit, das zu bauen?</h2>
+    <p class="funnel-booking-subtext">Ihre E-Mail — dann sehen Sie direkt freie Termine.</p>
 
     <!-- Qualifizierungs-Flow Container (1:1 aus dashboard-jetzt) -->
     <div class="qualification-container" id="qualification-container">
 
       <!-- Schritt 1: E-Mail -->
       <div class="qualification-step active" id="qualification-step-1">
-        <div class="qualification-progress">Schritt 1 von 2</div>
-        <div class="qualification-eyebrow">Wir möchten Sie unterstützen —</div>
-        <h2 class="qualification-headline">Wie erreichen wir Sie am besten?</h2>
-        <p class="qualification-subtext">Mit Ihrer E-Mail können wir Sie gezielt zu Ihrem Setup unterstützen und Ihren Termin vorbereiten. Kein Spam, kein Newsletter.</p>
+        <div class="qualification-eyebrow">Kostenloses Erstgespräch —</div>
+        <h2 class="qualification-headline">E-Mail eintragen, Termin wählen.</h2>
+        <p class="qualification-subtext">Tragen Sie Ihre E-Mail ein — danach sehen Sie sofort freie Termine. Kein Spam, kein Newsletter.</p>
 
         <div class="qualification-options">
           <div class="form-field">
             <input class="form-input" type="email" id="qualification-email" name="email"
                    placeholder="ihre@email.de" required autocomplete="email" inputmode="email"
-                   onkeydown="if(event.key==='Enter'){event.preventDefault();submitEmail();}">
+                   onkeydown="if(event.key==='Enter'){event.preventDefault();lpSubmitEmail();}">
             <p class="qualification-email-error" id="qualification-email-error"
                style="display:none;color:#E02569;font-size:14px;margin:6px 0 0;">Bitte geben Sie eine gültige E-Mail-Adresse ein.</p>
           </div>
-          <button class="form-submit" type="button" onclick="submitEmail()">Weiter →</button>
+          <button class="form-submit" type="button" onclick="lpSubmitEmail()">Freie Termine anzeigen →</button>
         </div>
-      </div>
-
-      <!-- Frage 2: Unternehmensgröße -->
-      <div class="qualification-step" id="qualification-step-2">
-        <div class="qualification-progress">Schritt 2 von 2</div>
-        <div class="qualification-eyebrow">Letzte Frage —</div>
-        <h2 class="qualification-headline">Wie etabliert ist Ihr Unternehmen bereits?</h2>
-        <p class="qualification-subtext">Damit wir direkt passend vorbereitet sind und die richtigen Lösungsansätze mitbringen. Bleibt natürlich komplett unter uns.</p>
-
-        <div class="qualification-options">
-          <button class="qualification-option" onclick="selectRevenueRange('revenue-0-100k')">
-            Noch in der Startphase
-          </button>
-          <button class="qualification-option" onclick="selectRevenueRange('revenue-100k-500k')">
-            Solide etabliert (ca. 100 bis 500k € pro Jahr)
-          </button>
-          <button class="qualification-option" onclick="selectRevenueRange('revenue-500k-2m')">
-            Wachsendes Unternehmen (ca. 500k bis 2 Mio € pro Jahr)
-          </button>
-          <button class="qualification-option" onclick="selectRevenueRange('revenue-2m-plus')">
-            Größeres Unternehmen (über 2 Mio € pro Jahr)
-          </button>
-          <button class="qualification-option" onclick="selectRevenueRange('revenue-prefer-not-say')">
-            Bespreche ich lieber direkt mit Ihnen
-          </button>
-        </div>
-
-        <button class="qualification-back" onclick="showStep(1)">← Zurück</button>
       </div>
 
     </div>
@@ -1501,13 +1474,32 @@
 <!-- ══════════════════════════════════════════════════════════ -->
 
 <!-- Booking Funnel & Qualification Flow (1:1 aus dashboard-jetzt) -->
+<!-- LP-spezifisch: kein Umsatz-Gate — E-Mail führt direkt zum Kalender (überschreibt NICHT die geteilte funnel-booking.min.js) -->
+<script>
+function lpSubmitEmail(){
+  var input=document.getElementById('qualification-email');
+  var errorEl=document.getElementById('qualification-email-error');
+  var email=(input&&input.value?input.value:'').trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ if(errorEl)errorEl.style.display='block'; if(input)input.focus(); return; }
+  if(errorEl)errorEl.style.display='none';
+  try{ sessionStorage.setItem('nuroy_email', email); }catch(e){}
+  // Meta Pixel: Lead beim E-Mail-Schritt (einmal pro Seitenaufruf)
+  if(typeof fbq==='function' && !window._nuroyLeadFired && !navigator.webdriver){
+    window._nuroyLeadFired=true;
+    fbq('track','Lead',{content_name:'Email Submitted',content_category:'funnel_email'});
+  }
+  window.dataLayer=window.dataLayer||[];
+  window.dataLayer.push({event:'email_submitted'});
+  // Direkt zum Kalender (kein Qualifizierungs-Step mehr)
+  if(typeof showCalendly==='function'){ showCalendly(); }
+}
+</script>
 <script src="../funnel/funnel-booking.min.js?v=1.4" defer></script>
 
 <!-- Funnel Scripts (Trust-Bar-Animation, etc.) -->
 <script src="../funnel/funnel-scripts.min.js" defer></script>
 
-<!-- ROI Calculator Script -->
-<script src="roi-calculator.min.js?v=1.2" defer></script>
+<!-- ROI Calculator (Slider) entfernt — Counter-Animation läuft über dashboard-roi-counter.min.js -->
 
 <!-- Lite YouTube Embed -->
 <script src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js" defer></script>
