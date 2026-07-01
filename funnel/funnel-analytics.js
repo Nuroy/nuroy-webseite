@@ -171,13 +171,13 @@
     };
   }
 
-  // ── dataLayer: soft_no_form_submitted ─────────────────────
+  // ── dataLayer: soft_no_form_submitted / callback_requested ─────────────────────
   function watchDataLayer() {
     window.dataLayer = window.dataLayer || [];
     var origPush = window.dataLayer.push;
     window.dataLayer.push = function () {
       for (var i = 0; i < arguments.length; i++) {
-        if (arguments[i] && arguments[i].event === 'soft_no_form_submitted') {
+        if (arguments[i] && (arguments[i].event === 'soft_no_form_submitted' || arguments[i].event === 'callback_requested')) {
           formSubmitted = true;
         }
       }
