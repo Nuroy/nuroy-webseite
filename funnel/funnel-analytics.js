@@ -31,6 +31,7 @@
   var calendlyShown = false;
   var formSubmitted = false;
   var _sent = false;
+  var _convSent = false;
 
   // ── Device / Browser / OS Erkennung ────────────────────────
   function detectDevice() {
@@ -179,6 +180,7 @@
       for (var i = 0; i < arguments.length; i++) {
         if (arguments[i] && (arguments[i].event === 'soft_no_form_submitted' || arguments[i].event === 'callback_requested')) {
           formSubmitted = true;
+          sendConversion();
         }
       }
       return origPush.apply(window.dataLayer, arguments);
@@ -279,6 +281,21 @@
         headers: { 'Content-Type': 'text/plain' },
         keepalive: true
       });
+    } catch (e) { /* silent fail */ }
+  }
+
+  // ── Conversion SOFORT senden (Bulletproof — nicht erst beim Verlassen) ──
+  function sendConversion() {
+    if (_convSent) return;
+    _convSent = true;
+    _sent = true; // Unload-Beacon danach unterdrücken → keine Doppel-Zeile
+
+    var json = JSON.stringify(buildPayload()); // form_submitted ist jetzt 'ja'
+    if (navigator.sendBeacon) {
+      if (navigator.sendBeacon(endpoint, json)) return;
+    }
+    try {
+      fetch(endpoint, { method: 'POST', body: json, headers: { 'Content-Type': 'text/plain' }, keepalive: true });
     } catch (e) { /* silent fail */ }
   }
 
