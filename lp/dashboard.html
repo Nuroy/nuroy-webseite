@@ -1483,6 +1483,13 @@
             }
           } catch(err){}
 
+          // 2b) Cockpit-Lead-Webhook (best effort, via eigenen /api/lead-Proxy — Secret bleibt server-seitig)
+          try {
+            fetch('/api/lead', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({
+              name: name, telefon: phoneRaw, email: '', anruf_zeit: chosen
+            }) });
+          } catch(err){}
+
           // 3) Tracking
           window.dataLayer = window.dataLayer || [];
           window.dataLayer.push({ event:'callback_requested', call_time: chosen });
