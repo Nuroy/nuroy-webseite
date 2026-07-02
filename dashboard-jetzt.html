@@ -27,6 +27,15 @@
   <!-- Fonts: Unbounded (Display), Geist (Body), JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Wistia Preconnects (VSL lädt über 3 Hosts — Handshakes vorziehen) -->
+  <link rel="preconnect" href="https://fast.wistia.net">
+  <link rel="preconnect" href="https://fast.wistia.com">
+  <link rel="preconnect" href="https://embed-cloudfront.wistia.com">
+  <link rel="preconnect" href="https://embed-ssl.wistia.com">
+
+  <!-- VSL-Poster vorladen (überbrückt den Player-Boot — sonst 1-2s schwarz) -->
+  <link rel="preload" as="image" href="https://embed-ssl.wistia.com/deliveries/1070f6dceab2428227e59467d429fa45.jpg?image_crop_resized=960x540">
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript>
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -137,7 +146,7 @@
 
     <!-- Video -->
     <!-- Wistia iframe Embed (Mobile-Safe) -->
-    <div style="position:relative;padding-top:56.25%;border-radius:12px;overflow:hidden;background:#000">
+    <div style="position:relative;padding-top:56.25%;border-radius:12px;overflow:hidden;background:#000 url('https://embed-ssl.wistia.com/deliveries/1070f6dceab2428227e59467d429fa45.jpg?image_crop_resized=960x540') center/cover no-repeat">
       <iframe src="https://fast.wistia.net/embed/iframe/1f9acgpdn0?seo=true&videoFoam=true"
               allowtransparency="true"
               frameborder="0"
