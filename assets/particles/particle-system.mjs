@@ -267,7 +267,7 @@ export function initParticles(opts = {}) {
   function heroPoints() {
     if (logoData) {
       // targetWidth = Breite der sichtbaren Marke (Bounding-Box, ohne PNG-Padding)
-      const heroW = Math.min(innerWidth, innerHeight) * (isMobile ? 0.85 : 0.7)
+      const heroW = Math.min(innerWidth, innerHeight) * (isMobile ? 0.95 : 0.8)
       return samplePointsFromAlpha(logoData, count, { targetWidth: heroW })
     }
     // Lade-/Fehler-Fallback: staubiger Ring
