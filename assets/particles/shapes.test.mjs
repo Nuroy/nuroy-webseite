@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { ringShape, beamShape, randomAttrs, starField, samplePointsFromAlpha } from './shapes.mjs'
+import { ringShape, beamShape, randomAttrs, starField, samplePointsFromAlpha, dissolveOrder } from './shapes.mjs'
 
 test('ringShape liefert count*3 endliche Werte in plausiblen Grenzen', () => {
   const n = 5000
@@ -73,4 +73,25 @@ test('samplePointsFromAlpha wirft bei fehlenden Pflichtargumenten', () => {
   assert.throws(() => samplePointsFromAlpha(empty, 10, { targetWidth: 100 })) // keine opaken Pixel
   const one = { width: 1, height: 1, data: new Uint8ClampedArray([0, 0, 0, 255]) }
   assert.throws(() => samplePointsFromAlpha(one, 10, {})) // targetWidth fehlt
+})
+
+test('dissolveOrder: N zuerst (oben→unten), dann Rahmen ab unten links herum', () => {
+  // synthetisches Quadrat: 4 Rahmen-Eckpunkte + 2 Innen-Punkte (y wächst nach unten!)
+  const pts = new Float32Array([
+    -100, 100, 0, // unten links (Kerbe, Rahmen-Start)
+    -100, -100, 0, // oben links
+    100, -100, 0, // oben rechts
+    100, 100, 0, // unten rechts
+    0, -40, 0, // N oben
+    0, 40, 0, // N unten
+  ])
+  const order = dissolveOrder(pts)
+  assert.equal(order.length, 6)
+  const [bl, tl, tr, br, nTop, nBottom] = order
+  // N löst sich von oben nach unten und komplett vor dem Rahmen
+  assert.ok(nTop < nBottom, 'N oben muss vor N unten gehen')
+  assert.ok(nBottom <= 0.35 + 1e-6, 'N muss komplett vor dem Rahmen gehen')
+  // Rahmen: unten links → oben links → oben rechts → unten rechts
+  assert.ok(bl < tl && tl < tr && tr < br, `Rahmen-Reihenfolge falsch: ${[bl, tl, tr, br]}`)
+  for (const v of order) assert.ok(v >= 0 && v <= 1)
 })

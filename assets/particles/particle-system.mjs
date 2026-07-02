@@ -11,7 +11,7 @@
  *   <html> bekommt die Klasse "particles-fallback", es wird nichts gerendert.
  */
 import * as THREE from 'three'
-import { ringShape, beamShape, randomAttrs, starField, samplePointsFromAlpha } from './shapes.mjs'
+import { ringShape, beamShape, randomAttrs, starField, samplePointsFromAlpha, dissolveOrder } from './shapes.mjs'
 
 const MAX_STATIONS = 8
 
@@ -45,7 +45,8 @@ float snoise(vec2 v) {
 const VERT = /* glsl */ `
 attribute vec3 aHero;
 attribute vec3 aBeam;
-attribute vec4 aRand; // [size, phase, colorMix, stagger]
+attribute vec4 aRand; // [size, phase, colorMix, frei]
+attribute float aOrder; // Auflöse-Reihenfolge: 0 = zuerst, 1 = zuletzt
 
 uniform float uTime;
 uniform float uScrollY;
@@ -65,11 +66,12 @@ varying float vGlow;
 ${NOISE_GLSL}
 
 void main() {
-  // Gestaffeltes Morphing: jeder Partikel startet leicht versetzt (aRand.w),
-  // dadurch "fließt" der Ring in den Strahl statt starr zu schalten.
+  // Sequentielles Morphing: aOrder bestimmt, wann ein Partikel Richtung
+  // Strahl aufbricht — die Logo-Linie löst sich dadurch nacheinander auf
+  // (N von oben nach unten, dann Rahmen ab der Kerbe einmal herum).
   float span = max(uMorphEnd - uMorphStart, 1.0);
   float p = clamp((uScrollY - uMorphStart) / span, 0.0, 1.0);
-  float m = smoothstep(aRand.w * 0.45, aRand.w * 0.45 + 0.55, p);
+  float m = smoothstep(aOrder * 0.75, aOrder * 0.75 + 0.25, p);
 
   // Hero-Form (Logo bzw. Ring-Fallback) ist in der Mitte des ersten Viewports verankert
   vec3 heroDoc = vec3(aHero.x, uViewportH * 0.52 + aHero.y, aHero.z);
@@ -236,7 +238,7 @@ export function initParticles(opts = {}) {
     uScrollY: { value: 0 },
     uViewportH: { value: innerHeight },
     uMorphStart: { value: innerHeight * 0.08 },
-    uMorphEnd: { value: innerHeight * 1.15 },
+    uMorphEnd: { value: innerHeight * 1.35 },
     uCameraD: { value: cameraD },
     uPixelRatio: { value: dpr },
     uColorA: { value: new THREE.Color(colorA).convertLinearToSRGB() },
@@ -275,8 +277,18 @@ export function initParticles(opts = {}) {
     return ringShape(count, { radius: ringR, tube: ringR * 0.09, scatter: ringR * 0.16 })
   }
 
+  function heroOrder(hero) {
+    if (logoData) return dissolveOrder(hero)
+    // Ring-Fallback: zufällige Staffelung wie bisher
+    const order = new Float32Array(count)
+    for (let i = 0; i < count; i++) order[i] = Math.random()
+    return order
+  }
+
   function buildShapes() {
-    geometry.setAttribute('aHero', new THREE.BufferAttribute(heroPoints(), 3))
+    const hero = heroPoints()
+    geometry.setAttribute('aHero', new THREE.BufferAttribute(hero, 3))
+    geometry.setAttribute('aOrder', new THREE.BufferAttribute(heroOrder(hero), 1))
     geometry.setAttribute(
       'aBeam',
       new THREE.BufferAttribute(beamShape(count, { docHeight, radius: isMobile ? 42 : 60 }), 3)
@@ -368,7 +380,7 @@ export function initParticles(opts = {}) {
       uniforms.uCameraD.value = cameraD
       uniforms.uViewportH.value = innerHeight
       uniforms.uMorphStart.value = innerHeight * 0.08
-      uniforms.uMorphEnd.value = innerHeight * 1.15
+      uniforms.uMorphEnd.value = innerHeight * 1.35
       measureDoc()
       buildShapes()
     }, 250)
@@ -383,7 +395,9 @@ export function initParticles(opts = {}) {
   loadLogoImageData(logoUrl)
     .then((d) => {
       logoData = d
-      geometry.setAttribute('aHero', new THREE.BufferAttribute(heroPoints(), 3))
+      const hero = heroPoints()
+      geometry.setAttribute('aHero', new THREE.BufferAttribute(hero, 3))
+      geometry.setAttribute('aOrder', new THREE.BufferAttribute(heroOrder(hero), 1))
       window.__particles.hero = 'logo'
     })
     .catch(() => {

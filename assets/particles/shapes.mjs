@@ -58,6 +58,43 @@ export function randomAttrs(count) {
   return out
 }
 
+/**
+ * Auflöse-Reihenfolge für die Logo-Punkte beim Scroll-Morph: 0 = löst sich
+ * zuerst, 1 = zuletzt. Segmentierung rein geometrisch (Ursprung = Zentrum,
+ * y wächst nach unten): Punkte nahe der Außenkante der Form zählen als Rahmen,
+ * der Rest als N. Ablauf: N von oben nach unten (0 → nStop), dann der Rahmen
+ * ab der Kerbe unten links einmal herum — links hoch, oben rüber, rechts
+ * runter, unten zurück (nStop → 1). Pure Funktion — Node-testbar.
+ */
+export function dissolveOrder(positions, { frameBand = 0.18, nStop = 0.35 } = {}) {
+  const count = positions.length / 3
+  let hw = 0, hh = 0
+  for (let i = 0; i < count; i++) {
+    hw = Math.max(hw, Math.abs(positions[i * 3]))
+    hh = Math.max(hh, Math.abs(positions[i * 3 + 1]))
+  }
+  if (hw === 0) hw = 1
+  if (hh === 0) hh = 1
+  const out = new Float32Array(count)
+  const START = (225 * Math.PI) / 180 // Kerbe unten links
+  for (let i = 0; i < count; i++) {
+    const x = positions[i * 3]
+    const y = positions[i * 3 + 1]
+    const edge = Math.max(Math.abs(x) / hw, Math.abs(y) / hh)
+    if (edge > 1 - frameBand) {
+      // Rahmen: Winkel-Parametrisierung, Start unten links, links hoch zuerst
+      const theta = Math.atan2(-y, x) // y nach unten → mathematische Orientierung
+      let t = (START - theta) / (Math.PI * 2)
+      t -= Math.floor(t) // wrap in [0,1)
+      out[i] = nStop + t * (1 - nStop)
+    } else {
+      // N: von oben nach unten
+      out[i] = ((y + hh) / (2 * hh)) * nStop
+    }
+  }
+  return out
+}
+
 /** Dünnes Sternenfeld im View-Raum, z nach hinten versetzt. */
 export function starField(count, { width, height, depth = 600 } = {}) {
   const out = new Float32Array(count * 3)
