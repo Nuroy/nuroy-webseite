@@ -409,7 +409,8 @@ export function compassShape(count, { size = 320 } = {}) {
   const halfW = 0.03 * S
   for (let i = 0; i < nNeedle; i++) {
     const s = -Lb + Math.random() * (Lf + Lb)
-    const w = halfW * (s >= 0 ? 1 - s / Lf : 1 + s / Lb)
+    // (Lf||1)/(Lb||1): bei size=0 wäre s/Lf sonst 0/0 = NaN
+    const w = halfW * (s >= 0 ? 1 - s / (Lf || 1) : 1 + s / (Lb || 1))
     const off = (Math.random() * 2 - 1) * w
     needle[i * 3] = dx * s - dy * off
     needle[i * 3 + 1] = dy * s + dx * off

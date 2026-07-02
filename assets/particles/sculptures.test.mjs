@@ -105,6 +105,12 @@ for (const [name, fn, centerTol] of ALL) {
     // Echte 3D-Tiefe: z darf keine flache Scheibe sein (Rotation um Y muss etwas zeigen)
     const absZ = zs.map(Math.abs)
     assert.ok(pct(absZ, 0.8) >= 0.012 * S, `zu flach: p80(|z|) ${pct(absZ, 0.8)}`)
+    // Degenerierte Größe: size=0 darf keine NaN in den Position-Buffer bringen
+    const zero = fn(500, { size: 0 })
+    assert.equal(zero.length, 1500)
+    for (let i = 0; i < zero.length; i++) {
+      assert.ok(Number.isFinite(zero[i]), `${name} bei size=0: Wert ${i} nicht endlich (${zero[i]})`)
+    }
   })
 }
 
