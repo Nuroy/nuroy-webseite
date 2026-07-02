@@ -30,6 +30,19 @@ const RING_F = [1, 0.82, 0.66, 0.5, 0.36]
 const GEARS = [1.0, -1.6, 2.2, -0.7, 1.3]
 const IDLE = [0.05, -0.07, 0.09, -0.04, 0.06]
 
+// dt-normierte Easing-Raten (pro Sekunde) statt fixer per-Frame-Faktoren, damit
+// 30/60/120 Hz identisch laufen: Faktor pro Frame = 1 - exp(-K·dt).
+// K = -60·ln(1-f) erhält exakt das Verhalten der früheren 60fps-Faktoren f.
+const K_SCROLL = 7.67 // f = 0.12 (Scroll-Glättung)
+const K_HEAT = 5.0 // f = 0.08 (Kern-Hitze)
+const K_MIX = 6.32 // f = 0.10 (Skulptur-Mix)
+const K_FLARE_UP = 21.4 // f = 0.30 (Flare-Attack)
+const K_FLARE_DOWN = 3.71 // f = 0.06 (Flare-Decay)
+const K_PAN = 3.71 // f = 0.06 (Seiten-Schwenk / Skalierung)
+
+// Scroll-Geschwindigkeit (px/s) für volle Kern-Hitze (früher 40 px/Frame @ 60fps)
+const HEAT_SPEED = 2400
+
 /**
  * Posen der 5 Ringe: tx/tz = Kipp-Winkel (rad) um X bzw. Z, rs = Radius-Skalierung.
  * Index 0 = Hero, 1-7 = Stationen (Reihenfolge wie SCULPTURES), 8 = Finale.
@@ -306,6 +319,66 @@ function flipY(arr) {
   return arr
 }
 
+/**
+ * Pure pro-Frame-Logik für Stationen, Finale und Skulptur-Slot — von update()
+ * benutzt und ohne DOM/WebGL in Node testbar (Scroll-Simulationen).
+ *
+ * Slot-Wechsel per Drain-then-Fill: Zeigt der Slot nicht die gewünschte Form,
+ * wird mixTarget hart auf 0 gezwungen (die alte Skulptur löst sich in die
+ * Maschine auf); sobald sculptMix < 0.06 ist, wird geswappt und die neue Form
+ * kondensiert. Das ist bei jeder Scroll-Geschwindigkeit korrekt — ein Dauer-
+ * scroll über mehrere Stationen kostet nur eine kurze Auflöse-Phase, statt
+ * dauerhaft die falsche Skulptur zu zeigen.
+ *
+ * state: { currentShape, sculptMix }
+ * env:   { stationYs, docHeight, vh, centerDoc, logoReady, eMix }
+ * → { active, aPrime, f, f2, sculptMix, currentShape, swap (Slot oder -1) }
+ */
+export function sculptStep({ currentShape, sculptMix }, { stationYs, docHeight, vh, centerDoc, logoReady, eMix }) {
+  // Stationen: Aktivierung über Abstand zur Viewport-Mitte
+  let active = -1
+  let aBest = 0
+  for (let i = 0; i < stationYs.length; i++) {
+    const a = Math.max(0, 1 - Math.abs(centerDoc - stationYs[i]) / (vh * 0.42))
+    if (a > aBest) {
+      aBest = a
+      active = i
+    }
+  }
+  // Rast-Easing: kleine „Einrast"-Delle, Aktivierung klebt an 0 und 1
+  const aPrime = clamp(aBest - Math.sin(TAU * aBest) * 0.1, 0, 1)
+
+  // Finale nur, wenn es überhaupt Stationen gibt: auf Hero-only-Seiten
+  // (Prototyp) bleibt die Maschine einfach Maschine, uSculptMix bleibt 0.
+  const hasStations = stationYs.length > 0
+  const f = hasStations ? smooth01(docHeight - 2.4 * vh, docHeight - 1.1 * vh, centerDoc) : 0
+  const f2 = hasStations ? smooth01(docHeight - 1.3 * vh, docHeight - 0.5 * vh, centerDoc) : 0
+
+  // Gewünschter Slot: Finale zählt als „Station 8" (Logo) — aber nur, wenn
+  // das Logo wirklich geladen ist. Sonst bliebe der Slot bei Nullen und 26k
+  // additive Partikel würden zu einem gleißenden Punkt kondensieren; ohne
+  // Logo läuft stattdessen nur das Posen-Finale der Maschine weiter.
+  let desired = -1
+  if (f2 > 0 && logoReady) desired = LOGO_SLOT
+  else if (active >= 0) desired = active
+
+  let mixTarget = active >= 0 ? smooth01(0.15, 0.8, aPrime) : 0
+  if (logoReady) mixTarget = Math.max(mixTarget, f2)
+
+  let swap = -1
+  if (desired >= 0 && desired !== currentShape) {
+    if (sculptMix < 0.06) {
+      swap = desired
+      currentShape = desired
+    } else {
+      mixTarget = 0 // Drain: erst auflösen, geswappt wird beim nächsten Unterschreiten
+    }
+  }
+  sculptMix += (mixTarget - sculptMix) * eMix
+
+  return { active, aPrime, f, f2, sculptMix, currentShape, swap }
+}
+
 export function initReactor(opts = {}) {
   const {
     mount,
@@ -438,8 +511,9 @@ export function initReactor(opts = {}) {
   }
 
   // --- Skulptur-Slots: alle 7 Skulpturen + Logo werden vorgebaut, aShape
-  // trägt immer genau eine davon (Swap nur bei uSculptMix ≈ 0, s. update)
+  // trägt immer genau eine davon (Drain-then-Fill-Swap, s. sculptStep)
   let logoData = null // ImageData des Logos nach erstem Laden (Cache für Resizes)
+  let logoReady = false // erst dann darf das Finale in den Logo-Slot kondensieren
   let shapes = []
   let currentShape = -1 // welcher Slot gerade im aShape-Attribut liegt
 
@@ -513,8 +587,11 @@ export function initReactor(opts = {}) {
   let sculptMix = 0
   let sculptAnchor = 0 // Dokument-y, relativ zu dem die Skulptur rotiert
 
-  function update(t) {
-    scrollSmooth += (scrollY - scrollSmooth) * 0.12
+  function update(t, dt) {
+    // dt-normierte Easings: identisches Verhalten bei 30/60/120 Hz
+    const ease = (k) => 1 - Math.exp(-k * dt)
+
+    scrollSmooth += (scrollY - scrollSmooth) * ease(K_SCROLL)
     uniforms.uScrollSmooth.value = scrollSmooth
     const dScroll = scrollY - lastScrollY
     lastScrollY = scrollY
@@ -526,60 +603,41 @@ export function initReactor(opts = {}) {
     const spins = uniforms.uSpin.value
     for (let i = 0; i < 5; i++) spins[i] = scrollSmooth * GEARS[i] * 0.0035 + t * IDLE[i]
 
-    // --- Kern-Hitze aus der Scroll-Geschwindigkeit
-    heat += (clamp(Math.abs(dScroll) / 40, 0, 1) - heat) * 0.08
+    // --- Kern-Hitze aus der Scroll-Geschwindigkeit (px/s, framerate-unabhängig)
+    heat += (clamp(Math.abs(dScroll) / dt / HEAT_SPEED, 0, 1) - heat) * ease(K_HEAT)
 
-    // --- Stationen: Aktivierung über Abstand zur Viewport-Mitte
-    let active = -1
-    let aBest = 0
-    for (let i = 0; i < stationYs.length; i++) {
-      const a = Math.max(0, 1 - Math.abs(centerDoc - stationYs[i]) / (vh * 0.42))
-      if (a > aBest) {
-        aBest = a
-        active = i
-      }
-    }
-    // Rast-Easing: kleine „Einrast"-Delle, Aktivierung klebt an 0 und 1
-    const aPrime = clamp(aBest - Math.sin(TAU * aBest) * 0.1, 0, 1)
-
-    // --- Finale nur, wenn es überhaupt Stationen gibt: auf Hero-only-Seiten
-    // (Prototyp) bleibt die Maschine einfach Maschine, uSculptMix bleibt 0.
-    const hasStations = stationYs.length > 0
-    const f = hasStations ? smooth01(docHeight - 2.4 * vh, docHeight - 1.1 * vh, centerDoc) : 0
-    const f2 = hasStations ? smooth01(docHeight - 1.3 * vh, docHeight - 0.5 * vh, centerDoc) : 0
-
-    // --- Skulptur-Slot: Swap nur, wenn die Skulptur (fast) unsichtbar ist.
-    // Bekannte, akzeptierte Grenze: bei extrem schnellem Scrubben über mehrere
-    // Stationen kann uSculptMix nicht rechtzeitig unter 0.06 fallen — der
-    // Slot behält dann kurz die alte Form, bis der Mix einmal abgeklungen ist.
-    let desired = currentShape
-    if (f2 > 0) desired = LOGO_SLOT // Finale zählt als „Station 8"
-    else if (active >= 0) desired = active
-    if (desired !== currentShape && desired >= 0 && sculptMix < 0.06) {
-      aShapeAttr.array.set(shapes[desired])
+    // --- Stationen, Finale und Skulptur-Slot (pure Frame-Logik, s. sculptStep)
+    const st = sculptStep(
+      { currentShape, sculptMix },
+      { stationYs, docHeight, vh, centerDoc, logoReady, eMix: ease(K_MIX) }
+    )
+    if (st.swap >= 0) {
+      aShapeAttr.array.set(shapes[st.swap])
       aShapeAttr.needsUpdate = true
-      currentShape = desired
     }
-
-    // --- Skulptur-Mix (Maschine ↔ Skulptur) + Stations-Flare
-    let mixTarget = active >= 0 ? smooth01(0.15, 0.8, aPrime) : 0
-    mixTarget = Math.max(mixTarget, f2)
-    sculptMix += (mixTarget - sculptMix) * 0.1
+    currentShape = st.currentShape
+    sculptMix = st.sculptMix
     uniforms.uSculptMix.value = sculptMix
+    const active = st.active
+    const aPrime = st.aPrime
+    const f = st.f
+    const f2 = st.f2
 
     // kurzes Aufflammen beim Einrasten (a' > 0.75): schnell auf, langsam ab
     const flareTarget = Math.max(0, aPrime - 0.75) * 4
-    flare += (flareTarget - flare) * (flareTarget > flare ? 0.3 : 0.06)
+    flare += (flareTarget - flare) * ease(flareTarget > flare ? K_FLARE_UP : K_FLARE_DOWN)
     uniforms.uFlare.value = flare
 
     uniforms.uCoreHeat.value = 0.25 + heat + f * 0.5
 
-    // --- Skulptur-Rotation: dreht mit dem Scroll um die eigene Y-Achse,
-    // friert im Finale sanft auf 0 ein (Logo steht frontal)
-    if (f2 > 0) sculptAnchor = docHeight - 0.5 * vh
+    // --- Skulptur-Rotation: dreht mit dem Scroll um die eigene Y-Achse.
+    // Finale: Anker in der f2-Fenstermitte + Ausblenden mit (1 - f2) — das
+    // Logo dreht sich während der Kondensation von selbst in die Frontale
+    // und steht am Seitenende exakt frontal. (Stations-Skulpturen unberührt.)
+    if (f2 > 0) sculptAnchor = docHeight - 0.9 * vh
     else if (active >= 0) sculptAnchor = stationYs[active]
     let spinTarget = (centerDoc - sculptAnchor) * 0.004
-    spinTarget *= 1 - smooth01(0.9, 1.0, f2)
+    spinTarget *= 1 - f2
     uniforms.uSculptSpin.value = spinTarget
 
     // --- Posen: Hero-Basis → Winkel-Lerp zur Stations-Pose → Finale-Blend
@@ -620,27 +678,35 @@ export function initReactor(opts = {}) {
     // beides zurück in die Mitte.
     const sideX = active >= 0 ? (active % 2 === 0 ? 1 : -1) * innerWidth * 0.24 : 0
     const targetX = sideX * (1 - f)
-    uniforms.uCenter.value.x += (targetX - uniforms.uCenter.value.x) * 0.06
-    uniforms.uSculptCenter.value.x += (targetX - uniforms.uSculptCenter.value.x) * 0.06
+    const ePan = ease(K_PAN)
+    uniforms.uCenter.value.x += (targetX - uniforms.uCenter.value.x) * ePan
+    uniforms.uSculptCenter.value.x += (targetX - uniforms.uSculptCenter.value.x) * ePan
 
     // --- Skalierung: Hero 1.0 → 0.62 bei aktiver Station, Finale → 0.85
     const scaleBase = active >= 0 ? 0.62 : 1.0
     const scaleTarget = scaleBase + (0.85 - scaleBase) * f
-    uniforms.uScale.value += (scaleTarget - uniforms.uScale.value) * 0.06
+    uniforms.uScale.value += (scaleTarget - uniforms.uScale.value) * ePan
   }
 
   const clock = new THREE.Clock()
   let raf = null
+  // Eigene Zeitachse, die nur bei laufendem rAF weiterzählt — getElapsedTime()
+  // liefe bei verstecktem Tab weiter und ließe die Idle-Rotationen springen.
+  let tAcc = 0
   function tick() {
     raf = requestAnimationFrame(tick)
-    const t = clock.getElapsedTime()
-    uniforms.uTime.value = t
-    update(t)
+    // Delta deckeln: lange Frames/Ruckler dürfen keine Zeit-/Easing-Sprünge erzeugen
+    const dt = clamp(clock.getDelta(), 0.001, 0.1)
+    tAcc += dt
+    uniforms.uTime.value = tAcc
+    update(tAcc, dt)
     renderer.render(scene, camera)
   }
 
   function start() {
-    if (raf === null) tick()
+    if (raf !== null) return
+    clock.getDelta() // im pausierten Zustand aufgelaufene Zeit einmalig verwerfen
+    tick()
   }
   function stop() {
     if (raf !== null) cancelAnimationFrame(raf)
@@ -678,13 +744,15 @@ export function initReactor(opts = {}) {
     .then((d) => {
       logoData = d
       shapes[LOGO_SLOT] = buildLogoShape()
+      logoReady = true
       if (currentShape === LOGO_SLOT) {
         aShapeAttr.array.set(shapes[LOGO_SLOT])
         aShapeAttr.needsUpdate = true
       }
     })
     .catch(() => {
-      // Logo nicht ladbar → Slot bleibt bei Nullen (Finale sammelt im Zentrum)
+      // Logo nicht ladbar → logoReady bleibt false: das Finale kondensiert
+      // nicht (kein gleißender Null-Punkt), nur das Posen-Finale läuft.
     })
 
   return {
