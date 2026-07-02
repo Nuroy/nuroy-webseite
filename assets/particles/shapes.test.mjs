@@ -34,10 +34,10 @@ test('beamShape wirft ohne docHeight', () => {
   assert.throws(() => beamShape(10, {}))
 })
 
-test('randomAttrs liefert count*4 Werte in [0,1)', () => {
+test('randomAttrs liefert count*4 Werte in [0,1]', () => {
   const a = randomAttrs(1000)
   assert.equal(a.length, 4000)
-  for (const v of a) assert.ok(v >= 0 && v < 1)
+  for (const v of a) assert.ok(v >= 0 && v <= 1)
 })
 
 test('starField liefert count*3 Werte, z nach hinten', () => {

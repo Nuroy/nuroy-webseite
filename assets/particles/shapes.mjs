@@ -51,7 +51,7 @@ export function beamShape(count, { docHeight, radius = 60 } = {}) {
   return out
 }
 
-/** Pro Partikel 4 Zufallswerte in [0,1): [size, phase, colorMix, stagger]. */
+/** Pro Partikel 4 Zufallswerte in [0,1] (Float32-Rundung kann exakt 1.0 erzeugen): [size, phase, colorMix, stagger]. */
 export function randomAttrs(count) {
   const out = new Float32Array(count * 4)
   for (let i = 0; i < out.length; i++) out[i] = Math.random()
