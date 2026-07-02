@@ -1134,3 +1134,9 @@ EOF
 
 - [ ] **Step 1:** Max informieren: neue Hauptseite lokal unter `http://127.0.0.1:8765/` ansehen (Desktop + Handy-Simulation), Feedback einarbeiten.
 - [ ] **Step 2:** **KEIN `git push`, KEIN Deploy** — erst wenn Max explizit freigibt. Bis dahin bleibt alles auf dem Branch `hauptseite-redesign`.
+
+---
+
+## Addendum (2026-07-02): Task 3b — Hero-Form = Nuroy-Logo
+
+Nach dem Task-5-Checkpoint entschieden: Hero-Partikel formen das Nuroy-N-Logo (`assets/logo-icon.png`) statt des Rings. Umsetzung: neue pure Funktion `samplePointsFromAlpha(imageData, count, {targetWidth, jitter, zSpread, alphaThreshold})` in `shapes.mjs` (+ Node-Tests), Attribut/Shader-Rename `aRing`→`aHero`, Logo-Lade-Pfad mit ImageData-Cache in `particle-system.mjs` (`loadLogoImageData`, Option `logoUrl`, Default `/assets/logo-icon.png`), Ring bleibt Lade-/Fehler-Fallback, `window.__particles.hero ∈ {'logo','ring'}`. Wichtig: Bild-y und Dokument-y wachsen beide nach unten — Attribut-y NICHT negieren, sonst steht das Logo kopf. Verifikation wie Task 3/4 (Browser, Screenshots, `hero:'logo'`).

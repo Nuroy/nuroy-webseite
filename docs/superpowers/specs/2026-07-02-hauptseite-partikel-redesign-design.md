@@ -54,3 +54,7 @@ Die Hauptseite `index.html` bekommt ein durchgehendes WebGL-Partikelsystem als v
 - Look trifft die Referenzen: organisch, staubig, leuchtende Cluster, kosmisch.
 - Flüssig (~60 fps) auf aktuellem Desktop, nutzbar und ruckelfrei auf aktuellem Smartphone.
 - Seite bleibt voll bedienbar (Navigation, FAQ, CTAs), Fallbacks greifen zuverlässig.
+
+## Update 2026-07-02 (nach Prototyp-Checkpoint)
+
+**Hero-Form ist das Nuroy-Logo statt des Rings** (User-Entscheid am Checkpoint): Die Partikel formen im Hero das N-Mark (`assets/logo-icon.png`), erzeugt per Alpha-Sampling der Logo-Pixel (`samplePointsFromAlpha` in `shapes.mjs`, pure/Node-testbar). Das geladene ImageData wird gecacht und bei Resize synchron neu skaliert. Bis das Logo geladen ist bzw. wenn es nicht ladbar ist, bleibt der staubige Ring als Fallback-Form. Sign-Konvention: Bild-y (nach unten) = Attribut-y (nach unten) = Dokument-y — kein vertikales Spiegeln. `window.__particles.hero` meldet `'logo'` oder `'ring'` für die Verifikation. Morph zum Strahl, Stationen und alle Fallbacks bleiben unverändert.
