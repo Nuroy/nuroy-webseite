@@ -159,7 +159,7 @@ void main() {
 function hasWebGL() {
   try {
     const c = document.createElement('canvas')
-    return !!(c.getContext('webgl2') || c.getContext('webgl'))
+    return !!c.getContext('webgl2')
   } catch {
     return false
   }
@@ -224,8 +224,8 @@ export function initParticles(opts = {}) {
     uMorphEnd: { value: innerHeight * 1.15 },
     uCameraD: { value: cameraD },
     uPixelRatio: { value: dpr },
-    uColorA: { value: new THREE.Color(colorA) },
-    uColorB: { value: new THREE.Color(colorB) },
+    uColorA: { value: new THREE.Color(colorA).convertLinearToSRGB() },
+    uColorB: { value: new THREE.Color(colorB).convertLinearToSRGB() },
     uStations: { value: new Float32Array(MAX_STATIONS) },
     uStationGlow: { value: new Float32Array(MAX_STATIONS) },
     uStationCount: { value: 0 },
@@ -363,6 +363,7 @@ export function initParticles(opts = {}) {
       measureDoc()
     },
     destroy() {
+      clearTimeout(resizeTimer)
       stop()
       document.removeEventListener('visibilitychange', onVisibility)
       removeEventListener('resize', onResize)
