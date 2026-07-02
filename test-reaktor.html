@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reaktor-Prototyp — Nuroy</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    :root {
+      --pink: #FF2D7A;
+      --violet: #8B5CF6;
+      --fg: #f5f2ec;
+      --fg-muted: rgba(245, 242, 236, 0.65);
+      --line: rgba(255, 255, 255, 0.08);
+    }
+    * { box-sizing: border-box; margin: 0; }
+    body {
+      background: #05050a;
+      color: var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    }
+    #particles-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+    /* Statischer Fallback (kein WebGL / reduced motion / ?particles=off) */
+    .particles-fallback #particles-bg {
+      background:
+        radial-gradient(ellipse 60% 40% at 50% 8%, rgba(255, 45, 122, 0.14), transparent 70%),
+        radial-gradient(ellipse 40% 60% at 50% 60%, rgba(139, 92, 246, 0.1), transparent 70%);
+    }
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 24px;
+    }
+    .eyebrow {
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: clamp(44px, 7vw, 96px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.02;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9);
+    }
+    .sub { margin-top: 20px; color: var(--fg-muted); font-size: 17px; }
+    .station {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      padding: 0 6vw;
+    }
+    .station--right { justify-content: flex-end; }
+    .card {
+      max-width: 380px;
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(10, 10, 18, 0.55);
+      backdrop-filter: blur(6px);
+    }
+    .card .num {
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      color: var(--pink);
+      letter-spacing: 0.1em;
+    }
+    .card h2 { font-size: 22px; letter-spacing: -0.02em; margin: 10px 0; }
+    .card p { font-size: 14px; color: var(--fg-muted); line-height: 1.7; }
+    .filler {
+      min-height: 70vh;
+      display: grid;
+      place-items: center;
+      color: var(--fg-muted);
+      font-family: ui-monospace, monospace;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+<div id="particles-bg" aria-hidden="true"></div>
+
+<section class="hero">
+  <div>
+    <p class="eyebrow">02 — Nuroy Reaktor-Prototyp</p>
+    <h1>Die Technik-<br>Abteilung.</h1>
+    <p class="sub">Scroll: Maschine → Stationen → Portal</p>
+  </div>
+</section>
+
+<section class="station" data-station>
+  <div class="card"><span class="num">01</span><h2>Custom Dashboards</h2><p>Daten aus allen Tools an einem Ort. Live. Übersichtlich. Auf eure KPIs zugeschnitten.</p></div>
+</section>
+<section class="station station--right" data-station>
+  <div class="card"><span class="num">02</span><h2>KI-Agenten &amp; Automatisierungen</h2><p>Workflows automatisieren. KI-Agenten für Vertrieb, Support und interne Prozesse.</p></div>
+</section>
+<section class="station" data-station>
+  <div class="card"><span class="num">03</span><h2>Custom Software-Entwicklung</h2><p>SaaS-Produkte, interne Tools, Kunden-Plattformen. Von der Idee bis zum Live-Betrieb.</p></div>
+</section>
+<section class="station station--right" data-station>
+  <div class="card"><span class="num">04</span><h2>KI-Integration</h2><p>Lead-Scoring, Churn-Prediction, Sentiment-Analyse – direkt in euren Tools.</p></div>
+</section>
+<section class="station" data-station>
+  <div class="card"><span class="num">05</span><h2>Interne Company-AI</h2><p>Euer eigener KI-Assistent. Trainiert auf eure Dokumente, Prozesse und euer Wissen.</p></div>
+</section>
+<section class="station station--right" data-station>
+  <div class="card"><span class="num">06</span><h2>Datenintegration &amp; ETL</h2><p>Datensilos auflösen. Alle Quellen synchronisieren. Ein Data Warehouse für alles.</p></div>
+</section>
+<section class="station" data-station>
+  <div class="card"><span class="num">07</span><h2>Strategy &amp; Audit</h2><p>2-wöchige Discovery-Phase. Tool-Stack prüfen. Roadmap definieren.</p></div>
+</section>
+
+<section class="filler">— KUNDENSTIMMEN (DUMMY) —</section>
+<section class="filler">— FINAL CTA (DUMMY) —</section>
+<section class="filler" style="min-height:120vh; align-content:end; padding-bottom:20vh">— CTA / PORTAL (DUMMY) —</section>
+
+<script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js" } }
+</script>
+<script type="module">
+  import { initReactor } from './assets/particles/reactor.mjs'
+  initReactor({ mount: document.getElementById('particles-bg') })
+</script>
+</body>
+</html>
