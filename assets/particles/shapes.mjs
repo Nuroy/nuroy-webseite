@@ -71,8 +71,9 @@ export function starField(count, { width, height, depth = 600 } = {}) {
 
 /**
  * Sampelt count Punkte aus den opaken Pixeln eines ImageData-ähnlichen Objekts
- * ({width, height, data: RGBA}). Punkte sind um den Ursprung zentriert und auf
- * targetWidth skaliert (Aspect bleibt erhalten). WICHTIG: Bild-y und Attribut-y
+ * ({width, height, data: RGBA}). Transparentes Padding wird ignoriert: Zentrum
+ * und Skalierung beziehen sich auf die Bounding-Box der opaken Pixel, targetWidth
+ * ist also die Breite der sichtbaren Form. WICHTIG: Bild-y und Attribut-y
  * wachsen beide nach unten (Dokument-Konvention) — kein vertikales Spiegeln.
  * Pure Funktion — Node-testbar.
  */
@@ -89,9 +90,17 @@ export function samplePointsFromAlpha(imageData, count, { targetWidth, jitter = 
     }
   }
   if (candidates.length === 0) throw new Error('samplePointsFromAlpha: keine opaken Pixel gefunden')
-  const scale = targetWidth / width
-  const cx = width / 2
-  const cy = height / 2
+  let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity
+  for (let i = 0; i < candidates.length; i += 2) {
+    const x = candidates[i], y = candidates[i + 1]
+    if (x < minX) minX = x
+    if (x > maxX) maxX = x
+    if (y < minY) minY = y
+    if (y > maxY) maxY = y
+  }
+  const scale = targetWidth / (maxX - minX + 1)
+  const cx = (minX + maxX + 1) / 2
+  const cy = (minY + maxY + 1) / 2
   const n = candidates.length / 2
   const out = new Float32Array(count * 3)
   for (let i = 0; i < count; i++) {

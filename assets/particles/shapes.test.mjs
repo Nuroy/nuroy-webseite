@@ -48,19 +48,24 @@ test('starField liefert count*3 Werte, z nach hinten', () => {
   }
 })
 
-test('samplePointsFromAlpha sampelt nur opake Pixel, skaliert, y-Richtung bleibt', () => {
-  // 4x2-Bild, nur Pixel (0,0) links oben ist opak
-  const width = 4, height = 2
+test('samplePointsFromAlpha: Bounding-Box-Zentrierung, Skalierung, y-Richtung bleibt', () => {
+  // 4x4-Bild: opak sind nur (0,0) oben links und (3,3) unten rechts —
+  // transparentes Padding drumherum darf Größe/Zentrum nicht beeinflussen
+  const width = 4, height = 4
   const data = new Uint8ClampedArray(width * height * 4)
-  data[3] = 255
-  const pts = samplePointsFromAlpha({ width, height, data }, 200, { targetWidth: 400, jitter: 0, zSpread: 0 })
-  assert.equal(pts.length, 600)
-  for (let i = 0; i < 200; i++) {
+  data[(0 * width + 0) * 4 + 3] = 255
+  data[(3 * width + 3) * 4 + 3] = 255
+  const pts = samplePointsFromAlpha({ width, height, data }, 400, { targetWidth: 400, jitter: 0, zSpread: 0 })
+  assert.equal(pts.length, 1200)
+  let sawLeft = false, sawRight = false
+  for (let i = 0; i < 400; i++) {
     const x = pts[i * 3], y = pts[i * 3 + 1]
-    assert.ok(x < 0, `x ${x} sollte links der Mitte liegen`)
-    assert.ok(y < 0, `y ${y} sollte über der Mitte liegen (Bild-y == Attribut-y, kein Flip)`)
-    assert.ok(Number.isFinite(pts[i * 3 + 2]))
+    assert.ok(Number.isFinite(x) && Number.isFinite(y) && Number.isFinite(pts[i * 3 + 2]))
+    if (x < 0) { sawLeft = true; assert.ok(y < 0, `oberer Pixel muss y<0 haben, war ${y} — vertikaler Flip?`) }
+    if (x > 0) { sawRight = true; assert.ok(y > 0, `unterer Pixel muss y>0 haben, war ${y}`) }
+    assert.ok(Math.abs(x) <= 250 && Math.abs(y) <= 250, `Punkt (${x},${y}) außerhalb der skalierten Bounding-Box`)
   }
+  assert.ok(sawLeft && sawRight, 'beide opaken Pixel sollten gesampelt werden')
 })
 
 test('samplePointsFromAlpha wirft bei fehlenden Pflichtargumenten', () => {
