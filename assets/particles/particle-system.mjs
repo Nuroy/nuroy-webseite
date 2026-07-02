@@ -11,7 +11,7 @@
  *   <html> bekommt die Klasse "particles-fallback", es wird nichts gerendert.
  */
 import * as THREE from 'three'
-import { ringShape, beamShape, randomAttrs, starField } from './shapes.mjs'
+import { ringShape, beamShape, randomAttrs, starField, samplePointsFromAlpha } from './shapes.mjs'
 
 const MAX_STATIONS = 8
 
@@ -43,7 +43,7 @@ float snoise(vec2 v) {
 `
 
 const VERT = /* glsl */ `
-attribute vec3 aRing;
+attribute vec3 aHero;
 attribute vec3 aBeam;
 attribute vec4 aRand; // [size, phase, colorMix, stagger]
 
@@ -71,9 +71,9 @@ void main() {
   float p = clamp((uScrollY - uMorphStart) / span, 0.0, 1.0);
   float m = smoothstep(aRand.w * 0.45, aRand.w * 0.45 + 0.55, p);
 
-  // Ring ist im Dokument in der Mitte des ersten Viewports verankert
-  vec3 ringDoc = vec3(aRing.x, uViewportH * 0.52 + aRing.y, aRing.z);
-  vec3 doc = mix(ringDoc, aBeam, m);
+  // Hero-Form (Logo bzw. Ring-Fallback) ist in der Mitte des ersten Viewports verankert
+  vec3 heroDoc = vec3(aHero.x, uViewportH * 0.52 + aHero.y, aHero.z);
+  vec3 doc = mix(heroDoc, aBeam, m);
 
   // Dokument-y (wächst nach unten) -> View-y (wächst nach oben).
   // Canvas ist fixed; die Partikel-"Welt" zieht am Betrachter vorbei.
@@ -165,12 +165,27 @@ function hasWebGL() {
   }
 }
 
+/** Lädt das Logo und liefert (verkleinertes) ImageData für das Alpha-Sampling. */
+async function loadLogoImageData(url) {
+  const img = new Image()
+  img.src = url
+  await img.decode()
+  const s = Math.min(1, 256 / Math.max(img.naturalWidth, img.naturalHeight))
+  const c = document.createElement('canvas')
+  c.width = Math.max(1, Math.round(img.naturalWidth * s))
+  c.height = Math.max(1, Math.round(img.naturalHeight * s))
+  const ctx = c.getContext('2d', { willReadFrequently: true })
+  ctx.drawImage(img, 0, 0, c.width, c.height)
+  return ctx.getImageData(0, 0, c.width, c.height)
+}
+
 export function initParticles(opts = {}) {
   const {
     mount,
     stationSelector = '[data-station]',
     colorA = '#FF2D7A',
     colorB = '#8B5CF6',
+    logoUrl = '/assets/logo-icon.png',
     desktopCount = 26000,
     mobileCount = 10000,
     starCount = 350,
@@ -247,12 +262,20 @@ export function initParticles(opts = {}) {
     stationYs.forEach((y, i) => (uniforms.uStations.value[i] = y))
   }
 
-  function buildShapes() {
+  let logoData = null // ImageData des Logos nach erstem Laden (Cache für Resizes)
+
+  function heroPoints() {
+    if (logoData) {
+      const heroW = Math.min(innerWidth, innerHeight) * (isMobile ? 0.8 : 0.62)
+      return samplePointsFromAlpha(logoData, count, { targetWidth: heroW })
+    }
+    // Lade-/Fehler-Fallback: staubiger Ring
     const ringR = Math.min(innerWidth, innerHeight) * (isMobile ? 0.34 : 0.28)
-    geometry.setAttribute(
-      'aRing',
-      new THREE.BufferAttribute(ringShape(count, { radius: ringR, tube: ringR * 0.09, scatter: ringR * 0.16 }), 3)
-    )
+    return ringShape(count, { radius: ringR, tube: ringR * 0.09, scatter: ringR * 0.16 })
+  }
+
+  function buildShapes() {
+    geometry.setAttribute('aHero', new THREE.BufferAttribute(heroPoints(), 3))
     geometry.setAttribute(
       'aBeam',
       new THREE.BufferAttribute(beamShape(count, { docHeight, radius: isMobile ? 42 : 60 }), 3)
@@ -354,7 +377,17 @@ export function initParticles(opts = {}) {
   addEventListener('load', onResize)
 
   start()
-  window.__particles = { mode: 'webgl', count }
+  window.__particles = { mode: 'webgl', count, hero: 'ring' }
+
+  loadLogoImageData(logoUrl)
+    .then((d) => {
+      logoData = d
+      geometry.setAttribute('aHero', new THREE.BufferAttribute(heroPoints(), 3))
+      window.__particles.hero = 'logo'
+    })
+    .catch(() => {
+      // Logo nicht ladbar → Ring bleibt als Hero-Form
+    })
 
   return {
     mode: 'webgl',

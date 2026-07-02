@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { ringShape, beamShape, randomAttrs, starField } from './shapes.mjs'
+import { ringShape, beamShape, randomAttrs, starField, samplePointsFromAlpha } from './shapes.mjs'
 
 test('ringShape liefert count*3 endliche Werte in plausiblen Grenzen', () => {
   const n = 5000
@@ -46,4 +46,26 @@ test('starField liefert count*3 Werte, z nach hinten', () => {
   for (let i = 0; i < 300; i++) {
     assert.ok(s[i * 3 + 2] <= 0 && s[i * 3 + 2] >= -600)
   }
+})
+
+test('samplePointsFromAlpha sampelt nur opake Pixel, skaliert, y-Richtung bleibt', () => {
+  // 4x2-Bild, nur Pixel (0,0) links oben ist opak
+  const width = 4, height = 2
+  const data = new Uint8ClampedArray(width * height * 4)
+  data[3] = 255
+  const pts = samplePointsFromAlpha({ width, height, data }, 200, { targetWidth: 400, jitter: 0, zSpread: 0 })
+  assert.equal(pts.length, 600)
+  for (let i = 0; i < 200; i++) {
+    const x = pts[i * 3], y = pts[i * 3 + 1]
+    assert.ok(x < 0, `x ${x} sollte links der Mitte liegen`)
+    assert.ok(y < 0, `y ${y} sollte über der Mitte liegen (Bild-y == Attribut-y, kein Flip)`)
+    assert.ok(Number.isFinite(pts[i * 3 + 2]))
+  }
+})
+
+test('samplePointsFromAlpha wirft bei fehlenden Pflichtargumenten', () => {
+  const empty = { width: 2, height: 2, data: new Uint8ClampedArray(16) }
+  assert.throws(() => samplePointsFromAlpha(empty, 10, { targetWidth: 100 })) // keine opaken Pixel
+  const one = { width: 1, height: 1, data: new Uint8ClampedArray([0, 0, 0, 255]) }
+  assert.throws(() => samplePointsFromAlpha(one, 10, {})) // targetWidth fehlt
 })

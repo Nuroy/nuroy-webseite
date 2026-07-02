@@ -68,3 +68,37 @@ export function starField(count, { width, height, depth = 600 } = {}) {
   }
   return out
 }
+
+/**
+ * Sampelt count Punkte aus den opaken Pixeln eines ImageData-ähnlichen Objekts
+ * ({width, height, data: RGBA}). Punkte sind um den Ursprung zentriert und auf
+ * targetWidth skaliert (Aspect bleibt erhalten). WICHTIG: Bild-y und Attribut-y
+ * wachsen beide nach unten (Dokument-Konvention) — kein vertikales Spiegeln.
+ * Pure Funktion — Node-testbar.
+ */
+export function samplePointsFromAlpha(imageData, count, { targetWidth, jitter = 3, zSpread = 14, alphaThreshold = 40 } = {}) {
+  if (!imageData || !imageData.width || !imageData.height || !imageData.data) {
+    throw new Error('samplePointsFromAlpha: imageData erforderlich')
+  }
+  if (!targetWidth || targetWidth <= 0) throw new Error('samplePointsFromAlpha: targetWidth erforderlich')
+  const { width, height, data } = imageData
+  const candidates = []
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      if (data[(y * width + x) * 4 + 3] > alphaThreshold) candidates.push(x, y)
+    }
+  }
+  if (candidates.length === 0) throw new Error('samplePointsFromAlpha: keine opaken Pixel gefunden')
+  const scale = targetWidth / width
+  const cx = width / 2
+  const cy = height / 2
+  const n = candidates.length / 2
+  const out = new Float32Array(count * 3)
+  for (let i = 0; i < count; i++) {
+    const k = (Math.random() * n) | 0
+    out[i * 3 + 0] = (candidates[k * 2] - cx + Math.random() - 0.5) * scale + gaussian() * jitter
+    out[i * 3 + 1] = (candidates[k * 2 + 1] - cy + Math.random() - 0.5) * scale + gaussian() * jitter
+    out[i * 3 + 2] = gaussian() * (zSpread * 0.5)
+  }
+  return out
+}
