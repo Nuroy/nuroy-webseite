@@ -411,12 +411,12 @@ export function sculptStep({ currentShape, sculptMix }, { stations, vh, vw, cent
       const bottom = st.y + h / 2
       // Einstieg erst, wenn der Hero-Text oben rausgescrollt ist (textfreier
       // Moment), und bewusst langsam über ~0.7 Viewport-Höhen aufbauend
-      const ain = smooth01(top + 0.15 * vh, top + 0.85 * vh, centerDoc)
-      // Auflösen: LINEAR ab dem Moment, wo der Sektions-Text oben anfängt
-      // rauszugehen (kein S-Kurven-Anlauf — der würde das erste Drittel des
-      // Fensters visuell verschlucken). Breites Fenster (0.9vh ≈ 4 Ticks):
-      // scroll-gebunden, 2 Ticks parken das N halb aufgelöst im Strahl.
-      const aout = 1 - clamp((centerDoc - (bottom - 0.1 * vh)) / (0.9 * vh), 0, 1)
+      const ain = smooth01(top + 0.15 * vh, top + 0.7 * vh, centerDoc)
+      // Auflösen: LINEAR und FRÜH — beginnt, sobald der Sektions-Text die
+      // Bildschirmmitte passiert (Text sitzt bei ~0.76vh der Sektion, plus
+      // halbe Texthöhe ≈ 0.85vh). Breites Fenster (0.9vh): scroll-gebunden,
+      // parken jederzeit möglich, kein Zeit-Weglaufen.
+      const aout = 1 - clamp((centerDoc - (top + 0.85 * vh)) / (0.9 * vh), 0, 1)
       a = Math.min(ain, aout)
     } else {
       // engeres Fenster (0.32vh): Skulpturen kondensieren erst nah an der
