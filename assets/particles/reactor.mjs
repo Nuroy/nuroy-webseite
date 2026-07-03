@@ -1,13 +1,17 @@
 /**
- * Nuroy „Ringreaktor" — Gyroskop-Maschine aus 5 ineinander kippenden Ringen,
- * glühendem Kern und eingefangenem Orbit-Staub. Scroll treibt die Ringe wie
- * ein Getriebe gegenläufig an; an jeder [data-station] kippt die Maschine in
- * eine eigene Pose, schwenkt zur Seite und morpht in eine Themen-Skulptur
- * (SCULPTURES aus sculptures.mjs). Am Seitenende konvergiert alles und die
- * Partikel formen das N-Logo (Finale).
+ * Nuroy „Ringreaktor" — Story-Fassung: Gyroskop-Maschine aus 5 ineinander
+ * kippenden Ringen, glühendem Kern und Orbit-Staub im Hero. Beim ersten
+ * Scroll kondensiert die Maschine an der ersten [data-station="logo"]-Sektion
+ * zum Partikel-N; ab deren Mitte wird der Basis-Zustand unwiderruflich auf
+ * einen organisch fließenden Partikel-Strom (flowWorld) umgeblendet, der
+ * zwischen den Leistungs-Sektionen alternierend zur Seite der nächsten
+ * Skulptur wandert und dort kondensiert (SCULPTURES aus sculptures.mjs).
+ * Eine zweite logo-Station am Seitenende schließt die N-Klammer — es gibt
+ * keine Finale-Sondermechanik mehr, Logo-Sektionen sind reguläre Stationen.
  *
  * Nutzung:
  *   <div id="particles-bg" aria-hidden="true"></div>  (CSS: position:fixed; inset:0; z-index:-1; pointer-events:none)
+ *   <section data-station="dashboards">…  (Namen: siehe SLOT_BY_NAME)
  *   initReactor({ mount: document.getElementById('particles-bg') })
  *
  * Fallback (kein WebGL2 / prefers-reduced-motion / ?particles=off):
@@ -19,9 +23,23 @@ import { SCULPTURES } from './sculptures.mjs'
 
 const TAU = Math.PI * 2
 
-// Maximal so viele Stationen wie Skulpturen; der Slot dahinter ist das Logo (Finale = „Station 8").
-const STATION_MAX = SCULPTURES.length
+// Skulptur-Slot hinter den 7 Themen-Skulpturen: das N-Logo.
 const LOGO_SLOT = SCULPTURES.length
+
+/**
+ * data-station-Namen → Skulptur-Slot. „logo" darf mehrfach vorkommen
+ * (N-Sektion nach dem Hero + Schluss-Klammer vor dem CTA).
+ */
+export const SLOT_BY_NAME = {
+  dashboards: 0,
+  'ki-agenten': 1,
+  software: 2,
+  'ki-integration': 3,
+  'company-ai': 4,
+  datenintegration: 5,
+  strategy: 6,
+  logo: LOGO_SLOT,
+}
 
 // Ring-Radius-Faktoren (außen → innen), relativ zu uMachineR
 const RING_F = [1, 0.82, 0.66, 0.5, 0.36]
@@ -45,7 +63,10 @@ const HEAT_SPEED = 2400
 
 /**
  * Posen der 5 Ringe: tx/tz = Kipp-Winkel (rad) um X bzw. Z, rs = Radius-Skalierung.
- * Index 0 = Hero, 1-7 = Stationen (Reihenfolge wie SCULPTURES), 8 = Finale.
+ * Index 0 = Hero, 1-7 = Slots 0-6 (Reihenfolge wie SCULPTURES), 8 = Logo-Slot
+ * (frontal genestete Ringe — die Maschine faltet sich flach, während das N
+ * kondensiert; relevant nur an der ersten logo-Station, danach ist die
+ * Maschine im Fluss-Bereich unsichtbar).
  */
 const POSES = [
   // Hero: chaotisch-organisches Gyroskop
@@ -64,7 +85,7 @@ const POSES = [
   { tx: [1.45, 1.45, 1.45, 1.45, 1.45], tz: [0, 0, 0, 0, 0], rs: [1, 0.98, 0.96, 0.94, 0.92] },
   // 7 Strategie: Atommodell (orthogonale + diagonale Ebenen)
   { tx: [0, 1.5708, 0, 0.7854, -0.7854], tz: [0, 0, 1.5708, 0.7854, 0.7854], rs: [1, 0.95, 0.9, 0.85, 0.8] },
-  // Finale: alle Ringe frontal, eng genestet
+  // Logo-Slot: alle Ringe frontal, eng genestet
   { tx: [0, 0, 0, 0, 0], tz: [0, 0, 0, 0, 0], rs: [1, 0.97, 0.94, 0.91, 0.88] },
 ]
 
@@ -118,6 +139,11 @@ uniform float uFlare;       // Stations-Aufflammen (alle Partikel)
 uniform float uSculptMix;   // 0 = Maschine, 1 = Skulptur
 uniform float uSculptSpin;  // Rotation der Skulptur um die eigene Y-Achse
 uniform vec2 uSculptCenter; // Skulptur-Zentrum in px (View-Raum)
+uniform float uFlowZone;     // 0 = Maschine ist Basis, 1 = Fluss-Strom ist Basis
+uniform float uFlowProgress; // Fortschritt des Stroms im aktuellen Segment (0..1)
+uniform float uFlowFromX;    // Strom-Start-x in px (View-Raum)
+uniform float uFlowToX;      // Strom-Ziel-x in px (View-Raum)
+uniform float uViewportH;    // Viewport-Höhe in px (Amplituden des Stroms)
 
 varying float vAlpha;
 varying float vColorMix;
@@ -189,11 +215,26 @@ void main() {
 
   vec3 machineWorld = local * uScale + vec3(uCenter, 0.0);
 
-  // --- Skulptur-Blend mit per-Partikel-Stagger: die Maschine „schüttet"
-  // ihre Partikel nach und nach in die Skulptur um
+  // --- Fluss-Strom: chaotisches Gewusel, das als breiter Strom quer über
+  // den Schirm zur Seite der nächsten Station wandert. flowT streut per
+  // Partikel, damit der Strom Länge hat statt als Block zu springen.
+  float flowT = clamp(uFlowProgress + (aSeed.w - 0.5) * 0.55, 0.0, 1.0);
+  float fx = mix(uFlowFromX, uFlowToX, smoothstep(0.0, 1.0, flowT));
+  float fy = sin(fx * 0.006 + uTime * 0.5 + aSeed.y * 6.2831) * uViewportH * 0.05
+           + (aSeed.x - 0.5) * uViewportH * 0.16;
+  vec3 flowWorld = vec3(
+    fx + snoise(vec2(aSeed.y * 40.0, uTime * 0.25)) * 34.0,
+    fy + snoise(vec2(aSeed.z * 40.0, uTime * 0.3 + 7.0)) * 26.0,
+    (aSeed.z - 0.5) * 120.0 + snoise(vec2(aSeed.x * 30.0, uTime * 0.2)) * 20.0
+  );
+
+  // --- Basis-Zustand: unterhalb der N-Sektion wird die Maschine unwider-
+  // ruflich gegen den Fluss-Strom getauscht; Skulpturen kondensieren aus
+  // dem jeweils aktiven Basis-Zustand (per-Partikel-Stagger wie gehabt).
+  vec3 base = mix(machineWorld, flowWorld, uFlowZone);
   float m = smoothstep(aSeed.w * 0.35, aSeed.w * 0.35 + 0.65, uSculptMix);
   vec3 sculptWorld = rotY(uSculptSpin) * aShape + vec3(uSculptCenter, 0.0);
-  vec3 world = mix(machineWorld, sculptWorld, m);
+  vec3 world = mix(base, sculptWorld, m);
 
   // mildes organisches Wabern auf allen Rollen (±5px, staubiger Look)
   world.x += snoise(vec2(world.y * 0.004 + aSeed.y * 7.0, uTime * 0.08)) * 5.0;
@@ -320,26 +361,33 @@ function flipY(arr) {
 }
 
 /**
- * Pure pro-Frame-Logik für Stationen, Finale und Skulptur-Slot — von update()
- * benutzt und ohne DOM/WebGL in Node testbar (Scroll-Simulationen).
+ * Pure pro-Frame-Logik für Stationen, Fluss-Zone und Skulptur-Slot — von
+ * update() benutzt und ohne DOM/WebGL in Node testbar (Scroll-Simulationen).
  *
  * Slot-Wechsel per Drain-then-Fill: Zeigt der Slot nicht die gewünschte Form,
- * wird mixTarget hart auf 0 gezwungen (die alte Skulptur löst sich in die
- * Maschine auf); sobald sculptMix < 0.06 ist, wird geswappt und die neue Form
- * kondensiert. Das ist bei jeder Scroll-Geschwindigkeit korrekt — ein Dauer-
- * scroll über mehrere Stationen kostet nur eine kurze Auflöse-Phase, statt
- * dauerhaft die falsche Skulptur zu zeigen.
+ * wird mixTarget hart auf 0 gezwungen (die alte Skulptur löst sich in den
+ * Basis-Zustand auf); sobald sculptMix < 0.06 ist, wird geswappt und die neue
+ * Form kondensiert. Das ist bei jeder Scroll-Geschwindigkeit korrekt — ein
+ * Dauerscroll über mehrere Stationen kostet nur eine kurze Auflöse-Phase,
+ * statt dauerhaft die falsche Skulptur zu zeigen.
+ *
+ * Fluss-Zone: 0 im Hero und bis zur Mitte der ersten logo-Station; danach
+ * eased → 1 über ein Fenster von 0.7·vh. Rein positionsabhängig — rückwärts
+ * scrollen bringt die Maschine wieder zurück. Zwischen Station k und k+1
+ * wandert der Strom von side_k·vw·0.24 nach side_{k+1}·vw·0.24 (logo: 0).
  *
  * state: { currentShape, sculptMix }
- * env:   { stationYs, docHeight, vh, centerDoc, logoReady, eMix }
- * → { active, aPrime, f, f2, sculptMix, currentShape, swap (Slot oder -1) }
+ * env:   { stations: [{ y, slot, side }] (in Dokument-Reihenfolge, y aufsteigend),
+ *          vh, vw, centerDoc, logoReady, eMix }
+ * → { active, aPrime, sculptMix, currentShape, swap (Slot oder -1),
+ *     flowZone, flowProgress, flowFromX, flowToX }
  */
-export function sculptStep({ currentShape, sculptMix }, { stationYs, docHeight, vh, centerDoc, logoReady, eMix }) {
+export function sculptStep({ currentShape, sculptMix }, { stations, vh, vw, centerDoc, logoReady, eMix }) {
   // Stationen: Aktivierung über Abstand zur Viewport-Mitte
   let active = -1
   let aBest = 0
-  for (let i = 0; i < stationYs.length; i++) {
-    const a = Math.max(0, 1 - Math.abs(centerDoc - stationYs[i]) / (vh * 0.42))
+  for (let i = 0; i < stations.length; i++) {
+    const a = Math.max(0, 1 - Math.abs(centerDoc - stations[i].y) / (vh * 0.42))
     if (a > aBest) {
       aBest = a
       active = i
@@ -348,22 +396,44 @@ export function sculptStep({ currentShape, sculptMix }, { stationYs, docHeight, 
   // Rast-Easing: kleine „Einrast"-Delle, Aktivierung klebt an 0 und 1
   const aPrime = clamp(aBest - Math.sin(TAU * aBest) * 0.1, 0, 1)
 
-  // Finale nur, wenn es überhaupt Stationen gibt: auf Hero-only-Seiten
-  // (Prototyp) bleibt die Maschine einfach Maschine, uSculptMix bleibt 0.
-  const hasStations = stationYs.length > 0
-  const f = hasStations ? smooth01(docHeight - 2.4 * vh, docHeight - 1.1 * vh, centerDoc) : 0
-  const f2 = hasStations ? smooth01(docHeight - 1.3 * vh, docHeight - 0.5 * vh, centerDoc) : 0
+  // --- Fluss-Zone: ab der Mitte der ersten logo-Station eased → 1
+  let flowZone = 0
+  for (let i = 0; i < stations.length; i++) {
+    if (stations[i].slot === LOGO_SLOT) {
+      flowZone = smooth01(stations[i].y, stations[i].y + 0.7 * vh, centerDoc)
+      break
+    }
+  }
 
-  // Gewünschter Slot: Finale zählt als „Station 8" (Logo) — aber nur, wenn
-  // das Logo wirklich geladen ist. Sonst bliebe der Slot bei Nullen und 26k
-  // additive Partikel würden zu einem gleißenden Punkt kondensieren; ohne
-  // Logo läuft stattdessen nur das Posen-Finale der Maschine weiter.
-  let desired = -1
-  if (f2 > 0 && logoReady) desired = LOGO_SLOT
-  else if (active >= 0) desired = active
+  // --- Fluss-Segment: letzte Station mit Mitte über der Viewport-Mitte = k,
+  // Strom wandert von side_k zu side_{k+1}. Vor der ersten Station: from = 0;
+  // nach der letzten: to = 0 (Strom zieht zurück in die Mitte).
+  const amp = vw * 0.24
+  let k = -1
+  for (let i = 0; i < stations.length; i++) if (stations[i].y <= centerDoc) k = i
+  let flowProgress = 0
+  let flowFromX = 0
+  let flowToX = 0
+  if (k === -1) {
+    flowToX = stations.length > 0 ? stations[0].side * amp : 0
+  } else if (k === stations.length - 1) {
+    flowFromX = stations[k].side * amp
+    flowProgress = clamp((centerDoc - stations[k].y) / Math.max(vh, 1), 0, 1)
+  } else {
+    flowFromX = stations[k].side * amp
+    flowToX = stations[k + 1].side * amp
+    flowProgress = clamp((centerDoc - stations[k].y) / Math.max(stations[k + 1].y - stations[k].y, 1e-6), 0, 1)
+  }
 
-  let mixTarget = active >= 0 ? smooth01(0.15, 0.8, aPrime) : 0
-  if (logoReady) mixTarget = Math.max(mixTarget, f2)
+  // Gewünschter Slot = Slot der aktiven Station. Logo-Stationen kondensieren
+  // nur mit wirklich geladenem Logo — sonst bliebe der Slot bei Nullen und
+  // 26k additive Partikel würden zu einem gleißenden Punkt kondensieren;
+  // ohne Logo läuft der Fluss einfach durch die Sektion durch.
+  const activeSlot = active >= 0 ? stations[active].slot : -1
+  const gated = activeSlot === LOGO_SLOT && !logoReady
+  const desired = active >= 0 && !gated ? activeSlot : -1
+
+  let mixTarget = desired >= 0 ? smooth01(0.15, 0.8, aPrime) : 0
 
   let swap = -1
   if (desired >= 0 && desired !== currentShape) {
@@ -376,7 +446,7 @@ export function sculptStep({ currentShape, sculptMix }, { stationYs, docHeight, 
   }
   sculptMix += (mixTarget - sculptMix) * eMix
 
-  return { active, aPrime, f, f2, sculptMix, currentShape, swap }
+  return { active, aPrime, sculptMix, currentShape, swap, flowZone, flowProgress, flowFromX, flowToX }
 }
 
 export function initReactor(opts = {}) {
@@ -450,6 +520,11 @@ export function initReactor(opts = {}) {
     uSculptMix: { value: 0 },
     uSculptSpin: { value: 0 },
     uSculptCenter: { value: new THREE.Vector2(0, 0) },
+    uFlowZone: { value: 0 },
+    uFlowProgress: { value: 0 },
+    uFlowFromX: { value: 0 },
+    uFlowToX: { value: 0 },
+    uViewportH: { value: innerHeight },
     uColorA: { value: new THREE.Color(colorA).convertLinearToSRGB() },
     uColorB: { value: new THREE.Color(colorB).convertLinearToSRGB() },
     uColorHot: { value: new THREE.Color(colorHot).convertLinearToSRGB() },
@@ -497,23 +572,36 @@ export function initReactor(opts = {}) {
   const aShapeAttr = new THREE.BufferAttribute(new Float32Array(count * 3), 3)
   geometry.setAttribute('aShape', aShapeAttr)
 
-  // --- Stationen + Dokumenthöhe
-  let docHeight = 1
-  let stationYs = []
+  // --- Stationen: pro data-station-Element { y: Dokument-Mitte, slot, side }.
+  // side: logo-Stationen 0 (zentriert), Leistungen alternierend — NUR über
+  // die Nicht-Logo-Stationen gezählt (erste Leistung → +1 = Skulptur rechts).
+  let stations = []
 
   function measureDoc() {
-    docHeight = Math.max(document.documentElement.scrollHeight, innerHeight)
-    const els = [...document.querySelectorAll(stationSelector)].slice(0, STATION_MAX)
-    stationYs = els.map((el) => {
+    const els = [...document.querySelectorAll(stationSelector)]
+    stations = []
+    let leistung = 0
+    for (const el of els) {
+      const name = (el.getAttribute('data-station') || '').trim()
+      const slot = SLOT_BY_NAME[name]
+      if (slot === undefined) {
+        console.warn(`reactor: unbekannte data-station="${name}" — Element wird ignoriert`, el)
+        continue
+      }
       const r = el.getBoundingClientRect()
-      return scrollY + r.top + r.height / 2
-    })
+      let side = 0
+      if (slot !== LOGO_SLOT) {
+        side = leistung % 2 === 0 ? 1 : -1
+        leistung++
+      }
+      stations.push({ y: scrollY + r.top + r.height / 2, slot, side })
+    }
   }
 
   // --- Skulptur-Slots: alle 7 Skulpturen + Logo werden vorgebaut, aShape
   // trägt immer genau eine davon (Drain-then-Fill-Swap, s. sculptStep)
   let logoData = null // ImageData des Logos nach erstem Laden (Cache für Resizes)
-  let logoReady = false // erst dann darf das Finale in den Logo-Slot kondensieren
+  let logoReady = false // erst dann dürfen logo-Stationen das N kondensieren
   let shapes = []
   let currentShape = -1 // welcher Slot gerade im aShape-Attribut liegt
 
@@ -523,9 +611,10 @@ export function initReactor(opts = {}) {
 
   function buildLogoShape() {
     // Bis das Logo geladen ist (oder wenn es nicht ladbar ist): Slot mit Nullen —
-    // das Finale zieht die Partikel dann zunächst nur ins Zentrum.
+    // logo-Stationen sind über logoReady ohnehin gegen Kondensation gesperrt.
     if (!logoData) return new Float32Array(count * 3)
-    return flipY(samplePointsFromAlpha(logoData, count, { targetWidth: sculptSize() }))
+    // N etwas kleiner als die Themen-Skulpturen (×0.85): sitzt über dem Text.
+    return flipY(samplePointsFromAlpha(logoData, count, { targetWidth: sculptSize() * 0.85 }))
   }
 
   function buildShapes() {
@@ -597,19 +686,17 @@ export function initReactor(opts = {}) {
     lastScrollY = scrollY
 
     const vh = Math.max(innerHeight, 1)
+    const vw = Math.max(innerWidth, 1)
     const centerDoc = scrollSmooth + vh / 2
-
-    // --- Getriebe: Scroll treibt die Ringe gegenläufig, Idle hält sie lebendig
-    const spins = uniforms.uSpin.value
-    for (let i = 0; i < 5; i++) spins[i] = scrollSmooth * GEARS[i] * 0.0035 + t * IDLE[i]
 
     // --- Kern-Hitze aus der Scroll-Geschwindigkeit (px/s, framerate-unabhängig)
     heat += (clamp(Math.abs(dScroll) / dt / HEAT_SPEED, 0, 1) - heat) * ease(K_HEAT)
+    uniforms.uCoreHeat.value = 0.25 + heat
 
-    // --- Stationen, Finale und Skulptur-Slot (pure Frame-Logik, s. sculptStep)
+    // --- Stationen, Fluss-Zone und Skulptur-Slot (pure Frame-Logik, s. sculptStep)
     const st = sculptStep(
       { currentShape, sculptMix },
-      { stationYs, docHeight, vh, centerDoc, logoReady, eMix: ease(K_MIX) }
+      { stations, vh, vw, centerDoc, logoReady, eMix: ease(K_MIX) }
     )
     if (st.swap >= 0) {
       aShapeAttr.array.set(shapes[st.swap])
@@ -618,73 +705,71 @@ export function initReactor(opts = {}) {
     currentShape = st.currentShape
     sculptMix = st.sculptMix
     uniforms.uSculptMix.value = sculptMix
+    uniforms.uFlowZone.value = st.flowZone
+    uniforms.uFlowProgress.value = st.flowProgress
+    uniforms.uFlowFromX.value = st.flowFromX
+    uniforms.uFlowToX.value = st.flowToX
     const active = st.active
     const aPrime = st.aPrime
-    const f = st.f
-    const f2 = st.f2
+    const activeStation = active >= 0 ? stations[active] : null
+    const isLogoActive = activeStation !== null && activeStation.slot === LOGO_SLOT
 
     // kurzes Aufflammen beim Einrasten (a' > 0.75): schnell auf, langsam ab
     const flareTarget = Math.max(0, aPrime - 0.75) * 4
     flare += (flareTarget - flare) * ease(flareTarget > flare ? K_FLARE_UP : K_FLARE_DOWN)
     uniforms.uFlare.value = flare
 
-    uniforms.uCoreHeat.value = 0.25 + heat + f * 0.5
-
     // --- Skulptur-Rotation: dreht mit dem Scroll um die eigene Y-Achse.
-    // Finale: Anker in der f2-Fenstermitte + Ausblenden mit (1 - f2) — das
-    // Logo dreht sich während der Kondensation von selbst in die Frontale
-    // und steht am Seitenende exakt frontal. (Stations-Skulpturen unberührt.)
-    if (f2 > 0) sculptAnchor = docHeight - 0.9 * vh
-    else if (active >= 0) sculptAnchor = stationYs[active]
+    // Logo-Stationen: gedämpft (×0.3) und über die Aktivierung gegen 0
+    // gefahren — das N steht beim vollen Kondensieren frontal lesbar.
+    if (activeStation) sculptAnchor = activeStation.y
     let spinTarget = (centerDoc - sculptAnchor) * 0.004
-    spinTarget *= 1 - f2
+    if (isLogoActive) spinTarget *= 0.3 * (1 - aPrime)
     uniforms.uSculptSpin.value = spinTarget
 
-    // --- Posen: Hero-Basis → Winkel-Lerp zur Stations-Pose → Finale-Blend
-    const machineR = uniforms.uMachineR.value
-    const hero = POSES[0]
-    const fin = POSES[POSES.length - 1]
-    const pose = active >= 0 ? POSES[1 + active] : null
-    const tiltX = uniforms.uTiltX.value
-    const tiltZ = uniforms.uTiltZ.value
-    const ringR = uniforms.uRingR.value
-    for (let i = 0; i < 5; i++) {
-      let tx = hero.tx[i]
-      let tz = hero.tz[i]
-      let rs = hero.rs[i]
-      if (pose) {
-        tx = angleLerp(tx, pose.tx[i], aPrime)
-        tz = angleLerp(tz, pose.tz[i], aPrime)
-        rs += (pose.rs[i] - rs) * aPrime
+    // --- Maschinen-CPU-Arbeit nur solange die Maschine sichtbar ist; im
+    // Fluss-Bereich (flowZone == 1) ist sie komplett ausgeblendet. Die
+    // billigen Idle-/Getriebe-Spins laufen weiter (unsichtbar, aber beim
+    // Rückwärts-Scrollen sofort wieder konsistent).
+    const spins = uniforms.uSpin.value
+    for (let i = 0; i < 5; i++) spins[i] = scrollSmooth * GEARS[i] * 0.0035 + t * IDLE[i]
+    if (st.flowZone < 0.999) {
+      // Posen: Hero-Basis → Winkel-Lerp zur Pose des aktiven Slots
+      // (Logo-Slot = frontal genestete Ringe, POSES[8])
+      const machineR = uniforms.uMachineR.value
+      const hero = POSES[0]
+      const pose = activeStation ? POSES[1 + activeStation.slot] : null
+      const tiltX = uniforms.uTiltX.value
+      const tiltZ = uniforms.uTiltZ.value
+      const ringR = uniforms.uRingR.value
+      for (let i = 0; i < 5; i++) {
+        let tx = hero.tx[i]
+        let tz = hero.tz[i]
+        let rs = hero.rs[i]
+        if (pose) {
+          tx = angleLerp(tx, pose.tx[i], aPrime)
+          tz = angleLerp(tz, pose.tz[i], aPrime)
+          rs += (pose.rs[i] - rs) * aPrime
+        }
+        tiltX[i] = tx
+        tiltZ[i] = tz
+        ringR[i] = RING_F[i] * machineR * rs
       }
-      tx = angleLerp(tx, fin.tx[i], f)
-      tz = angleLerp(tz, fin.tz[i], f)
-      rs += (fin.rs[i] - rs) * f
-      tiltX[i] = tx
-      tiltZ[i] = tz
-      ringR[i] = RING_F[i] * machineR * rs
     }
 
-    // Finale: die Getriebe-Spins konvergieren auf ihren Mittelwert
-    if (f > 0) {
-      let mean = 0
-      for (let i = 0; i < 5; i++) mean += spins[i]
-      mean /= 5
-      for (let i = 0; i < 5; i++) spins[i] += (mean - spins[i]) * f
-    }
-
-    // --- Seiten-Schwenk: Prototyp-Karten alternieren links (gerade Indizes
-    // 0,2,4,6) → Maschine/Skulptur weichen auf +x aus, sonst −x. Finale zieht
-    // beides zurück in die Mitte.
-    const sideX = active >= 0 ? (active % 2 === 0 ? 1 : -1) * innerWidth * 0.24 : 0
-    const targetX = sideX * (1 - f)
+    // --- Seiten-Schwenk: Maschine/Skulptur folgen der Seite der aktiven
+    // Station (side ∈ {−1, 0, +1}); logo-Stationen zentrieren. Das Skulptur-
+    // Zentrum sitzt bei logo-Stationen zusätzlich um +0.10·vh höher (View-
+    // Raum: +y = oben), damit unter dem N Platz für den Text bleibt.
+    const targetX = activeStation ? activeStation.side * vw * 0.24 : 0
+    const targetY = isLogoActive ? vh * 0.1 : 0
     const ePan = ease(K_PAN)
     uniforms.uCenter.value.x += (targetX - uniforms.uCenter.value.x) * ePan
     uniforms.uSculptCenter.value.x += (targetX - uniforms.uSculptCenter.value.x) * ePan
+    uniforms.uSculptCenter.value.y += (targetY - uniforms.uSculptCenter.value.y) * ePan
 
-    // --- Skalierung: Hero 1.0 → 0.62 bei aktiver Station, Finale → 0.85
-    const scaleBase = active >= 0 ? 0.62 : 1.0
-    const scaleTarget = scaleBase + (0.85 - scaleBase) * f
+    // --- Skalierung: Hero 1.0 → 0.62 bei aktiver Station
+    const scaleTarget = activeStation ? 0.62 : 1.0
     uniforms.uScale.value += (scaleTarget - uniforms.uScale.value) * ePan
   }
 
@@ -729,6 +814,7 @@ export function initReactor(opts = {}) {
       renderer.setSize(innerWidth, innerHeight)
       uniforms.uCameraD.value = cameraD
       uniforms.uMachineR.value = machineRadius()
+      uniforms.uViewportH.value = innerHeight
       measureDoc()
       buildShapes()
     }, 250)
@@ -751,8 +837,8 @@ export function initReactor(opts = {}) {
       }
     })
     .catch(() => {
-      // Logo nicht ladbar → logoReady bleibt false: das Finale kondensiert
-      // nicht (kein gleißender Null-Punkt), nur das Posen-Finale läuft.
+      // Logo nicht ladbar → logoReady bleibt false: logo-Stationen konden-
+      // sieren nicht (kein gleißender Null-Punkt), der Fluss läuft durch.
     })
 
   return {
