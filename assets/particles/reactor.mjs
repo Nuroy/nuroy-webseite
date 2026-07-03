@@ -228,8 +228,8 @@ void main() {
   // Hüllkurve lässt beide Enden an den Icons zusammenlaufen, die Mitte
   // schwingt weit aus — und die Phase wandert mit der Zeit (lebendiger Fluss).
   float env = sin(s * 3.14159);
-  float meander = (sin(s * 5.5 + uFlowToX * 0.012 + uTime * 0.22)
-                 + 0.35 * sin(s * 11.0 - uTime * 0.4)) * uViewportH * 0.15 * env;
+  float meander = (sin(s * 3.6 + uFlowToX * 0.012 + uTime * 0.22)
+                 + 0.35 * sin(s * 8.0 - uTime * 0.35)) * uViewportH * 0.055 * env;
   // schmaler Querschnitt (Band statt Block), zum Schwanz hin auffächernd
   float cross = (aSeed.x - 0.5) * uViewportH * (0.05 + 0.08 * (1.0 - s));
   vec3 flowWorld = vec3(
