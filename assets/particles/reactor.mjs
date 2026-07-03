@@ -53,7 +53,7 @@ const IDLE = [0.05, -0.07, 0.09, -0.04, 0.06]
 // K = -60·ln(1-f) erhält exakt das Verhalten der früheren 60fps-Faktoren f.
 const K_SCROLL = 7.67 // f = 0.12 (Scroll-Glättung)
 const K_HEAT = 5.0 // f = 0.08 (Kern-Hitze)
-const K_MIX = 6.32 // f = 0.10 (Skulptur-Mix)
+const K_MIX = 3.5 // langsameres Auflösen/Kondensieren der Skulpturen (User-Feedback)
 const K_FLARE_UP = 21.4 // f = 0.30 (Flare-Attack)
 const K_FLARE_DOWN = 3.71 // f = 0.06 (Flare-Decay)
 const K_PAN = 3.71 // f = 0.06 (Seiten-Schwenk / Skalierung)
@@ -221,20 +221,30 @@ void main() {
   // ALLE Partikel bei from, bei 1 ALLE bei to — dadurch ist der Segment-
   // Wechsel an der Stations-Mitte für jedes Partikel stetig (kein Teleport).
   float flowT = clamp(uFlowProgress * 1.55 - aSeed.w * 0.55, 0.0, 1.0);
-  float fx = mix(uFlowFromX, uFlowToX, smoothstep(0.0, 1.0, flowT));
-  float fy = sin(fx * 0.006 + uTime * 0.5 + aSeed.y * 6.2831) * uViewportH * 0.05
-           + (aSeed.x - 0.5) * uViewportH * 0.16;
+  // Zeit-Drift ENTLANG des Pfads: der Strom fließt sichtbar, statt zu stehen
+  float s = smoothstep(0.0, 1.0, clamp(flowT + snoise(vec2(aSeed.w * 24.0, uTime * 0.35)) * 0.05, 0.0, 1.0));
+  float fx = mix(uFlowFromX, uFlowToX, s);
+  // Mäander: geschwungener Fluss-Pfad statt gerader Linie. Die sin(s*PI)-
+  // Hüllkurve lässt beide Enden an den Icons zusammenlaufen, die Mitte
+  // schwingt weit aus — und die Phase wandert mit der Zeit (lebendiger Fluss).
+  float env = sin(s * 3.14159);
+  float meander = (sin(s * 5.5 + uFlowToX * 0.012 + uTime * 0.22)
+                 + 0.35 * sin(s * 11.0 - uTime * 0.4)) * uViewportH * 0.15 * env;
+  // schmaler Querschnitt (Band statt Block), zum Schwanz hin auffächernd
+  float cross = (aSeed.x - 0.5) * uViewportH * (0.05 + 0.08 * (1.0 - s));
   vec3 flowWorld = vec3(
-    fx + snoise(vec2(aSeed.y * 40.0, uTime * 0.25)) * 34.0,
-    fy + snoise(vec2(aSeed.z * 40.0, uTime * 0.3 + 7.0)) * 26.0,
-    (aSeed.z - 0.5) * 120.0 + snoise(vec2(aSeed.x * 30.0, uTime * 0.2)) * 20.0
+    fx + snoise(vec2(aSeed.y * 40.0, uTime * 0.3)) * 30.0,
+    meander + cross + snoise(vec2(aSeed.z * 40.0, uTime * 0.35 + 7.0)) * 22.0,
+    (aSeed.z - 0.5) * 140.0 + snoise(vec2(aSeed.x * 30.0, uTime * 0.25)) * 24.0
   );
 
   // --- Basis-Zustand: unterhalb der N-Sektion wird die Maschine unwider-
   // ruflich gegen den Fluss-Strom getauscht; Skulpturen kondensieren aus
   // dem jeweils aktiven Basis-Zustand (per-Partikel-Stagger wie gehabt).
   vec3 base = mix(machineWorld, flowWorld, uFlowZone);
-  float m = smoothstep(aSeed.w * 0.35, aSeed.w * 0.35 + 0.65, uSculptMix);
+  // breite Staffelung: Partikel tröpfeln nacheinander in den Strom statt
+  // als Block zu springen (User-Feedback: Übergang war zu abrupt)
+  float m = smoothstep(aSeed.w * 0.55, aSeed.w * 0.55 + 0.45, uSculptMix);
   vec3 sculptWorld = rotY(uSculptSpin) * aShape + vec3(uSculptCenter, 0.0);
   vec3 world = mix(base, sculptWorld, m);
 
@@ -435,7 +445,9 @@ export function sculptStep({ currentShape, sculptMix }, { stations, vh, vw, cent
   const gated = activeSlot === LOGO_SLOT && !logoReady
   const desired = active >= 0 && !gated ? activeSlot : -1
 
-  let mixTarget = desired >= 0 ? smooth01(0.15, 0.8, aPrime) : 0
+  // breites Fenster (0.08–0.9): Auflösen/Kondensieren erstreckt sich über
+  // mehr Scroll-Strecke — gemächlicher Übergang statt hartem Schnitt
+  let mixTarget = desired >= 0 ? smooth01(0.08, 0.9, aPrime) : 0
 
   let swap = -1
   if (desired >= 0 && desired !== currentShape) {
