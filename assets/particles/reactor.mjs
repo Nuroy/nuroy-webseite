@@ -412,10 +412,11 @@ export function sculptStep({ currentShape, sculptMix }, { stations, vh, vw, cent
       // Einstieg erst, wenn der Hero-Text oben rausgescrollt ist (textfreier
       // Moment), und bewusst langsam über ~0.7 Viewport-Höhen aufbauend
       const ain = smooth01(top + 0.15 * vh, top + 0.85 * vh, centerDoc)
-      // Auflösen beginnt, sobald der Sektions-Text oben raus ist, und zieht
-      // sich über ~0.8 Viewport-Höhen — das N schmilzt gemächlich in den
-      // Strahl, statt kurz vor der nächsten Leistung hektisch umzuschalten
-      const aout = 1 - smooth01(bottom + 0.1 * vh, bottom + 0.9 * vh, centerDoc)
+      // Auflösen beginnt, sobald der Sektions-Text oben ANFÄNGT rauszugehen
+      // (Text-Oberkante im obersten ~5%-Bereich des Viewports), und ist
+      // abgeschlossen, bevor die nächste Leistung kondensiert — das N ist
+      // rechtzeitig Strahl, kein hektisches Umschalten mehr
+      const aout = 1 - smooth01(bottom - 0.1 * vh, bottom + 0.35 * vh, centerDoc)
       a = Math.min(ain, aout)
     } else {
       a = Math.max(0, 1 - Math.abs(centerDoc - st.y) / (vh * 0.42))
