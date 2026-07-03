@@ -412,14 +412,11 @@ export function sculptStep({ currentShape, sculptMix }, { stations, vh, vw, cent
       // Einstieg erst, wenn der Hero-Text oben rausgescrollt ist (textfreier
       // Moment), und bewusst langsam über ~0.7 Viewport-Höhen aufbauend
       const ain = smooth01(top + 0.15 * vh, top + 0.85 * vh, centerDoc)
-      // Auflösen beginnt, sobald der Sektions-Text oben ANFÄNGT rauszugehen
-      // (Text-Oberkante im obersten ~5%-Bereich des Viewports), und ist
-      // abgeschlossen, bevor die nächste Leistung kondensiert — das N ist
-      // rechtzeitig Strahl, kein hektisches Umschalten mehr
-      // Breites Fenster (0.9vh ≈ 4 Mausrad-Ticks): die Auflösung ist scroll-
-      // gebunden — wer zwei Ticks scrollt, sieht das N halb aufgelöst PARKEN,
-      // statt dass die Zeit-Easing es von allein wegzieht
-      const aout = 1 - smooth01(bottom - 0.1 * vh, bottom + 0.8 * vh, centerDoc)
+      // Auflösen: LINEAR ab dem Moment, wo der Sektions-Text oben anfängt
+      // rauszugehen (kein S-Kurven-Anlauf — der würde das erste Drittel des
+      // Fensters visuell verschlucken). Breites Fenster (0.9vh ≈ 4 Ticks):
+      // scroll-gebunden, 2 Ticks parken das N halb aufgelöst im Strahl.
+      const aout = 1 - clamp((centerDoc - (bottom - 0.1 * vh)) / (0.9 * vh), 0, 1)
       a = Math.min(ain, aout)
     } else {
       // engeres Fenster (0.32vh): Skulpturen kondensieren erst nah an der
@@ -432,8 +429,11 @@ export function sculptStep({ currentShape, sculptMix }, { stations, vh, vw, cent
       active = i
     }
   }
-  // Rast-Easing: kleine „Einrast"-Delle, Aktivierung klebt an 0 und 1
-  const aPrime = clamp(aBest - Math.sin(TAU * aBest) * 0.1, 0, 1)
+  // Rast-Easing: kleine „Einrast"-Delle, Aktivierung klebt an 0 und 1.
+  // NICHT für Logo-Stationen: deren asymmetrische Rampe soll 1:1 durchschlagen
+  // (Rast + Sättigung würden den Auflöse-Start sichtbar verschleppen).
+  const activeIsLogo = active >= 0 && stations[active].slot === LOGO_SLOT
+  const aPrime = activeIsLogo ? aBest : clamp(aBest - Math.sin(TAU * aBest) * 0.1, 0, 1)
 
   // --- Fluss-Zone: ab der Mitte der ersten logo-Station eased → 1
   let flowZone = 0
@@ -472,9 +472,10 @@ export function sculptStep({ currentShape, sculptMix }, { stations, vh, vw, cent
   const gated = activeSlot === LOGO_SLOT && !logoReady
   const desired = active >= 0 && !gated ? activeSlot : -1
 
-  // breites Fenster (0.08–0.9): Auflösen/Kondensieren erstreckt sich über
-  // mehr Scroll-Strecke — gemächlicher Übergang statt hartem Schnitt
-  let mixTarget = desired >= 0 ? smooth01(0.08, 0.9, aPrime) : 0
+  // Leistungen: breites Fenster (0.08–0.9) für gemächliches Kondensieren.
+  // Logo: Rampe DIREKT als Ziel — die Auflösung startet ohne Totzone genau
+  // dort, wo der Text oben rauszugehen beginnt, und folgt dem Scroll 1:1.
+  let mixTarget = desired >= 0 ? (activeIsLogo ? aPrime : smooth01(0.08, 0.9, aPrime)) : 0
 
   let swap = -1
   if (desired >= 0 && desired !== currentShape) {
