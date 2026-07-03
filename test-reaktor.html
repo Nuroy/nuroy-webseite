@@ -55,15 +55,16 @@
     }
     .sub { margin-top: 20px; color: var(--fg-muted); font-size: 17px; }
 
-    /* --- Logo-Momente: N kondensiert oben, Text im unteren Drittel --- */
+    /* --- Logo-Momente: N kondensiert oben, Text kommt FRÜH — er sitzt im
+       ersten Viewport der Sektion direkt unter dem N statt am Sektionsende --- */
     .logo-moment {
       min-height: 130vh;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: flex-start;
       align-items: center;
       text-align: center;
-      padding: 0 24px 16vh;
+      padding: 76vh 24px 0;
     }
     .payoff {
       max-width: 640px;

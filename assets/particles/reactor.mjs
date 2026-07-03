@@ -399,7 +399,22 @@ export function sculptStep({ currentShape, sculptMix }, { stations, vh, vw, cent
   let active = -1
   let aBest = 0
   for (let i = 0; i < stations.length; i++) {
-    const a = Math.max(0, 1 - Math.abs(centerDoc - stations[i].y) / (vh * 0.42))
+    const st = stations[i]
+    let a
+    if (st.slot === LOGO_SLOT) {
+      // Logo-Sektionen asymmetrisch: FRÜH kondensieren (sobald die Sektions-
+      // Oberkante in den Viewport kommt), voll HALTEN solange der Text im
+      // Viewport ist, und erst lösen, wenn die Sektions-Unterkante oben
+      // rausgescrollt ist (User-Wunsch: N bleibt, bis der Text weg ist).
+      const h = st.h || 0
+      const top = st.y - h / 2
+      const bottom = st.y + h / 2
+      const ain = smooth01(top - 0.4 * vh, top + 0.2 * vh, centerDoc)
+      const aout = 1 - smooth01(bottom + 0.3 * vh, bottom + 0.75 * vh, centerDoc)
+      a = Math.min(ain, aout)
+    } else {
+      a = Math.max(0, 1 - Math.abs(centerDoc - st.y) / (vh * 0.42))
+    }
     if (a > aBest) {
       aBest = a
       active = i
@@ -608,7 +623,7 @@ export function initReactor(opts = {}) {
         side = leistung % 2 === 0 ? 1 : -1
         leistung++
       }
-      stations.push({ y: scrollY + r.top + r.height / 2, slot, side })
+      stations.push({ y: scrollY + r.top + r.height / 2, h: r.height, slot, side })
     }
   }
 
