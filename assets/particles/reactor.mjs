@@ -217,8 +217,10 @@ void main() {
 
   // --- Fluss-Strom: chaotisches Gewusel, das als breiter Strom quer über
   // den Schirm zur Seite der nächsten Station wandert. flowT streut per
-  // Partikel, damit der Strom Länge hat statt als Block zu springen.
-  float flowT = clamp(uFlowProgress + (aSeed.w - 0.5) * 0.55, 0.0, 1.0);
+  // Partikel, damit der Strom Länge hat. Wichtig: bei uFlowProgress 0 sind
+  // ALLE Partikel bei from, bei 1 ALLE bei to — dadurch ist der Segment-
+  // Wechsel an der Stations-Mitte für jedes Partikel stetig (kein Teleport).
+  float flowT = clamp(uFlowProgress * 1.55 - aSeed.w * 0.55, 0.0, 1.0);
   float fx = mix(uFlowFromX, uFlowToX, smoothstep(0.0, 1.0, flowT));
   float fy = sin(fx * 0.006 + uTime * 0.5 + aSeed.y * 6.2831) * uViewportH * 0.05
            + (aSeed.x - 0.5) * uViewportH * 0.16;
@@ -713,6 +715,7 @@ export function initReactor(opts = {}) {
     const aPrime = st.aPrime
     const activeStation = active >= 0 ? stations[active] : null
     const isLogoActive = activeStation !== null && activeStation.slot === LOGO_SLOT
+    const ePan = ease(K_PAN)
 
     // kurzes Aufflammen beim Einrasten (a' > 0.75): schnell auf, langsam ab
     const flareTarget = Math.max(0, aPrime - 0.75) * 4
@@ -725,7 +728,9 @@ export function initReactor(opts = {}) {
     if (activeStation) sculptAnchor = activeStation.y
     let spinTarget = (centerDoc - sculptAnchor) * 0.004
     if (isLogoActive) spinTarget *= 0.3 * (1 - aPrime)
-    uniforms.uSculptSpin.value = spinTarget
+    // Geeast statt hart gesetzt: verhindert den Spin-Sprung, wenn eine
+    // Logo-Station die Aktivierungsgrenze verlässt (Dämpfung 0.3x -> 1x).
+    uniforms.uSculptSpin.value += (spinTarget - uniforms.uSculptSpin.value) * ePan
 
     // --- Maschinen-CPU-Arbeit nur solange die Maschine sichtbar ist; im
     // Fluss-Bereich (flowZone == 1) ist sie komplett ausgeblendet. Die
@@ -763,7 +768,6 @@ export function initReactor(opts = {}) {
     // Raum: +y = oben), damit unter dem N Platz für den Text bleibt.
     const targetX = activeStation ? activeStation.side * vw * 0.24 : 0
     const targetY = isLogoActive ? vh * 0.1 : 0
-    const ePan = ease(K_PAN)
     uniforms.uCenter.value.x += (targetX - uniforms.uCenter.value.x) * ePan
     uniforms.uSculptCenter.value.x += (targetX - uniforms.uSculptCenter.value.x) * ePan
     uniforms.uSculptCenter.value.y += (targetY - uniforms.uSculptCenter.value.y) * ePan
