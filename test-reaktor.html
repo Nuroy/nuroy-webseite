@@ -11,7 +11,6 @@
       --violet: #8B5CF6;
       --fg: #f5f2ec;
       --fg-muted: rgba(245, 242, 236, 0.65);
-      --line: rgba(255, 255, 255, 0.08);
     }
     * { box-sizing: border-box; margin: 0; }
     body {
@@ -38,6 +37,7 @@
       text-align: center;
       padding: 24px;
     }
+    .hero-inner { max-width: 900px; }
     .eyebrow {
       font-family: ui-monospace, monospace;
       font-size: 11px;
@@ -47,83 +47,150 @@
       margin-bottom: 20px;
     }
     h1 {
-      font-size: clamp(44px, 7vw, 96px);
+      font-size: clamp(36px, 5vw, 72px);
       font-weight: 900;
       letter-spacing: -0.04em;
-      line-height: 1.02;
+      line-height: 1.05;
       text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9);
     }
     .sub { margin-top: 20px; color: var(--fg-muted); font-size: 17px; }
+
+    /* --- Logo-Momente: N kondensiert oben, Text im unteren Drittel --- */
+    .logo-moment {
+      min-height: 130vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      text-align: center;
+      padding: 0 24px 16vh;
+    }
+    .payoff {
+      max-width: 640px;
+      font-size: clamp(20px, 2vw, 28px);
+      font-weight: 600;
+      line-height: 1.45;
+      letter-spacing: -0.01em;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9), 0 1px 6px rgba(0, 0, 0, 0.8);
+    }
+    .logo-moment--end .end-line {
+      font-size: clamp(34px, 3.6vw, 56px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9), 0 1px 6px rgba(0, 0, 0, 0.8);
+      margin-bottom: 28px;
+    }
+
+    /* --- Leistungs-Stationen: freier Text, keine Karten --- */
     .station {
-      min-height: 85vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       padding: 0 6vw;
     }
-    .station--right { justify-content: flex-end; }
-    .card {
-      max-width: 380px;
-      padding: 32px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(10, 10, 18, 0.55);
-      backdrop-filter: blur(6px);
+    .station-text { max-width: 440px; }
+    .station--text-left .station-text { margin-right: auto; }
+    .station--text-right .station-text { margin-left: auto; }
+    .station-text h2 {
+      font-size: clamp(34px, 3.6vw, 56px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9), 0 1px 6px rgba(0, 0, 0, 0.8);
     }
-    .card .num {
-      font-family: ui-monospace, monospace;
-      font-size: 11px;
-      color: var(--pink);
-      letter-spacing: 0.1em;
-    }
-    .card h2 { font-size: 22px; letter-spacing: -0.02em; margin: 10px 0; }
-    .card p { font-size: 14px; color: var(--fg-muted); line-height: 1.7; }
-    .filler {
-      min-height: 70vh;
-      display: grid;
-      place-items: center;
+    .station-text p {
+      font-size: 15px;
       color: var(--fg-muted);
-      font-family: ui-monospace, monospace;
-      font-size: 13px;
-      letter-spacing: 0.08em;
+      line-height: 1.7;
+      margin: 16px 0 28px;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
     }
+    .btn-ghost {
+      display: inline-block;
+      padding: 12px 24px;
+      border: 1px solid var(--pink);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--pink);
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+    .btn-ghost:hover { background: rgba(255, 45, 122, 0.1); }
   </style>
 </head>
 <body>
 <div id="particles-bg" aria-hidden="true"></div>
 
 <section class="hero">
-  <div>
+  <div class="hero-inner">
     <p class="eyebrow">02 — Nuroy Reaktor-Prototyp</p>
-    <h1>Die Technik-<br>Abteilung.</h1>
-    <p class="sub">Scroll: Maschine → Stationen → Portal</p>
+    <h1>Daten, Zahlen und KI entscheiden die nächsten zehn Jahre.</h1>
+    <p class="sub">Scroll ↓</p>
   </div>
 </section>
 
-<section class="station" data-station>
-  <div class="card"><span class="num">01</span><h2>Custom Dashboards</h2><p>Daten aus allen Tools an einem Ort. Live. Übersichtlich. Auf eure KPIs zugeschnitten.</p></div>
-</section>
-<section class="station station--right" data-station>
-  <div class="card"><span class="num">02</span><h2>KI-Agenten &amp; Automatisierungen</h2><p>Workflows automatisieren. KI-Agenten für Vertrieb, Support und interne Prozesse.</p></div>
-</section>
-<section class="station" data-station>
-  <div class="card"><span class="num">03</span><h2>Custom Software-Entwicklung</h2><p>SaaS-Produkte, interne Tools, Kunden-Plattformen. Von der Idee bis zum Live-Betrieb.</p></div>
-</section>
-<section class="station station--right" data-station>
-  <div class="card"><span class="num">04</span><h2>KI-Integration</h2><p>Lead-Scoring, Churn-Prediction, Sentiment-Analyse – direkt in euren Tools.</p></div>
-</section>
-<section class="station" data-station>
-  <div class="card"><span class="num">05</span><h2>Interne Company-AI</h2><p>Euer eigener KI-Assistent. Trainiert auf eure Dokumente, Prozesse und euer Wissen.</p></div>
-</section>
-<section class="station station--right" data-station>
-  <div class="card"><span class="num">06</span><h2>Datenintegration &amp; ETL</h2><p>Datensilos auflösen. Alle Quellen synchronisieren. Ein Data Warehouse für alles.</p></div>
-</section>
-<section class="station" data-station>
-  <div class="card"><span class="num">07</span><h2>Strategy &amp; Audit</h2><p>2-wöchige Discovery-Phase. Tool-Stack prüfen. Roadmap definieren.</p></div>
+<section class="logo-moment" data-station="logo">
+  <p class="payoff">Deshalb haben wir Nuroy gebaut: Custom Dashboards, KI-Integration und Software — für Unternehmen, die das ernst nehmen.</p>
 </section>
 
-<section class="filler">— KUNDENSTIMMEN (DUMMY) —</section>
-<section class="filler">— FINAL CTA (DUMMY) —</section>
-<section class="filler" style="min-height:120vh; align-content:end; padding-bottom:20vh">— CTA / PORTAL (DUMMY) —</section>
+<section class="station station--text-left" data-station="dashboards">
+  <div class="station-text">
+    <h2>Custom Dashboards</h2>
+    <p>Daten aus allen Tools an einem Ort. Live. Übersichtlich. Auf eure KPIs zugeschnitten.</p>
+    <a class="btn-ghost" href="#">Mehr erfahren</a>
+  </div>
+</section>
+<section class="station station--text-right" data-station="ki-agenten">
+  <div class="station-text">
+    <h2>KI-Agenten &amp; Automatisierungen</h2>
+    <p>Workflows automatisieren. KI-Agenten für Vertrieb, Support und interne Prozesse.</p>
+    <a class="btn-ghost" href="#">Mehr erfahren</a>
+  </div>
+</section>
+<section class="station station--text-left" data-station="software">
+  <div class="station-text">
+    <h2>Custom Software-Entwicklung</h2>
+    <p>SaaS-Produkte, interne Tools, Kunden-Plattformen. Von der Idee bis zum Live-Betrieb.</p>
+    <a class="btn-ghost" href="#">Mehr erfahren</a>
+  </div>
+</section>
+<section class="station station--text-right" data-station="ki-integration">
+  <div class="station-text">
+    <h2>KI-Integration</h2>
+    <p>Lead-Scoring, Churn-Prediction, Sentiment-Analyse – direkt in euren Tools.</p>
+    <a class="btn-ghost" href="#">Mehr erfahren</a>
+  </div>
+</section>
+<section class="station station--text-left" data-station="company-ai">
+  <div class="station-text">
+    <h2>Interne Company-AI</h2>
+    <p>Euer eigener KI-Assistent. Trainiert auf eure Dokumente, Prozesse und euer Wissen.</p>
+    <a class="btn-ghost" href="#">Mehr erfahren</a>
+  </div>
+</section>
+<section class="station station--text-right" data-station="datenintegration">
+  <div class="station-text">
+    <h2>Datenintegration &amp; ETL</h2>
+    <p>Datensilos auflösen. Alle Quellen synchronisieren. Ein Data Warehouse für alles.</p>
+    <a class="btn-ghost" href="#">Mehr erfahren</a>
+  </div>
+</section>
+<section class="station station--text-left" data-station="strategy">
+  <div class="station-text">
+    <h2>Strategy &amp; Audit</h2>
+    <p>2-wöchige Discovery-Phase. Tool-Stack prüfen. Roadmap definieren.</p>
+    <a class="btn-ghost" href="#">Mehr erfahren</a>
+  </div>
+</section>
+
+<section class="logo-moment logo-moment--end" data-station="logo">
+  <div>
+    <p class="end-line">Lass uns bauen.</p>
+    <a class="btn-ghost" href="#">Erstgespräch buchen</a>
+  </div>
+</section>
 
 <script type="importmap">
   { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js" } }
