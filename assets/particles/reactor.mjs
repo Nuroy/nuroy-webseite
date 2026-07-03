@@ -416,10 +416,16 @@ export function sculptStep({ currentShape, sculptMix }, { stations, vh, vw, cent
       // (Text-Oberkante im obersten ~5%-Bereich des Viewports), und ist
       // abgeschlossen, bevor die nächste Leistung kondensiert — das N ist
       // rechtzeitig Strahl, kein hektisches Umschalten mehr
-      const aout = 1 - smooth01(bottom - 0.1 * vh, bottom + 0.35 * vh, centerDoc)
+      // Breites Fenster (0.9vh ≈ 4 Mausrad-Ticks): die Auflösung ist scroll-
+      // gebunden — wer zwei Ticks scrollt, sieht das N halb aufgelöst PARKEN,
+      // statt dass die Zeit-Easing es von allein wegzieht
+      const aout = 1 - smooth01(bottom - 0.1 * vh, bottom + 0.8 * vh, centerDoc)
       a = Math.min(ain, aout)
     } else {
-      a = Math.max(0, 1 - Math.abs(centerDoc - st.y) / (vh * 0.42))
+      // engeres Fenster (0.32vh): Skulpturen kondensieren erst nah an der
+      // Sektionsmitte — dazwischen gehört die Bühne dem Fluss, und sie
+      // kapern nicht das noch schmelzende N der vorherigen Station
+      a = Math.max(0, 1 - Math.abs(centerDoc - st.y) / (vh * 0.32))
     }
     if (a > aBest) {
       aBest = a
@@ -710,6 +716,7 @@ export function initReactor(opts = {}) {
   let flare = 0 // Stations-Aufflammen
   let sculptMix = 0
   let sculptAnchor = 0 // Dokument-y, relativ zu dem die Skulptur rotiert
+  let anchorStation = null // Station, deren Skulptur gerade angezeigt wird
 
   function update(t, dt) {
     // dt-normierte Easings: identisches Verhalten bei 30/60/120 Hz
@@ -747,24 +754,25 @@ export function initReactor(opts = {}) {
     const active = st.active
     const aPrime = st.aPrime
     const activeStation = active >= 0 ? stations[active] : null
-    const isLogoActive = activeStation !== null && activeStation.slot === LOGO_SLOT
     const ePan = ease(K_PAN)
+
+    // --- Anker: Dreh-Punkt und Seite folgen der ANGEZEIGTEN Skulptur
+    // (currentShape), nicht der aktiven Station — sonst schwenkt/dreht die
+    // halb aufgelöste Wolke beim Stationswechsel schlagartig um ("springt").
+    // Der Anker wechselt erst nach dem Slot-Swap (sculptMix ≈ 0, unsichtbar).
+    if (activeStation && activeStation.slot === currentShape) anchorStation = activeStation
+    const isLogoDisplayed = anchorStation !== null && anchorStation.slot === LOGO_SLOT
+    if (anchorStation) sculptAnchor = anchorStation.y
 
     // kurzes Aufflammen beim Einrasten (a' > 0.75): schnell auf, langsam ab
     const flareTarget = Math.max(0, aPrime - 0.75) * 4
     flare += (flareTarget - flare) * ease(flareTarget > flare ? K_FLARE_UP : K_FLARE_DOWN)
     uniforms.uFlare.value = flare
 
-    // --- Skulptur-Rotation: dreht mit dem Scroll um die eigene Y-Achse.
-    // Logo-Stationen: gedämpft (×0.3) und über die Aktivierung gegen 0
-    // gefahren — das N steht beim vollen Kondensieren frontal lesbar.
-    if (activeStation) sculptAnchor = activeStation.y
+    // --- Skulptur-Rotation: dreht mit dem Scroll um die eigene Y-Achse;
+    // Logo leicht gedrosselt (steht frontal am Text-Moment der Sektionsmitte).
     let spinTarget = (centerDoc - sculptAnchor) * 0.004
-    // Logo dreht MIT dem Scroll (User-Wunsch), nur leicht gedrosselt —
-    // exakt an der Sektionsmitte (Text-Moment) steht es frontal.
-    if (isLogoActive) spinTarget *= 0.6
-    // Geeast statt hart gesetzt: verhindert den Spin-Sprung, wenn eine
-    // Logo-Station die Aktivierungsgrenze verlässt (Dämpfung 0.3x -> 1x).
+    if (isLogoDisplayed) spinTarget *= 0.6
     uniforms.uSculptSpin.value += (spinTarget - uniforms.uSculptSpin.value) * ePan
 
     // --- Maschinen-CPU-Arbeit nur solange die Maschine sichtbar ist; im
@@ -801,8 +809,9 @@ export function initReactor(opts = {}) {
     // Station (side ∈ {−1, 0, +1}); logo-Stationen zentrieren. Das Skulptur-
     // Zentrum sitzt bei logo-Stationen zusätzlich um +0.10·vh höher (View-
     // Raum: +y = oben), damit unter dem N Platz für den Text bleibt.
-    const targetX = activeStation ? activeStation.side * vw * 0.24 : 0
-    const targetY = isLogoActive ? vh * 0.1 : 0
+    const panStation = anchorStation || activeStation
+    const targetX = panStation ? panStation.side * vw * 0.24 : 0
+    const targetY = isLogoDisplayed ? vh * 0.1 : 0
     uniforms.uCenter.value.x += (targetX - uniforms.uCenter.value.x) * ePan
     uniforms.uSculptCenter.value.x += (targetX - uniforms.uSculptCenter.value.x) * ePan
     uniforms.uSculptCenter.value.y += (targetY - uniforms.uSculptCenter.value.y) * ePan
