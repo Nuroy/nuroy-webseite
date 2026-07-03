@@ -70,3 +70,15 @@ Der User hat den Logo→Strahl-Ansatz verworfen („nicht außergewöhnlich genu
 - **Finale:** Ringe falten sich zu einem frontalen Portal, Kern flammt auf, die Partikel kondensieren zum **N-Logo** (vorhandenes Alpha-Sampling), CTA sitzt im Portal-Zentrum.
 - **Farben (User-Entscheid):** Pink `#FF2D7A` → Violett `#8B5CF6` bleibt, **neu: Weißglut-Akzente** (Kern, Stations-Flare, Skulptur-Highlights, ~`#FFF0F6`).
 - **Architektur:** Neues Modul `assets/particles/reactor.mjs` + pure Skulptur-Generatoren `assets/particles/sculptures.mjs` (Node-testbar, prozedurale Punktwolken statt Bild-Sampling) + Browser-Helfer `assets/particles/load-image.mjs`. Das bisherige `particle-system.mjs`/`test-partikel.html` bleibt unangetastet als Vergleich; neuer Prototyp: `test-reaktor.html`. Performance-/Fallback-Anforderungen unverändert.
+
+## Update 3 (2026-07-03, nach Reaktor-Checkpoint): Story-Umbau — N nach vorn, Fluss statt Orbit, freie Texte
+
+User-Feedback zum Reaktor-Prototyp: Grundgerüst begeistert abgenommen, vier Änderungen (alle entschieden, Go erteilt):
+
+1. **Hero (Maschine bleibt) + Satz-Anfang:** H1 = „Daten, Zahlen und KI entscheiden die nächsten zehn Jahre." (Satz V1, bewusst als Setup).
+2. **N-Sektion direkt nach dem Hero:** Die Maschine kondensiert beim ersten Scroll zum Partikel-N (die bisherige Finale-Animation, nach vorn verlegt). Dort die Auflösung: „Deshalb haben wir Nuroy gebaut: Custom Dashboards, KI-Integration und Software — für Unternehmen, die das ernst nehmen."
+3. **Fluss statt Orbit zwischen den Leistungen:** Nach der N-Sektion kehrt die Maschine nie zurück. Zwischen den Icons: Skulptur zerstäubt in zufälliges Gewusel, das als organisch fließender Partikel-Strom horizontal zur Seite des nächsten Icons wandert und dort kondensiert (alternierend links/rechts, rückwärts scrubbar). Mechanik: Basis-Zustand im Shader wird unterhalb der N-Sektion von machineWorld auf flowWorld umgeblendet (uFlowZone); Fluss = Noise-Gewusel entlang mix(uFlowFromX, uFlowToX, flowT) mit per-Partikel-Streuung (Strom hat Länge), vertikale Welligkeit, zeitanimiert.
+4. **Keine Karten:** Leistungs-Texte liegen frei im Raum — große fette Headline, darunter kleiner Beschreibungstext, darunter Button (vorerst ohne Link). Kein Rahmen, kein Karten-Hintergrund.
+5. **Finale = N-Klammer:** Letzte Sektion vor/über dem CTA ist erneut das Partikel-N (gleiches Symbol wie Anfang — narrative Klammer). Die alte f/f2-Finale-Sondermechanik entfällt; Logo-Sektionen sind reguläre Stationen.
+
+**Sektions-API:** `data-station="<name>"` mit Namen dashboards | ki-agenten | software | ki-integration | company-ai | datenintegration | strategy | logo (Mapping auf Skulptur-Slots im Modul; „logo" doppelt verwendbar für N-Sektion und Schluss-Klammer). Logo-Sektionen zentrieren die Skulptur (Seite 0, leicht nach oben versetzt für Text darunter).
