@@ -403,6 +403,17 @@ function initCalendlyEventListener() {
     if (e.data.event && e.data.event === 'calendly.event_scheduled') {
       console.log('✅ Calendly-Buchung erfolgreich:', e.data.payload);
 
+      // Meta Pixel: Calendly-Buchung zählt als Lead (einmal pro Seitenaufruf, nicht bei Bots).
+      // Muss VOR dem Redirect zur Danke-Seite feuern — dort kommt nur noch Schedule.
+      if (typeof fbq === 'function' && !window._nuroyLeadFired && !navigator.webdriver) {
+        window._nuroyLeadFired = true;
+        fbq('track', 'Lead', {
+          content_name: 'Calendly Booking',
+          content_category: 'funnel_calendly'
+        });
+        console.log('✅ Meta Pixel Event gefeuert: Lead (Calendly-Buchung)');
+      }
+
       // Booking-Status in sessionStorage speichern
       saveAnswer(STORAGE_KEYS.BOOKING_CONFIRMED, 'true');
       saveAnswer(STORAGE_KEYS.BOOKING_EVENT, JSON.stringify(e.data.payload || {}));
