@@ -409,8 +409,13 @@ export function sculptStep({ currentShape, sculptMix }, { stations, vh, vw, cent
       const h = st.h || 0
       const top = st.y - h / 2
       const bottom = st.y + h / 2
-      const ain = smooth01(top - 0.4 * vh, top + 0.2 * vh, centerDoc)
-      const aout = 1 - smooth01(bottom + 0.3 * vh, bottom + 0.75 * vh, centerDoc)
+      // Einstieg erst, wenn der Hero-Text oben rausgescrollt ist (textfreier
+      // Moment), und bewusst langsam über ~0.7 Viewport-Höhen aufbauend
+      const ain = smooth01(top + 0.15 * vh, top + 0.85 * vh, centerDoc)
+      // Auflösen beginnt, sobald der Sektions-Text oben raus ist, und zieht
+      // sich über ~0.8 Viewport-Höhen — das N schmilzt gemächlich in den
+      // Strahl, statt kurz vor der nächsten Leistung hektisch umzuschalten
+      const aout = 1 - smooth01(bottom + 0.1 * vh, bottom + 0.9 * vh, centerDoc)
       a = Math.min(ain, aout)
     } else {
       a = Math.max(0, 1 - Math.abs(centerDoc - st.y) / (vh * 0.42))
@@ -754,7 +759,9 @@ export function initReactor(opts = {}) {
     // gefahren — das N steht beim vollen Kondensieren frontal lesbar.
     if (activeStation) sculptAnchor = activeStation.y
     let spinTarget = (centerDoc - sculptAnchor) * 0.004
-    if (isLogoActive) spinTarget *= 0.3 * (1 - aPrime)
+    // Logo dreht MIT dem Scroll (User-Wunsch), nur leicht gedrosselt —
+    // exakt an der Sektionsmitte (Text-Moment) steht es frontal.
+    if (isLogoActive) spinTarget *= 0.6
     // Geeast statt hart gesetzt: verhindert den Spin-Sprung, wenn eine
     // Logo-Station die Aktivierungsgrenze verlässt (Dämpfung 0.3x -> 1x).
     uniforms.uSculptSpin.value += (spinTarget - uniforms.uSculptSpin.value) * ePan
