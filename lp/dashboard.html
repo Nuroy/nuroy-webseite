@@ -27,9 +27,9 @@
   <!-- Fonts: Geist (Display + Body), JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800&family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800&family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   </noscript>
 
   <!-- Shared Design System -->
@@ -39,8 +39,8 @@
   <link rel="stylesheet" href="../funnel/funnel-styles.min.css?v=4.2">
   <link rel="stylesheet" href="../funnel/funnel-qualification.min.css?v=3.1">
 
-  <!-- LP-Headline-Font: Geist (überschreibt globales Unbounded nur auf dieser Seite) -->
-  <style>:root{--font-display:'Geist',system-ui,sans-serif;}</style>
+  <!-- LP-Headline-Font: Unbounded (Nuroy-Markenschrift, wie Hauptseite) -->
+  <style>:root{--font-display:'Unbounded','Geist',system-ui,sans-serif;}</style>
 
   <!-- Lite YouTube Embed -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">
@@ -368,9 +368,18 @@
     <div style="max-width: 800px; margin: 0 auto; text-align: center;">
 
       <!-- Headline (Angebot-first, Richtung A) -->
-      <h1 style="font-family: var(--font-display); font-size: clamp(40px, 5.5vw, 64px); line-height: 1.12; margin-bottom: 26px; font-weight: 900; color: #1a1a1a; letter-spacing: -0.02em; text-wrap: balance;">
-        Ihre KPIs im Blick wie ein<br><span style="color: var(--pink);">Fortune-500-Konzern</span>.
+      <h1 style="font-family: var(--font-display); font-size: clamp(30px, 4.5vw, 48px); line-height: 1.16; margin-bottom: 26px; font-weight: 800; color: #1a1a1a; letter-spacing: -0.03em;">
+        KPIs im Blick.<br>Wie die<br class="h1-br-m"> <span style="color: var(--pink);">Fortune&nbsp;500</span>.
       </h1>
+      <style>
+        .h1-br-m{ display:none; }
+        @media (max-width: 600px){ .h1-br-m{ display:inline; } }
+        /* Mobile: lange CTA-Labels umbrechen lassen statt Seite zu verbreitern */
+        @media (max-width: 600px){ .btn{ white-space:normal; max-width:100%; min-width:0; text-align:center; } }
+        /* KEIN overflow-x auf html setzen: bricht via Overflow-Propagation das position:sticky
+           der Problem-Sektion (body würde selbst zum Scroll-Container). Overflow ist an der
+           Quelle behoben (Button-Umbruch oben). */
+      </style>
 
       <!-- Subline -->
       <p style="font-size: 19px; line-height: 1.6; margin: 0 auto 34px; max-width: 620px; color: var(--fg-muted);">
@@ -619,7 +628,7 @@
 
   #problem .prob-track{ position:relative; height:300svh; }
   #problem .prob-stage{
-    position:sticky; top:0; height:100svh; overflow:hidden;
+    position:sticky; top:0; height:100svh; height:100dvh; overflow:hidden;
     display:grid; place-items:center; background:#fafaf7;
     --p:0; --a1:0; --a2:0; --a3:0;
   }
@@ -1043,7 +1052,7 @@
     <p class="roi-bridge roi-rv">Datenchaos ist kein Komfort-Problem. Es entscheidet mit, wohin Ihr Geld fließt.</p>
 
     <div class="roi-rv" style="text-align:center; margin-top:42px;">
-      <a href="#booking" class="btn btn-primary btn-lg">Kurz durchsprechen, was bei Ihnen möglich ist →</a>
+      <a href="#booking" class="btn btn-primary btn-lg">Kurz durchsprechen, was möglich ist →</a>
     </div>
   </div>
 
