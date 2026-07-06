@@ -25,7 +25,9 @@ const FIELD_ORDER = [
   'scroll_depth', 'last_section', 'sections_seen', 'time_on_page',
   'vsl_played', 'qualification_started', 'interest_answer', 'revenue_answer',
   'qualified', 'calendly_shown', 'booking_completed', 'form_submitted',
-  'load_time', 'ttfb', 'lcp', 'country', 'email'
+  'load_time', 'ttfb', 'lcp', 'country', 'email',
+  // Lead-Daten (Spalten AB–AD: Name, Telefonnummer, Zeit) — nur bei Rückruf-Submit befüllt
+  'name', 'phone', 'call_time'
 ];
 
 function isBot(ua) {

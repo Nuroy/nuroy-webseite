@@ -1356,8 +1356,10 @@
             <input class="form-input" type="text" id="cb-name" name="name" placeholder="Ihr Name" required autocomplete="name">
           </div>
           <div class="form-field">
-            <input class="form-input" type="tel" id="cb-phone" name="phone" placeholder="Ihre Telefonnummer" required autocomplete="tel" inputmode="tel">
+            <input class="form-input" type="tel" id="cb-phone" name="phone" placeholder="Ihre Telefonnummer (z. B. +43 664 …)" required autocomplete="tel" inputmode="tel">
           </div>
+          <!-- Honeypot: unsichtbar für Menschen — Bots kreuzen es an, Submit wird still verworfen -->
+          <input type="checkbox" name="botcheck" id="cb-botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <div class="cb-when">
             <span class="cb-when-label">Wann sollen wir anrufen?</span>
             <div class="cb-times">
@@ -1367,7 +1369,7 @@
               <button type="button" class="cb-time is-sel" data-time="egal">egal</button>
             </div>
           </div>
-          <p class="cb-error" id="cb-error" style="display:none;">Bitte Name und eine gültige Telefonnummer angeben.</p>
+          <p class="cb-error" id="cb-error" style="display:none;">Bitte Name und vollständige Telefonnummer mit Vorwahl angeben.</p>
           <button class="form-submit" type="submit">Rückruf anfordern →</button>
           <p class="cb-fineprint">Kein Spam · Antwort in 24 h · DSGVO-konform</p>
         </form>
@@ -1436,6 +1438,7 @@
       if(!form) return;
       var timeBtns = [].slice.call(form.querySelectorAll('.cb-time'));
       var chosen = 'egal';
+      var submitting = false;
       timeBtns.forEach(function(b){ b.addEventListener('click', function(){
         timeBtns.forEach(function(x){ x.classList.remove('is-sel'); });
         b.classList.add('is-sel'); chosen = b.getAttribute('data-time');
@@ -1444,13 +1447,25 @@
       var errEl = document.getElementById('cb-error');
       form.addEventListener('submit', async function(e){
         e.preventDefault();
+        if(submitting) return;
+
+        // Honeypot angekreuzt = Bot: stilles Fake-„Danke", kein Versand, kein Tracking
+        var hp = document.getElementById('cb-botcheck');
+        if(hp && hp.checked){
+          form.style.display = 'none';
+          var altHp = document.getElementById('cb-show-calendly'); if(altHp) altHp.style.display = 'none';
+          document.getElementById('cb-success').style.display = 'block';
+          return;
+        }
+
         var name = (form.querySelector('[name="name"]').value || '').trim();
         var phoneRaw = (form.querySelector('[name="phone"]').value || '').trim();
-        if(name.length < 2 || phoneRaw.replace(/[^0-9+]/g,'').length < 6){
-          errEl.textContent = 'Bitte Name und eine gültige Telefonnummer angeben.';
+        if(name.length < 2 || phoneRaw.replace(/[^0-9+]/g,'').length < 9){
+          errEl.textContent = 'Bitte Name und vollständige Telefonnummer mit Vorwahl angeben.';
           errEl.style.display='block'; return;
         }
         errEl.style.display='none';
+        submitting = true;
         var btn = form.querySelector('.form-submit');
         var origLabel = btn.textContent;
         btn.disabled = true; btn.textContent = 'Wird gesendet…';
@@ -1492,7 +1507,7 @@
 
           // 3) Tracking
           window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ event:'callback_requested', call_time: chosen });
+          window.dataLayer.push({ event:'callback_requested', call_time: chosen, lead_name: name, lead_phone: phoneRaw });
           if(typeof fbq === 'function' && !window._nuroyLeadFired && !navigator.webdriver){
             window._nuroyLeadFired = true;
             fbq('track','Lead',{ content_name:'Callback Requested', content_category:'funnel_callback' });
@@ -1508,6 +1523,7 @@
           document.getElementById('cb-success').style.display = 'block';
         } catch(err){
           // Fehlschlag: kein falsches „Danke" — Button zurück + Hinweis
+          submitting = false;
           btn.disabled = false; btn.textContent = origLabel;
           errEl.textContent = 'Senden fehlgeschlagen — bitte erneut versuchen.';
           errEl.style.display = 'block';
@@ -1590,7 +1606,7 @@ function lpSubmitEmail(){
 <script src="dashboard-roi-counter.min.js?v=1.1" defer></script>
 
 <!-- Funnel Analytics -->
-<script src="../funnel/funnel-analytics.min.js?v=1.4" defer></script>
+<script src="../funnel/funnel-analytics.min.js?v=1.5" defer></script>
 
 </body>
 </html>
