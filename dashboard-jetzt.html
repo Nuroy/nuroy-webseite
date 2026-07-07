@@ -9,13 +9,13 @@
   <meta name="robots" content="noindex, nofollow, noarchive">
 
   <!-- Meta Description -->
-  <meta name="description" content="Custom Dashboards für Unternehmen ab 10 Mitarbeitern. Alle Tools, eine Oberfläche. 3-Minuten-Video ansehen & Rückruf anfordern.">
+  <meta name="description" content="Dein Custom Dashboard verbindet alle Tools an einem Punkt. 3-Minuten-Video ansehen und Rückruf anfordern.">
 
   <!-- Facebook Domain Verification -->
   <meta name="facebook-domain-verification" content="685dxfgmj3yn96tljrpdoyqb4mtl2c" />
 
   <!-- OG Tags (für Social-Sharing aus Ads) -->
-  <meta property="og:title" content="Custom Dashboard — Alle Tools, ein System">
+  <meta property="og:title" content="Custom Dashboard: Alle Tools, ein System">
   <meta property="og:description" content="3-Minuten-Video ansehen & Rückruf anfordern.">
   <meta property="og:image" content="https://nuroy.de/assets/funnel-og-image.jpg">
   <meta property="og:type" content="website">
@@ -129,8 +129,8 @@
 <section class="funnel-hero" id="hero">
   <!-- Teil 1: Text-Content im Container (1100px) -->
   <div class="funnel-hero-content">
-    <h1 class="funnel-hero-headline" id="hero-headline">Alle Ihre Zahlen.<br>In einem <span style="color: var(--pink)">Dashboard</span>.</h1>
-    <p class="funnel-hero-subline">Ihr Custom Dashboard verbindet alle Tools und Software an einem Punkt — fertig in 14 Tagen, ohne IT-Aufwand.</p>
+    <h1 class="funnel-hero-headline" id="hero-headline">Alle deine Zahlen.<br>In einem <span style="color: var(--pink)">Dashboard</span>.</h1>
+    <p class="funnel-hero-subline">Dein Custom Dashboard verbindet alle Tools und Software an einem Punkt. In 4 bis 6 Wochen live, ohne IT-Aufwand.</p>
   </div>
 
   <!-- Teil 2: Video außerhalb Container (85vw) -->
@@ -212,7 +212,7 @@
   #kunden .km-track{ display:flex; width:max-content; animation:kmScroll 28s linear infinite; }
   #kunden .km-viewport:hover .km-track{ animation-play-state:paused; }
   #kunden .km-group{ display:flex; align-items:center; gap:46px; padding-right:46px; }
-  #kunden .km-group img{ width:auto; object-fit:contain; opacity:0.55; filter:brightness(0); flex:none; user-select:none; pointer-events:none; }
+  #kunden .km-group img{ width:auto; object-fit:contain; opacity:0.75; filter:grayscale(1); flex:none; user-select:none; pointer-events:none; }
   /* -50% = exakt eine Gruppenbreite (inkl. trailing gap) => nahtloser Loop */
   @keyframes kmScroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
   @media (prefers-reduced-motion: reduce){
@@ -227,20 +227,20 @@
 <!-- ══════════════════════════════════════════════════════════ -->
 <section class="funnel-booking" id="booking">
   <div class="container">
-    <h2 class="funnel-booking-headline">Sehen Sie, was bei Ihnen möglich ist.</h2>
-    <p class="funnel-booking-subtext">Kostenlos &amp; unverbindlich — wir zeigen, wie Ihr Dashboard aussehen könnte.</p>
+    <h2 class="funnel-booking-headline">Sieh, was bei dir möglich ist.</h2>
+    <p class="funnel-booking-subtext">Kostenlos und unverbindlich. Wir zeigen dir, wie dein Dashboard aussehen könnte.</p>
 
     <div class="qualification-container" id="qualification-container">
       <div class="qualification-step active" id="qualification-step-1">
-        <div class="qualification-eyebrow">30-Min-Erstgespräch —</div>
-        <h2 class="qualification-headline">Wir rufen Sie an.</h2>
+        <div class="qualification-eyebrow">30-Min-Erstgespräch</div>
+        <h2 class="qualification-headline">Wir rufen dich an.</h2>
 
         <form class="qualification-options cb-form" id="callback-form" novalidate>
           <div class="form-field">
-            <input class="form-input" type="text" id="cb-name" name="name" placeholder="Ihr Name" required autocomplete="name">
+            <input class="form-input" type="text" id="cb-name" name="name" placeholder="Dein Name" required autocomplete="name">
           </div>
           <div class="form-field">
-            <input class="form-input" type="tel" id="cb-phone" name="phone" placeholder="Ihre Telefonnummer (z. B. +43 664 …)" required autocomplete="tel" inputmode="tel">
+            <input class="form-input" type="tel" id="cb-phone" name="phone" placeholder="Deine Telefonnummer (z. B. +43 664 …)" required autocomplete="tel" inputmode="tel">
           </div>
           <!-- Honeypot: unsichtbar für Menschen — Bots kreuzen es an, Submit wird still verworfen -->
           <input type="checkbox" name="botcheck" id="cb-botcheck" style="display:none" tabindex="-1" autocomplete="off">
@@ -263,7 +263,7 @@
         <div class="cb-success" id="cb-success" style="display:none;">
           <div class="cb-success-ic">✓</div>
           <h3 class="cb-success-h">Danke!</h3>
-          <p class="cb-success-t" id="cb-success-t">Wir rufen Sie an — meist noch heute.</p>
+          <p class="cb-success-t" id="cb-success-t">Wir rufen dich an, meist noch heute.</p>
         </div>
       </div>
     </div>
@@ -271,17 +271,19 @@
     <!-- Calendly (Zweitweg — versteckt bis zum Klick auf den Link, revealed via showCalendly()) -->
     <div class="calendly-container" id="calendly-container">
       <div class="calendly-header">
-        <div class="calendly-eyebrow">Wählen Sie Ihren Termin</div>
-        <h2 class="calendly-headline">Bereit. Lassen Sie uns sprechen.</h2>
+        <div class="calendly-eyebrow">Wähl deinen Termin</div>
+        <h2 class="calendly-headline">Bereit? Dann lass uns sprechen.</h2>
       </div>
       <div id="calendly-embed"></div>
     </div>
 
     <div class="funnel-booking-trust">
       <div class="funnel-booking-trust-item">Keine Verkaufsmasche</div>
-      <div class="funnel-booking-trust-item">Konkrete Antworten auf Ihre Situation</div>
-      <div class="funnel-booking-trust-item">Wenn es nicht passt, sagen wir's offen</div>
+      <div class="funnel-booking-trust-item">Konkrete Antworten auf deine Situation</div>
+      <div class="funnel-booking-trust-item">Wenn es nicht passt, sagen wir's dir offen</div>
     </div>
+
+    <p style="text-align:center; margin:26px auto 0; max-width:460px; font-size:14px; line-height:1.6; color:var(--fg-muted);">Du sprichst direkt mit Julius, dem Gründer. Kein Callcenter, kein Vertriebsskript.</p>
   </div>
 
   <style>
@@ -361,7 +363,7 @@
           if(cfg.FORM_SERVICE_ENDPOINT && cfg.FORM_SERVICE_ENDPOINT.indexOf('PLACEHOLDER') < 0){
             var fd = new FormData();
             fd.append('access_key', cfg.WEB3FORMS_ACCESS_KEY || '');
-            fd.append('subject', 'Rückruf-Anfrage — Nuroy VSL-Funnel (/dashboard-jetzt)');
+            fd.append('subject', 'Rückruf-Anfrage: Nuroy VSL-Funnel (/dashboard-jetzt)');
             fd.append('name', name);
             fd.append('phone', phoneRaw);
             fd.append('message', msg);
@@ -402,14 +404,14 @@
           var alt = document.getElementById('cb-show-calendly'); if(alt) alt.style.display = 'none';
           var t = document.getElementById('cb-success-t');
           if(t) t.textContent = (chosen === 'egal')
-            ? 'Wir rufen Sie an — meist noch heute.'
-            : ('Wir rufen Sie am ' + chosen + ' an — meist noch heute.');
+            ? 'Wir rufen dich an, meist noch heute.'
+            : ('Wir rufen dich am ' + chosen + ' an, meist noch heute.');
           document.getElementById('cb-success').style.display = 'block';
         } catch(err){
           // Fehlschlag: kein falsches „Danke" — Button zurück + Hinweis
           submitting = false;
           btn.disabled = false; btn.textContent = origLabel;
-          errEl.textContent = 'Senden fehlgeschlagen — bitte erneut versuchen.';
+          errEl.textContent = 'Senden fehlgeschlagen, bitte erneut versuchen.';
           errEl.style.display = 'block';
         }
       });
