@@ -388,11 +388,11 @@
 
       <!-- CTA (ein Fokus: Primär weich; Buchen als untergeordneter Ghost-Button) -->
       <div style="display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 24px;">
-        <a href="#showcase" class="btn btn-primary btn-lg" style="font-size: 16px; padding: 18px 36px;">Zeig mir meine KPIs live →</a>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 7px;">
-          <a href="#booking" class="btn hero-cta-ghost">Lieber direkt sprechen?</a>
+          <a href="#booking" class="btn btn-primary btn-lg" style="font-size: 16px; padding: 18px 36px;">Zeig mir meine KPIs live →</a>
           <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--fg-dim);">30-Min-Gespräch · kostenlos &amp; unverbindlich</span>
         </div>
+        <a href="#showcase" class="btn hero-cta-ghost">Lieber erst ein Beispiel sehen?</a>
       </div>
 
       <!-- Trust-Zeile (schlank) -->
@@ -537,6 +537,46 @@
 </style>
 
 <!-- ══════════════════════════════════════════════════════════ -->
+<!-- SEKTION 1b: REFRAME + BEWEIS — Live verbundene Wahrheit -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="funnel-section" id="live">
+  <div class="container">
+    <h2 class="funnel-section-headline" style="margin-bottom: 22px;">Nicht noch ein Dashboard.<br>Eine live verbundene <span style="color: var(--pink);">Wahrheit</span>.</h2>
+    <p style="max-width: 660px; margin: 0 auto 44px; text-align: center; font-size: 18px; line-height: 1.65; color: var(--fg-muted);">
+      Dashboards gibt es seit zehn Jahren. Die meisten sind hübsche Friedhöfe für alte Exporte. Der Unterschied hier: Deine Tools reden per API dauerhaft miteinander. CRM, Shop, Buchhaltung, Kalender, E-Mail, Zahlungen. Kein Export, kein Abtippen, kein Stand: Freitag. Jede Zahl, die du siehst, ist <strong style="color: var(--fg);">jetzt</strong>.
+    </p>
+
+    <p style="text-align: center; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-dim); margin: 0 0 14px;">So sieht es aus, wenn deine Systeme miteinander reden. Live.</p>
+
+    <!-- Animations-Container: Höhe per aspect-ratio reserviert (kein CLS); iframe lädt lazy, nur EINE Variante -->
+    <div id="live-flow" style="max-width: 980px; margin: 0 auto; border-radius: 18px; overflow: hidden; background: #060D1F; box-shadow: 0 24px 60px -18px rgba(6,13,31,0.5);">
+      <iframe id="live-flow-frame" title="Live-Animation: Deine Systeme senden Daten in ein Dashboard" scrolling="no" style="display: block; width: 100%; height: 100%; border: none; pointer-events: none;"></iframe>
+    </div>
+    <style>
+      #live-flow{ aspect-ratio: 16/9; }
+      @media (max-width: 767px){ #live-flow{ aspect-ratio: 9/16; max-height: 80vh; } }
+    </style>
+    <script>
+      /* Lazy + conditional: erst laden, wenn die Sektion in Sichtweite kommt.
+         Variante folgt dem Breakpoint auch NACH dem Laden (Fenster-Resize/Rotation),
+         sonst bleibt z.B. die Hochformat-Datei im maximierten Desktop-Fenster haengen. */
+      (function(){
+        var box = document.getElementById('live-flow'), frame = document.getElementById('live-flow-frame'), loaded = false;
+        var mq = window.matchMedia('(min-width: 768px)');
+        function srcFor(){ return '../assets/lp/nuroy-live-flow-' + (mq.matches ? 'quer' : 'hoch') + '?v=1'; }
+        function load(){ if (loaded) return; loaded = true; frame.src = srcFor(); }
+        function swap(){ if (loaded && frame.src.indexOf(mq.matches ? 'quer' : 'hoch') === -1) frame.src = srcFor(); }
+        if (mq.addEventListener) { mq.addEventListener('change', swap); } else if (mq.addListener) { mq.addListener(swap); }
+        if ('IntersectionObserver' in window) {
+          var io = new IntersectionObserver(function(es){ if (es[0].isIntersecting) { load(); io.disconnect(); } }, { rootMargin: '600px 0px' });
+          io.observe(box);
+        } else { load(); }
+      })();
+    </script>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
 <!-- SEKTION 2: PROBLEM — Scrollytelling (Scroll-Scrub, 3 Akte) -->
 <!-- ══════════════════════════════════════════════════════════ -->
 <section class="funnel-section funnel-problem" id="problem">
@@ -613,7 +653,7 @@
   <div class="container prob-outro">
     <p class="prob-agitate p-reveal">Das Problem ist nicht, dass dir Daten fehlen. Sie sind nur <span style="color:var(--pink)">nie aktuell</span> und nie an einem Ort.</p>
     <div class="p-reveal" style="text-align:center; margin-top:40px;">
-      <a href="#live" class="btn btn-primary">Zeig mir den Unterschied →</a>
+      <a href="#showcase" class="btn btn-primary">So sieht das umgesetzt aus →</a>
     </div>
   </div>
 </section>
@@ -786,46 +826,6 @@
     els.forEach(function (e) { io.observe(e); });
   })();
 </script>
-
-<!-- ══════════════════════════════════════════════════════════ -->
-<!-- SEKTION 2b: REFRAME + BEWEIS — Live verbundene Wahrheit -->
-<!-- ══════════════════════════════════════════════════════════ -->
-<section class="funnel-section" id="live">
-  <div class="container">
-    <h2 class="funnel-section-headline" style="margin-bottom: 22px;">Nicht noch ein Dashboard.<br>Eine live verbundene <span style="color: var(--pink);">Wahrheit</span>.</h2>
-    <p style="max-width: 660px; margin: 0 auto 44px; text-align: center; font-size: 18px; line-height: 1.65; color: var(--fg-muted);">
-      Dashboards gibt es seit zehn Jahren. Die meisten sind hübsche Friedhöfe für alte Exporte. Der Unterschied hier: Deine Tools reden per API dauerhaft miteinander. CRM, Shop, Buchhaltung, Kalender, E-Mail, Zahlungen. Kein Export, kein Abtippen, kein Stand: Freitag. Jede Zahl, die du siehst, ist <strong style="color: var(--fg);">jetzt</strong>.
-    </p>
-
-    <p style="text-align: center; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-dim); margin: 0 0 14px;">So sieht es aus, wenn deine Systeme miteinander reden. Live.</p>
-
-    <!-- Animations-Container: Höhe per aspect-ratio reserviert (kein CLS); iframe lädt lazy, nur EINE Variante -->
-    <div id="live-flow" style="max-width: 980px; margin: 0 auto; border-radius: 18px; overflow: hidden; background: #060D1F; box-shadow: 0 24px 60px -18px rgba(6,13,31,0.5);">
-      <iframe id="live-flow-frame" title="Live-Animation: Deine Systeme senden Daten in ein Dashboard" scrolling="no" style="display: block; width: 100%; height: 100%; border: none; pointer-events: none;"></iframe>
-    </div>
-    <style>
-      #live-flow{ aspect-ratio: 16/9; }
-      @media (max-width: 767px){ #live-flow{ aspect-ratio: 9/16; max-height: 80vh; } }
-    </style>
-    <script>
-      /* Lazy + conditional: erst laden, wenn die Sektion in Sichtweite kommt.
-         Variante folgt dem Breakpoint auch NACH dem Laden (Fenster-Resize/Rotation),
-         sonst bleibt z.B. die Hochformat-Datei im maximierten Desktop-Fenster haengen. */
-      (function(){
-        var box = document.getElementById('live-flow'), frame = document.getElementById('live-flow-frame'), loaded = false;
-        var mq = window.matchMedia('(min-width: 768px)');
-        function srcFor(){ return '../assets/lp/nuroy-live-flow-' + (mq.matches ? 'quer' : 'hoch') + '?v=1'; }
-        function load(){ if (loaded) return; loaded = true; frame.src = srcFor(); }
-        function swap(){ if (loaded && frame.src.indexOf(mq.matches ? 'quer' : 'hoch') === -1) frame.src = srcFor(); }
-        if (mq.addEventListener) { mq.addEventListener('change', swap); } else if (mq.addListener) { mq.addListener(swap); }
-        if ('IntersectionObserver' in window) {
-          var io = new IntersectionObserver(function(es){ if (es[0].isIntersecting) { load(); io.disconnect(); } }, { rootMargin: '600px 0px' });
-          io.observe(box);
-        } else { load(); }
-      })();
-    </script>
-  </div>
-</section>
 
 <!-- ══════════════════════════════════════════════════════════ -->
 <!-- SEKTION 3: ECHTES PROJEKT — REGYVA SHOWCASE -->
