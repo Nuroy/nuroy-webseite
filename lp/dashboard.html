@@ -808,14 +808,16 @@
       @media (max-width: 767px){ #live-flow{ aspect-ratio: 9/16; max-height: 80vh; } }
     </style>
     <script>
-      /* Lazy + conditional: erst laden, wenn die Sektion in Sichtweite kommt; Variante einmalig nach Viewport-Breite */
+      /* Lazy + conditional: erst laden, wenn die Sektion in Sichtweite kommt.
+         Variante folgt dem Breakpoint auch NACH dem Laden (Fenster-Resize/Rotation),
+         sonst bleibt z.B. die Hochformat-Datei im maximierten Desktop-Fenster haengen. */
       (function(){
         var box = document.getElementById('live-flow'), frame = document.getElementById('live-flow-frame'), loaded = false;
-        function load(){
-          if (loaded) return; loaded = true;
-          var desktop = window.matchMedia('(min-width: 768px)').matches;
-          frame.src = '../assets/lp/nuroy-live-flow-' + (desktop ? 'quer' : 'hoch') + '?v=1';
-        }
+        var mq = window.matchMedia('(min-width: 768px)');
+        function srcFor(){ return '../assets/lp/nuroy-live-flow-' + (mq.matches ? 'quer' : 'hoch') + '?v=1'; }
+        function load(){ if (loaded) return; loaded = true; frame.src = srcFor(); }
+        function swap(){ if (loaded && frame.src.indexOf(mq.matches ? 'quer' : 'hoch') === -1) frame.src = srcFor(); }
+        if (mq.addEventListener) { mq.addEventListener('change', swap); } else if (mq.addListener) { mq.addListener(swap); }
         if ('IntersectionObserver' in window) {
           var io = new IntersectionObserver(function(es){ if (es[0].isIntersecting) { load(); io.disconnect(); } }, { rootMargin: '600px 0px' });
           io.observe(box);
