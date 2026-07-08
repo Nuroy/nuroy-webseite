@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard-Lösung — Alle Daten im Überblick | Nuroy</title>
+  <title>Deine KPIs live statt im Excel-Export | Nuroy</title>
 
   <!-- SEO: NOINDEX (Funnel-Seite nur über Ads) -->
   <meta name="robots" content="noindex, nofollow, noarchive">
 
   <!-- Meta Description -->
-  <meta name="description" content="Custom Dashboard für Unternehmen ab 100k € Jahresumsatz. Alle Tools, eine Oberfläche, Echtzeit-KPIs. Kostenloses Erstgespräch buchen.">
+  <meta name="description" content="Wir verbinden deine Systeme per API, damit du eine Wahrheit hast. Live, 24/7, an einem Ort. Kostenloses Erstgespräch buchen.">
 
   <!-- Facebook Domain Verification -->
   <meta name="facebook-domain-verification" content="685dxfgmj3yn96tljrpdoyqb4mtl2c" />
 
   <!-- OG Tags (für Social-Sharing aus Ads) -->
-  <meta property="og:title" content="Custom Dashboard — Alle Daten im Überblick">
-  <meta property="og:description" content="Schluss mit Excel-Chaos und Tool-Hopping. Kostenloses Erstgespräch buchen.">
+  <meta property="og:title" content="Deine KPIs live statt im Excel-Export">
+  <meta property="og:description" content="Alle Systeme per API verbunden. Eine Wahrheit, live, 24/7. Kostenloses Erstgespräch buchen.">
   <meta property="og:image" content="https://nuroy.de/assets/lp/og-image.webp">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://nuroy.de/lp/dashboard">
@@ -27,9 +27,9 @@
   <!-- Fonts: Geist (Display + Body), JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800&family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800&family=Geist:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   </noscript>
 
   <!-- Shared Design System -->
@@ -39,8 +39,8 @@
   <link rel="stylesheet" href="../funnel/funnel-styles.min.css?v=4.2">
   <link rel="stylesheet" href="../funnel/funnel-qualification.min.css?v=3.1">
 
-  <!-- LP-Headline-Font: Geist (überschreibt globales Unbounded nur auf dieser Seite) -->
-  <style>:root{--font-display:'Geist',system-ui,sans-serif;}</style>
+  <!-- LP-Headline-Font: Unbounded (Nuroy-Markenschrift, wie Hauptseite) -->
+  <style>:root{--font-display:'Unbounded','Geist',system-ui,sans-serif;}</style>
 
   <!-- Lite YouTube Embed -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">
@@ -368,22 +368,31 @@
     <div style="max-width: 800px; margin: 0 auto; text-align: center;">
 
       <!-- Headline (Angebot-first, Richtung A) -->
-      <h1 style="font-family: var(--font-display); font-size: clamp(40px, 5.5vw, 64px); line-height: 1.12; margin-bottom: 26px; font-weight: 900; color: #1a1a1a; letter-spacing: -0.02em; text-wrap: balance;">
-        Alle Zahlen Ihres Betriebs<br><span style="color: var(--pink);">live auf einem Schirm</span>.
+      <h1 style="font-family: var(--font-display); font-size: clamp(26px, 4.2vw, 44px); line-height: 1.18; margin-bottom: 26px; font-weight: 800; color: #1a1a1a; letter-spacing: -0.03em; text-wrap: balance;">
+        Deine KPIs sind schon <span style="color: var(--pink);">veraltet</span>, wenn du sie öffnest.
       </h1>
+      <style>
+        .h1-br-m{ display:none; }
+        @media (max-width: 600px){ .h1-br-m{ display:inline; } }
+        /* Mobile: lange CTA-Labels umbrechen lassen statt Seite zu verbreitern */
+        @media (max-width: 600px){ .btn{ white-space:normal; max-width:100%; min-width:0; text-align:center; } }
+        /* KEIN overflow-x auf html setzen: bricht via Overflow-Propagation das position:sticky
+           der Problem-Sektion (body würde selbst zum Scroll-Container). Overflow ist an der
+           Quelle behoben (Button-Umbruch oben). */
+      </style>
 
       <!-- Subline -->
       <p style="font-size: 19px; line-height: 1.6; margin: 0 auto 34px; max-width: 620px; color: var(--fg-muted);">
-        Ein individuelles Dashboard verbindet Ihre Tools und zeigt, was kippt — solange Sie noch reagieren können.
+        Umsatz im Shop. Leads im CRM. Rechnungen in der Buchhaltung. Und die Wahrheit? In einem Excel-Export von letzter Woche. Wir verbinden deine Systeme per API, damit du eine Wahrheit hast. Live, 24/7.
       </p>
 
       <!-- CTA (ein Fokus: Primär weich; Buchen als untergeordneter Ghost-Button) -->
       <div style="display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 24px;">
-        <a href="#showcase" class="btn btn-primary btn-lg" style="font-size: 16px; padding: 18px 36px;">Beispiel-Dashboards ansehen →</a>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 7px;">
-          <a href="#booking" class="btn hero-cta-ghost">Lieber direkt sprechen?</a>
+          <a href="#booking" class="btn btn-primary btn-lg" style="font-size: 16px; padding: 18px 36px;">Zeig mir meine KPIs live →</a>
           <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--fg-dim);">30-Min-Gespräch · kostenlos &amp; unverbindlich</span>
         </div>
+        <a href="#showcase" class="btn hero-cta-ghost">Lieber erst ein Beispiel sehen?</a>
       </div>
 
       <!-- Trust-Zeile (schlank) -->
@@ -395,11 +404,29 @@
         <span>DSGVO-konform · EU-gehostet</span>
       </div>
 
-      <!-- Scroll-Cue: zieht den Blick ins Showcase -->
-      <a href="#showcase" class="hero-scroll-cue" aria-label="Weiter zu den Beispiel-Dashboards" style="display: inline-flex; margin-top: 40px; color: var(--fg-dim); animation: heroScrollCue 1.8s ease-in-out infinite;">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-      </a>
     </div>
+
+    <!-- Hero-Visual: KPI-Overview-Animation (Chaos -> ein Blick, live) -->
+    <p style="text-align: center; font-family: var(--font-mono); font-size: 13px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--pink); margin: 44px 0 14px;">Schluss mit Tool-Chaos: alles an einem Ort. Live.</p>
+    <div id="kpi-flow" style="max-width: 980px; margin: 0 auto; border-radius: 18px; overflow: hidden; border: 1px solid rgba(26,26,26,0.08); background: #F7F4EE;">
+      <iframe id="kpi-flow-frame" title="Animation: Tool-Chaos wird zu einem Live-Dashboard mit allen KPIs" scrolling="no" style="display: block; width: 100%; height: 100%; border: none; pointer-events: none;"></iframe>
+    </div>
+    <style>
+      #kpi-flow{ aspect-ratio: 16/9; }
+      @media (max-width: 767px){ #kpi-flow{ aspect-ratio: 9/16; max-height: 78vh; } }
+    </style>
+    <script>
+      /* Above the fold: sofort laden (Datei ist winzig, keine externen Requests).
+         Variante folgt dem Breakpoint in beide Richtungen (Resize/Rotation). */
+      (function(){
+        var frame = document.getElementById('kpi-flow-frame');
+        var mq = window.matchMedia('(min-width: 768px)');
+        function srcFor(){ return '../assets/lp/nuroy-kpi-overview-' + (mq.matches ? 'quer' : 'hoch') + '?v=1'; }
+        function swap(){ if (frame.src.indexOf(mq.matches ? 'quer' : 'hoch') === -1) frame.src = srcFor(); }
+        if (mq.addEventListener) { mq.addEventListener('change', swap); } else if (mq.addListener) { mq.addListener(swap); }
+        frame.src = srcFor();
+      })();
+    </script>
   </div>
 </section>
 
@@ -508,7 +535,7 @@
   #kunden .km-track{ display:flex; width:max-content; animation:kmScroll 28s linear infinite; }
   #kunden .km-viewport:hover .km-track{ animation-play-state:paused; }
   #kunden .km-group{ display:flex; align-items:center; gap:46px; padding-right:46px; }
-  #kunden .km-group img{ width:auto; object-fit:contain; opacity:0.55; filter:brightness(0); flex:none; user-select:none; pointer-events:none; }
+  #kunden .km-group img{ width:auto; object-fit:contain; opacity:0.75; filter:grayscale(1); flex:none; user-select:none; pointer-events:none; }
   /* -50% = exakt eine Gruppenbreite (inkl. trailing gap) => nahtloser Loop */
   @keyframes kmScroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
   @media (prefers-reduced-motion: reduce){
@@ -519,12 +546,52 @@
 </style>
 
 <!-- ══════════════════════════════════════════════════════════ -->
+<!-- SEKTION 1b: REFRAME + BEWEIS — Live verbundene Wahrheit -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="funnel-section" id="live">
+  <div class="container">
+    <h2 class="funnel-section-headline" style="margin-bottom: 22px;">Nicht noch ein Dashboard.<br>Eine live verbundene <span style="color: var(--pink);">Wahrheit</span>.</h2>
+    <p style="max-width: 660px; margin: 0 auto 44px; text-align: center; font-size: 18px; line-height: 1.65; color: var(--fg-muted);">
+      Dashboards gibt es seit zehn Jahren. Die meisten sind hübsche Friedhöfe für alte Exporte. Der Unterschied hier: Deine Tools reden per API dauerhaft miteinander. CRM, Shop, Buchhaltung, Kalender, E-Mail, Zahlungen. Kein Export, kein Abtippen, kein Stand: Freitag. Jede Zahl, die du siehst, ist <strong style="color: var(--fg);">jetzt</strong>.
+    </p>
+
+    <p style="text-align: center; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-dim); margin: 0 0 14px;">So sieht es aus, wenn deine Systeme miteinander reden. Live.</p>
+
+    <!-- Animations-Container: Höhe per aspect-ratio reserviert (kein CLS); iframe lädt lazy, nur EINE Variante -->
+    <div id="live-flow" style="max-width: 980px; margin: 0 auto; border-radius: 18px; overflow: hidden; background: #060D1F; box-shadow: 0 24px 60px -18px rgba(6,13,31,0.5);">
+      <iframe id="live-flow-frame" title="Live-Animation: Deine Systeme senden Daten in ein Dashboard" scrolling="no" style="display: block; width: 100%; height: 100%; border: none; pointer-events: none;"></iframe>
+    </div>
+    <style>
+      #live-flow{ aspect-ratio: 16/9; }
+      @media (max-width: 767px){ #live-flow{ aspect-ratio: 9/16; max-height: 80vh; } }
+    </style>
+    <script>
+      /* Lazy + conditional: erst laden, wenn die Sektion in Sichtweite kommt.
+         Variante folgt dem Breakpoint auch NACH dem Laden (Fenster-Resize/Rotation),
+         sonst bleibt z.B. die Hochformat-Datei im maximierten Desktop-Fenster haengen. */
+      (function(){
+        var box = document.getElementById('live-flow'), frame = document.getElementById('live-flow-frame'), loaded = false;
+        var mq = window.matchMedia('(min-width: 768px)');
+        function srcFor(){ return '../assets/lp/nuroy-live-flow-' + (mq.matches ? 'quer' : 'hoch') + '?v=1'; }
+        function load(){ if (loaded) return; loaded = true; frame.src = srcFor(); }
+        function swap(){ if (loaded && frame.src.indexOf(mq.matches ? 'quer' : 'hoch') === -1) frame.src = srcFor(); }
+        if (mq.addEventListener) { mq.addEventListener('change', swap); } else if (mq.addListener) { mq.addListener(swap); }
+        if ('IntersectionObserver' in window) {
+          var io = new IntersectionObserver(function(es){ if (es[0].isIntersecting) { load(); io.disconnect(); } }, { rootMargin: '600px 0px' });
+          io.observe(box);
+        } else { load(); }
+      })();
+    </script>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
 <!-- SEKTION 2: PROBLEM — Scrollytelling (Scroll-Scrub, 3 Akte) -->
 <!-- ══════════════════════════════════════════════════════════ -->
 <section class="funnel-section funnel-problem" id="problem">
   <div class="container prob-intro">
-    <h2 class="funnel-section-headline">Wenn Ihr Reporting so aussieht …</h2>
-    <p class="prob-intro-sub">Kennen Sie das? Sie wollen einfach nur wissen, wie Ihr Unternehmen läuft — aber stattdessen …</p>
+    <h2 class="funnel-section-headline">Kommt dir das bekannt vor?</h2>
+    <p class="prob-intro-sub">Du willst nur wissen, wie dein Unternehmen läuft. Stattdessen passiert das hier:</p>
   </div>
 
   <!-- Gepinnte Bühne: Scroll scrubbt 3 Akte. Mobile = kürzerer Track. reduced-motion = statisch. -->
@@ -547,8 +614,8 @@
             <div class="xl-foot"><span class="xl-cursor"></span>Zuletzt aktualisiert:&nbsp;<span class="xl-ages" data-i="0"><b>heute</b><b>vor 4&nbsp;Tagen</b><b>vor 1&nbsp;Woche</b><b>vor 2&nbsp;Wochen</b><b>vor 3&nbsp;Wochen</b></span></div>
           </div>
         </div>
-        <h3 class="beat-h">Excel-Tabellen, die keiner pflegt</h3>
-        <p class="beat-p">Montagmorgen: Sie öffnen die Reporting-Datei — und sie ist längst kalt.</p>
+        <h3 class="beat-h">Die Excel-Liste, die keiner pflegt</h3>
+        <p class="beat-p">Montagmorgen: CSV exportieren, zusammenkopieren, einfügen. Und die Zahlen sind schon wieder von letzter Woche.</p>
       </article>
 
       <!-- AKT 2 — 5 Werte werden nacheinander genannt -->
@@ -564,15 +631,15 @@
             <span class="cf-q">?</span>
           </div>
         </div>
-        <h3 class="beat-h">5 Tools, 5 Wahrheiten</h3>
-        <p class="beat-p">Im Meeting fragt jemand nach der Conversion-Rate. Sie sagen: „Ich schau nach und melde mich."</p>
+        <h3 class="beat-h">5 Tools, 5 verschiedene Antworten</h3>
+        <p class="beat-p">Im Meeting fragt jemand nach der Conversion-Rate. Du weißt: jedes Tool nennt dir eine andere Zahl.</p>
       </article>
 
       <!-- AKT 3 — Montag erstellt → gammelt über die Woche -->
       <article class="beat beat--week">
         <div class="prob-art">
           <div class="wk">
-            <div class="wk-cap">Montag erstellt — bis Freitag Geschichte</div>
+            <div class="wk-cap">Montag erstellt, Freitag schon Geschichte</div>
             <div class="wk-board">
               <div class="wk-days"><span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span></div>
               <div class="wk-line"><span class="wk-head"></span></div>
@@ -585,18 +652,17 @@
             </div>
           </div>
         </div>
-        <h3 class="beat-h">1 Tag Reporting pro Woche</h3>
-        <p class="beat-p">Montags gebaut — und bis Freitag sind die Zahlen schon wieder Geschichte.</p>
+        <h3 class="beat-h">Ein voller Arbeitstag pro Woche</h3>
+        <p class="beat-p">Montags baust du den Report. Freitags triffst du Entscheidungen auf Zahlen von Montag.</p>
       </article>
     </div>
   </div>
 
   <!-- Auflösung -->
   <div class="container prob-outro">
-    <p class="prob-agitate p-reveal">Das Teure ist nicht die fehlende Tabelle. Es ist die Entscheidung, die Sie auf <span style="color:var(--pink)">veralteten Zahlen</span> treffen — und später teuer korrigieren.</p>
-    <p class="funnel-problem-closing p-reveal">… dann sind Sie nicht allein. Und Sie sind <strong>genau richtig hier</strong>.</p>
+    <p class="prob-agitate p-reveal">Das Problem ist nicht, dass dir Daten fehlen. Sie sind nur <span style="color:var(--pink)">nie aktuell</span> und nie an einem Ort.</p>
     <div class="p-reveal" style="text-align:center; margin-top:40px;">
-      <a href="#showcase" class="btn btn-primary">Das kann besser gehen →</a>
+      <a href="#showcase" class="btn btn-primary">So sieht das umgesetzt aus →</a>
     </div>
   </div>
 </section>
@@ -611,7 +677,7 @@
 
   #problem .prob-track{ position:relative; height:300svh; }
   #problem .prob-stage{
-    position:sticky; top:0; height:100svh; overflow:hidden;
+    position:sticky; top:0; height:100svh; height:100dvh; overflow:hidden;
     display:grid; place-items:center; background:#fafaf7;
     --p:0; --a1:0; --a2:0; --a3:0;
   }
@@ -778,29 +844,29 @@
 
     <!-- 1+2 · Header (Outcome-led) -->
     <div class="rgv-head">
-      <div class="rgv-eyebrow">Ein echtes Nuroy-Projekt</div>
-      <h2 class="rgv-h2">Ein ganzes Coaching-Business — <span>auf einen Blick.</span></h2>
-      <div class="rgv-dek">Regyva — Sales &amp; Coaching Cockpit</div>
-      <p class="rgv-sub">Werbung, Vertrieb und Provisionen in einem System — Klarheit statt Chaos.</p>
+      <div class="rgv-eyebrow">Echtes Kundenprojekt</div>
+      <h2 class="rgv-h2">So sieht das fertig aus: <span>das Sales-Cockpit von Regyva.</span></h2>
+      <div class="rgv-dek">Regyva · Sales &amp; Coaching Cockpit</div>
+      <p class="rgv-sub">Ein Coaching-Unternehmen mit Werbung, Vertrieb und Provisionen. Vorher auf sechs Tools verteilt, heute live verbunden in einem System.</p>
     </div>
 
     <!-- 3 · Ergebnis-/Fähigkeits-Streifen (ersetzt die Capability-Karten) -->
     <div class="rgv-results">
-      <div class="rgv-stat"><b>ab dem 1. Klick</b><span>Lückenlos von der Anzeige bis zum Kauf</span></div>
-      <div class="rgv-stat"><b>Echtzeit</b><span>jede Zahl automatisch, immer aktuell</span></div>
-      <div class="rgv-stat"><b>KI-Insights</b><span>zeigt, wo sich mehr Einsatz lohnt</span></div>
-      <div class="rgv-stat"><b>1 Oberfläche</b><span>CRM, Ads, Affiliates &amp; Provisionen vereint</span></div>
+      <div class="rgv-stat"><b>6 Datenquellen</b><span>HubSpot, Meta, Google, Close, LearningSuite, eigene APIs</span></div>
+      <div class="rgv-stat"><b>1 Login</b><span>ersetzt den Tool-Marathon am Morgen</span></div>
+      <div class="rgv-stat"><b>Live</b><span>jede Zahl aktualisiert sich selbst</span></div>
+      <div class="rgv-stat"><b>0 Excel</b><span>keine manuelle Pflege mehr</span></div>
     </div>
 
     <!-- 4 · Vorher → Nachher -->
     <div class="showcase-story">
       <div class="story-card">
         <div class="story-eyebrow">Vorher</div>
-        <p>Daten überall: <strong>CRM</strong>, <strong>Facebook-Ads</strong>, Affiliates, Provisionen — verstreut über Tools und Tabellen. Stundenlange Excel-Arbeit, fehleranfällig, kein Live-Überblick.</p>
+        <p>Die Zahlen lagen verstreut in <strong>CRM</strong>, <strong>Facebook-Ads</strong>, Affiliate-Listen und Provisions-Tabellen. Jede Woche stundenlange Excel-Arbeit, fehleranfällig und nie aktuell.</p>
       </div>
       <div class="story-card story-card--solution">
         <div class="story-eyebrow">Nachher</div>
-        <p><strong>Alle Quellen automatisch</strong> in einem System, jede Zahl in Echtzeit. Provisionen je Closer &amp; Affiliate, dazu <strong>KI</strong>-Hinweise, wo sich Einsatz lohnt. Statt Excel: <strong>ein Blick</strong>.</p>
+        <p><strong>Alle Quellen laufen automatisch</strong> in einem System zusammen, jede Zahl live. Provisionen je Closer und Affiliate werden von selbst berechnet, dazu <strong>KI</strong>-Hinweise, wo sich Einsatz lohnt. Statt Export: <strong>ein Blick</strong>, und die Zahl ist jetzt.</p>
       </div>
     </div>
 
@@ -847,11 +913,11 @@
       </div>
     </div>
 
-    <p class="rgv-galnote"><em>Alle Zahlen sind Testdaten — keine echten Kundendaten.</em></p>
+    <p class="rgv-galnote"><em>Alle Zahlen sind Testdaten, keine echten Kundendaten.</em></p>
 
     <!-- 7 · Ein CTA -->
     <div style="text-align:center; margin-top:34px;">
-      <a href="#booking" class="btn btn-primary btn-lg" style="display:inline-block; font-size:17px; padding:18px 36px; text-decoration:none;">30-Min-Gespräch →</a>
+      <a href="#booking" class="btn btn-primary btn-lg" style="display:inline-block; font-size:17px; padding:18px 36px; text-decoration:none;">Sowas will ich für mein Unternehmen →</a>
     </div>
 
     <!-- Lightbox -->
@@ -1017,25 +1083,25 @@
 
 <section class="funnel-section" id="before-after">
   <div class="container" style="max-width:760px;">
-    <h2 class="funnel-section-headline">Was Sie Ihr Reporting wirklich kostet.</h2>
+    <h2 class="funnel-section-headline">Was dich das wirklich kostet.</h2>
 
-    <p class="roi-lead roi-rv">Klar, da sind die Stunden: ein ganzer Tag pro Woche fürs manuelle Zusammensuchen. Rund <strong class="roi-num"><span data-count-to="20800">0</span>&nbsp;€</strong> im Jahr — nur fürs Sortieren von Zahlen.</p>
+    <p class="roi-lead roi-rv">Ein voller Arbeitstag pro Woche fürs Zusammensuchen. Und das ist noch der <strong class="roi-num">billige</strong> Teil.</p>
 
     <div class="roi-pain roi-rv">
-      <p class="roi-pain-lead">Aber das Teure steht in keiner Zeiterfassung.</p>
-      <p class="roi-pain-body">Es sind die Entscheidungen, die Sie auf <strong>falschen oder veralteten Zahlen</strong> treffen:</p>
+      <p class="roi-pain-lead">Der teure Teil steht in keiner Zeiterfassung.</p>
+      <p class="roi-pain-body">Es sind die Entscheidungen, die du auf <strong>Zahlen von letzter Woche</strong> triffst:</p>
       <ul class="roi-pain-list">
         <li>Budget in den falschen Kanal gesteckt.</li>
         <li>Einen Closer falsch eingeschätzt.</li>
         <li>Einen kippenden Trend zu spät erkannt.</li>
       </ul>
-      <p class="roi-pain-punch">Ein einziger falscher Call kostet mehr als ein ganzes Jahr Reporting.</p>
+      <p class="roi-pain-punch">Ein einziger falscher Call kostet mehr als ein ganzes Jahr Zusammensuchen.</p>
     </div>
 
-    <p class="roi-bridge roi-rv">Datenchaos ist kein Komfort-Problem — es ist ein Risiko. Und es entscheidet mit, wohin Ihr Geld fließt.</p>
+    <p class="roi-bridge roi-rv">Datenchaos ist kein Komfort-Problem. Es entscheidet mit, wohin dein Geld fließt.</p>
 
     <div class="roi-rv" style="text-align:center; margin-top:42px;">
-      <a href="#booking" class="btn btn-primary btn-lg">Vom Chaos zur Klarheit →</a>
+      <a href="#booking" class="btn btn-primary btn-lg">Kurz durchsprechen, was möglich ist →</a>
     </div>
   </div>
 
@@ -1326,11 +1392,11 @@
   }
 </style>
   <div class="wrap">
-    <div class="head reveal"><span class="eyebrow">So läuft's ab</span><h2>In 6–10 Wochen zu Ihrem Dashboard.</h2></div>
+    <div class="head reveal"><span class="eyebrow">So läuft's ab</span><h2>In 4 bis 6 Wochen live.</h2></div>
     <div class="steps">
-      <div class="step reveal"><div class="sn">01</div><h3>Verstehen &amp; Konzipieren</h3><div class="dur">1–3 Wochen</div><p>Tools, KPIs &amp; Konzept gemeinsam abgestimmt.</p></div>
-      <div class="step reveal"><div class="sn">02</div><h3>Bauen</h3><div class="dur">3–5 Wochen</div><p>Wöchentlicher Fortschritt, laufendes Feedback.</p></div>
-      <div class="step reveal"><div class="sn">03</div><h3>Live &amp; Betreuung</h3><div class="dur">Go-Live + optional</div><p>Geprüft, live — optional Hosting &amp; Wartung.</p></div>
+      <div class="step reveal"><div class="sn">01</div><h3>Verstehen &amp; Konzipieren</h3><div class="dur">1–2 Wochen</div><p>Wir stimmen deine Tools, KPIs und das Konzept gemeinsam ab.</p></div>
+      <div class="step reveal"><div class="sn">02</div><h3>Bauen &amp; Verbinden</h3><div class="dur">2–4 Wochen</div><p>Deine Systeme werden per API angebunden. Du siehst jede Woche den Fortschritt.</p></div>
+      <div class="step reveal"><div class="sn">03</div><h3>Live &amp; Betreuung</h3><div class="dur">Go-Live + optional</div><p>Geprüft und live. Ab dann laufen deine Daten 24/7.</p></div>
     </div>
   </div>
 <script>
@@ -1343,21 +1409,23 @@
 <!-- ══════════════════════════════════════════════════════════ -->
 <section class="funnel-booking" id="booking">
   <div class="container">
-    <h2 class="funnel-booking-headline">Sehen Sie, was bei Ihnen möglich ist.</h2>
-    <p class="funnel-booking-subtext">Kostenlos &amp; unverbindlich — wir zeigen, wie Ihr Dashboard aussehen könnte.</p>
+    <h2 class="funnel-booking-headline">Sieh, was bei dir möglich ist.</h2>
+    <p class="funnel-booking-subtext">Eine Übersicht. Alle deine Daten. Live, 24/7. Nicht Stand letzte Woche. Das Erstgespräch ist kostenlos und unverbindlich.</p>
 
     <div class="qualification-container" id="qualification-container">
       <div class="qualification-step active" id="qualification-step-1">
-        <div class="qualification-eyebrow">30-Min-Erstgespräch —</div>
-        <h2 class="qualification-headline">Wir rufen Sie an.</h2>
+        <div class="qualification-eyebrow">30-Min-Erstgespräch</div>
+        <h2 class="qualification-headline">Wir rufen dich an.</h2>
 
         <form class="qualification-options cb-form" id="callback-form" novalidate>
           <div class="form-field">
-            <input class="form-input" type="text" id="cb-name" name="name" placeholder="Ihr Name" required autocomplete="name">
+            <input class="form-input" type="text" id="cb-name" name="name" placeholder="Dein Name" required autocomplete="name">
           </div>
           <div class="form-field">
-            <input class="form-input" type="tel" id="cb-phone" name="phone" placeholder="Ihre Telefonnummer" required autocomplete="tel" inputmode="tel">
+            <input class="form-input" type="tel" id="cb-phone" name="phone" placeholder="Deine Telefonnummer (z. B. +43 664 …)" required autocomplete="tel" inputmode="tel">
           </div>
+          <!-- Honeypot: unsichtbar für Menschen — Bots kreuzen es an, Submit wird still verworfen -->
+          <input type="checkbox" name="botcheck" id="cb-botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <div class="cb-when">
             <span class="cb-when-label">Wann sollen wir anrufen?</span>
             <div class="cb-times">
@@ -1367,7 +1435,7 @@
               <button type="button" class="cb-time is-sel" data-time="egal">egal</button>
             </div>
           </div>
-          <p class="cb-error" id="cb-error" style="display:none;">Bitte Name und eine gültige Telefonnummer angeben.</p>
+          <p class="cb-error" id="cb-error" style="display:none;">Bitte Name und vollständige Telefonnummer mit Vorwahl angeben.</p>
           <button class="form-submit" type="submit">Rückruf anfordern →</button>
           <p class="cb-fineprint">Kein Spam · Antwort in 24 h · DSGVO-konform</p>
         </form>
@@ -1377,7 +1445,7 @@
         <div class="cb-success" id="cb-success" style="display:none;">
           <div class="cb-success-ic">✓</div>
           <h3 class="cb-success-h">Danke!</h3>
-          <p class="cb-success-t" id="cb-success-t">Wir rufen Sie an — meist noch heute.</p>
+          <p class="cb-success-t" id="cb-success-t">Wir rufen dich an, meist noch heute.</p>
         </div>
       </div>
     </div>
@@ -1385,17 +1453,19 @@
     <!-- Calendly (Zweitweg — versteckt bis zum Klick auf den Link, revealed via showCalendly()) -->
     <div class="calendly-container" id="calendly-container">
       <div class="calendly-header">
-        <div class="calendly-eyebrow">Wählen Sie Ihren Termin</div>
-        <h2 class="calendly-headline">Bereit. Lassen Sie uns sprechen.</h2>
+        <div class="calendly-eyebrow">Wähl deinen Termin</div>
+        <h2 class="calendly-headline">Bereit. Lass uns sprechen.</h2>
       </div>
       <div id="calendly-embed"></div>
     </div>
 
     <div class="funnel-booking-trust">
       <div class="funnel-booking-trust-item">Keine Verkaufsmasche</div>
-      <div class="funnel-booking-trust-item">Konkrete Antworten auf Ihre Situation</div>
-      <div class="funnel-booking-trust-item">Wenn es nicht passt, sagen wir's offen</div>
+      <div class="funnel-booking-trust-item">Konkrete Antworten auf deine Situation</div>
+      <div class="funnel-booking-trust-item">Wenn es nicht passt, sagen wir's dir offen</div>
     </div>
+
+    <p style="text-align:center; margin:26px auto 0; max-width:460px; font-size:14px; line-height:1.6; color:var(--fg-muted);">Du sprichst direkt mit Julius, dem Gründer. Kein Callcenter, kein Vertriebsskript.</p>
   </div>
 
   <style>
@@ -1436,6 +1506,7 @@
       if(!form) return;
       var timeBtns = [].slice.call(form.querySelectorAll('.cb-time'));
       var chosen = 'egal';
+      var submitting = false;
       timeBtns.forEach(function(b){ b.addEventListener('click', function(){
         timeBtns.forEach(function(x){ x.classList.remove('is-sel'); });
         b.classList.add('is-sel'); chosen = b.getAttribute('data-time');
@@ -1444,13 +1515,25 @@
       var errEl = document.getElementById('cb-error');
       form.addEventListener('submit', async function(e){
         e.preventDefault();
+        if(submitting) return;
+
+        // Honeypot angekreuzt = Bot: stilles Fake-„Danke", kein Versand, kein Tracking
+        var hp = document.getElementById('cb-botcheck');
+        if(hp && hp.checked){
+          form.style.display = 'none';
+          var altHp = document.getElementById('cb-show-calendly'); if(altHp) altHp.style.display = 'none';
+          document.getElementById('cb-success').style.display = 'block';
+          return;
+        }
+
         var name = (form.querySelector('[name="name"]').value || '').trim();
         var phoneRaw = (form.querySelector('[name="phone"]').value || '').trim();
-        if(name.length < 2 || phoneRaw.replace(/[^0-9+]/g,'').length < 6){
-          errEl.textContent = 'Bitte Name und eine gültige Telefonnummer angeben.';
+        if(name.length < 2 || phoneRaw.replace(/[^0-9+]/g,'').length < 9){
+          errEl.textContent = 'Bitte Name und vollständige Telefonnummer mit Vorwahl angeben.';
           errEl.style.display='block'; return;
         }
         errEl.style.display='none';
+        submitting = true;
         var btn = form.querySelector('.form-submit');
         var origLabel = btn.textContent;
         btn.disabled = true; btn.textContent = 'Wird gesendet…';
@@ -1492,7 +1575,7 @@
 
           // 3) Tracking
           window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ event:'callback_requested', call_time: chosen });
+          window.dataLayer.push({ event:'callback_requested', call_time: chosen, lead_name: name, lead_phone: phoneRaw });
           if(typeof fbq === 'function' && !window._nuroyLeadFired && !navigator.webdriver){
             window._nuroyLeadFired = true;
             fbq('track','Lead',{ content_name:'Callback Requested', content_category:'funnel_callback' });
@@ -1503,13 +1586,14 @@
           var alt = document.getElementById('cb-show-calendly'); if(alt) alt.style.display = 'none';
           var t = document.getElementById('cb-success-t');
           if(t) t.textContent = (chosen === 'egal')
-            ? 'Wir rufen Sie an — meist noch heute.'
-            : ('Wir rufen Sie am ' + chosen + ' an — meist noch heute.');
+            ? 'Wir rufen dich an, meist noch heute.'
+            : ('Wir rufen dich am ' + chosen + ' an, meist noch heute.');
           document.getElementById('cb-success').style.display = 'block';
         } catch(err){
           // Fehlschlag: kein falsches „Danke" — Button zurück + Hinweis
+          submitting = false;
           btn.disabled = false; btn.textContent = origLabel;
-          errEl.textContent = 'Senden fehlgeschlagen — bitte erneut versuchen.';
+          errEl.textContent = 'Senden fehlgeschlagen, bitte erneut versuchen.';
           errEl.style.display = 'block';
         }
       });
@@ -1546,7 +1630,7 @@
 <!-- ══════════════════════════════════════════════════════════ -->
 <div id="sticky-cta" class="sticky-cta">
   <div class="container">
-    <span class="sticky-cta-text">Bereit für Ihr Dashboard?</span>
+    <span class="sticky-cta-text">Bereit für deine Live-KPIs?</span>
     <a href="#booking" class="btn btn-primary">Termin buchen →</a>
   </div>
 </div>
@@ -1590,7 +1674,7 @@ function lpSubmitEmail(){
 <script src="dashboard-roi-counter.min.js?v=1.1" defer></script>
 
 <!-- Funnel Analytics -->
-<script src="../funnel/funnel-analytics.min.js?v=1.4" defer></script>
+<script src="../funnel/funnel-analytics.min.js?v=1.5" defer></script>
 
 </body>
 </html>

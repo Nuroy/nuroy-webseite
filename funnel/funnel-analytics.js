@@ -32,6 +32,10 @@
   var formSubmitted = false;
   var _sent = false;
   var _convSent = false;
+  // Lead-Daten (nur bei tatsächlichem Submit befüllt — via callback_requested-Event)
+  var leadName = '';
+  var leadPhone = '';
+  var leadCallTime = '';
 
   // ── Device / Browser / OS Erkennung ────────────────────────
   function detectDevice() {
@@ -180,6 +184,9 @@
       for (var i = 0; i < arguments.length; i++) {
         if (arguments[i] && (arguments[i].event === 'soft_no_form_submitted' || arguments[i].event === 'callback_requested')) {
           formSubmitted = true;
+          if (arguments[i].lead_name) leadName = arguments[i].lead_name;
+          if (arguments[i].lead_phone) leadPhone = arguments[i].lead_phone;
+          if (arguments[i].call_time) leadCallTime = arguments[i].call_time;
           sendConversion();
         }
       }
@@ -255,7 +262,10 @@
       form_submitted: formSubmitted ? 'ja' : 'nein',
       load_time: perf.load_time,
       ttfb: perf.ttfb,
-      lcp: lcpValue
+      lcp: lcpValue,
+      name: leadName,
+      phone: leadPhone,
+      call_time: leadCallTime
     };
   }
 
