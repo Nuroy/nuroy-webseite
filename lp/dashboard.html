@@ -1566,10 +1566,10 @@
             }
           } catch(err){}
 
-          // 2b) Cockpit-Lead-Webhook (best effort, via eigenen /api/lead-Proxy — Secret bleibt server-seitig)
+          // 2b) Telegram- & Cockpit-Webhook (best effort, via eigenen /api/lead-Proxy — Secrets bleiben server-seitig)
           try {
             fetch('/api/lead', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({
-              name: name, telefon: phoneRaw, email: '', anruf_zeit: chosen
+              name: name, telefon: phoneRaw, email: '', anruf_zeit: chosen, seite: window.location.pathname
             }) });
           } catch(err){}
 
@@ -1660,7 +1660,7 @@ function lpSubmitEmail(){
   if(typeof showCalendly==='function'){ showCalendly(); }
 }
 </script>
-<script src="../funnel/funnel-booking.min.js?v=1.5" defer></script>
+<script src="../funnel/funnel-booking.min.js?v=1.6" defer></script>
 
 <!-- Funnel Scripts (Trust-Bar-Animation, etc.) -->
 <script src="../funnel/funnel-scripts.min.js" defer></script>
