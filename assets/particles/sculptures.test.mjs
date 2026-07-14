@@ -8,6 +8,7 @@ import {
   speechBubbleShape,
   dbStackShape,
   compassShape,
+  brainShape,
   SCULPTURES,
   polylineCloud,
   segmentsCloud,
@@ -313,4 +314,30 @@ test('compassShape: Ring dominiert, Nadel zeigt nach Nordost', () => {
   }
   assert.ok(inZone >= 0.015 * N, `Nadel-Zone leer: ${inZone / N}`)
   assert.ok(ne / inZone >= 0.6, `Nadel zeigt nicht nach Nordost: ${ne / inZone}`)
+})
+
+// ---------------------------------------------------------------------------
+// 8) Gehirn (Team-Sektion, nicht in SCULPTURES)
+// ---------------------------------------------------------------------------
+
+test('brainShape: Seitenprofil aus 3D-Modell — begrenzt, flache Scheibe, Anatomie', () => {
+  const pts = brainShape(N, { size: S })
+  assert.equal(pts.length, N * 3)
+  const { xs, ys, zs } = cols(pts)
+  // grob zentriert und begrenzt (Template auf BBox-Radius 1, scale 0.62·S)
+  assert.ok(Math.abs(mean(xs)) <= 0.12 * S, `x-Schwerpunkt: ${mean(xs)}`)
+  assert.ok(Math.abs(mean(ys)) <= 0.12 * S, `y-Schwerpunkt: ${mean(ys)}`)
+  assert.ok(pct(xs.map(Math.abs), 0.995) <= 0.72 * S, 'x zu breit')
+  assert.ok(pct(ys.map(Math.abs), 0.995) <= 0.72 * S, 'y zu hoch')
+  // flache Scheibe: laterale Tiefe (z) deutlich schmaler als das Profil,
+  // aber mit echtem Volumen (Kopf ist schmaler als lang/hoch)
+  assert.ok(pct(zs.map(Math.abs), 0.995) <= 0.5 * S, `z zu dick: ${pct(zs.map(Math.abs), 0.995)}`)
+  assert.ok(pct(zs.map(Math.abs), 0.9) >= 0.03 * S, `z zu platt: ${pct(zs.map(Math.abs), 0.9)}`)
+  assert.ok(pct(zs.map(Math.abs), 0.99) < pct(xs.map(Math.abs), 0.99), 'z sollte schmaler als x sein')
+  // Hirnstamm: Punkte unterhalb des Großhirns (großes +y) existieren
+  const stem = frac(pts, (_x, y) => y >= 0.42 * S)
+  assert.ok(stem >= 0.005, `Hirnstamm fehlt: ${stem}`)
+  // Frontallappen links: die linke Profilhälfte ist besetzt
+  const front = frac(pts, (x) => x <= -0.3 * S)
+  assert.ok(front >= 0.05, `Frontallappen zu dünn: ${front}`)
 })

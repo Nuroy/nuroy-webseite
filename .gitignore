@@ -3,3 +3,12 @@
 
 # Playwright MCP Artefakte
 .playwright-mcp/
+
+# Rohmaterial mit Kunden-Echtdaten (unverpixelte Screenshots, interne Docs) — nie pushen
+assets/projekte/CUC/
+assets/projekte/VS Academy/
+assets/projekte/ecom wave/
+*.docx
+
+# Interner Verkaufs-Pitch
+pitch-nuroy.md

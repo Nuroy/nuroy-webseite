@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zeitstrahl-Prototyp — Nuroy Arbeiten</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    :root {
+      --pink: #FF2D7A;
+      --violet: #8B5CF6;
+      --fg: #f5f2ec;
+      --fg-muted: rgba(245, 242, 236, 0.65);
+    }
+    * { box-sizing: border-box; margin: 0; }
+    body {
+      background: #05050a;
+      color: var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      overflow-x: hidden;
+    }
+    #particles-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .particles-fallback #particles-bg {
+      background:
+        radial-gradient(ellipse 60% 40% at 50% 8%, rgba(255, 45, 122, 0.14), transparent 70%),
+        radial-gradient(ellipse 40% 60% at 50% 60%, rgba(139, 92, 246, 0.1), transparent 70%);
+    }
+    /* Seiten-Übergang: schlichter Standard-Crossfade der View-Transitions-API
+       (Browser ohne Support wechseln normal, reduced motion sofort) */
+    @view-transition { navigation: auto; }
+    @media (prefers-reduced-motion: reduce) {
+      ::view-transition-group(*),
+      ::view-transition-old(*),
+      ::view-transition-new(*) { animation: none !important; }
+    }
+
+    .eyebrow {
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 14px;
+    }
+
+    /* --- Ansicht-Umschalter oben: Zeitstrahl ↔ Galerie (immer sichtbar) --- */
+    .tl-switch {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      gap: 4px;
+      padding: 5px;
+      border: 1px solid rgba(245, 242, 236, 0.12);
+      border-radius: 999px;
+      background: rgba(12, 9, 16, 0.55);
+      -webkit-backdrop-filter: blur(12px) saturate(1.3);
+      backdrop-filter: blur(12px) saturate(1.3);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
+    }
+    .tl-switch button {
+      font-family: ui-monospace, monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      background: transparent;
+      border: none;
+      border-radius: 999px;
+      padding: 8px 18px;
+      cursor: pointer;
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+    .tl-switch button:hover { color: var(--fg); }
+    .tl-switch button.on {
+      color: var(--pink);
+      background: rgba(255, 45, 122, 0.12);
+    }
+    html.particles-fallback .tl-switch { display: none; }
+
+    /* --- Galerie-Ansicht: alle Projekte als ruhiges Grid --- */
+    .tl-galerie {
+      position: relative;
+      z-index: 1;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 13vh 24px 14vh;
+    }
+    .tl-galerie .eyebrow { text-align: center; }
+    .tl-galerie h1 {
+      text-align: center;
+      font-size: clamp(30px, 3.6vw, 52px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      margin-bottom: 48px;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9);
+    }
+    .gal-gruppe { margin-bottom: 64px; }
+    .gal-head {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+    .gal-head span {
+      font-family: ui-monospace, monospace;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--pink);
+      white-space: nowrap;
+    }
+    .gal-head::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255, 45, 122, 0.35), rgba(245, 242, 236, 0.06));
+    }
+    .gal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 22px;
+    }
+    .gc {
+      position: relative;
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      padding: 18px 20px;
+      border: 1px solid rgba(255, 45, 122, 0.3);
+      border-radius: 14px;
+      background: rgba(10, 9, 18, 0.85);
+      transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .gc:hover {
+      border-color: rgba(255, 45, 122, 0.65);
+      transform: translateY(-3px);
+      box-shadow: 0 0 42px rgba(255, 45, 122, 0.12);
+    }
+
+    /* --- Fahrt-Bühne: alles bildschirmfest, der Scroll treibt nur die Fahrt --- */
+    .stage {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Titel unten links wie der Template-Block, fadet beim ersten Scroll */
+    .tl-intro {
+      position: absolute;
+      left: 5vw;
+      bottom: 7vh;
+      max-width: 460px;
+    }
+    .tl-intro h1 {
+      font-size: clamp(30px, 3.6vw, 52px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9);
+    }
+    .tl-intro .sub { margin-top: 12px; color: var(--fg-muted); font-size: 15px; }
+
+    .tl-outro {
+      position: absolute;
+      left: 50%;
+      top: 34%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: min(760px, 92vw);
+      pointer-events: none;
+    }
+    .tl-outro .end-line {
+      font-size: clamp(34px, 4.6vw, 64px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 26px;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9);
+    }
+    .tl-outro.is-on { pointer-events: auto; }
+
+    .btn-ghost {
+      display: inline-block;
+      padding: 12px 24px;
+      border: 1px solid var(--pink);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--pink);
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+    .btn-ghost:hover { background: rgba(255, 45, 122, 0.1); }
+    .tl-back {
+      display: inline-block;
+      margin-top: 18px;
+      color: var(--fg-muted);
+      font-size: 14px;
+      text-decoration: none;
+    }
+    .tl-back:hover { color: var(--fg); }
+
+    /* Projekt-Karten: ALLE gleichzeitig sichtbar, jede an ihrem Meilenstein.
+       Position/Scale/Opacity kommen pro Frame aus JS (Tiefe der Fahrt). */
+    .tl-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 330px;
+      display: block;
+      padding: 18px 20px;
+      border: 1px solid rgba(255, 45, 122, 0.3);
+      border-radius: 14px;
+      /* opak genug, dass überlappende Nachbar-Karten nicht durchscheinen */
+      background: rgba(10, 9, 18, 0.92);
+      backdrop-filter: blur(3px);
+      text-decoration: none;
+      color: inherit;
+      transform-origin: top left;
+      will-change: transform, opacity;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .tl-card:hover { border-color: rgba(255, 45, 122, 0.65); }
+    .tl-card.is-active {
+      border-color: rgba(255, 45, 122, 0.6);
+      box-shadow: 0 0 42px rgba(255, 45, 122, 0.14), 0 0 90px rgba(139, 92, 246, 0.08);
+    }
+    .tl-year-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+    .tl-year {
+      display: block;
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--pink);
+    }
+    /* Produkt-Preview oben in der Karte (Landingpage-Ausschnitt) */
+    .tl-prev {
+      display: block;
+      height: 150px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      border: 1px solid rgba(245, 242, 236, 0.12);
+    }
+    .tl-prev img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      transition: filter 0.3s ease;
+    }
+    /* helle Screenshots strahlen sonst durch die gedimmten Hintergrund-Karten */
+    .tl-card:not(.is-active) .tl-prev img { filter: brightness(0.55); }
+    /* Kunden-Logo rechts neben der Jahreszahl (weiß gefiltert wie im Marquee) */
+    .tl-logo {
+      height: 26px;
+      width: auto;
+      margin-left: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.85;
+    }
+    .tl-kat {
+      font-family: ui-monospace, monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+    }
+    .tl-card h2,
+    .gc h2 {
+      font-size: 21px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin: 8px 0 5px;
+    }
+    .tl-card .tl-tagline,
+    .gc .tl-tagline {
+      font-size: 13px;
+      color: var(--fg-muted);
+      line-height: 1.5;
+      margin: 0 0 10px;
+    }
+    .tl-tags {
+      font-family: ui-monospace, monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--pink);
+    }
+    .tl-more {
+      display: block;
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--fg-muted);
+    }
+    .tl-card:hover .tl-more { color: var(--pink); }
+    /* Mobile: nicht-fokussierte Projekte zeigen nur ihren Jahres-Chip */
+    @media (max-width: 767px) {
+      .tl-card { width: 280px; }
+      .tl-card:not(.is-active) { padding: 10px 14px; }
+      .tl-card:not(.is-active) .tl-body { display: none; }
+      .tl-card:not(.is-active) .tl-year { font-size: 26px; margin: 0; }
+      .tl-card:not(.is-active) .tl-logo { height: 16px; }
+      .tl-card:not(.is-active) .tl-prev { display: none; }
+    }
+
+    /* Verbindungslinie Karte → Pin auf der Straße */
+    .tl-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      margin-left: -1px;
+      background: linear-gradient(to bottom, rgba(255, 45, 122, 0.05), rgba(255, 45, 122, 0.7));
+      will-change: transform, opacity;
+    }
+    .tl-dot {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 9px;
+      height: 9px;
+      margin: -4.5px 0 0 -4.5px;
+      border-radius: 50%;
+      background: #fff0f6;
+      box-shadow: 0 0 10px rgba(255, 45, 122, 0.9), 0 0 26px rgba(255, 45, 122, 0.5);
+      will-change: transform, opacity;
+    }
+
+    /* Zeitmarken auf der Straße: Jahre kräftig, Quartale dezent */
+    .tl-mark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-family: ui-monospace, monospace;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: rgba(245, 242, 236, 0.92);
+      transform-origin: left center;
+      will-change: transform, opacity;
+      pointer-events: none;
+      white-space: nowrap;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+    }
+    .tl-mark::before {
+      content: '';
+      display: inline-block;
+      width: 22px;
+      height: 2px;
+      background: currentColor;
+      vertical-align: middle;
+      margin-right: 10px;
+      opacity: 0.7;
+    }
+    .tl-mark--jahr {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--fg);
+    }
+
+    /* Fahrt-Fortschritt (dezent, rechts) */
+    .tl-progress {
+      position: absolute;
+      right: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--fg-muted);
+      writing-mode: vertical-rl;
+    }
+
+    /* --- Fallback ohne WebGL/Motion: schlichte Liste --- */
+    .tl-fallback { display: none; }
+    html.particles-fallback .stage { display: none; }
+    html.particles-fallback #scroll-space { display: none; }
+    html.particles-fallback .tl-fallback {
+      display: block;
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 12vh 24px 16vh;
+    }
+    .tl-fallback h1 {
+      font-size: clamp(34px, 4.6vw, 56px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 40px;
+    }
+    .tl-fallback a.fb-item {
+      display: block;
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(245, 242, 236, 0.12);
+      color: inherit;
+      text-decoration: none;
+    }
+    .tl-fallback a.fb-item:hover h2 { color: var(--pink); }
+    .tl-fallback .fb-item h2 { font-size: 22px; margin: 4px 0 6px; }
+    .tl-fallback .fb-item p { color: var(--fg-muted); font-size: 14px; line-height: 1.6; }
+  </style>
+</head>
+<body>
+<div id="particles-bg" aria-hidden="true"></div>
+
+<div class="tl-switch" id="tl-switch" hidden>
+  <button data-view="galerie" class="on">Galerie</button>
+  <button data-view="zeit">Zeitstrahl</button>
+</div>
+
+<section class="tl-galerie" id="tl-galerie" hidden>
+  <p class="eyebrow">Alle Projekte</p>
+  <h1>Die Galerie.</h1>
+  <div id="gal-inhalt"></div>
+</section>
+
+<div class="stage" id="stage">
+  <div class="tl-intro" id="tl-intro">
+    <p class="eyebrow">03 — Nuroy Zeitachse</p>
+    <h1>Die Straße<br>hinter uns.</h1>
+    <p class="sub">Scroll — und fahr unsere Projekte entlang. ↓</p>
+  </div>
+
+  <div class="tl-progress" id="tl-progress"></div>
+
+  <div class="tl-outro" id="tl-outro" style="opacity:0">
+    <p class="end-line">Und die Straße vor uns?</p>
+    <a class="btn-ghost" href="kontakt">Erstgespräch buchen</a>
+    <br>
+    <a class="tl-back" href="test-reaktor">← Zurück zur Hauptseite</a>
+  </div>
+</div>
+
+<div id="scroll-space" aria-hidden="true"></div>
+
+<div class="tl-fallback" id="tl-fallback"></div>
+
+<script type="speculationrules">
+  { "prefetch": [{ "urls": ["test-reaktor", "test-projekt"] }] }
+</script>
+<script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js" } }
+</script>
+<script type="module">
+  import { initStrasse } from './assets/particles/strasse.mjs'
+  import { sortiereProjekte, formatDatum } from './assets/projekte-daten.mjs'
+
+  const projekte = sortiereProjekte() // neuestes zuerst = Meilenstein 0 (vorne)
+  const N = projekte.length
+  const SEG_VH = 0.9 // Scroll-Strecke pro Meilenstein (Anteil Viewport-Höhe)
+  const OUTRO_SEG = 1.4 // zusätzliche Fahrt hinter dem letzten Projekt
+  const SHELF = [0.055, 0.34] // zwei Karten-Ebenen (Anteil vh) — gestaffelt wie im Template
+
+  const stage = document.getElementById('stage')
+  const intro = document.getElementById('tl-intro')
+  const outro = document.getElementById('tl-outro')
+  const progress = document.getElementById('tl-progress')
+  const space = document.getElementById('scroll-space')
+
+  // Fallback-Liste immer rendern (sichtbar nur mit html.particles-fallback)
+  document.getElementById('tl-fallback').innerHTML =
+    '<h1>Unsere Projekte.</h1>' +
+    projekte
+      .map(
+        (p) => `<a class="fb-item" href="test-projekt?p=${encodeURIComponent(p.id)}">
+          <span class="eyebrow">${p.kunde} · ${p.laufend ? 'in Arbeit' : formatDatum(p.datum)}</span>
+          <h2>${p.name}</h2><p>${p.tagline}</p></a>`
+      )
+      .join('')
+
+  // --- Pro Projekt ein festes Karten-/Linien-/Pin-Trio (alle gleichzeitig da)
+  // Karten-Vorschau: explizite preview, sonst das erste Galerie-Bild
+  const vorschau = (p) => p.preview || (p.bilder && p.bilder[0]) || null
+
+  const items = projekte.map((p, i) => {
+    const prev = vorschau(p)
+    const card = document.createElement('a')
+    card.className = 'tl-card'
+    card.href = `test-projekt?p=${encodeURIComponent(p.id)}`
+    card.innerHTML = `
+      ${prev ? `<span class="tl-prev"><img src="${prev}" alt="" loading="lazy"></span>` : ''}
+      <span class="tl-year-row"><span class="tl-year">${(p.datum || '').slice(0, 4)}</span>${p.logo ? `<img class="tl-logo" src="${p.logo}" alt="${p.kunde}">` : ''}</span>
+      <span class="tl-body">
+        <span class="tl-kat">${p.kunde} · ${p.laufend ? 'in Arbeit' : formatDatum(p.datum)}</span>
+        <h2>${p.name}</h2>
+        <p class="tl-tagline">${p.tagline}</p>
+        ${p.stack.length ? `<span class="tl-tags">${p.stack.join(' · ')}</span>` : ''}
+        <span class="tl-more">Projekt ansehen →</span>
+      </span>`
+    const line = document.createElement('div')
+    line.className = 'tl-line'
+    const dot = document.createElement('div')
+    dot.className = 'tl-dot'
+    stage.append(line, dot, card)
+    return { card, line, dot, shelf: SHELF[i % 2] }
+  })
+
+  // --- Zeitmarken: Jahres-/Quartalsgrenzen zwischen den Stationen
+  // interpolieren (Stationen sind gleichmäßig, die Zeit dazwischen nicht)
+  const toMon = (d) => {
+    const [y, m] = (d || '').split('-').map(Number)
+    return y * 12 + (m - 1)
+  }
+  const stationMon = projekte.map((p) => toMon(p.datum)) // absteigend
+  const marks = []
+  for (let m = Math.floor(stationMon[0] / 3) * 3; m >= stationMon[stationMon.length - 1]; m -= 3) {
+    let s = null
+    if (m >= stationMon[0]) s = 0
+    else {
+      for (let i = 0; i < stationMon.length - 1; i++) {
+        if (stationMon[i] >= m && m >= stationMon[i + 1]) {
+          const span = stationMon[i] - stationMon[i + 1] || 1
+          s = i + (stationMon[i] - m) / span
+          break
+        }
+      }
+    }
+    if (s === null) continue
+    const q = Math.floor((m % 12) / 3) + 1
+    const el = document.createElement('span')
+    el.className = 'tl-mark' + (q === 1 ? ' tl-mark--jahr' : '')
+    el.textContent = q === 1 ? String(Math.floor(m / 12)) : `Q${q}`
+    stage.appendChild(el)
+    marks.push({ s, el })
+  }
+
+  function spaceHeight() {
+    return ((N - 1 + OUTRO_SEG) * SEG_VH + 1) * innerHeight
+  }
+  space.style.height = `${spaceHeight()}px`
+  addEventListener('resize', () => {
+    space.style.height = `${spaceHeight()}px`
+  })
+
+  const clamp01 = (x) => Math.min(1, Math.max(0, x))
+  let activeIdx = -1
+
+  const strasse = initStrasse({
+    mount: document.getElementById('particles-bg'),
+    milestones: N,
+    onFrame({ travel, focus, milestones, project }) {
+      const vw = innerWidth
+      const vh = innerHeight
+      const introGate = clamp01(1 - travel / 0.25)
+      const outroGate = clamp01((travel - (N - 1) - 0.45) / 0.5)
+
+      // --- Zeitmarken an der Straße entlang (Jahr kräftig, Quartale dezent)
+      for (const mk of marks) {
+        const pt = project(mk.s)
+        const dcm = clamp01(pt.d)
+        const vis =
+          (0.3 + 0.7 * Math.pow(1 - dcm, 1.6)) *
+          clamp01((pt.d + 0.06) / 0.08) *
+          (1 - outroGate)
+        const fm = Math.min(Math.max(pt.f, 0.55), 1.2)
+        mk.el.style.transform = `translate3d(${(pt.x + 96 * fm).toFixed(1)}px, ${pt.y.toFixed(1)}px, 0) translateY(-50%) scale(${fm.toFixed(3)})`
+        mk.el.style.opacity = vis.toFixed(3)
+      }
+
+      // erst alle Layout-Reads, dann alle Writes (kein Thrash)
+      const heights = items.map((it) => it.card.offsetHeight)
+
+      for (const m of milestones) {
+        const it = items[m.index]
+        const isFocus = m.index === focus.index
+        const dc = clamp01(m.d)
+        // Tiefen-Fade: Hintergrund-Karten stark zurückgenommen — voll da ist
+        // nur der Fokus, alles andere bleibt Andeutung
+        let fade = (0.05 + 0.95 * Math.pow(1 - dc, 3.4)) * 0.62
+        if (isFocus) fade = Math.max(fade, 0.55 + 0.45 * focus.amt)
+        if (m.d < 0.02) fade *= clamp01((m.d + 0.06) / 0.08) // hinter der Kamera raus
+        const show = fade * (1 - outroGate)
+
+        const s = Math.min(Math.max(m.f, 0.42), 1.12)
+        const w = it.card.offsetWidth // unskaliert (CSS-Breite)
+        const left = Math.min(Math.max(m.x - (w * s) / 2, 8), vw - 8 - w * s)
+        const top = vh * it.shelf
+        const cardBottom = top + heights[m.index] * s
+
+        it.card.style.transform = `translate3d(${left.toFixed(1)}px, ${top.toFixed(1)}px, 0) scale(${s.toFixed(4)})`
+        it.card.style.opacity = show.toFixed(3)
+        it.card.style.pointerEvents = show > 0.35 ? 'auto' : 'none'
+        it.card.style.zIndex = String(100 + Math.round(m.f * 100))
+
+        it.line.style.transform = `translate3d(${m.x.toFixed(1)}px, ${cardBottom.toFixed(1)}px, 0)`
+        it.line.style.height = `${Math.max(m.y - cardBottom, 0).toFixed(1)}px`
+        it.line.style.opacity = (show * 0.85).toFixed(3)
+
+        it.dot.style.transform = `translate3d(${m.x.toFixed(1)}px, ${m.y.toFixed(1)}px, 0) scale(${(0.5 + 0.6 * s).toFixed(3)})`
+        it.dot.style.opacity = show.toFixed(3)
+
+        const nowActive = isFocus && focus.amt > 0.4
+        if (nowActive && activeIdx !== m.index) {
+          if (activeIdx >= 0) items[activeIdx].card.classList.remove('is-active')
+          it.card.classList.add('is-active')
+          activeIdx = m.index
+        }
+      }
+
+      intro.style.opacity = introGate.toFixed(3)
+      intro.style.pointerEvents = 'none'
+      outro.style.opacity = outroGate.toFixed(3)
+      outro.classList.toggle('is-on', outroGate > 0.5)
+      progress.textContent = `${String(Math.min(focus.index + 1, N)).padStart(2, '0')} / ${String(N).padStart(2, '0')}`
+      progress.style.opacity = ((1 - outroGate) * 0.8).toFixed(3)
+    },
+  })
+
+  if (strasse.mode === 'webgl') {
+    // --- Fahrt-Position merken: Wer in ein Projekt abbiegt und zurückkommt,
+    // steht sofort wieder an derselben Stelle der Straße (kein Anfahren).
+    history.scrollRestoration = 'manual'
+    const POS_KEY = 'nuroy-zeitachse-pos'
+    const GAL_POS_KEY = 'nuroy-zeitachse-galpos'
+    const VIEW_KEY = 'nuroy-zeitachse-view'
+    const galEl = document.getElementById('tl-galerie')
+    addEventListener('pagehide', () => {
+      try {
+        // je Ansicht die eigene Position merken — die gemerkte
+        // Zeitstrahl-Position gilt im Galerie-Modus weiter
+        if (galEl.hidden) sessionStorage.setItem(POS_KEY, String(Math.round(scrollY)))
+        else sessionStorage.setItem(GAL_POS_KEY, String(Math.round(scrollY)))
+      } catch {
+        /* private mode o.ä. — dann eben ohne Restore */
+      }
+    })
+    try {
+      const saved = Number(sessionStorage.getItem(POS_KEY) || 0)
+      if (saved > 0 && document.referrer.includes('test-projekt')) {
+        scrollTo(0, saved)
+        strasse.setTravelTarget(saved / (SEG_VH * innerHeight), true)
+      }
+    } catch {
+      /* siehe oben */
+    }
+
+    // im Galerie-Modus steuert der Scroll nur das Grid, nicht die Fahrt
+    const onScroll = () => {
+      if (galEl.hidden) strasse.setTravelTarget(scrollY / (SEG_VH * innerHeight))
+    }
+    addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+
+    // --- Ansicht-Umschalter: Zeitstrahl ↔ Galerie (sichtbar oben)
+    const switchEl = document.getElementById('tl-switch')
+    // Galerie gruppiert nach Quartal (laufende Projekte als eigene Gruppe oben)
+    const gruppeVon = (p) => {
+      if (p.laufend) return 'In Arbeit'
+      const [y, m] = (p.datum || '0-1').split('-').map(Number)
+      return `Q${Math.floor((m - 1) / 3) + 1} ${y}`
+    }
+    const gruppen = []
+    for (const p of projekte) {
+      const label = gruppeVon(p)
+      if (!gruppen.length || gruppen[gruppen.length - 1].label !== label) gruppen.push({ label, items: [] })
+      gruppen[gruppen.length - 1].items.push(p)
+    }
+    const gcCard = (p) => `
+        <a class="gc" href="test-projekt?p=${encodeURIComponent(p.id)}">
+          ${vorschau(p) ? `<span class="tl-prev"><img src="${vorschau(p)}" alt="" loading="lazy"></span>` : ''}
+          <span class="tl-year-row"><span class="tl-year">${(p.datum || '').slice(0, 4)}</span>${p.logo ? `<img class="tl-logo" src="${p.logo}" alt="${p.kunde}">` : ''}</span>
+          <span class="tl-kat">${p.kunde} · ${p.laufend ? 'in Arbeit' : formatDatum(p.datum)}</span>
+          <h2>${p.name}</h2>
+          <p class="tl-tagline">${p.tagline}</p>
+          ${p.stack.length ? `<span class="tl-tags">${p.stack.join(' · ')}</span>` : ''}
+        </a>`
+    document.getElementById('gal-inhalt').innerHTML = gruppen
+      .map(
+        (g) => `
+        <div class="gal-gruppe">
+          <div class="gal-head"><span>${g.label}</span></div>
+          <div class="gal-grid">${g.items.map(gcCard).join('')}</div>
+        </div>`
+      )
+      .join('')
+    switchEl.hidden = false
+
+    let zeitScroll = 0
+    function setView(v) {
+      const gal = v === 'galerie'
+      if (gal && galEl.hidden) zeitScroll = scrollY // Fahrt-Position parken
+      galEl.hidden = !gal
+      document.getElementById('stage').style.display = gal ? 'none' : ''
+      space.style.display = gal ? 'none' : ''
+      for (const b of switchEl.querySelectorAll('button')) b.classList.toggle('on', b.dataset.view === v)
+      scrollTo(0, gal ? 0 : zeitScroll)
+      if (!gal) strasse.setTravelTarget(zeitScroll / (SEG_VH * innerHeight), true)
+      try {
+        sessionStorage.setItem(VIEW_KEY, v)
+      } catch {
+        /* ok */
+      }
+    }
+    switchEl.addEventListener('click', (e) => {
+      const b = e.target.closest('button[data-view]')
+      if (b) setView(b.dataset.view)
+    })
+    // Galerie ist die Standard-Ansicht — der Zeitstrahl kommt nur wieder,
+    // wenn er in dieser Sitzung zuletzt bewusst gewählt war
+    let ansicht = 'galerie'
+    try {
+      if (sessionStorage.getItem(VIEW_KEY) === 'zeit') ansicht = 'zeit'
+    } catch {
+      /* ok */
+    }
+    zeitScroll = scrollY
+    setView(ansicht)
+    if (ansicht === 'galerie') {
+      try {
+        // Rückkehr von einer Detailseite: Galerie-Position wiederherstellen
+        const galPos = Number(sessionStorage.getItem(GAL_POS_KEY) || 0)
+        if (galPos > 0 && document.referrer.includes('test-projekt')) scrollTo(0, galPos)
+      } catch {
+        /* ok */
+      }
+    }
+  }
+</script>
+</body>
+</html>

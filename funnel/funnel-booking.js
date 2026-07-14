@@ -414,6 +414,16 @@ function initCalendlyEventListener() {
         console.log('✅ Meta Pixel Event gefeuert: Lead (Calendly-Buchung)');
       }
 
+      // Telegram-Ping via eigenen /api/lead-Proxy (keepalive: überlebt den /danke-Redirect)
+      try {
+        fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          keepalive: true,
+          body: JSON.stringify({ typ: 'calendly', seite: window.location.pathname })
+        });
+      } catch (err) { /* best effort */ }
+
       // Booking-Status in sessionStorage speichern
       saveAnswer(STORAGE_KEYS.BOOKING_CONFIRMED, 'true');
       saveAnswer(STORAGE_KEYS.BOOKING_EVENT, JSON.stringify(e.data.payload || {}));

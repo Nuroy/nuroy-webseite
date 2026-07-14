@@ -3,11 +3,16 @@
  * kippenden Ringen, glühendem Kern und Orbit-Staub im Hero. Beim ersten
  * Scroll kondensiert die Maschine an der ersten [data-station="logo"]-Sektion
  * zum Partikel-N; ab deren Mitte wird der Basis-Zustand unwiderruflich auf
- * einen organisch fließenden Partikel-Strom (flowWorld) umgeblendet, der
- * zwischen den Leistungs-Sektionen alternierend zur Seite der nächsten
- * Skulptur wandert und dort kondensiert (SCULPTURES aus sculptures.mjs).
- * Eine zweite logo-Station am Seitenende schließt die N-Klammer — es gibt
- * keine Finale-Sondermechanik mehr, Logo-Sektionen sind reguläre Stationen.
+ * einen organisch fließenden Partikel-Strom (flowWorld) umgeblendet.
+ *
+ * Strahl == Icon: Die Endpunkte jedes Fluss-Segments sind die Skulpturen
+ * selbst (aShapeFrom/aShapeTo, SCULPTURES aus sculptures.mjs). Jedes
+ * Partikel reist von seinem Punkt im alten Icon direkt zu seinem Punkt im
+ * nächsten — das Icon schmilzt vorwärts in den Strahl, und der Strahl wird
+ * am Ziel unmittelbar zum Icon; es gibt keinen separaten Kondensations-
+ * Schritt mehr. Nur das Logo-N läuft weiter über das uSculptMix-System
+ * (Maschine→N bzw. Strom→N am Seitenende); an Logo-Enden eines Segments
+ * steht statt einer Form eine kleine Blob-Wolke.
  *
  * Nutzung:
  *   <div id="particles-bg" aria-hidden="true"></div>  (CSS: position:fixed; inset:0; z-index:-1; pointer-events:none)
@@ -19,16 +24,20 @@
  */
 import * as THREE from 'three'
 import { starField, samplePointsFromAlpha, gaussian, randomAttrs } from './shapes.mjs'
-import { SCULPTURES } from './sculptures.mjs'
+import { SCULPTURES, brainShape } from './sculptures.mjs'
 
 const TAU = Math.PI * 2
 
-// Skulptur-Slot hinter den 7 Themen-Skulpturen: das N-Logo.
+// Skulptur-Slots hinter den 7 Themen-Skulpturen: N-Logo und Gehirn.
+// Alles ab LOGO_SLOT sind „Sculpt-Momente" (uSculptMix-System, zentriert,
+// kondensieren aus dem Basis-Zustand) statt Fluss-Endpunkte.
 const LOGO_SLOT = SCULPTURES.length
+const BRAIN_SLOT = LOGO_SLOT + 1
 
 /**
  * data-station-Namen → Skulptur-Slot. „logo" darf mehrfach vorkommen
- * (N-Sektion nach dem Hero + Schluss-Klammer vor dem CTA).
+ * (N-Sektion nach dem Hero + Schluss-Klammer vor dem CTA); „brain" ist
+ * die Team-Sektion („Das Gehirn hinter Nuroy") in Akt 2.
  */
 export const SLOT_BY_NAME = {
   dashboards: 0,
@@ -39,6 +48,7 @@ export const SLOT_BY_NAME = {
   datenintegration: 5,
   strategy: 6,
   logo: LOGO_SLOT,
+  brain: BRAIN_SLOT,
 }
 
 // Ring-Radius-Faktoren (außen → innen), relativ zu uMachineR
@@ -53,7 +63,15 @@ const IDLE = [0.05, -0.07, 0.09, -0.04, 0.06]
 // K = -60·ln(1-f) erhält exakt das Verhalten der früheren 60fps-Faktoren f.
 const K_SCROLL = 7.67 // f = 0.12 (Scroll-Glättung)
 const K_HEAT = 5.0 // f = 0.08 (Kern-Hitze)
-const K_MIX = 3.5 // langsameres Auflösen/Kondensieren der Skulpturen (User-Feedback)
+// Logo-N: 1-Pol-Tiefpass wie gehabt — reagiert ab dem ersten Scroll-Pixel
+// (bewusst KEIN Ease-in, die N-Auflösung ist mühsam scroll-gebunden getunt)
+const K_MIX_LOGO = 3.5
+
+// Fluss-Segment: Halte-Plateau an geformten Endpunkten (Anteil des Segment-
+// Fortschritts, in dem das Icon komplett steht — S klebt an 0 bzw. 1) und
+// Rest-Plateau an Blob-Enden (Logo/Seitenrand: kein Icon zu halten).
+const FLOW_HOLD = 0.22
+const FLOW_HOLD_BLOB = 0.02
 const K_FLARE_UP = 21.4 // f = 0.30 (Flare-Attack)
 const K_FLARE_DOWN = 3.71 // f = 0.06 (Flare-Decay)
 const K_PAN = 3.71 // f = 0.06 (Seiten-Schwenk / Skalierung)
@@ -121,7 +139,9 @@ attribute vec4 aSeed;   // [Größe, Phase, colorMix, Stagger] in [0,1]
 attribute float aRole;  // 0-4 = Ring-Index, 5 = Kern, 6 = Staub
 attribute float aAngle; // Basiswinkel auf dem Ring / Bahn / Kern-Azimut
 attribute float aRadius;// Ring: Tube-Jitter px | Kern: Radiusfaktor | Staub: Orbitradius-Faktor
-attribute vec3 aShape;  // Skulptur-Slot (View-Raum, y nach oben)
+attribute vec3 aShape;  // Skulptur-Slot des uSculptMix-Systems (Logo-N)
+attribute vec3 aShapeFrom; // Fluss: Form am Segment-Start (Icon oder Blob)
+attribute vec3 aShapeTo;   // Fluss: Form am Segment-Ziel (Icon oder Blob)
 
 uniform float uTime;
 uniform float uScrollSmooth;
@@ -141,9 +161,17 @@ uniform float uSculptSpin;  // Rotation der Skulptur um die eigene Y-Achse
 uniform vec2 uSculptCenter; // Skulptur-Zentrum in px (View-Raum)
 uniform float uFlowZone;     // 0 = Maschine ist Basis, 1 = Fluss-Strom ist Basis
 uniform float uFlowProgress; // Fortschritt des Stroms im aktuellen Segment (0..1)
-uniform float uFlowFromX;    // Strom-Start-x in px (View-Raum)
-uniform float uFlowToX;      // Strom-Ziel-x in px (View-Raum)
+uniform vec2 uFlowFromC;     // Zentrum der Start-Form in px (View-Raum)
+uniform vec2 uFlowToC;       // Zentrum der Ziel-Form in px (View-Raum)
+uniform float uFromSpin;     // Scroll-Rotation der Start-Form um Y
+uniform float uToSpin;       // Scroll-Rotation der Ziel-Form um Y
+uniform float uHoldFrom;     // Halte-Plateau am Segment-Start (Anteil 0..1)
+uniform float uHoldTo;       // Halte-Plateau am Segment-Ziel (Anteil 0..1)
 uniform float uViewportH;    // Viewport-Höhe in px (Amplituden des Stroms)
+uniform float uViewportW;    // Viewport-Breite in px (Ozean-Feld)
+uniform float uOceanZone;    // 0 = Strahl/Icons, 1 = Partikel-Meer (Akt 2)
+uniform float uOceanAmp;     // Wellen-Amplitude (1 normal, → 0.25 ruhige See)
+uniform float uWaterY;       // Wasserlinie in px (View-Raum, negativ = unten)
 
 varying float vAlpha;
 varying float vColorMix;
@@ -215,38 +243,86 @@ void main() {
 
   vec3 machineWorld = local * uScale + vec3(uCenter, 0.0);
 
-  // --- Fluss-Strom: chaotisches Gewusel, das als breiter Strom quer über
-  // den Schirm zur Seite der nächsten Station wandert. flowT streut per
-  // Partikel, damit der Strom Länge hat. Wichtig: bei uFlowProgress 0 sind
-  // ALLE Partikel bei from, bei 1 ALLE bei to — dadurch ist der Segment-
-  // Wechsel an der Stations-Mitte für jedes Partikel stetig (kein Teleport).
-  float flowT = clamp(uFlowProgress * 1.55 - aSeed.w * 0.55, 0.0, 1.0);
-  // Zeit-Drift ENTLANG des Pfads: der Strom fließt sichtbar, statt zu stehen
-  float s = smoothstep(0.0, 1.0, clamp(flowT + snoise(vec2(aSeed.w * 24.0, uTime * 0.35)) * 0.05, 0.0, 1.0));
-  float fx = mix(uFlowFromX, uFlowToX, s);
+  // --- Fluss-Strom: die Pfad-Endpunkte sind die Formen selbst. Jedes
+  // Partikel reist von seinem Punkt in aShapeFrom zu seinem Punkt in
+  // aShapeTo — der Strahl wird am Ziel DIREKT zum Icon (kein separates
+  // Ankommen + Verwandeln), und das alte Icon schmilzt vorwärts in den
+  // Strahl. uHoldFrom/uHoldTo halten die Icons um die Stationsmitte komplett
+  // geformt (S klebt an 0 bzw. 1); dadurch ist auch der Segment-Wechsel an
+  // der Stationsmitte exakt stetig: S=1 auf Form k+1 == S=0 auf Form k+1
+  // im Folgesegment (kein Teleport).
+  float span = max(1.0 - uHoldFrom - uHoldTo, 0.001);
+  float pe = clamp((uFlowProgress - uHoldFrom) / span, 0.0, 1.0);
+  // Staffelung: Partikel starten nacheinander (Strahl-Länge), alle sind bei
+  // pe=1 angekommen — das Icon baut sich aus dem Strahlkopf Stück für Stück
+  // auf und löst sich beim Verlassen Partikel für Partikel ab
+  float flowT = clamp(pe * 1.5 - aSeed.w * 0.5, 0.0, 1.0);
+  // Zeit-Drift ENTLANG des Pfads (Strom fließt sichtbar); an den Enden
+  // ausgeblendet, damit die stehenden Icons nicht wabern
+  float drift = snoise(vec2(aSeed.w * 24.0, uTime * 0.35)) * 0.05 * sin(flowT * 3.14159);
+  float s = smoothstep(0.0, 1.0, clamp(flowT + drift, 0.0, 1.0));
+  vec3 fromPos = rotY(uFromSpin) * aShapeFrom + vec3(uFlowFromC, 0.0);
+  vec3 toPos = rotY(uToSpin) * aShapeTo + vec3(uFlowToC, 0.0);
   // Mäander: geschwungener Fluss-Pfad statt gerader Linie. Die sin(s*PI)-
-  // Hüllkurve lässt beide Enden an den Icons zusammenlaufen, die Mitte
-  // schwingt weit aus — und die Phase wandert mit der Zeit (lebendiger Fluss).
+  // Hüllkurve lässt beide Enden exakt auf den Formen zusammenlaufen, die
+  // Mitte schwingt weit aus — die Phase wandert mit der Zeit (lebendig).
   float env = sin(s * 3.14159);
-  float meander = (sin(s * 3.6 + uFlowToX * 0.012 + uTime * 0.22)
+  float meander = (sin(s * 3.6 + uFlowToC.x * 0.012 + uTime * 0.22)
                  + 0.35 * sin(s * 8.0 - uTime * 0.35)) * uViewportH * 0.055 * env;
-  // schmaler Querschnitt (Band statt Block), zum Schwanz hin auffächernd
-  float cross = (aSeed.x - 0.5) * uViewportH * (0.05 + 0.08 * (1.0 - s));
-  vec3 flowWorld = vec3(
-    fx + snoise(vec2(aSeed.y * 40.0, uTime * 0.3)) * 30.0,
-    meander + cross + snoise(vec2(aSeed.z * 40.0, uTime * 0.35 + 7.0)) * 22.0,
-    (aSeed.z - 0.5) * 140.0 + snoise(vec2(aSeed.x * 30.0, uTime * 0.25)) * 24.0
-  );
+  // Quer-Streuung: bewusst schmal — die Bahnen tragen ohnehin schon den
+  // Querschnitt der Icons, mehr Streuung macht aus dem Strahl eine Wolke.
+  // An den Enden liegt jedes Partikel exakt auf seinem Form-Punkt.
+  float crossW = (aSeed.x - 0.5) * uViewportH * 0.06 * env;
+  vec3 flowWorld = mix(fromPos, toPos, s);
+  // Bündelung: in der Flugmitte zieht sich der Strahl auf ~40% des Icon-
+  // Querschnitts zur Pfad-Linie zusammen und fächert an beiden Enden in die
+  // Form auf — liest sich als gerichteter Strahl statt wandernder Wolke
+  vec3 lineP = vec3(mix(uFlowFromC, uFlowToC, s), 0.0);
+  flowWorld = mix(flowWorld, lineP, env * 0.6);
+  flowWorld.x += snoise(vec2(aSeed.y * 40.0, uTime * 0.3)) * 20.0 * env;
+  flowWorld.y += meander + crossW + snoise(vec2(aSeed.z * 40.0, uTime * 0.35 + 7.0)) * 16.0 * env;
+  flowWorld.z += ((aSeed.z - 0.5) * 110.0 + snoise(vec2(aSeed.x * 30.0, uTime * 0.25)) * 18.0) * env;
+
+  // --- Ozean (Akt 2): Partikel-Meer, Kamera knapp über dem Wasser. Tiefe
+  // aus dem Seed, nah dichter besetzt (pow) — die Perspektive der Kamera
+  // staucht die Ferne von selbst zum Horizont. Die Feld-Breite folgt dem
+  // Frustum der jeweiligen Tiefe, damit jede Ebene den Schirm füllt.
+  float dpt = pow(aSeed.y, 1.7);
+  float zO = mix(500.0, -1400.0, dpt);
+  float frw = (uCameraD - zO) / uCameraD;
+  float xO = (fract(aSeed.x * 13.73 + aSeed.z * 7.19) - 0.5) * uViewportW * 1.2 * frw;
+  // Wellen: zwei laufende Züge + Simplex-Ripple (ambient, zeitgetrieben);
+  // uOceanAmp beruhigt die See vor dem Finale
+  float wave = (sin(xO * 0.0045 + zO * 0.0035 + uTime * 0.9) * 14.0
+              + sin(xO * 0.011 - zO * 0.006 + uTime * 0.55) * 8.0
+              + snoise(vec2(xO * 0.008, zO * 0.008 + uTime * 0.18)) * 10.0) * uOceanAmp;
+  vec3 oceanWorld = vec3(xO, uWaterY + wave, zO);
 
   // --- Basis-Zustand: unterhalb der N-Sektion wird die Maschine unwider-
-  // ruflich gegen den Fluss-Strom getauscht; Skulpturen kondensieren aus
-  // dem jeweils aktiven Basis-Zustand (per-Partikel-Stagger wie gehabt).
+  // ruflich gegen den Fluss-Strom getauscht; nach der letzten Leistung
+  // regnet der Strahl gestaffelt ins Meer (leichter Durchhang beim Sinken).
+  // Skulpturen kondensieren aus dem jeweils aktiven Basis-Zustand — das
+  // End-N steigt dadurch automatisch aus dem Wasser.
   vec3 base = mix(machineWorld, flowWorld, uFlowZone);
-  // breite Staffelung: Partikel tröpfeln nacheinander in den Strom statt
-  // als Block zu springen (User-Feedback: Übergang war zu abrupt)
-  float m = smoothstep(aSeed.w * 0.55, aSeed.w * 0.55 + 0.45, uSculptMix);
+  float mo = smoothstep(aSeed.w * 0.6, aSeed.w * 0.6 + 0.4, uOceanZone);
+  base = mix(base, oceanWorld, mo);
+  base.y -= sin(mo * 3.14159) * (20.0 + aSeed.z * 40.0);
+  // Staffelung: Partikel tröpfeln nacheinander ein statt als Block zu
+  // springen; Fenster 0.55 (statt 0.45) — jedes Partikel ist länger
+  // unterwegs, niedrigere Spitzengeschwindigkeit, ruhigerer Aufbau
+  float m = smoothstep(aSeed.w * 0.45, aSeed.w * 0.45 + 0.55, uSculptMix);
   vec3 sculptWorld = rotY(uSculptSpin) * aShape + vec3(uSculptCenter, 0.0);
   vec3 world = mix(base, sculptWorld, m);
+  // Bogenflug statt Beeline: seitliche Auslenkung senkrecht zur Flugbahn,
+  // ∝ Flugdistanz, an beiden Enden null (sin-Hüllkurve), Richtung und
+  // Stärke aus dem Seed — Partikel schwenken in die Form ein statt
+  // geradlinig einzuschlagen
+  vec3 fvec = sculptWorld - base;
+  float fdist = length(fvec);
+  float fenv = sin(m * 3.14159);
+  vec2 fperp = vec2(-fvec.y, fvec.x) / max(fdist, 1.0);
+  world.xy += fperp * fenv * fdist * (aSeed.y - 0.5) * 0.5;
+  world.z += fenv * fdist * (aSeed.z - 0.5) * 0.25;
 
   // mildes organisches Wabern auf allen Rollen (±5px, staubiger Look)
   world.x += snoise(vec2(world.y * 0.004 + aSeed.y * 7.0, uTime * 0.08)) * 5.0;
@@ -256,8 +332,12 @@ void main() {
   vec4 mv = modelViewMatrix * vec4(world, 1.0);
   gl_Position = projectionMatrix * mv;
 
-  // --- Weißglut: Kern-Rolle + Stations-Flare + Skulptur-Highlights
-  float hot = uFlare * 0.6 + uSculptMix * aSeed.x * 0.35;
+  // --- Weißglut: Kern-Rolle + Stations-Flare + Skulptur-Highlights.
+  // Fluss-Icons funkeln, sobald das Partikel auf seinem Form-Punkt sitzt;
+  // im Meer funkeln die Wellenkämme.
+  float formed = uFlowZone * smoothstep(0.92, 1.0, s);
+  float crest = smoothstep(10.0, 24.0, wave) * mo;
+  float hot = uFlare * 0.6 + max(uSculptMix, formed) * aSeed.x * 0.35 + crest * 0.45;
   if (role == 5) hot += uCoreHeat;
   vHot = hot;
   vColorMix = aSeed.z;
@@ -270,7 +350,11 @@ void main() {
   gl_PointSize = size * uPixelRatio * (uCameraD / -mv.z);
 
   vAlpha = (0.3 + 0.7 * aSeed.x) * coreBoost * (1.0 + front * 0.25);
-  vAlpha *= exp(min(world.z, 0.0) * 0.002); // hinten liegende Punkte leicht dämpfen
+  // hinten liegende Punkte dämpfen — im Ozean deutlich schwächer, sonst
+  // wäre das ferne Wasser (z bis −1400) unsichtbar; Horizont blasst
+  // stattdessen sanft über die Tiefe aus
+  vAlpha *= exp(min(world.z, 0.0) * mix(0.002, 0.0005, mo));
+  vAlpha *= 1.0 - mo * dpt * 0.55;
 }
 `
 
@@ -373,67 +457,63 @@ function flipY(arr) {
 }
 
 /**
- * Pure pro-Frame-Logik für Stationen, Fluss-Zone und Skulptur-Slot — von
+ * Pure pro-Frame-Logik für Stationen, Fluss-Zone und Fluss-Segment — von
  * update() benutzt und ohne DOM/WebGL in Node testbar (Scroll-Simulationen).
  *
- * Slot-Wechsel per Drain-then-Fill: Zeigt der Slot nicht die gewünschte Form,
- * wird mixTarget hart auf 0 gezwungen (die alte Skulptur löst sich in den
- * Basis-Zustand auf); sobald sculptMix < 0.06 ist, wird geswappt und die neue
- * Form kondensiert. Das ist bei jeder Scroll-Geschwindigkeit korrekt — ein
- * Dauerscroll über mehrere Stationen kostet nur eine kurze Auflöse-Phase,
- * statt dauerhaft die falsche Skulptur zu zeigen.
+ * Das uSculptMix-System bedient die Sculpt-Momente — LOGO-Stationen und die
+ * Gehirn-Station der Team-Sektion (Maschine→N am
+ * Anfang, Strom→N am Ende) — die Leistungs-Icons entstehen seit dem
+ * Strahl-Umbau direkt aus den Fluss-Endpunkten (aShapeFrom/aShapeTo) und
+ * tauchen hier nur noch als Segment-Grenzen auf. Drain-then-Fill zwischen
+ * den beiden N-Stationen bleibt (gleicher Slot → nur der initiale Swap
+ * passiert wirklich). Das N folgt seinem Ziel per 1-Pol-Tiefpass
+ * (K_MIX_LOGO — reagiert ab dem ersten Scroll-Pixel, scroll-gebunden
+ * getunt, kein Ease-in).
  *
  * Fluss-Zone: 0 im Hero und bis zur Mitte der ersten logo-Station; danach
  * eased → 1 über ein Fenster von 0.7·vh. Rein positionsabhängig — rückwärts
- * scrollen bringt die Maschine wieder zurück. Zwischen Station k und k+1
- * wandert der Strom von side_k·vw·0.24 nach side_{k+1}·vw·0.24 (logo: 0).
+ * scrollen bringt die Maschine wieder zurück.
+ *
+ * Fluss-Segment: flowSeg = Index k der letzten Station mit Mitte über der
+ * Viewport-Mitte (-1 davor); der Strom läuft von Form k zu Form k+1,
+ * flowProgress ist der Scroll-Fortschritt dazwischen.
+ *
+ * Ozean (Akt 2): oceanZone rampt nach der letzten Leistungs-Station über
+ * 0.8·vh auf 1 (Strahl regnet ins Meer, rückwärts scrollen hebt es zurück);
+ * oceanCalm rampt vor der End-Logo-Station auf 1 (ruhige See fürs Finale).
  *
  * state: { currentShape, sculptMix }
- * env:   { stations: [{ y, slot, side }] (in Dokument-Reihenfolge, y aufsteigend),
- *          vh, vw, centerDoc, logoReady, eMix }
+ * env:   { stations: [{ y, h, slot, side }] (in Dokument-Reihenfolge, y aufsteigend),
+ *          vh, centerDoc, logoReady, dt }
  * → { active, aPrime, sculptMix, currentShape, swap (Slot oder -1),
- *     flowZone, flowProgress, flowFromX, flowToX }
+ *     flowZone, flowProgress, flowSeg, oceanZone, oceanCalm }
  */
-export function sculptStep({ currentShape, sculptMix }, { stations, vh, vw, centerDoc, logoReady, eMix }) {
-  // Stationen: Aktivierung über Abstand zur Viewport-Mitte
+export function sculptStep({ currentShape, sculptMix }, { stations, vh, centerDoc, logoReady, dt }) {
+  // Sculpt-Momente (Logo-N, Gehirn): Aktivierung asymmetrisch — FRÜH
+  // kondensieren (sobald die Sektions-Oberkante in den Viewport kommt),
+  // voll HALTEN solange der Text im Viewport ist, und erst lösen, wenn der
+  // Text oben rausgeht.
   let active = -1
   let aBest = 0
   for (let i = 0; i < stations.length; i++) {
     const st = stations[i]
-    let a
-    if (st.slot === LOGO_SLOT) {
-      // Logo-Sektionen asymmetrisch: FRÜH kondensieren (sobald die Sektions-
-      // Oberkante in den Viewport kommt), voll HALTEN solange der Text im
-      // Viewport ist, und erst lösen, wenn die Sektions-Unterkante oben
-      // rausgescrollt ist (User-Wunsch: N bleibt, bis der Text weg ist).
-      const h = st.h || 0
-      const top = st.y - h / 2
-      const bottom = st.y + h / 2
-      // Einstieg erst, wenn der Hero-Text oben rausgescrollt ist (textfreier
-      // Moment), und bewusst langsam über ~0.7 Viewport-Höhen aufbauend
-      const ain = smooth01(top + 0.15 * vh, top + 0.7 * vh, centerDoc)
-      // Auflösen: LINEAR und FRÜH — beginnt, sobald der Sektions-Text die
-      // Bildschirmmitte passiert (Text sitzt bei ~0.76vh der Sektion, plus
-      // halbe Texthöhe ≈ 0.85vh). Breites Fenster (0.9vh): scroll-gebunden,
-      // parken jederzeit möglich, kein Zeit-Weglaufen.
-      const aout = 1 - clamp((centerDoc - (top + 0.85 * vh)) / (0.9 * vh), 0, 1)
-      a = Math.min(ain, aout)
-    } else {
-      // engeres Fenster (0.32vh): Skulpturen kondensieren erst nah an der
-      // Sektionsmitte — dazwischen gehört die Bühne dem Fluss, und sie
-      // kapern nicht das noch schmelzende N der vorherigen Station
-      a = Math.max(0, 1 - Math.abs(centerDoc - st.y) / (vh * 0.32))
-    }
+    if (st.slot < LOGO_SLOT) continue
+    const top = st.y - (st.h || 0) / 2
+    // Einstieg erst, wenn der Hero-Text oben rausgescrollt ist (textfreier
+    // Moment), und bewusst langsam über ~0.7 Viewport-Höhen aufbauend
+    const ain = smooth01(top + 0.15 * vh, top + 0.7 * vh, centerDoc)
+    // Auflösen: LINEAR und FRÜH — beginnt, sobald der Sektions-Text die
+    // Bildschirmmitte passiert (Text sitzt bei ~0.76vh der Sektion, plus
+    // halbe Texthöhe ≈ 0.85vh). Breites Fenster (0.9vh): scroll-gebunden,
+    // parken jederzeit möglich, kein Zeit-Weglaufen.
+    const aout = 1 - clamp((centerDoc - (top + 0.85 * vh)) / (0.9 * vh), 0, 1)
+    const a = Math.min(ain, aout)
     if (a > aBest) {
       aBest = a
       active = i
     }
   }
-  // Rast-Easing: kleine „Einrast"-Delle, Aktivierung klebt an 0 und 1.
-  // NICHT für Logo-Stationen: deren asymmetrische Rampe soll 1:1 durchschlagen
-  // (Rast + Sättigung würden den Auflöse-Start sichtbar verschleppen).
-  const activeIsLogo = active >= 0 && stations[active].slot === LOGO_SLOT
-  const aPrime = activeIsLogo ? aBest : clamp(aBest - Math.sin(TAU * aBest) * 0.1, 0, 1)
+  const aPrime = aBest
 
   // --- Fluss-Zone: ab der Mitte der ersten logo-Station eased → 1
   let flowZone = 0
@@ -445,37 +525,40 @@ export function sculptStep({ currentShape, sculptMix }, { stations, vh, vw, cent
   }
 
   // --- Fluss-Segment: letzte Station mit Mitte über der Viewport-Mitte = k,
-  // Strom wandert von side_k zu side_{k+1}. Vor der ersten Station: from = 0;
-  // nach der letzten: to = 0 (Strom zieht zurück in die Mitte).
-  const amp = vw * 0.24
+  // der Strom läuft von Form k zu Form k+1. Nach der letzten Station läuft
+  // der Fortschritt über eine Viewport-Höhe aus.
   let k = -1
   for (let i = 0; i < stations.length; i++) if (stations[i].y <= centerDoc) k = i
   let flowProgress = 0
-  let flowFromX = 0
-  let flowToX = 0
-  if (k === -1) {
-    flowToX = stations.length > 0 ? stations[0].side * amp : 0
-  } else if (k === stations.length - 1) {
-    flowFromX = stations[k].side * amp
-    flowProgress = clamp((centerDoc - stations[k].y) / Math.max(vh, 1), 0, 1)
-  } else {
-    flowFromX = stations[k].side * amp
-    flowToX = stations[k + 1].side * amp
-    flowProgress = clamp((centerDoc - stations[k].y) / Math.max(stations[k + 1].y - stations[k].y, 1e-6), 0, 1)
+  if (k >= 0) {
+    const span = k === stations.length - 1 ? Math.max(vh, 1) : Math.max(stations[k + 1].y - stations[k].y, 1e-6)
+    flowProgress = clamp((centerDoc - stations[k].y) / span, 0, 1)
   }
 
-  // Gewünschter Slot = Slot der aktiven Station. Logo-Stationen kondensieren
-  // nur mit wirklich geladenem Logo — sonst bliebe der Slot bei Nullen und
-  // 26k additive Partikel würden zu einem gleißenden Punkt kondensieren;
-  // ohne Logo läuft der Fluss einfach durch die Sektion durch.
-  const activeSlot = active >= 0 ? stations[active].slot : -1
-  const gated = activeSlot === LOGO_SLOT && !logoReady
-  const desired = active >= 0 && !gated ? activeSlot : -1
+  // --- Ozean-Zone: nach der letzten Leistungs-Station sinkt der Strahl ins
+  // Meer; vor der End-Logo-Station beruhigt sich die See (calm), damit das
+  // N aus glattem Wasser steigen kann. Beides rein positionsabhängig.
+  let lastIcon = null
+  let endLogo = null
+  for (let i = 0; i < stations.length; i++) {
+    if (stations[i].slot === LOGO_SLOT) endLogo = stations[i]
+    else if (stations[i].slot < LOGO_SLOT) lastIcon = stations[i] // Gehirn zählt nicht
+  }
+  const oceanZone = lastIcon ? smooth01(lastIcon.y + 0.35 * vh, lastIcon.y + 1.15 * vh, centerDoc) : 0
+  const oceanCalm = endLogo
+    ? smooth01(endLogo.y - (endLogo.h || 0) / 2 - 1.6 * vh, endLogo.y - (endLogo.h || 0) / 2 - 0.3 * vh, centerDoc)
+    : 0
 
-  // Leistungen: breites Fenster (0.08–0.9) für gemächliches Kondensieren.
-  // Logo: Rampe DIREKT als Ziel — die Auflösung startet ohne Totzone genau
+  // Gewünschter Slot = Slot des aktiven Sculpt-Moments (Logo oder Gehirn).
+  // Das N kondensiert nur mit wirklich geladenem Logo — sonst bliebe der
+  // Slot bei Nullen und 26k additive Partikel würden zu einem gleißenden
+  // Punkt kondensieren; ohne Logo läuft der Fluss einfach durch.
+  const activeSlot = active >= 0 ? stations[active].slot : -1
+  const desired = activeSlot < 0 || (activeSlot === LOGO_SLOT && !logoReady) ? -1 : activeSlot
+
+  // Rampe DIREKT als Ziel — die Auflösung startet ohne Totzone genau
   // dort, wo der Text oben rauszugehen beginnt, und folgt dem Scroll 1:1.
-  let mixTarget = desired >= 0 ? (activeIsLogo ? aPrime : smooth01(0.08, 0.9, aPrime)) : 0
+  let mixTarget = desired >= 0 ? aPrime : 0
 
   let swap = -1
   if (desired >= 0 && desired !== currentShape) {
@@ -486,9 +569,9 @@ export function sculptStep({ currentShape, sculptMix }, { stations, vh, vw, cent
       mixTarget = 0 // Drain: erst auflösen, geswappt wird beim nächsten Unterschreiten
     }
   }
-  sculptMix += (mixTarget - sculptMix) * eMix
+  sculptMix += (mixTarget - sculptMix) * (1 - Math.exp(-K_MIX_LOGO * dt))
 
-  return { active, aPrime, sculptMix, currentShape, swap, flowZone, flowProgress, flowFromX, flowToX }
+  return { active, aPrime, sculptMix, currentShape, swap, flowZone, flowProgress, flowSeg: k, oceanZone, oceanCalm }
 }
 
 export function initReactor(opts = {}) {
@@ -564,8 +647,16 @@ export function initReactor(opts = {}) {
     uSculptCenter: { value: new THREE.Vector2(0, 0) },
     uFlowZone: { value: 0 },
     uFlowProgress: { value: 0 },
-    uFlowFromX: { value: 0 },
-    uFlowToX: { value: 0 },
+    uOceanZone: { value: 0 },
+    uOceanAmp: { value: 1 },
+    uWaterY: { value: -0.28 * innerHeight },
+    uViewportW: { value: innerWidth },
+    uFlowFromC: { value: new THREE.Vector2(0, 0) },
+    uFlowToC: { value: new THREE.Vector2(0, 0) },
+    uFromSpin: { value: 0 },
+    uToSpin: { value: 0 },
+    uHoldFrom: { value: FLOW_HOLD_BLOB },
+    uHoldTo: { value: FLOW_HOLD_BLOB },
     uViewportH: { value: innerHeight },
     uColorA: { value: new THREE.Color(colorA).convertLinearToSRGB() },
     uColorB: { value: new THREE.Color(colorB).convertLinearToSRGB() },
@@ -613,6 +704,10 @@ export function initReactor(opts = {}) {
   geometry.setAttribute('aRadius', new THREE.BufferAttribute(radiusArr, 1))
   const aShapeAttr = new THREE.BufferAttribute(new Float32Array(count * 3), 3)
   geometry.setAttribute('aShape', aShapeAttr)
+  const aShapeFromAttr = new THREE.BufferAttribute(new Float32Array(count * 3), 3)
+  geometry.setAttribute('aShapeFrom', aShapeFromAttr)
+  const aShapeToAttr = new THREE.BufferAttribute(new Float32Array(count * 3), 3)
+  geometry.setAttribute('aShapeTo', aShapeToAttr)
 
   // --- Stationen: pro data-station-Element { y: Dokument-Mitte, slot, side }.
   // side: logo-Stationen 0 (zentriert), Leistungen alternierend — NUR über
@@ -632,7 +727,9 @@ export function initReactor(opts = {}) {
       }
       const r = el.getBoundingClientRect()
       let side = 0
-      if (slot !== LOGO_SLOT) {
+      if (slot < LOGO_SLOT) {
+        // nur echte Leistungs-Stationen alternieren; Sculpt-Momente
+        // (Logo/Gehirn) stehen zentriert
         side = leistung % 2 === 0 ? 1 : -1
         leistung++
       }
@@ -659,15 +756,41 @@ export function initReactor(opts = {}) {
     return flipY(samplePointsFromAlpha(logoData, count, { targetWidth: sculptSize() * 0.85 }))
   }
 
+  // Blob-Wolke als Endpunkt-Form für Logo-Enden und Segment-Ränder: dort
+  // hält der Fluss kein Icon, darf aber auch nicht auf einen gleißenden
+  // Punkt kollabieren.
+  function buildBlob() {
+    const arr = new Float32Array(count * 3)
+    const r = Math.min(innerWidth, innerHeight) * 0.05
+    for (let i = 0; i < count; i++) {
+      arr[i * 3] = gaussian() * r
+      arr[i * 3 + 1] = gaussian() * r
+      arr[i * 3 + 2] = gaussian() * r * 0.8
+    }
+    return arr
+  }
+  let blob = null
+  let flowSegDirty = true // Fluss-Endpunkte beim nächsten Frame neu spiegeln
+
   function buildShapes() {
     const size = sculptSize()
     shapes = SCULPTURES.map((fn) => flipY(fn(count, { size })))
     shapes.push(buildLogoShape())
+    shapes.push(flipY(brainShape(count, { size: size * 0.95 }))) // BRAIN_SLOT
+    blob = buildBlob()
     // Nach Resize liegt die aktuelle Form in neuer Größe vor → Slot auffrischen
     if (currentShape >= 0) {
       aShapeAttr.array.set(shapes[currentShape])
       aShapeAttr.needsUpdate = true
     }
+    flowSegDirty = true
+  }
+
+  /** Endpunkt-Form eines Fluss-Segments: Icon der Station oder Blob
+   *  (Sculpt-Momente wie Logo/Gehirn laufen über das uSculptMix-System). */
+  function endpointShape(station) {
+    if (!station || station.slot >= LOGO_SLOT) return blob
+    return shapes[station.slot]
   }
 
   measureDoc()
@@ -716,6 +839,7 @@ export function initReactor(opts = {}) {
   let heat = 0 // Kern-Hitze aus Scroll-Geschwindigkeit
   let flare = 0 // Stations-Aufflammen
   let sculptMix = 0
+  let curSeg = -2 // aktuell in den Attributen gespiegeltes Fluss-Segment
   let sculptAnchor = 0 // Dokument-y, relativ zu dem die Skulptur rotiert
   let anchorStation = null // Station, deren Skulptur gerade angezeigt wird
 
@@ -739,7 +863,7 @@ export function initReactor(opts = {}) {
     // --- Stationen, Fluss-Zone und Skulptur-Slot (pure Frame-Logik, s. sculptStep)
     const st = sculptStep(
       { currentShape, sculptMix },
-      { stations, vh, vw, centerDoc, logoReady, eMix: ease(K_MIX) }
+      { stations, vh, centerDoc, logoReady, dt }
     )
     if (st.swap >= 0) {
       aShapeAttr.array.set(shapes[st.swap])
@@ -750,8 +874,34 @@ export function initReactor(opts = {}) {
     uniforms.uSculptMix.value = sculptMix
     uniforms.uFlowZone.value = st.flowZone
     uniforms.uFlowProgress.value = st.flowProgress
-    uniforms.uFlowFromX.value = st.flowFromX
-    uniforms.uFlowToX.value = st.flowToX
+    uniforms.uOceanZone.value = st.oceanZone
+    uniforms.uOceanAmp.value = 1 - 0.75 * st.oceanCalm
+
+    // --- Fluss-Endpunkte: Formen, Zentren und Halte-Plateaus des aktuellen
+    // Segments in Attribute/Uniforms spiegeln — nur bei Segmentwechsel oder
+    // nach Resize (der Upload von 2× count Vertices ist nichts für jeden
+    // Frame). Am Wechselpunkt ist die Position stetig: die Ziel-Form des
+    // alten Segments wird zur Start-Form des neuen.
+    const seg = st.flowSeg
+    if (seg !== curSeg || flowSegDirty) {
+      curSeg = seg
+      flowSegDirty = false
+      const fromSt = seg >= 0 ? stations[seg] : null
+      const toSt = seg + 1 < stations.length ? stations[seg + 1] : null
+      aShapeFromAttr.array.set(endpointShape(fromSt))
+      aShapeFromAttr.needsUpdate = true
+      aShapeToAttr.array.set(endpointShape(toSt))
+      aShapeToAttr.needsUpdate = true
+      uniforms.uFlowFromC.value.set(fromSt ? fromSt.side * vw * 0.24 : 0, 0)
+      uniforms.uFlowToC.value.set(toSt ? toSt.side * vw * 0.24 : 0, 0)
+      uniforms.uHoldFrom.value = fromSt && fromSt.slot !== LOGO_SLOT ? FLOW_HOLD : FLOW_HOLD_BLOB
+      uniforms.uHoldTo.value = toSt && toSt.slot !== LOGO_SLOT ? FLOW_HOLD : FLOW_HOLD_BLOB
+    }
+    // Scroll-Rotation der Endpunkt-Icons (gleiche Rate wie früher die
+    // uSculptSpin-Skulpturen): steht aufrecht genau an der Stationsmitte
+    uniforms.uFromSpin.value = seg >= 0 ? (centerDoc - stations[seg].y) * 0.004 : 0
+    uniforms.uToSpin.value = seg + 1 < stations.length ? (centerDoc - stations[seg + 1].y) * 0.004 : 0
+
     const active = st.active
     const aPrime = st.aPrime
     const activeStation = active >= 0 ? stations[active] : null
@@ -762,18 +912,20 @@ export function initReactor(opts = {}) {
     // halb aufgelöste Wolke beim Stationswechsel schlagartig um ("springt").
     // Der Anker wechselt erst nach dem Slot-Swap (sculptMix ≈ 0, unsichtbar).
     if (activeStation && activeStation.slot === currentShape) anchorStation = activeStation
-    const isLogoDisplayed = anchorStation !== null && anchorStation.slot === LOGO_SLOT
+    // Sculpt-Momente (Logo-N, Gehirn): zentriert, leicht erhöht, gedrosselter Spin
+    const isMomentDisplayed = anchorStation !== null && anchorStation.slot >= LOGO_SLOT
     if (anchorStation) sculptAnchor = anchorStation.y
 
-    // kurzes Aufflammen beim Einrasten (a' > 0.75): schnell auf, langsam ab
-    const flareTarget = Math.max(0, aPrime - 0.75) * 4
+    // Aufflammen erst, wenn die Form wirklich steht (sculptMix statt aPrime:
+    // kein Blitz mehr auf halb geformte Wolken beim schnellen Durchscrollen)
+    const flareTarget = Math.max(0, sculptMix - 0.8) * 5
     flare += (flareTarget - flare) * ease(flareTarget > flare ? K_FLARE_UP : K_FLARE_DOWN)
     uniforms.uFlare.value = flare
 
     // --- Skulptur-Rotation: dreht mit dem Scroll um die eigene Y-Achse;
     // Logo leicht gedrosselt (steht frontal am Text-Moment der Sektionsmitte).
     let spinTarget = (centerDoc - sculptAnchor) * 0.004
-    if (isLogoDisplayed) spinTarget *= 0.6
+    if (isMomentDisplayed) spinTarget *= 0.6
     uniforms.uSculptSpin.value += (spinTarget - uniforms.uSculptSpin.value) * ePan
 
     // --- Maschinen-CPU-Arbeit nur solange die Maschine sichtbar ist; im
@@ -787,7 +939,9 @@ export function initReactor(opts = {}) {
       // (Logo-Slot = frontal genestete Ringe, POSES[8])
       const machineR = uniforms.uMachineR.value
       const hero = POSES[0]
-      const pose = activeStation ? POSES[1 + activeStation.slot] : null
+      // Slots oberhalb des Logos (Gehirn) teilen sich dessen Pose — die
+      // Maschine ist dort ohnehin längst unsichtbar (Fluss-/Ozean-Zone)
+      const pose = activeStation ? POSES[1 + Math.min(activeStation.slot, LOGO_SLOT)] : null
       const tiltX = uniforms.uTiltX.value
       const tiltZ = uniforms.uTiltZ.value
       const ringR = uniforms.uRingR.value
@@ -812,7 +966,9 @@ export function initReactor(opts = {}) {
     // Raum: +y = oben), damit unter dem N Platz für den Text bleibt.
     const panStation = anchorStation || activeStation
     const targetX = panStation ? panStation.side * vw * 0.24 : 0
-    const targetY = isLogoDisplayed ? vh * 0.1 : 0
+    // Gehirn höher als das N (größere Skulptur, Text + Gründer darunter)
+    const momentLift = anchorStation && anchorStation.slot === BRAIN_SLOT ? 0.16 : 0.1
+    const targetY = isMomentDisplayed ? vh * momentLift : 0
     uniforms.uCenter.value.x += (targetX - uniforms.uCenter.value.x) * ePan
     uniforms.uSculptCenter.value.x += (targetX - uniforms.uSculptCenter.value.x) * ePan
     uniforms.uSculptCenter.value.y += (targetY - uniforms.uSculptCenter.value.y) * ePan
@@ -864,6 +1020,8 @@ export function initReactor(opts = {}) {
       uniforms.uCameraD.value = cameraD
       uniforms.uMachineR.value = machineRadius()
       uniforms.uViewportH.value = innerHeight
+      uniforms.uViewportW.value = innerWidth
+      uniforms.uWaterY.value = -0.28 * innerHeight
       measureDoc()
       buildShapes()
     }, 250)

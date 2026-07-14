@@ -30,6 +30,14 @@
         radial-gradient(ellipse 60% 40% at 50% 8%, rgba(255, 45, 122, 0.14), transparent 70%),
         radial-gradient(ellipse 40% 60% at 50% 60%, rgba(139, 92, 246, 0.1), transparent 70%);
     }
+    /* Seiten-Übergang: schlichter Standard-Crossfade der View-Transitions-API
+       (Browser ohne Support wechseln normal, reduced motion sofort) */
+    @view-transition { navigation: auto; }
+    @media (prefers-reduced-motion: reduce) {
+      ::view-transition-group(*),
+      ::view-transition-old(*),
+      ::view-transition-new(*) { animation: none !important; }
+    }
     .hero {
       min-height: 100vh;
       display: grid;
@@ -119,16 +127,166 @@
       transition: background 0.2s ease;
     }
     .btn-ghost:hover { background: rgba(255, 45, 122, 0.1); }
+
+    /* --- Akt 2: Beweis-Sektionen über dem Partikel-Meer --- */
+    .act2 { padding: 22vh 6vw; position: relative; }
+    .act2-inner { max-width: 1000px; margin: 0 auto; }
+    .act2 h2 {
+      font-size: clamp(30px, 3.2vw, 48px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.08;
+      margin-top: 10px;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9), 0 1px 6px rgba(0, 0, 0, 0.8);
+    }
+    .act2 h3 {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+    }
+    .act2 p { text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9); }
+
+    .logo-marquee {
+      overflow: hidden;
+      margin-top: 48px;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    }
+    .logo-track {
+      display: flex;
+      align-items: center;
+      gap: 64px;
+      width: max-content;
+      animation: logo-marquee 30s linear infinite;
+    }
+    .logo-track img { display: block; width: auto; opacity: 0.8; filter: brightness(0) invert(1); }
+    @keyframes logo-marquee { to { transform: translateX(-50%); } }
+
+    .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 56px; }
+    @media (max-width: 640px) { .work-grid { grid-template-columns: 1fr; } }
+    .work-item { display: block; text-decoration: none; color: inherit; padding: 28px; border: 1px solid rgba(245, 242, 236, 0.10); border-radius: 16px; background: rgba(245, 242, 236, 0.015); transition: border-color .25s ease, background .25s ease, transform .25s ease; }
+    .work-item:hover { border-color: rgba(255, 45, 122, 0.45); background: rgba(255, 45, 122, 0.04); transform: translateY(-3px); }
+    .work-icon { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: 1px solid rgba(245, 242, 236, 0.14); border-radius: 12px; margin-bottom: 20px; color: var(--fg); transition: border-color .25s ease, color .25s ease; }
+    .work-item:hover .work-icon { border-color: rgba(255, 45, 122, 0.5); color: var(--pink); }
+    .work-icon svg { width: 24px; height: 24px; display: block; }
+    .work-icon--brand svg { width: 25px; height: 28px; }
+    .work-item h3 { margin: 0 0 6px; }
+    .work-item p { font-size: 15px; color: var(--fg-muted); line-height: 1.65; margin: 0 0 14px; }
+    .work-tags { font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--pink); }
+
+    .process-section { padding-left: 3vw; padding-right: 3vw; overflow: hidden; }
+    .process-section .act2-inner { max-width: 1200px; position: relative; z-index: 1; }
+    .process-grid { display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 56px; }
+    .process-grid > div { position: relative; padding: 0 20px; border-left: 1px solid rgba(245, 242, 236, 0.10); }
+    .process-grid > div:first-child { border-left: none; padding-left: 0; }
+    .process-grid > div:last-child { padding-right: 0; }
+    .process-num { display: block; font-family: ui-monospace, monospace; font-size: 54px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: rgba(255, 45, 122, 0.22); margin-bottom: 6px; }
+    .process-grid h3 { margin: 4px 0 10px; }
+    .process-grid p { font-size: 14px; color: var(--fg-muted); line-height: 1.65; }
+    @media (max-width: 1080px) {
+      .process-grid { grid-template-columns: 1fr; }
+      .process-grid > div { border-left: none; padding: 26px 0 0; border-top: 1px solid rgba(245, 242, 236, 0.10); }
+      .process-grid > div:first-child { border-top: none; padding-top: 0; }
+      .process-num { font-size: 44px; }
+    }
+
+    /* Team = Sculpt-Moment wie die N-Sektionen: Gehirn kondensiert oben,
+       Text sitzt im unteren Sektionsdrittel */
+    .team-moment {
+      min-height: 155vh;
+      padding: 76vh 6vw 0;
+      text-align: center;
+    }
+    .team-moment .act2-inner { max-width: 1000px; }
+    .team-moment h2 {
+      font-size: clamp(30px, 3.2vw, 48px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.08;
+      margin-top: 10px;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9), 0 1px 6px rgba(0, 0, 0, 0.8);
+    }
+    .team-moment h3 {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+    }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 48px; margin-top: 56px; text-align: left; }
+    .team-role { font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.06em; color: var(--pink); margin: 6px 0 10px; }
+    .team-grid p { font-size: 14px; color: var(--fg-muted); line-height: 1.65; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9); }
+
+    .faq-list { max-width: 720px; margin: 40px auto 0; text-align: left; }
+    .faq-list details { border-bottom: 1px solid rgba(245, 242, 236, 0.12); padding: 18px 0; }
+    .faq-list summary {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+      list-style: none;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+    }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list details p { margin-top: 10px; font-size: 14px; color: var(--fg-muted); line-height: 1.65; }
+
+    /* --- Footer --- */
+    .site-footer-r { position: relative; z-index: 1; margin-top: 10vh; padding: 80px 6vw 40px; border-top: 1px solid rgba(245, 242, 236, 0.10); background: linear-gradient(180deg, transparent 0%, rgba(5, 5, 10, 0.85) 22%, #05050a 60%); }
+    .footer-r-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.3fr 2fr; gap: 48px; }
+    .footer-r-logo { height: 30px; width: auto; display: block; margin-bottom: 18px; }
+    .footer-r-tagline { max-width: 320px; color: var(--fg-muted); font-size: 14px; line-height: 1.6; }
+    .footer-r-meta { margin-top: 14px; font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.06em; color: rgba(245, 242, 236, 0.4); }
+    .footer-r-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .footer-r-label { font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pink); margin-bottom: 14px; }
+    .footer-r-col a { display: block; color: var(--fg-muted); text-decoration: none; font-size: 14px; line-height: 1; padding: 7px 0; transition: color 0.2s ease; }
+    .footer-r-col a:hover { color: var(--fg); }
+    .footer-r-bottom { max-width: 1100px; margin: 48px auto 0; padding-top: 24px; border-top: 1px solid rgba(245, 242, 236, 0.08); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.05em; color: rgba(245, 242, 236, 0.4); }
+    @media (max-width: 860px) {
+      .footer-r-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-r-cols { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px) { .footer-r-cols { grid-template-columns: 1fr; } }
+
+    /* --- Header (Glasleiste, schwebt über den Partikeln) --- */
+    .rk-header { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 50; width: min(1160px, calc(100% - 28px)); display: flex; align-items: center; gap: 24px; padding: 11px 14px 11px 20px; border-radius: 16px; border: 1px solid rgba(245, 242, 236, 0.10); background: rgba(18, 14, 22, 0.28); -webkit-backdrop-filter: blur(12px) saturate(1.3); backdrop-filter: blur(12px) saturate(1.3); box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35); transition: background 0.3s ease, border-color 0.3s ease, top 0.3s ease, box-shadow 0.3s ease; }
+    .rk-header.scrolled { top: 10px; background: rgba(12, 9, 16, 0.62); border-color: rgba(245, 242, 236, 0.14); box-shadow: 0 10px 44px rgba(0, 0, 0, 0.5); }
+    .rk-logo { display: inline-flex; align-items: center; flex-shrink: 0; }
+    .rk-logo img { height: 22px; width: auto; display: block; }
+    .rk-nav { display: flex; align-items: center; gap: 4px; margin: 0 auto; }
+    .rk-nav a { color: var(--fg-muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 9px; transition: color 0.2s ease, background 0.2s ease; }
+    .rk-nav a:hover { color: var(--fg); background: rgba(245, 242, 236, 0.06); }
+    .rk-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .rk-cta { display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: 10px; background: var(--pink); color: #fff; font-size: 14px; font-weight: 600; text-decoration: none; box-shadow: 0 4px 18px rgba(255, 45, 122, 0.35); transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; }
+    .rk-cta:hover { background: #ff4488; transform: translateY(-1px); box-shadow: 0 6px 24px rgba(255, 45, 122, 0.5); }
+    @media (max-width: 720px) {
+      .rk-nav { display: none; }
+      .rk-header { padding: 9px 12px 9px 16px; }
+      .rk-cta { padding: 9px 14px; font-size: 13px; }
+    }
   </style>
 </head>
 <body>
 <div id="particles-bg" aria-hidden="true"></div>
+
+<header class="rk-header" id="rk-header">
+  <a class="rk-logo" href="/" aria-label="Nuroy — Startseite">
+    <img src="assets/logo-full.png" alt="Nuroy">
+  </a>
+  <nav class="rk-nav" aria-label="Hauptnavigation">
+    <a data-reise href="projekte">Arbeiten</a>
+    <a data-reise href="leistungen">Leistungen</a>
+    <a data-reise href="team">Team</a>
+  </nav>
+  <div class="rk-actions">
+    <a class="rk-cta" data-reise href="kontakt">Erstgespräch</a>
+  </div>
+</header>
 
 <section class="hero">
   <div class="hero-inner">
     <p class="eyebrow">02 — Nuroy Reaktor-Prototyp</p>
     <h1>Daten, Zahlen und KI entscheiden die nächsten zehn Jahre.</h1>
     <p class="sub">Scroll ↓</p>
+    <p style="margin-top:28px"><a class="btn-ghost" data-reise href="test-zeitstrahl">Unsere Arbeiten ansehen</a></p>
   </div>
 </section>
 
@@ -140,65 +298,263 @@
   <div class="station-text">
     <h2>Custom Dashboards</h2>
     <p>Daten aus allen Tools an einem Ort. Live. Übersichtlich. Auf eure KPIs zugeschnitten.</p>
-    <a class="btn-ghost" href="#">Mehr erfahren</a>
+    <a class="btn-ghost" data-reise href="leistungen/dashboards">Mehr erfahren</a>
   </div>
 </section>
 <section class="station station--text-right" data-station="ki-agenten">
   <div class="station-text">
     <h2>KI-Agenten &amp; Automatisierungen</h2>
     <p>Workflows automatisieren. KI-Agenten für Vertrieb, Support und interne Prozesse.</p>
-    <a class="btn-ghost" href="#">Mehr erfahren</a>
+    <a class="btn-ghost" data-reise href="leistungen/ki-agenten">Mehr erfahren</a>
   </div>
 </section>
 <section class="station station--text-left" data-station="software">
   <div class="station-text">
     <h2>Custom Software-Entwicklung</h2>
     <p>SaaS-Produkte, interne Tools, Kunden-Plattformen. Von der Idee bis zum Live-Betrieb.</p>
-    <a class="btn-ghost" href="#">Mehr erfahren</a>
+    <a class="btn-ghost" data-reise href="leistungen/software">Mehr erfahren</a>
   </div>
 </section>
 <section class="station station--text-right" data-station="ki-integration">
   <div class="station-text">
     <h2>KI-Integration</h2>
     <p>Lead-Scoring, Churn-Prediction, Sentiment-Analyse – direkt in euren Tools.</p>
-    <a class="btn-ghost" href="#">Mehr erfahren</a>
+    <a class="btn-ghost" data-reise href="leistungen/ki-integration">Mehr erfahren</a>
   </div>
 </section>
 <section class="station station--text-left" data-station="company-ai">
   <div class="station-text">
     <h2>Interne Company-AI</h2>
     <p>Euer eigener KI-Assistent. Trainiert auf eure Dokumente, Prozesse und euer Wissen.</p>
-    <a class="btn-ghost" href="#">Mehr erfahren</a>
+    <a class="btn-ghost" data-reise href="leistungen/company-ai">Mehr erfahren</a>
   </div>
 </section>
 <section class="station station--text-right" data-station="datenintegration">
   <div class="station-text">
     <h2>Datenintegration &amp; ETL</h2>
     <p>Datensilos auflösen. Alle Quellen synchronisieren. Ein Data Warehouse für alles.</p>
-    <a class="btn-ghost" href="#">Mehr erfahren</a>
+    <a class="btn-ghost" data-reise href="leistungen/datenintegration">Mehr erfahren</a>
   </div>
 </section>
 <section class="station station--text-left" data-station="strategy">
   <div class="station-text">
     <h2>Strategy &amp; Audit</h2>
     <p>2-wöchige Discovery-Phase. Tool-Stack prüfen. Roadmap definieren.</p>
-    <a class="btn-ghost" href="#">Mehr erfahren</a>
+    <a class="btn-ghost" data-reise href="leistungen/strategy-audit">Mehr erfahren</a>
+  </div>
+</section>
+
+<!-- ═══ AKT 2 · Beweis über dem Partikel-Meer ═══ -->
+
+<section class="act2" style="text-align:center">
+  <div class="act2-inner">
+    <p class="eyebrow">Kundenstimmen</p>
+    <h2>Unternehmen, die mit uns bauen.</h2>
+    <div class="logo-marquee" aria-label="Kunden-Logos">
+      <div class="logo-track">
+        <img src="assets/clients/sniffys.png" alt="Sniffys" style="height:42px" loading="lazy">
+        <img src="assets/clients/nomo.png" alt="Nomo" style="height:45px" loading="lazy">
+        <img src="assets/clients/followaustria.webp" alt="Follow Austria" style="height:35px" loading="lazy">
+        <img src="assets/clients/breece.png" alt="breece" style="height:38px" loading="lazy">
+        <img src="assets/clients/connect-collect.png" alt="Connect &amp; Collect" style="height:54px" loading="lazy">
+        <img src="assets/clients/vsacademy.png" alt="VSAcademy" style="height:45px" loading="lazy">
+        <img src="assets/clients/closingmastery.png" alt="ClosingMastery" style="height:51px" loading="lazy">
+        <img src="assets/clients/regyva/SVG/regyva-logo-white.svg" alt="Regyva" style="height:34px" loading="lazy">
+        <img src="assets/clients/sniffys.png" alt="" aria-hidden="true" style="height:42px" loading="lazy">
+        <img src="assets/clients/nomo.png" alt="" aria-hidden="true" style="height:45px" loading="lazy">
+        <img src="assets/clients/followaustria.webp" alt="" aria-hidden="true" style="height:35px" loading="lazy">
+        <img src="assets/clients/breece.png" alt="" aria-hidden="true" style="height:38px" loading="lazy">
+        <img src="assets/clients/connect-collect.png" alt="" aria-hidden="true" style="height:54px" loading="lazy">
+        <img src="assets/clients/vsacademy.png" alt="" aria-hidden="true" style="height:45px" loading="lazy">
+        <img src="assets/clients/closingmastery.png" alt="" aria-hidden="true" style="height:51px" loading="lazy">
+        <img src="assets/clients/regyva/SVG/regyva-logo-white.svg" alt="" aria-hidden="true" style="height:34px" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="act2">
+  <div class="act2-inner">
+    <p class="eyebrow">Arbeiten</p>
+    <h2>Was wir wirklich bauen.</h2>
+    <div class="work-grid">
+      <a class="work-item" data-reise href="test-projekt?p=accountly">
+        <span class="work-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V13.5Zm0 2.25h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V18Zm2.498-6.75h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V13.5Zm0 2.25h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V18Zm2.504-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5Zm0 2.25h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V18Zm2.498-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5ZM8.25 6h7.5v2.25h-7.5V6ZM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 0 0 2.25 2.25h10.5a2.25 2.25 0 0 0 2.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0 0 12 2.25Z" /></svg></span>
+        <h3>Accountly</h3>
+        <p>Buchhaltungs-SaaS vom Prototyp zur Produktion in 11 Wochen.</p>
+        <span class="work-tags">Next.js · Supabase · DATEV</span>
+      </a>
+      <a class="work-item" data-reise href="test-projekt?p=voice-agent">
+        <span class="work-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" /></svg></span>
+        <h3>KI-Voice-Agent</h3>
+        <p>Inbound-Automatisierung — 70% weniger manueller Aufwand.</p>
+        <span class="work-tags">OpenAI · Twilio · n8n</span>
+      </a>
+      <a class="work-item" data-reise href="test-projekt?p=regyva">
+        <span class="work-icon work-icon--brand"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180.23 200.5" aria-hidden="true"><path fill="#f5f2ec" d="M167.52,116.57c-7.34-4.34-16.06-4.25-23.21-.58-5.83,3.01-12.79,2.57-18.4-.67,0,0-1.92-1.12-2.31-1.38-9.6-6.4-9.6-20.94,0-27.33.36-.25,2.31-1.39,2.31-1.39,5.61-3.24,12.57-3.67,18.4-.66,3.46,1.78,7.29,2.71,11.16,2.71,4.26,0,8.57-1.14,12.47-3.54,7.35-4.25,12.29-12.2,12.29-21.29,0-9.94-5.9-18.5-14.39-22.37-6.97-3.4-14.92-3.07-21.53.32-5.83,3.01-12.79,2.58-18.4-.66l-1.2-.7c-5.62-3.24-9.47-9.04-9.78-15.6-.36-7.28-3.92-14.2-10.12-18.56-4.1-3.06-9.18-4.87-14.69-4.87-13.58,0-24.58,11-24.58,24.57,0,.13-.84,13.2,11.11,20.88,5.52,3.54,8.62,9.78,8.62,16.26v1.4c0,6.47-3.1,12.72-8.62,16.26-6.79,4.38-11.24,11.95-11.1,20.53v.7c-.14,8.58,4.31,16.15,11.1,20.53,5.52,3.54,8.62,9.78,8.62,16.26v1.4c0,6.48-3.1,12.72-8.62,16.26-6.79,4.38-11.24,11.95-11.1,20.53-.01.12-.01.24-.01.35,0,13.57,11,24.57,24.58,24.57s24.57-11,24.57-24.57v-.34c.13-8.59-4.32-16.16-11.11-20.54-5.52-3.54-8.62-9.78-8.62-16.26,0,0,.02-2.45.07-3.02.9-11.26,13.19-18.36,23.39-13.51.5.24,2.65,1.45,2.65,1.45,5.61,3.24,9.46,9.05,9.77,15.61.4,8.03,4.69,15.63,12.13,19.82,4.16,2.51,9.12,3.82,14.4,3.46,11.69-.79,21.41-10.06,22.7-21.71,1.16-10.42-4.22-19.72-12.55-24.32ZM94.86,62.42c0-9.56,7.75-17.31,17.31-17.31s17.3,7.75,17.3,17.31-7.75,17.31-17.3,17.31-17.31-7.75-17.31-17.31ZM24.57,113.52c-13.57,0-24.57,11-24.57,24.57s11,24.57,24.57,24.57,24.58-11,24.58-24.57-11-24.57-24.58-24.57ZM24.57,37.87C11,37.87,0,48.87,0,62.44s11,24.57,24.57,24.57,24.58-11,24.58-24.57-11-24.57-24.58-24.57Z"/></svg></span>
+        <h3>Regyva</h3>
+        <p>Fullstack-System mit Anbindung an CRM, Meta, Google und Stripe.</p>
+        <span class="work-tags">Stripe · Meta · Google</span>
+      </a>
+      <a class="work-item" data-reise href="test-projekt?p=crm-system">
+        <span class="work-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" /></svg></span>
+        <h3>CRM-System</h3>
+        <p>B2B-Pipeline-Software mit eigener Logik, eigenen Pipelines.</p>
+        <span class="work-tags">Remix · Prisma · Twilio</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="act2 process-section">
+  <div class="act2-inner">
+    <p class="eyebrow">Prozess</p>
+    <h2>Wie wir arbeiten.</h2>
+    <div class="process-grid">
+      <div>
+        <span class="process-num">01</span>
+        <h3>Kennenlernen</h3>
+        <p>Kostenloses Erstgespräch, unverbindlich. Du erzählst, wo's hakt. Wir sagen dir ehrlich, ob wir die Richtigen sind.</p>
+      </div>
+      <div>
+        <span class="process-num">02</span>
+        <h3>Verstehen</h3>
+        <p>Wir gehen tief rein: Prozesse, Engpässe, Ziele. Wir verstehen, was du wirklich brauchst. Nicht, was du glaubst zu brauchen.</p>
+      </div>
+      <div>
+        <span class="process-num">03</span>
+        <h3>Planen</h3>
+        <p>Stack, Schnittstellen und Systemgrenzen stehen, bevor wir eine Zeile schreiben. Klarer Scope, klarer Preis.</p>
+      </div>
+      <div>
+        <span class="process-num">04</span>
+        <h3>Bauen</h3>
+        <p>Sauberer Code, echte Releases, planbare Sprints. Kein Overhead, kein Bullshit. Wöchentliche Übergaben.</p>
+      </div>
+      <div>
+        <span class="process-num">05</span>
+        <h3>Bleiben</h3>
+        <p>Wir gehen nicht nach dem Launch. Monitoring, Incident-Response, Weiterentwicklung. Wir bleiben das Team, das dein System kennt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="logo-moment team-moment" data-station="brain">
+  <div class="act2-inner">
+    <p class="eyebrow">Das Team</p>
+    <h2>Das Gehirn hinter Nuroy.</h2>
+    <div class="team-grid">
+      <div>
+        <h3>Julius</h3>
+        <p class="team-role">Strategie · Sales · Business Development</p>
+        <p>Verantwortlich für Kunden, Projekte und die strategische Ausrichtung. Übersetzt Geschäftsziele in technische Roadmaps.</p>
+      </div>
+      <div>
+        <h3>Timm</h3>
+        <p class="team-role">Automation · System Architecture · Low-Code</p>
+        <p>Baut Prozesse, die alleine laufen. Von n8n-Workflows bis zur vollständigen API-Orchestrierung — denkt in Systemen.</p>
+      </div>
+      <div>
+        <h3>Max</h3>
+        <p class="team-role">Software Engineering · Backend · Integration</p>
+        <p>Schreibt den Code, auf dem das Ganze läuft. Skalierbare Backends, solide Datenarchitekturen, Integrationen, die halten.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AKT 3 · Ruhige See, dann steigt das N ═══ -->
+
+<section class="act2" style="text-align:center">
+  <div class="act2-inner">
+    <p class="eyebrow">FAQ</p>
+    <h2>Häufige Fragen.</h2>
+    <div class="faq-list">
+      <details>
+        <summary>Wie lange dauert ein typisches Projekt?</summary>
+        <p>Ein MVP oder ein klares internes Tool schaffen wir in 6–12 Wochen bis zur Erstversion. Komplexere Systeme planen wir in der Architektur-Phase gemeinsam. Du bekommst eine ehrliche Einschätzung nach dem Erstgespräch.</p>
+      </details>
+      <details>
+        <summary>Arbeitet ihr ausschließlich remote?</summary>
+        <p>Ja — remote-first ist bei uns Überzeugung. Wir arbeiten mit DACH-Kunden über Videokonferenz und klare Übergabe-Strukturen. Vor-Ort-Tage sind für Discovery-Workshops planbar.</p>
+      </details>
+      <details>
+        <summary>Was kostet ein Erstgespräch?</summary>
+        <p>Nichts. 45–60 Minuten über deine Ausgangssituation und was du konkret brauchst. Wenn es passt, folgt ein Angebot — wenn nicht, sagen wir das direkt.</p>
+      </details>
+      <details>
+        <summary>Bleibt ihr nach dem Launch involviert?</summary>
+        <p>Ja — Managed Tech ist eines unserer wichtigsten Angebote. Betrieb, Monitoring, Incident-Response und Weiterentwicklung. Wir bleiben das Team, das das System kennt.</p>
+      </details>
+    </div>
   </div>
 </section>
 
 <section class="logo-moment logo-moment--end" data-station="logo">
   <div>
     <p class="end-line">Lass uns bauen.</p>
-    <a class="btn-ghost" href="#">Erstgespräch buchen</a>
+    <a class="btn-ghost" data-reise href="kontakt">Erstgespräch buchen</a>
   </div>
 </section>
 
+<footer class="site-footer-r">
+  <div class="footer-r-inner">
+    <div class="footer-r-brand">
+      <img src="assets/logo-full.png" alt="Nuroy" class="footer-r-logo">
+      <p class="footer-r-tagline">Die Technik-Abteilung für Unternehmen, die bauen wollen, statt zu verwalten.</p>
+      <p class="footer-r-meta">Paphos, Zypern · Remote-First DACH</p>
+    </div>
+    <nav class="footer-r-cols" aria-label="Footer">
+      <div class="footer-r-col">
+        <p class="footer-r-label">Leistungen</p>
+        <a href="leistungen/dashboards">Custom Dashboards</a>
+        <a href="leistungen/ki-agenten">KI-Agenten</a>
+        <a href="leistungen/software">Software-Entwicklung</a>
+        <a href="leistungen/ki-integration">KI-Integration</a>
+        <a href="leistungen/company-ai">Company-AI</a>
+        <a href="leistungen/datenintegration">Datenintegration</a>
+        <a href="leistungen/strategy-audit">Strategy &amp; Audit</a>
+      </div>
+      <div class="footer-r-col">
+        <p class="footer-r-label">Studio</p>
+        <a href="projekte">Projekte</a>
+        <a href="team">Team</a>
+        <a href="kontakt">Kontakt</a>
+        <a href="wiki">Wiki</a>
+      </div>
+      <div class="footer-r-col">
+        <p class="footer-r-label">Rechtliches</p>
+        <a href="impressum">Impressum</a>
+        <a href="datenschutz">Datenschutz</a>
+      </div>
+    </nav>
+  </div>
+  <div class="footer-r-bottom">
+    <span>© 2024–2026 Nuroy. Gegründet in Paphos, Zypern.</span>
+    <span>Software · Automation · Strategie</span>
+  </div>
+</footer>
+
+<script type="speculationrules">
+  { "prefetch": [{ "urls": ["test-zeitstrahl"] }] }
+</script>
 <script type="importmap">
   { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.166.1/build/three.module.js" } }
 </script>
 <script type="module">
   import { initReactor } from './assets/particles/reactor.mjs'
   initReactor({ mount: document.getElementById('particles-bg') })
+</script>
+<script>
+  // Header-Glas verdichtet sich beim Scrollen
+  (function () {
+    var h = document.getElementById('rk-header')
+    if (!h) return
+    var onScroll = function () { h.classList.toggle('scrolled', window.scrollY > 30) }
+    onScroll()
+    addEventListener('scroll', onScroll, { passive: true })
+  })()
 </script>
 </body>
 </html>

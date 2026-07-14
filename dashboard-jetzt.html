@@ -384,10 +384,10 @@
             }
           } catch(err){}
 
-          // 2b) Cockpit-Lead-Webhook (best effort, via eigenen /api/lead-Proxy — Secret bleibt server-seitig)
+          // 2b) Telegram- & Cockpit-Webhook (best effort, via eigenen /api/lead-Proxy — Secrets bleiben server-seitig)
           try {
             fetch('/api/lead', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({
-              name: name, telefon: phoneRaw, email: '', anruf_zeit: chosen
+              name: name, telefon: phoneRaw, email: '', anruf_zeit: chosen, seite: window.location.pathname
             }) });
           } catch(err){}
 
@@ -453,7 +453,7 @@
 <script src="funnel/funnel-scripts.min.js" defer></script>
 
 <!-- Booking Funnel (liefert showCalendly() für den Zweitweg) -->
-<script src="funnel/funnel-booking.min.js?v=1.5" defer></script>
+<script src="funnel/funnel-booking.min.js?v=1.6" defer></script>
 
 <!-- Calendly Widget Script -->
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>

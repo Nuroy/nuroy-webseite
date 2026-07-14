@@ -13,6 +13,7 @@
  */
 
 import { gaussian } from './shapes.mjs'
+import { brainTemplate } from './brain-points.mjs'
 
 const TAU = Math.PI * 2
 
@@ -418,6 +419,43 @@ export function compassShape(count, { size = 320 } = {}) {
   }
   const main = merge([ring, ticks, needle])
   return merge([main, dustCloud(main, nDust, 0.07 * S)])
+}
+
+// ---------------------------------------------------------------------------
+// 8) Gehirn — echtes anatomisches SEITENPROFIL, aus einem 3D-Modell gesampelt
+//    (siehe brain-points.mjs / CREDITS.md, CC BY 4.0). Frontallappen links,
+//    Kleinhirn unten rechts, Hirnstamm nach unten. Kein Leistungs-Slot:
+//    gehört zur Team-Sektion („Das Gehirn hinter Nuroy") und wird deshalb
+//    NICHT in SCULPTURES gelistet.
+// ---------------------------------------------------------------------------
+
+// Template einmal dekodieren (Float32, Dokument-Konvention, BBox-Radius 1)
+const BRAIN_TEMPLATE = brainTemplate()
+const BRAIN_T = BRAIN_TEMPLATE.length / 3
+
+/**
+ * Erzeugt count Punkte, indem das gebackene Oberflächen-Template mit leichtem
+ * Jitter auf die gewünschte Größe resampled wird. size ≈ Breite/Höhe der
+ * Skulptur in px (wie bei den anderen Formen). ~7% Staub für den organischen
+ * Rand. Rückgabe in Dokument-Konvention (y wächst nach unten) — reactor.mjs
+ * spiegelt via flipY in den View-Raum.
+ */
+export function brainShape(count, { size = 320 } = {}) {
+  // Template ist auf BBox-Radius 1 normiert; Faktor bringt das Profil auf
+  // ~0.9·size Breite, vergleichbar mit den anderen Skulpturen.
+  const scale = 0.62 * size
+  const jit = 0.006 * size // Oberflächen-Jitter (verwischt die int8-Raster)
+  const dustFrac = 0.07
+  const out = new Float32Array(count * 3)
+  for (let i = 0; i < count; i++) {
+    const k = ((Math.random() * BRAIN_T) | 0) * 3
+    const dust = Math.random() < dustFrac
+    const s = dust ? 0.05 * size : jit
+    out[i * 3] = BRAIN_TEMPLATE[k] * scale + gaussian() * s
+    out[i * 3 + 1] = BRAIN_TEMPLATE[k + 1] * scale + gaussian() * s
+    out[i * 3 + 2] = BRAIN_TEMPLATE[k + 2] * scale + gaussian() * s
+  }
+  return out
 }
 
 /** Reihenfolge = Stationen 1-7 auf der Seite. */
