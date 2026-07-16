@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nuroy — Software · Automation · Strategie</title>
+  <title>Nuroy · Software · Automation · Strategie</title>
   <meta name="description" content="Custom Dashboards mit KI und individuelle Software für KMU im DACH-Raum. 6–10 Wochen Lieferzeit, ab 12.500 €, DSGVO-konform mit EU-Hosting.">
   <meta name="keywords" content="dashboard erstellen lassen, individuelles dashboard programmieren, ki dashboard entwickeln, custom dashboard, dashboard agentur deutschland, kpi dashboard kmu, controlling cockpit, datev dashboard, bi für mittelstand, ki software entwicklung">
   <meta name="author" content="Nuroy (JT NUROY LTD)">
@@ -53,12 +53,56 @@
       overflow: hidden;
       background: #000000;
     }
+    /* Wellen gedimmt: ruhiger, seriöser Auftritt (Textur statt Hauptdarsteller) */
+    #waves-container { opacity: 0.38; }
+
+    /* Hero-Showcase: echtes Kundenprojekt + Team-Zeile (ersetzt Fake-Terminal) */
+    .hero-showcase {
+      background: var(--bg-2);
+      border: 1px solid var(--line-strong);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,0.8);
+    }
+    .hero-showcase .hs-topbar {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--line);
+      background: var(--bg-3);
+    }
+    .hero-showcase .hs-title {
+      font-family: var(--font-mono);
+      font-size: 11px; letter-spacing: 0.05em;
+      color: var(--fg-muted);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .hero-showcase .db-live-badge { margin-left: auto; }
+    .hero-showcase .hs-shot { display: block; width: 100%; height: auto; }
+    .hero-showcase .hs-team {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px;
+      border-top: 1px solid var(--line);
+      background: var(--bg-3);
+    }
+    .hero-showcase .hs-faces { display: flex; }
+    .hero-showcase .hs-faces img {
+      width: 30px; height: 30px; border-radius: 50%;
+      object-fit: cover; object-position: center top;
+      border: 2px solid var(--bg-3);
+      margin-left: -8px;
+    }
+    .hero-showcase .hs-faces img:first-child { margin-left: 0; }
+    .hero-showcase .hs-team-text {
+      font-family: var(--font-mono);
+      font-size: 11px; letter-spacing: 0.04em;
+      color: var(--fg-muted);
+    }
     .hero-glow {
       position: absolute;
       top: -200px; left: 50%;
       transform: translateX(-50%);
       width: 800px; height: 600px;
-      background: radial-gradient(ellipse, rgba(255,45,122,0.12) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(255,45,122,0.06) 0%, transparent 70%);
       pointer-events: none;
       z-index: 1;
     }
@@ -101,24 +145,20 @@
     .hero-headline {
       font-family: var(--font-display);
       font-weight: 900;
-      font-size: clamp(56px, 7.5vw, 108px);
-      line-height: 1.0;
+      font-size: clamp(46px, 6vw, 84px);
+      line-height: 1.02;
       letter-spacing: -0.04em;
       margin-bottom: 28px;
       text-shadow:
-        0 3px 12px rgba(0, 0, 0, 1),
-        0 6px 24px rgba(0, 0, 0, 0.9),
-        0 12px 40px rgba(0, 0, 0, 0.7),
-        0 0 50px rgba(255, 45, 122, 0.2);
+        0 2px 8px rgba(0, 0, 0, 0.9),
+        0 4px 16px rgba(0, 0, 0, 0.6);
     }
     .hero-headline .accent {
       color: var(--pink);
       text-shadow:
-        0 3px 12px rgba(0, 0, 0, 1),
-        0 6px 24px rgba(0, 0, 0, 0.9),
-        0 12px 40px rgba(0, 0, 0, 0.7),
-        0 0 80px rgba(255, 45, 122, 0.7),
-        0 0 140px rgba(255, 45, 122, 0.4);
+        0 2px 8px rgba(0, 0, 0, 0.9),
+        0 4px 16px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(255, 45, 122, 0.25);
     }
     .hero-sub {
       font-size: clamp(16px, 1.3vw, 19px);
@@ -958,7 +998,7 @@
     @media (max-width: 960px) {
       .hero-inner { grid-template-columns: 1fr; gap: 48px; }
       #waves-container {
-        opacity: 0.7;
+        opacity: 0.34;
       }
       .hero-right {
         display: block;
@@ -1114,7 +1154,7 @@
 
     @media (max-width: 600px) {
       #waves-container {
-        opacity: 0.6;  /* Sichtbarer Hintergrund auf Mobile, näher an Desktop */
+        opacity: 0.3;
       }
       /* .hero {
         background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
@@ -1151,7 +1191,7 @@
       <div class="hero-left">
         <div class="hero-label reveal">
           <span class="hero-label-dot"></span>
-          Gegründet 2024 &mdash; 2 Jahre &mdash; DACH remote
+          Gegründet 2024 · 2 Jahre · DACH remote
         </div>
         <h1 class="hero-headline reveal reveal-d1">
           Die<br>
@@ -1160,7 +1200,7 @@
         </h1>
         <p class="hero-sub reveal reveal-d2">
           Für KMU, die <span class="hi">bauen</span> wollen, statt zu verwalten.<br>
-          Custom Dashboards mit KI, Software und Automatisierung — aus einer Hand.
+          Custom Dashboards mit KI, Software und Automatisierung. Alles aus einer Hand.
         </p>
         <div class="hero-ctas reveal reveal-d3">
           <a href="kontakt" class="btn btn-primary btn-lg">
@@ -1179,76 +1219,28 @@
       </div>
 
       <div class="hero-right reveal reveal-d2">
-        <div class="hero-dashboard">
-          <div class="db-topbar">
-            <div class="db-topbar-left">
-              <div class="db-dots">
-                <div class="db-dot db-dot-r"></div>
-                <div class="db-dot db-dot-y"></div>
-                <div class="db-dot db-dot-g"></div>
-              </div>
-              <span class="db-title">nuroy/system &mdash; production</span>
+        <!-- Echtes Kundenprojekt statt Fake-Terminal: reale Technik + die Menschen dahinter -->
+        <div class="hero-showcase">
+          <div class="hs-topbar">
+            <div class="db-dots">
+              <div class="db-dot db-dot-r"></div>
+              <div class="db-dot db-dot-y"></div>
+              <div class="db-dot db-dot-g"></div>
             </div>
+            <span class="hs-title">Echtes Kundenprojekt · Regyva</span>
             <div class="db-live-badge">
               <span class="db-live-dot"></span>
               Live
             </div>
           </div>
-
-          <div class="db-chart-area">
-            <div class="db-chart-label">Anfragen · Letzte 7 Tage</div>
-            <svg class="db-chart-svg" viewBox="0 0 400 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#FF2D7A" stop-opacity="0.35"/>
-                  <stop offset="100%" stop-color="#FF2D7A" stop-opacity="0"/>
-                </linearGradient>
-              </defs>
-              <path class="chart-area-path"
-                d="M0,70 C20,68 30,62 50,58 C70,54 80,62 100,56 C120,50 130,40 155,36 C175,33 185,42 210,38 C230,35 240,24 265,20 C285,17 295,27 320,22 C340,18 360,10 400,8 L400,80 L0,80 Z"
-                fill="url(#cg)"/>
-              <path class="chart-line-path"
-                d="M0,70 C20,68 30,62 50,58 C70,54 80,62 100,56 C120,50 130,40 155,36 C175,33 185,42 210,38 C230,35 240,24 265,20 C285,17 295,27 320,22 C340,18 360,10 400,8"
-                fill="none" stroke="#FF2D7A" stroke-width="1.5"/>
-              <circle class="chart-dot" cx="400" cy="8" r="3" fill="#FF2D7A"/>
-            </svg>
-          </div>
-
-          <div class="db-metrics">
-            <div class="db-metric">
-              <div class="db-metric-label">Deployments</div>
-              <div class="db-metric-value" id="m1">0</div>
-              <div class="db-metric-delta">▲ +12% diese Woche</div>
+          <img class="hs-shot" src="assets/lp/regyva-crm-dashboard.webp?v=1" alt="Regyva Sales-Cockpit: CRM-Dashboard mit Pipeline und Umsatz, gebaut von Nuroy" width="2000" height="1123" fetchpriority="high">
+          <div class="hs-team">
+            <div class="hs-faces">
+              <img src="assets/team/julius.webp?v=1" alt="Julius" width="30" height="30" loading="lazy">
+              <img src="assets/team/timm.webp?v=1" alt="Timm" width="30" height="30" loading="lazy">
+              <img src="assets/team/max.webp?v=1" alt="Max" width="30" height="30" loading="lazy">
             </div>
-            <div class="db-metric">
-              <div class="db-metric-label">API-Aufrufe</div>
-              <div class="db-metric-value" id="m2">0</div>
-              <div class="db-metric-delta">▲ +8% diese Woche</div>
-            </div>
-            <div class="db-metric">
-              <div class="db-metric-label">Uptime</div>
-              <div class="db-metric-value" id="m3" style="color:var(--ok)">—</div>
-              <div class="db-metric-delta" style="color:var(--ok)">● Operational</div>
-            </div>
-          </div>
-
-          <div class="db-feed">
-            <div class="db-feed-label">Letzte Aktivität</div>
-            <div class="db-feed-item">
-              <span class="db-feed-dot db-feed-dot--ok"></span>
-              <span class="db-feed-item-path">accountly / release v2.4.1</span>
-              <span class="db-feed-item-status db-feed-item-status--ok">deployed</span>
-            </div>
-            <div class="db-feed-item">
-              <span class="db-feed-dot db-feed-dot--pink"></span>
-              <span class="db-feed-item-path">voice-agent / inbound webhook</span>
-              <span class="db-feed-item-status db-feed-item-status--pink">active</span>
-            </div>
-            <div class="db-feed-item">
-              <span class="db-feed-dot db-feed-dot--ok"></span>
-              <span class="db-feed-item-path">csm-suite / health-check</span>
-              <span class="db-feed-item-status db-feed-item-status--ok">passing</span>
-            </div>
+            <span class="hs-team-text">Gebaut von Julius, Timm &amp; Max, mit 10+ Experten</span>
           </div>
         </div>
       </div>
@@ -1264,7 +1256,7 @@
     <div class="manifest-eyebrow reveal">Unsere Überzeugung</div>
     <p class="manifest-text reveal reveal-d1">
       Nicht jedes Unternehmen braucht mehr Marketing.<br>
-      Viele brauchen schlicht <span class="hl">bessere Technik</span> —<br>
+      Viele brauchen schlicht <span class="hl">bessere Technik</span>,<br>
       gebaut von Menschen, die <span class="hl">Verantwortung</span> übernehmen.
     </p>
     <span class="manifest-rule reveal reveal-d2"></span>
@@ -1330,7 +1322,7 @@
     <div style="margin-top:56px">
       <div class="services-header-bar">
         <span class="shb-dot"></span>
-        <span class="shb-label">nuroy / leistungen — 7 Bereiche</span>
+        <span class="shb-label">nuroy / leistungen · 7 Bereiche</span>
         <div class="shb-right">
           <span class="shb-pill">Dashboards</span>
           <span class="shb-pill">KI-Agenten</span>
@@ -1401,6 +1393,58 @@
   </div>
 </section>
 
+<!-- ═══════════════════ ECHTE EINBLICKE (reale Screenshots) ═══════════════════ -->
+<section class="section" id="einblicke">
+  <div class="container">
+    <div class="section-label reveal"><span class="section-label-dot"></span>Echtes Kundenprojekt</div>
+    <h2 class="t-h2 reveal reveal-d1" style="margin-top:8px; max-width:640px;">So sieht unsere Arbeit aus.</h2>
+    <p class="reveal reveal-d2" style="margin-top:16px; max-width:560px; font-size:15px; color:var(--fg-muted); line-height:1.7;">Regyva Sales-Cockpit: Werbung, Vertrieb und Provisionen live in einem System. Alle gezeigten Zahlen sind Testdaten.</p>
+
+    <div class="einblicke-grid reveal reveal-d2">
+      <figure class="eb-shot">
+        <div class="eb-frame">
+          <div class="eb-bar"><span></span><span></span><span></span></div>
+          <img src="assets/lp/regyva-paid-ads.webp?v=1" alt="Regyva: Werbeausgaben und ROAS live aus Meta und Google" width="2000" height="1125" loading="lazy">
+        </div>
+        <figcaption>Spend &amp; ROAS live aus Meta &amp; Google</figcaption>
+      </figure>
+      <figure class="eb-shot">
+        <div class="eb-frame">
+          <div class="eb-bar"><span></span><span></span><span></span></div>
+          <img src="assets/lp/regyva-provisionen.webp?v=1" alt="Regyva: Provisions-Auszahlungen je Closer" width="2000" height="1124" loading="lazy">
+        </div>
+        <figcaption>Auszahlung je Closer mit einem Klick</figcaption>
+      </figure>
+      <figure class="eb-shot">
+        <div class="eb-frame">
+          <div class="eb-bar"><span></span><span></span><span></span></div>
+          <img src="assets/lp/regyva-affiliates.webp?v=1" alt="Regyva: automatisch berechnete Affiliate-Provisionen" width="2000" height="1121" loading="lazy">
+        </div>
+        <figcaption>Jede Provision automatisch berechnet</figcaption>
+      </figure>
+    </div>
+
+    <div class="reveal" style="margin-top:28px;">
+      <a href="arbeiten" class="btn btn-secondary">Mehr Projekte ansehen →</a>
+    </div>
+  </div>
+  <style>
+    .einblicke-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+    .eb-shot { margin: 0; }
+    .eb-frame { background: var(--bg-2); border: 1px solid var(--line-strong); border-radius: 12px; overflow: hidden; transition: border-color 0.25s, transform 0.3s; }
+    .eb-shot:hover .eb-frame { border-color: rgba(255,45,122,0.3); transform: translateY(-3px); }
+    .eb-bar { display: flex; gap: 5px; padding: 9px 12px; border-bottom: 1px solid var(--line); background: var(--bg-3); }
+    .eb-bar span { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); }
+    .eb-frame img { display: block; width: 100%; height: auto; }
+    .eb-shot figcaption { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--fg-dim); margin-top: 10px; }
+    @media (max-width: 900px) {
+      .einblicke-grid { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px; }
+      .einblicke-grid::-webkit-scrollbar { display: none; }
+      .einblicke-grid .eb-shot { flex: 0 0 82%; scroll-snap-align: center; }
+    }
+  </style>
+</section>
+
 <!-- ═══════════════════ PORTFOLIO TEASER ═══════════════════ -->
 <section class="section" style="background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
   <div class="container">
@@ -1422,25 +1466,25 @@
           <div class="mock-accountly">
             <div class="mock-row">
               <span class="mock-dot" style="background:var(--ok)"></span>
-              <span>Rechnung #1042 — Müller GmbH</span>
+              <span>Rechnung #1042 · Müller GmbH</span>
               <span class="mock-amount">€ 4.200</span>
               <span class="mock-status mock-status--ok">bezahlt</span>
             </div>
             <div class="mock-row">
               <span class="mock-dot" style="background:var(--pink)"></span>
-              <span>Rechnung #1043 — DataForce</span>
+              <span>Rechnung #1043 · DataForce</span>
               <span class="mock-amount">€ 8.750</span>
               <span class="mock-status mock-status--pink">offen</span>
             </div>
             <div class="mock-row">
               <span class="mock-dot" style="background:var(--ok)"></span>
-              <span>Rechnung #1044 — Nexum AG</span>
+              <span>Rechnung #1044 · Nexum AG</span>
               <span class="mock-amount">€ 2.100</span>
               <span class="mock-status mock-status--ok">bezahlt</span>
             </div>
             <div class="mock-row">
               <span class="mock-dot" style="background:var(--warn)"></span>
-              <span>Rechnung #1045 — TechBase</span>
+              <span>Rechnung #1045 · TechBase</span>
               <span class="mock-amount">€ 6.400</span>
               <span class="mock-status" style="background:rgba(209,168,92,0.12);color:var(--warn)">fällig</span>
             </div>
@@ -1472,7 +1516,7 @@
         </div>
         <div class="p-card-info">
           <div class="p-card-title">KI-Voice-Agent</div>
-          <div class="p-card-desc">Inbound-Automatisierung — 70% weniger manueller Aufwand.</div>
+          <div class="p-card-desc">Inbound-Automatisierung: 70% weniger manueller Aufwand.</div>
           <div class="p-card-tags">
             <span class="tag">OpenAI</span>
             <span class="tag">Twilio</span>
@@ -1576,7 +1620,7 @@
       <div class="process-step reveal reveal-d1">
         <span class="process-num-big">01</span>
         <h3>Verstehen</h3>
-        <p>Wir verstehen, was du wirklich brauchst — nicht, was du glaubst zu brauchen. Ehrliche Einschätzung vor dem ersten Sprint.</p>
+        <p>Wir verstehen, was du wirklich brauchst, nicht was du glaubst zu brauchen. Ehrliche Einschätzung vor dem ersten Sprint.</p>
       </div>
       <div class="process-step reveal reveal-d2">
         <span class="process-num-big">02</span>
@@ -1735,7 +1779,7 @@
           <span class="faq-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
         </div>
         <div class="faq-a">
-          <div class="faq-a-inner">Ja — remote-first ist bei uns kein Kompromiss, sondern Überzeugung. Wir sind in Paphos, Zypern ansässig und arbeiten mit DACH-Kunden über Videokonferenz, Notion, Linear und klare Übergabe-Strukturen. Vor-Ort-Tage sind bei Bedarf für Discovery-Workshops planbar.</div>
+          <div class="faq-a-inner">Ja, remote-first ist bei uns kein Kompromiss, sondern Überzeugung. Wir sind in Paphos, Zypern ansässig und arbeiten mit DACH-Kunden über Videokonferenz, Notion, Linear und klare Übergabe-Strukturen. Vor-Ort-Tage sind bei Bedarf für Discovery-Workshops planbar.</div>
         </div>
       </div>
 
@@ -1765,7 +1809,7 @@
           <span class="faq-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
         </div>
         <div class="faq-a">
-          <div class="faq-a-inner">Wir sind kein Generaldienstleister. Wir bauen keine Websites, keinen Content und keine Kampagnen. Wir bauen Systeme — Software, Automatisierung, Tech-Infrastruktur. Drei Experten, direkter Draht, keine Account-Manager-Zwischenschicht. Du redest mit denen, die auch bauen.</div>
+          <div class="faq-a-inner">Wir sind kein Generaldienstleister. Wir bauen keine Websites, keinen Content und keine Kampagnen. Wir bauen Systeme: Software, Automatisierung, Tech-Infrastruktur. Drei Experten, direkter Draht, keine Account-Manager-Zwischenschicht. Du redest mit denen, die auch bauen.</div>
         </div>
       </div>
 
@@ -1785,7 +1829,7 @@
           <span class="faq-icon"><svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
         </div>
         <div class="faq-a">
-          <div class="faq-a-inner">Custom Dashboards starten bei 12.500 €. Der Preis hängt ab von der Anzahl der Datenquellen, KI-Funktionen und Hosting-Anforderungen. Wir geben Festpreise nach Discovery — keine offenen Stundensätze, keine Lizenzgebühren pro Nutzer.</div>
+          <div class="faq-a-inner">Custom Dashboards starten bei 12.500 €. Der Preis hängt ab von der Anzahl der Datenquellen, KI-Funktionen und Hosting-Anforderungen. Wir geben Festpreise nach Discovery, keine offenen Stundensätze, keine Lizenzgebühren pro Nutzer.</div>
         </div>
       </div>
 
@@ -1889,29 +1933,6 @@
     });
   }, { threshold: 0.5 });
   document.querySelectorAll('[data-count]').forEach(el => statObs.observe(el));
-
-  /* ── Dashboard metric counters ───────── */
-  setTimeout(() => {
-    const m1 = document.getElementById('m1');
-    const m2 = document.getElementById('m2');
-    const m3 = document.getElementById('m3');
-    if (m1) countUp(m1, 1247);
-    if (m2) {
-      let v = 0;
-      const t = performance.now();
-      const step = now => {
-        const p = Math.min((now - t) / 1200, 1);
-        const e = 1 - Math.pow(1 - p, 3);
-        v = Math.round(e * 84200);
-        m2.textContent = (v >= 1000 ? (v/1000).toFixed(1) + 'k' : v);
-        if (p < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    }
-    if (m3) {
-      setTimeout(() => { m3.textContent = '99.97%'; }, 1400);
-    }
-  }, 500);
 
   /* ── Services section animation ────────── */
   (function() {
