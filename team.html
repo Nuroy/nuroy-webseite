@@ -77,6 +77,17 @@
 
     .tc-avatar{width:72px;height:72px;border-radius:16px;background:linear-gradient(135deg,var(--bg-4),var(--bg-3));border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:28px;font-weight:900;color:var(--pink);letter-spacing:-.02em;transition:box-shadow .4s,transform .4s cubic-bezier(0.2,0,0,1)}
     .tc:hover .tc-avatar{box-shadow:0 0 24px rgba(255,45,122,0.35);transform:scale(1.05)}
+
+    /* Gründer-Portrait (ersetzt Initialen-Avatar) */
+    .tc-photo{position:relative;aspect-ratio:4/5;border-radius:14px;overflow:hidden;margin-bottom:24px;border:1px solid var(--line-strong);z-index:1;background:var(--bg-3)}
+    .tc-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .5s cubic-bezier(0.2,0,0,1)}
+    .tc:hover .tc-photo img{transform:scale(1.04)}
+    .tc-photo .tag{position:absolute;left:12px;bottom:12px;z-index:2;background:rgba(10,10,14,0.6);backdrop-filter:blur(6px)}
+
+    /* Mobile: Swipe-Carousel Dots */
+    .team-dots{display:none;justify-content:center;gap:8px;margin-top:18px}
+    .team-dots button{width:8px;height:8px;border-radius:50%;background:var(--line-strong);padding:0;transition:background .25s,transform .25s}
+    .team-dots button.on{background:var(--pink);transform:scale(1.25)}
     .tc-role{font-family:var(--font-mono);font-size:10px;color:var(--pink);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;position:relative;z-index:1}
     .tc-name{font-family:var(--font-display);font-size:clamp(28px,3vw,42px);font-weight:900;letter-spacing:-.03em;margin-bottom:16px;position:relative;z-index:1}
     .tc-bio{font-size:14px;color:var(--fg-muted);line-height:1.8;margin-bottom:24px;position:relative;z-index:1}
@@ -138,13 +149,13 @@
 
     /* ── Mobile ≤900px ────────────────────────────── */
     @media(max-width:900px){
-      .team-cards{grid-template-columns:1fr}
-      .tc{transform:translateY(28px)}
-      .tc[data-mobile-dir="left"]{transform:translateX(-40px)}
-      .tc[data-mobile-dir="right"]{transform:translateX(40px)}
-      .tc[data-mobile-dir="left"].entered,
-      .tc[data-mobile-dir="right"].entered{animation:card-enter-mobile .75s cubic-bezier(0.16,1,0.3,1) forwards}
-      @keyframes card-enter-mobile{0%{opacity:0}100%{opacity:1;transform:translateX(0)}}
+      /* Team-Cards werden zum Swipe-Carousel (scroll-snap) */
+      .team-cards{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:20px;-webkit-overflow-scrolling:touch;scrollbar-width:none;background:transparent;border:none;border-radius:0;padding-bottom:4px}
+      .team-cards::-webkit-scrollbar{display:none}
+      .team-cards .tc{flex:0 0 82%;scroll-snap-align:center;border:1px solid var(--line);border-radius:16px;opacity:1;transform:none}
+      .team-cards .tc.entered{animation:none}
+      .team-dots{display:flex}
+      .tc[data-mobile-dir]{transform:none;opacity:1;animation:none}
       .tc::before{font-size:60px;right:-6px;bottom:-14px}
       .values-grid{grid-template-columns:1fr}
       .location-box{grid-template-columns:1fr}
@@ -201,10 +212,10 @@
 
       <div class="tc" data-ghost="J" data-mobile-dir="left">
         <div class="tc-accent"></div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;position:relative;z-index:1"><div class="tc-avatar" style="margin-bottom:0">J</div><span class="tag tag--pink">Gründer</span></div>
+        <div class="tc-photo"><img src="assets/team/julius.webp?v=1" alt="Julius, Gründer von Nuroy" width="880" height="1100" loading="lazy"><span class="tag tag--pink">Gründer</span></div>
         <div class="tc-role">Strategie · Sales · Business Dev</div>
         <div class="tc-name">Julius</div>
-        <p class="tc-bio">Verantwortlich für Kunden, Projekte und die strategische Ausrichtung. Julius übersetzt Geschäftsziele in technische Roadmaps — und sorgt dafür, dass Deadlines keine Theorie bleiben. Er ist dein erster Ansprechpartner und bleibt es während des gesamten Projekts.</p>
+        <p class="tc-bio">Verantwortlich für Kunden, Projekte und die strategische Ausrichtung. Julius übersetzt Geschäftsziele in technische Roadmaps und sorgt dafür, dass Deadlines keine Theorie bleiben. Er ist dein erster Ansprechpartner und bleibt es während des gesamten Projekts.</p>
         <div class="tc-skills">
           <div class="tc-skill">Tech-Strategie &amp; Roadmaps</div>
           <div class="tc-skill">Make-or-Buy-Entscheidungen</div>
@@ -215,10 +226,10 @@
 
       <div class="tc" data-ghost="T" data-mobile-dir="right">
         <div class="tc-accent"></div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;position:relative;z-index:1"><div class="tc-avatar" style="margin-bottom:0">T</div><span class="tag tag--pink">Gründer</span></div>
+        <div class="tc-photo"><img src="assets/team/timm.webp?v=1" alt="Timm, Gründer von Nuroy" width="880" height="1100" loading="lazy"><span class="tag tag--pink">Gründer</span></div>
         <div class="tc-role">Automation · System Architecture · No-Code/Low-Code</div>
         <div class="tc-name">Timm</div>
-        <p class="tc-bio">Baut Prozesse, die alleine laufen. Von n8n-Workflows bis zur vollständigen API-Orchestrierung — Timm denkt in Systemen, nicht in Aufgaben. Er analysiert, was automatisierbar ist, und baut es so, dass es wartbar bleibt.</p>
+        <p class="tc-bio">Baut Prozesse, die alleine laufen. Von n8n-Workflows bis zur vollständigen API-Orchestrierung: Timm denkt in Systemen, nicht in Aufgaben. Er analysiert, was automatisierbar ist, und baut es so, dass es wartbar bleibt.</p>
         <div class="tc-skills">
           <div class="tc-skill">n8n · Make · Zapier</div>
           <div class="tc-skill">API-Orchestrierung &amp; Webhooks</div>
@@ -229,7 +240,7 @@
 
       <div class="tc" data-ghost="M" data-mobile-dir="left">
         <div class="tc-accent"></div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;position:relative;z-index:1"><div class="tc-avatar" style="margin-bottom:0">M</div><span class="tag tag--pink">Gründer</span></div>
+        <div class="tc-photo"><img src="assets/team/max.webp?v=1" alt="Max, Gründer von Nuroy" width="880" height="1100" loading="lazy"><span class="tag tag--pink">Gründer</span></div>
         <div class="tc-role">Software Engineering · Backend · Integration</div>
         <div class="tc-name">Max</div>
         <p class="tc-bio">Schreibt den Code, auf dem das Ganze läuft. Spezialisiert auf skalierbare Backends, solide Datenbankarchitekturen und Integrationen, die wirklich halten. Wenn das System unter Last läuft, ist das Max' Handwerk.</p>
@@ -243,13 +254,20 @@
 
     </div>
 
+    <!-- Carousel-Dots (nur Mobile sichtbar) -->
+    <div class="team-dots" id="team-dots" aria-hidden="true">
+      <button type="button" class="on" data-i="0" aria-label="Julius"></button>
+      <button type="button" data-i="1" aria-label="Timm"></button>
+      <button type="button" data-i="2" aria-label="Max"></button>
+    </div>
+
     <!-- Broader team hint -->
     <div class="behind-box reveal-scale">
       <div class="behind-inner">
         <div>
           <p class="t-label" style="margin-bottom:10px;">Hinter den Gründern</p>
           <h3 style="font-family:var(--font-display);font-size:clamp(18px,2vw,26px);font-weight:700;letter-spacing:-0.02em;margin-bottom:10px;">Ein wachsendes Team aus Spezialisten.</h3>
-          <p style="font-size:14px;color:var(--fg-muted);line-height:1.75;max-width:560px;">Je nach Projekt arbeiten wir mit einem Netzwerk aus geprüften Entwicklern, Designern und Domain-Experten — fest integriert in unsere Prozesse, unter unserer Qualitätssicherung. Du hast immer Julius, Timm oder Max als direkten Ansprechpartner.</p>
+          <p style="font-size:14px;color:var(--fg-muted);line-height:1.75;max-width:560px;">Je nach Projekt arbeiten wir mit einem Netzwerk aus geprüften Entwicklern, Designern und Domain-Experten, fest integriert in unsere Prozesse und unter unserer Qualitätssicherung. Du hast immer Julius, Timm oder Max als direkten Ansprechpartner.</p>
           <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;">
             <span class="tag">Frontend-Entwickler</span>
             <span class="tag">Backend-Entwickler</span>
@@ -356,6 +374,35 @@
   var scan=document.getElementById('hero-scan');
   if(grid) setTimeout(function(){grid.classList.add('visible')},200);
   if(scan) setTimeout(function(){scan.classList.add('animate')},400);
+})();
+
+/* ── Carousel-Dots (Mobile Swipe) ─────────────── */
+(function(){
+  var track=document.getElementById('team-cards');
+  var dots=document.getElementById('team-dots');
+  if(!track||!dots) return;
+  var btns=dots.querySelectorAll('button');
+  var cards=track.querySelectorAll('.tc');
+  function setActive(i){btns.forEach(function(b,j){b.classList.toggle('on',j===i);});}
+  var raf=null;
+  track.addEventListener('scroll',function(){
+    if(raf) return;
+    raf=requestAnimationFrame(function(){
+      raf=null;
+      var mid=track.scrollLeft+track.clientWidth/2, best=0, bd=Infinity;
+      cards.forEach(function(c,i){
+        var d=Math.abs((c.offsetLeft+c.offsetWidth/2)-mid);
+        if(d<bd){bd=d;best=i;}
+      });
+      setActive(best);
+    });
+  },{passive:true});
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      var c=cards[+b.dataset.i];
+      if(c) track.scrollTo({left:c.offsetLeft-(track.clientWidth-c.offsetWidth)/2,behavior:'smooth'});
+    });
+  });
 })();
 
 /* ── Team section orchestrated entrance ──────── */

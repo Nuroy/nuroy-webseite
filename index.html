@@ -843,6 +843,15 @@
       margin-bottom: 14px;
     }
     .team-card-bio { font-size: 13px; color: var(--fg-muted); line-height: 1.65; }
+    /* Gründer-Portrait (ersetzt Initialen-Avatar) */
+    .team-photo { position: relative; aspect-ratio: 4/5; border-radius: 10px; overflow: hidden; margin-bottom: 18px; border: 1px solid var(--line-strong); background: var(--bg-3); }
+    .team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; transition: transform 0.5s cubic-bezier(0.2,0,0,1); }
+    .team-card:hover .team-photo img { transform: scale(1.04); }
+    .team-photo .tag { position: absolute; left: 10px; bottom: 10px; background: rgba(10,10,14,0.6); backdrop-filter: blur(6px); }
+    /* Mobile Carousel-Dots */
+    .team-dots { display: none; justify-content: center; gap: 8px; margin-top: 18px; }
+    .team-dots button { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); padding: 0; transition: background 0.25s, transform 0.25s; }
+    .team-dots button.on { background: var(--pink); transform: scale(1.25); }
 
     /* ── FAQ ────────────────────────────────── */
     .faq-list { margin-top: 56px; }
@@ -1009,7 +1018,11 @@
       .stat-item:first-child { grid-column: auto; padding: 32px 24px; }
       .stat-item:first-child .stat-number { font-size: clamp(36px, 10vw, 56px); }
       .stat-item { padding: 32px 24px; }
-      .team-grid { grid-template-columns: 1fr; }
+      /* Team wird zum Swipe-Carousel (scroll-snap) */
+      .team-grid { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 20px; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px; }
+      .team-grid::-webkit-scrollbar { display: none; }
+      .team-grid .team-card { flex: 0 0 82%; scroll-snap-align: center; }
+      .team-dots { display: flex; }
     }
 
     /* ── Kundenstimmen ────────────────────── */
@@ -1629,32 +1642,29 @@
     </div>
     <div class="team-grid">
       <div class="team-card reveal reveal-d1">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
-          <div class="team-avatar" style="margin-bottom:0">J</div>
-          <span class="tag tag--pink" style="font-size:10px">Gründer</span>
-        </div>
+        <div class="team-photo"><img src="assets/team/julius.webp?v=1" alt="Julius, Gründer von Nuroy" width="880" height="1100" loading="lazy"><span class="tag tag--pink" style="font-size:10px">Gründer</span></div>
         <div class="team-card-name">Julius</div>
         <div class="team-card-role">Strategie · Sales · Business Development</div>
-        <p class="team-card-bio">Verantwortlich für Kunden, Projekte und die strategische Ausrichtung. Übersetzt Geschäftsziele in technische Roadmaps — und sorgt dafür, dass Deadlines keine Theorie bleiben.</p>
+        <p class="team-card-bio">Verantwortlich für Kunden, Projekte und die strategische Ausrichtung. Übersetzt Geschäftsziele in technische Roadmaps und sorgt dafür, dass Deadlines keine Theorie bleiben.</p>
       </div>
       <div class="team-card reveal reveal-d2">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
-          <div class="team-avatar" style="margin-bottom:0">T</div>
-          <span class="tag tag--pink" style="font-size:10px">Gründer</span>
-        </div>
+        <div class="team-photo"><img src="assets/team/timm.webp?v=1" alt="Timm, Gründer von Nuroy" width="880" height="1100" loading="lazy"><span class="tag tag--pink" style="font-size:10px">Gründer</span></div>
         <div class="team-card-name">Timm</div>
         <div class="team-card-role">Automation · System Architecture · No-Code/Low-Code</div>
-        <p class="team-card-bio">Baut Prozesse, die alleine laufen. Von n8n-Workflows bis zur vollständigen API-Orchestrierung — Timm denkt in Systemen, nicht in Aufgaben.</p>
+        <p class="team-card-bio">Baut Prozesse, die alleine laufen. Von n8n-Workflows bis zur vollständigen API-Orchestrierung: Timm denkt in Systemen, nicht in Aufgaben.</p>
       </div>
       <div class="team-card reveal reveal-d3">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
-          <div class="team-avatar" style="margin-bottom:0">M</div>
-          <span class="tag tag--pink" style="font-size:10px">Gründer</span>
-        </div>
+        <div class="team-photo"><img src="assets/team/max.webp?v=1" alt="Max, Gründer von Nuroy" width="880" height="1100" loading="lazy"><span class="tag tag--pink" style="font-size:10px">Gründer</span></div>
         <div class="team-card-name">Max</div>
         <div class="team-card-role">Software Engineering · Backend · System-Integration</div>
         <p class="team-card-bio">Schreibt den Code, auf dem das Ganze läuft. Spezialisiert auf skalierbare Backends, solide Datenbankarchitekturen und Integrationen, die wirklich halten.</p>
       </div>
+    </div>
+    <!-- Carousel-Dots (nur Mobile sichtbar) -->
+    <div class="team-dots" id="team-dots-home" aria-hidden="true">
+      <button type="button" class="on" data-i="0" aria-label="Julius"></button>
+      <button type="button" data-i="1" aria-label="Timm"></button>
+      <button type="button" data-i="2" aria-label="Max"></button>
     </div>
     <!-- More team hint -->
     <div class="reveal" style="margin-top:20px;background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:24px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
@@ -1664,13 +1674,43 @@
         </div>
         <div>
           <div style="font-family:var(--font-display);font-size:15px;font-weight:600;letter-spacing:-0.01em">Hinter den Gründern steht ein wachsendes Team.</div>
-          <div style="font-size:13px;color:var(--fg-muted);margin-top:2px">Entwickler, Designer und Spezialisten — je nach Projekt.</div>
+          <div style="font-size:13px;color:var(--fg-muted);margin-top:2px">Entwickler, Designer und Spezialisten, je nach Projekt.</div>
         </div>
       </div>
       <a href="team" class="btn btn-secondary" style="flex-shrink:0">Das ganze Team →</a>
     </div>
   </div>
 </section>
+
+<script>
+/* Team-Carousel-Dots (Mobile Swipe) */
+(function(){
+  var track=document.querySelector('.team-grid');
+  var dots=document.getElementById('team-dots-home');
+  if(!track||!dots) return;
+  var btns=dots.querySelectorAll('button');
+  var cards=track.querySelectorAll('.team-card');
+  var raf=null;
+  track.addEventListener('scroll',function(){
+    if(raf) return;
+    raf=requestAnimationFrame(function(){
+      raf=null;
+      var mid=track.scrollLeft+track.clientWidth/2, best=0, bd=Infinity;
+      cards.forEach(function(c,i){
+        var d=Math.abs((c.offsetLeft+c.offsetWidth/2)-mid);
+        if(d<bd){bd=d;best=i;}
+      });
+      btns.forEach(function(b,j){b.classList.toggle('on',j===best);});
+    });
+  },{passive:true});
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      var c=cards[+b.dataset.i];
+      if(c) track.scrollTo({left:c.offsetLeft-(track.clientWidth-c.offsetWidth)/2,behavior:'smooth'});
+    });
+  });
+})();
+</script>
 
 <!-- ═══════════════════ FAQ ═══════════════════ -->
 <section class="section" style="background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
