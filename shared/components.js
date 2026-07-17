@@ -28,7 +28,7 @@
       <img src="${b}assets/logo-full.png" alt="Nuroy" class="nav-logo-img">
     </a>
     <ul class="nav-links" id="nav-links">
-      <li><div class="nav-link-wrap"><span class="nav-link-num">01</span><a href="${b}projekte" data-text="Arbeiten">Arbeiten</a></div></li>
+      <li><div class="nav-link-wrap"><span class="nav-link-num">01</span><a href="${b}arbeiten" data-text="Arbeiten">Arbeiten</a></div></li>
       <li class="nav-item-with-mega">
         <div class="nav-link-wrap">
           <span class="nav-link-num">02</span>
@@ -119,7 +119,7 @@
 <div class="mobile-menu" id="mobile-menu">
   <div class="mobile-menu-inner">
     <nav class="mobile-nav-links">
-      <a href="${b}projekte" class="mobile-nav-link" data-text="Arbeiten" data-num="01">
+      <a href="${b}arbeiten" class="mobile-nav-link" data-text="Arbeiten" data-num="01">
         <span class="mnl-num">01</span>
         <span class="mnl-text">Arbeiten</span>
         <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
