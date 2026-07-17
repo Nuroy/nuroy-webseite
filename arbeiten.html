@@ -525,13 +525,18 @@
       .cinema-sticky::-webkit-scrollbar { display: none; }
       .cinema-track { flex-direction: row; transform: none !important; }
       .cinema-slide {
+        width: 100vw;
         min-width: 100vw;
+        max-width: 100vw;
         height: auto;
         padding: calc(var(--nav-h) + 40px) 0 60px;
         scroll-snap-align: start;
         flex-shrink: 0;
       }
-      .slide-body { grid-template-columns: 1fr; gap: 40px; }
+      /* minmax(0,1fr) + min-width:0: verhindert, dass innere Mockups/Stat-Grids
+         den Grid-Track über die Viewport-Breite hinaus aufblähen (Text war abgeschnitten) */
+      .slide-body { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+      .slide-body * { min-width: 0; }
       .cinema-progress {
         position: relative;
         bottom: auto;
@@ -929,7 +934,7 @@
     <p class="t-label text-center reveal">Mehr bauen</p>
     <h2 class="t-h2 text-center reveal reveal-d1" style="margin-top:8px;">Weitere Projekte<br>kommen laufend dazu.</h2>
     <p class="t-body-lg text-center c-muted reveal reveal-d2" style="margin-top:16px; max-width:500px; margin-left:auto; margin-right:auto;">Nuroy arbeitet kontinuierlich an neuen Projekten. Wenn du Substanz willst, sprich mit uns.</p>
-    <div style="display:flex; justify-content:center; gap:12px; margin-top:40px;" class="reveal reveal-d3">
+    <div style="display:flex; justify-content:center; gap:12px; margin-top:40px; flex-wrap:wrap;" class="reveal reveal-d3">
       <a href="/kontakt" class="btn btn-primary btn-lg">Erstgespräch buchen</a>
       <a href="/" class="btn btn-secondary btn-lg">Zurück zur Startseite</a>
     </div>
