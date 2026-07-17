@@ -888,6 +888,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transform: translateX(0);
 }
 
+/* Mobile: horizontale Reveals fliegen vertikal ein.
+   translateX ragt sonst über den Viewport hinaus und macht die Seite
+   seitlich scrollbar (Elemente sind fast so breit wie der Screen). */
+@media (max-width: 700px) {
+  .reveal-left,
+  .reveal-right {
+    transform: translateY(24px);
+  }
+}
+
 @keyframes stat-pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.08); }
