@@ -52,6 +52,18 @@
     .pb-eyebrow{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--pink);margin-bottom:10px}
     .pb-text{font-family:var(--font-display);font-weight:800;font-size:clamp(19px,2.4vw,31px);line-height:1.15;letter-spacing:-.02em;color:#0A2540;max-width:22ch}
 
+    /* ── Zwoelf Bausteine ── */
+    .bausteine-section{border-top:1px solid var(--line)}
+    .bausteine-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:44px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+    .bs-cell{background:#FFFFFF;padding:26px 24px;display:flex;flex-direction:column}
+    .bs-num{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;color:var(--pink)}
+    .bs-schmerz{margin-top:12px;font-size:13px;line-height:1.5;color:var(--fg-dim)}
+    .bs-titel{margin-top:10px;font-family:var(--font-display);font-size:17px;font-weight:800;letter-spacing:-.02em;color:#0A2540;line-height:1.3}
+    .bs-was{margin-top:10px;font-size:14px;line-height:1.65;color:var(--fg-muted);flex:1}
+    .bs-herkunft{margin-top:16px;padding-top:12px;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:10.5px;letter-spacing:.05em;color:var(--fg-dim)}
+    .bs-fuss{margin-top:28px;max-width:640px;font-size:14.5px;line-height:1.7;color:var(--fg-dim)}
+    @media (max-width:1000px){.bausteine-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.bausteine-grid{grid-template-columns:1fr}}
     /* ── Page Header ──────────────────────── */
 
     /* ── Übertragung aufs Autohaus ── */
@@ -1002,6 +1014,113 @@
 
 
 <!-- ═══════════════════ BILDBAND ═══════════════════ -->
+<!-- Zwoelf Bausteine -->
+<section class="section bausteine-section">
+  <div class="container">
+    <p class="t-label reveal">Was davon schon gebaut ist</p>
+    <h2 class="t-h2 reveal reveal-d1" style="margin-top:8px;max-width:640px">
+      Zwölf Bausteine, die bereits laufen.
+    </h2>
+    <p class="t-body-lg c-muted reveal reveal-d2" style="max-width:660px;margin-top:16px">
+      Das sind keine Autohaus-Fallstudien, die haben wir nicht, und wir erfinden
+      auch keine. Es sind die Bausteine aus ausgelieferten Systemen, jeweils
+      neben dem Schmerzpunkt, auf den sie im Autohaus einzahlen. Die Schmerzpunkte
+      stammen aus der TÜV NORD INSIGHT 2026, die Bausteine aus unseren Projekten.
+    </p>
+    <div class="bausteine-grid">
+      <div class="bs-cell reveal">
+        <span class="bs-num">01</span>
+        <span class="bs-schmerz">Anfragen liegen in fünf Postfächern</span>
+        <h3 class="bs-titel">Kanal-Zusammenführung</h3>
+        <p class="bs-was">Börsen, Website, Formular und Telefon laufen in einen Eingang mit einer Vorgangsnummer je Anfrage.</p>
+        <span class="bs-herkunft">aus: CRM-System, B2B-Vertrieb</span>
+      </div>
+      <div class="bs-cell reveal">
+        <span class="bs-num">02</span>
+        <span class="bs-schmerz">Die Erstantwort dauert zu lange</span>
+        <h3 class="bs-titel">Automatische Erstreaktion</h3>
+        <p class="bs-was">Eingang wird klassifiziert und binnen Sekunden beantwortet, mit den Angaben, die zum Fahrzeug gehören.</p>
+        <span class="bs-herkunft">aus: CRM-System, B2B-Vertrieb</span>
+      </div>
+      <div class="bs-cell reveal">
+        <span class="bs-num">03</span>
+        <span class="bs-schmerz">Niemand ist verbindlich zuständig</span>
+        <h3 class="bs-titel">Zuweisung mit Eskalation</h3>
+        <p class="bs-was">Jede Anfrage bekommt einen Verantwortlichen und eine Frist. Passiert nichts, eskaliert der Vorgang.</p>
+        <span class="bs-herkunft">aus: CRM-System, B2B-Vertrieb</span>
+      </div>
+      <div class="bs-cell reveal">
+        <span class="bs-num">04</span>
+        <span class="bs-schmerz">Über ein Viertel der Anrufe kommt nach Feierabend</span>
+        <h3 class="bs-titel">Anrufannahme im Überlauf</h3>
+        <p class="bs-was">Der Assistent übernimmt erst, wenn intern niemand rangeht, und kennzeichnet sich als digitaler Assistent.</p>
+        <span class="bs-herkunft">aus: KI-Voice-Agent, Arztpraxis</span>
+      </div>
+      <div class="bs-cell reveal">
+        <span class="bs-num">05</span>
+        <span class="bs-schmerz">Ein Assistent ohne Terminbuchung verärgert messbar</span>
+        <h3 class="bs-titel">Buchung im echten Kalender</h3>
+        <p class="bs-was">Angeboten werden nur real freie Slots, die Buchung landet direkt im vorhandenen Planer.</p>
+        <span class="bs-herkunft">aus: KI-Voice-Agent, Arztpraxis</span>
+      </div>
+      <div class="bs-cell reveal">
+        <span class="bs-num">06</span>
+        <span class="bs-schmerz">Ein verpasster Anruf hinterlässt keine Spur</span>
+        <h3 class="bs-titel">Gesprächsprotokoll je Anruf</h3>
+        <p class="bs-was">Volltext-Transkript in der Vorgangshistorie, damit nachvollziehbar ist, was zugesagt wurde.</p>
+        <span class="bs-herkunft">aus: KI-Voice-Agent, Arztpraxis</span>
+      </div>
+      <div class="bs-cell reveal">
+        <span class="bs-num">07</span>
+        <span class="bs-schmerz">Fälligkeiten stehen im System, aber niemand spricht sie an</span>
+        <h3 class="bs-titel">Fristen- und Anlass-Motor</h3>
+        <p class="bs-was">Termine, Intervalle und Vertragsenden lösen die Ansprache aus, ohne dass jemand eine Liste zieht.</p>
+        <span class="bs-herkunft">aus: Accountly, Steuerkanzlei</span>
+      </div>
+      <div class="bs-cell reveal">
+        <span class="bs-num">08</span>
+        <span class="bs-schmerz">Kampagnen erreichen Kunden, die längst einen Termin haben</span>
+        <h3 class="bs-titel">Abgleich vor dem Versand</h3>
+        <p class="bs-was">Vor jedem Versand wird gegen den aktuellen Bestand geprüft. Wer schon da war, fällt raus.</p>
+        <span class="bs-herkunft">aus: Accountly, Steuerkanzlei</span>
+      </div>
+      <div class="bs-cell reveal">
+        <span class="bs-num">09</span>
+        <span class="bs-schmerz">Belege und Stammdaten kommen aus fremden Formaten</span>
+        <h3 class="bs-titel">Auslesen und Zuordnen</h3>
+        <p class="bs-was">Dokumente werden maschinell gelesen, geprüft und dem richtigen Vorgang zugeordnet.</p>
+        <span class="bs-herkunft">aus: Accountly, Steuerkanzlei</span>
+      </div>
+      <div class="bs-cell reveal">
+        <span class="bs-num">10</span>
+        <span class="bs-schmerz">Kunden verschwinden, ohne dass es auffällt</span>
+        <h3 class="bs-titel">Abwanderungssignal</h3>
+        <p class="bs-was">Aus Verhalten und Historie entsteht eine Rangfolge, wer zuerst angesprochen werden sollte.</p>
+        <span class="bs-herkunft">aus: CSM-Suite, SaaS</span>
+      </div>
+      <div class="bs-cell reveal">
+        <span class="bs-num">11</span>
+        <span class="bs-schmerz">Probleme fallen erst im Monatsabschluss auf</span>
+        <h3 class="bs-titel">Schwellenwerte mit Alarm</h3>
+        <p class="bs-was">Kennzahlen je Objekt laufen gegen Grenzwerte und melden sich, bevor die Frist gerissen ist.</p>
+        <span class="bs-herkunft">aus: CSM-Suite, SaaS</span>
+      </div>
+      <div class="bs-cell reveal">
+        <span class="bs-num">12</span>
+        <span class="bs-schmerz">Jede Rolle braucht eine andere Sicht</span>
+        <h3 class="bs-titel">Rollenabhängiges Cockpit</h3>
+        <p class="bs-was">Leitung, Vertrieb und Service sehen dieselbe Datenbasis, aber nur die für sie zuständigen Zahlen.</p>
+        <span class="bs-herkunft">aus: CSM-Suite, SaaS</span>
+      </div>
+    </div>
+    <p class="bs-fuss reveal">
+      Vier dieser Systeme sind oben im Detail beschrieben, die übrigen stammen
+      aus den weiteren Projekten der letzten Jahre. Im Erstgespräch zeigen wir
+      Ihnen die Bausteine live, statt sie zu beschreiben.
+    </p>
+  </div>
+</section>
+
 <section class="photo-band">
   <img
     src="assets/photos/band-arbeiten-1600.webp"
