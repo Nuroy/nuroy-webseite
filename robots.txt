@@ -5,62 +5,38 @@
 # ─── Klassische Suchmaschinen (vollen Zugriff) ───
 User-agent: Googlebot
 Allow: /
-Disallow: /dashboard-jetzt
-Disallow: /funnel/
-Disallow: /test-*.html
 
 User-agent: Bingbot
 Allow: /
-Disallow: /dashboard-jetzt
-Disallow: /funnel/
-Disallow: /test-*.html
 
 # ─── AI Citation / Live-Retrieval Bots (ERLAUBT) ───
 # Diese Bots liefern Citations & Traffic zurück.
 User-agent: OAI-SearchBot
 Allow: /
-Disallow: /dashboard-jetzt
-Disallow: /funnel/
 
 User-agent: ChatGPT-User
 Allow: /
-Disallow: /dashboard-jetzt
-Disallow: /funnel/
 
 User-agent: Claude-SearchBot
 Allow: /
-Disallow: /dashboard-jetzt
-Disallow: /funnel/
 
 User-agent: Claude-User
 Allow: /
-Disallow: /dashboard-jetzt
-Disallow: /funnel/
 
 User-agent: PerplexityBot
 Allow: /
-Disallow: /dashboard-jetzt
-Disallow: /funnel/
 
 User-agent: Perplexity-User
 Allow: /
-Disallow: /dashboard-jetzt
-Disallow: /funnel/
 
 User-agent: Google-Extended
 Allow: /
-Disallow: /dashboard-jetzt
-Disallow: /funnel/
 
 User-agent: Applebot-Extended
 Allow: /
-Disallow: /dashboard-jetzt
-Disallow: /funnel/
 
 User-agent: Amazonbot
 Allow: /
-Disallow: /dashboard-jetzt
-Disallow: /funnel/
 
 # ─── AI Training-Only Bots (BLOCKIERT) ───
 # Diese Bots scrapen nur fürs Modelltraining, ohne Citations zurück.
@@ -112,10 +88,6 @@ Disallow: /
 # ─── Default (alle anderen Bots) ───
 User-agent: *
 Allow: /
-Disallow: /dashboard-jetzt
-Disallow: /funnel/
-Disallow: /test-*.html
-Disallow: /*.backup.html$
 
 # ─── Sitemap ───
 Sitemap: https://nuroy.de/sitemap.xml
