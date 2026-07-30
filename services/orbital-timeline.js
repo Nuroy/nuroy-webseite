@@ -11,9 +11,9 @@
     {
       id: 1,
       num: '01',
-      title: 'VERSTEHEN',
-      desc: '1-2 Wochen Discovery',
-      content: 'Wir analysieren Ihre Tools, KPIs und Workflows.',
+      title: 'ERSTGESPRÄCH',
+      desc: '30 bis 45 Minuten',
+      content: 'Wir gehen Ihre Kanäle durch und schauen, wo Anfragen heute liegen bleiben. Kein Pitch.',
       status: 'completed',
       energy: 90,
       relatedIds: [2]
@@ -21,9 +21,9 @@
     {
       id: 2,
       num: '02',
-      title: 'KONZIPIEREN',
-      desc: '1 Woche Design & Planung',
-      content: 'Wir erstellen Wireframes, definieren die Datenstruktur und stimmen das Konzept mit Ihnen ab.',
+      title: 'BESTANDSAUFNAHME',
+      desc: '1 bis 2 Wochen',
+      content: 'Wir sehen uns an, was bei Ihnen läuft: DMS, Börsenzugänge, Werkstattplaner, Telefonanlage. Daraus wird eine Reihenfolge.',
       status: 'completed',
       energy: 85,
       relatedIds: [1, 3]
@@ -31,9 +31,9 @@
     {
       id: 3,
       num: '03',
-      title: 'BAUEN',
-      desc: '3-5 Wochen Entwicklung',
-      content: 'Sie sehen wöchentlich Fortschritt und können Feedback geben.',
+      title: 'ANBINDUNG',
+      desc: '2 bis 4 Wochen',
+      content: 'Wir bauen die Verbindung zu Ihren Systemen. Sie wechseln nichts, es kommt etwas dazu.',
       status: 'in-progress',
       energy: 95,
       relatedIds: [2, 4]
@@ -41,9 +41,9 @@
     {
       id: 4,
       num: '04',
-      title: 'TESTEN',
-      desc: '1 Woche Testing & Launch',
-      content: 'Wir prüfen alle Datenquellen, laden Stakeholder zum Testen ein und gehen live.',
+      title: 'PROBEBETRIEB',
+      desc: 'rund 2 Wochen',
+      content: 'Erst ein Kanal, ein Standort. Sie hören Gespräche mit und lesen jede Antwort, bevor der Rest dazukommt.',
       status: 'pending',
       energy: 80,
       relatedIds: [3, 5]
@@ -51,9 +51,9 @@
     {
       id: 5,
       num: '05',
-      title: 'BLEIBEN',
-      desc: 'Hosting & Wartung',
-      content: 'Optional: Wir hosten, warten und entwickeln weiter.',
+      title: 'BETRIEB',
+      desc: 'laufend, monatlich',
+      content: 'Wir betreiben, überwachen und entwickeln weiter. Ohne Mindestlaufzeit, Sie können jederzeit aussteigen.',
       status: 'pending',
       energy: 75,
       relatedIds: [4]

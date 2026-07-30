@@ -174,7 +174,11 @@ window.SERVICE_CONTENT = {
       { q: 'Können wir hören, was er gesagt hat?',
         a: 'Ja. Jedes Gespräch wird transkribiert und in der Lead-Historie abgelegt. Sie sehen jederzeit, was besprochen wurde, und können die Gesprächsführung anpassen.' },
       { q: 'Muss der Anrufer wissen, dass er mit einer Maschine spricht?',
-        a: 'Ja, und das setzen wir von vornherein um. Der Assistent weist zu Beginn darauf hin. Das ist nicht nur Vorgabe des EU AI Act, es ist auch die Grundlage dafür, dass Kunden es akzeptieren.' }
+        a: 'Ja, und das setzen wir von vornherein um. Der Assistent weist zu Beginn darauf hin. Das ist nicht nur Vorgabe des EU AI Act, es ist auch die Grundlage dafür, dass Kunden es akzeptieren.' },
+      { q: 'mobile.de bietet so etwas kostenlos an. Warum dann Sie?',
+        a: 'Nutzen Sie das ruhig, es ist ein gutes Angebot. Es greift nur bei Anrufen zu Inseraten auf dieser Plattform. Ihr Servicekunde, der einen Werkstatttermin will, Ihr Bestandskunde nach der HU und jeder Anruf über Website, Google oder Empfehlung hängen an keinem Inserat. Genau dort setzen wir an, und dort bleiben Gespräch, Kontakt und Termin in Ihren Systemen statt im Portal.' },
+      { q: 'Bucht der Assistent auch wirklich Termine?',
+        a: 'Ja, und wir bauen ihn nicht anders. Laut TÜV NORD INSIGHT 2026 hebt ein Assistent die Zufriedenheit mit der Erreichbarkeit von 66 auf 75 Prozent. Kann er keine Termine buchen, steigt die Unzufriedenheit dagegen auf 12 Prozent, also über den Wert ganz ohne Assistent. Ohne Anbindung an Ihren Planer wäre das Ergebnis schlechter als der Zustand vorher.' }
     ]
   },
 
