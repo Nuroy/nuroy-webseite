@@ -2986,3 +2986,59 @@ h1, h2, h3,
 @media (max-width: 600px) {
   .ct-row { padding: 16px 20px; }
 }
+
+/* Hinweis unter den Kundenstimmen: die Referenzen stammen aus anderen
+   Branchen, das muss auf einer Autohaus-Seite dabeistehen. */
+.sp-hinweis {
+  max-width: 620px;
+  margin: 14px auto 0;
+  text-align: center;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--fg-muted);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FAQ als zweispaltiger Block.
+   Vorher stand nur eine Ueberschrift ueber einer Liste, ohne
+   Label und Einleitung, waehrend jeder andere Abschnitt der
+   Seite diese Struktur hat. Links bleibt die Einordnung beim
+   Scrollen stehen, rechts laufen die Fragen.
+   ═══════════════════════════════════════════════════════════ */
+.faq-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 360px) 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: start;
+  margin-top: 40px;
+}
+.faq-intro { position: sticky; top: calc(var(--nav-h) + 32px); }
+.faq-intro-text {
+  margin-top: 16px;
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--fg-muted);
+}
+.faq-intro-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--pink);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(var(--pink-rgb), 0.3);
+  padding-bottom: 3px;
+  transition: border-color .25s, gap .25s;
+}
+.faq-intro-link:hover { border-bottom-color: var(--pink); gap: 12px; }
+.faq-intro-link svg { flex-shrink: 0; }
+
+/* Die Liste braucht in der Spalte keine eigene Maximalbreite mehr */
+.faq-layout .faq-list { max-width: none; }
+
+@media (max-width: 900px) {
+  .faq-layout { grid-template-columns: 1fr; gap: 28px; }
+  .faq-intro { position: static; }
+}

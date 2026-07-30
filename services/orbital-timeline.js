@@ -14,8 +14,6 @@
       title: 'ERSTGESPRÄCH',
       desc: '30 bis 45 Minuten',
       content: 'Wir gehen Ihre Kanäle durch und schauen, wo Anfragen heute liegen bleiben. Kein Pitch.',
-      status: 'completed',
-      energy: 90,
       relatedIds: [2]
     },
     {
@@ -24,8 +22,6 @@
       title: 'BESTANDSAUFNAHME',
       desc: '1 bis 2 Wochen',
       content: 'Wir sehen uns an, was bei Ihnen läuft: DMS, Börsenzugänge, Werkstattplaner, Telefonanlage. Daraus wird eine Reihenfolge.',
-      status: 'completed',
-      energy: 85,
       relatedIds: [1, 3]
     },
     {
@@ -34,8 +30,6 @@
       title: 'ANBINDUNG',
       desc: '2 bis 4 Wochen',
       content: 'Wir bauen die Verbindung zu Ihren Systemen. Sie wechseln nichts, es kommt etwas dazu.',
-      status: 'in-progress',
-      energy: 95,
       relatedIds: [2, 4]
     },
     {
@@ -44,8 +38,6 @@
       title: 'PROBEBETRIEB',
       desc: 'rund 2 Wochen',
       content: 'Erst ein Kanal, ein Standort. Sie hören Gespräche mit und lesen jede Antwort, bevor der Rest dazukommt.',
-      status: 'pending',
-      energy: 80,
       relatedIds: [3, 5]
     },
     {
@@ -54,8 +46,6 @@
       title: 'BETRIEB',
       desc: 'laufend, monatlich',
       content: 'Wir betreiben, überwachen und entwickeln weiter. Ohne Mindestlaufzeit, Sie können jederzeit aussteigen.',
-      status: 'pending',
-      energy: 75,
       relatedIds: [4]
     }
   ];
@@ -93,8 +83,6 @@
         title: step.title,
         desc: step.desc,
         content: step.content,
-        status: index === 0 ? 'completed' : index === 1 ? 'in-progress' : 'pending',
-        energy: 90 - (index * 5),
         relatedIds: this.getRelatedIds(index, steps.length)
       }));
     }
@@ -135,32 +123,23 @@
         </div>
         <div class="orbital-node-label">${item.title}</div>
         <div class="orbital-node-card">
-          <div class="orbital-card-status">${this.getStatusText(item.status)}</div>
+          <div class="orbital-card-status">Schritt ${index + 1} von ${total}</div>
           <div class="orbital-card-title">${item.title}</div>
           <div class="orbital-card-desc">${item.desc}</div>
           <div class="orbital-card-content">${item.content}</div>
           <div class="orbital-card-energy">
             <div class="orbital-card-energy-label">
-              <span>Energy Level</span>
-              <span>${item.energy}%</span>
+              <span>Fortschritt</span>
+              <span>${Math.round(((index + 1) / total) * 100)} %</span>
             </div>
             <div class="orbital-card-energy-bar">
-              <div class="orbital-card-energy-fill" style="width: ${item.energy}%"></div>
+              <div class="orbital-card-energy-fill" style="width: ${Math.round(((index + 1) / total) * 100)}%"></div>
             </div>
           </div>
         </div>
       `;
 
       return node;
-    }
-
-    getStatusText(status) {
-      const statusMap = {
-        'completed': 'ABGESCHLOSSEN',
-        'in-progress': 'IN ARBEIT',
-        'pending': 'GEPLANT'
-      };
-      return statusMap[status] || status.toUpperCase();
     }
 
     calculateNodePosition(index, total) {
