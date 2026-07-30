@@ -760,73 +760,93 @@
     }
     .mock-stage-count { width: 20px; text-align: right; }
 
-    /* ── Prozess ────────────────────────────── */
+    /* ── Prozess als senkrechte Zeitleiste ──── */
+    /* Vorher ein Raster mit fest vier Spalten. Seit es fuenf Schritte
+       sind, brach der letzte um. Fuenf Spalten waeren bei diesem
+       Textumfang zu schmal, deshalb untereinander mit Verbindungslinie. */
     .process-steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      /* shared/styles.css setzt hier display:flex fuer die Variante der
+         Leistungsseiten. Ohne diese Ruecksetzung stehen die fuenf Schritte
+         nebeneinander statt untereinander. */
+      display: block;
       gap: 0;
-      margin-top: 56px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
+      margin-top: clamp(36px, 4vw, 56px);
+      max-width: 860px;
       position: relative;
     }
-    /* connecting line across all steps */
-    .process-steps::before {
+    /* Die durchgehende Waagerechte der anderen Variante wird nicht gebraucht */
+    .process-steps::before { display: none; }
+    .process-step {
+      display: grid;
+      flex: none;
+      text-align: left;
+      animation: none;
+      grid-template-columns: 96px 1fr;
+      gap: clamp(20px, 3vw, 40px);
+      padding: 0 0 clamp(30px, 3.4vw, 44px);
+      position: relative;
+    }
+    .process-step:last-child { padding-bottom: 0; }
+    /* Verbindungslinie zwischen den Nummern */
+    .process-step::before {
       content: '';
       position: absolute;
-      top: 52px;
-      left: calc(25% / 2);
-      right: calc(25% / 2);
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--pink), var(--pink), transparent);
-      opacity: 0.25;
-      z-index: 0;
-      pointer-events: none;
+      left: 47px;
+      top: 62px;
+      bottom: 8px;
+      width: 1px;
+      background: linear-gradient(to bottom, rgba(var(--pink-rgb), .45), rgba(var(--pink-rgb), .12));
     }
-    .process-step {
-      padding: 40px 28px 36px;
-      background: var(--bg-2);
-      border-right: 1px solid var(--line);
-      position: relative;
-      overflow: hidden;
-      transition: background 0.25s;
-    }
-    .process-step:hover { background: var(--bg-3); }
-    .process-step:last-child { border-right: none; }
-    .process-step::after { display: none; }
+    .process-step:last-child::before { display: none; }
     .process-num-big {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 96px;
+      height: 56px;
       font-family: var(--font-display);
-      font-size: 56px;
+      font-size: 30px;
       font-weight: 900;
-      letter-spacing: -0.04em;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(var(--pink-rgb), 0.3);
+      letter-spacing: -0.03em;
+      color: var(--pink);
+      background: var(--bg-2);
+      border: 1px solid rgba(var(--pink-rgb), .28);
+      border-radius: 999px;
       line-height: 1;
-      margin-bottom: 20px;
-      display: block;
       position: relative;
       z-index: 1;
+      -webkit-text-stroke: 0;
     }
-    .process-num {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--pink);
-      letter-spacing: 0.1em;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-      display: none;
-    }
+    .process-inhalt { padding-top: 4px; }
     .process-step h3 {
       font-family: var(--font-display);
-      font-size: 19px;
+      font-size: clamp(18px, 2vw, 22px);
       font-weight: 800;
-      letter-spacing: -0.015em;
-      margin-bottom: 10px;
-      position: relative;
-      z-index: 1;
+      letter-spacing: -0.02em;
+      color: #0A2540;
+      margin: 0;
     }
-    .process-step p { font-size: 13px; color: var(--fg-muted); line-height: 1.7; position: relative; z-index: 1; }
+    .process-dauer {
+      display: inline-block;
+      margin-top: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--fg-dim);
+    }
+    .process-step p {
+      margin-top: 10px;
+      font-size: 15px;
+      color: var(--fg-muted);
+      line-height: 1.75;
+      max-width: 62ch;
+    }
+    @media (max-width: 620px) {
+      .process-step { grid-template-columns: 64px 1fr; gap: 18px; }
+      .process-num-big { width: 64px; height: 44px; font-size: 22px; }
+      .process-step::before { left: 31px; top: 50px; }
+    }
 
     /* ── Stats ──────────────────────────────── */
     .stats-grid {
@@ -1098,7 +1118,7 @@
         min-width: 85vw;
         flex-shrink: 0;
       }
-      .process-steps { grid-template-columns: 1fr 1fr; }
+      
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .stat-item:first-child { grid-column: auto; padding: 32px 24px; }
       .stat-item:first-child .stat-number { font-size: clamp(36px, 10vw, 56px); }
@@ -1137,9 +1157,15 @@
     }
     .client-logos {
       display: grid;
+      /* Bei vier Logos sehen nur 4x1 oder 2x2 ruhig aus, ein 3+1 nicht.
+         Deshalb fester Umschlag statt auto-fit. Der alte Umbruch lag bei
+         600px, die vier Logos brauchen aber schon ab rund 620px zu viel. */
       grid-template-columns: repeat(4, 1fr);
       gap: 16px;
       margin-top: 48px;
+    }
+    @media (max-width: 820px) {
+      .client-logos { grid-template-columns: 1fr 1fr; gap: 14px; }
     }
     .client-logo {
       display: flex;
@@ -1205,7 +1231,7 @@
       .service-card { padding: 24px 20px; }
       .service-card::before { font-size: 60px; right: -5px; bottom: -16px; }
       .shb-right { display: none; }
-      .process-steps { grid-template-columns: 1fr; }
+      
       .process-step::after { display: none; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .testimonial-grid { grid-template-columns: 1fr; }
@@ -2414,28 +2440,43 @@
     <div class="process-steps">
       <div class="process-step reveal reveal-d1">
         <span class="process-num-big">01</span>
-        <h3>Erstgespräch</h3>
-        <p>Dreißig bis fünfundvierzig Minuten. Wir gehen Ihre Kanäle durch und schauen, wo heute Anfragen liegen bleiben. Am Ende wissen Sie mehr über Ihr Haus, auch wenn Sie nie wieder anrufen.</p>
+        <div class="process-inhalt">
+          <h3>Erstgespräch</h3>
+          <span class="process-dauer">30 bis 45 Minuten</span>
+          <p>Wir gehen Ihre Kanäle durch und schauen, wo heute Anfragen liegen bleiben. Am Ende wissen Sie mehr über Ihr Haus, auch wenn Sie nie wieder anrufen.</p>
+        </div>
       </div>
       <div class="process-step reveal reveal-d2">
         <span class="process-num-big">02</span>
-        <h3>Bestandsaufnahme</h3>
-        <p>Ein bis zwei Wochen. Wir sehen uns an, was bei Ihnen läuft: DMS, Börsenzugänge, Werkstattplaner, Telefonanlage. Daraus wird eine Reihenfolge.</p>
+        <div class="process-inhalt">
+          <h3>Bestandsaufnahme</h3>
+          <span class="process-dauer">1 bis 2 Wochen</span>
+          <p>Wir sehen uns an, was bei Ihnen läuft: DMS, Börsenzugänge, Werkstattplaner, Telefonanlage. Daraus wird eine Reihenfolge, was zuerst Wirkung zeigt.</p>
+        </div>
       </div>
       <div class="process-step reveal reveal-d3">
         <span class="process-num-big">03</span>
-        <h3>Anbindung</h3>
-        <p>Zwei bis vier Wochen. Wir bauen die Verbindung zu Ihren Systemen. Sie wechseln nichts, es kommt etwas dazu.</p>
+        <div class="process-inhalt">
+          <h3>Anbindung</h3>
+          <span class="process-dauer">2 bis 4 Wochen</span>
+          <p>Wir bauen die Verbindung zu Ihren Systemen. Sie wechseln nichts, es kommt etwas dazu. Ihre Abläufe bleiben, wie Ihr Team sie kennt.</p>
+        </div>
       </div>
       <div class="process-step reveal reveal-d4">
         <span class="process-num-big">04</span>
-        <h3>Probebetrieb</h3>
-        <p>Rund zwei Wochen. Erst ein Kanal, ein Standort. Sie hören Gespräche mit und lesen jede Antwort, bevor der Rest dazukommt.</p>
+        <div class="process-inhalt">
+          <h3>Probebetrieb</h3>
+          <span class="process-dauer">rund 2 Wochen</span>
+          <p>Erst ein Kanal, ein Standort. Sie hören Gespräche mit und lesen jede Antwort, bevor der Rest dazukommt.</p>
+        </div>
       </div>
       <div class="process-step reveal reveal-d4">
         <span class="process-num-big">05</span>
-        <h3>Betrieb</h3>
-        <p>Wir betreiben das System, überwachen es und bauen aus, was sich als Nächstes lohnt. Sie haben weiterhin Julius, Timm oder Max am Telefon, keinen Support-Kanal.</p>
+        <div class="process-inhalt">
+          <h3>Betrieb</h3>
+          <span class="process-dauer">laufend, monatlich</span>
+          <p>Wir betreiben das System, überwachen es und bauen aus, was sich als Nächstes lohnt. Sie haben weiterhin Julius, Timm oder Max am Telefon, keinen Support-Kanal.</p>
+        </div>
       </div>
     </div>
 
