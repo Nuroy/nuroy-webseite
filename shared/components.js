@@ -20,12 +20,11 @@
 
   function getBase() { return getRootPath(); }
 
-  // Das Marineblau-Logo hat auf dem dunklen Hintergrund der uebrigen
-  // Seiten nur ~2,4:1 Kontrast und waere dort kaum zu erkennen.
-  // Deshalb pro Theme die passende Datei.
+  // Alle Seiten laufen im hellen Theme, das pinke Logo ist Altbestand
+  // und wird nirgends mehr ausgeliefert. Bliebe der alte Zweig stehen,
+  // brächte eine einzige Seite ohne .theme-light das Pink zurück.
   function getLogo(b) {
-    const light = document.body && document.body.classList.contains('theme-light');
-    return b + (light ? 'assets/logo-full-navy.png' : 'assets/logo-full.png');
+    return b + 'assets/logo-full-navy.png';
   }
 
   function buildNav(b) {
