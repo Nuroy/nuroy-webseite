@@ -7,9 +7,17 @@
 
    WICHTIG zu den Zahlen in benefitCards: das sind BELEGTE
    MARKTZAHLEN mit Quellenangabe, keine Ergebnisse einzelner
-   Kunden. Quellen: DAT, TÜV NORD INSIGHT 2026, matelso, ZDK,
-   AUTOHAUS/Targobank. Wer hier eigene Erfolge einträgt, muss
-   sie belegen können.
+   Kunden. Hauptquelle ist TÜV NORD INSIGHT 2026 (AUTOHAUS mit
+   TÜV NORD Mobilität, Erhebung puls Marktforschung, Feldzeit
+   24.09. bis 14.10.2025, 275 Händler und 842 Käufer), dazu
+   DAT-Barometer 06/2026 und DAT Report 2026.
+
+   NICHT MEHR VERWENDEN: die früher kursierenden 42 Prozent
+   Antwortquote und 9 bis 12,5 Stunden Reaktionszeit stammen aus
+   einer Erhebung von 2019 und sind veraltet. Die 43 Prozent
+   Händlerwechsel nach vier Stunden sind in keiner Primärquelle
+   auffindbar. Beim Rohertrag je Fahrzeug gibt es keine
+   belastbare Branchenzahl, deshalb steht dort kein Wert.
 
    Nur diese Felder werden tatsächlich gerendert (siehe
    populate-service.js): hero, showcaseTitle, showcaseSubtitle,
@@ -36,12 +44,12 @@ window.SERVICE_CONTENT = {
     showcaseSubtitle: 'mobile.de, AutoScout24, Website, Google, Social — fünf Kanäle, fünf Postfächer, keines davon verbindlich zugeordnet. Wir ziehen alles in einen Eingang und antworten in unter 60 Sekunden.',
 
     benefitCards: [
-      { number: '42 %',   label: 'unbeantwortet', desc: 'der digitalen Kundenanfragen im Handel (DAT)',      icon: 'chart-bar' },
-      { number: '43 %',   label: 'wechseln',      desc: 'den Händler nach 4 Std. ohne Antwort (matelso)',    icon: 'clock' },
-      { number: '9–12,5', label: 'Stunden',       desc: 'durchschnittliche Reaktionszeit auf einen Lead',    icon: 'clock' },
-      { number: '16 %',   label: 'sind schnell',  desc: 'antworten binnen 30 Min. — 47 % wollen es',         icon: 'target' },
-      { number: '61 %',   label: 'ohne System',   desc: 'managen Leads im E-Mail-Programm',                  icon: 'workflow' },
-      { number: '< 60',   label: 'Sekunden',      desc: 'unser Zielwert für die Erstantwort',                icon: 'lightning' }
+      { number: '9 von 10', label: 'rufen an',     desc: 'Ihrer Kunden hatten telefonischen Kontakt (TÜV NORD 2026)', icon: 'users' },
+      { number: '> 70 %',   label: 'mehrkanalig',  desc: 'nutzen mehr als einen Kanal, jeder Vierte WhatsApp',        icon: 'workflow' },
+      { number: '25 %',     label: 'nach Feierabend', desc: 'aller Anrufe, über die Hälfte davon Terminanfragen (LDB)', icon: 'clock' },
+      { number: '48 %',     label: 'wollen buchen', desc: 'der Kunden ohne Bot-Erfahrung über einen Assistenten',      icon: 'target' },
+      { number: '66 %',     label: 'ohne Assistent', desc: 'der Händler haben weder Voice- noch Chat-Bot',            icon: 'chart-bar' },
+      { number: '< 60',     label: 'Sekunden',     desc: 'unser Zielwert für die Erstantwort',                        icon: 'lightning' }
     ],
 
     features: [
@@ -51,14 +59,14 @@ window.SERVICE_CONTENT = {
       'Qualifizierung: Budget, Zeithorizont, Inzahlungnahme, Finanzierungsinteresse',
       'Routing an den zuständigen Verkäufer, mit Eskalation bei Stillstand',
       'Automatische Wiedervorlage, wenn nach X Stunden nichts passiert ist',
-      'WhatsApp als Kanal — 30 % der Kunden wünschen ihn sich',
+      'WhatsApp als vollwertiger Kanal, jeder vierte Kunde nutzt ihn bereits',
       'Wochenreport: zurückgeholte Anfragen und Termine, als Zahl',
       'Kein Systemwechsel — läuft über Ihrem DMS, nicht an dessen Stelle',
       'Hosting in der EU, AV-Vertrag und Löschkonzept inklusive'
     ],
 
     roiHeadline: 'Was eine liegengebliebene Anfrage kostet.',
-    roiSubline: 'Bei 1.500–2.500 € Rohertrag pro Gebrauchtwagen trägt sich der Aufwand bereits über einen zusätzlichen Verkauf im Monat.',
+    roiSubline: 'Für den Gebrauchtwagenhandel gibt es keine belastbare Branchenzahl zum Rohertrag. Wir rechnen im Erstgespräch mit Ihrer eigenen Zahl, das ist ohnehin aussagekräftiger.',
     hasWaveBackground: true,
 
     serviceTypes: [
@@ -73,7 +81,7 @@ window.SERVICE_CONTENT = {
         features: ['Verbindliche Zuordnung statt Sammelpostfach', 'Antwortfrist mit Eskalationsstufe',
                    'Google-Business-Anfragen inklusive', 'Rückmeldung auch außerhalb der Öffnungszeiten'] },
       { title: 'WhatsApp', tag: 'Wunschkanal', icon: 'users',
-        desc: '30 % der Kunden wollen per WhatsApp kommunizieren, nur 21 % der Händler bieten es an.',
+        desc: 'Jeder vierte Autokäufer kommuniziert bereits per WhatsApp mit seinem Händler.',
         detailedDesc: 'Wir binden WhatsApp als vollwertigen Kanal an — mit derselben Qualifizierung und derselben Ablage wie E-Mail, DSGVO-konform dokumentiert.',
         features: ['WhatsApp Business als regulärer Lead-Kanal', 'Gleiche Qualifizierung wie per Mail',
                    'Verlauf landet in der Lead-Historie', 'Dokumentierte Einwilligung und Löschfristen'] },
@@ -110,12 +118,12 @@ window.SERVICE_CONTENT = {
     showcaseSubtitle: 'In Stoßzeiten gehen Anrufe systematisch verloren: Serviceberater nehmen Fahrzeuge an, Verkäufer sitzen im Gespräch. Der verpasste Anruf ist die Inspektion, die bei der freien Werkstatt landet.',
 
     benefitCards: [
-      { number: '~18.000',  label: 'fehlen',         desc: 'Fachkräfte im Kfz-Gewerbe (ZDK)',                  icon: 'users' },
-      { number: '69 %',     label: 'finden keine',   desc: 'kaum noch Werkstattpersonal',                      icon: 'users' },
-      { number: 'jeder 3.', label: 'verpasste Anruf',desc: 'wird zum qualifizierten Lead (mobile.de, 2026)',   icon: 'target' },
-      { number: '24/7',     label: 'erreichbar',     desc: 'auch abends, am Wochenende, in der Räder-Saison',  icon: 'clock' },
-      { number: '3×',       label: 'klingeln',       desc: 'dann übernimmt der Assistent — nicht vorher',      icon: 'lightning' },
-      { number: '100 %',    label: 'dokumentiert',   desc: 'jedes Gespräch mit Transkript in der Historie',    icon: 'security' }
+      { number: '94 %',    label: 'zufrieden',     desc: 'wer telefonisch zufrieden ist, ist es auch insgesamt (TÜV NORD 2026)', icon: 'target' },
+      { number: '30 %',    label: 'nur',           desc: 'sind vollkommen zufrieden mit der Erreichbarkeit',   icon: 'chart-bar' },
+      { number: '75 %',    label: 'statt 66 %',    desc: 'Zufriedenheit mit Assistent, sofern er Termine bucht', icon: 'lightning' },
+      { number: '12 %',    label: 'unzufrieden',   desc: 'wenn der Assistent keine Termine buchen kann',       icon: 'security' },
+      { number: '~10.000', label: 'fehlen',        desc: 'Fachkräfte im handwerklichen Bereich (ZDK)',         icon: 'users' },
+      { number: '24/7',    label: 'erreichbar',    desc: 'auch abends, am Wochenende, in der Räder-Saison',    icon: 'clock' }
     ],
 
     features: [
@@ -184,12 +192,12 @@ window.SERVICE_CONTENT = {
     showcaseSubtitle: 'Keine HU-Erinnerung, keine Inspektions-Kampagne, keine Räderwechsel-Einladung, kein Trigger zum Leasingende. Die Daten dafür liegen vollständig im DMS — sie werden nur nicht genutzt.',
 
     benefitCards: [
-      { number: '4–6×',    label: 'teurer',        desc: 'Neukundengewinnung gegenüber Bestandsbindung',   icon: 'currency-euro' },
-      { number: '> 70 %',  label: 'halten',        desc: 'freie Werkstätten für deutlich günstiger',        icon: 'chart-bar' },
-      { number: '38 %',    label: 'freier Handel', desc: 'vs. 36 % Markenhandel bei Gebrauchten (2025)',    icon: 'target' },
-      { number: '0',       label: 'Erinnerungen',  desc: 'laufen in den meisten Häusern automatisch',       icon: 'clock' },
-      { number: 'HU/AU',   label: 'als Anlass',    desc: 'planbar, wiederkehrend, im DMS hinterlegt',       icon: 'workflow' },
-      { number: '1 Klick', label: 'zum Termin',    desc: 'aus der Erinnerung direkt in den Kalender',       icon: 'lightning' }
+      { number: '42 %',    label: 'der Händler',   desc: 'glauben, sie melden sich zu selten (TÜV NORD 2026)', icon: 'chart-bar' },
+      { number: '11 %',    label: 'der Kunden',    desc: 'sehen das genauso. 77 % sagen: genau richtig',       icon: 'users' },
+      { number: '66 %',    label: 'wollen Abos',   desc: 'digital zubuchbare Service-Pakete, nur 45 % bieten sie', icon: 'target' },
+      { number: '604 €',   label: 'je Reparatur',  desc: 'Durchschnitt im Handel (DAT Report 2026)',           icon: 'currency-euro' },
+      { number: '38 %',    label: 'freier Handel', desc: 'vs. 36 % Markenhandel bei Gebrauchten (DAT 2026)',   icon: 'workflow' },
+      { number: '1 Klick', label: 'zum Termin',    desc: 'aus der Erinnerung direkt in den Kalender',          icon: 'lightning' }
     ],
 
     features: [
@@ -206,7 +214,7 @@ window.SERVICE_CONTENT = {
     ],
 
     roiHeadline: 'Der Bestand ist da. Er wird nur nicht angesprochen.',
-    roiSubline: 'Rechnen Sie selbst: Fahrzeuge im Kundenbestand × angenommene Reaktivierungsquote × Umsatz je Werkstattdurchgang. Die Grundzahlen stehen in Ihrem DMS.',
+    roiSubline: 'Rechnen Sie selbst: 4.000 Fahrzeuge im Bestand, 5 Prozent zusätzliche Reaktivierung, das sind 200 Werkstattdurchgänge. Bei 604 Euro Durchschnitt je Reparatur (DAT Report 2026) rund 120.000 Euro im Jahr.',
     hasWaveBackground: true,
 
     serviceTypes: [
@@ -258,8 +266,8 @@ window.SERVICE_CONTENT = {
     showcaseSubtitle: 'Die Abverkaufssteuerung läuft in vielen Häusern nach Bauchgefühl und Excel. Welcher Wagen Anfragen bekommt, aber keine Antworten — das sieht niemand.',
 
     benefitCards: [
-      { number: '~33 %',   label: 'des Bestands',  desc: 'steht länger als 90 Tage (DAT)',                    icon: 'chart-bar' },
-      { number: '25–30 €', label: 'pro Tag',       desc: 'Standkosten je Pkw, +30 % gegenüber Vorjahr',       icon: 'currency-euro' },
+      { number: 'jedes 3.', label: 'Fahrzeug',     desc: 'steht länger als 90 Tage (DAT-Barometer 06/2026)',  icon: 'chart-bar' },
+      { number: '25 €',    label: 'pro Tag',       desc: 'Standkosten je Pkw (DAT-Barometer 06/2026)',        icon: 'currency-euro' },
       { number: '90',      label: 'Tage Schwelle', desc: 'ab hier gilt ein Fahrzeug als Risikobestand',       icon: 'clock' },
       { number: 'live',    label: 'statt monatlich',desc: 'Kapitalbindung jederzeit einsehbar',               icon: 'lightning' },
       { number: 'je Fzg.', label: 'Anfragen',      desc: 'sichtbar, welcher Wagen gefragt ist — und welcher nicht', icon: 'target' },
@@ -280,7 +288,7 @@ window.SERVICE_CONTENT = {
     ],
 
     roiHeadline: 'Standzeit ist eine Zahl, die sich in Euro umrechnen lässt.',
-    roiSubline: 'Fahrzeuge × eingesparte Standtage × Tagessatz. Bei 25–30 € je Fahrzeug und Tag summiert sich das schneller, als die Monatsauswertung zeigt.',
+    roiSubline: 'Ein Haus mit 500 Gebrauchtwagen im Jahr und 80 Standtagen im Schnitt bindet rund eine Million Euro Standkosten. Zwanzig Tage weniger sind 250.000 Euro. Grundlage: 25 Euro je Fahrzeug und Tag laut DAT-Barometer.',
     hasWaveBackground: true,
 
     serviceTypes: [
@@ -332,8 +340,8 @@ window.SERVICE_CONTENT = {
     showcaseSubtitle: 'Telefonische Terminvergabe bindet Personal, Nichterscheinen kostet Kapazität, und kurzfristige Lücken durch Stornierungen bleiben unbesetzt, weil niemand Zeit hat, Ersatz zu akquirieren.',
 
     benefitCards: [
-      { number: '63 %',    label: 'nutzen Bots',    desc: 'der Händler mit Bots primär für Terminvergabe',   icon: 'workflow' },
-      { number: '42 %',    label: 'wollen digital', desc: 'den Kauf vollständig digital (TÜV NORD 2026)',    icon: 'users' },
+      { number: '81 %',    label: 'würden buchen',  desc: 'Servicetermine über ein Kundenportal (TÜV NORD 2026)', icon: 'workflow' },
+      { number: '24 %',    label: 'bieten Freigabe', desc: 'digitale Auftragsfreigabe, 49 % planen sie',        icon: 'users' },
       { number: '24/7',    label: 'buchbar',        desc: 'auch dann, wenn niemand ans Telefon kann',        icon: 'clock' },
       { number: '1 Klick', label: 'Freigabe',       desc: 'für Zusatzarbeiten statt Rückruf und Warteschleife', icon: 'lightning' },
       { number: 'Lücken',  label: 'gefüllt',        desc: 'Warteliste rückt bei Stornierung automatisch nach', icon: 'target' },
@@ -406,8 +414,8 @@ window.SERVICE_CONTENT = {
     showcaseSubtitle: 'Die meisten Häuser sammeln Bewertungen nicht systematisch und antworten nicht auf negative. Dabei entscheidet das Profil darüber, ob überhaupt angerufen wird.',
 
     benefitCards: [
-      { number: '12 %',   label: 'meiden',        desc: 'einen Betrieb wegen schlechter Bewertungen',        icon: 'chart-bar' },
-      { number: '1.',     label: 'Kontaktpunkt',  desc: 'Google steht vor dem Anruf',                        icon: 'target' },
+      { number: '38 %',   label: 'wechselten',    desc: 'den Händler wegen Google-Rezensionen (TÜV NORD 2026)', icon: 'chart-bar' },
+      { number: '79 %',   label: 'antworten',     desc: 'auf Bewertungen, aber nur 21 % mit System',            icon: 'target' },
       { number: 'nach',   label: 'jedem Auftrag', desc: 'automatische Anfrage statt gelegentlich',           icon: 'workflow' },
       { number: 'intern', label: 'zuerst',        desc: 'unzufriedene Kunden vor der Öffentlichkeit klären', icon: 'security' },
       { number: '100 %',  label: 'beantwortet',   desc: 'auch die negativen, mit Vorschlag statt Vorlage',   icon: 'brain' },
