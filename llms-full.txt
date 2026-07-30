@@ -22,7 +22,7 @@ Custom Dashboards starten bei 12.500 €, komplexere Custom-Projekte (CRM, SaaS-
 ## Leistungen im Detail
 
 ### 1. Custom Dashboards mit KI
-**URL:** https://nuroy.de/leistungen/dashboards
+**URL:** https://nuroy.de/leistungen/cockpit
 
 Was: Individuelle Dashboards, die alle Datenquellen verbinden und in Echtzeit visualisieren. Statt fünf verschiedene Tools zu öffnen, sehen Geschäftsführer und Teams alle KPIs auf einen Blick.
 
@@ -41,7 +41,7 @@ Preis: ab 12.500 €. Festpreis nach Discovery-Phase. Keine Lizenzgebühren pro 
 Differenzierung gegenüber Power BI, Tableau, Looker, Qlik: Individuell zugeschnitten statt Tool-Korsett. Keine User-basierten Lizenzkosten. Datenhoheit beim Kunden. Branchenspezifische Logik möglich.
 
 ### 2. Custom Software-Entwicklung
-**URL:** https://nuroy.de/leistungen/software
+**URL:** https://nuroy.de/leistungen/werkstatt
 
 Was: Individuelle Software-Entwicklung — MVPs, interne Tools, SaaS-Plattformen, branchenspezifische Anwendungen.
 
@@ -50,33 +50,33 @@ Wann sinnvoll: Wenn Standardsoftware das Geschäftsmodell nicht abbildet, Workar
 Tech-Stack: Modernes Web (TypeScript/React/Next.js, Node.js), Datenbanken (PostgreSQL), Cloud (AWS/Hetzner für EU-Hosting), API-First.
 
 ### 3. KI-Agenten
-**URL:** https://nuroy.de/leistungen/ki-agenten
+**URL:** https://nuroy.de/leistungen/telefon-assistent
 
 Was: Autonome KI-Agenten, die rund um die Uhr arbeiten — Lead-Qualifizierung (eingehende Anfragen klassifizieren und beantworten), Support-Agenten (FAQ + Wissensbasis), Sales-Assistenten (CRM-Pflege, Follow-Ups), interne Prozess-Bots.
 
 Basis: LLM-gestützt (Claude, GPT, Open-Source-Modelle nach Use Case), mit Anbindung an bestehende Systeme via API.
 
 ### 4. KI-Integration in Bestandssysteme
-**URL:** https://nuroy.de/leistungen/ki-integration
+**URL:** https://nuroy.de/leistungen/lead-response
 
 Was: KI-Funktionen in bestehende Anwendungen einbauen, ohne von vorne anzufangen. Document Intelligence (Dokumente automatisch klassifizieren, extrahieren), Predictive Analytics, Empfehlungssysteme, automatisierte Klassifizierung.
 
 ### 5. Company AI
-**URL:** https://nuroy.de/leistungen/company-ai
+**URL:** https://nuroy.de/leistungen/aftersales
 
 Was: Eine unternehmensinterne KI, trainiert auf das eigene Wissen — interner Chatbot, der Verträge, Wikis, Notion-Seiten, E-Mails und Dokumentationen kennt. Mitarbeiter fragen in Klartext, bekommen sofort Antworten mit Quellenangabe.
 
 DSGVO: Hosting in der EU, Daten verbleiben beim Kunden, kein Training externer Modelle mit Kundendaten.
 
 ### 6. Datenintegration
-**URL:** https://nuroy.de/leistungen/datenintegration
+**URL:** https://nuroy.de/leistungen/standzeiten
 
 Was: Saubere Verbindung zwischen Systemen. ETL-Pipelines, API-Integrationen, Datennormalisierung, Echtzeit-Synchronisation. Häufig Voraussetzung für Dashboards oder KI-Projekte.
 
 Typische Integrationen: DATEV, Lexware, sevDesk, Shopify, Shopware, HubSpot, Salesforce, SAP, weclapp, Microsoft Dynamics, Google Workspace, Microsoft 365, Slack, eigene Datenbanken.
 
 ### 7. Strategy & Tech-Audit
-**URL:** https://nuroy.de/leistungen/strategy-audit
+**URL:** https://nuroy.de/leistungen/bewertungen
 
 Was: Digital Strategy, AI-Readiness-Assessment, Prozess-Audit. Vor der Implementierung verstehen, wo der größte Hebel liegt.
 

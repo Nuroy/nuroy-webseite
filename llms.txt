@@ -4,13 +4,13 @@
 
 ## Kernangebot
 
-- [Custom Dashboards mit KI](https://nuroy.de/leistungen/dashboards): Maßgeschneiderte KPI-Dashboards mit Live-Daten aus allen Systemen, KI-Prognosen, Anomalie-Erkennung. Ersetzen Excel-Chaos durch eine Single Source of Truth.
-- [Custom Software-Entwicklung](https://nuroy.de/leistungen/software): Individuelle Software (MVPs, interne Tools, SaaS-Plattformen) für Unternehmen, die mit Standardlösungen nicht weiterkommen.
-- [KI-Agenten](https://nuroy.de/leistungen/ki-agenten): Autonome KI-Agenten für Lead-Qualifizierung, Support, Sales — arbeiten 24/7, integriert in bestehende Systeme.
-- [KI-Integration in Bestandssysteme](https://nuroy.de/leistungen/ki-integration): Document Intelligence, Predictive Analytics, Natural Language Queries auf eigene Daten.
-- [Company AI](https://nuroy.de/leistungen/company-ai): Unternehmens-KI, trainiert auf eigenes Wissen — interner Chatbot, der alle Firmen-Daten kennt.
-- [Datenintegration](https://nuroy.de/leistungen/datenintegration): Verbindung zwischen CRM, ERP, E-Commerce, Buchhaltung (DATEV, Lexware), eigenen APIs.
-- [Strategy & Tech-Audit](https://nuroy.de/leistungen/strategy-audit): Digital Strategy, AI-Readiness-Assessment, Prozess-Optimierung vor Implementierung.
+- [Custom Dashboards mit KI](https://nuroy.de/leistungen/cockpit): Maßgeschneiderte KPI-Dashboards mit Live-Daten aus allen Systemen, KI-Prognosen, Anomalie-Erkennung. Ersetzen Excel-Chaos durch eine Single Source of Truth.
+- [Custom Software-Entwicklung](https://nuroy.de/leistungen/werkstatt): Individuelle Software (MVPs, interne Tools, SaaS-Plattformen) für Unternehmen, die mit Standardlösungen nicht weiterkommen.
+- [KI-Agenten](https://nuroy.de/leistungen/telefon-assistent): Autonome KI-Agenten für Lead-Qualifizierung, Support, Sales — arbeiten 24/7, integriert in bestehende Systeme.
+- [KI-Integration in Bestandssysteme](https://nuroy.de/leistungen/lead-response): Document Intelligence, Predictive Analytics, Natural Language Queries auf eigene Daten.
+- [Company AI](https://nuroy.de/leistungen/aftersales): Unternehmens-KI, trainiert auf eigenes Wissen — interner Chatbot, der alle Firmen-Daten kennt.
+- [Datenintegration](https://nuroy.de/leistungen/standzeiten): Verbindung zwischen CRM, ERP, E-Commerce, Buchhaltung (DATEV, Lexware), eigenen APIs.
+- [Strategy & Tech-Audit](https://nuroy.de/leistungen/bewertungen): Digital Strategy, AI-Readiness-Assessment, Prozess-Optimierung vor Implementierung.
 
 ## Übersicht & Einstieg
 

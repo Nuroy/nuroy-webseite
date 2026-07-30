@@ -28,86 +28,86 @@
 
   <!-- Custom Dashboards (Top-Priorität) -->
   <url>
-    <loc>https://nuroy.de/leistungen/dashboards</loc>
+    <loc>https://nuroy.de/leistungen/cockpit</loc>
     <lastmod>2026-07-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="de-DE" href="https://nuroy.de/leistungen/dashboards"/>
-    <xhtml:link rel="alternate" hreflang="de-AT" href="https://nuroy.de/leistungen/dashboards"/>
-    <xhtml:link rel="alternate" hreflang="de-CH" href="https://nuroy.de/leistungen/dashboards"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nuroy.de/leistungen/dashboards"/>
+    <xhtml:link rel="alternate" hreflang="de-DE" href="https://nuroy.de/leistungen/cockpit"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://nuroy.de/leistungen/cockpit"/>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://nuroy.de/leistungen/cockpit"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nuroy.de/leistungen/cockpit"/>
   </url>
 
   <!-- Custom Software -->
   <url>
-    <loc>https://nuroy.de/leistungen/software</loc>
+    <loc>https://nuroy.de/leistungen/werkstatt</loc>
     <lastmod>2026-07-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="de-DE" href="https://nuroy.de/leistungen/software"/>
-    <xhtml:link rel="alternate" hreflang="de-AT" href="https://nuroy.de/leistungen/software"/>
-    <xhtml:link rel="alternate" hreflang="de-CH" href="https://nuroy.de/leistungen/software"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nuroy.de/leistungen/software"/>
+    <xhtml:link rel="alternate" hreflang="de-DE" href="https://nuroy.de/leistungen/werkstatt"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://nuroy.de/leistungen/werkstatt"/>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://nuroy.de/leistungen/werkstatt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nuroy.de/leistungen/werkstatt"/>
   </url>
 
   <!-- KI-Agenten -->
   <url>
-    <loc>https://nuroy.de/leistungen/ki-agenten</loc>
+    <loc>https://nuroy.de/leistungen/telefon-assistent</loc>
     <lastmod>2026-07-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="de-DE" href="https://nuroy.de/leistungen/ki-agenten"/>
-    <xhtml:link rel="alternate" hreflang="de-AT" href="https://nuroy.de/leistungen/ki-agenten"/>
-    <xhtml:link rel="alternate" hreflang="de-CH" href="https://nuroy.de/leistungen/ki-agenten"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nuroy.de/leistungen/ki-agenten"/>
+    <xhtml:link rel="alternate" hreflang="de-DE" href="https://nuroy.de/leistungen/telefon-assistent"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://nuroy.de/leistungen/telefon-assistent"/>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://nuroy.de/leistungen/telefon-assistent"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nuroy.de/leistungen/telefon-assistent"/>
   </url>
 
   <!-- KI-Integration -->
   <url>
-    <loc>https://nuroy.de/leistungen/ki-integration</loc>
+    <loc>https://nuroy.de/leistungen/lead-response</loc>
     <lastmod>2026-07-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="de-DE" href="https://nuroy.de/leistungen/ki-integration"/>
-    <xhtml:link rel="alternate" hreflang="de-AT" href="https://nuroy.de/leistungen/ki-integration"/>
-    <xhtml:link rel="alternate" hreflang="de-CH" href="https://nuroy.de/leistungen/ki-integration"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nuroy.de/leistungen/ki-integration"/>
+    <xhtml:link rel="alternate" hreflang="de-DE" href="https://nuroy.de/leistungen/lead-response"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://nuroy.de/leistungen/lead-response"/>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://nuroy.de/leistungen/lead-response"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nuroy.de/leistungen/lead-response"/>
   </url>
 
   <!-- Company AI -->
   <url>
-    <loc>https://nuroy.de/leistungen/company-ai</loc>
+    <loc>https://nuroy.de/leistungen/aftersales</loc>
     <lastmod>2026-07-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="de-DE" href="https://nuroy.de/leistungen/company-ai"/>
-    <xhtml:link rel="alternate" hreflang="de-AT" href="https://nuroy.de/leistungen/company-ai"/>
-    <xhtml:link rel="alternate" hreflang="de-CH" href="https://nuroy.de/leistungen/company-ai"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nuroy.de/leistungen/company-ai"/>
+    <xhtml:link rel="alternate" hreflang="de-DE" href="https://nuroy.de/leistungen/aftersales"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://nuroy.de/leistungen/aftersales"/>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://nuroy.de/leistungen/aftersales"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nuroy.de/leistungen/aftersales"/>
   </url>
 
   <!-- Datenintegration -->
   <url>
-    <loc>https://nuroy.de/leistungen/datenintegration</loc>
+    <loc>https://nuroy.de/leistungen/standzeiten</loc>
     <lastmod>2026-07-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="de-DE" href="https://nuroy.de/leistungen/datenintegration"/>
-    <xhtml:link rel="alternate" hreflang="de-AT" href="https://nuroy.de/leistungen/datenintegration"/>
-    <xhtml:link rel="alternate" hreflang="de-CH" href="https://nuroy.de/leistungen/datenintegration"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nuroy.de/leistungen/datenintegration"/>
+    <xhtml:link rel="alternate" hreflang="de-DE" href="https://nuroy.de/leistungen/standzeiten"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://nuroy.de/leistungen/standzeiten"/>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://nuroy.de/leistungen/standzeiten"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nuroy.de/leistungen/standzeiten"/>
   </url>
 
   <!-- Strategy & Audit -->
   <url>
-    <loc>https://nuroy.de/leistungen/strategy-audit</loc>
+    <loc>https://nuroy.de/leistungen/bewertungen</loc>
     <lastmod>2026-07-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="de-DE" href="https://nuroy.de/leistungen/strategy-audit"/>
-    <xhtml:link rel="alternate" hreflang="de-AT" href="https://nuroy.de/leistungen/strategy-audit"/>
-    <xhtml:link rel="alternate" hreflang="de-CH" href="https://nuroy.de/leistungen/strategy-audit"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nuroy.de/leistungen/strategy-audit"/>
+    <xhtml:link rel="alternate" hreflang="de-DE" href="https://nuroy.de/leistungen/bewertungen"/>
+    <xhtml:link rel="alternate" hreflang="de-AT" href="https://nuroy.de/leistungen/bewertungen"/>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://nuroy.de/leistungen/bewertungen"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nuroy.de/leistungen/bewertungen"/>
   </url>
 
   <!-- Arbeiten Übersicht -->

@@ -2733,6 +2733,27 @@ body.theme-light .dashboard-flow-label {
   color: var(--fg);
 }
 
+/* ── Hero-Foto auf den Leistungsseiten. Ersetzt den frueheren
+      Browser-Mockup-Rahmen — ein Foto braucht keine Ampelpunkte. ── */
+body.theme-light .service-vsl-wrapper {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+.service-hero-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  box-shadow: 0 24px 60px -22px rgba(10, 37, 64, 0.22);
+}
+
 /* ── Google-Maps-Iframe ist fuer Dunkel invertiert. Auf Hell muss
       die Inversion raus, sonst wird die Karte neon. ── */
 body.theme-light iframe[src*="google.com/maps"] {

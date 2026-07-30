@@ -48,53 +48,53 @@
         <div class="mega-menu" id="mega-menu-leistungen">
           <div class="mega-menu-inner">
             <div class="mega-services-grid">
-              <a href="${b}leistungen/dashboards" class="mega-service-item">
+              <a href="${b}leistungen/lead-response" class="mega-service-item">
                 <span class="mega-num">01</span>
                 <div>
-                  <h4 class="mega-title">Custom Dashboards</h4>
-                  <p class="mega-desc">Daten sichtbar machen. Entscheidungen schneller treffen.</p>
+                  <h4 class="mega-title">Lead-Response</h4>
+                  <p class="mega-desc">Jede Anfrage beantwortet, bevor der Interessent weiterklickt.</p>
                 </div>
               </a>
-              <a href="${b}leistungen/ki-agenten" class="mega-service-item">
+              <a href="${b}leistungen/telefon-assistent" class="mega-service-item">
                 <span class="mega-num">02</span>
                 <div>
-                  <h4 class="mega-title">KI-Agenten & Automatisierungen</h4>
-                  <p class="mega-desc">Routineaufgaben automatisieren. Zeit für Wichtiges gewinnen.</p>
+                  <h4 class="mega-title">Telefon-Assistent</h4>
+                  <p class="mega-desc">Kein Anruf klingelt mehr ins Leere — auch abends nicht.</p>
                 </div>
               </a>
-              <a href="${b}leistungen/software" class="mega-service-item">
+              <a href="${b}leistungen/aftersales" class="mega-service-item">
                 <span class="mega-num">03</span>
                 <div>
-                  <h4 class="mega-title">Custom Software-Entwicklung</h4>
-                  <p class="mega-desc">Maßgeschneiderte Lösungen. Keine Kompromisse.</p>
+                  <h4 class="mega-title">Aftersales-Motor</h4>
+                  <p class="mega-desc">HU, Inspektion, Räderwechsel: Kunden kommen von selbst zurück.</p>
                 </div>
               </a>
-              <a href="${b}leistungen/ki-integration" class="mega-service-item">
+              <a href="${b}leistungen/standzeiten" class="mega-service-item">
                 <span class="mega-num">04</span>
                 <div>
-                  <h4 class="mega-title">KI-Integration</h4>
-                  <p class="mega-desc">KI in bestehende Systeme integrieren.</p>
+                  <h4 class="mega-title">Standzeiten senken</h4>
+                  <p class="mega-desc">Sehen, welcher Wagen Geld kostet — bevor es teuer wird.</p>
                 </div>
               </a>
-              <a href="${b}leistungen/company-ai" class="mega-service-item">
+              <a href="${b}leistungen/werkstatt" class="mega-service-item">
                 <span class="mega-num">05</span>
                 <div>
-                  <h4 class="mega-title">Interne Company-AI</h4>
-                  <p class="mega-desc">Ihr Wissen, ein KI-Assistent.</p>
+                  <h4 class="mega-title">Werkstatt-Auslastung</h4>
+                  <p class="mega-desc">Online buchbar, Lücken gefüllt, Zusatzarbeiten per Klick frei.</p>
                 </div>
               </a>
-              <a href="${b}leistungen/datenintegration" class="mega-service-item">
+              <a href="${b}leistungen/bewertungen" class="mega-service-item">
                 <span class="mega-num">06</span>
                 <div>
-                  <h4 class="mega-title">Datenintegration & ETL</h4>
-                  <p class="mega-desc">Datensilos auflösen. Ein System, alle Quellen.</p>
+                  <h4 class="mega-title">Bewertungen</h4>
+                  <p class="mega-desc">Nach jedem Auftrag fragen. Kritik intern klären, nicht öffentlich.</p>
                 </div>
               </a>
-              <a href="${b}leistungen/strategy-audit" class="mega-service-item">
+              <a href="${b}leistungen/cockpit" class="mega-service-item">
                 <span class="mega-num">07</span>
                 <div>
-                  <h4 class="mega-title">Strategy & Audit</h4>
-                  <p class="mega-desc">Tech-Stack prüfen. Roadmap definieren.</p>
+                  <h4 class="mega-title">Inhaber-Cockpit</h4>
+                  <p class="mega-desc">Alle Zahlen an einem Ort. Ohne Excel, ohne Monatsabschluss.</p>
                 </div>
               </a>
             </div>
@@ -164,7 +164,7 @@
       <a href="${b}" class="footer-logo">
         <img src="${getLogo(b)}" alt="Nuroy" class="nav-logo-img">
       </a>
-      <p class="footer-tagline">Die Technik-Abteilung für Unternehmen, die bauen wollen, statt zu verwalten.</p>
+      <p class="footer-tagline">Das Technik-Team für Autohäuser, die vorne stehen wollen, statt zu verwalten.</p>
       <p class="t-mono c-dim">Paphos, Zypern — Remote-First DACH</p>
     </div>
     <div class="footer-col">
@@ -181,28 +181,13 @@
       <p class="footer-col-label">Leistungen</p>
       <ul>
         <li><a href="${b}leistungen">Übersicht</a></li>
-        <li><a href="${b}leistungen/dashboards">Custom Dashboards</a></li>
-        <li><a href="${b}leistungen/ki-agenten">KI-Agenten</a></li>
-        <li><a href="${b}leistungen/software">Software-Entwicklung</a></li>
-        <li><a href="${b}leistungen/ki-integration">KI-Integration</a></li>
-        <li><a href="${b}leistungen/company-ai">Company-AI</a></li>
-        <li><a href="${b}leistungen/datenintegration">Datenintegration</a></li>
-        <li><a href="${b}leistungen/strategy-audit">Strategy & Audit</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <p class="footer-col-label">Branchen</p>
-      <ul>
-        <li><a href="${b}branchen/marketing-agentur">Marketing-Agentur</a></li>
-        <li><a href="${b}branchen/ecommerce">E-Commerce</a></li>
-        <li><a href="${b}branchen/steuerberater">Steuerberater</a></li>
-        <li><a href="${b}branchen/saas">B2B SaaS</a></li>
-        <li><a href="${b}branchen/handwerk">Handwerk</a></li>
-        <li><a href="${b}branchen/vertriebs-agentur">Vertriebs-Agentur</a></li>
-        <li><a href="${b}branchen/coaches">Coaches / Info-Produkte</a></li>
-        <li><a href="${b}branchen/anwaltskanzlei">Anwaltskanzlei</a></li>
-        <li><a href="${b}branchen/immobilienmakler">Immobilienmakler</a></li>
-        <li><a href="${b}branchen/personalvermittlung">Personalvermittlung</a></li>
+        <li><a href="${b}leistungen/lead-response">Lead-Response</a></li>
+        <li><a href="${b}leistungen/telefon-assistent">Telefon-Assistent</a></li>
+        <li><a href="${b}leistungen/aftersales">Aftersales-Motor</a></li>
+        <li><a href="${b}leistungen/standzeiten">Standzeiten senken</a></li>
+        <li><a href="${b}leistungen/werkstatt">Werkstatt-Auslastung</a></li>
+        <li><a href="${b}leistungen/bewertungen">Bewertungen</a></li>
+        <li><a href="${b}leistungen/cockpit">Inhaber-Cockpit</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -218,7 +203,7 @@
   </div>
   <div class="footer-bottom">
     <span class="footer-bottom-text">© 2024–2026 Nuroy. Gegründet in Paphos, Zypern.</span>
-    <span class="footer-bottom-text">Software · Automation · Strategie</span>
+    <span class="footer-bottom-text">Technik · Automation · Strategie für Autohäuser</span>
   </div>
 </footer>`;
   }

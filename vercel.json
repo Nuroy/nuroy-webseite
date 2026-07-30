@@ -2,68 +2,198 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/contact", "destination": "/kontakt", "permanent": true },
-    { "source": "/work", "destination": "/arbeiten", "permanent": true },
-    { "source": "/work/accountly", "destination": "/arbeiten/accountly", "permanent": true },
-    { "source": "/work/crm", "destination": "/arbeiten/crm-system", "permanent": true },
-    { "source": "/work/voice-agent", "destination": "/arbeiten/voice-agent", "permanent": true },
-    { "source": "/work/csm-suite", "destination": "/arbeiten/csm-suite", "permanent": true },
-    { "source": "/work/:slug*", "destination": "/arbeiten", "permanent": true },
-    { "source": "/blog", "destination": "/", "permanent": true },
-    { "source": "/blog/:slug*", "destination": "/", "permanent": true }
+    {
+      "source": "/contact",
+      "destination": "/kontakt",
+      "permanent": true
+    },
+    {
+      "source": "/work",
+      "destination": "/arbeiten",
+      "permanent": true
+    },
+    {
+      "source": "/work/accountly",
+      "destination": "/arbeiten/accountly",
+      "permanent": true
+    },
+    {
+      "source": "/work/crm",
+      "destination": "/arbeiten/crm-system",
+      "permanent": true
+    },
+    {
+      "source": "/work/voice-agent",
+      "destination": "/arbeiten/voice-agent",
+      "permanent": true
+    },
+    {
+      "source": "/work/csm-suite",
+      "destination": "/arbeiten/csm-suite",
+      "permanent": true
+    },
+    {
+      "source": "/work/:slug*",
+      "destination": "/arbeiten",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:slug*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/leistungen/ki-integration",
+      "destination": "/leistungen/lead-response",
+      "permanent": true
+    },
+    {
+      "source": "/leistungen/ki-agenten",
+      "destination": "/leistungen/telefon-assistent",
+      "permanent": true
+    },
+    {
+      "source": "/leistungen/company-ai",
+      "destination": "/leistungen/aftersales",
+      "permanent": true
+    },
+    {
+      "source": "/leistungen/datenintegration",
+      "destination": "/leistungen/standzeiten",
+      "permanent": true
+    },
+    {
+      "source": "/leistungen/software",
+      "destination": "/leistungen/werkstatt",
+      "permanent": true
+    },
+    {
+      "source": "/leistungen/strategy-audit",
+      "destination": "/leistungen/bewertungen",
+      "permanent": true
+    },
+    {
+      "source": "/leistungen/dashboards",
+      "destination": "/leistungen/cockpit",
+      "permanent": true
+    },
+    {
+      "source": "/branchen/:slug",
+      "destination": "/leistungen",
+      "permanent": true
+    },
+    {
+      "source": "/dashboard-jetzt",
+      "destination": "/leistungen",
+      "permanent": true
+    },
+    {
+      "source": "/dashboard-now",
+      "destination": "/leistungen",
+      "permanent": true
+    },
+    {
+      "source": "/lp/dashboard",
+      "destination": "/leistungen",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/api/(.*)",
       "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "https://nuroy.de" },
-        { "key": "Access-Control-Allow-Methods", "value": "POST, OPTIONS" },
-        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" },
-        { "key": "Cache-Control", "value": "no-store" }
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "https://nuroy.de"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "POST, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
       ]
     },
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
       ]
     },
     {
       "source": "/assets/(.*)\\.(svg|png|webp|jpg|jpeg|gif|woff|woff2|ttf|mp4|webm)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/funnel/(.*)\\.(css|js)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
       ]
     },
     {
       "source": "/lp/(.*)\\.(css|js)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
       ]
     },
     {
       "source": "/shared/(.*)\\.(css|js)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
       ]
     },
     {
       "source": "/services/(.*)\\.(css|js)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
       ]
     },
     {
       "source": "/config/(.*)\\.js",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
       ]
     }
   ]
