@@ -108,7 +108,7 @@
       position: absolute;
       width: 700px; height: 700px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,45,122,0.09) 0%, transparent 65%);
+      background: radial-gradient(circle, rgba(var(--pink-rgb), 0.09) 0%, transparent 65%);
       pointer-events: none;
       right: -100px; top: 50%;
       transform: translateY(-50%);
@@ -170,7 +170,7 @@
       border: 1px solid var(--line-strong);
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 80px rgba(255,45,122,0.07);
+      box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 80px rgba(var(--pink-rgb), 0.07);
     }
     .mockup-topbar {
       display: flex;
@@ -398,7 +398,7 @@
       padding: 4px 8px;
       border-radius: 4px;
     }
-    .ch-risk { background: rgba(255,45,122,0.1); color: var(--pink); }
+    .ch-risk { background: rgba(var(--pink-rgb), 0.1); color: var(--pink); }
     .ch-stable { background: rgba(209,168,92,0.1); color: var(--warn); }
     .ch-healthy { background: rgba(143,163,115,0.1); color: var(--ok); }
     .csm-customer-card {
@@ -550,7 +550,7 @@
     }
   </style>
 </head>
-<body>
+<body class="theme-light">
 
 <div id="cursor-glow"></div>
 <div id="nav-mount"></div>

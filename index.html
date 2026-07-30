@@ -58,8 +58,8 @@
       position: absolute; inset: 0;
       pointer-events: none; z-index: 1;
       background-image:
-        linear-gradient(rgba(255,45,122,0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,45,122,0.045) 1px, transparent 1px);
+        linear-gradient(rgba(var(--pink-rgb), 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(var(--pink-rgb), 0.045) 1px, transparent 1px);
       background-size: 48px 48px;
       -webkit-mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
       mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
@@ -111,7 +111,7 @@
       top: -200px; left: 50%;
       transform: translateX(-50%);
       width: 800px; height: 600px;
-      background: radial-gradient(ellipse, rgba(255,45,122,0.06) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(var(--pink-rgb), 0.06) 0%, transparent 70%);
       pointer-events: none;
       z-index: 1;
     }
@@ -170,7 +170,7 @@
       text-shadow:
         0 2px 8px rgba(0, 0, 0, 0.9),
         0 4px 16px rgba(0, 0, 0, 0.6),
-        0 0 40px rgba(255, 45, 122, 0.25);
+        0 0 40px rgba(var(--pink-rgb), 0.25);
     }
     .hero-sub {
       font-size: clamp(16px, 1.3vw, 19px);
@@ -242,7 +242,7 @@
       border: 1px solid var(--line-strong);
       border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 60px rgba(255,45,122,0.06);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 60px rgba(var(--pink-rgb), 0.06);
     }
     .db-topbar {
       display: flex;
@@ -421,7 +421,7 @@
       font-weight: 900;
       letter-spacing: -0.05em;
       color: transparent;
-      -webkit-text-stroke: 1px rgba(255,45,122,0.08);
+      -webkit-text-stroke: 1px rgba(var(--pink-rgb), 0.08);
       pointer-events: none;
       user-select: none;
       white-space: nowrap;
@@ -472,8 +472,8 @@
     .services-bg-grid {
       position: absolute; inset: 0; pointer-events: none; z-index: 0;
       background-image:
-        linear-gradient(rgba(255,45,122,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,45,122,0.04) 1px, transparent 1px);
+        linear-gradient(rgba(var(--pink-rgb), 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(var(--pink-rgb), 0.04) 1px, transparent 1px);
       background-size: 48px 48px;
       opacity: 0;
       transition: opacity 1.4s ease;
@@ -483,7 +483,7 @@
     /* scan sweep */
     .services-scan {
       position: absolute; top: 0; left: -60%; width: 60%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,45,122,0.05), transparent);
+      background: linear-gradient(90deg, transparent, rgba(var(--pink-rgb), 0.05), transparent);
       pointer-events: none; z-index: 1;
     }
     .services-scan.animate {
@@ -508,9 +508,9 @@
     .service-connector { position: relative; height: 1px; background: var(--line); overflow: hidden; z-index: 2; }
     .service-connector-fill {
       position: absolute; top: 0; left: 0; height: 100%; width: 0;
-      background: linear-gradient(90deg, transparent, var(--pink), var(--pink), rgba(255,45,122,0.3));
+      background: linear-gradient(90deg, transparent, var(--pink), var(--pink), rgba(var(--pink-rgb), 0.3));
       transition: width 1.4s cubic-bezier(0.4,0,0.2,1);
-      box-shadow: 0 0 12px rgba(255,45,122,0.6);
+      box-shadow: 0 0 12px rgba(var(--pink-rgb), 0.6);
     }
     .service-connector-fill.full { width: 100%; }
 
@@ -548,24 +548,24 @@
       font-family: var(--font-display); font-size: 130px; font-weight: 900;
       letter-spacing: -0.05em; line-height: 1;
       color: transparent;
-      -webkit-text-stroke: 1px rgba(255,45,122,0.06);
+      -webkit-text-stroke: 1px rgba(var(--pink-rgb), 0.06);
       pointer-events: none;
       transition: -webkit-text-stroke-color 0.4s, transform 0.4s cubic-bezier(0.2,0,0,1);
     }
     .service-card::after {
       content: '';
       position: absolute; inset: 0;
-      background: linear-gradient(145deg, rgba(255,45,122,0.05) 0%, transparent 55%);
+      background: linear-gradient(145deg, rgba(var(--pink-rgb), 0.05) 0%, transparent 55%);
       opacity: 0; transition: opacity 0.4s;
     }
     .service-card:hover { background: var(--bg-3); }
-    .service-card:hover::before { -webkit-text-stroke-color: rgba(255,45,122,0.2); transform: translateY(-10px); }
+    .service-card:hover::before { -webkit-text-stroke-color: rgba(var(--pink-rgb), 0.2); transform: translateY(-10px); }
     .service-card:hover::after { opacity: 1; }
 
     /* pink top accent line per card on hover */
     .service-card-accent {
       position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--pink), rgba(255,45,122,0.3));
+      background: linear-gradient(90deg, var(--pink), rgba(var(--pink-rgb), 0.3));
       transform: scaleX(0); transform-origin: left;
       transition: transform 0.4s cubic-bezier(0.2,0,0,1);
     }
@@ -573,13 +573,13 @@
 
     .service-icon {
       width: 40px; height: 40px; border-radius: 9px;
-      background: var(--pink-bg); border: 1px solid rgba(255,45,122,0.18);
+      background: var(--pink-bg); border: 1px solid rgba(var(--pink-rgb), 0.18);
       display: flex; align-items: center; justify-content: center;
       margin-bottom: 24px;
       transition: box-shadow 0.4s, transform 0.4s cubic-bezier(0.2,0,0,1);
       position: relative; z-index: 1;
     }
-    .service-card:hover .service-icon { box-shadow: 0 0 24px rgba(255,45,122,0.35); transform: scale(1.1) rotate(-3deg); }
+    .service-card:hover .service-icon { box-shadow: 0 0 24px rgba(var(--pink-rgb), 0.35); transform: scale(1.1) rotate(-3deg); }
     .service-icon svg { color: var(--pink); }
 
     .service-card h3 {
@@ -618,8 +618,8 @@
       display: block;
     }
     .p-card:hover {
-      border-color: rgba(255,45,122,0.3);
-      box-shadow: 0 12px 48px rgba(255,45,122,0.12);
+      border-color: rgba(var(--pink-rgb), 0.3);
+      box-shadow: 0 12px 48px rgba(var(--pink-rgb), 0.12);
       transform: translateY(-4px);
     }
     .p-card-mockup {
@@ -797,7 +797,7 @@
       font-weight: 900;
       letter-spacing: -0.04em;
       color: transparent;
-      -webkit-text-stroke: 1px rgba(255,45,122,0.3);
+      -webkit-text-stroke: 1px rgba(var(--pink-rgb), 0.3);
       line-height: 1;
       margin-bottom: 20px;
       display: block;
@@ -854,7 +854,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 30% 50%, rgba(255,45,122,0.07) 0%, transparent 65%);
+      background: radial-gradient(ellipse at 30% 50%, rgba(var(--pink-rgb), 0.07) 0%, transparent 65%);
       pointer-events: none;
     }
     .stat-number {
@@ -863,7 +863,7 @@
       font-weight: 900;
       letter-spacing: -0.04em;
       color: var(--pink);
-      text-shadow: 0 0 40px rgba(255,45,122,0.35);
+      text-shadow: 0 0 40px rgba(var(--pink-rgb), 0.35);
       line-height: 1;
       margin-bottom: 10px;
       display: block;
@@ -896,7 +896,7 @@
       padding: 32px;
       transition: border-color 0.25s;
     }
-    .team-card:hover { border-color: rgba(255,45,122,0.25); }
+    .team-card:hover { border-color: rgba(var(--pink-rgb), 0.25); }
     .team-avatar {
       width: 56px; height: 56px;
       border-radius: 12px;
@@ -1047,7 +1047,7 @@
         transform-origin: top center;
         border-radius: 16px;
         overflow: hidden;
-        box-shadow: 0 8px 40px rgba(255, 45, 122, 0.12), 0 0 60px rgba(255, 45, 122, 0.06);
+        box-shadow: 0 8px 40px rgba(var(--pink-rgb), 0.12), 0 0 60px rgba(var(--pink-rgb), 0.06);
       }
       /* Services header bar */
       .services-header-bar {
@@ -1121,7 +1121,7 @@
       transition: border-color 0.25s;
     }
     .testimonial-card:hover {
-      border-color: rgba(255,45,122,0.25);
+      border-color: rgba(var(--pink-rgb), 0.25);
     }
     .testimonial-video {
       position: relative;
@@ -1152,7 +1152,7 @@
       transition: border-color 0.3s, background 0.3s;
     }
     .client-logo:hover {
-      border-color: rgba(255,45,122,0.25);
+      border-color: rgba(var(--pink-rgb), 0.25);
       background: var(--bg-3);
     }
     .client-logo img {
@@ -1195,7 +1195,7 @@
 
     @media (max-width: 600px) {
       /* .hero {
-        background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
+        background: linear-gradient(135deg, #0A0A0A 0%, var(--bg-3) 100%);
       } */
       .service-cards { grid-template-columns: 1fr; }
       .service-card { padding: 24px 20px; }

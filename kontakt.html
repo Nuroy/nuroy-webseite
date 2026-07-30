@@ -41,7 +41,7 @@
   <link rel="stylesheet" href="shared/styles.css?v=1784307412000">
   <style>
     .page-hero{padding:calc(var(--nav-h) + 80px) 0 64px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
-    .hero-glow{position:absolute;top:-150px;right:-50px;width:600px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,45,122,0.1) 0%,transparent 65%);pointer-events:none}
+    .hero-glow{position:absolute;top:-150px;right:-50px;width:600px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(var(--pink-rgb), 0.1) 0%,transparent 65%);pointer-events:none}
     .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start;padding:clamp(64px,8vw,112px) 0}
     .contact-info{}
     .info-block{margin-bottom:40px}
@@ -61,7 +61,7 @@
     .form-label{display:block;font-family:var(--font-mono);font-size:10px;color:var(--fg-dim);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
     .form-input,.form-textarea,.form-select{width:100%;background:var(--bg-3);border:1px solid var(--line-strong);border-radius:8px;padding:13px 16px;font-family:var(--font-body);font-size:14px;color:var(--fg);outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;resize:vertical}
     .form-input::placeholder,.form-textarea::placeholder{color:var(--fg-dim)}
-    .form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--pink);box-shadow:0 0 0 3px rgba(255,45,122,.12)}
+    .form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--pink);box-shadow:0 0 0 3px rgba(var(--pink-rgb), .12)}
     .form-textarea{min-height:120px;line-height:1.6}
     .form-select option{background:var(--bg-3)}
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -81,7 +81,7 @@
     @media(max-width:900px){.contact-grid{grid-template-columns:1fr;gap:48px}.form-row{grid-template-columns:1fr}.alt-grid{grid-template-columns:1fr}}
   </style>
 </head>
-<body>
+<body class="theme-light">
 <div id="cursor-glow"></div>
 <div id="nav-mount"></div>
 

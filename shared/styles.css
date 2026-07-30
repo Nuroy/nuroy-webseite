@@ -2691,12 +2691,34 @@ body.theme-light .funnel-solution-subline:not(.funnel-solution *) {
       Marineblau. Die globale Ueberschriften-Regel weiter oben
       wuerde die Headline dunkel auf dunkel setzen. Gleiches gilt
       fuer die Ghost-Buttons darin. ── */
-body.theme-light .final-cta :is(h2, h3, p, .t-display),
-body.theme-light .final-cta .btn:not(.btn-primary) {
+/* Alle Flaechen, die im Light-Theme Marineblau tragen. Ohne diese
+   Regel faerbt die globale Ueberschriften-Regel weiter oben die
+   Headlines dunkel auf dunkel. */
+body.theme-light :is(.final-cta, .cta-box, .funnel-booking, .proj-final-cta) :is(h2, h3, p, .t-display) {
   color: #FFFFFF;
 }
-body.theme-light .final-cta .btn:not(.btn-primary) {
+/* Nur die Outline-Varianten. .btn-w, .btn-white, .btn-pink-glass und
+   .btn-primary bringen eine eigene Flaeche mit — die wuerden bei
+   weisser Schrift unlesbar. */
+body.theme-light :is(.final-cta, .cta-box, .funnel-booking, .proj-final-cta)
+  :is(.btn-wo, .btn-white-outline, .btn-secondary, .btn-glass-secondary) {
+  color: #FFFFFF;
   border-color: rgba(255, 255, 255, 0.42);
+}
+
+/* Kleine Mono-Beschriftung auf der Karte: --fg-dim liegt dort bei
+   3,8:1, --fg-muted bringt sie ueber AA. */
+body.theme-light .loc-map-label {
+  color: var(--fg-muted);
+}
+
+/* Overlay-Pillen auf Fotos: die Flaeche war dunkel-transparent fuer
+   helle Schrift. Auf hellem Grund umgekehrt. */
+body.theme-light .team-photo .tag,
+body.theme-light .tc-photo .tag {
+  background: rgba(255, 255, 255, 0.88);
+  color: #0A2540;
+  border-color: rgba(10, 37, 64, 0.12);
 }
 
 /* ── Orbital-Timeline: die Knoten-Innenflaeche ist Marineblau,
