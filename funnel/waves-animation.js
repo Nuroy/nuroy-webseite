@@ -19,7 +19,7 @@ class WavesAnimation {
       return v || fallback
     }
     this.config = {
-      strokeColor: options.strokeColor || themeFarbe('--pink', '#FF2D7A'),
+      strokeColor: options.strokeColor || themeFarbe('--pink', '#1B4F91'),
       backgroundColor: options.backgroundColor || themeFarbe('--bg', '#000000'),
       pointerSize: options.pointerSize || 0.5,
     }

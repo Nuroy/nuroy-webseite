@@ -169,7 +169,7 @@ function showCalendly() {
         width: 64px;
         height: 64px;
         border: 4px solid #E8E8E0;
-        border-top-color: #FF2D7A;
+        border-top-color: var(--pink);
         border-radius: 50%;
         animation: spin 1s linear infinite;
       "></div>

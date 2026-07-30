@@ -196,9 +196,9 @@
             </div>
             <div class="m-chart">
               <svg width="100%" height="48" viewBox="0 0 500 48" preserveAspectRatio="none">
-                <defs><linearGradient id="ag2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FF2D7A" stop-opacity="0.25"/><stop offset="100%" stop-color="#FF2D7A" stop-opacity="0"/></linearGradient></defs>
+                <defs><linearGradient id="ag2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--pink)" stop-opacity="0.25"/><stop offset="100%" stop-color="var(--pink)" stop-opacity="0"/></linearGradient></defs>
                 <path d="M0,44 C40,40 70,34 110,30 C150,26 170,36 210,32 C250,28 270,18 310,14 C350,10 380,20 420,16 C450,13 470,6 500,4 L500,48 L0,48Z" fill="url(#ag2)"/>
-                <path d="M0,44 C40,40 70,34 110,30 C150,26 170,36 210,32 C250,28 270,18 310,14 C350,10 380,20 420,16 C450,13 470,6 500,4" fill="none" stroke="#FF2D7A" stroke-width="1.5"/>
+                <path d="M0,44 C40,40 70,34 110,30 C150,26 170,36 210,32 C250,28 270,18 310,14 C350,10 380,20 420,16 C450,13 470,6 500,4" fill="none" stroke="var(--pink)" stroke-width="1.5"/>
               </svg>
             </div>
             <div class="m-th"><span>Nr.</span><span>Kunde</span><span>Betrag</span><span>Fällig</span><span>Status</span></div>
@@ -224,6 +224,21 @@
   </div>
 </div>
 
+
+<div class="container">
+  <figure class="cs-foto reveal">
+    <img
+      src="../assets/photos/cs-accountly-1400.webp"
+      srcset="../assets/photos/cs-accountly-560.webp 560w,
+              ../assets/photos/cs-accountly-900.webp 900w,
+              ../assets/photos/cs-accountly-1400.webp 1400w"
+      sizes="(max-width: 900px) 100vw, 1100px"
+      alt="Beleg, Stift und Taschenrechner auf einem Schreibtisch"
+      width="1400" height="875" loading="lazy" decoding="async"
+      class="service-hero-photo">
+    <figcaption class="cs-foto-bu">Belegerfassung war vorher Handarbeit.</figcaption>
+  </figure>
+</div>
 <div class="container">
 
   <div class="section-block">
@@ -238,13 +253,13 @@
         <div class="arch-diagram">
           <div class="section-label" style="margin-bottom:24px;">Systemarchitektur</div>
           <svg width="100%" viewBox="0 0 480 240" xmlns="http://www.w3.org/2000/svg" style="font-family:var(--font-mono);font-size:10px;">
-            <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#FF2D7A"/></marker></defs>
+            <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="var(--pink)"/></marker></defs>
             <!-- Browser -->
             <rect x="10" y="90" width="100" height="48" rx="6" fill="#1C1C22" stroke="rgba(245,242,236,0.12)" stroke-width="1"/>
             <text x="60" y="110" fill="#F5F2EC" text-anchor="middle" font-size="10" font-weight="600">Browser</text>
             <text x="60" y="126" fill="#9A968C" text-anchor="middle" font-size="9">Next.js 14</text>
             <!-- API -->
-            <rect x="175" y="90" width="100" height="48" rx="6" fill="#1C1C22" stroke="#FF2D7A" stroke-width="1" stroke-opacity="0.4"/>
+            <rect x="175" y="90" width="100" height="48" rx="6" fill="#1C1C22" stroke="var(--pink)" stroke-width="1" stroke-opacity="0.4"/>
             <text x="225" y="110" fill="#F5F2EC" text-anchor="middle" font-size="10" font-weight="600">API Routes</text>
             <text x="225" y="126" fill="#9A968C" text-anchor="middle" font-size="9">Next.js / Edge</text>
             <!-- Supabase -->
@@ -264,11 +279,11 @@
             <text x="50" y="190" fill="#9A968C" text-anchor="middle" font-size="9">Stripe</text>
             <text x="50" y="201" fill="#5E5A52" text-anchor="middle" font-size="8">Zahlungen</text>
             <!-- Arrows -->
-            <line x1="110" y1="114" x2="173" y2="114" stroke="#FF2D7A" stroke-width="1.2" marker-end="url(#arr)"/>
-            <line x1="275" y1="100" x2="343" y2="68" stroke="#FF2D7A" stroke-width="1.2" marker-end="url(#arr)" stroke-opacity="0.7"/>
-            <line x1="275" y1="114" x2="343" y2="120" stroke="#FF2D7A" stroke-width="1.2" marker-end="url(#arr)" stroke-opacity="0.7"/>
-            <line x1="275" y1="128" x2="343" y2="174" stroke="#FF2D7A" stroke-width="1.2" marker-end="url(#arr)" stroke-opacity="0.7"/>
-            <line x1="90" y1="138" x2="90" y2="170" stroke="rgba(255,45,122,0.4)" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+            <line x1="110" y1="114" x2="173" y2="114" stroke="var(--pink)" stroke-width="1.2" marker-end="url(#arr)"/>
+            <line x1="275" y1="100" x2="343" y2="68" stroke="var(--pink)" stroke-width="1.2" marker-end="url(#arr)" stroke-opacity="0.7"/>
+            <line x1="275" y1="114" x2="343" y2="120" stroke="var(--pink)" stroke-width="1.2" marker-end="url(#arr)" stroke-opacity="0.7"/>
+            <line x1="275" y1="128" x2="343" y2="174" stroke="var(--pink)" stroke-width="1.2" marker-end="url(#arr)" stroke-opacity="0.7"/>
+            <line x1="90" y1="138" x2="90" y2="170" stroke="rgba(var(--pink-rgb),0.4)" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr)"/>
           </svg>
         </div>
       </div>

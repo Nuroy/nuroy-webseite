@@ -2829,3 +2829,76 @@ h1, h2, h3,
   overflow-wrap: break-word;
   hyphens: auto;
 }
+
+/* ═══════════════════════════════════════════════════════════
+   Bildband mit Textauflage.
+   Lag bisher fuenffach inline in wiki, team, arbeiten, kontakt
+   und projekte. Hier einmal zentral, damit weitere Seiten es
+   nutzen koennen, ohne die Regeln erneut zu kopieren.
+   Der weisse Schleier oben haelt die dunkelblaue Schrift lesbar,
+   das Motiv gehoert deshalb in die untere Bildhaelfte.
+   ═══════════════════════════════════════════════════════════ */
+.photo-band {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg-2);
+}
+.photo-band img {
+  display: block;
+  width: 100%;
+  height: clamp(260px, 32vw, 440px);
+  object-fit: cover;
+  object-position: center 62%;
+}
+.photo-band::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+    rgba(255, 255, 255, .74) 0%,
+    rgba(255, 255, 255, .46) 26%,
+    rgba(255, 255, 255, .10) 48%,
+    rgba(255, 255, 255, 0) 66%);
+}
+.pb-caption {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 100%;
+  max-width: var(--max-w);
+  padding: clamp(26px, 3.6vw, 46px) var(--pad-x) 0;
+}
+.pb-eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 10px;
+}
+.pb-text {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(19px, 2.4vw, 31px);
+  line-height: 1.15;
+  letter-spacing: -.02em;
+  color: #0A2540;
+  max-width: 22ch;
+}
+
+/* Foto in den Fallstudien, zwischen Kopfbereich und Fliesstext */
+.cs-foto {
+  margin: clamp(34px, 5vw, 62px) 0 0;
+  max-width: 1100px;
+}
+.cs-foto-bu {
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--fg-dim);
+}

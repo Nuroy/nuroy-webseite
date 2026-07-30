@@ -174,27 +174,27 @@
       <svg class="dashboard-flow-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#FF2D7A;stop-opacity:0.2" />
-            <stop offset="100%" style="stop-color:#FF2D7A;stop-opacity:1" />
+            <stop offset="0%" style="stop-color:var(--pink);stop-opacity:0.2" />
+            <stop offset="100%" style="stop-color:var(--pink);stop-opacity:1" />
           </linearGradient>
         </defs>
 
         <!-- Source Nodes -->
         <g class="source-nodes">
-          <circle cx="50" cy="50" r="24" fill="rgba(255,45,122,0.1)" stroke="#FF2D7A" stroke-width="2"/>
-          <text x="50" y="56" text-anchor="middle" fill="#FF2D7A" font-size="12" font-weight="600">CRM</text>
+          <circle cx="50" cy="50" r="24" fill="rgba(var(--pink-rgb),0.1)" stroke="var(--pink)" stroke-width="2"/>
+          <text x="50" y="56" text-anchor="middle" fill="var(--pink)" font-size="12" font-weight="600">CRM</text>
 
-          <circle cx="50" cy="130" r="24" fill="rgba(255,45,122,0.1)" stroke="#FF2D7A" stroke-width="2"/>
-          <text x="50" y="136" text-anchor="middle" fill="#FF2D7A" font-size="12" font-weight="600">ERP</text>
+          <circle cx="50" cy="130" r="24" fill="rgba(var(--pink-rgb),0.1)" stroke="var(--pink)" stroke-width="2"/>
+          <text x="50" y="136" text-anchor="middle" fill="var(--pink)" font-size="12" font-weight="600">ERP</text>
 
-          <circle cx="50" cy="210" r="24" fill="rgba(255,45,122,0.1)" stroke="#FF2D7A" stroke-width="2"/>
-          <text x="50" y="216" text-anchor="middle" fill="#FF2D7A" font-size="12" font-weight="600">GA4</text>
+          <circle cx="50" cy="210" r="24" fill="rgba(var(--pink-rgb),0.1)" stroke="var(--pink)" stroke-width="2"/>
+          <text x="50" y="216" text-anchor="middle" fill="var(--pink)" font-size="12" font-weight="600">GA4</text>
 
-          <circle cx="50" cy="290" r="24" fill="rgba(255,45,122,0.1)" stroke="#FF2D7A" stroke-width="2"/>
-          <text x="50" y="296" text-anchor="middle" fill="#FF2D7A" font-size="12" font-weight="600">Shop</text>
+          <circle cx="50" cy="290" r="24" fill="rgba(var(--pink-rgb),0.1)" stroke="var(--pink)" stroke-width="2"/>
+          <text x="50" y="296" text-anchor="middle" fill="var(--pink)" font-size="12" font-weight="600">Shop</text>
 
-          <circle cx="50" cy="370" r="24" fill="rgba(255,45,122,0.1)" stroke="#FF2D7A" stroke-width="2"/>
-          <text x="50" y="376" text-anchor="middle" fill="#FF2D7A" font-size="12" font-weight="600">DB</text>
+          <circle cx="50" cy="370" r="24" fill="rgba(var(--pink-rgb),0.1)" stroke="var(--pink)" stroke-width="2"/>
+          <text x="50" y="376" text-anchor="middle" fill="var(--pink)" font-size="12" font-weight="600">DB</text>
         </g>
 
         <!-- Paths -->
@@ -205,19 +205,19 @@
         <path class="path-trace" d="M 80 370 Q 300 370 550 200" stroke="url(#pathGradient)" stroke-width="3" fill="none" opacity="0.6" stroke-dasharray="10 5" style="animation-delay: 0.8s"/>
 
         <!-- Center Hub -->
-        <circle cx="550" cy="200" r="40" fill="rgba(255,45,122,0.15)" stroke="#FF2D7A" stroke-width="3"/>
-        <text x="550" y="206" text-anchor="middle" fill="#FF2D7A" font-size="14" font-weight="700">Dashboard</text>
+        <circle cx="550" cy="200" r="40" fill="rgba(var(--pink-rgb),0.15)" stroke="var(--pink)" stroke-width="3"/>
+        <text x="550" y="206" text-anchor="middle" fill="var(--pink)" font-size="14" font-weight="700">Dashboard</text>
 
         <!-- Output Paths -->
         <path class="path-trace" d="M 590 180 L 720 130" stroke="url(#pathGradient)" stroke-width="3" fill="none" opacity="0.6" stroke-dasharray="10 5" style="animation-delay: 1s"/>
         <path class="path-trace" d="M 590 220 L 720 270" stroke="url(#pathGradient)" stroke-width="3" fill="none" opacity="0.6" stroke-dasharray="10 5" style="animation-delay: 1.2s"/>
 
         <!-- Target Nodes -->
-        <circle cx="750" cy="130" r="24" fill="rgba(255,45,122,0.1)" stroke="#FF2D7A" stroke-width="2"/>
-        <text x="750" y="136" text-anchor="middle" fill="#FF2D7A" font-size="12" font-weight="600">Team</text>
+        <circle cx="750" cy="130" r="24" fill="rgba(var(--pink-rgb),0.1)" stroke="var(--pink)" stroke-width="2"/>
+        <text x="750" y="136" text-anchor="middle" fill="var(--pink)" font-size="12" font-weight="600">Team</text>
 
-        <circle cx="750" cy="270" r="24" fill="rgba(255,45,122,0.1)" stroke="#FF2D7A" stroke-width="2"/>
-        <text x="750" y="276" text-anchor="middle" fill="#FF2D7A" font-size="12" font-weight="600">Slack</text>
+        <circle cx="750" cy="270" r="24" fill="rgba(var(--pink-rgb),0.1)" stroke="var(--pink)" stroke-width="2"/>
+        <text x="750" y="276" text-anchor="middle" fill="var(--pink)" font-size="12" font-weight="600">Slack</text>
       </svg>
     `;
     console.log('[populate-service] ✓ Data Flow Visualization injected');
