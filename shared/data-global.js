@@ -1,5 +1,5 @@
 /* ============================================================
-   NUROY — Global Service Data
+   NUROY: Global Service Data
    Testimonials, service metadata, and icon library
    ============================================================ */
 

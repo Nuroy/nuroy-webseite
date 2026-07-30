@@ -1,6 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════
- * NUROY — LEAD-WEBHOOK PROXY (Vercel Serverless)
+ * NUROY: LEAD-WEBHOOK PROXY (Vercel Serverless)
  * ═══════════════════════════════════════════════════════════════
  *
  * POST /api/lead
@@ -120,7 +120,7 @@ module.exports = async function handler(req, res) {
     (seite ? '\n📍 ' + seite : '')
   );
 
-  // 2) Cockpit (best effort — Secret NUR aus Env)
+  // 2) Cockpit (best effort: Secret NUR aus Env)
   var cockpitOk = false;
   var secret = process.env.LEAD_WEBHOOK_SECRET;
   if (secret) {

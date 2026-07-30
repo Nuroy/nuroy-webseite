@@ -1,5 +1,5 @@
 /* ============================================================
-   NUROY SERVICES — Mockup Interactions
+   NUROY SERVICES: Mockup Interactions
    Handles mockup variant switching and animations
    ============================================================ */
 
@@ -170,7 +170,7 @@ function renderTable(rows) {
  */
 const DASHBOARD_MOCKUP_DATA = {
   main: {
-    title: 'custom dashboard — all-in-one',
+    title: 'custom dashboard, all-in-one',
     badge: 'Live sync aktiv',
     stats: [
       { label: 'Total Revenue', value: '€ 84.200' },

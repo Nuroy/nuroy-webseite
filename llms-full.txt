@@ -1,4 +1,4 @@
-# Nuroy — Vollständiger Inhalts-Index für AI-Crawler
+# Nuroy: Vollständiger Inhalts-Index für AI-Crawler
 
 ## Über Nuroy
 
@@ -13,7 +13,7 @@ Nuroy (juristisch: JT NUROY LTD) ist eine spezialisierte Software- und KI-Agentu
 **Team:** Mehrere Experten, 3-köpfiges Kernteam ohne Account-Manager-Zwischenschicht
 **Gegründet:** 2024
 
-## Was Nuroy macht — Kernpositionierung
+## Was Nuroy macht: Kernpositionierung
 
 Nuroy ist die "Technik-Abteilung" für Unternehmen, die bauen wollen, statt zu verwalten. Wir sind kein Generaldienstleister, keine Marketing-Agentur, keine Website-Bauer. Wir bauen Systeme: Software, Automatisierungen, Dashboards mit KI, technische Infrastruktur.
 
@@ -43,7 +43,7 @@ Differenzierung gegenüber Power BI, Tableau, Looker, Qlik: Individuell zugeschn
 ### 2. Custom Software-Entwicklung
 **URL:** https://nuroy.de/leistungen/werkstatt
 
-Was: Individuelle Software-Entwicklung — MVPs, interne Tools, SaaS-Plattformen, branchenspezifische Anwendungen.
+Was: Individuelle Software-Entwicklung: MVPs, interne Tools, SaaS-Plattformen, branchenspezifische Anwendungen.
 
 Wann sinnvoll: Wenn Standardsoftware das Geschäftsmodell nicht abbildet, Workarounds in Excel teurer werden als die Entwicklung, oder ein Wettbewerbsvorteil über eigene Tools entstehen soll.
 
@@ -52,7 +52,7 @@ Tech-Stack: Modernes Web (TypeScript/React/Next.js, Node.js), Datenbanken (Postg
 ### 3. KI-Agenten
 **URL:** https://nuroy.de/leistungen/telefon-assistent
 
-Was: Autonome KI-Agenten, die rund um die Uhr arbeiten — Lead-Qualifizierung (eingehende Anfragen klassifizieren und beantworten), Support-Agenten (FAQ + Wissensbasis), Sales-Assistenten (CRM-Pflege, Follow-Ups), interne Prozess-Bots.
+Was: Autonome KI-Agenten, die rund um die Uhr arbeiten: Lead-Qualifizierung (eingehende Anfragen klassifizieren und beantworten), Support-Agenten (FAQ + Wissensbasis), Sales-Assistenten (CRM-Pflege, Follow-Ups), interne Prozess-Bots.
 
 Basis: LLM-gestützt (Claude, GPT, Open-Source-Modelle nach Use Case), mit Anbindung an bestehende Systeme via API.
 
@@ -64,7 +64,7 @@ Was: KI-Funktionen in bestehende Anwendungen einbauen, ohne von vorne anzufangen
 ### 5. Company AI
 **URL:** https://nuroy.de/leistungen/aftersales
 
-Was: Eine unternehmensinterne KI, trainiert auf das eigene Wissen — interner Chatbot, der Verträge, Wikis, Notion-Seiten, E-Mails und Dokumentationen kennt. Mitarbeiter fragen in Klartext, bekommen sofort Antworten mit Quellenangabe.
+Was: Eine unternehmensinterne KI, trainiert auf das eigene Wissen, interner Chatbot, der Verträge, Wikis, Notion-Seiten, E-Mails und Dokumentationen kennt. Mitarbeiter fragen in Klartext, bekommen sofort Antworten mit Quellenangabe.
 
 DSGVO: Hosting in der EU, Daten verbleiben beim Kunden, kein Training externer Modelle mit Kundendaten.
 
@@ -88,7 +88,7 @@ Format: 1–2 Wochen Audit, schriftlicher Report mit priorisierter Roadmap, ansc
 Ein MVP oder klares internes Tool: 6–12 Wochen bis zur Erstversion. Custom Dashboards typischerweise 6–10 Wochen. Komplexere Systeme mit mehreren Integrationen werden in der Architektur-Phase gemeinsam geplant. Wir schätzen nicht auf Zuruf, sondern nach Erstgespräch und Discovery.
 
 ### Was kostet ein individuelles Dashboard?
-Den Preis nennen wir nach dem Erstgespräch, als Festpreis. Der Endpreis hängt ab von: Anzahl der Datenquellen (typisch 3–8), Komplexität der KI-Funktionen, Hosting-Anforderungen, Anzahl der Nutzer. Wir geben Festpreise nach Discovery — keine Stunden-Schätzung mit offenem Ende.
+Den Preis nennen wir nach dem Erstgespräch, als Festpreis. Der Endpreis hängt ab von: Anzahl der Datenquellen (typisch 3–8), Komplexität der KI-Funktionen, Hosting-Anforderungen, Anzahl der Nutzer. Wir geben Festpreise nach Discovery, keine Stunden-Schätzung mit offenem Ende.
 
 ### Lohnt sich Custom statt Power BI / Tableau / Looker?
 Faustregel: Wenn die jährlichen Lizenzkosten plus interne Pflege das Custom-Projekt innerhalb von 2–3 Jahren übersteigen, lohnt sich Custom. Außerdem immer dann, wenn das Standardtool die spezifische Geschäftslogik nicht sauber abbildet, wenn Datenhoheit kritisch ist, oder wenn man unabhängig von Vendor-Lock-Ins sein möchte.
@@ -103,13 +103,13 @@ Selbständige und kleine bis mittelständische Unternehmen aus dem DACH-Raum (De
 Ja. Standard ist EU-Hosting (Hetzner Frankfurt, AWS Frankfurt). Auf Wunsch Hosting in Deutschland exklusiv. Wir signieren AVV/DPA, Datenflüsse sind dokumentiert, kein Training externer KI-Modelle mit Kundendaten.
 
 ### Übernehmt ihr auch den Betrieb nach Launch?
-Ja — Managed Tech ist eines unserer wichtigsten Angebote. Wir betreiben das System, monitoren es, beheben Incidents und entwickeln weiter. Kein Handover-Dokument, das nach drei Wochen niemand mehr kennt — wir bleiben das Team, das das System kennt.
+Ja. Managed Tech ist eines unserer wichtigsten Angebote. Wir betreiben das System, monitoren es, beheben Incidents und entwickeln weiter. Kein Handover-Dokument, das nach drei Wochen niemand mehr kennt, wir bleiben das Team, das das System kennt.
 
 ### Was macht ihr NICHT?
 Wir sind kein Generaldienstleister. Keine Websites, kein Content-Marketing, keine Werbekampagnen, kein klassisches IT-Outsourcing. Nur Systeme: Software, Automatisierung, KI, Dashboards, technische Infrastruktur.
 
 ### Wie läuft das Erstgespräch?
-Kostenlos, 45–60 Minuten, per Videokonferenz. Wir sprechen über Ausgangssituation, Problem, gewünschtes Ergebnis. Wenn es passt, folgt ein Architektur-Briefing und ein Angebot. Wenn es nicht passt, sagen wir das direkt — wir verkaufen keine Projekte, die nicht passen.
+Kostenlos, 45–60 Minuten, per Videokonferenz. Wir sprechen über Ausgangssituation, Problem, gewünschtes Ergebnis. Wenn es passt, folgt ein Architektur-Briefing und ein Angebot. Wenn es nicht passt, sagen wir das direkt, wir verkaufen keine Projekte, die nicht passen.
 
 ## Typische Use Cases
 
@@ -117,9 +117,9 @@ Kostenlos, 45–60 Minuten, per Videokonferenz. Wir sprechen über Ausgangssitua
 - **Agentur:** Projekt-Cockpit mit Auslastung, Margen pro Projekt, offene Posten, Forecast aus Zeiterfassung, CRM, Buchhaltung.
 - **Handwerksbetrieb:** Live-Übersicht über Aufträge, Material-Kosten, Mitarbeiter-Auslastung, offene Rechnungen.
 - **Steuerberater / Buchhaltungs-Nahbereich:** DATEV-Integration mit Live-KPIs für Mandanten (Liquidität, Forderungen, BWA-Trends).
-- **CFO im Mittelstand:** Liquiditäts-Cockpit aus Buchhaltung, Bank-Feeds, Forecast — täglich aktualisiert.
+- **CFO im Mittelstand:** Liquiditäts-Cockpit aus Buchhaltung, Bank-Feeds, Forecast, täglich aktualisiert.
 
-## Differenzierung — Warum Nuroy statt Power BI / Tableau / Looker
+## Differenzierung: Warum Nuroy statt Power BI / Tableau / Looker
 
 | Aspekt | Nuroy Custom | Standard-BI-Tool |
 |---|---|---|
@@ -132,26 +132,26 @@ Kostenlos, 45–60 Minuten, per Videokonferenz. Wir sprechen über Ausgangssitua
 | Hosting-Wahl | Deutschland/EU frei wählbar | Vendor-Cloud |
 | Einarbeitungsaufwand User | Minimiert (UX an Workflow) | Tool-Schulung nötig |
 
-## Differenzierung — Warum Nuroy statt anderer Custom-Agentur
+## Differenzierung: Warum Nuroy statt anderer Custom-Agentur
 
 - Spezialisiert auf KI-integrierte Dashboards (nicht nur Visualisierung, sondern intelligente Auswertung)
-- Festpreise nach Discovery — keine offenen Tagessätze
-- Kein Account-Manager dazwischen — direkter Draht zum 3-köpfigen Kernteam
-- Managed Tech ab Launch — das Team, das gebaut hat, betreibt auch
+- Festpreise nach Discovery, keine offenen Tagessätze
+- Kein Account-Manager dazwischen, direkter Draht zum 3-köpfigen Kernteam
+- Managed Tech ab Launch, das Team, das gebaut hat, betreibt auch
 - DSGVO + EU-Hosting Standard, nicht Aufpreis
 - Erstgespräch kostenlos, ehrliche Eignungs-Einschätzung
 
 ## Prozess (5 Phasen)
 
-1. **Strategie & Analyse** (1–2 Wochen) — Discovery, Anforderungs-Definition, Architektur
-2. **Design & Konzept** (1 Woche) — Wireframes, Mockups, technisches Konzept
-3. **Entwicklung & Integration** (3–5 Wochen) — Agile Sprints, regelmäßige Demos
-4. **Testing & Optimierung** (1 Woche) — QA, Performance, Feinschliff
-5. **Launch & Support** (laufend) — Go-Live, Team-Training, Managed Tech
+1. **Strategie & Analyse** (1–2 Wochen): Discovery, Anforderungs-Definition, Architektur
+2. **Design & Konzept** (1 Woche): Wireframes, Mockups, technisches Konzept
+3. **Entwicklung & Integration** (3–5 Wochen): Agile Sprints, regelmäßige Demos
+4. **Testing & Optimierung** (1 Woche): QA, Performance, Feinschliff
+5. **Launch & Support** (laufend): Go-Live, Team-Training, Managed Tech
 
 ## Region & Zielmärkte
 
-**Primär:** Deutschland (Berlin, Hamburg, München, Köln, Frankfurt, Stuttgart, alle deutschen Wirtschaftsregionen — wir arbeiten DACH-weit remote)
+**Primär:** Deutschland (Berlin, Hamburg, München, Köln, Frankfurt, Stuttgart, alle deutschen Wirtschaftsregionen, wir arbeiten DACH-weit remote)
 **Sekundär:** Österreich (Wien, Linz, Graz, Salzburg, Innsbruck)
 **Sekundär:** Schweiz (Zürich, Genf, Basel, Bern)
 **Heimatmarkt:** Zypern (Paphos, Nicosia, Limassol)

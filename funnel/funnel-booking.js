@@ -1,6 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════
- * NUROY FUNNEL — BOOKING & QUALIFIZIERUNG
+ * NUROY FUNNEL: BOOKING & QUALIFIZIERUNG
  * ═══════════════════════════════════════════════════════════════
  *
  * 2-Schritt-Qualifizierungs-Flow:
@@ -404,7 +404,7 @@ function initCalendlyEventListener() {
       console.log('✅ Calendly-Buchung erfolgreich:', e.data.payload);
 
       // Meta Pixel: Calendly-Buchung zählt als Lead (einmal pro Seitenaufruf, nicht bei Bots).
-      // Muss VOR dem Redirect zur Danke-Seite feuern — dort kommt nur noch Schedule.
+      // Muss VOR dem Redirect zur Danke-Seite feuern, dort kommt nur noch Schedule.
       if (typeof fbq === 'function' && !window._nuroyLeadFired && !navigator.webdriver) {
         window._nuroyLeadFired = true;
         fbq('track', 'Lead', {

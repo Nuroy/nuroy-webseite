@@ -1,5 +1,5 @@
 # =============================================
-# nuroy.de — robots.txt
+# nuroy.de, robots.txt
 # =============================================
 
 # ─── Klassische Suchmaschinen (vollen Zugriff) ───

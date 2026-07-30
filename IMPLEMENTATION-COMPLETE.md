@@ -126,7 +126,7 @@ If you want qualification answers to appear as custom questions in Calendly:
 ### 1. Config Validation
 - [ ] Open `dashboard-jetzt.html` in browser
 - [ ] Open DevTools Console (F12)
-- [ ] Should see: "✅ NUROY CONFIG — Alle Werte konfiguriert" (or warnings for optional values only)
+- [ ] Should see: "✅ NUROY CONFIG: Alle Werte konfiguriert" (or warnings for optional values only)
 
 ### 2. Meta Pixel Test (dashboard-jetzt.html)
 - [ ] Install Meta Pixel Helper Chrome Extension

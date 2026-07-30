@@ -1,5 +1,5 @@
 /* ============================================================
-   NUROY — Service Page Content Population
+   NUROY: Service Page Content Population
    Reads SERVICE_DATA object and populates HTML sections
    ============================================================ */
 

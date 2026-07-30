@@ -8,7 +8,7 @@
 
 Modernes Ranking (sowohl klassisches Google als auch KI-Suche) basiert auf drei Säulen:
 
-1. **On-Page** (Website-Optimierung) — erledigt, siehe Code-Änderungen
+1. **On-Page** (Website-Optimierung), erledigt, siehe Code-Änderungen
 2. **Off-Page** (Erwähnungen, Profile, Reviews, Backlinks)
 3. **Brand-Signale** (Marken-Suchen, Direkt-Traffic, Sentiment)
 
@@ -16,7 +16,7 @@ Off-Page liefert die "social proof" für Algorithmen. Bei KI-Suchen besonders kr
 
 ---
 
-## Priorität 1 — DACH-spezifische SaaS-Verzeichnisse (CRITICAL)
+## Priorität 1: DACH-spezifische SaaS-Verzeichnisse (CRITICAL)
 
 ### OMR Reviews (omr.com/de/reviews)
 **Warum:** Wichtigste DACH-Plattform für B2B-Software-Reviews. Hohes Vertrauenssignal für deutsche Geschäftsführer. Wird von KIs als Quelle für deutsche SaaS-Empfehlungen herangezogen.
@@ -53,7 +53,7 @@ Off-Page liefert die "social proof" für Algorithmen. Bei KI-Suchen besonders kr
 
 ---
 
-## Priorität 2 — Reddit Citation-Strategie
+## Priorität 2: Reddit Citation-Strategie
 
 Reddit ist die **wichtigste Citation-Quelle** für Perplexity und eine starke Quelle für ChatGPT/Claude.
 
@@ -70,11 +70,11 @@ Reddit ist die **wichtigste Citation-Quelle** für Perplexity und eine starke Qu
 | r/tableau | 50k | Power-BI-Alternative-Sucher |
 | r/SaaS | 250k | International, KI-Themen |
 
-### Vorgehen (CRITICAL — nicht spammen!)
+### Vorgehen (CRITICAL, nicht spammen!)
 
 1. **Aktives Account aufbauen** mit echtem Namen oder klarer Firmenzuordnung (Reddit-Regeln beachten)
-2. **Werteliefernde Antworten** in Threads zu Dashboard-Fragen — kein direkter Verkauf
-3. **Transparente Selbst-Identifikation** ("Disclosure: I run Nuroy, a German custom dashboard agency — happy to share what we see in the market")
+2. **Werteliefernde Antworten** in Threads zu Dashboard-Fragen, kein direkter Verkauf
+3. **Transparente Selbst-Identifikation** ("Disclosure: I run Nuroy, a German custom dashboard agency, happy to share what we see in the market")
 4. **Eigene Posts mit Mehrwert:** "Wie wir bei einem 30-Mann-Unternehmen den Monatsabschluss von 5 Tagen auf 5 Stunden gebracht haben" (mit konkreten Zahlen, Tech-Details, ohne Sales-Pitch)
 5. **AMAs** ("Ask Me Anything") nach 6+ Monaten aktiver Präsenz
 
@@ -83,35 +83,35 @@ Reddit ist die **wichtigste Citation-Quelle** für Perplexity und eine starke Qu
 
 ---
 
-## Priorität 3 — Content-Mentions auf Industrie-Plattformen
+## Priorität 3: Content-Mentions auf Industrie-Plattformen
 
 Plattformen, auf denen Mentions und Gastbeiträge möglich sind:
 
 ### Deutsch
-- **t3n.de** — Tech/Digital-Magazin, Gastbeiträge möglich, hohe DA
-- **OMR.com** — Newsletter, Magazin, Reports
-- **deutsche-startups.de** — Wenn Nuroy als Service-Provider für Startups gepitcht wird
-- **Mittelstand-Digital.de** — Vom BMWK gefördert, sehr trusted
-- **gruenderszene.de** — Startup-Sphäre
-- **Handelsblatt Digital** — Wenn Kunden-Case interessant genug ist
-- **manager-magazin.de** — Premium-Mittelstand-Reichweite
-- **springerprofessional.de** — Fachpublikationen, auch für KI im Mittelstand
+- **t3n.de**: Tech/Digital-Magazin, Gastbeiträge möglich, hohe DA
+- **OMR.com**: Newsletter, Magazin, Reports
+- **deutsche-startups.de**. Wenn Nuroy als Service-Provider für Startups gepitcht wird
+- **Mittelstand-Digital.de**: Vom BMWK gefördert, sehr trusted
+- **gruenderszene.de**: Startup-Sphäre
+- **Handelsblatt Digital**. Wenn Kunden-Case interessant genug ist
+- **manager-magazin.de**: Premium-Mittelstand-Reichweite
+- **springerprofessional.de**: Fachpublikationen, auch für KI im Mittelstand
 
 ### Branchen-spezifisch
-- **isreport.de** — Wirtschafts-IT für den Mittelstand
-- **bigdata-insider.de** — Datenanalyse, BI
-- **computerwoche.de** — IT-Fachpresse
-- **iX Magazin (heise.de)** — Entwickler-orientiert
+- **isreport.de**: Wirtschafts-IT für den Mittelstand
+- **bigdata-insider.de**: Datenanalyse, BI
+- **computerwoche.de**: IT-Fachpresse
+- **iX Magazin (heise.de)**: Entwickler-orientiert
 
-**Vorgehen:** Pro Quartal 1 Gastbeitrag oder Experten-Interview. Themen z.B. "5 Anzeichen, dass dein Mittelstand Custom-BI braucht", "Power BI vs. Custom — Wirtschaftlichkeitsrechnung", "KI im Mittelstand: Was wirklich funktioniert".
+**Vorgehen:** Pro Quartal 1 Gastbeitrag oder Experten-Interview. Themen z.B. "5 Anzeichen, dass dein Mittelstand Custom-BI braucht", "Power BI vs. Custom: Wirtschaftlichkeitsrechnung", "KI im Mittelstand: Was wirklich funktioniert".
 
 ---
 
-## Priorität 4 — Knowledge Graph & Wikipedia-Strategie
+## Priorität 4: Knowledge Graph & Wikipedia-Strategie
 
 ### Google Knowledge Panel
 **Action:**
-1. Google Business Profile anlegen (auch ohne öffentlich sichtbare DACH-Adresse möglich — Service-Area-Business)
+1. Google Business Profile anlegen (auch ohne öffentlich sichtbare DACH-Adresse möglich: Service-Area-Business)
 2. Schema.org auf Website (✓ erledigt durch SEO-Optimierung)
 3. Konsistente NAP-Daten (Name, Address, Phone) überall: Website, OMR, Capterra, G2, Crunchbase, LinkedIn
 4. Crunchbase-Profil anlegen
@@ -121,17 +121,17 @@ Plattformen, auf denen Mentions und Gastbeiträge möglich sind:
 ### Wikipedia (langfristig)
 **Realistische Einschätzung:** Eigener Wikipedia-Artikel ist nur möglich, wenn substantielle unabhängige Berichterstattung vorhanden ist (Notability-Kriterien). Erst Phase 5–6.
 
-**Realistischere Aktion sofort:** Auf bestehenden Wikipedia-Artikeln zu Themen wie "Business Intelligence", "Dashboard (Computing)", "Custom Software Development" als Quelle/Referenz auftauchen — durch verlinkte Studien/Whitepapers, die wir publizieren.
+**Realistischere Aktion sofort:** Auf bestehenden Wikipedia-Artikeln zu Themen wie "Business Intelligence", "Dashboard (Computing)", "Custom Software Development" als Quelle/Referenz auftauchen, durch verlinkte Studien/Whitepapers, die wir publizieren.
 
 ---
 
-## Priorität 5 — LinkedIn-Authority-Strategie
+## Priorität 5: LinkedIn-Authority-Strategie
 
 LinkedIn-Posts werden zunehmend von KI-Modellen für Brand-Sentiment und Authority-Signals gelesen.
 
 ### Founder-Profil
 **Action:**
-1. Julius' Profil vollständig optimieren mit Headline "Founder Nuroy — Custom Dashboards & KI für KMU im DACH-Raum"
+1. Julius' Profil vollständig optimieren mit Headline "Founder Nuroy: Custom Dashboards & KI für KMU im DACH-Raum"
 2. 2–3 Posts/Woche mit konkretem Mehrwert (kein Sales)
 3. Themen: Case-Insights, BI/KI-Trends, Mittelstand-Realität, Anti-Enterprise-Story
 4. Engagement mit Kommentaren auf Posts von Ziel-Personae (CFOs, Geschäftsführer KMU)
@@ -143,11 +143,11 @@ LinkedIn-Posts werden zunehmend von KI-Modellen für Brand-Sentiment und Authori
 3. Showcase-Pages für einzelne Leistungen (Dashboards, KI-Agenten)
 
 ### LinkedIn-Newsletter (sehr unterbesetzt)
-**Action:** Monatlicher Newsletter "Custom Tech für den Mittelstand" — schneller Authority-Aufbau, weil noch wenig deutscher Wettbewerb.
+**Action:** Monatlicher Newsletter "Custom Tech für den Mittelstand", schneller Authority-Aufbau, weil noch wenig deutscher Wettbewerb.
 
 ---
 
-## Priorität 6 — Original Research & Studies
+## Priorität 6: Original Research & Studies
 
 Citation-würdiger Content braucht **Original-Daten**. Empfehlung:
 
@@ -171,23 +171,23 @@ Citation-würdiger Content braucht **Original-Daten**. Empfehlung:
 
 ---
 
-## Priorität 7 — YouTube + Video-Content
+## Priorität 7: YouTube + Video-Content
 
 YouTube ist neben Google die zweitgrößte Suchmaschine. Videos werden zunehmend in KI-Antworten verlinkt.
 
 ### Format-Vorschläge (kurzfristig)
 - "Dashboard live in 60 Sekunden: Wie wir Live-Daten visualisieren"
-- "Power BI vs. Custom Dashboard — Hands-On-Vergleich"
-- "DATEV-Daten als Live-Dashboard — so geht's"
-- Kunden-Testimonial-Videos (bereits 3 vorhanden — Sniffys, Nomo, Follow Austria)
+- "Power BI vs. Custom Dashboard: Hands-On-Vergleich"
+- "DATEV-Daten als Live-Dashboard, so geht's"
+- Kunden-Testimonial-Videos (bereits 3 vorhanden: Sniffys, Nomo, Follow Austria)
 
 ### Zusätzlich
-- Eigene Tutorials zu Tools, die Nuroy nutzt (Linear, Notion, etc.) — Long-tail-Reichweite
+- Eigene Tutorials zu Tools, die Nuroy nutzt (Linear, Notion, etc.): Long-tail-Reichweite
 - Vorträge / Konferenz-Aufzeichnungen veröffentlichen
 
 ---
 
-## Priorität 8 — Podcast-Strategie
+## Priorität 8: Podcast-Strategie
 
 Als Gast auftreten ist effizienter als eigenen Podcast starten.
 
@@ -203,42 +203,42 @@ Als Gast auftreten ist effizienter als eigenen Podcast starten.
 
 ---
 
-## Priorität 9 — Partnerschaften & Co-Marketing
+## Priorität 9: Partnerschaften & Co-Marketing
 
 ### Komplementäre Partner
-- **Steuerberater-Kanzleien** (DATEV-Affinität) — Co-Webinare "Live-Cockpit für KMU-Geschäftsführer"
-- **Buchhaltungssoftware-Anbieter** (sevDesk, Lexware) — Integration-Partner werden
-- **CRM-Anbieter** (Pipedrive, HubSpot DACH) — Solution-Partner
-- **E-Commerce-Plattformen** (Shopify, Shopware) — Listed Partner
-- **Unternehmensberatungen** (Mittelstandsberater) — Tech-Implementation-Partner
+- **Steuerberater-Kanzleien** (DATEV-Affinität): Co-Webinare "Live-Cockpit für KMU-Geschäftsführer"
+- **Buchhaltungssoftware-Anbieter** (sevDesk, Lexware). Integration-Partner werden
+- **CRM-Anbieter** (Pipedrive, HubSpot DACH): Solution-Partner
+- **E-Commerce-Plattformen** (Shopify, Shopware): Listed Partner
+- **Unternehmensberatungen** (Mittelstandsberater): Tech-Implementation-Partner
 
 **Vorteil:** Jede Partnerschaft = Backlink + Co-Marketing + qualifizierte Lead-Quelle.
 
 ---
 
-## Priorität 10 — Producthunt + Hacker News
+## Priorität 10: Producthunt + Hacker News
 
 Internationale Reichweite, bringen meist nicht direkten DACH-Traffic, aber Domain-Authority-Boost.
 
 ### Producthunt
 - Wenn ein eigenes Tool/Mini-Produkt gelauncht wird (z.B. ein offenes Dashboard-Template, ein KI-Tool)
-- Kein direkter Service-Launch — Producthunt mag keine Agentur-Pages
+- Kein direkter Service-Launch: Producthunt mag keine Agentur-Pages
 
 ### Hacker News
 - Eigene technische Blog-Posts pitchen ("Show HN: How we built a real-time DATEV dashboard")
-- Tech-Tiefe ist Pflicht — keine Marketing-Posts
+- Tech-Tiefe ist Pflicht, keine Marketing-Posts
 
 ---
 
-## Tracking — Wie messen wir Erfolg?
+## Tracking: Wie messen wir Erfolg?
 
 ### Tool-Stack
-1. **Google Search Console** — klassische Google-Sichtbarkeit
-2. **Profound** (profound.so) — AI-Search-Tracking (Mentions in ChatGPT, Claude, Perplexity)
-3. **Otterly.ai** — günstigere Alternative für AI-Tracking
-4. **Brand24** oder **Mention.com** — Brand-Mention-Tracking generell
-5. **Ahrefs / Semrush** — Backlink-Monitoring
-6. **LinkedIn Analytics** — Reichweite Founder + Firmenprofil
+1. **Google Search Console**, klassische Google-Sichtbarkeit
+2. **Profound** (profound.so): AI-Search-Tracking (Mentions in ChatGPT, Claude, Perplexity)
+3. **Otterly.ai**, günstigere Alternative für AI-Tracking
+4. **Brand24** oder **Mention.com**: Brand-Mention-Tracking generell
+5. **Ahrefs / Semrush**: Backlink-Monitoring
+6. **LinkedIn Analytics**: Reichweite Founder + Firmenprofil
 
 ### KPIs (Monthly Review)
 - **Mention Rate:** % der KI-Antworten, die "Nuroy" nennen (für definierte Test-Prompts)
@@ -302,12 +302,12 @@ Internationale Reichweite, bringen meist nicht direkten DACH-Traffic, aber Domai
 
 ## Was NICHT tun
 
-- **Link-Kauf** von dubiosen SEO-Anbietern — Google bestraft, lange Recovery
-- **Spam-Reviews** auf G2/Capterra mit Fake-Accounts — wird erkannt und führt zu Profile-Suspension
-- **Reddit-Spam** mit reinen Sales-Posts — User downvoten, Mod-Bans drohen
-- **Pressemitteilungs-Spam** über Dienste wie OpenPR — bringt keinen Mehrwert, schadet eher
+- **Link-Kauf** von dubiosen SEO-Anbietern, Google bestraft, lange Recovery
+- **Spam-Reviews** auf G2/Capterra mit Fake-Accounts, wird erkannt und führt zu Profile-Suspension
+- **Reddit-Spam** mit reinen Sales-Posts: User downvoten, Mod-Bans drohen
+- **Pressemitteilungs-Spam** über Dienste wie OpenPR, bringt keinen Mehrwert, schadet eher
 - **Black Hat SEO** jeglicher Form
 
 ---
 
-**Diese Strategie ist kein Sprint, sondern ein Marathon. Off-Page wirkt typischerweise nach 3–9 Monaten messbar. Die On-Page-Arbeit (Website-Optimierung) wirkt schneller — siehe die heute umgesetzten Code-Änderungen.**
+**Diese Strategie ist kein Sprint, sondern ein Marathon. Off-Page wirkt typischerweise nach 3–9 Monaten messbar. Die On-Page-Arbeit (Website-Optimierung) wirkt schneller, siehe die heute umgesetzten Code-Änderungen.**

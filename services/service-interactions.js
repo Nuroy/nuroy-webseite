@@ -1,5 +1,5 @@
 /* ============================================================
-   SERVICE INTERACTIONS — Scroll-Linked Animations
+   SERVICE INTERACTIONS: Scroll-Linked Animations
    ============================================================ */
 
 class FeatureCardParallax {
@@ -119,7 +119,7 @@ function renderEnhancedForWhoCards() {
 }
 
 /* ============================================================
-   SERVICE ACCORDION — Animated Expandable Sections
+   SERVICE ACCORDION: Animated Expandable Sections
    ============================================================ */
 
 (function() {

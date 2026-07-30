@@ -1,6 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════
- * NUROY FUNNEL — ANONYME SESSION-ANALYTICS
+ * NUROY FUNNEL: ANONYME SESSION-ANALYTICS
  * ═══════════════════════════════════════════════════════════════
  *
  * Sammelt anonymisierte Session-Daten (keine IP, keine Cookies,
@@ -32,7 +32,7 @@
   var formSubmitted = false;
   var _sent = false;
   var _convSent = false;
-  // Lead-Daten (nur bei tatsächlichem Submit befüllt — via callback_requested-Event)
+  // Lead-Daten (nur bei tatsächlichem Submit befüllt, via callback_requested-Event)
   var leadName = '';
   var leadPhone = '';
   var leadCallTime = '';
@@ -294,7 +294,7 @@
     } catch (e) { /* silent fail */ }
   }
 
-  // ── Conversion SOFORT senden (Bulletproof — nicht erst beim Verlassen) ──
+  // ── Conversion SOFORT senden (Bulletproof, nicht erst beim Verlassen) ──
   function sendConversion() {
     if (_convSent) return;
     _convSent = true;

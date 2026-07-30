@@ -1,4 +1,4 @@
-# Nuroy Funnel — Dashboard Landing Page
+# Nuroy Funnel: Dashboard Landing Page
 
 Diese Funnel-Seite ist eine **isolierte Landing Page** für bezahlte Werbung (Meta Ads, Google Ads).
 

@@ -1,5 +1,5 @@
 /* ============================================================
-   NUROY FUNNEL — Scripts
+   NUROY FUNNEL: Scripts
    VSL-Player, Sticky-CTA, Tracking Events
    ============================================================ */
 
@@ -58,7 +58,7 @@
       const section = this.closest('section');
       const location = section ? section.id : 'unknown';
 
-      // Track: cta_click (Lead-Event entfernt — feuert jetzt nur auf danke)
+      // Track: cta_click (Lead-Event entfernt, feuert jetzt nur auf danke)
       if (typeof gtag !== 'undefined') {
         gtag('event', 'cta_click', { location: location });
       }
@@ -67,7 +67,7 @@
   });
 
   // ────────────────────────────────────────────────────────────
-  // Calendly Widget Event — ENTFERNT
+  // Calendly Widget Event: ENTFERNT
   // Schedule-Event feuert jetzt nur 1x auf danke
   // (funnel-booking.js handhabt den Calendly-Redirect)
   // ────────────────────────────────────────────────────────────
@@ -113,7 +113,7 @@
   });
 
   // ────────────────────────────────────────────────────────────
-  // Hero VSL Scroll-Animation (3D-Transform) — KORRIGIERT
+  // Hero VSL Scroll-Animation (3D-Transform): KORRIGIERT
   // ────────────────────────────────────────────────────────────
   (function initHeroScrollAnimation() {
     const hero = document.getElementById('hero');
@@ -129,7 +129,7 @@
     // Check if mobile
     let isMobile = window.innerWidth <= 768;
 
-    // Animation ranges — KORRIGIERT für bessere Sichtbarkeit
+    // Animation ranges: KORRIGIERT für bessere Sichtbarkeit
     let scaleRange = isMobile ? [0.85, 1.0] : [1.15, 0.95]; // GRÖSSERER Unterschied!
     const rotateXRange = [20, 0]; // degrees
     const translateRange = [0, -100]; // pixels
@@ -148,7 +148,7 @@
       };
     }
 
-    // Hauptfunktion: Berechne und wende Transforms an — VIDEO-POSITION-BASIERT
+    // Hauptfunktion: Berechne und wende Transforms an: VIDEO-POSITION-BASIERT
     function updateHeroAnimation() {
       const heroRect = hero.getBoundingClientRect();
       const videoRect = vslWrapper.getBoundingClientRect();
@@ -161,7 +161,7 @@
       const offsetFromCenter = videoCenterY - viewportCenter;
 
       // Animation-Range: Video startet 400px unter der finalen Position
-      const animationStartOffset = 400; // px — Anpassbar für kürzere/längere Animation
+      const animationStartOffset = 400; // px: Anpassbar für kürzere/längere Animation
 
       // scrollProgress: 0 = Animation Start (Video 400px unter Mitte)
       //                 1 = Animation Ende (Video in Mitte, FLACH)

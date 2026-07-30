@@ -1,5 +1,5 @@
 /* ============================================================
-   NUROY — Shared Components
+   NUROY: Shared Components
    Injects nav, footer, cursor glow, scroll reveals
    ============================================================ */
 
@@ -59,7 +59,7 @@
                 <span class="mega-num">02</span>
                 <div>
                   <h4 class="mega-title">Telefon-Assistent</h4>
-                  <p class="mega-desc">Kein Anruf klingelt mehr ins Leere — auch abends nicht.</p>
+                  <p class="mega-desc">Kein Anruf klingelt mehr ins Leere, auch abends nicht.</p>
                 </div>
               </a>
               <a href="${b}leistungen/aftersales" class="mega-service-item">
@@ -73,7 +73,7 @@
                 <span class="mega-num">04</span>
                 <div>
                   <h4 class="mega-title">Standzeiten senken</h4>
-                  <p class="mega-desc">Sehen, welcher Wagen Geld kostet — bevor es teuer wird.</p>
+                  <p class="mega-desc">Sehen, welcher Wagen Geld kostet, bevor es teuer wird.</p>
                 </div>
               </a>
               <a href="${b}leistungen/werkstatt" class="mega-service-item">
@@ -165,7 +165,7 @@
         <img src="${getLogo(b)}" alt="Nuroy" class="nav-logo-img">
       </a>
       <p class="footer-tagline">Das Technik-Team für Autohäuser, die vorne stehen wollen, statt zu verwalten.</p>
-      <p class="t-mono c-dim">Paphos, Zypern — Remote-First DACH</p>
+      <p class="t-mono c-dim">Paphos, Zypern: Remote-First DACH</p>
     </div>
     <div class="footer-col">
       <p class="footer-col-label">Arbeiten</p>

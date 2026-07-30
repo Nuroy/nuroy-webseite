@@ -1,5 +1,5 @@
 /* ============================================================
-   NUROY — Inhalte der sieben Leistungsseiten
+   NUROY: Inhalte der sieben Leistungsseiten
    ------------------------------------------------------------
    Reihenfolge = Verkaufsreihenfolge: erst der schnelle Beweis
    (Lead-Response, Erreichbarkeit), zuletzt das Cockpit als
@@ -25,7 +25,7 @@
    hasWaveBackground, serviceTypes, faq. Die frueher hier
    gepflegten Felder problemCards, kpis, forWho und
    processSteps hatten kein Ziel-Element im HTML und wurden
-   nirgends angezeigt — sie sind entfallen.
+   nirgends angezeigt, sie sind entfallen.
    ============================================================ */
 
 window.SERVICE_CONTENT = {
@@ -41,7 +41,7 @@ window.SERVICE_CONTENT = {
     },
 
     showcaseTitle: 'Wo Ihre Anfragen heute verloren gehen',
-    showcaseSubtitle: 'mobile.de, AutoScout24, Website, Google, Social — fünf Kanäle, fünf Postfächer, keines davon verbindlich zugeordnet. Wir ziehen alles in einen Eingang und antworten in unter 60 Sekunden.',
+    showcaseSubtitle: 'mobile.de, AutoScout24, Website, Google, Social: fünf Kanäle, fünf Postfächer, keines davon verbindlich zugeordnet. Wir ziehen alles in einen Eingang und antworten in unter 60 Sekunden.',
 
     benefitCards: [
       { number: '9 von 10', label: 'rufen an',     desc: 'Ihrer Kunden hatten telefonischen Kontakt (TÜV NORD 2026)', icon: 'users' },
@@ -55,13 +55,13 @@ window.SERVICE_CONTENT = {
     features: [
       'Ein Eingang für mobile.de, AutoScout24, Website, Google und Social',
       'Börsen-Mails werden automatisch ausgelesen und dem Fahrzeug zugeordnet',
-      'Personalisierte Erstantwort mit Fahrzeugbezug — in unter 60 Sekunden',
+      'Personalisierte Erstantwort mit Fahrzeugbezug, in unter 60 Sekunden',
       'Qualifizierung: Budget, Zeithorizont, Inzahlungnahme, Finanzierungsinteresse',
       'Routing an den zuständigen Verkäufer, mit Eskalation bei Stillstand',
       'Automatische Wiedervorlage, wenn nach X Stunden nichts passiert ist',
       'WhatsApp als vollwertiger Kanal, jeder vierte Kunde nutzt ihn bereits',
       'Wochenreport: zurückgeholte Anfragen und Termine, als Zahl',
-      'Kein Systemwechsel — läuft über Ihrem DMS, nicht an dessen Stelle',
+      'Kein Systemwechsel, läuft über Ihrem DMS, nicht an dessen Stelle',
       'Hosting in der EU, AV-Vertrag und Löschkonzept inklusive'
     ],
 
@@ -72,7 +72,7 @@ window.SERVICE_CONTENT = {
     serviceTypes: [
       { title: 'Börsen-Anfragen', tag: 'mobile.de · AutoScout24', icon: 'workflow',
         desc: 'Anfragen aus den Fahrzeugbörsen landen als E-Mail im Sammelpostfach und verlieren sich.',
-        detailedDesc: 'Wir lesen die Börsen-Mails automatisch aus, erkennen Fahrzeug und Interessent und legen beides strukturiert an — inklusive Antwort innerhalb einer Minute.',
+        detailedDesc: 'Wir lesen die Börsen-Mails automatisch aus, erkennen Fahrzeug und Interessent und legen beides strukturiert an, inklusive Antwort innerhalb einer Minute.',
         features: ['Automatisches Auslesen der Börsen-Mails', 'Zuordnung zum konkreten Fahrzeug im Bestand',
                    'Antwort mit Fahrzeugdaten statt Textbaustein', 'Erkennung von Doppelanfragen über Kanäle hinweg'] },
       { title: 'Website & Google', tag: 'Formulare', icon: 'chart-bar',
@@ -82,11 +82,11 @@ window.SERVICE_CONTENT = {
                    'Google-Business-Anfragen inklusive', 'Rückmeldung auch außerhalb der Öffnungszeiten'] },
       { title: 'WhatsApp', tag: 'Wunschkanal', icon: 'users',
         desc: 'Jeder vierte Autokäufer kommuniziert bereits per WhatsApp mit seinem Händler.',
-        detailedDesc: 'Wir binden WhatsApp als vollwertigen Kanal an — mit derselben Qualifizierung und derselben Ablage wie E-Mail, DSGVO-konform dokumentiert.',
+        detailedDesc: 'Wir binden WhatsApp als vollwertigen Kanal an, mit derselben Qualifizierung und derselben Ablage wie E-Mail, DSGVO-konform dokumentiert.',
         features: ['WhatsApp Business als regulärer Lead-Kanal', 'Gleiche Qualifizierung wie per Mail',
                    'Verlauf landet in der Lead-Historie', 'Dokumentierte Einwilligung und Löschfristen'] },
       { title: 'Eskalation', tag: 'Nichts bleibt liegen', icon: 'security',
-        desc: 'Ein Lead ohne Reaktion ist ein verlorener Lead — meist merkt es niemand.',
+        desc: 'Ein Lead ohne Reaktion ist ein verlorener Lead, meist merkt es niemand.',
         detailedDesc: 'Passiert nach einer definierten Frist nichts, geht der Vorgang automatisch an die nächste Stufe. Der Inhaber sieht wöchentlich, wo es hakt.',
         features: ['Frist pro Kanal frei einstellbar', 'Automatische Weitergabe an die nächste Stufe',
                    'Wiedervorlage statt Vergessen', 'Wochenreport über offene Vorgänge'] }
@@ -94,11 +94,11 @@ window.SERVICE_CONTENT = {
 
     faq: [
       { q: 'Müssen wir dafür unser DMS wechseln?',
-        a: 'Nein. Wir ersetzen nichts. Der Lead-Response-Layer sitzt über Ihren bestehenden Systemen — DMS, Herstellertools und Börsenzugänge bleiben exakt wie sie sind. In der ersten Stufe greifen wir ausschließlich lesend zu.' },
+        a: 'Nein. Wir ersetzen nichts. Der Lead-Response-Layer sitzt über Ihren bestehenden Systemen. DMS, Herstellertools und Börsenzugänge bleiben exakt wie sie sind. In der ersten Stufe greifen wir ausschließlich lesend zu.' },
       { q: 'Wie schnell ist das eingerichtet?',
         a: 'Der Einstieg ist auf 14 Tage ausgelegt: Kanäle anbinden, Antwortlogik abstimmen, Testlauf, Livegang. Danach sehen Sie wöchentlich, wie viele Anfragen und Termine zurückgeholt wurden.' },
       { q: 'Antwortet da eine KI oder ein Mensch?',
-        a: 'Die Erstantwort ist automatisiert und auf Ihr Haus abgestimmt — sie bestätigt die Anfrage, nennt die Fahrzeugdaten und klärt die wichtigsten Punkte. Das Verkaufsgespräch führt weiterhin Ihr Team. Die Automatik gewinnt nur die Zeit, in der der Interessent sonst schon woanders ist.' },
+        a: 'Die Erstantwort ist automatisiert und auf Ihr Haus abgestimmt, sie bestätigt die Anfrage, nennt die Fahrzeugdaten und klärt die wichtigsten Punkte. Das Verkaufsgespräch führt weiterhin Ihr Team. Die Automatik gewinnt nur die Zeit, in der der Interessent sonst schon woanders ist.' },
       { q: 'Was ist mit dem Datenschutz?',
         a: 'Verarbeitung in der EU, Auftragsverarbeitungsvertrag, dokumentiertes Löschkonzept und transparente Kennzeichnung automatisierter Kommunikation nach EU AI Act. Das Paket bekommen Sie vor dem Start, nicht danach.' }
     ]
@@ -114,7 +114,7 @@ window.SERVICE_CONTENT = {
       subline: 'Der Assistent springt ein, wenn niemand rangehen kann.'
     },
 
-    showcaseTitle: 'Das Telefon ist der wichtigste Kanal — und das größte Loch',
+    showcaseTitle: 'Das Telefon ist der wichtigste Kanal, und das größte Loch',
     showcaseSubtitle: 'In Stoßzeiten gehen Anrufe systematisch verloren: Serviceberater nehmen Fahrzeuge an, Verkäufer sitzen im Gespräch. Der verpasste Anruf ist die Inspektion, die bei der freien Werkstatt landet.',
 
     benefitCards: [
@@ -127,7 +127,7 @@ window.SERVICE_CONTENT = {
     ],
 
     features: [
-      'Overflow statt Vollersatz — der Assistent springt nur ein, wenn niemand rangeht',
+      'Overflow statt Vollersatz, der Assistent springt nur ein, wenn niemand rangeht',
       'Nimmt nachts und am Wochenende ab, wenn sonst niemand da ist',
       'Erkennt das Anliegen: Probefahrt, Service, Teile, Anfrage zu einem Inserat',
       'Erfasst Kontaktdaten und Fahrzeugbezug strukturiert',
@@ -140,7 +140,7 @@ window.SERVICE_CONTENT = {
     ],
 
     roiHeadline: 'Ein verpasster Anruf ist selten nur ein Anruf.',
-    roiSubline: 'Dahinter steht oft eine Inspektion — die dann in der freien Werkstatt landet. Automatisierung ersetzt hier niemanden: Sie fängt auf, wofür es kein Personal gibt.',
+    roiSubline: 'Dahinter steht oft eine Inspektion, die dann in der freien Werkstatt landet. Automatisierung ersetzt hier niemanden: Sie fängt auf, wofür es kein Personal gibt.',
     hasWaveBackground: true,
 
     serviceTypes: [
@@ -150,31 +150,31 @@ window.SERVICE_CONTENT = {
         features: ['Schwelle frei einstellbar', 'Kein Eingriff, solange jemand abnimmt',
                    'Nachts und am Wochenende durchgehend', 'Sofortige Übergabe, wenn jemand frei wird'] },
       { title: 'Terminbuchung', tag: 'direkt im Planer', icon: 'workflow',
-        desc: 'Werkstatttermine werden am Telefon vergeben — und binden Personal.',
+        desc: 'Werkstatttermine werden am Telefon vergeben, und binden Personal.',
         detailedDesc: 'Der Assistent kennt Ihre freien Kapazitäten und bucht direkt in den bestehenden Werkstattplaner. Bestätigung und Erinnerung laufen automatisch.',
         features: ['Anbindung an den vorhandenen Planer', 'Nur echte freie Slots werden angeboten',
                    'Bestätigung per SMS oder WhatsApp', 'Erinnerung senkt Nichterscheinen messbar'] },
       { title: 'Anliegen-Erkennung', tag: 'richtig zugeordnet', icon: 'brain',
         desc: 'Nicht jeder Anruf gehört in denselben Topf.',
-        detailedDesc: 'Probefahrt, Servicetermin, Teileanfrage oder Frage zu einem Inserat — der Assistent erkennt das Anliegen und leitet den Vorgang an die richtige Stelle weiter.',
+        detailedDesc: 'Probefahrt, Servicetermin, Teileanfrage oder Frage zu einem Inserat, der Assistent erkennt das Anliegen und leitet den Vorgang an die richtige Stelle weiter.',
         features: ['Unterscheidung nach Anliegen', 'Fahrzeugbezug wird miterfasst',
                    'Weiterleitung an die zuständige Abteilung', 'Transkript für die Nachbereitung'] },
       { title: 'Transparenz', tag: 'nachvollziehbar', icon: 'security',
         desc: 'Ein Assistent, dem man nicht zuhören kann, ist ein Risiko.',
-        detailedDesc: 'Jedes Gespräch wird transkribiert und abgelegt. Sie können jederzeit prüfen, was gesagt wurde — und die Antwortlogik anpassen.',
+        detailedDesc: 'Jedes Gespräch wird transkribiert und abgelegt. Sie können jederzeit prüfen, was gesagt wurde, und die Antwortlogik anpassen.',
         features: ['Volltext-Transkript je Anruf', 'Ablage in der Lead-Historie',
                    'Kennzeichnung als digitaler Assistent', 'Anpassbare Gesprächsführung'] }
     ],
 
     faq: [
       { q: 'Unsere Kunden wollen doch keine KI am Telefon.',
-        a: 'Die Alternative ist nicht Ihr Mitarbeiter — die Alternative ist das Besetztzeichen. Der Assistent springt nur ein, wenn ohnehin niemand rangehen kann. Und er sagt von sich aus, dass er ein digitaler Assistent ist.' },
+        a: 'Die Alternative ist nicht Ihr Mitarbeiter, die Alternative ist das Besetztzeichen. Der Assistent springt nur ein, wenn ohnehin niemand rangehen kann. Und er sagt von sich aus, dass er ein digitaler Assistent ist.' },
       { q: 'Ersetzt das unsere Telefonzentrale?',
         a: 'Nein, und das ist Absicht. Er läuft als Overflow parallel zur bestehenden Anlage. Ihre Leute bleiben der erste Kontakt, der Assistent fängt nur ab, was sonst verloren ginge.' },
       { q: 'Können wir hören, was er gesagt hat?',
         a: 'Ja. Jedes Gespräch wird transkribiert und in der Lead-Historie abgelegt. Sie sehen jederzeit, was besprochen wurde, und können die Gesprächsführung anpassen.' },
       { q: 'Muss der Anrufer wissen, dass er mit einer Maschine spricht?',
-        a: 'Ja — und das setzen wir von vornherein um. Der Assistent weist zu Beginn darauf hin. Das ist nicht nur Vorgabe des EU AI Act, es ist auch die Grundlage dafür, dass Kunden es akzeptieren.' }
+        a: 'Ja, und das setzen wir von vornherein um. Der Assistent weist zu Beginn darauf hin. Das ist nicht nur Vorgabe des EU AI Act, es ist auch die Grundlage dafür, dass Kunden es akzeptieren.' }
     ]
   },
 
@@ -189,7 +189,7 @@ window.SERVICE_CONTENT = {
     },
 
     showcaseTitle: 'Zwischen Fahrzeugkauf und nächstem Werkstattkontakt fehlt der Mechanismus',
-    showcaseSubtitle: 'Keine HU-Erinnerung, keine Inspektions-Kampagne, keine Räderwechsel-Einladung, kein Trigger zum Leasingende. Die Daten dafür liegen vollständig im DMS — sie werden nur nicht genutzt.',
+    showcaseSubtitle: 'Keine HU-Erinnerung, keine Inspektions-Kampagne, keine Räderwechsel-Einladung, kein Trigger zum Leasingende. Die Daten dafür liegen vollständig im DMS, sie werden nur nicht genutzt.',
 
     benefitCards: [
       { number: '42 %',    label: 'der Händler',   desc: 'glauben, sie melden sich zu selten (TÜV NORD 2026)', icon: 'chart-bar' },
@@ -210,7 +210,7 @@ window.SERVICE_CONTENT = {
       'Terminbuchung mit einem Klick aus der Nachricht heraus',
       'Kein Doppelversand, wenn der Kunde ohnehin schon da war',
       'Ansprache pro Fahrzeug, nicht pauschal an den Verteiler',
-      'Lesender Zugriff auf das DMS — geschrieben wird in unsere Datenschicht'
+      'Lesender Zugriff auf das DMS, geschrieben wird in unsere Datenschicht'
     ],
 
     roiHeadline: 'Der Bestand ist da. Er wird nur nicht angesprochen.',
@@ -219,36 +219,36 @@ window.SERVICE_CONTENT = {
 
     serviceTypes: [
       { title: 'HU / AU', tag: 'planbarer Anlass', icon: 'clock',
-        desc: 'Die Hauptuntersuchung steht in festen Abständen an — und wird trotzdem selten aktiv angesprochen.',
+        desc: 'Die Hauptuntersuchung steht in festen Abständen an, und wird trotzdem selten aktiv angesprochen.',
         detailedDesc: 'Aus dem Fahrzeugbestand ergibt sich, wann welches Fahrzeug fällig wird. Daraus wird eine automatische Einladung mit Terminvorschlag.',
         features: ['Fälligkeiten aus dem Bestand', 'Vorlauf frei wählbar',
                    'Terminvorschlag direkt in der Nachricht', 'Erinnerung, wenn nicht reagiert wurde'] },
       { title: 'Saison', tag: 'Räder, Klima, Urlaub', icon: 'workflow',
-        desc: 'Räderwechsel-Saison ist Stoßzeit — und damit die schlechteste Zeit für Telefonakquise.',
+        desc: 'Räderwechsel-Saison ist Stoßzeit, und damit die schlechteste Zeit für Telefonakquise.',
         detailedDesc: 'Die Einladung geht vor der Welle raus, gestaffelt über mehrere Wochen. Das glättet die Auslastung und füllt die Randzeiten.',
         features: ['Gestaffelter Versand statt Stoßbetrieb', 'Nur an passende Fahrzeuge',
                    'Direkte Terminbuchung', 'Auslastung wird planbarer'] },
       { title: 'Leasingende', tag: 'Verkaufschance', icon: 'currency-euro',
         desc: 'Das Ende der Finanzierung ist der natürlichste Anlass für das Folgefahrzeug.',
-        detailedDesc: 'Der Trigger läuft rechtzeitig vor Vertragsende und übergibt den Vorgang an den Verkauf — mit passenden Fahrzeugen aus dem eigenen Bestand.',
+        detailedDesc: 'Der Trigger läuft rechtzeitig vor Vertragsende und übergibt den Vorgang an den Verkauf, mit passenden Fahrzeugen aus dem eigenen Bestand.',
         features: ['Vorlauf vor Vertragsende', 'Übergabe an den Verkauf',
                    'Passende Fahrzeuge aus dem Bestand', 'Anschlussgarantie als Alternative'] },
       { title: 'Anschlussgarantie', tag: 'Bindung', icon: 'security',
         desc: 'Nach Garantieende wandern Kunden zur freien Werkstatt ab.',
-        detailedDesc: 'Ein Angebot zum richtigen Zeitpunkt hält den Kunden im Haus — und macht aus einem Abwanderungsrisiko wiederkehrenden Umsatz.',
+        detailedDesc: 'Ein Angebot zum richtigen Zeitpunkt hält den Kunden im Haus, und macht aus einem Abwanderungsrisiko wiederkehrenden Umsatz.',
         features: ['Trigger zum Garantieende', 'Angebot passend zum Fahrzeug',
                    'Nachfassen, wenn keine Reaktion kommt', 'Wirkung im Report sichtbar'] }
     ],
 
     faq: [
       { q: 'Woher kommen die Daten für die Erinnerungen?',
-        a: 'Aus Ihrem DMS. Fahrzeug, Halter, Erstzulassung, letzte HU, Laufleistung und Servicehistorie sind dort hinterlegt. Wir lesen diese Daten aus — geschrieben wird ausschließlich in unsere eigene Datenschicht.' },
+        a: 'Aus Ihrem DMS. Fahrzeug, Halter, Erstzulassung, letzte HU, Laufleistung und Servicehistorie sind dort hinterlegt. Wir lesen diese Daten aus, geschrieben wird ausschließlich in unsere eigene Datenschicht.' },
       { q: 'Ist das nicht einfach ein Newsletter?',
         a: 'Nein. Ein Newsletter geht an alle zum selben Zeitpunkt. Hier löst jedes Fahrzeug seinen eigenen Anlass aus: diese HU wird fällig, dieser Leasingvertrag endet, diese Garantie läuft aus. Der Kunde bekommt nur, was ihn betrifft.' },
       { q: 'Wie stellt ihr sicher, dass niemand doppelt angeschrieben wird?',
         a: 'Vor jedem Versand wird gegen die aktuellen Werkstattdaten geprüft. Wer den Termin schon hat oder gerade da war, fällt raus. Das ist der Unterschied zwischen einer Kampagne und einer Belästigung.' },
       { q: 'Dürfen wir Bestandskunden überhaupt anschreiben?',
-        a: 'Für bestehende Kundenbeziehungen gibt es enge, aber nutzbare Spielräume — vor allem bei servicebezogener Kommunikation zum eigenen Fahrzeug. Wir richten Einwilligungen, Widerspruchsmöglichkeit und Dokumentation sauber ein und stimmen den Rahmen vorab mit Ihnen ab.' }
+        a: 'Für bestehende Kundenbeziehungen gibt es enge, aber nutzbare Spielräume, vor allem bei servicebezogener Kommunikation zum eigenen Fahrzeug. Wir richten Einwilligungen, Widerspruchsmöglichkeit und Dokumentation sauber ein und stimmen den Rahmen vorab mit Ihnen ab.' }
     ]
   },
 
@@ -259,18 +259,18 @@ window.SERVICE_CONTENT = {
 
     hero: {
       headline: 'Standzeiten senken',
-      subline: 'Sehen, welcher Wagen Geld kostet — bevor es teuer wird.'
+      subline: 'Sehen, welcher Wagen Geld kostet, bevor es teuer wird.'
     },
 
     showcaseTitle: 'Ein Drittel des Bestands steht länger als 90 Tage',
-    showcaseSubtitle: 'Die Abverkaufssteuerung läuft in vielen Häusern nach Bauchgefühl und Excel. Welcher Wagen Anfragen bekommt, aber keine Antworten — das sieht niemand.',
+    showcaseSubtitle: 'Die Abverkaufssteuerung läuft in vielen Häusern nach Bauchgefühl und Excel. Welcher Wagen Anfragen bekommt, aber keine Antworten, das sieht niemand.',
 
     benefitCards: [
       { number: 'jedes 3.', label: 'Fahrzeug',     desc: 'steht länger als 90 Tage (DAT-Barometer 06/2026)',  icon: 'chart-bar' },
       { number: '25 €',    label: 'pro Tag',       desc: 'Standkosten je Pkw (DAT-Barometer 06/2026)',        icon: 'currency-euro' },
       { number: '90',      label: 'Tage Schwelle', desc: 'ab hier gilt ein Fahrzeug als Risikobestand',       icon: 'clock' },
       { number: 'live',    label: 'statt monatlich',desc: 'Kapitalbindung jederzeit einsehbar',               icon: 'lightning' },
-      { number: 'je Fzg.', label: 'Anfragen',      desc: 'sichtbar, welcher Wagen gefragt ist — und welcher nicht', icon: 'target' },
+      { number: 'je Fzg.', label: 'Anfragen',      desc: 'sichtbar, welcher Wagen gefragt ist, und welcher nicht', icon: 'target' },
       { number: 'Alarm',   label: 'statt Zufall',  desc: 'Meldung, bevor die Schwelle gerissen wird',         icon: 'security' }
     ],
 
@@ -281,7 +281,7 @@ window.SERVICE_CONTENT = {
       'Marktpreis-Abgleich mit vergleichbaren Fahrzeugen in den Börsen',
       'Repricing-Vorschläge auf Datenbasis statt Bauchgefühl',
       'Abverkaufskampagnen an passende Interessenten aus der Lead-Historie',
-      'Standkosten in Euro, nicht in Tagen — für die Entscheidung',
+      'Standkosten in Euro, nicht in Tagen, für die Entscheidung',
       'Standortübergreifende Sicht bei mehreren Häusern',
       'Kein Eingriff in Ihre Preishoheit: Vorschlag, keine Automatik',
       'Wochenreport mit den kritischen Fahrzeugen'
@@ -293,13 +293,13 @@ window.SERVICE_CONTENT = {
 
     serviceTypes: [
       { title: 'Standtage-Cockpit', tag: 'live', icon: 'chart-bar',
-        desc: 'Wie lange steht welcher Wagen — und was hat er bis heute gekostet?',
+        desc: 'Wie lange steht welcher Wagen, und was hat er bis heute gekostet?',
         detailedDesc: 'Jedes Fahrzeug mit Standtagen, gebundenem Kapital und aufgelaufenen Standkosten. Sortierbar nach dem, was am meisten weh tut.',
         features: ['Standtage je Fahrzeug', 'Aufgelaufene Kosten in Euro',
                    'Kapitalbindung gesamt', 'Sortierung nach Dringlichkeit'] },
       { title: 'Anfrage-Abgleich', tag: 'der blinde Fleck', icon: 'target',
         desc: 'Ein Fahrzeug mit vielen Anfragen und wenig Antworten ist kein Preisproblem.',
-        detailedDesc: 'Wir stellen Anfragen und Antwortquote je Fahrzeug nebeneinander. Damit trennen Sie das Preisproblem vom Prozessproblem — bevor Sie den Preis senken.',
+        detailedDesc: 'Wir stellen Anfragen und Antwortquote je Fahrzeug nebeneinander. Damit trennen Sie das Preisproblem vom Prozessproblem, bevor Sie den Preis senken.',
         features: ['Anfragen je Fahrzeug', 'Antwortquote je Fahrzeug',
                    'Trennung Preis- vs. Prozessproblem', 'Hinweis auf unbeantwortete Anfragen'] },
       { title: 'Marktpreis', tag: 'Vergleich', icon: 'currency-euro',
@@ -309,14 +309,14 @@ window.SERVICE_CONTENT = {
                    'Historie der Preisänderungen', 'Wirkung auf Anfragen sichtbar'] },
       { title: 'Abverkauf', tag: 'gezielt', icon: 'workflow',
         desc: 'Zu vielen Standfahrzeugen gibt es längst passende Interessenten in der Historie.',
-        detailedDesc: 'Wer vor Monaten ein ähnliches Fahrzeug angefragt hat, bekommt eine gezielte Nachricht — statt einer Rundmail an den ganzen Verteiler.',
+        detailedDesc: 'Wer vor Monaten ein ähnliches Fahrzeug angefragt hat, bekommt eine gezielte Nachricht, statt einer Rundmail an den ganzen Verteiler.',
         features: ['Abgleich mit der Lead-Historie', 'Gezielte statt pauschale Ansprache',
                    'Über WhatsApp oder E-Mail', 'Reaktionen laufen zurück in die Pipeline'] }
     ],
 
     faq: [
       { q: 'Woher kommen die Standtage?',
-        a: 'Aus Ihrem Bestand im DMS beziehungsweise aus den Börsendaten — je nachdem, was bei Ihnen führend ist. Wir lesen den Bestand aus und rechnen Standtage, Kapitalbindung und Kosten daraus.' },
+        a: 'Aus Ihrem Bestand im DMS beziehungsweise aus den Börsendaten, je nachdem, was bei Ihnen führend ist. Wir lesen den Bestand aus und rechnen Standtage, Kapitalbindung und Kosten daraus.' },
       { q: 'Ändert das System selbstständig unsere Preise?',
         a: 'Nein. Sie bekommen einen begründeten Vorschlag mit den Vergleichsdaten daneben. Die Entscheidung bleibt bei Ihnen. Automatisches Repricing bauen wir nur, wenn Sie es ausdrücklich wollen.' },
       { q: 'Was bringt der Abgleich von Anfragen und Standtagen?',
@@ -336,7 +336,7 @@ window.SERVICE_CONTENT = {
       subline: 'Online buchbar, Lücken gefüllt, Zusatzarbeiten per Klick freigegeben.'
     },
 
-    showcaseTitle: 'Die Werkstatt ist voll — und trotzdem bleibt Kapazität liegen',
+    showcaseTitle: 'Die Werkstatt ist voll, und trotzdem bleibt Kapazität liegen',
     showcaseSubtitle: 'Telefonische Terminvergabe bindet Personal, Nichterscheinen kostet Kapazität, und kurzfristige Lücken durch Stornierungen bleiben unbesetzt, weil niemand Zeit hat, Ersatz zu akquirieren.',
 
     benefitCards: [
@@ -350,7 +350,7 @@ window.SERVICE_CONTENT = {
 
     features: [
       'Online-Terminbuchung über Web, WhatsApp und den Telefon-Assistenten',
-      'Anbindung an den bestehenden Werkstattplaner — befüllend, nicht ersetzend',
+      'Anbindung an den bestehenden Werkstattplaner, befüllend, nicht ersetzend',
       'Automatische Terminbestätigung und Erinnerung',
       'Warteliste, die bei Stornierungen automatisch nachrückt',
       'Digitale Freigabe von Zusatzarbeiten per WhatsApp',
@@ -358,7 +358,7 @@ window.SERVICE_CONTENT = {
       'Kapazität nach Arbeitswert statt nach Terminanzahl',
       'Randzeiten gezielt füllen statt Stoßzeiten überlasten',
       'Auslastung je Hebebühne und Mitarbeiter sichtbar',
-      'Kein Systemwechsel — Ihr Planer bleibt führend'
+      'Kein Systemwechsel. Ihr Planer bleibt führend'
     ],
 
     roiHeadline: 'Der versteckte Umsatzhebel sind die Zusatzarbeiten.',
@@ -368,16 +368,16 @@ window.SERVICE_CONTENT = {
     serviceTypes: [
       { title: 'Online-Buchung', tag: 'rund um die Uhr', icon: 'clock',
         desc: 'Terminvergabe am Telefon bindet genau das Personal, das ohnehin fehlt.',
-        detailedDesc: 'Kunden buchen selbst — im Web, per WhatsApp oder über den Telefon-Assistenten. Angeboten werden nur Slots, die im Planer wirklich frei sind.',
+        detailedDesc: 'Kunden buchen selbst, im Web, per WhatsApp oder über den Telefon-Assistenten. Angeboten werden nur Slots, die im Planer wirklich frei sind.',
         features: ['Buchung über Web und WhatsApp', 'Nur tatsächlich freie Kapazität',
                    'Automatische Bestätigung', 'Kein Doppelbelegen'] },
       { title: 'Erinnerung', tag: 'gegen Nichterscheinen', icon: 'target',
         desc: 'Jeder nicht wahrgenommene Termin ist verlorene Kapazität.',
-        detailedDesc: 'Automatische Erinnerungen senken das Nichterscheinen nachweislich. Wer absagt, gibt den Slot frei — und die Warteliste rückt nach.',
+        detailedDesc: 'Automatische Erinnerungen senken das Nichterscheinen nachweislich. Wer absagt, gibt den Slot frei, und die Warteliste rückt nach.',
         features: ['Erinnerung vor dem Termin', 'Absage mit einem Klick',
                    'Slot wird automatisch neu vergeben', 'Warteliste rückt nach'] },
       { title: 'Zusatzarbeiten', tag: 'Freigabe per Klick', icon: 'currency-euro',
-        desc: '„Bremsbeläge bei 20 % — jetzt mitmachen?" Diese Frage erreicht den Kunden oft nicht.',
+        desc: '„Bremsbeläge bei 20 %, jetzt mitmachen?" Diese Frage erreicht den Kunden oft nicht.',
         detailedDesc: 'Statt Rückruf und Warteschleife bekommt der Kunde die Anfrage per WhatsApp, mit Foto, Preis und Ja/Nein. Die Antwort landet direkt beim Serviceberater.',
         features: ['Anfrage mit Bild und Preis', 'Antwort per Klick',
                    'Direkt zurück an den Serviceberater', 'Dokumentierte Freigabe'] },
@@ -390,13 +390,13 @@ window.SERVICE_CONTENT = {
 
     faq: [
       { q: 'Müssen wir unseren Werkstattplaner ersetzen?',
-        a: 'Nein. Ihr Planer bleibt das führende System. Wir befüllen ihn — über Online-Buchung, WhatsApp und den Telefon-Assistenten. Ein Planerwechsel ist weder nötig noch sinnvoll.' },
+        a: 'Nein. Ihr Planer bleibt das führende System. Wir befüllen ihn, über Online-Buchung, WhatsApp und den Telefon-Assistenten. Ein Planerwechsel ist weder nötig noch sinnvoll.' },
       { q: 'Was passiert bei einer kurzfristigen Absage?',
         a: 'Der Slot wird automatisch freigegeben und der Warteliste angeboten. Genau diese kurzfristigen Lücken bleiben heute meist unbesetzt, weil niemand Zeit hat, hinterherzutelefonieren.' },
       { q: 'Wie läuft die Freigabe von Zusatzarbeiten?',
         a: 'Der Serviceberater schickt die Anfrage mit Foto und Preis über WhatsApp. Der Kunde antwortet mit einem Klick, die Freigabe ist dokumentiert und landet direkt zurück im Vorgang.' },
       { q: 'Funktioniert das mit unserem Planer?',
-        a: 'Die gängigen Systeme lassen sich anbinden — teils über eine Schnittstelle, teils über einen lesenden Zugriff. Welcher Weg bei Ihnen möglich ist, klären wir vor dem Angebot, nicht danach.' }
+        a: 'Die gängigen Systeme lassen sich anbinden, teils über eine Schnittstelle, teils über einen lesenden Zugriff. Welcher Weg bei Ihnen möglich ist, klären wir vor dem Angebot, nicht danach.' }
     ]
   },
 
@@ -426,11 +426,11 @@ window.SERVICE_CONTENT = {
       'Automatische Bewertungsanfrage nach jedem abgeschlossenen Werkstattauftrag',
       'Auslöser direkt aus dem Auftragsabschluss, nicht aus einer Liste',
       'Unzufriedene Kunden landen zuerst in einem internen Feedback-Kanal',
-      'Antwortvorschläge für Bewertungen — Sie entscheiden, was rausgeht',
+      'Antwortvorschläge für Bewertungen. Sie entscheiden, was rausgeht',
       'Pflege des Google-Unternehmensprofils je Standort',
       'Übersicht über Bewertungsverlauf und Durchschnitt',
       'Benachrichtigung bei neuen negativen Bewertungen',
-      'Kein Kaufen, kein Filtern — nur systematisches Fragen',
+      'Kein Kaufen, kein Filtern, nur systematisches Fragen',
       'Auswertung nach Standort und Abteilung',
       'Verknüpfung mit dem Werkstattauftrag für den Kontext'
     ],
@@ -441,7 +441,7 @@ window.SERVICE_CONTENT = {
 
     serviceTypes: [
       { title: 'Automatische Anfrage', tag: 'nach dem Auftrag', icon: 'workflow',
-        desc: 'Bewertungen entstehen nicht von selbst — man muss fragen.',
+        desc: 'Bewertungen entstehen nicht von selbst, man muss fragen.',
         detailedDesc: 'Der Auslöser kommt aus dem Auftragsabschluss. Jeder Kunde wird gefragt, nicht nur die, an die jemand gerade denkt.',
         features: ['Auslöser aus dem Werkstattauftrag', 'Zeitpunkt frei wählbar',
                    'Kanal per E-Mail oder WhatsApp', 'Keine Doppelanfragen'] },
@@ -457,20 +457,20 @@ window.SERVICE_CONTENT = {
                    'Kein automatisches Veröffentlichen', 'Tonalität einstellbar'] },
       { title: 'Local SEO', tag: 'je Standort', icon: 'target',
         desc: 'Das Google-Profil ist bei lokaler Suche oft wichtiger als die Website.',
-        detailedDesc: 'Öffnungszeiten, Leistungen, Fotos und Beiträge werden gepflegt — je Standort, nicht pauschal für das ganze Haus.',
+        detailedDesc: 'Öffnungszeiten, Leistungen, Fotos und Beiträge werden gepflegt, je Standort, nicht pauschal für das ganze Haus.',
         features: ['Profilpflege je Standort', 'Aktuelle Öffnungszeiten und Leistungen',
                    'Beiträge und Fotos', 'Auswertung der Sichtbarkeit'] }
     ],
 
     faq: [
       { q: 'Kauft ihr Bewertungen oder filtert ihr sie?',
-        a: 'Weder noch. Beides ist unzulässig und fliegt auf. Wir sorgen dafür, dass systematisch nach jedem Auftrag gefragt wird — das allein verändert das Profil, weil die zufriedenen Kunden sonst schlicht nichts schreiben.' },
+        a: 'Weder noch. Beides ist unzulässig und fliegt auf. Wir sorgen dafür, dass systematisch nach jedem Auftrag gefragt wird, das allein verändert das Profil, weil die zufriedenen Kunden sonst schlicht nichts schreiben.' },
       { q: 'Ist es legitim, unzufriedene Kunden intern abzufangen?',
-        a: 'Der Kunde kann jederzeit öffentlich bewerten — wir hindern niemanden daran. Wir geben ihm nur zuerst die Möglichkeit, das Problem direkt mit Ihnen zu klären. Das ist gelebter Service, keine Unterdrückung.' },
+        a: 'Der Kunde kann jederzeit öffentlich bewerten, wir hindern niemanden daran. Wir geben ihm nur zuerst die Möglichkeit, das Problem direkt mit Ihnen zu klären. Das ist gelebter Service, keine Unterdrückung.' },
       { q: 'Wer antwortet auf die Bewertungen?',
         a: 'Sie. Wir liefern einen Vorschlag, der den konkreten Vorgang kennt, und Sie geben frei. Automatisch veröffentlicht wird nichts.' },
       { q: 'Funktioniert das bei mehreren Standorten?',
-        a: 'Ja, und dort ist der Effekt am größten. Jeder Standort hat sein eigenes Profil und seine eigene Auswertung — Sie sehen, welches Haus abfällt.' }
+        a: 'Ja, und dort ist der Effekt am größten. Jeder Standort hat sein eigenes Profil und seine eigene Auswertung. Sie sehen, welches Haus abfällt.' }
     ]
   },
 
@@ -484,7 +484,7 @@ window.SERVICE_CONTENT = {
       subline: 'Alle Zahlen an einem Ort. Ohne Excel, ohne Monatsabschluss.'
     },
 
-    showcaseTitle: 'Die Kennzahlen liegen verteilt — und keiner sieht das Ganze',
+    showcaseTitle: 'Die Kennzahlen liegen verteilt, und keiner sieht das Ganze',
     showcaseSubtitle: 'DMS, Börsenportale, Buchhaltung, Excel: der Inhaber sieht weder Lead-Konversion noch Standzeiten noch Werkstattauslastung in Echtzeit. Das Cockpit entsteht als Ergebnis der anderen Bausteine, nicht als deren Voraussetzung.',
 
     benefitCards: [
@@ -516,22 +516,22 @@ window.SERVICE_CONTENT = {
     serviceTypes: [
       { title: 'Vertrieb', tag: 'Leads & Konversion', icon: 'chart-bar',
         desc: 'Wie viele Anfragen kommen rein, wie schnell wird geantwortet, was wird daraus?',
-        detailedDesc: 'Eingang je Kanal, Reaktionszeit, Konversion bis zum Termin und bis zum Abschluss — je Verkäufer und je Standort.',
+        detailedDesc: 'Eingang je Kanal, Reaktionszeit, Konversion bis zum Termin und bis zum Abschluss, je Verkäufer und je Standort.',
         features: ['Lead-Eingang je Kanal', 'Reaktionszeit als Kennzahl',
                    'Konversion bis zum Abschluss', 'Vergleich je Verkäufer'] },
       { title: 'Bestand', tag: 'Standzeiten & Kapital', icon: 'currency-euro',
         desc: 'Wie viel Kapital steht wie lange auf dem Hof?',
-        detailedDesc: 'Standtage, gebundenes Kapital und aufgelaufene Standkosten über den gesamten Bestand — mit den kritischen Fahrzeugen obenauf.',
+        detailedDesc: 'Standtage, gebundenes Kapital und aufgelaufene Standkosten über den gesamten Bestand, mit den kritischen Fahrzeugen obenauf.',
         features: ['Standtage über den Bestand', 'Kapitalbindung in Euro',
                    'Risikobestand ab 90 Tagen', 'Entwicklung über Zeit'] },
       { title: 'Service', tag: 'Auslastung', icon: 'workflow',
-        desc: 'Ist die Werkstatt wirklich ausgelastet — oder nur voll terminiert?',
+        desc: 'Ist die Werkstatt wirklich ausgelastet, oder nur voll terminiert?',
         detailedDesc: 'Auslastung nach Arbeitswert, Nichterscheinen, Durchsatz und die Quote der freigegebenen Zusatzarbeiten.',
         features: ['Auslastung nach Arbeitswert', 'Nichterscheinen-Quote',
                    'Durchsatz je Woche', 'Zusatzarbeiten-Quote'] },
       { title: 'Standorte', tag: 'im Vergleich', icon: 'users',
         desc: 'Bei mehreren Häusern verschwinden Unterschiede im Durchschnitt.',
-        detailedDesc: 'Jede Kennzahl lässt sich je Standort filtern und nebeneinanderlegen. Damit wird sichtbar, wo ein Haus abfällt — und woran es liegt.',
+        detailedDesc: 'Jede Kennzahl lässt sich je Standort filtern und nebeneinanderlegen. Damit wird sichtbar, wo ein Haus abfällt, und woran es liegt.',
         features: ['Filter je Standort', 'Direkter Vergleich',
                    'Gesamtsicht und Einzelsicht', 'Auffälligkeiten hervorgehoben'] }
     ],
@@ -540,9 +540,9 @@ window.SERVICE_CONTENT = {
       { q: 'Warum kommt das Cockpit zuletzt und nicht zuerst?',
         a: 'Weil ein Dashboard nur so gut ist wie die Daten darin. Wenn Anfragen, Telefonie, Termine und Kampagnen über eine gemeinsame Infrastruktur laufen, entsteht der einheitliche Datenbestand automatisch. Umgekehrt bauen Sie ein teures Schaufenster auf lückenhafte Daten.' },
       { q: 'Ersetzt das unser DMS?',
-        a: 'Nein. Das DMS bleibt führend für Auftrag und Rechnung. Wir sind führend für Kommunikation und Vertrieb — und legen eine Auswertungsschicht darüber. Wer verspricht, das DMS zu ersetzen, unterschätzt Herstellerzertifizierung, Buchhaltung und Gewohnheit.' },
+        a: 'Nein. Das DMS bleibt führend für Auftrag und Rechnung. Wir sind führend für Kommunikation und Vertrieb, und legen eine Auswertungsschicht darüber. Wer verspricht, das DMS zu ersetzen, unterschätzt Herstellerzertifizierung, Buchhaltung und Gewohnheit.' },
       { q: 'Wer kann was sehen?',
-        a: 'Die Sichten sind rollenabhängig. Die Verkaufsleitung sieht Vertriebszahlen, die Serviceleitung die Werkstatt, der Inhaber alles — auch standortübergreifend.' },
+        a: 'Die Sichten sind rollenabhängig. Die Verkaufsleitung sieht Vertriebszahlen, die Serviceleitung die Werkstatt, der Inhaber alles, auch standortübergreifend.' },
       { q: 'Brauchen wir dafür eine App?',
         a: 'Nein. Das Cockpit läuft im Browser und ist auf dem Telefon genauso bedienbar wie am Schreibtisch.' }
     ]

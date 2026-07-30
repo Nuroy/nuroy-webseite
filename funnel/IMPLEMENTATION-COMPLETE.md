@@ -1,4 +1,4 @@
-# ✅ Funnel Implementation — Abgeschlossen
+# ✅ Funnel Implementation: Abgeschlossen
 
 Die Dashboard-Funnel-Seite wurde erfolgreich implementiert.
 

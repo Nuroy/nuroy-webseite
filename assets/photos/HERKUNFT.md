@@ -27,7 +27,7 @@ Qualität 82, Methode 6. Zusammen rund 1 MB für alle Varianten.
 ## Beim Austauschen beachten
 
 Das Bildband stellt den Text **oben** in einen hellen Schleier und lässt
-das untere Bilddrittel frei — das Motiv gehört also nach unten, der
+das untere Bilddrittel frei, das Motiv gehört also nach unten, der
 obere Bereich sollte hell und ruhig sein. Ein dunkles Motiv oben macht
 die dunkelblaue Schrift unlesbar.
 

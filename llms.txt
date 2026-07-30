@@ -1,10 +1,10 @@
 # Nuroy
 
-> Nuroy ist das Technik- und Strategie-Team für Autohäuser im DACH-Raum. Wir sorgen dafür, dass jede Kundenanfrage beantwortet wird und kein Anruf verloren geht, reaktivieren Bestandskunden über HU-, Inspektions- und Saison-Anlässe, senken Standzeiten und machen alle Kennzahlen in einem Cockpit sichtbar. Aufgesetzt über die bestehenden Systeme (DMS, Börsenportale, Werkstattplaner) — ohne Systemwechsel. Hosting in der EU, DSGVO-konform, direkter Draht zum Team.
+> Nuroy ist das Technik- und Strategie-Team für Autohäuser im DACH-Raum. Wir sorgen dafür, dass jede Kundenanfrage beantwortet wird und kein Anruf verloren geht, reaktivieren Bestandskunden über HU-, Inspektions- und Saison-Anlässe, senken Standzeiten und machen alle Kennzahlen in einem Cockpit sichtbar. Aufgesetzt über die bestehenden Systeme (DMS, Börsenportale, Werkstattplaner), ohne Systemwechsel. Hosting in der EU, DSGVO-konform, direkter Draht zum Team.
 
 ## Kernangebot
 
-- [Lead-Response](https://nuroy.de/leistungen/lead-response): Anfragen aus mobile.de, AutoScout24, Website, Google und WhatsApp in einem Eingang — Erstantwort in unter 60 Sekunden.
+- [Lead-Response](https://nuroy.de/leistungen/lead-response): Anfragen aus mobile.de, AutoScout24, Website, Google und WhatsApp in einem Eingang: Erstantwort in unter 60 Sekunden.
 - [Telefon-Assistent](https://nuroy.de/leistungen/telefon-assistent): KI-Overflow fürs Telefon. Springt ein, wenn niemand rangeht, bucht Werkstatttermine, dokumentiert jedes Gespräch.
 - [Aftersales-Motor](https://nuroy.de/leistungen/aftersales): HU, Inspektion, Saison und Leasingende als automatische Anlässe aus den DMS-Bestandsdaten.
 - [Standzeiten senken](https://nuroy.de/leistungen/standzeiten): Standtage, Kapitalbindung und Anfragen je Fahrzeug live, mit Alarm vor der 90-Tage-Schwelle.
@@ -18,9 +18,9 @@
 - [Alle Leistungen](https://nuroy.de/leistungen): 7 Leistungsfelder im Überblick
 - [Kontakt & Erstgespräch](https://nuroy.de/kontakt): Kostenloses 45–60-minütiges Erstgespräch, transparente Einschätzung
 
-## Wiki / Glossar — Autohaus-Begriffe erklärt
+## Wiki / Glossar: Autohaus-Begriffe erklärt
 
-Das Nuroy-Wiki erklärt die zentralen Kennzahlen und Begriffe im Autohaus — mit Definition, belegten Branchenzahlen und Rechenbeispielen. Jede Seite enthält eine Kurzdefinition, vertiefende Abschnitte und FAQs:
+Das Nuroy-Wiki erklärt die zentralen Kennzahlen und Begriffe im Autohaus, mit Definition, belegten Branchenzahlen und Rechenbeispielen. Jede Seite enthält eine Kurzdefinition, vertiefende Abschnitte und FAQs:
 
 - [Wiki-Übersicht](https://nuroy.de/wiki): Alle 15 Begriffe, gruppiert nach Vertrieb, Bestand und Service
 - [Speed to Lead](https://nuroy.de/wiki/speed-to-lead): Speed to Lead ist die Zeit zwischen Kundenanfrage und erster Reaktion des Händlers. Definition, Branchen-Benchmarks für

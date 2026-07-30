@@ -1,6 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════
- * NUROY FUNNEL — ZENTRALE KONFIGURATION
+ * NUROY FUNNEL: ZENTRALE KONFIGURATION
  * ═══════════════════════════════════════════════════════════════
  *
  * Diese Datei ist die EINZIGE Stelle, an der externe Werte
@@ -147,12 +147,12 @@ window.NUROY_CONFIG = {
   }
 
   if (warnings.length > 0) {
-    console.group('🔧 NUROY CONFIG — Fehlende Werte');
+    console.group('🔧 NUROY CONFIG: Fehlende Werte');
     console.warn('Die folgenden Werte müssen noch in config/funnel-config.js eingetragen werden:');
     warnings.forEach(w => console.warn(w));
     console.warn('→ Siehe config/funnel-config.js für Details');
     console.groupEnd();
   } else {
-    console.log('✅ NUROY CONFIG — Alle Werte konfiguriert');
+    console.log('✅ NUROY CONFIG: Alle Werte konfiguriert');
   }
 })();

@@ -1,4 +1,4 @@
-# 🚀 Funnel Setup — TODO Liste
+# 🚀 Funnel Setup: TODO Liste
 
 Diese Datei listet alle Platzhalter auf, die noch ausgefüllt werden müssen, bevor die Funnel-Seite live gehen kann.
 

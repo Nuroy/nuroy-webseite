@@ -1,5 +1,5 @@
 /* ============================================================
-   NUROY FUNNEL — Dashboard Landing Page Content
+   NUROY FUNNEL: Dashboard Landing Page Content
    Alle Texte zentral, A/B-testbar
    ============================================================ */
 
@@ -62,7 +62,7 @@ window.FUNNEL_CONTENT = {
     headline: 'Was Ihr Dashboard kann.',
     list: [
       'Verbindung aller Ihrer Tools (CRM, Buchhaltung, Ads, etc.)',
-      'Echtzeit-Daten — kein manuelles Updaten mehr',
+      'Echtzeit-Daten, kein manuelles Updaten mehr',
       'Custom-KPIs nach Ihren Definitionen',
       'Branchenspezifische Module',
       'Multi-Rollen-Views (Geschäftsführung, Vertrieb, Marketing)',
@@ -70,7 +70,7 @@ window.FUNNEL_CONTENT = {
       'DSGVO-konformes Hosting in Deutschland',
       'Dashboard-Reading-Bot (KI beantwortet Fragen zu Ihren Zahlen)',
       'Export als PDF, Excel, automatisierte Reports',
-      'Continuous Development — Dashboard wächst mit Ihnen'
+      'Continuous Development: Dashboard wächst mit Ihnen'
     ]
   },
 
@@ -125,7 +125,7 @@ window.FUNNEL_CONTENT = {
       },
       {
         q: 'Welche Tools könnt ihr anbinden?',
-        a: 'Alles mit API: Salesforce, HubSpot, Shopify, Google Analytics, Meta Ads, Stripe, eigene Datenbanken, ERPs – und vieles mehr. Im Discovery-Call schauen wir, was Sie nutzen.'
+        a: 'Alles mit API: Salesforce, HubSpot, Shopify, Google Analytics, Meta Ads, Stripe, eigene Datenbanken, ERPs, und vieles mehr. Im Discovery-Call schauen wir, was Sie nutzen.'
       },
       {
         q: 'Was passiert, wenn wir Tools wechseln?',
@@ -145,10 +145,10 @@ window.FUNNEL_CONTENT = {
   disqualifier: {
     headline: 'Wann wir NICHT die Richtigen sind.',
     points: [
-      'Wenn Sie unter 10 Mitarbeitern haben — dann reicht Power BI.',
-      'Wenn Sie nur ein einzelnes Tool reporten — dann tut es Looker Studio.',
-      'Wenn Sie unter 12.500 € Budget haben — dann sind wir zu teuer.',
-      'Wenn Sie in 2 Wochen live gehen müssen — dann sind wir zu langsam.'
+      'Wenn Sie unter 10 Mitarbeitern haben, dann reicht Power BI.',
+      'Wenn Sie nur ein einzelnes Tool reporten, dann tut es Looker Studio.',
+      'Wenn Sie unter 12.500 € Budget haben, dann sind wir zu teuer.',
+      'Wenn Sie in 2 Wochen live gehen müssen, dann sind wir zu langsam.'
     ]
   },
 
