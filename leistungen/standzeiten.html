@@ -196,6 +196,41 @@
     <p class="t-body-lg reveal reveal-d1 text-center" id="showcase-subtitle" style="max-width: 700px; margin: 16px auto 48px; color: var(--fg-muted);">Die Abverkaufssteuerung läuft nach Bauchgefühl und Excel. Welcher Wagen Anfragen bekommt, aber keine Antworten, das sieht niemand.</p>
 
     <!-- Animated Accordion -->
+        <div class="aha aha-standtage reveal reveal-d2">
+      <span class="aha-kopf">Vier Fahrzeuge auf der Zeitachse</span>
+      <div class="ast-achse">
+        <div class="ast-zeile">
+          <span class="ast-name">Kombi, Diesel</span>
+          <span class="ast-spur"><span class="ast-balken" data-tage="34"></span></span>
+          <span class="ast-tage">34 Tage</span>
+        </div>
+        <div class="ast-zeile">
+          <span class="ast-name">Kleinwagen</span>
+          <span class="ast-spur"><span class="ast-balken" data-tage="61"></span></span>
+          <span class="ast-tage">61 Tage</span>
+        </div>
+        <div class="ast-zeile">
+          <span class="ast-name">SUV, Benziner</span>
+          <span class="ast-spur"><span class="ast-balken" data-tage="97"></span></span>
+          <span class="ast-tage">97 Tage</span>
+        </div>
+        <div class="ast-zeile">
+          <span class="ast-name">Van, Vorfuehrer</span>
+          <span class="ast-spur"><span class="ast-balken" data-tage="118"></span></span>
+          <span class="ast-tage">118 Tage</span>
+        </div>
+      </div>
+      <p class="ast-marke">Ab Tag 90 kippt die Farbe. Zwei der vier stehen laenger.</p>
+      <div class="ast-summe">
+        <span class="ast-summe-wert" data-aha="kosten">0 €</span>
+        <span class="ast-summe-text">Standkosten, die diese vier Fahrzeuge bis heute verursacht haben.</span>
+      </div>
+      <p class="aha-quelle">
+        Rechenbeispiel mit erfundenen Fahrzeugen, gerechnet mit 25 Euro je Fahrzeug und Tag.
+        Die DAT nennt 25 bis 30 Euro, wir rechnen bewusst mit dem unteren Wert.
+      </p>
+    </div>
+
     <div class="dashboard-accordion reveal reveal-d2" id="dashboard-accordion">
       <!-- Populated by JS -->
     </div>
@@ -522,5 +557,6 @@ window.SERVICE_DATA = window.SERVICE_CONTENT?.['standzeiten'] || {};
 <!-- Wave Animation -->
 <script src="../funnel/waves-animation.js"></script>
 
+  <script src="../shared/autohaus-animationen.js"></script>
 </body>
 </html>

@@ -3042,3 +3042,217 @@ h1, h2, h3,
   .faq-layout { grid-template-columns: 1fr; gap: 28px; }
   .faq-intro { position: static; }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   Autohaus-Animationen.
+   Bewegung liegt hier, der Antrieb der Zaehler in
+   shared/autohaus-animationen.js. Ohne Bewegungswunsch des
+   Nutzers steht alles still und zeigt den Endzustand.
+   ═══════════════════════════════════════════════════════════ */
+.aha {
+  margin-top: 44px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg-2);
+  padding: clamp(24px, 3.4vw, 40px);
+  overflow: hidden;
+}
+.aha-kopf {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 20px;
+}
+
+/* ── Anruf laeuft ins Leere, Assistent uebernimmt ── */
+.aho-bahn { display: grid; gap: 10px; }
+.aho-schritt {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #FFFFFF;
+  opacity: .4;
+  transform: translateX(-6px);
+  transition: opacity .45s ease, transform .45s ease, border-color .45s ease;
+}
+.aho-schritt.aktiv {
+  opacity: 1;
+  transform: none;
+  border-color: rgba(var(--pink-rgb), .45);
+  box-shadow: 0 8px 24px -14px rgba(10, 37, 64, .35);
+}
+.aho-punkt {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--line-strong);
+  flex-shrink: 0;
+  transition: background .45s ease;
+}
+.aho-schritt.aktiv .aho-punkt { background: var(--pink); }
+.aho-schritt.aktiv .aho-punkt.aho-warn { background: var(--warn); }
+.aho-schritt.aktiv .aho-punkt.aho-ok   { background: var(--ok); }
+.aho-text { font-size: 14.5px; line-height: 1.5; color: var(--fg); }
+.aho-zeit {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--fg-dim);
+  white-space: nowrap;
+}
+
+/* ── Erstreaktion: offene Uhr gegen Antwort in Sekunden ── */
+.ahu-paar { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.ahu-feld {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #FFFFFF;
+  padding: 22px 20px;
+}
+.ahu-feld.ahu-gut { border-color: rgba(var(--pink-rgb), .4); }
+.ahu-titel {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+.ahu-wert {
+  margin-top: 10px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(24px, 3.2vw, 36px);
+  letter-spacing: -.02em;
+  color: var(--fg);
+  font-variant-numeric: tabular-nums;
+}
+.ahu-gut .ahu-wert { color: var(--pink); }
+.ahu-note { margin-top: 8px; font-size: 13px; line-height: 1.6; color: var(--fg-muted); }
+.ahu-fahne {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  background: rgba(var(--pink-rgb), .1);
+  color: var(--pink);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+.aha-fertig .ahu-fahne { opacity: 1; transform: none; }
+
+/* ── Standtage auf der Zeitachse ── */
+.ast-achse {
+  position: relative;
+  display: grid;
+  gap: 12px;
+}
+.ast-zeile { display: grid; grid-template-columns: 110px 1fr 76px; gap: 14px; align-items: center; }
+.ast-name { font-size: 13.5px; color: var(--fg-muted); }
+.ast-spur {
+  position: relative;
+  height: 14px;
+  border-radius: 999px;
+  background: var(--bg-4);
+  overflow: hidden;
+}
+.ast-balken {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: var(--pink);
+  transition: width 1.4s cubic-bezier(.16, 1, .3, 1);
+}
+.ast-balken.ast-kritisch { background: var(--warn); }
+.ast-tage {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--fg-dim);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.ast-marke {
+  position: relative;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--fg-dim);
+}
+.ast-summe {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.ast-summe-wert {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(22px, 2.8vw, 30px);
+  color: var(--fg);
+  font-variant-numeric: tabular-nums;
+}
+.ast-summe-text { font-size: 13.5px; line-height: 1.6; color: var(--fg-muted); }
+.aha-quelle {
+  margin-top: 14px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--fg-dim);
+}
+
+@media (max-width: 700px) {
+  .ahu-paar { grid-template-columns: 1fr; }
+  .ast-zeile { grid-template-columns: 84px 1fr 62px; gap: 10px; }
+  .ast-name { font-size: 12.5px; }
+  .aho-zeit { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aho-schritt, .ast-balken, .ahu-fahne { transition: none; }
+  .aho-schritt { opacity: 1; transform: none; }
+}
+
+/* Bildpaar auf den Leistungsseiten, gestaffelt eingeblendet ueber .reveal */
+.bildpaar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(14px, 2vw, 24px);
+  margin: 40px 0 8px;
+}
+.bp-zelle { margin: 0; }
+.bp-zelle img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  box-shadow: 0 22px 50px -26px rgba(10, 37, 64, .3);
+  transition: transform .6s cubic-bezier(.16, 1, .3, 1);
+}
+.bp-zelle:hover img { transform: scale(1.015); }
+.bp-zelle figcaption {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--fg-dim);
+}
+@media (max-width: 700px) {
+  .bildpaar { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bp-zelle img { transition: none; }
+  .bp-zelle:hover img { transform: none; }
+}

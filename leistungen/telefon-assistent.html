@@ -257,6 +257,38 @@
     </p>
 
     <!-- Animated Accordion -->
+        <div class="aha aha-overflow reveal reveal-d2">
+      <span class="aha-kopf">So laeuft ein Anruf ausserhalb der Stosszeit</span>
+      <div class="aho-bahn">
+        <div class="aho-schritt">
+          <span class="aho-punkt"></span>
+          <span class="aho-text">Es klingelt in der Serviceannahme</span>
+          <span class="aho-zeit">0 Sek.</span>
+        </div>
+        <div class="aho-schritt">
+          <span class="aho-punkt aho-warn"></span>
+          <span class="aho-text">Niemand frei, alle im Gespraech oder am Fahrzeug</span>
+          <span class="aho-zeit">nach 3x Klingeln</span>
+        </div>
+        <div class="aho-schritt">
+          <span class="aho-punkt"></span>
+          <span class="aho-text">Der Assistent nimmt ab und nennt sich als solcher</span>
+          <span class="aho-zeit">sofort</span>
+        </div>
+        <div class="aho-schritt">
+          <span class="aho-punkt"></span>
+          <span class="aho-text">Anliegen erkannt: Inspektion faellig</span>
+          <span class="aho-zeit">im Gespraech</span>
+        </div>
+        <div class="aho-schritt">
+          <span class="aho-punkt aho-ok"></span>
+          <span class="aho-text">Termin steht im Werkstattplaner, Transkript liegt im Vorgang</span>
+          <span class="aho-zeit">Gespraechsende</span>
+        </div>
+      </div>
+      <p class="aha-quelle">Beispielhafter Ablauf, keine Aufzeichnung eines echten Anrufs.</p>
+    </div>
+
     <div class="dashboard-accordion reveal reveal-d2" id="dashboard-accordion">
       <!-- Populated by JS -->
     </div>
@@ -544,5 +576,6 @@ window.SERVICE_DATA = window.SERVICE_CONTENT?.['telefon-assistent'] || {};
 <!-- Wave Animation -->
 <script src="../funnel/waves-animation.js"></script>
 
+  <script src="../shared/autohaus-animationen.js"></script>
 </body>
 </html>
