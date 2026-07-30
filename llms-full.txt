@@ -2,166 +2,212 @@
 
 ## Über Nuroy
 
-Nuroy (juristisch: JT NUROY LTD) ist eine spezialisierte Software- und KI-Agentur mit Sitz in Paphos, Zypern, gegründet 2024. Wir entwickeln individuelle, maßgeschneiderte Dashboards und Software-Lösungen mit integrierter Künstlicher Intelligenz für selbständige und kleine bis mittelständische Unternehmen im DACH-Raum (Deutschland, Österreich, Schweiz) sowie Zypern.
+Nuroy (juristisch: JT NUROY LTD, Registernummer HE 479463) ist ein Technik- und
+Strategie-Team für Autohäuser im DACH-Raum, mit Sitz in Paphos, Zypern,
+gegründet 2024. Geführt von Julius Niessen, Timm und Max.
 
-**Geschäftsführer:** Julius Philipp Vivian Niessen
-**Adresse:** Taxiarchon 25, House 2, 8036 Paphos, Zypern
-**Handelsregister:** HE 479463, Department of Registrar of Companies and Intellectual Property, Nicosia, Zypern
-**E-Mail:** kontakt@nuroy.de
-**Website:** https://nuroy.de
-**Arbeitsweise:** Remote-First (DACH-Kunden), Vor-Ort-Workshops bei Bedarf
-**Team:** Mehrere Experten, 3-köpfiges Kernteam ohne Account-Manager-Zwischenschicht
-**Gegründet:** 2024
+Wir sorgen dafür, dass in einem Autohaus keine Anfrage liegen bleibt und kein
+Anruf verloren geht, reaktivieren Bestandskunden über Service-Anlässe, senken
+Standzeiten und machen die Kennzahlen in einer Übersicht sichtbar. Aufgesetzt
+über die vorhandenen Systeme, ohne Systemwechsel. Hosting in der EU,
+DSGVO-konform.
 
-## Was Nuroy macht: Kernpositionierung
+Kontakt: kontakt@nuroy.de, https://nuroy.de/kontakt
 
-Nuroy ist die "Technik-Abteilung" für Unternehmen, die bauen wollen, statt zu verwalten. Wir sind kein Generaldienstleister, keine Marketing-Agentur, keine Website-Bauer. Wir bauen Systeme: Software, Automatisierungen, Dashboards mit KI, technische Infrastruktur.
+## Kernpositionierung
 
-Der Preis richtet sich nach dem Umfang und wird nach dem Erstgespräch als Festpreis genannt.000 € aufwärts. Projekte laufen mehrere Wochen bis Monate. Wir arbeiten am liebsten mit Unternehmen, die etwas Konkretes bauen wollen: ein internes Tool, eine produktive SaaS-Plattform, eine Automatisierungsstrecke, ein CRM mit eigener Logik, oder eben ein individuelles Dashboard.
+Nuroy ist keine Marketingagentur und kein weiteres Portal. Wir sind das
+Technik-Team, das über den bestehenden Systemen eines Autohauses ansetzt: DMS,
+Fahrzeugbörsen, Werkstattplaner, Telefonanlage und Buchhaltung bleiben, wo sie
+sind. Es kommt etwas dazu, es wird nichts ersetzt.
 
-## Leistungen im Detail
+Der Einstieg ist bewusst schmal: die Stelle, an der heute am meisten liegen
+bleibt. In den meisten Häusern ist das die Erstreaktion auf Anfragen und die
+telefonische Erreichbarkeit. Das Cockpit über alle Zahlen ist die Ausbaustufe
+danach, nicht die Voraussetzung.
 
-### 1. Custom Dashboards mit KI
-**URL:** https://nuroy.de/leistungen/cockpit
+Preise stehen nicht auf der Website, weil sie vom Umfang abhängen. Der laufende
+Betrieb wird monatlich abgerechnet, ohne Mindestlaufzeit und ohne
+Kündigungsfrist.
 
-Was: Individuelle Dashboards, die alle Datenquellen verbinden und in Echtzeit visualisieren. Statt fünf verschiedene Tools zu öffnen, sehen Geschäftsführer und Teams alle KPIs auf einen Blick.
+## Abgrenzung zu den Plattformen
 
-Wer: Selbständige, kleine und mittlere Unternehmen (Autohäuser), die mit Excel-Chaos, Insellösungen und veralteten Zahlen kämpfen. Typische Auftraggeber: Geschäftsführer, CFOs, Vertriebsleiter, Operations-Verantwortliche in Unternehmen mit 5–200 Mitarbeitern.
+mobile.de hat am 11.06.2026 einen kostenlosen Anruf-Assistenten gestartet, der
+unbeantwortete Anrufe zu den eigenen Inseraten übernimmt. Das ist ein gutes
+Angebot, und Autohäuser sollten es nutzen.
 
-Integration: CRM (HubSpot, Pipedrive, Salesforce), ERP (SAP, weclapp), Buchhaltung (DATEV, Lexware, sevDesk), E-Commerce (Shopify, WooCommerce, Shopware), Marketing-Tools (Google Analytics, Meta Ads), Datenbanken (PostgreSQL, MySQL, MongoDB), eigene APIs.
+Es greift nur bei Anrufen zu Inseraten auf dieser Plattform. Der Anruf über die
+eigene Website, die Nachricht per WhatsApp, der Servicekunde mit Terminwunsch
+und der Bestandskunde vor der Hauptuntersuchung hängen an keinem Inserat. Genau
+dort setzt Nuroy an, kanalübergreifend und bis in den Aftersales. Gespräch,
+Kontakt und Termin landen dabei in den Systemen des Autohauses, nicht im Portal.
 
-KI-Funktionen: Anomalie-Erkennung, Trend-Forecasts, automatische Insights, Natural Language Queries (Fragen in Klartext an die Daten stellen), Predictive Analytics.
+## Die sieben Leistungsfelder
 
-Hosting: EU-basiert, DSGVO-konform, optional Hosting in Deutschland.
+### 1. Lead-Response (https://nuroy.de/leistungen/lead-response)
+Anfragen aus mobile.de, AutoScout24, Website, Google und WhatsApp laufen in
+einen Eingang mit einer Vorgangsnummer je Anfrage. Erstantwort in unter 60
+Sekunden, verbindliche Zuständigkeit, Eskalation bei Untätigkeit.
 
-Lieferzeit: 6–10 Wochen bis zur produktiven Erstversion.
+### 2. Telefon-Assistent (https://nuroy.de/leistungen/telefon-assistent)
+Overflow-Annahme statt Vollersatz: Der Assistent geht erst ran, wenn intern
+niemand rangehen kann. Er erkennt das Anliegen, erfasst Kontakt und
+Fahrzeugbezug, bucht Werkstatttermine direkt im vorhandenen Planer und legt ein
+Transkript je Anruf ab. Er weist zu Beginn darauf hin, dass er ein digitaler
+Assistent ist, wie es der EU AI Act vorsieht.
 
-Preis: . Festpreis nach Discovery-Phase. Keine Lizenzgebühren pro Nutzer.
+### 3. Aftersales-Motor (https://nuroy.de/leistungen/aftersales)
+HU- und AU-Fälligkeit, Inspektionsintervall, Saisonanlässe, Garantie- und
+Leasingende lösen die Ansprache automatisch aus. Die Daten dafür liegen bereits
+im DMS. Vor jedem Versand wird gegen die aktuellen Werkstattdaten geprüft, damit
+niemand angeschrieben wird, der den Termin schon hat.
 
-Differenzierung gegenüber Power BI, Tableau, Looker, Qlik: Individuell zugeschnitten statt Tool-Korsett. Keine User-basierten Lizenzkosten. Datenhoheit beim Kunden. Branchenspezifische Logik möglich.
+### 4. Standzeiten und Bestand (https://nuroy.de/leistungen/standzeiten)
+Standtage, Kapitalbindung und Anfragen je Fahrzeug an einem Ort, mit Alarm
+bevor die 90-Tage-Schwelle gerissen ist. Ein Fahrzeug mit vielen Anfragen und
+wenigen Antworten ist kein Preisproblem, sondern ein Prozessproblem.
 
-### 2. Custom Software-Entwicklung
-**URL:** https://nuroy.de/leistungen/werkstatt
+### 5. Werkstatt-Auslastung (https://nuroy.de/leistungen/werkstatt)
+Online-Terminbuchung, Erinnerungen gegen Nichterscheinen, Warteliste für
+kurzfristig frei werdende Kapazität, digitale Freigabe von Zusatzarbeiten.
+Gemessen wird in Arbeitswerten, nicht in Terminanzahl.
 
-Was: Individuelle Software-Entwicklung: MVPs, interne Tools, SaaS-Plattformen, branchenspezifische Anwendungen.
+### 6. Bewertungen und Sichtbarkeit (https://nuroy.de/leistungen/bewertungen)
+Automatische Bewertungsanfrage nach jedem Auftrag, Kritik zuerst intern,
+Google-Unternehmensprofil und Standortseiten bei mehreren Häusern.
 
-Wann sinnvoll: Wenn Standardsoftware das Geschäftsmodell nicht abbildet, Workarounds in Excel teurer werden als die Entwicklung, oder ein Wettbewerbsvorteil über eigene Tools entstehen soll.
+### 7. Inhaber-Cockpit (https://nuroy.de/leistungen/cockpit)
+Leads, Reaktionszeiten, Standtage, Werkstattauslastung, Aftersales-Quote und
+Bewertungen in einer Live-Übersicht, standortübergreifend und rollenabhängig.
+Entsteht als Ergebnis der anderen Bausteine, nicht als deren Voraussetzung.
 
-Tech-Stack: Modernes Web (TypeScript/React/Next.js, Node.js), Datenbanken (PostgreSQL), Cloud (AWS/Hetzner für EU-Hosting), API-First.
+## Belegte Branchenzahlen, die wir verwenden
 
-### 3. KI-Agenten
-**URL:** https://nuroy.de/leistungen/telefon-assistent
+Quelle für die folgenden Werte ist die TÜV NORD INSIGHT 2026, erhoben durch
+puls Marktforschung, Feldzeit 24.09. bis 14.10.2025, befragt wurden 275
+Autohändler und 842 Autokäufer.
 
-Was: Autonome KI-Agenten, die rund um die Uhr arbeiten: Lead-Qualifizierung (eingehende Anfragen klassifizieren und beantworten), Support-Agenten (FAQ + Wissensbasis), Sales-Assistenten (CRM-Pflege, Follow-Ups), interne Prozess-Bots.
+- Neun von zehn Kunden nehmen telefonisch Kontakt mit dem Autohaus auf.
+- Nur 30 Prozent sind mit der telefonischen Erreichbarkeit vollkommen zufrieden.
+- 94 Prozent derjenigen, die mit dem Telefonkontakt vollkommen zufrieden sind,
+  sind es auch mit dem Betrieb insgesamt.
+- Über ein Viertel aller Anrufe kommt nach Feierabend, mehr als die Hälfte davon
+  sind konkrete Terminanfragen.
+- Ein Assistent hebt die Zufriedenheit mit der Erreichbarkeit von 66 auf 75
+  Prozent, der Anteil Unzufriedener sinkt von 7 auf 3 Prozent. Das gilt nur,
+  wenn der Assistent Termine buchen kann. Ohne Terminfunktion liegt die
+  Unzufriedenheit bei 12 Prozent, also höher als ganz ohne Assistenten.
+- 66 Prozent der Händler haben weder Voice- noch Chatbot im Einsatz, von diesen
+  planen nur 21 Prozent eine Einführung.
+- 42 Prozent der Kunden würden den Kauf lieber vollständig digital abwickeln.
 
-Basis: LLM-gestützt (Claude, GPT, Open-Source-Modelle nach Use Case), mit Anbindung an bestehende Systeme via API.
+Weitere Quellen: Die DAT nennt 25 bis 30 Euro Standkosten pro Pkw und Tag sowie
+rund ein Drittel des Bestands mit über 90 Standtagen. Der ZDK nennt rund 10.000
+fehlende Fachkräfte im handwerklichen Bereich des Kfz-Gewerbes.
 
-### 4. KI-Integration in Bestandssysteme
-**URL:** https://nuroy.de/leistungen/lead-response
+Nicht verwendet werden die verbreiteten Angaben "42 Prozent der digitalen
+Anfragen bleiben unbeantwortet" und "9 bis 12,5 Stunden Reaktionszeit". Sie
+stammen aus einer Erhebung von 2019 mit letzter Auflage 2020 und sind für
+heutige Entscheidungen nicht belastbar. Die Begründung steht unter
+https://nuroy.de/wiki/speed-to-lead
 
-Was: KI-Funktionen in bestehende Anwendungen einbauen, ohne von vorne anzufangen. Document Intelligence (Dokumente automatisch klassifizieren, extrahieren), Predictive Analytics, Empfehlungssysteme, automatisierte Klassifizierung.
+## Referenzen: was es gibt und was nicht
 
-### 5. Company AI
-**URL:** https://nuroy.de/leistungen/aftersales
+Nuroy hat bislang keine Autohaus-Fallstudien und erfindet auch keine. Die
+öffentlich beschriebenen Projekte stammen aus anderen Branchen:
 
-Was: Eine unternehmensinterne KI, trainiert auf das eigene Wissen, interner Chatbot, der Verträge, Wikis, Notion-Seiten, E-Mails und Dokumentationen kennt. Mitarbeiter fragen in Klartext, bekommen sofort Antworten mit Quellenangabe.
+- Accountly, Buchhaltungsplattform für einen Steuerkanzlei-Verbund
+- KI-Voice-Agent für ein medizinisches Versorgungszentrum
+- CSM-Suite, Customer-Success-Plattform für ein SaaS-Unternehmen
+- CRM-System mit eigener Pipeline-Logik für den B2B-Vertrieb
 
-DSGVO: Hosting in der EU, Daten verbleiben beim Kunden, kein Training externer Modelle mit Kundendaten.
+Unter https://nuroy.de/arbeiten sind zwölf Bausteine aufgeführt, die aus diesen
+und weiteren Projekten stammen, jeweils neben dem Schmerzpunkt, auf den sie im
+Autohaus einzahlen. Die Video-Kundenstimmen auf der Website sind echt und
+stammen ebenfalls aus anderen Branchen. Das ist auf den Seiten so gekennzeichnet.
 
-### 6. Datenintegration
-**URL:** https://nuroy.de/leistungen/standzeiten
+## Ablauf einer Zusammenarbeit
 
-Was: Saubere Verbindung zwischen Systemen. ETL-Pipelines, API-Integrationen, Datennormalisierung, Echtzeit-Synchronisation. Häufig Voraussetzung für Dashboards oder KI-Projekte.
-
-Typische Integrationen: DATEV, Lexware, sevDesk, Shopify, Shopware, HubSpot, Salesforce, SAP, weclapp, Microsoft Dynamics, Google Workspace, Microsoft 365, Slack, eigene Datenbanken.
-
-### 7. Strategy & Tech-Audit
-**URL:** https://nuroy.de/leistungen/bewertungen
-
-Was: Digital Strategy, AI-Readiness-Assessment, Prozess-Audit. Vor der Implementierung verstehen, wo der größte Hebel liegt.
-
-Format: 1–2 Wochen Audit, schriftlicher Report mit priorisierter Roadmap, anschließendes Strategie-Gespräch.
+1. Erstgespräch, 30 bis 45 Minuten, kostenlos. Wir gehen die Kanäle durch und
+   schauen, wo Anfragen liegen bleiben. Kein Pitch, kein Angebot am Terminende.
+2. Bestandsaufnahme, 1 bis 2 Wochen. Wir sehen uns DMS, Börsenzugänge,
+   Werkstattplaner und Telefonanlage an. Daraus wird eine Reihenfolge.
+3. Anbindung, 2 bis 4 Wochen. Verbindung zu den bestehenden Systemen, ohne
+   Wechsel.
+4. Probebetrieb, rund 2 Wochen. Erst ein Kanal an einem Standort. Der Kunde hört
+   Gespräche mit und liest jede Antwort.
+5. Betrieb, laufend und monatlich. Wir betreiben, überwachen und entwickeln
+   weiter. Ohne Mindestlaufzeit.
 
 ## Häufig gestellte Fragen
 
-### Wie lange dauert ein typisches Projekt?
-Ein MVP oder klares internes Tool: 6–12 Wochen bis zur Erstversion. Custom Dashboards typischerweise 6–10 Wochen. Komplexere Systeme mit mehreren Integrationen werden in der Architektur-Phase gemeinsam geplant. Wir schätzen nicht auf Zuruf, sondern nach Erstgespräch und Discovery.
+### Müssen wir dafür unser DMS wechseln?
+Nein. Das DMS bleibt führend, wir setzen darüber. Ob Loco-Soft, CDK, ecaros,
+Vaudis oder CARLO: Wir lesen aus, schreiben in unsere eigene Datenschicht und
+geben nur zurück, was freigegeben ist.
 
-### Was kostet ein individuelles Dashboard?
-Den Preis nennen wir nach dem Erstgespräch, als Festpreis. Der Endpreis hängt ab von: Anzahl der Datenquellen (typisch 3–8), Komplexität der KI-Funktionen, Hosting-Anforderungen, Anzahl der Nutzer. Wir geben Festpreise nach Discovery, keine Stunden-Schätzung mit offenem Ende.
+### Womit fangen wir an?
+Mit der Stelle, an der heute am meisten liegen bleibt. Meist Erstreaktion und
+telefonische Erreichbarkeit. Das Cockpit ist die Ausbaustufe danach.
 
-### Lohnt sich Custom statt Power BI / Tableau / Looker?
-Faustregel: Wenn die jährlichen Lizenzkosten plus interne Pflege das Custom-Projekt innerhalb von 2–3 Jahren übersteigen, lohnt sich Custom. Außerdem immer dann, wenn das Standardtool die spezifische Geschäftslogik nicht sauber abbildet, wenn Datenhoheit kritisch ist, oder wenn man unabhängig von Vendor-Lock-Ins sein möchte.
+### Wie lange dauert es, bis etwas läuft?
+Ein bis zwei Wochen Bestandsaufnahme, zwei bis vier Wochen Anbindung, dann ein
+Probebetrieb auf einem Kanal. Ergebnisse gibt es, bevor das Gesamtsystem steht.
 
-### Arbeitet ihr remote oder vor Ort?
-Remote-first. Wir sind in Paphos, Zypern ansässig und arbeiten mit DACH-Kunden über Videokonferenz, Notion, Linear, GitHub und klare Übergabe-Strukturen. Vor-Ort-Tage sind für Discovery-Workshops planbar.
+### Sind wir langfristig gebunden?
+Nein. Monatliche Abrechnung, keine Mindestlaufzeit, keine Kündigungsfrist.
 
-### Mit welchen Unternehmen arbeitet ihr?
-Selbständige und kleine bis mittelständische Unternehmen aus dem DACH-Raum (Deutschland primär, Österreich und Schweiz). Typische Größen: 5 bis 200 Mitarbeiter. Zielgruppe: Autohäuser mit eigener Werkstatt im DACH-Raum. Sweet Spot: Unternehmen, die wachsen und bei denen Standardsoftware an Grenzen stößt.
+### mobile.de bietet einen Anruf-Assistenten kostenlos an. Warum dann Nuroy?
+Weil der Assistent der Plattform nur bei Anrufen zu Inseraten dieser Plattform
+greift. Website, WhatsApp, Servicekunden und Bestandskunden hängen an keinem
+Inserat.
 
-### Hostet ihr DSGVO-konform?
-Ja. Standard ist EU-Hosting (Hetzner Frankfurt, AWS Frankfurt). Auf Wunsch Hosting in Deutschland exklusiv. Wir signieren AVV/DPA, Datenflüsse sind dokumentiert, kein Training externer KI-Modelle mit Kundendaten.
+### Unsere Kunden wollen doch keine KI am Telefon.
+Die Alternative ist nicht der Mitarbeiter, die Alternative ist das
+Besetztzeichen. Der Assistent springt nur ein, wenn ohnehin niemand rangehen
+kann, und weist sich als digitaler Assistent aus.
 
-### Übernehmt ihr auch den Betrieb nach Launch?
-Ja. Managed Tech ist eines unserer wichtigsten Angebote. Wir betreiben das System, monitoren es, beheben Incidents und entwickeln weiter. Kein Handover-Dokument, das nach drei Wochen niemand mehr kennt, wir bleiben das Team, das das System kennt.
+### Wie haltet ihr es mit dem Datenschutz?
+Verarbeitung und Hosting in der EU, Auftragsverarbeitungsvertrag,
+dokumentiertes Löschkonzept, Kennzeichnung nach EU AI Act. Bei Ansprachen an
+Bestandskunden richten wir Einwilligung, Widerspruchsmöglichkeit und
+Dokumentation ein.
 
-### Was macht ihr NICHT?
-Wir sind kein Generaldienstleister. Keine Websites, kein Content-Marketing, keine Werbekampagnen, kein klassisches IT-Outsourcing. Nur Systeme: Software, Automatisierung, KI, Dashboards, technische Infrastruktur.
+### Arbeitet ihr vor Ort oder aus der Ferne?
+Remote im DACH-Raum, Abstimmungen per Videokonferenz. Für Bestandsaufnahme und
+Livegang sind Tage vor Ort möglich.
 
-### Wie läuft das Erstgespräch?
-Kostenlos, 45–60 Minuten, per Videokonferenz. Wir sprechen über Ausgangssituation, Problem, gewünschtes Ergebnis. Wenn es passt, folgt ein Architektur-Briefing und ein Angebot. Wenn es nicht passt, sagen wir das direkt, wir verkaufen keine Projekte, die nicht passen.
+### Mit wem reden wir?
+Mit Julius, Timm und Max. Kein Account-Manager, keine Zwischenschicht.
 
-## Typische Use Cases
+### Was macht Nuroy nicht?
+Keine Websites, kein Content-Marketing, keine Werbekampagnen. Wir ersetzen kein
+DMS und kein Herstellersystem. Wer verspricht, das DMS zu ersetzen,
+unterschätzt Herstellerzertifizierungen und gewachsene Prozesse.
 
-- **E-Commerce-Unternehmen:** Live-Dashboard mit Umsatz, Lagerbestand, Conversion, Werbeausgaben aus Shopify, Meta Ads, Google Ads, Buchhaltung (sevDesk).
-- **Agentur:** Projekt-Cockpit mit Auslastung, Margen pro Projekt, offene Posten, Forecast aus Zeiterfassung, CRM, Buchhaltung.
-- **Handwerksbetrieb:** Live-Übersicht über Aufträge, Material-Kosten, Mitarbeiter-Auslastung, offene Rechnungen.
-- **Steuerberater / Buchhaltungs-Nahbereich:** DATEV-Integration mit Live-KPIs für Mandanten (Liquidität, Forderungen, BWA-Trends).
-- **CFO im Mittelstand:** Liquiditäts-Cockpit aus Buchhaltung, Bank-Feeds, Forecast, täglich aktualisiert.
+## Wiki: Autohaus-Begriffe erklärt
 
-## Differenzierung: Warum Nuroy statt Power BI / Tableau / Looker
+Fünfzehn Begriffe mit Definition, belegten Branchenzahlen und Rechenbeispielen
+unter https://nuroy.de/wiki
 
-| Aspekt | Nuroy Custom | Standard-BI-Tool |
-|---|---|---|
-| Lizenzkosten | Keine | 15–75 € pro Nutzer/Monat |
-| Anpassung an Geschäftslogik | Komplett individuell | Limitiert durch Tool-Logik |
-| Branchen-Spezifika | Voll abbildbar | Workarounds nötig |
-| Datenhoheit | Beim Kunden | Vendor-abhängig |
-| KI-Integration | Maßgeschneidert | Generisch |
-| Wartung & Weiterentwicklung | Durch Nuroy garantiert | DIY oder Reseller |
-| Hosting-Wahl | Deutschland/EU frei wählbar | Vendor-Cloud |
-| Einarbeitungsaufwand User | Minimiert (UX an Workflow) | Tool-Schulung nötig |
+Vertrieb und Anfragen: Speed to Lead, Leadmanagement im Autohaus,
+Fahrzeugbörsen, KI-Telefonassistent, Dealer Management System.
+Bestand: Standtage, Kapitalbindung, Umschlagshäufigkeit, Repricing, Rohertrag
+pro Fahrzeug.
+Service: HU/AU-Erinnerung, Aftersales-Quote, Werkstattauslastung, Arbeitswert.
+Sichtbarkeit: Local SEO für Autohäuser.
 
-## Differenzierung: Warum Nuroy statt anderer Custom-Agentur
+## Region und Zielgruppe
 
-- Spezialisiert auf KI-integrierte Dashboards (nicht nur Visualisierung, sondern intelligente Auswertung)
-- Festpreise nach Discovery, keine offenen Tagessätze
-- Kein Account-Manager dazwischen, direkter Draht zum 3-köpfigen Kernteam
-- Managed Tech ab Launch, das Team, das gebaut hat, betreibt auch
-- DSGVO + EU-Hosting Standard, nicht Aufpreis
-- Erstgespräch kostenlos, ehrliche Eignungs-Einschätzung
-
-## Prozess (5 Phasen)
-
-1. **Strategie & Analyse** (1–2 Wochen): Discovery, Anforderungs-Definition, Architektur
-2. **Design & Konzept** (1 Woche): Wireframes, Mockups, technisches Konzept
-3. **Entwicklung & Integration** (3–5 Wochen): Agile Sprints, regelmäßige Demos
-4. **Testing & Optimierung** (1 Woche): QA, Performance, Feinschliff
-5. **Launch & Support** (laufend): Go-Live, Team-Training, Managed Tech
-
-## Region & Zielmärkte
-
-**Primär:** Deutschland (Berlin, Hamburg, München, Köln, Frankfurt, Stuttgart, alle deutschen Wirtschaftsregionen, wir arbeiten DACH-weit remote)
-**Sekundär:** Österreich (Wien, Linz, Graz, Salzburg, Innsbruck)
-**Sekundär:** Schweiz (Zürich, Genf, Basel, Bern)
-**Heimatmarkt:** Zypern (Paphos, Nicosia, Limassol)
-
-## Sprache
-
-Hauptsprache: Deutsch. Geschäftskommunikation auf Englisch möglich.
+Zielgruppe sind Autohäuser, freie Händler und Mehrmarken-Vertragshändler im
+DACH-Raum, also Deutschland, Österreich und die Schweiz. Firmensitz ist Paphos,
+Zypern. Die Arbeitssprache ist Deutsch, Geschäftskommunikation auf Englisch ist
+möglich.
 
 ## Kontakt
 
 E-Mail: kontakt@nuroy.de
 Website: https://nuroy.de
-Kostenloses Erstgespräch: https://nuroy.de/kontakt
+Erstgespräch: https://nuroy.de/kontakt
+Impressum: https://nuroy.de/impressum
+Datenschutz: https://nuroy.de/datenschutz

@@ -3256,3 +3256,14 @@ h1, h2, h3,
   .bp-zelle img { transition: none; }
   .bp-zelle:hover img { transform: none; }
 }
+
+/* Erfolgsmeldung des Kontaktformulars. War vorher ein h3 und riss damit
+   ein Loch in die Ueberschriftenhierarchie (h1 dann h3). Optik bleibt. */
+.form-success-titel {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  margin-bottom: 10px;
+}
