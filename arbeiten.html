@@ -38,7 +38,27 @@
   </script>
   <link rel="stylesheet" href="shared/styles.css?v=1784307412000">
   <style>
+    /* ── Bildband ── */
+    .photo-band{position:relative;width:100%;overflow:hidden;background:var(--bg-2)}
+    .photo-band img{display:block;width:100%;height:clamp(260px,32vw,440px);object-fit:cover;object-position:center 62%}
+    /* Heller Schleier oben, damit die dunkle Schrift trägt und das
+       Motiv im unteren Bildteil frei bleibt. */
+    .photo-band::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.74) 0%,rgba(255,255,255,.46) 26%,rgba(255,255,255,.10) 48%,rgba(255,255,255,0) 66%);pointer-events:none}
+    .pb-caption{position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:2;width:100%;max-width:var(--max-w);padding:clamp(26px,3.6vw,46px) var(--pad-x) 0}
+    .pb-eyebrow{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--pink);margin-bottom:10px}
+    .pb-text{font-family:var(--font-display);font-weight:800;font-size:clamp(19px,2.4vw,31px);line-height:1.15;letter-spacing:-.02em;color:#0A2540;max-width:22ch}
+
     /* ── Page Header ──────────────────────── */
+
+    /* ── Übertragung aufs Autohaus ── */
+    .transfer-section{border-top:1px solid var(--line)}
+    .transfer-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:48px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+    .transfer-cell{background:#FFFFFF;padding:28px 26px;display:flex;flex-direction:column}
+    .tf-von{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-dim)}
+    .tf-pfeil{font-size:18px;color:var(--pink);margin:8px 0 4px;line-height:1}
+    .tf-zu{font-family:var(--font-display);font-size:18px;font-weight:800;letter-spacing:-.02em;color:#0A2540;line-height:1.3}
+    .tf-txt{margin-top:12px;font-size:14.5px;line-height:1.65;color:var(--fg-muted)}
+    @media (max-width:760px){.transfer-grid{grid-template-columns:1fr}}
     .arbeiten-header {
       padding: calc(var(--nav-h) + 64px) 0 64px;
       border-bottom: 1px solid var(--line);
@@ -562,7 +582,7 @@
       <div>
         <p class="t-label reveal">Portfolio</p>
         <h1 class="t-h1 reveal reveal-d1" style="margin-top:8px;">Unsere Arbeiten.</h1>
-        <p class="arbeiten-sub reveal reveal-d2">Vier ausgewählte Projekte aus über 20 Systemen, die wir gebaut, ausgeliefert und in Produktion gebracht haben. Nicht alles dürfen wir zeigen — aber was hier steht, ist echt.</p>
+        <p class="arbeiten-sub reveal reveal-d2">Vier ausgewählte Projekte aus über 20 Systemen — gebaut, ausgeliefert, in Produktion. Sie stammen aus anderen Branchen, und genau das ist der Punkt: Es sind dieselben Bausteine, aus denen heute das Autohaus-Cockpit besteht.</p>
       </div>
       <div class="scroll-hint reveal reveal-d3">
         Scrollen zum Erkunden
@@ -929,6 +949,71 @@
 </div><!-- /cinema-wrapper -->
 
 <!-- Post-cinema CTA -->
+<!-- ═══════ ÜBERTRAGUNG AUFS AUTOHAUS ═══════
+     Die vier Projekte stammen aus anderen Branchen. Statt das zu
+     kaschieren, machen wir den Transfer explizit: welcher Baustein
+     aus welchem Projekt heute im Autohaus arbeitet. -->
+<section class="section transfer-section">
+  <div class="container">
+    <p class="t-label reveal">Was das mit Ihrem Autohaus zu tun hat</p>
+    <h2 class="t-h2 reveal reveal-d1" style="margin-top:8px;max-width:620px">
+      Andere Branche, gleiche Mechanik.
+    </h2>
+    <p class="t-body-lg c-muted reveal reveal-d2" style="max-width:620px;margin-top:16px">
+      Ein Terminassistent unterscheidet nicht, ob am anderen Ende eine Arztpraxis
+      oder eine Serviceannahme sitzt. Eine Fälligkeitserinnerung funktioniert
+      identisch, ob es um einen Steuertermin oder eine Hauptuntersuchung geht.
+      Diese vier Systeme sind der Beleg, dass die Bausteine laufen — im Autohaus
+      tragen sie andere Namen.
+    </p>
+
+    <div class="transfer-grid">
+      <div class="transfer-cell reveal reveal-d1">
+        <span class="tf-von">Accountly · Steuerkanzlei</span>
+        <span class="tf-pfeil">→</span>
+        <span class="tf-zu">Belegerfassung und Fristenlogik</span>
+        <p class="tf-txt">Dieselbe Mechanik erkennt heute HU-Fälligkeiten im Fahrzeugbestand und macht daraus Werkstatttermine.</p>
+      </div>
+      <div class="transfer-cell reveal reveal-d2">
+        <span class="tf-von">KI-Voice-Agent · Arztpraxis</span>
+        <span class="tf-pfeil">→</span>
+        <span class="tf-zu">Telefon-Overflow und Terminvergabe</span>
+        <p class="tf-txt">Der Assistent, der dort Praxistermine annimmt, nimmt im Autohaus Anrufe an, die sonst ins Leere klingeln.</p>
+      </div>
+      <div class="transfer-cell reveal reveal-d3">
+        <span class="tf-von">CSM-Suite · SaaS</span>
+        <span class="tf-pfeil">→</span>
+        <span class="tf-zu">Abwanderung früh erkennen</span>
+        <p class="tf-txt">Aus Health-Scores für Softwarekunden wird die Frage, welcher Fahrzeugkunde nach der Garantie nicht wiederkommt.</p>
+      </div>
+      <div class="transfer-cell reveal reveal-d4">
+        <span class="tf-von">CRM-System · B2B-Vertrieb</span>
+        <span class="tf-pfeil">→</span>
+        <span class="tf-zu">Anfragen, Routing, Wiedervorlage</span>
+        <p class="tf-txt">Die Pipeline-Logik mit Eskalation ist exakt das, was einen Lead aus mobile.de nicht liegen lässt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ BILDBAND ═══════════════════ -->
+<section class="photo-band">
+  <img
+    src="assets/photos/band-arbeiten-1600.webp"
+    srcset="assets/photos/band-arbeiten-640.webp 640w,
+            assets/photos/band-arbeiten-1000.webp 1000w,
+            assets/photos/band-arbeiten-1600.webp 1600w,
+            assets/photos/band-arbeiten-2200.webp 2200w"
+    sizes="100vw"
+    alt="Mitarbeitende im Ausstellungsraum eines Autohauses"
+    width="2200" height="943" loading="lazy" decoding="async">
+  <div class="pb-caption">
+    <span class="pb-eyebrow">Vier Systeme</span>
+    <p class="pb-text">Aus anderen Branchen — dieselben Bausteine.</p>
+  </div>
+</section>
+
 <section class="post-cinema">
   <div class="container">
     <p class="t-label text-center reveal">Mehr bauen</p>

@@ -34,3 +34,26 @@ die dunkelblaue Schrift unlesbar.
 Die aktuellen Showroom-Fahrzeuge tragen sichtbare Fremdmarken-Embleme.
 Falls das stört, sollte das Band gegen ein markenneutrales Motiv
 getauscht werden.
+
+## Ergänzt: Hero-Bilder der Leistungsseiten und Bänder
+
+| Datei | Pexels-ID | Verwendung |
+|---|---|---|
+| `hero-lead-response-*` | 4895435 | Leistungsseite Lead-Response |
+| `hero-telefon-assistent-*` | 36730205 | Leistungsseite Telefon-Assistent |
+| `hero-aftersales-*` | 36729871 | Leistungsseite Aftersales-Motor |
+| `hero-standzeiten-*` | 395537 | Leistungsseite Standzeiten |
+| `hero-werkstatt-*` | 9626877 | Leistungsseite Werkstatt, dort zweifach |
+| `hero-bewertungen-*` | 7144228 | Leistungsseite Bewertungen |
+| `hero-cockpit-*` | 18108314 | Leistungsseite Inhaber-Cockpit |
+| `band-arbeiten-*` | 36730205 | Bildband auf arbeiten.html |
+| `band-projekte-*` | 395537 | Bildband auf projekte.html |
+| `band-team-*` | 7144228 | Bildband auf team.html und kontakt.html |
+| `band-wiki-*` | 9626877 | Bildband auf wiki.html |
+
+Hero-Bilder im Format 16:10 (560/900/1400 px), Bänder im Format 21:9
+(640/1000/1600/2200 px). Alle unter Pexels-Lizenz, kommerziell frei,
+ohne Pflicht zur Namensnennung.
+
+Die Gründerporträts in `assets/team/` stammen nicht von Pexels, sondern
+sind eigene Aufnahmen von Julius, Timm und Max.

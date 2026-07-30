@@ -40,6 +40,14 @@
   </script>
   <link rel="stylesheet" href="shared/styles.css?v=1784307412000">
   <style>
+    /* ── Bildband ── */
+    .photo-band{position:relative;width:100%;overflow:hidden;background:var(--bg-2)}
+    .photo-band img{display:block;width:100%;height:clamp(260px,32vw,440px);object-fit:cover;object-position:center 62%}
+    .photo-band::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.74) 0%,rgba(255,255,255,.46) 26%,rgba(255,255,255,.10) 48%,rgba(255,255,255,0) 66%);pointer-events:none}
+    .pb-caption{position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:2;width:100%;max-width:var(--max-w);padding:clamp(26px,3.6vw,46px) var(--pad-x) 0}
+    .pb-eyebrow{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--pink);margin-bottom:10px}
+    .pb-text{font-family:var(--font-display);font-weight:800;font-size:clamp(19px,2.4vw,31px);line-height:1.15;letter-spacing:-.02em;color:#0A2540;max-width:22ch}
+
     .page-hero{padding:calc(var(--nav-h) + 80px) 0 64px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
     .hero-glow{position:absolute;top:-150px;right:-50px;width:600px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(var(--pink-rgb), 0.1) 0%,transparent 65%);pointer-events:none}
     .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start;padding:clamp(64px,8vw,112px) 0}
@@ -179,6 +187,24 @@
     </div>
   </div>
 </div>
+
+
+<!-- ═══════════════════ BILDBAND ═══════════════════ -->
+<section class="photo-band">
+  <img
+    src="assets/photos/band-team-1600.webp"
+    srcset="assets/photos/band-team-640.webp 640w,
+            assets/photos/band-team-1000.webp 1000w,
+            assets/photos/band-team-1600.webp 1600w,
+            assets/photos/band-team-2200.webp 2200w"
+    sizes="100vw"
+    alt="Beratungsgespräch mit Unterlagen im Autohaus"
+    width="2200" height="943" loading="lazy" decoding="async">
+  <div class="pb-caption">
+    <span class="pb-eyebrow">Vor dem Gespräch</span>
+    <p class="pb-text">45 Minuten. Kein Pitch, keine Verpflichtung.</p>
+  </div>
+</section>
 
 <section class="alt-contact section" style="background:var(--bg-2);border-top:1px solid var(--line)">
   <div class="container">

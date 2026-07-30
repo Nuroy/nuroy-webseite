@@ -2733,6 +2733,18 @@ body.theme-light .dashboard-flow-label {
   color: var(--fg);
 }
 
+/* ── Akkordeon im geoeffneten Zustand. Die aktive Karte trug im
+      Dunkel-Design weisse Schrift; ihre Flaeche ist jetzt hell.
+      Faellt nur auf, wenn man ein Element tatsaechlich aufklappt —
+      geschlossen sieht alles korrekt aus. ── */
+body.theme-light .accordion-item.active :is(h3, .accordion-header-content h3) {
+  color: #0A2540;
+}
+body.theme-light .accordion-item.active .accordion-tag {
+  color: var(--pink);
+  background: rgba(27, 79, 145, 0.10);
+}
+
 /* ── Hero-Foto auf den Leistungsseiten. Ersetzt den frueheren
       Browser-Mockup-Rahmen — ein Foto braucht keine Ampelpunkte. ── */
 body.theme-light .service-vsl-wrapper {

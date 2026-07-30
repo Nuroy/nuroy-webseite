@@ -38,6 +38,16 @@
   </script>
   <link rel="stylesheet" href="shared/styles.css?v=1784307412000">
   <style>
+    /* ── Bildband ── */
+    .photo-band{position:relative;width:100%;overflow:hidden;background:var(--bg-2)}
+    .photo-band img{display:block;width:100%;height:clamp(260px,32vw,440px);object-fit:cover;object-position:center 62%}
+    /* Heller Schleier oben, damit die dunkle Schrift trägt und das
+       Motiv im unteren Bildteil frei bleibt. */
+    .photo-band::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.74) 0%,rgba(255,255,255,.46) 26%,rgba(255,255,255,.10) 48%,rgba(255,255,255,0) 66%);pointer-events:none}
+    .pb-caption{position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:2;width:100%;max-width:var(--max-w);padding:clamp(26px,3.6vw,46px) var(--pad-x) 0}
+    .pb-eyebrow{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--pink);margin-bottom:10px}
+    .pb-text{font-family:var(--font-display);font-weight:800;font-size:clamp(19px,2.4vw,31px);line-height:1.15;letter-spacing:-.02em;color:#0A2540;max-width:22ch}
+
     .proj-hero {
       padding: calc(var(--nav-h) + 80px) 0 72px;
       border-bottom: 1px solid var(--line);
@@ -353,7 +363,7 @@
       <div>
         <p class="t-label reveal">Portfolio</p>
         <h1 class="t-h1 reveal reveal-d1" style="margin-top:8px;max-width:580px">Was wir wirklich bauen.</h1>
-        <p class="t-body-lg c-muted reveal reveal-d2" style="max-width:480px;margin-top:16px">Vier ausgewählte Systeme aus über 20 Projekten — gebaut, ausgeliefert, in Produktion. Kein Showcase, kein Prototyp.</p>
+        <p class="t-body-lg c-muted reveal reveal-d2" style="max-width:480px;margin-top:16px">Vier ausgewählte Systeme aus über 20 Projekten — gebaut, ausgeliefert, in Produktion. Aus anderen Branchen, aber aus denselben Bausteinen, die heute im Autohaus arbeiten.</p>
       </div>
       <div class="proj-count reveal reveal-d1">04</div>
     </div>
@@ -488,6 +498,24 @@
       </a>
 
     </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ BILDBAND ═══════════════════ -->
+<section class="photo-band">
+  <img
+    src="assets/photos/band-projekte-1600.webp"
+    srcset="assets/photos/band-projekte-640.webp 640w,
+            assets/photos/band-projekte-1000.webp 1000w,
+            assets/photos/band-projekte-1600.webp 1600w,
+            assets/photos/band-projekte-2200.webp 2200w"
+    sizes="100vw"
+    alt="Luftaufnahme eines Autohaus-Geländes mit Fahrzeugbestand"
+    width="2200" height="943" loading="lazy" decoding="async">
+  <div class="pb-caption">
+    <span class="pb-eyebrow">In Produktion</span>
+    <p class="pb-text">Gebaut, ausgeliefert, im täglichen Einsatz.</p>
   </div>
 </section>
 
