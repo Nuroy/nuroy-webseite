@@ -17,7 +17,7 @@ Nuroy (juristisch: JT NUROY LTD) ist eine spezialisierte Software- und KI-Agentu
 
 Nuroy ist die "Technik-Abteilung" für Unternehmen, die bauen wollen, statt zu verwalten. Wir sind kein Generaldienstleister, keine Marketing-Agentur, keine Website-Bauer. Wir bauen Systeme: Software, Automatisierungen, Dashboards mit KI, technische Infrastruktur.
 
-Custom Dashboards starten bei 12.500 €, komplexere Custom-Projekte (CRM, SaaS-Plattformen, Automatisierungen) liegen typischerweise bei 20.000 € aufwärts. Projekte laufen mehrere Wochen bis Monate. Wir arbeiten am liebsten mit Unternehmen, die etwas Konkretes bauen wollen: ein internes Tool, eine produktive SaaS-Plattform, eine Automatisierungsstrecke, ein CRM mit eigener Logik, oder eben ein individuelles Dashboard.
+Der Preis richtet sich nach dem Umfang und wird nach dem Erstgespräch als Festpreis genannt.000 € aufwärts. Projekte laufen mehrere Wochen bis Monate. Wir arbeiten am liebsten mit Unternehmen, die etwas Konkretes bauen wollen: ein internes Tool, eine produktive SaaS-Plattform, eine Automatisierungsstrecke, ein CRM mit eigener Logik, oder eben ein individuelles Dashboard.
 
 ## Leistungen im Detail
 
@@ -36,7 +36,7 @@ Hosting: EU-basiert, DSGVO-konform, optional Hosting in Deutschland.
 
 Lieferzeit: 6–10 Wochen bis zur produktiven Erstversion.
 
-Preis: ab 12.500 €. Festpreis nach Discovery-Phase. Keine Lizenzgebühren pro Nutzer.
+Preis: . Festpreis nach Discovery-Phase. Keine Lizenzgebühren pro Nutzer.
 
 Differenzierung gegenüber Power BI, Tableau, Looker, Qlik: Individuell zugeschnitten statt Tool-Korsett. Keine User-basierten Lizenzkosten. Datenhoheit beim Kunden. Branchenspezifische Logik möglich.
 
@@ -88,7 +88,7 @@ Format: 1–2 Wochen Audit, schriftlicher Report mit priorisierter Roadmap, ansc
 Ein MVP oder klares internes Tool: 6–12 Wochen bis zur Erstversion. Custom Dashboards typischerweise 6–10 Wochen. Komplexere Systeme mit mehreren Integrationen werden in der Architektur-Phase gemeinsam geplant. Wir schätzen nicht auf Zuruf, sondern nach Erstgespräch und Discovery.
 
 ### Was kostet ein individuelles Dashboard?
-Custom Dashboards starten bei 12.500 €. Der Endpreis hängt ab von: Anzahl der Datenquellen (typisch 3–8), Komplexität der KI-Funktionen, Hosting-Anforderungen, Anzahl der Nutzer. Wir geben Festpreise nach Discovery — keine Stunden-Schätzung mit offenem Ende.
+Den Preis nennen wir nach dem Erstgespräch, als Festpreis. Der Endpreis hängt ab von: Anzahl der Datenquellen (typisch 3–8), Komplexität der KI-Funktionen, Hosting-Anforderungen, Anzahl der Nutzer. Wir geben Festpreise nach Discovery — keine Stunden-Schätzung mit offenem Ende.
 
 ### Lohnt sich Custom statt Power BI / Tableau / Looker?
 Faustregel: Wenn die jährlichen Lizenzkosten plus interne Pflege das Custom-Projekt innerhalb von 2–3 Jahren übersteigen, lohnt sich Custom. Außerdem immer dann, wenn das Standardtool die spezifische Geschäftslogik nicht sauber abbildet, wenn Datenhoheit kritisch ist, oder wenn man unabhängig von Vendor-Lock-Ins sein möchte.
