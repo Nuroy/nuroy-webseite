@@ -100,3 +100,14 @@ alle über der AA-Schwelle von 4,5:1.
 
 Markenembleme wurden nach Möglichkeit gemieden, aus demselben Grund wie
 oben bei den Showroom-Fahrzeugen vermerkt.
+
+### Hinweis zu `band-leistungen`
+
+Das Motiv zeigt einen realen Ausstellungsraum, dadurch ist ein Fremdmarken-
+Emblem sichtbar (Fahrzeug und Beschilderung). Geprüfte Alternativen waren
+entweder unpassend (Supersportwagen, Oldtimer-Sammlung) oder im oberen
+Bilddrittel mit 94 bis 119 von 255 zu dunkel für die Textauflage.
+
+Bewusst beibehalten, weil das Bild die Zielumgebung realistisch zeigt.
+Falls das Emblem stören sollte, muss der Ersatz im oberen Drittel über
+150 liegen, sonst wird die Bandüberschrift unlesbar.
