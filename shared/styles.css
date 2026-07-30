@@ -3452,3 +3452,104 @@ h1, h2, h3,
   color: var(--fg-dim);
 }
 .schmerz-quelle a { color: var(--fg-muted); }
+
+/* ═══════════════════════════════════════════════════════════
+   Startseite: Marktlage und die drei Ebenen.
+   Ersetzt die frueheren Bloecke, in denen dieselben vier
+   Punkte als Schmerz, als Wandel und als Leistung dreimal
+   auftauchten.
+   ═══════════════════════════════════════════════════════════ */
+.jetzt-text {
+  margin-top: 22px;
+  max-width: 680px;
+}
+.jetzt-text p {
+  font-size: 16.5px;
+  line-height: 1.8;
+  color: var(--fg-muted);
+}
+.jetzt-text p + p { margin-top: 16px; }
+.jetzt-anspruch {
+  margin-top: 34px;
+  max-width: 680px;
+  padding: 24px 26px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--pink);
+  border-radius: 12px;
+  background: var(--bg-2);
+}
+.jetzt-anspruch-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--pink);
+}
+.jetzt-anspruch-text {
+  margin-top: 10px;
+  font-family: var(--font-display);
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  line-height: 1.4;
+  color: var(--fg);
+}
+
+/* ── Die drei Ebenen ── */
+.ebenen-section { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.ebenen-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 1.8vw, 22px);
+  margin-top: 44px;
+}
+.ebene {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+}
+.ebene-hl {
+  border-color: rgba(var(--pink-rgb), .4);
+  box-shadow: 0 22px 50px -30px rgba(10, 37, 64, .35);
+}
+.ebene-nr {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+.ebene-hl .ebene-nr { color: var(--pink); }
+.ebene-kopf {
+  margin-top: 10px;
+  font-family: var(--font-display);
+  font-size: clamp(19px, 2.2vw, 24px);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  color: #0A2540;
+}
+.ebene-txt {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--fg-muted);
+  flex: 1;
+}
+.ebene-stand {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .04em;
+  color: var(--fg-dim);
+}
+.ebene-hl .ebene-stand { color: var(--pink); }
+
+@media (max-width: 900px) {
+  .ebenen-grid { grid-template-columns: 1fr; }
+}
