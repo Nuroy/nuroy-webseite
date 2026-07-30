@@ -103,6 +103,11 @@
       "permanent": true
     },
     {
+      "source": "/lp/dashboard-en",
+      "destination": "/leistungen",
+      "permanent": true
+    },
+    {
       "source": "/wiki/api-first",
       "destination": "/wiki",
       "permanent": true
