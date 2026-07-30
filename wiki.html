@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wiki — Dashboard, KI & Software-Begriffe einfach erklärt | Nuroy</title>
-  <meta name="description" content="Nuroy-Wiki: 15 Begriffe rund um Custom Dashboards, KI und Software klar erklärt. Definitionen, Beispiele, FAQ — für den Mittelstand im DACH-Raum.">
-  <meta name="keywords" content="dashboard wiki, kpi dashboard erklärt, business intelligence definition, ki agent erklärt, datev integration, etl pipeline, mrr arr definition, rag retrieval augmented generation, single source of truth">
+  <title>Autohaus-Wiki — 15 Begriffe aus Vertrieb, Bestand und Werkstatt | Nuroy</title>
+  <meta name="description" content="Glossar für Autohäuser: Speed to Lead, Standtage, Kapitalbindung, Arbeitswert, DMS, HU-Erinnerung, Werkstattauslastung und mehr — mit Definitionen, belegten Branchenzahlen und Rechenbeispielen.">
+  <meta name="keywords" content="autohaus wiki, speed to lead, standtage, arbeitswert, dms autohaus, werkstattauslastung, kapitalbindung fahrzeugbestand">
   <meta name="author" content="Nuroy (JT NUROY LTD)">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="geo.region" content="CY-04">
@@ -20,19 +20,21 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Nuroy">
   <meta property="og:locale" content="de_DE">
-  <meta property="og:title" content="Wiki — Dashboard, KI & Software-Begriffe einfach erklärt | Nuroy">
-  <meta property="og:description" content="15 Begriffe rund um Custom Dashboards, KI und Software klar erklärt — Definitionen, Beispiele, FAQ.">
+  <meta property="og:title" content="Autohaus-Wiki — 15 Begriffe aus Vertrieb, Bestand und Werkstatt | Nuroy">
+  <meta property="og:description" content="Glossar für Autohäuser: Speed to Lead, Standtage, Kapitalbindung, Arbeitswert, DMS, HU-Erinnerung, Werkstattauslastung und mehr — mit Definitionen, belegten Branchenzahlen und Rechenbeispielen.">
   <meta property="og:image" content="https://nuroy.de/og-image.png">
   <meta property="og:url" content="https://nuroy.de/wiki">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Wiki — Dashboard, KI & Software-Begriffe | Nuroy">
-  <meta name="twitter:description" content="15 Definitionen rund um Custom Dashboards, KI und Software für den Mittelstand.">
+  <meta name="twitter:title" content="Autohaus-Wiki — 15 Begriffe aus Vertrieb, Bestand und Werkstatt | Nuroy">
+  <meta name="twitter:description" content="Glossar für Autohäuser: Speed to Lead, Standtage, Kapitalbindung, Arbeitswert, DMS, HU-Erinnerung, Werkstattauslastung und mehr — mit Definitionen, belegten Branchenzahlen und Rechenbeispielen.">
   <meta name="twitter:image" content="https://nuroy.de/og-image.png">
   <link rel="stylesheet" href="shared/styles.css?v=1784307412000">
   <style>
     .wiki-hero{padding:calc(var(--nav-h) + 80px) 0 64px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
     .wiki-hero-glow{position:absolute;top:-200px;right:-100px;width:700px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(var(--pink-rgb), 0.09) 0%,transparent 65%);pointer-events:none}
-    .wiki-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;padding:64px 0}
+    .wiki-gruppe{font-family:var(--font-display);font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-dim);margin-top:56px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+    .wiki-gruppe{font-family:var(--font-display);font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-dim);margin-top:56px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+    .wiki-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;padding:24px 0 8px}
     .wiki-card{display:block;padding:28px;background:var(--bg-2);border:1px solid var(--line);border-radius:14px;text-decoration:none;color:var(--fg);transition:all 0.2s ease}
     .wiki-card:hover{border-color:var(--pink);transform:translateY(-2px);box-shadow:0 8px 32px rgba(var(--pink-rgb), 0.1)}
     .wiki-card-num{font-family:var(--font-mono);font-size:11px;color:var(--pink);letter-spacing:0.1em;margin-bottom:12px}
@@ -41,7 +43,7 @@
     .wiki-intro{font-size:17px;color:var(--fg-muted);line-height:1.7;max-width:680px;margin-top:24px}
   </style>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nuroy.de/#organization","name":"Nuroy","legalName":"JT NUROY LTD","url":"https://nuroy.de/","logo":{"@type":"ImageObject","url":"https://nuroy.de/assets/favicon.png","width":512,"height":512},"image":"https://nuroy.de/og-image.png","email":"kontakt@nuroy.de","foundingDate":"2024","founder":{"@type":"Person","name":"Julius Philipp Vivian Niessen","jobTitle":"Geschäftsführer"},"address":{"@type":"PostalAddress","streetAddress":"Taxiarchon 25, House 2","postalCode":"8036","addressLocality":"Paphos","addressCountry":"CY"},"contactPoint":{"@type":"ContactPoint","email":"kontakt@nuroy.de","contactType":"customer service","availableLanguage":["German","English"],"areaServed":["DE","AT","CH"]},"areaServed":[{"@type":"Country","name":"Deutschland"},{"@type":"Country","name":"Österreich"},{"@type":"Country","name":"Schweiz"}],"knowsAbout":["Autohaus-Digitalisierung","Dealer Management System","Lead-Management","Speed-to-Lead","KI-Telefonassistent","Aftersales-Automation","Standzeiten-Optimierung","Werkstattauslastung","Local SEO","mobile.de","AutoScout24","DATEV"],"sameAs":["https://www.wikidata.org/wiki/Q139916880"],"identifier":"HE 479463","slogan":"Das Technik-Team für Autohäuser."},{"@type":"WebSite","@id":"https://nuroy.de/#website","url":"https://nuroy.de/","name":"Nuroy","publisher":{"@id":"https://nuroy.de/#organization"},"inLanguage":"de-DE"},{"@type":"CollectionPage","@id":"https://nuroy.de/wiki#webpage","url":"https://nuroy.de/wiki","name":"Nuroy Wiki — Dashboard, KI & Software-Begriffe einfach erklärt","isPartOf":{"@id":"https://nuroy.de/#website"},"about":{"@id":"https://nuroy.de/#organization"},"description":"15 zentrale Begriffe rund um Custom Dashboards, Künstliche Intelligenz und Software-Entwicklung für Autohäuser im DACH-Raum, mit Definitionen, Beispielen und FAQs.","inLanguage":"de-DE","breadcrumb":{"@id":"https://nuroy.de/wiki#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://nuroy.de/wiki#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://nuroy.de/"},{"@type":"ListItem","position":2,"name":"Wiki","item":"https://nuroy.de/wiki"}]},{"@type":"DefinedTermSet","@id":"https://nuroy.de/wiki#termset","name":"Nuroy Wiki","description":"Begriffslexikon für Custom Dashboards, KI und Software im B2B-Kontext","inDefinedTermSet":"https://nuroy.de/wiki","hasDefinedTerm":[{"@type":"DefinedTerm","name":"KPI Dashboard","url":"https://nuroy.de/wiki/kpi-dashboard"},{"@type":"DefinedTerm","name":"Business Intelligence","url":"https://nuroy.de/wiki/business-intelligence"},{"@type":"DefinedTerm","name":"Custom Software","url":"https://nuroy.de/wiki/custom-software"},{"@type":"DefinedTerm","name":"KI-Agent","url":"https://nuroy.de/wiki/ki-agent"},{"@type":"DefinedTerm","name":"DATEV-Integration","url":"https://nuroy.de/wiki/datev-integration"},{"@type":"DefinedTerm","name":"ETL-Pipeline","url":"https://nuroy.de/wiki/etl-pipeline"},{"@type":"DefinedTerm","name":"RAG","url":"https://nuroy.de/wiki/rag"},{"@type":"DefinedTerm","name":"Multi-Tenant","url":"https://nuroy.de/wiki/multi-tenant"},{"@type":"DefinedTerm","name":"MRR und ARR","url":"https://nuroy.de/wiki/mrr-arr"},{"@type":"DefinedTerm","name":"Churn-Rate","url":"https://nuroy.de/wiki/churn-rate"},{"@type":"DefinedTerm","name":"Webhook","url":"https://nuroy.de/wiki/webhook"},{"@type":"DefinedTerm","name":"API-First","url":"https://nuroy.de/wiki/api-first"},{"@type":"DefinedTerm","name":"Single Source of Truth","url":"https://nuroy.de/wiki/single-source-of-truth"},{"@type":"DefinedTerm","name":"White-Label Dashboard","url":"https://nuroy.de/wiki/white-label-dashboard"},{"@type":"DefinedTerm","name":"KI-Forecasting","url":"https://nuroy.de/wiki/ki-forecasting"}]}]}
+  {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nuroy.de/#organization"},{"@type":"WebSite","@id":"https://nuroy.de/#website"},{"@type":"DefinedTermSet","@id":"https://nuroy.de/wiki#termset","name":"Nuroy Autohaus-Wiki","description":"Glossar der wichtigsten Begriffe rund um Vertrieb, Bestand, Werkstatt und Sichtbarkeit im Autohaus — mit Definitionen, Branchenzahlen und Rechenbeispielen.","url":"https://nuroy.de/wiki","inLanguage":"de-DE","publisher":{"@id":"https://nuroy.de/#organization"},"hasDefinedTerm":[{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/speed-to-lead#term","name":"Speed to Lead","url":"https://nuroy.de/wiki/speed-to-lead"},{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/leadmanagement-autohaus#term","name":"Leadmanagement im Autohaus","url":"https://nuroy.de/wiki/leadmanagement-autohaus"},{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/fahrzeugboersen#term","name":"Fahrzeugbörsen","url":"https://nuroy.de/wiki/fahrzeugboersen"},{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/ki-telefonassistent#term","name":"KI-Telefonassistent","url":"https://nuroy.de/wiki/ki-telefonassistent"},{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/standtage#term","name":"Standtage","url":"https://nuroy.de/wiki/standtage"},{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/kapitalbindung#term","name":"Kapitalbindung","url":"https://nuroy.de/wiki/kapitalbindung"},{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/umschlagshaeufigkeit#term","name":"Umschlagshäufigkeit","url":"https://nuroy.de/wiki/umschlagshaeufigkeit"},{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/repricing#term","name":"Repricing","url":"https://nuroy.de/wiki/repricing"},{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/rohertrag-fahrzeug#term","name":"Rohertrag pro Fahrzeug","url":"https://nuroy.de/wiki/rohertrag-fahrzeug"},{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/dms-autohaus#term","name":"Dealer Management System (DMS)","url":"https://nuroy.de/wiki/dms-autohaus"},{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/hu-au-erinnerung#term","name":"HU/AU-Erinnerung","url":"https://nuroy.de/wiki/hu-au-erinnerung"},{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/aftersales-quote#term","name":"Aftersales-Quote","url":"https://nuroy.de/wiki/aftersales-quote"},{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/werkstattauslastung#term","name":"Werkstattauslastung","url":"https://nuroy.de/wiki/werkstattauslastung"},{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/arbeitswert#term","name":"Arbeitswert (AW)","url":"https://nuroy.de/wiki/arbeitswert"},{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/local-seo-autohaus#term","name":"Local SEO für Autohäuser","url":"https://nuroy.de/wiki/local-seo-autohaus"}]},{"@type":"CollectionPage","@id":"https://nuroy.de/wiki#webpage","url":"https://nuroy.de/wiki","name":"Autohaus-Wiki — 15 Begriffe aus Vertrieb, Bestand und Werkstatt | Nuroy","isPartOf":{"@id":"https://nuroy.de/#website"},"about":{"@id":"https://nuroy.de/wiki#termset"},"inLanguage":"de-DE","breadcrumb":{"@id":"https://nuroy.de/wiki#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://nuroy.de/wiki#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://nuroy.de/"},{"@type":"ListItem","position":2,"name":"Wiki","item":"https://nuroy.de/wiki"}]}]}
   </script>
 </head>
 <body class="theme-light">
@@ -52,91 +54,98 @@
 <section class="wiki-hero">
   <div class="wiki-hero-glow"></div>
   <div class="container">
-    <p class="t-label c-pink reveal" style="margin-bottom:16px">NUROY WIKI · 15 BEGRIFFE</p>
-    <h1 class="t-display reveal reveal-d1">Dashboard, KI &amp; Software — einfach erklärt.</h1>
+    <p class="t-label c-pink reveal" style="margin-bottom:16px">NUROY WIKI · 15 BEGRIFFE FÜRS AUTOHAUS</p>
+    <h1 class="t-display reveal reveal-d1">Autohaus-Begriffe,<br>einfach erklärt.</h1>
     <p class="wiki-intro reveal reveal-d2">
-      Was ist ein KPI-Dashboard? Was bedeutet RAG? Warum ist DATEV-Integration so kritisch? Hier sammeln wir die wichtigsten Begriffe rund um Custom Dashboards, Künstliche Intelligenz und Software-Entwicklung — geschrieben für Geschäftsführer und Entscheider, nicht für IT-Profis. Klare Definition, konkrete Beispiele, häufige Fragen.
+      Was ist Speed to Lead? Was kostet ein Standtag? Wie rechnet man Arbeitswerte? Hier stehen die Begriffe, die im Autohaus über Umsatz entscheiden — kurz definiert, mit belegten Branchenzahlen und Rechenbeispielen.
     </p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
+    <h2 class="wiki-gruppe">Anfragen & Vertrieb</h2>
     <div class="wiki-grid reveal">
-      <a href="wiki/kpi-dashboard" class="wiki-card">
+      <a href="wiki/speed-to-lead" class="wiki-card">
         <div class="wiki-card-num">01</div>
-        <div class="wiki-card-title">KPI Dashboard</div>
-        <div class="wiki-card-desc">Was ist ein KPI-Dashboard und wann lohnt es sich für den Mittelstand?</div>
+        <div class="wiki-card-title">Speed to Lead</div>
+        <div class="wiki-card-desc">Wie lange dauert es bis zur ersten Antwort — und ab wann ist der Interessent weg?</div>
       </a>
-      <a href="wiki/business-intelligence" class="wiki-card">
+      <a href="wiki/leadmanagement-autohaus" class="wiki-card">
         <div class="wiki-card-num">02</div>
-        <div class="wiki-card-title">Business Intelligence</div>
-        <div class="wiki-card-desc">Was ist BI und wo liegt der Unterschied zu klassischem Reporting?</div>
+        <div class="wiki-card-title">Leadmanagement im Autohaus</div>
+        <div class="wiki-card-desc">Von der eingehenden Anfrage bis zur Übergabe an den Verkauf: Prozess und typische Fehler.</div>
       </a>
-      <a href="wiki/custom-software" class="wiki-card">
+      <a href="wiki/fahrzeugboersen" class="wiki-card">
         <div class="wiki-card-num">03</div>
-        <div class="wiki-card-title">Custom Software</div>
-        <div class="wiki-card-desc">Wann lohnt sich individuelle Software statt fertiger Standardlösung?</div>
+        <div class="wiki-card-title">Fahrzeugbörsen</div>
+        <div class="wiki-card-desc">mobile.de und AutoScout24: Reichweite, Anfrageflüsse und die neuen KI-Funktionen der Portale.</div>
       </a>
-      <a href="wiki/ki-agent" class="wiki-card">
+      <a href="wiki/ki-telefonassistent" class="wiki-card">
         <div class="wiki-card-num">04</div>
-        <div class="wiki-card-title">KI-Agent</div>
-        <div class="wiki-card-desc">Was unterscheidet einen KI-Agenten von einem normalen Chatbot?</div>
+        <div class="wiki-card-title">KI-Telefonassistent</div>
+        <div class="wiki-card-desc">Was er leistet, wo seine Grenzen liegen und was der EU AI Act zur Kennzeichnung vorschreibt.</div>
       </a>
-      <a href="wiki/datev-integration" class="wiki-card">
+    </div>
+    <h2 class="wiki-gruppe">Bestand & Wirtschaftlichkeit</h2>
+    <div class="wiki-grid reveal">
+      <a href="wiki/standtage" class="wiki-card">
         <div class="wiki-card-num">05</div>
-        <div class="wiki-card-title">DATEV-Integration</div>
-        <div class="wiki-card-desc">Wie integriert man DATEV in ein Live-Dashboard?</div>
+        <div class="wiki-card-title">Standtage</div>
+        <div class="wiki-card-desc">Was ein Standtag kostet, warum 90 Tage die Grenze sind und wie man sie ohne Preisnachlass senkt.</div>
       </a>
-      <a href="wiki/etl-pipeline" class="wiki-card">
+      <a href="wiki/kapitalbindung" class="wiki-card">
         <div class="wiki-card-num">06</div>
-        <div class="wiki-card-title">ETL-Pipeline</div>
-        <div class="wiki-card-desc">Was ist eine ETL-Pipeline und warum brauchen Dashboards eine?</div>
+        <div class="wiki-card-title">Kapitalbindung</div>
+        <div class="wiki-card-desc">Wie viel Geld im Bestand gebunden ist — mit Rechenweg für das einzelne Fahrzeug.</div>
       </a>
-      <a href="wiki/rag" class="wiki-card">
+      <a href="wiki/umschlagshaeufigkeit" class="wiki-card">
         <div class="wiki-card-num">07</div>
-        <div class="wiki-card-title">RAG (Retrieval-Augmented Generation)</div>
-        <div class="wiki-card-desc">Wie wird eine KI mit eurem eigenen Wissen kombiniert?</div>
+        <div class="wiki-card-title">Umschlagshäufigkeit</div>
+        <div class="wiki-card-desc">Wie oft sich der Bestand pro Jahr dreht und warum Verkaufszahlen allein nichts sagen.</div>
       </a>
-      <a href="wiki/multi-tenant" class="wiki-card">
+      <a href="wiki/repricing" class="wiki-card">
         <div class="wiki-card-num">08</div>
-        <div class="wiki-card-title">Multi-Tenant</div>
-        <div class="wiki-card-desc">Was ist Multi-Tenant-Architektur und wann ist sie wichtig?</div>
+        <div class="wiki-card-title">Repricing</div>
+        <div class="wiki-card-desc">Marktgerechte Preisanpassung — und wie man Preisproblem von Prozessproblem unterscheidet.</div>
       </a>
-      <a href="wiki/mrr-arr" class="wiki-card">
+      <a href="wiki/rohertrag-fahrzeug" class="wiki-card">
         <div class="wiki-card-num">09</div>
-        <div class="wiki-card-title">MRR &amp; ARR</div>
-        <div class="wiki-card-desc">Was bedeuten MRR und ARR im SaaS-Kontext?</div>
+        <div class="wiki-card-title">Rohertrag pro Fahrzeug</div>
+        <div class="wiki-card-desc">Was pro verkauftem Fahrzeug übrig bleibt und wie schnell Standkosten es aufzehren.</div>
       </a>
-      <a href="wiki/churn-rate" class="wiki-card">
+    </div>
+    <h2 class="wiki-gruppe">Systeme, Service & Sichtbarkeit</h2>
+    <div class="wiki-grid reveal">
+      <a href="wiki/dms-autohaus" class="wiki-card">
         <div class="wiki-card-num">10</div>
-        <div class="wiki-card-title">Churn-Rate</div>
-        <div class="wiki-card-desc">Was ist Churn und wie wird sie für den Mittelstand sinnvoll gemessen?</div>
+        <div class="wiki-card-title">Dealer Management System (DMS)</div>
+        <div class="wiki-card-desc">Die Kernsoftware des Autohauses: Anbieter, Schnittstellen und warum ein Wechsel selten hilft.</div>
       </a>
-      <a href="wiki/webhook" class="wiki-card">
+      <a href="wiki/hu-au-erinnerung" class="wiki-card">
         <div class="wiki-card-num">11</div>
-        <div class="wiki-card-title">Webhook</div>
-        <div class="wiki-card-desc">Was ist ein Webhook und wie unterscheidet er sich von einer API?</div>
+        <div class="wiki-card-title">HU/AU-Erinnerung</div>
+        <div class="wiki-card-desc">Aus der Fälligkeit wird ein Werkstatttermin: Datengrundlage, Vorlauf und Rechtsrahmen.</div>
       </a>
-      <a href="wiki/api-first" class="wiki-card">
+      <a href="wiki/aftersales-quote" class="wiki-card">
         <div class="wiki-card-num">12</div>
-        <div class="wiki-card-title">API-First</div>
-        <div class="wiki-card-desc">Was bedeutet API-First und warum baut Nuroy so?</div>
+        <div class="wiki-card-title">Aftersales-Quote</div>
+        <div class="wiki-card-desc">Wie viele Fahrzeugkunden auch in den Service kommen — und was Abwanderung kostet.</div>
       </a>
-      <a href="wiki/single-source-of-truth" class="wiki-card">
+      <a href="wiki/werkstattauslastung" class="wiki-card">
         <div class="wiki-card-num">13</div>
-        <div class="wiki-card-title">Single Source of Truth</div>
-        <div class="wiki-card-desc">Was ist Single Source of Truth (SSoT) und warum ist sie kritisch?</div>
+        <div class="wiki-card-title">Werkstattauslastung</div>
+        <div class="wiki-card-desc">Warum Termine zählen in die Irre führt und wo Kapazität wirklich verloren geht.</div>
       </a>
-      <a href="wiki/white-label-dashboard" class="wiki-card">
+      <a href="wiki/arbeitswert" class="wiki-card">
         <div class="wiki-card-num">14</div>
-        <div class="wiki-card-title">White-Label Dashboard</div>
-        <div class="wiki-card-desc">Was ist ein White-Label Dashboard und wann brauchen Agenturen das?</div>
+        <div class="wiki-card-title">Arbeitswert (AW)</div>
+        <div class="wiki-card-desc">Die Verrechnungseinheit der Werkstatt: AW-Satz, Stundensatz und Auslastungsrechnung.</div>
       </a>
-      <a href="wiki/ki-forecasting" class="wiki-card">
+      <a href="wiki/local-seo-autohaus" class="wiki-card">
         <div class="wiki-card-num">15</div>
-        <div class="wiki-card-title">KI-gestütztes Forecasting</div>
-        <div class="wiki-card-desc">Was kann KI bei Umsatz- und Liquiditäts-Prognosen?</div>
+        <div class="wiki-card-title">Local SEO für Autohäuser</div>
+        <div class="wiki-card-desc">Sichtbar werden, bevor jemand anruft: Google-Profil, Bewertungen und Standortseiten.</div>
       </a>
     </div>
   </div>

@@ -101,6 +101,81 @@
       "source": "/lp/dashboard",
       "destination": "/leistungen",
       "permanent": true
+    },
+    {
+      "source": "/wiki/api-first",
+      "destination": "/wiki",
+      "permanent": true
+    },
+    {
+      "source": "/wiki/business-intelligence",
+      "destination": "/wiki",
+      "permanent": true
+    },
+    {
+      "source": "/wiki/churn-rate",
+      "destination": "/wiki",
+      "permanent": true
+    },
+    {
+      "source": "/wiki/custom-software",
+      "destination": "/wiki",
+      "permanent": true
+    },
+    {
+      "source": "/wiki/datev-integration",
+      "destination": "/wiki",
+      "permanent": true
+    },
+    {
+      "source": "/wiki/etl-pipeline",
+      "destination": "/wiki",
+      "permanent": true
+    },
+    {
+      "source": "/wiki/ki-agent",
+      "destination": "/wiki",
+      "permanent": true
+    },
+    {
+      "source": "/wiki/ki-forecasting",
+      "destination": "/wiki",
+      "permanent": true
+    },
+    {
+      "source": "/wiki/kpi-dashboard",
+      "destination": "/wiki",
+      "permanent": true
+    },
+    {
+      "source": "/wiki/mrr-arr",
+      "destination": "/wiki",
+      "permanent": true
+    },
+    {
+      "source": "/wiki/multi-tenant",
+      "destination": "/wiki",
+      "permanent": true
+    },
+    {
+      "source": "/wiki/rag",
+      "destination": "/wiki",
+      "permanent": true
+    },
+    {
+      "source": "/wiki/single-source-of-truth",
+      "destination": "/wiki",
+      "permanent": true
+    },
+    {
+      "source": "/wiki/webhook",
+      "destination": "/wiki",
+      "permanent": true
+    },
+    {
+      "source": "/wiki/white-label-dashboard",
+      "destination": "/wiki",
+      "permanent": true
     }
   ],
   "headers": [

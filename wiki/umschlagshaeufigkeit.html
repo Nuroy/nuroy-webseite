@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Umschlagshäufigkeit im Autohaus — Berechnung und Zielwerte | Nuroy Wiki</title>
+  <meta name="description" content="Wie oft sich der Fahrzeugbestand pro Jahr dreht: Berechnung der Umschlagshäufigkeit, Zusammenhang zu Standtagen und Kapitalbindung sowie realistische Zielwerte.">
+  <meta name="keywords" content="umschlagshäufigkeit autohaus, lagerumschlag fahrzeuge, drehzahl gebrauchtwagen, bestandsdrehung kfz">
+  <meta name="author" content="Nuroy (JT NUROY LTD)">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+  <link rel="canonical" href="https://nuroy.de/wiki/umschlagshaeufigkeit">
+  <link rel="alternate" hreflang="de-DE" href="https://nuroy.de/wiki/umschlagshaeufigkeit">
+  <link rel="alternate" hreflang="de-AT" href="https://nuroy.de/wiki/umschlagshaeufigkeit">
+  <link rel="alternate" hreflang="de-CH" href="https://nuroy.de/wiki/umschlagshaeufigkeit">
+  <link rel="alternate" hreflang="x-default" href="https://nuroy.de/wiki/umschlagshaeufigkeit">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Nuroy">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="Umschlagshäufigkeit im Autohaus — Berechnung und Zielwerte">
+  <meta property="og:description" content="Wie oft sich der Fahrzeugbestand pro Jahr dreht: Berechnung der Umschlagshäufigkeit, Zusammenhang zu Standtagen und Kapitalbindung sowie realistische Zielwerte.">
+  <meta property="og:image" content="https://nuroy.de/og-image.png">
+  <meta property="og:url" content="https://nuroy.de/wiki/umschlagshaeufigkeit">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Umschlagshäufigkeit im Autohaus — Berechnung und Zielwerte">
+  <meta name="twitter:description" content="Wie oft sich der Fahrzeugbestand pro Jahr dreht: Berechnung der Umschlagshäufigkeit, Zusammenhang zu Standtagen und Kapitalbindung sowie realistische Zielwerte.">
+  <meta name="twitter:image" content="https://nuroy.de/og-image.png">
+  <link rel="stylesheet" href="../shared/styles.css?v=1784307412000">
+  <style>
+    .wiki-article{padding:calc(var(--nav-h) + 64px) 0 64px;max-width:780px;margin:0 auto}
+    .wiki-breadcrumb{font-family:var(--font-mono);font-size:11px;color:var(--fg-dim);letter-spacing:0.06em;margin-bottom:24px}
+    .wiki-breadcrumb a{color:var(--fg-dim)}.wiki-breadcrumb a:hover{color:var(--pink)}
+    .wiki-h1{font-family:var(--font-display);font-size:clamp(38px,4.6vw,58px);font-weight:900;letter-spacing:-0.03em;line-height:1.06;margin-bottom:24px}
+    .wiki-tldr{padding:24px 28px;background:var(--bg-2);border-left:3px solid var(--pink);border-radius:0 12px 12px 0;font-size:17px;line-height:1.7;color:var(--fg);margin:32px 0 48px}
+    .wiki-tldr-label{font-family:var(--font-mono);font-size:11px;color:var(--pink);letter-spacing:0.1em;margin-bottom:8px;display:block}
+    .wiki-section{margin-top:48px}
+    .wiki-section h2{font-family:var(--font-display);font-size:27px;font-weight:700;letter-spacing:-0.02em;margin-bottom:16px;color:#0A2540}
+    .wiki-section h3{font-family:var(--font-display);font-size:19px;font-weight:600;margin-top:26px;margin-bottom:10px;color:#0A2540}
+    .wiki-section p{font-size:16px;line-height:1.75;color:var(--fg-muted);margin-bottom:16px}
+    .wiki-section ul{margin:16px 0 16px 24px;color:var(--fg-muted);font-size:16px;line-height:1.75}
+    .wiki-section li{margin-bottom:8px}
+    .wiki-section a{color:var(--pink)}
+    /* Tabellen sind für Antwortmaschinen gut extrahierbar und
+       müssen auf schmalen Geräten eigenständig scrollen. */
+    .wiki-tablewrap{overflow-x:auto;margin:20px 0;border:1px solid var(--line);border-radius:10px}
+    .wiki-table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:480px}
+    .wiki-table th{background:var(--bg-2);text-align:left;padding:12px 16px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--fg-muted);border-bottom:1px solid var(--line)}
+    .wiki-table td{padding:12px 16px;border-bottom:1px solid var(--line);color:var(--fg-muted);line-height:1.6}
+    .wiki-table tr:last-child td{border-bottom:none}
+    .wiki-faq-item{border-top:1px solid var(--line);padding:22px 0}
+    .wiki-faq-item h3{margin-top:0}
+    .wiki-related{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .wiki-related a{padding:8px 14px;background:var(--bg-2);border:1px solid var(--line);border-radius:20px;font-size:13px;color:var(--fg-muted);text-decoration:none;transition:all 0.2s}
+    .wiki-related a:hover{border-color:var(--pink);color:var(--pink)}
+    .wiki-quellen{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;line-height:1.7;color:var(--fg-dim)}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nuroy.de/#organization"},{"@type":"WebSite","@id":"https://nuroy.de/#website"},{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/umschlagshaeufigkeit#term","name":"Umschlagshäufigkeit","alternateName":["Lagerumschlag","Drehzahl Fahrzeugbestand","Bestandsdrehung","Turnover"],"description":"Die Umschlagshäufigkeit gibt an, wie oft sich der Fahrzeugbestand innerhalb eines Jahres vollständig dreht. Sie ist der Kehrwert der durchschnittlichen Standzeit: Bei 90 Tagen durchschnittlicher Standdauer liegt der Umschlag bei rund vier, bei 60 Tagen bei etwa sechs.","url":"https://nuroy.de/wiki/umschlagshaeufigkeit","inDefinedTermSet":{"@id":"https://nuroy.de/wiki#termset"}},{"@type":"Article","@id":"https://nuroy.de/wiki/umschlagshaeufigkeit#article","headline":"Umschlagshäufigkeit im Autohaus — Berechnung und Zielwerte","description":"Wie oft sich der Fahrzeugbestand pro Jahr dreht: Berechnung der Umschlagshäufigkeit, Zusammenhang zu Standtagen und Kapitalbindung sowie realistische Zielwerte.","image":"https://nuroy.de/og-image.png","author":{"@id":"https://nuroy.de/#organization"},"publisher":{"@id":"https://nuroy.de/#organization"},"datePublished":"2026-07-30","dateModified":"2026-07-30","mainEntityOfPage":{"@id":"https://nuroy.de/wiki/umschlagshaeufigkeit#webpage"},"about":{"@id":"https://nuroy.de/wiki/umschlagshaeufigkeit#term"},"inLanguage":"de-DE"},{"@type":"WebPage","@id":"https://nuroy.de/wiki/umschlagshaeufigkeit#webpage","url":"https://nuroy.de/wiki/umschlagshaeufigkeit","name":"Umschlagshäufigkeit im Autohaus — Berechnung und Zielwerte | Nuroy Wiki","isPartOf":{"@id":"https://nuroy.de/#website"},"inLanguage":"de-DE","primaryImageOfPage":{"@type":"ImageObject","url":"https://nuroy.de/og-image.png"},"speakable":{"@type":"SpeakableSpecification","cssSelector":[".wiki-tldr",".wiki-h1"]},"breadcrumb":{"@id":"https://nuroy.de/wiki/umschlagshaeufigkeit#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://nuroy.de/wiki/umschlagshaeufigkeit#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://nuroy.de/"},{"@type":"ListItem","position":2,"name":"Wiki","item":"https://nuroy.de/wiki"},{"@type":"ListItem","position":3,"name":"Umschlagshäufigkeit","item":"https://nuroy.de/wiki/umschlagshaeufigkeit"}]},{"@type":"FAQPage","@id":"https://nuroy.de/wiki/umschlagshaeufigkeit#faqpage","mainEntity":[{"@type":"Question","name":"Wie berechnet man die Umschlagshäufigkeit?","acceptedAnswer":{"@type":"Answer","text":"Verkaufte Fahrzeuge pro Jahr geteilt durch den durchschnittlichen Bestand. Alternativ lässt sich der Wert aus der Standzeit ableiten: 365 geteilt durch die durchschnittliche Standdauer in Tagen."}},{"@type":"Question","name":"Was ist eine gute Umschlagshäufigkeit im Autohaus?","acceptedAnswer":{"@type":"Answer","text":"Als Orientierung gilt ein Umschlag von etwa sechs, was einer durchschnittlichen Standzeit von rund 60 Tagen entspricht. Werte um vier markieren den Grenzbereich, darunter ist erhebliches Kapital gebunden. Segment und Preisklasse beeinflussen den realistischen Zielwert stark."}},{"@type":"Question","name":"Warum reichen Verkaufszahlen als Kennzahl nicht aus?","acceptedAnswer":{"@type":"Answer","text":"Weil sie nichts darüber sagen, wie viel Kapital für diese Verkäufe gebunden wurde. Zwei Häuser mit identischen Verkaufszahlen können sich um eine Million Euro gebundenes Kapital unterscheiden — sichtbar wird das erst über die Umschlagshäufigkeit."}},{"@type":"Question","name":"Wie hängen Umschlag und Standtage zusammen?","acceptedAnswer":{"@type":"Answer","text":"Sie sind zwei Sichten auf dieselbe Größe. Die Umschlagshäufigkeit ist im Kern der Kehrwert der durchschnittlichen Standzeit: 365 geteilt durch die Standdauer in Tagen ergibt den Umschlag pro Jahr."}},{"@type":"Question","name":"Erhöht ein größerer Bestand die Verkäufe?","acceptedAnswer":{"@type":"Answer","text":"Nicht zwangsläufig. Mehr Auswahl kann helfen, erhöht aber sicher die Kapitalbindung und senkt bei gleichbleibenden Verkäufen den Umschlag. Entscheidend ist die Passgenauigkeit des Bestands zur Nachfrage, nicht seine Größe."}}]}]}
+  </script>
+</head>
+<body class="theme-light">
+
+<div id="cursor-glow" class="cursor-glow"></div>
+<div id="nav-mount"></div>
+
+<article class="wiki-article container">
+  <div class="wiki-breadcrumb">
+    <a href="../">Start</a> / <a href="../wiki">Wiki</a> / Umschlagshäufigkeit
+  </div>
+
+  <h1 class="wiki-h1">Umschlagshäufigkeit</h1>
+
+  <div class="wiki-tldr">
+    <span class="wiki-tldr-label">KURZ ERKLÄRT</span>
+    Die Umschlagshäufigkeit gibt an, wie oft sich der Fahrzeugbestand innerhalb eines Jahres vollständig dreht. Sie ist der Kehrwert der durchschnittlichen Standzeit: Bei 90 Tagen durchschnittlicher Standdauer liegt der Umschlag bei rund vier, bei 60 Tagen bei etwa sechs.
+  </div>
+
+  <section class="wiki-section">
+    <h2>Was misst die Umschlagshäufigkeit?</h2>
+    <p>Die <strong>Umschlagshäufigkeit</strong> beschreibt, wie oft der durchschnittliche Bestand innerhalb eines Zeitraums verkauft und ersetzt wird. Sie ist damit die Gegenkennzahl zu den <a href="standtage">Standtagen</a>: Je kürzer die Standzeit, desto höher der Umschlag.</p>
+    <p>Die gebräuchliche Formel lautet: <strong>verkaufte Fahrzeuge pro Jahr ÷ durchschnittlicher Bestand</strong>. Ein Haus, das 480 Fahrzeuge im Jahr verkauft und im Mittel 120 Fahrzeuge im Bestand hat, kommt auf einen Umschlag von vier.</p>
+    <p>Alternativ lässt sich der Wert direkt aus der Standzeit ableiten: 365 geteilt durch die durchschnittliche Standdauer in Tagen.</p>
+  </section>
+  <section class="wiki-section">
+    <h2>Warum die Kennzahl aussagekräftiger ist als Verkaufszahlen</h2>
+    <p>Absolute Verkaufszahlen sagen wenig über die Qualität der Bestandssteuerung. Zwei Häuser können identisch viele Fahrzeuge verkaufen und dabei völlig unterschiedlich wirtschaften — je nachdem, wie viel Kapital sie dafür binden mussten.</p>
+    <div class="wiki-tablewrap">
+      <table class="wiki-table">
+        <thead><tr><th>Kennzahl</th><th>Haus A</th><th>Haus B</th></tr></thead>
+        <tbody>
+          <tr><td>Verkäufe pro Jahr</td><td>480</td><td>480</td></tr>
+          <tr><td>Durchschnittsbestand</td><td>120 Fahrzeuge</td><td>180 Fahrzeuge</td></tr>
+          <tr><td>Umschlagshäufigkeit</td><td>4,0</td><td>2,7</td></tr>
+          <tr><td>Durchschnittliche Standzeit</td><td>rund 91 Tage</td><td>rund 137 Tage</td></tr>
+          <tr><td>Gebundenes Kapital (16.000 € Ø)</td><td>1,92 Mio. €</td><td>2,88 Mio. €</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Haus B verkauft genauso viel, bindet dafür aber knapp eine Million Euro mehr. Dieser Unterschied taucht in der Verkaufsstatistik nicht auf — in der <a href="kapitalbindung">Kapitalbindung</a> und in der Liquidität sehr wohl.</p>
+  </section>
+  <section class="wiki-section">
+    <h2>Realistische Zielwerte</h2>
+    <p>Belastbare Branchenwerte sind schwer zu verallgemeinern, weil Fahrzeugsegment, Preisklasse und Geschäftsmodell stark streuen. Als Orientierung dient der Zusammenhang zur Standzeit:</p>
+    <div class="wiki-tablewrap">
+      <table class="wiki-table">
+        <thead><tr><th>Durchschnittliche Standzeit</th><th>Umschlagshäufigkeit</th><th>Bewertung</th></tr></thead>
+        <tbody>
+          <tr><td>45 Tage</td><td>rund 8</td><td>sehr schneller Umschlag</td></tr>
+          <tr><td>60 Tage</td><td>rund 6</td><td>gut</td></tr>
+          <tr><td>90 Tage</td><td>rund 4</td><td>Grenzbereich</td></tr>
+          <tr><td>120 Tage</td><td>rund 3</td><td>Kapital gebunden</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Wichtiger als der absolute Wert ist die Entwicklung über die Zeit und der Vergleich zwischen Standorten. Ein Haus, dessen Umschlag über vier Quartale sinkt, hat ein Steuerungsproblem — unabhängig vom Ausgangsniveau.</p>
+  </section>
+
+  <section class="wiki-section">
+    <h2>Häufige Fragen</h2>
+    <div class="wiki-faq-item">
+      <h3>Wie berechnet man die Umschlagshäufigkeit?</h3>
+      <p>Verkaufte Fahrzeuge pro Jahr geteilt durch den durchschnittlichen Bestand. Alternativ lässt sich der Wert aus der Standzeit ableiten: 365 geteilt durch die durchschnittliche Standdauer in Tagen.</p>
+    </div>
+    <div class="wiki-faq-item">
+      <h3>Was ist eine gute Umschlagshäufigkeit im Autohaus?</h3>
+      <p>Als Orientierung gilt ein Umschlag von etwa sechs, was einer durchschnittlichen Standzeit von rund 60 Tagen entspricht. Werte um vier markieren den Grenzbereich, darunter ist erhebliches Kapital gebunden. Segment und Preisklasse beeinflussen den realistischen Zielwert stark.</p>
+    </div>
+    <div class="wiki-faq-item">
+      <h3>Warum reichen Verkaufszahlen als Kennzahl nicht aus?</h3>
+      <p>Weil sie nichts darüber sagen, wie viel Kapital für diese Verkäufe gebunden wurde. Zwei Häuser mit identischen Verkaufszahlen können sich um eine Million Euro gebundenes Kapital unterscheiden — sichtbar wird das erst über die Umschlagshäufigkeit.</p>
+    </div>
+    <div class="wiki-faq-item">
+      <h3>Wie hängen Umschlag und Standtage zusammen?</h3>
+      <p>Sie sind zwei Sichten auf dieselbe Größe. Die Umschlagshäufigkeit ist im Kern der Kehrwert der durchschnittlichen Standzeit: 365 geteilt durch die Standdauer in Tagen ergibt den Umschlag pro Jahr.</p>
+    </div>
+    <div class="wiki-faq-item">
+      <h3>Erhöht ein größerer Bestand die Verkäufe?</h3>
+      <p>Nicht zwangsläufig. Mehr Auswahl kann helfen, erhöht aber sicher die Kapitalbindung und senkt bei gleichbleibenden Verkäufen den Umschlag. Entscheidend ist die Passgenauigkeit des Bestands zur Nachfrage, nicht seine Größe.</p>
+    </div>
+  </section>
+
+  <section class="wiki-section">
+    <h2>Verwandte Begriffe</h2>
+    <div class="wiki-related">
+      <a href="standtage">Standtage</a>
+      <a href="kapitalbindung">Kapitalbindung</a>
+      <a href="repricing">Repricing</a>
+      <a href="rohertrag-fahrzeug">Rohertrag pro Fahrzeug</a>
+    </div>
+  </section>
+
+  <p class="wiki-quellen">
+    Quellen der genannten Marktzahlen: DAT, TÜV NORD INSIGHT 2026, matelso,
+    ZDK sowie AUTOHAUS/Targobank. Die Werte beschreiben den Branchendurchschnitt
+    und sind keine Ergebnisse einzelner Kundenprojekte.
+    Zuletzt aktualisiert: 30. Juli 2026.
+  </p>
+</article>
+
+<section class="final-cta">
+  <div class="container">
+    <h2 class="t-display">Wie oft dreht sich Ihr Bestand?</h2>
+    <p class="t-body-lg" style="margin-top:16px;">30 Minuten Erstgespräch, kostenlos und unverbindlich. Direkt mit Julius.</p>
+    <div style="display:flex;gap:16px;justify-content:center;margin-top:32px;flex-wrap:wrap;">
+      <a href="../kontakt" class="btn btn-pink-glass btn-lg">Erstgespräch buchen</a>
+      <a href="../leistungen/standzeiten" class="btn btn-glass-secondary btn-lg">Mehr zu Standzeiten senken</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-mount"></div>
+<script src="../shared/components.js?v=1784302387000"></script>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arbeitswert (AW) — Definition und Bedeutung für die Werkstattsteuerung | Nuroy Wiki</title>
+  <meta name="description" content="Was ein Arbeitswert im Kfz-Gewerbe ist, wie er sich zur Stunde verhält, wie der AW-Satz kalkuliert wird und warum die Werkstattauslastung in Arbeitswerten gerechnet werden sollte.">
+  <meta name="keywords" content="arbeitswert kfz, aw satz werkstatt, arbeitswerte berechnen, verrechnungssatz werkstatt, stundenverrechnungssatz kfz">
+  <meta name="author" content="Nuroy (JT NUROY LTD)">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+  <link rel="canonical" href="https://nuroy.de/wiki/arbeitswert">
+  <link rel="alternate" hreflang="de-DE" href="https://nuroy.de/wiki/arbeitswert">
+  <link rel="alternate" hreflang="de-AT" href="https://nuroy.de/wiki/arbeitswert">
+  <link rel="alternate" hreflang="de-CH" href="https://nuroy.de/wiki/arbeitswert">
+  <link rel="alternate" hreflang="x-default" href="https://nuroy.de/wiki/arbeitswert">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Nuroy">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="Arbeitswert (AW) — Definition und Bedeutung für die Werkstattsteuerung">
+  <meta property="og:description" content="Was ein Arbeitswert im Kfz-Gewerbe ist, wie er sich zur Stunde verhält, wie der AW-Satz kalkuliert wird und warum die Werkstattauslastung in Arbeitswerten gerechnet werden sollte.">
+  <meta property="og:image" content="https://nuroy.de/og-image.png">
+  <meta property="og:url" content="https://nuroy.de/wiki/arbeitswert">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Arbeitswert (AW) — Definition und Bedeutung für die Werkstattsteuerung">
+  <meta name="twitter:description" content="Was ein Arbeitswert im Kfz-Gewerbe ist, wie er sich zur Stunde verhält, wie der AW-Satz kalkuliert wird und warum die Werkstattauslastung in Arbeitswerten gerechnet werden sollte.">
+  <meta name="twitter:image" content="https://nuroy.de/og-image.png">
+  <link rel="stylesheet" href="../shared/styles.css?v=1784307412000">
+  <style>
+    .wiki-article{padding:calc(var(--nav-h) + 64px) 0 64px;max-width:780px;margin:0 auto}
+    .wiki-breadcrumb{font-family:var(--font-mono);font-size:11px;color:var(--fg-dim);letter-spacing:0.06em;margin-bottom:24px}
+    .wiki-breadcrumb a{color:var(--fg-dim)}.wiki-breadcrumb a:hover{color:var(--pink)}
+    .wiki-h1{font-family:var(--font-display);font-size:clamp(38px,4.6vw,58px);font-weight:900;letter-spacing:-0.03em;line-height:1.06;margin-bottom:24px}
+    .wiki-tldr{padding:24px 28px;background:var(--bg-2);border-left:3px solid var(--pink);border-radius:0 12px 12px 0;font-size:17px;line-height:1.7;color:var(--fg);margin:32px 0 48px}
+    .wiki-tldr-label{font-family:var(--font-mono);font-size:11px;color:var(--pink);letter-spacing:0.1em;margin-bottom:8px;display:block}
+    .wiki-section{margin-top:48px}
+    .wiki-section h2{font-family:var(--font-display);font-size:27px;font-weight:700;letter-spacing:-0.02em;margin-bottom:16px;color:#0A2540}
+    .wiki-section h3{font-family:var(--font-display);font-size:19px;font-weight:600;margin-top:26px;margin-bottom:10px;color:#0A2540}
+    .wiki-section p{font-size:16px;line-height:1.75;color:var(--fg-muted);margin-bottom:16px}
+    .wiki-section ul{margin:16px 0 16px 24px;color:var(--fg-muted);font-size:16px;line-height:1.75}
+    .wiki-section li{margin-bottom:8px}
+    .wiki-section a{color:var(--pink)}
+    /* Tabellen sind für Antwortmaschinen gut extrahierbar und
+       müssen auf schmalen Geräten eigenständig scrollen. */
+    .wiki-tablewrap{overflow-x:auto;margin:20px 0;border:1px solid var(--line);border-radius:10px}
+    .wiki-table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:480px}
+    .wiki-table th{background:var(--bg-2);text-align:left;padding:12px 16px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--fg-muted);border-bottom:1px solid var(--line)}
+    .wiki-table td{padding:12px 16px;border-bottom:1px solid var(--line);color:var(--fg-muted);line-height:1.6}
+    .wiki-table tr:last-child td{border-bottom:none}
+    .wiki-faq-item{border-top:1px solid var(--line);padding:22px 0}
+    .wiki-faq-item h3{margin-top:0}
+    .wiki-related{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .wiki-related a{padding:8px 14px;background:var(--bg-2);border:1px solid var(--line);border-radius:20px;font-size:13px;color:var(--fg-muted);text-decoration:none;transition:all 0.2s}
+    .wiki-related a:hover{border-color:var(--pink);color:var(--pink)}
+    .wiki-quellen{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;line-height:1.7;color:var(--fg-dim)}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nuroy.de/#organization"},{"@type":"WebSite","@id":"https://nuroy.de/#website"},{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/arbeitswert#term","name":"Arbeitswert (AW)","alternateName":["AW","Arbeitswerte","Verrechnungseinheit Werkstatt","AW-Satz"],"description":"Der Arbeitswert (AW) ist die Verrechnungseinheit für Werkstattarbeiten im Kfz-Gewerbe. Er beschreibt die für eine Arbeit vorgesehene Zeit — üblich sind zehn Arbeitswerte pro Stunde, ein AW entspricht damit sechs Minuten. Der AW-Satz ist der Preis dieser Einheit.","url":"https://nuroy.de/wiki/arbeitswert","inDefinedTermSet":{"@id":"https://nuroy.de/wiki#termset"}},{"@type":"Article","@id":"https://nuroy.de/wiki/arbeitswert#article","headline":"Arbeitswert (AW) — Definition und Bedeutung für die Werkstattsteuerung","description":"Was ein Arbeitswert im Kfz-Gewerbe ist, wie er sich zur Stunde verhält, wie der AW-Satz kalkuliert wird und warum die Werkstattauslastung in Arbeitswerten gerechnet werden sollte.","image":"https://nuroy.de/og-image.png","author":{"@id":"https://nuroy.de/#organization"},"publisher":{"@id":"https://nuroy.de/#organization"},"datePublished":"2026-07-30","dateModified":"2026-07-30","mainEntityOfPage":{"@id":"https://nuroy.de/wiki/arbeitswert#webpage"},"about":{"@id":"https://nuroy.de/wiki/arbeitswert#term"},"inLanguage":"de-DE"},{"@type":"WebPage","@id":"https://nuroy.de/wiki/arbeitswert#webpage","url":"https://nuroy.de/wiki/arbeitswert","name":"Arbeitswert (AW) — Definition und Bedeutung für die Werkstattsteuerung | Nuroy Wiki","isPartOf":{"@id":"https://nuroy.de/#website"},"inLanguage":"de-DE","primaryImageOfPage":{"@type":"ImageObject","url":"https://nuroy.de/og-image.png"},"speakable":{"@type":"SpeakableSpecification","cssSelector":[".wiki-tldr",".wiki-h1"]},"breadcrumb":{"@id":"https://nuroy.de/wiki/arbeitswert#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://nuroy.de/wiki/arbeitswert#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://nuroy.de/"},{"@type":"ListItem","position":2,"name":"Wiki","item":"https://nuroy.de/wiki"},{"@type":"ListItem","position":3,"name":"Arbeitswert (AW)","item":"https://nuroy.de/wiki/arbeitswert"}]},{"@type":"FAQPage","@id":"https://nuroy.de/wiki/arbeitswert#faqpage","mainEntity":[{"@type":"Question","name":"Was ist ein Arbeitswert im Kfz-Gewerbe?","acceptedAnswer":{"@type":"Answer","text":"Ein Arbeitswert (AW) ist die Verrechnungseinheit für Werkstattleistungen. Er entspricht einer hinterlegten Vorgabezeit für eine bestimmte Arbeit an einem bestimmten Fahrzeugtyp, nicht der tatsächlich benötigten Zeit."}},{"@type":"Question","name":"Wie viele Arbeitswerte hat eine Stunde?","acceptedAnswer":{"@type":"Answer","text":"Üblich sind zehn Arbeitswerte je Stunde, ein AW entspricht damit sechs Minuten. Einzelne Hersteller und Systeme verwenden abweichende Teilungen, weshalb der AW-Wert immer mit Bezugsgröße genannt werden sollte."}},{"@type":"Question","name":"Was ist der Unterschied zwischen AW-Satz und Stundenverrechnungssatz?","acceptedAnswer":{"@type":"Answer","text":"Der AW-Satz ist der Preis eines einzelnen Arbeitswerts. Der Stundenverrechnungssatz ergibt sich daraus durch Multiplikation mit der Anzahl der Arbeitswerte je Stunde — bei zehn AW je Stunde also das Zehnfache des AW-Satzes."}},{"@type":"Question","name":"Warum rechnet man Werkstattauslastung in Arbeitswerten?","acceptedAnswer":{"@type":"Answer","text":"Weil nur Arbeitswerte die tatsächlich gebundene Kapazität abbilden. Ein voller Terminkalender kann aus vielen kurzen Aufträgen bestehen und trotzdem freie Kapazität enthalten. Die Terminanzahl allein ist deshalb keine brauchbare Steuerungsgröße."}},{"@type":"Question","name":"Woher kommen die Vorgabezeiten?","acceptedAnswer":{"@type":"Answer","text":"Aus Herstellervorgaben oder branchenüblichen Kalkulationssystemen. Sie schaffen Vergleichbarkeit, weil dieselbe Arbeit unabhängig von der individuellen Geschwindigkeit des Mitarbeiters abgerechnet wird."}}]}]}
+  </script>
+</head>
+<body class="theme-light">
+
+<div id="cursor-glow" class="cursor-glow"></div>
+<div id="nav-mount"></div>
+
+<article class="wiki-article container">
+  <div class="wiki-breadcrumb">
+    <a href="../">Start</a> / <a href="../wiki">Wiki</a> / Arbeitswert (AW)
+  </div>
+
+  <h1 class="wiki-h1">Arbeitswert (AW)</h1>
+
+  <div class="wiki-tldr">
+    <span class="wiki-tldr-label">KURZ ERKLÄRT</span>
+    Der Arbeitswert (AW) ist die Verrechnungseinheit für Werkstattarbeiten im Kfz-Gewerbe. Er beschreibt die für eine Arbeit vorgesehene Zeit — üblich sind zehn Arbeitswerte pro Stunde, ein AW entspricht damit sechs Minuten. Der AW-Satz ist der Preis dieser Einheit.
+  </div>
+
+  <section class="wiki-section">
+    <h2>Was ein Arbeitswert ist</h2>
+    <p>Der <strong>Arbeitswert</strong>, kurz AW, ist die im Kfz-Gewerbe übliche Verrechnungseinheit für Werkstattleistungen. Statt tatsächlich benötigter Zeit wird eine hinterlegte Vorgabezeit abgerechnet, die für die jeweilige Arbeit am jeweiligen Fahrzeugtyp gilt.</p>
+    <p>Verbreitet ist die Einteilung in <strong>zehn Arbeitswerte je Stunde</strong>; ein AW entspricht dann sechs Minuten. Manche Hersteller und Systeme verwenden abweichende Teilungen, weshalb der AW-Wert nie ohne Bezugsgröße genannt werden sollte.</p>
+    <p>Die Vorgabezeiten stammen aus Herstellervorgaben oder Kalkulationssystemen. Sie schaffen Vergleichbarkeit: Dieselbe Arbeit kostet unabhängig davon, ob ein erfahrener oder ein weniger geübter Mitarbeiter sie ausführt.</p>
+  </section>
+  <section class="wiki-section">
+    <h2>AW-Satz und Stundenverrechnungssatz</h2>
+    <p>Der <strong>AW-Satz</strong> ist der Preis eines Arbeitswerts. Multipliziert mit der Zahl der Arbeitswerte je Stunde ergibt sich der Stundenverrechnungssatz.</p>
+    <div class="wiki-tablewrap">
+      <table class="wiki-table">
+        <thead><tr><th>Größe</th><th>Beispiel</th><th>Berechnung</th></tr></thead>
+        <tbody>
+          <tr><td>Arbeitswerte je Stunde</td><td>10</td><td>Konvention</td></tr>
+          <tr><td>AW-Satz</td><td>1,60 €</td><td>Kalkulation</td></tr>
+          <tr><td>Stundenverrechnungssatz</td><td>16,00 €</td><td>1,60 × 10</td></tr>
+          <tr><td>Auftrag mit 25 AW</td><td>40,00 €</td><td>25 × 1,60</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Die Zahlen dienen der Veranschaulichung der Systematik; reale Sätze liegen je nach Region, Marke und Betriebsform deutlich höher. Entscheidend ist das Verständnis der Rechenlogik, nicht der konkrete Betrag.</p>
+  </section>
+  <section class="wiki-section">
+    <h2>Warum Auslastung in AW gerechnet gehört</h2>
+    <p>Arbeitswerte sind die einzige Größe, in der sich Werkstattkapazität sinnvoll planen lässt. Ein Terminkalender zeigt Belegung, aber keine Kapazität — fünf Ölwechsel binden weniger als eine große Inspektion.</p>
+    <p>Für die <a href="werkstattauslastung">Auslastungssteuerung</a> ergibt sich daraus die belastbare Formel: verplante Arbeitswerte im Verhältnis zu den verfügbaren, je Mitarbeiter, je Hebebühne und je Tag. Erst diese Sicht zeigt, wo tatsächlich Luft ist.</p>
+  </section>
+  <section class="wiki-section">
+    <h2>Produktivität und Wirtschaftlichkeit</h2>
+    <p>Aus dem Verhältnis von verkauften zu tatsächlich geleisteten Arbeitswerten ergeben sich die klassischen Werkstattkennzahlen. Liegt die tatsächliche Zeit dauerhaft über der Vorgabezeit, entsteht ein Verlust, der in der Auftragsrechnung nicht sichtbar wird.</p>
+    <p>Diese Auswertung ist im <a href="dms-autohaus">DMS</a> grundsätzlich möglich, wird aber selten laufend betrachtet. Sie gehört zu den Kennzahlen, die im Monatsabschluss auftauchen — und damit zu spät, um noch zu steuern.</p>
+  </section>
+
+  <section class="wiki-section">
+    <h2>Häufige Fragen</h2>
+    <div class="wiki-faq-item">
+      <h3>Was ist ein Arbeitswert im Kfz-Gewerbe?</h3>
+      <p>Ein Arbeitswert (AW) ist die Verrechnungseinheit für Werkstattleistungen. Er entspricht einer hinterlegten Vorgabezeit für eine bestimmte Arbeit an einem bestimmten Fahrzeugtyp, nicht der tatsächlich benötigten Zeit.</p>
+    </div>
+    <div class="wiki-faq-item">
+      <h3>Wie viele Arbeitswerte hat eine Stunde?</h3>
+      <p>Üblich sind zehn Arbeitswerte je Stunde, ein AW entspricht damit sechs Minuten. Einzelne Hersteller und Systeme verwenden abweichende Teilungen, weshalb der AW-Wert immer mit Bezugsgröße genannt werden sollte.</p>
+    </div>
+    <div class="wiki-faq-item">
+      <h3>Was ist der Unterschied zwischen AW-Satz und Stundenverrechnungssatz?</h3>
+      <p>Der AW-Satz ist der Preis eines einzelnen Arbeitswerts. Der Stundenverrechnungssatz ergibt sich daraus durch Multiplikation mit der Anzahl der Arbeitswerte je Stunde — bei zehn AW je Stunde also das Zehnfache des AW-Satzes.</p>
+    </div>
+    <div class="wiki-faq-item">
+      <h3>Warum rechnet man Werkstattauslastung in Arbeitswerten?</h3>
+      <p>Weil nur Arbeitswerte die tatsächlich gebundene Kapazität abbilden. Ein voller Terminkalender kann aus vielen kurzen Aufträgen bestehen und trotzdem freie Kapazität enthalten. Die Terminanzahl allein ist deshalb keine brauchbare Steuerungsgröße.</p>
+    </div>
+    <div class="wiki-faq-item">
+      <h3>Woher kommen die Vorgabezeiten?</h3>
+      <p>Aus Herstellervorgaben oder branchenüblichen Kalkulationssystemen. Sie schaffen Vergleichbarkeit, weil dieselbe Arbeit unabhängig von der individuellen Geschwindigkeit des Mitarbeiters abgerechnet wird.</p>
+    </div>
+  </section>
+
+  <section class="wiki-section">
+    <h2>Verwandte Begriffe</h2>
+    <div class="wiki-related">
+      <a href="werkstattauslastung">Werkstattauslastung</a>
+      <a href="aftersales-quote">Aftersales-Quote</a>
+      <a href="dms-autohaus">Dealer Management System (DMS)</a>
+      <a href="hu-au-erinnerung">HU/AU-Erinnerung</a>
+    </div>
+  </section>
+
+  <p class="wiki-quellen">
+    Quellen der genannten Marktzahlen: DAT, TÜV NORD INSIGHT 2026, matelso,
+    ZDK sowie AUTOHAUS/Targobank. Die Werte beschreiben den Branchendurchschnitt
+    und sind keine Ergebnisse einzelner Kundenprojekte.
+    Zuletzt aktualisiert: 30. Juli 2026.
+  </p>
+</article>
+
+<section class="final-cta">
+  <div class="container">
+    <h2 class="t-display">Wie steuern Sie Ihre Werkstattkapazität?</h2>
+    <p class="t-body-lg" style="margin-top:16px;">30 Minuten Erstgespräch, kostenlos und unverbindlich. Direkt mit Julius.</p>
+    <div style="display:flex;gap:16px;justify-content:center;margin-top:32px;flex-wrap:wrap;">
+      <a href="../kontakt" class="btn btn-pink-glass btn-lg">Erstgespräch buchen</a>
+      <a href="../leistungen/werkstatt" class="btn btn-glass-secondary btn-lg">Mehr zur Werkstatt-Auslastung</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-mount"></div>
+<script src="../shared/components.js?v=1784302387000"></script>
+
+</body>
+</html>

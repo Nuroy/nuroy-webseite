@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kapitalbindung im Fahrzeugbestand — Berechnung und Steuerung | Nuroy Wiki</title>
+  <meta name="description" content="Wie viel Kapital im Fahrzeugbestand eines Autohauses gebunden ist, wie sich die Kosten berechnen lassen und welche Stellschrauben die Bindung reduzieren.">
+  <meta name="keywords" content="kapitalbindung autohaus, gebundenes kapital fahrzeugbestand, bestandsfinanzierung kfz, lagerkosten fahrzeuge">
+  <meta name="author" content="Nuroy (JT NUROY LTD)">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+  <link rel="canonical" href="https://nuroy.de/wiki/kapitalbindung">
+  <link rel="alternate" hreflang="de-DE" href="https://nuroy.de/wiki/kapitalbindung">
+  <link rel="alternate" hreflang="de-AT" href="https://nuroy.de/wiki/kapitalbindung">
+  <link rel="alternate" hreflang="de-CH" href="https://nuroy.de/wiki/kapitalbindung">
+  <link rel="alternate" hreflang="x-default" href="https://nuroy.de/wiki/kapitalbindung">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Nuroy">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="Kapitalbindung im Fahrzeugbestand — Berechnung und Steuerung">
+  <meta property="og:description" content="Wie viel Kapital im Fahrzeugbestand eines Autohauses gebunden ist, wie sich die Kosten berechnen lassen und welche Stellschrauben die Bindung reduzieren.">
+  <meta property="og:image" content="https://nuroy.de/og-image.png">
+  <meta property="og:url" content="https://nuroy.de/wiki/kapitalbindung">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kapitalbindung im Fahrzeugbestand — Berechnung und Steuerung">
+  <meta name="twitter:description" content="Wie viel Kapital im Fahrzeugbestand eines Autohauses gebunden ist, wie sich die Kosten berechnen lassen und welche Stellschrauben die Bindung reduzieren.">
+  <meta name="twitter:image" content="https://nuroy.de/og-image.png">
+  <link rel="stylesheet" href="../shared/styles.css?v=1784307412000">
+  <style>
+    .wiki-article{padding:calc(var(--nav-h) + 64px) 0 64px;max-width:780px;margin:0 auto}
+    .wiki-breadcrumb{font-family:var(--font-mono);font-size:11px;color:var(--fg-dim);letter-spacing:0.06em;margin-bottom:24px}
+    .wiki-breadcrumb a{color:var(--fg-dim)}.wiki-breadcrumb a:hover{color:var(--pink)}
+    .wiki-h1{font-family:var(--font-display);font-size:clamp(38px,4.6vw,58px);font-weight:900;letter-spacing:-0.03em;line-height:1.06;margin-bottom:24px}
+    .wiki-tldr{padding:24px 28px;background:var(--bg-2);border-left:3px solid var(--pink);border-radius:0 12px 12px 0;font-size:17px;line-height:1.7;color:var(--fg);margin:32px 0 48px}
+    .wiki-tldr-label{font-family:var(--font-mono);font-size:11px;color:var(--pink);letter-spacing:0.1em;margin-bottom:8px;display:block}
+    .wiki-section{margin-top:48px}
+    .wiki-section h2{font-family:var(--font-display);font-size:27px;font-weight:700;letter-spacing:-0.02em;margin-bottom:16px;color:#0A2540}
+    .wiki-section h3{font-family:var(--font-display);font-size:19px;font-weight:600;margin-top:26px;margin-bottom:10px;color:#0A2540}
+    .wiki-section p{font-size:16px;line-height:1.75;color:var(--fg-muted);margin-bottom:16px}
+    .wiki-section ul{margin:16px 0 16px 24px;color:var(--fg-muted);font-size:16px;line-height:1.75}
+    .wiki-section li{margin-bottom:8px}
+    .wiki-section a{color:var(--pink)}
+    /* Tabellen sind für Antwortmaschinen gut extrahierbar und
+       müssen auf schmalen Geräten eigenständig scrollen. */
+    .wiki-tablewrap{overflow-x:auto;margin:20px 0;border:1px solid var(--line);border-radius:10px}
+    .wiki-table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:480px}
+    .wiki-table th{background:var(--bg-2);text-align:left;padding:12px 16px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--fg-muted);border-bottom:1px solid var(--line)}
+    .wiki-table td{padding:12px 16px;border-bottom:1px solid var(--line);color:var(--fg-muted);line-height:1.6}
+    .wiki-table tr:last-child td{border-bottom:none}
+    .wiki-faq-item{border-top:1px solid var(--line);padding:22px 0}
+    .wiki-faq-item h3{margin-top:0}
+    .wiki-related{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .wiki-related a{padding:8px 14px;background:var(--bg-2);border:1px solid var(--line);border-radius:20px;font-size:13px;color:var(--fg-muted);text-decoration:none;transition:all 0.2s}
+    .wiki-related a:hover{border-color:var(--pink);color:var(--pink)}
+    .wiki-quellen{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;line-height:1.7;color:var(--fg-dim)}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://nuroy.de/#organization"},{"@type":"WebSite","@id":"https://nuroy.de/#website"},{"@type":"DefinedTerm","@id":"https://nuroy.de/wiki/kapitalbindung#term","name":"Kapitalbindung","alternateName":["gebundenes Kapital","Bestandsfinanzierung","Kapitalbindungskosten"],"description":"Kapitalbindung bezeichnet den Geldbetrag, der im unverkauften Fahrzeugbestand gebunden ist und dem Betrieb nicht zur Verfügung steht. Sie ist der größte Einzelposten der Standkosten und steigt mit jedem Standtag — ohne dass ein Gegenwert entsteht.","url":"https://nuroy.de/wiki/kapitalbindung","inDefinedTermSet":{"@id":"https://nuroy.de/wiki#termset"}},{"@type":"Article","@id":"https://nuroy.de/wiki/kapitalbindung#article","headline":"Kapitalbindung im Fahrzeugbestand — Berechnung und Steuerung","description":"Wie viel Kapital im Fahrzeugbestand eines Autohauses gebunden ist, wie sich die Kosten berechnen lassen und welche Stellschrauben die Bindung reduzieren.","image":"https://nuroy.de/og-image.png","author":{"@id":"https://nuroy.de/#organization"},"publisher":{"@id":"https://nuroy.de/#organization"},"datePublished":"2026-07-30","dateModified":"2026-07-30","mainEntityOfPage":{"@id":"https://nuroy.de/wiki/kapitalbindung#webpage"},"about":{"@id":"https://nuroy.de/wiki/kapitalbindung#term"},"inLanguage":"de-DE"},{"@type":"WebPage","@id":"https://nuroy.de/wiki/kapitalbindung#webpage","url":"https://nuroy.de/wiki/kapitalbindung","name":"Kapitalbindung im Fahrzeugbestand — Berechnung und Steuerung | Nuroy Wiki","isPartOf":{"@id":"https://nuroy.de/#website"},"inLanguage":"de-DE","primaryImageOfPage":{"@type":"ImageObject","url":"https://nuroy.de/og-image.png"},"speakable":{"@type":"SpeakableSpecification","cssSelector":[".wiki-tldr",".wiki-h1"]},"breadcrumb":{"@id":"https://nuroy.de/wiki/kapitalbindung#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://nuroy.de/wiki/kapitalbindung#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://nuroy.de/"},{"@type":"ListItem","position":2,"name":"Wiki","item":"https://nuroy.de/wiki"},{"@type":"ListItem","position":3,"name":"Kapitalbindung","item":"https://nuroy.de/wiki/kapitalbindung"}]},{"@type":"FAQPage","@id":"https://nuroy.de/wiki/kapitalbindung#faqpage","mainEntity":[{"@type":"Question","name":"Was ist Kapitalbindung im Autohaus?","acceptedAnswer":{"@type":"Answer","text":"Kapitalbindung ist der Geldbetrag, der im unverkauften Fahrzeugbestand steckt und dem Betrieb nicht für andere Zwecke zur Verfügung steht. Sie ist der größte Einzelposten innerhalb der Standkosten."}},{"@type":"Question","name":"Wie berechnet man die Kapitalbindungskosten eines Fahrzeugs?","acceptedAnswer":{"@type":"Answer","text":"Als Näherung: Einkaufswert mal Finanzierungssatz geteilt durch 365, mal Anzahl der Standtage. Bei 18.000 Euro Einkaufswert und 7 Prozent Zins entspricht das rund 3,45 Euro pro Standtag, also etwa 310 Euro bei 90 Tagen Standzeit."}},{"@type":"Question","name":"Ist Kapitalbindung dasselbe wie Standkosten?","acceptedAnswer":{"@type":"Answer","text":"Nein. Kapitalbindung ist ein Bestandteil der Standkosten, aber nicht der einzige. Die von der DAT genannten 25 bis 30 Euro pro Fahrzeug und Tag enthalten zusätzlich Wertverlust, Stellplatz, Versicherung, Aufbereitung und Verwaltungsaufwand."}},{"@type":"Question","name":"Wie senkt man die Kapitalbindung?","acceptedAnswer":{"@type":"Answer","text":"Über eine höhere Umschlagshäufigkeit, disziplinierten Einkauf, frühzeitiges Erkennen von Risikobestand und eine kritische Prüfung der Bestandsgröße. Ein größerer Bestand erhöht nicht zwangsläufig die Verkaufszahlen, aber immer die Bindung."}},{"@type":"Question","name":"Warum sehen viele Autohäuser ihre Kapitalbindung nicht?","acceptedAnswer":{"@type":"Answer","text":"Weil die Zahl erst entsteht, wenn Bestandsdaten und Standtage zusammengeführt werden. In der Monatsauswertung taucht sie nicht auf. Technisch ist die Zusammenführung unaufwendig, organisatorisch aber selten eingerichtet."}}]}]}
+  </script>
+</head>
+<body class="theme-light">
+
+<div id="cursor-glow" class="cursor-glow"></div>
+<div id="nav-mount"></div>
+
+<article class="wiki-article container">
+  <div class="wiki-breadcrumb">
+    <a href="../">Start</a> / <a href="../wiki">Wiki</a> / Kapitalbindung
+  </div>
+
+  <h1 class="wiki-h1">Kapitalbindung</h1>
+
+  <div class="wiki-tldr">
+    <span class="wiki-tldr-label">KURZ ERKLÄRT</span>
+    Kapitalbindung bezeichnet den Geldbetrag, der im unverkauften Fahrzeugbestand gebunden ist und dem Betrieb nicht zur Verfügung steht. Sie ist der größte Einzelposten der Standkosten und steigt mit jedem Standtag — ohne dass ein Gegenwert entsteht.
+  </div>
+
+  <section class="wiki-section">
+    <h2>Was bedeutet Kapitalbindung?</h2>
+    <p><strong>Kapitalbindung</strong> ist der Teil des Betriebsvermögens, der in unverkauften Fahrzeugen steckt. Dieses Geld ist nicht verloren, aber es ist blockiert: Es kann nicht in andere Fahrzeuge, in die Werkstatt oder in Personal investiert werden, solange das Fahrzeug steht.</p>
+    <p>Die Höhe ergibt sich aus Einkaufswert mal Bestandsmenge. Die Kosten entstehen durch die Finanzierung dieses Betrags — als Zins bei fremdfinanziertem Bestand oder als entgangene Alternativverwendung bei Eigenkapital.</p>
+  </section>
+  <section class="wiki-section">
+    <h2>Wie sich die Kosten berechnen lassen</h2>
+    <p>Eine praktikable Näherung für die Kapitalbindungskosten eines einzelnen Fahrzeugs:</p>
+    <p><strong>Einkaufswert × Zinssatz ÷ 365 × Standtage</strong></p>
+    <div class="wiki-tablewrap">
+      <table class="wiki-table">
+        <thead><tr><th>Beispielfahrzeug</th><th>Annahme</th><th>Ergebnis</th></tr></thead>
+        <tbody>
+          <tr><td>Einkaufswert</td><td>18.000 €</td><td>—</td></tr>
+          <tr><td>Finanzierungssatz</td><td>7 % p. a.</td><td>1.260 € pro Jahr</td></tr>
+          <tr><td>Kosten je Standtag</td><td>1.260 ÷ 365</td><td>rund 3,45 €</td></tr>
+          <tr><td>Bei 90 Standtagen</td><td>3,45 × 90</td><td>rund 310 €</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Die reine Kapitalbindung ist damit nur ein Teil der von der DAT genannten <a href="standtage">25 bis 30 Euro Standkosten pro Tag</a>. Den größeren Anteil machen Wertverlust, Stellplatz, Versicherung und Verwaltung aus. Beide Größen wachsen aber mit derselben Variablen: der Standzeit.</p>
+  </section>
+  <section class="wiki-section">
+    <h2>Warum die Summe entscheidender ist als der Einzelfall</h2>
+    <p>Bei einem einzelnen Fahrzeug wirken die Beträge überschaubar. Relevant wird die Kapitalbindung erst in der Summe über den Gesamtbestand — und dort fehlt in vielen Häusern die laufende Sicht.</p>
+    <p>Ein Bestand von 120 Fahrzeugen mit durchschnittlich 16.000 Euro Einkaufswert bindet rund 1,9 Millionen Euro. Steht davon ein Drittel über 90 Tage, sind über 600.000 Euro in Fahrzeugen gebunden, die statistisch schwer verkäuflich sind.</p>
+    <p>Diese Zahl steht in keiner Monatsauswertung. Sie ergibt sich erst, wenn Bestandsdaten und Standtage zusammengeführt werden — was technisch unaufwendig, organisatorisch aber selten umgesetzt ist.</p>
+  </section>
+  <section class="wiki-section">
+    <h2>Stellschrauben</h2>
+    <ul>
+      <li><strong>Umschlag erhöhen:</strong> siehe <a href="umschlagshaeufigkeit">Umschlagshäufigkeit</a> — schnellere Drehung senkt die durchschnittliche Bindung</li>
+      <li><strong>Einkauf disziplinieren:</strong> Fahrzeuge, die schon beim Zugang schwer verkäuflich sind, binden am längsten</li>
+      <li><strong>Risikobestand früh erkennen:</strong> Alarm vor der 90-Tage-Grenze statt Reaktion danach</li>
+      <li><strong>Bestandsgröße hinterfragen:</strong> mehr Auswahl bedeutet nicht automatisch mehr Verkäufe</li>
+    </ul>
+  </section>
+
+  <section class="wiki-section">
+    <h2>Häufige Fragen</h2>
+    <div class="wiki-faq-item">
+      <h3>Was ist Kapitalbindung im Autohaus?</h3>
+      <p>Kapitalbindung ist der Geldbetrag, der im unverkauften Fahrzeugbestand steckt und dem Betrieb nicht für andere Zwecke zur Verfügung steht. Sie ist der größte Einzelposten innerhalb der Standkosten.</p>
+    </div>
+    <div class="wiki-faq-item">
+      <h3>Wie berechnet man die Kapitalbindungskosten eines Fahrzeugs?</h3>
+      <p>Als Näherung: Einkaufswert mal Finanzierungssatz geteilt durch 365, mal Anzahl der Standtage. Bei 18.000 Euro Einkaufswert und 7 Prozent Zins entspricht das rund 3,45 Euro pro Standtag, also etwa 310 Euro bei 90 Tagen Standzeit.</p>
+    </div>
+    <div class="wiki-faq-item">
+      <h3>Ist Kapitalbindung dasselbe wie Standkosten?</h3>
+      <p>Nein. Kapitalbindung ist ein Bestandteil der Standkosten, aber nicht der einzige. Die von der DAT genannten 25 bis 30 Euro pro Fahrzeug und Tag enthalten zusätzlich Wertverlust, Stellplatz, Versicherung, Aufbereitung und Verwaltungsaufwand.</p>
+    </div>
+    <div class="wiki-faq-item">
+      <h3>Wie senkt man die Kapitalbindung?</h3>
+      <p>Über eine höhere Umschlagshäufigkeit, disziplinierten Einkauf, frühzeitiges Erkennen von Risikobestand und eine kritische Prüfung der Bestandsgröße. Ein größerer Bestand erhöht nicht zwangsläufig die Verkaufszahlen, aber immer die Bindung.</p>
+    </div>
+    <div class="wiki-faq-item">
+      <h3>Warum sehen viele Autohäuser ihre Kapitalbindung nicht?</h3>
+      <p>Weil die Zahl erst entsteht, wenn Bestandsdaten und Standtage zusammengeführt werden. In der Monatsauswertung taucht sie nicht auf. Technisch ist die Zusammenführung unaufwendig, organisatorisch aber selten eingerichtet.</p>
+    </div>
+  </section>
+
+  <section class="wiki-section">
+    <h2>Verwandte Begriffe</h2>
+    <div class="wiki-related">
+      <a href="standtage">Standtage</a>
+      <a href="umschlagshaeufigkeit">Umschlagshäufigkeit</a>
+      <a href="rohertrag-fahrzeug">Rohertrag pro Fahrzeug</a>
+      <a href="repricing">Repricing</a>
+    </div>
+  </section>
+
+  <p class="wiki-quellen">
+    Quellen der genannten Marktzahlen: DAT, TÜV NORD INSIGHT 2026, matelso,
+    ZDK sowie AUTOHAUS/Targobank. Die Werte beschreiben den Branchendurchschnitt
+    und sind keine Ergebnisse einzelner Kundenprojekte.
+    Zuletzt aktualisiert: 30. Juli 2026.
+  </p>
+</article>
+
+<section class="final-cta">
+  <div class="container">
+    <h2 class="t-display">Wie viel Kapital steht bei Ihnen auf dem Hof?</h2>
+    <p class="t-body-lg" style="margin-top:16px;">30 Minuten Erstgespräch, kostenlos und unverbindlich. Direkt mit Julius.</p>
+    <div style="display:flex;gap:16px;justify-content:center;margin-top:32px;flex-wrap:wrap;">
+      <a href="../kontakt" class="btn btn-pink-glass btn-lg">Erstgespräch buchen</a>
+      <a href="../leistungen/standzeiten" class="btn btn-glass-secondary btn-lg">Mehr zu Standzeiten senken</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-mount"></div>
+<script src="../shared/components.js?v=1784302387000"></script>
+
+</body>
+</html>

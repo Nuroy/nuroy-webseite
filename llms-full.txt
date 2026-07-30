@@ -26,7 +26,7 @@ Der Preis richtet sich nach dem Umfang und wird nach dem Erstgespräch als Festp
 
 Was: Individuelle Dashboards, die alle Datenquellen verbinden und in Echtzeit visualisieren. Statt fünf verschiedene Tools zu öffnen, sehen Geschäftsführer und Teams alle KPIs auf einen Blick.
 
-Wer: Selbständige, kleine und mittlere Unternehmen (KMU), die mit Excel-Chaos, Insellösungen und veralteten Zahlen kämpfen. Typische Auftraggeber: Geschäftsführer, CFOs, Vertriebsleiter, Operations-Verantwortliche in Unternehmen mit 5–200 Mitarbeitern.
+Wer: Selbständige, kleine und mittlere Unternehmen (Autohäuser), die mit Excel-Chaos, Insellösungen und veralteten Zahlen kämpfen. Typische Auftraggeber: Geschäftsführer, CFOs, Vertriebsleiter, Operations-Verantwortliche in Unternehmen mit 5–200 Mitarbeitern.
 
 Integration: CRM (HubSpot, Pipedrive, Salesforce), ERP (SAP, weclapp), Buchhaltung (DATEV, Lexware, sevDesk), E-Commerce (Shopify, WooCommerce, Shopware), Marketing-Tools (Google Analytics, Meta Ads), Datenbanken (PostgreSQL, MySQL, MongoDB), eigene APIs.
 
@@ -97,7 +97,7 @@ Faustregel: Wenn die jährlichen Lizenzkosten plus interne Pflege das Custom-Pro
 Remote-first. Wir sind in Paphos, Zypern ansässig und arbeiten mit DACH-Kunden über Videokonferenz, Notion, Linear, GitHub und klare Übergabe-Strukturen. Vor-Ort-Tage sind für Discovery-Workshops planbar.
 
 ### Mit welchen Unternehmen arbeitet ihr?
-Selbständige und kleine bis mittelständische Unternehmen aus dem DACH-Raum (Deutschland primär, Österreich und Schweiz). Typische Größen: 5 bis 200 Mitarbeiter. Branchen: E-Commerce, Agenturen, SaaS, Beratung, Handwerk, B2B-Dienstleister, Maschinenbau-KMU. Sweet Spot: Unternehmen, die wachsen und bei denen Standardsoftware an Grenzen stößt.
+Selbständige und kleine bis mittelständische Unternehmen aus dem DACH-Raum (Deutschland primär, Österreich und Schweiz). Typische Größen: 5 bis 200 Mitarbeiter. Zielgruppe: Autohäuser mit eigener Werkstatt im DACH-Raum. Sweet Spot: Unternehmen, die wachsen und bei denen Standardsoftware an Grenzen stößt.
 
 ### Hostet ihr DSGVO-konform?
 Ja. Standard ist EU-Hosting (Hetzner Frankfurt, AWS Frankfurt). Auf Wunsch Hosting in Deutschland exklusiv. Wir signieren AVV/DPA, Datenflüsse sind dokumentiert, kein Training externer KI-Modelle mit Kundendaten.
@@ -117,8 +117,6 @@ Kostenlos, 45–60 Minuten, per Videokonferenz. Wir sprechen über Ausgangssitua
 - **Agentur:** Projekt-Cockpit mit Auslastung, Margen pro Projekt, offene Posten, Forecast aus Zeiterfassung, CRM, Buchhaltung.
 - **Handwerksbetrieb:** Live-Übersicht über Aufträge, Material-Kosten, Mitarbeiter-Auslastung, offene Rechnungen.
 - **Steuerberater / Buchhaltungs-Nahbereich:** DATEV-Integration mit Live-KPIs für Mandanten (Liquidität, Forderungen, BWA-Trends).
-- **Maschinenbau-KMU:** Produktions-Cockpit mit Maschinen-Status, Auftragsfortschritt, Qualitätskennzahlen.
-- **SaaS-Unternehmen:** MRR/ARR-Dashboard, Churn-Analyse, Customer-Success-KPIs aus Stripe, eigenem Produkt, HubSpot.
 - **CFO im Mittelstand:** Liquiditäts-Cockpit aus Buchhaltung, Bank-Feeds, Forecast — täglich aktualisiert.
 
 ## Differenzierung — Warum Nuroy statt Power BI / Tableau / Looker

@@ -18,26 +18,27 @@
 - [Alle Leistungen](https://nuroy.de/leistungen): 7 Leistungsfelder im Überblick
 - [Kontakt & Erstgespräch](https://nuroy.de/kontakt): Kostenloses 45–60-minütiges Erstgespräch, transparente Einschätzung
 
-## Wiki / Glossar — Begriffe einfach erklärt
+## Wiki / Glossar — Autohaus-Begriffe erklärt
 
-Das Nuroy-Wiki erklärt zentrale Begriffe rund um Custom Dashboards, KI und Software für KMU. Jede Seite enthält Definition, Beispiele, Anwendungsfälle und FAQs:
+Das Nuroy-Wiki erklärt die zentralen Kennzahlen und Begriffe im Autohaus — mit Definition, belegten Branchenzahlen und Rechenbeispielen. Jede Seite enthält eine Kurzdefinition, vertiefende Abschnitte und FAQs:
 
-- [Wiki-Übersicht](https://nuroy.de/wiki): Alle 15 Begriffe im Überblick
-- [KPI Dashboard](https://nuroy.de/wiki/kpi-dashboard): Was ist ein KPI-Dashboard und wann lohnt es sich?
-- [Business Intelligence](https://nuroy.de/wiki/business-intelligence): Was ist BI? Unterschied zu Reporting, Tools für KMU
-- [Custom Software](https://nuroy.de/wiki/custom-software): Wann lohnt sich individuelle Software statt Standardlösung?
-- [KI-Agent](https://nuroy.de/wiki/ki-agent): Was ist ein KI-Agent? Unterschied zu Chatbots, Anwendungsfälle
-- [DATEV-Integration](https://nuroy.de/wiki/datev-integration): DATEV-Schnittstellen, Live-Anbindung an Dashboards
-- [ETL-Pipeline](https://nuroy.de/wiki/etl-pipeline): Extract, Transform, Load — Datenintegration erklärt
-- [RAG (Retrieval-Augmented Generation)](https://nuroy.de/wiki/rag): Wie KIs mit Firmenwissen verbunden werden
-- [Multi-Tenant](https://nuroy.de/wiki/multi-tenant): Multi-Tenant-Architektur für SaaS und White-Label
-- [MRR und ARR](https://nuroy.de/wiki/mrr-arr): SaaS-Metriken — Monthly/Annual Recurring Revenue
-- [Churn-Rate](https://nuroy.de/wiki/churn-rate): Definition, Berechnung, Benchmarks
-- [Webhook](https://nuroy.de/wiki/webhook): Unterschied zu APIs, Einsatzszenarien
-- [API-First](https://nuroy.de/wiki/api-first): Architekturansatz für moderne Custom Software
-- [Single Source of Truth](https://nuroy.de/wiki/single-source-of-truth): SSoT für KMU
-- [White-Label Dashboard](https://nuroy.de/wiki/white-label-dashboard): Für Agenturen und SaaS
-- [KI-Forecasting](https://nuroy.de/wiki/ki-forecasting): KI-gestützte Prognosen für Umsatz, Liquidität, Churn
+- [Wiki-Übersicht](https://nuroy.de/wiki): Alle 15 Begriffe, gruppiert nach Vertrieb, Bestand und Service
+- [Speed to Lead](https://nuroy.de/wiki/speed-to-lead): Speed to Lead ist die Zeit zwischen Kundenanfrage und erster Reaktion des Händlers. Definition, Branchen-Benchmarks für
+- [Leadmanagement im Autohaus](https://nuroy.de/wiki/leadmanagement-autohaus): Wie Autohäuser Anfragen aus Fahrzeugbörsen, Website, Telefon und WhatsApp strukturiert bearbeiten: Prozess, Zuständigkeiten,
+- [Fahrzeugbörsen](https://nuroy.de/wiki/fahrzeugboersen): Wie Fahrzeugbörsen den Vertrieb im Autohaus prägen: Anfrageflüsse, Inseratsqualität, native KI-Funktionen der Plattformen und
+- [KI-Telefonassistent](https://nuroy.de/wiki/ki-telefonassistent): Was ein KI-Telefonassistent im Autohaus leistet: Overflow-Annahme statt Vollersatz, Terminbuchung, Anliegen-Erkennung,
+- [Standtage](https://nuroy.de/wiki/standtage): Standtage messen, wie lange ein Fahrzeug im Bestand steht. Definition, warum 90 Tage als Grenze gelten, was ein Standtag kostet
+- [Kapitalbindung](https://nuroy.de/wiki/kapitalbindung): Wie viel Kapital im Fahrzeugbestand eines Autohauses gebunden ist, wie sich die Kosten berechnen lassen und welche Stellschrauben
+- [Umschlagshäufigkeit](https://nuroy.de/wiki/umschlagshaeufigkeit): Wie oft sich der Fahrzeugbestand pro Jahr dreht: Berechnung der Umschlagshäufigkeit, Zusammenhang zu Standtagen und
+- [Repricing](https://nuroy.de/wiki/repricing): Wie Autohäuser Fahrzeugpreise datenbasiert statt nach Bauchgefühl anpassen: Marktpreisabgleich, Zeitpunkt der Anpassung und die
+- [Rohertrag pro Fahrzeug](https://nuroy.de/wiki/rohertrag-fahrzeug): Was der Rohertrag pro verkauftem Fahrzeug umfasst, wie er berechnet wird, welche Größenordnung im Gebrauchtwagenhandel üblich ist
+- [Dealer Management System (DMS)](https://nuroy.de/wiki/dms-autohaus): Was ein Dealer Management System leistet, welche Anbieter den DACH-Mittelstand prägen, wie es um Schnittstellen bestellt ist und
+- [HU/AU-Erinnerung](https://nuroy.de/wiki/hu-au-erinnerung): Wie Autohäuser aus Fälligkeiten für Hauptuntersuchung und Abgasuntersuchung automatische Werkstatttermine machen: Datengrundlage,
+- [Aftersales-Quote](https://nuroy.de/wiki/aftersales-quote): Wie Autohäuser messen, welcher Anteil ihrer Fahrzeugkunden auch in den Service kommt: Berechnung, typische Abwanderungsgründe und
+- [Werkstattauslastung](https://nuroy.de/wiki/werkstattauslastung): Warum die Werkstattauslastung nach Arbeitswert statt nach Terminanzahl gemessen werden sollte, welche Rolle Nichterscheinen und
+- [Arbeitswert (AW)](https://nuroy.de/wiki/arbeitswert): Was ein Arbeitswert im Kfz-Gewerbe ist, wie er sich zur Stunde verhält, wie der AW-Satz kalkuliert wird und warum die
+- [Local SEO für Autohäuser](https://nuroy.de/wiki/local-seo-autohaus): Wie Autohäuser in der lokalen Suche gefunden werden: Google-Unternehmensprofil, Bewertungen als Rankingfaktor, Standortseiten bei
+
 
 ## Referenzen & Case Studies
 
