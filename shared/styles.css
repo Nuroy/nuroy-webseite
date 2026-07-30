@@ -2480,3 +2480,164 @@ body.preloader-active > *:not(#nuroy-preloader) { visibility: hidden; }
   }
 }
 
+/* ============================================================
+   LIGHT THEME — Scoped auf body.theme-light
+   ------------------------------------------------------------
+   Wird NUR von Seiten aktiviert, die <body class="theme-light">
+   setzen. Alle anderen Seiten bleiben unveraendert dunkel.
+
+   Die Variablennamen bleiben vorerst --pink*, bekommen hier
+   aber blaue Werte. Umbenennen auf --brand* ist ein eigener,
+   mechanischer Schritt ueber ~500 Fundstellen.
+   ============================================================ */
+
+body.theme-light {
+  /* ── Marke: tiefes Marineblau statt Pink ── */
+  --pink:         #1B4F91;
+  --pink-deep:    #0A2540;
+  --pink-soft:    #E8EFF7;
+  --pink-glow:    rgba(27, 79, 145, 0.14);
+  --pink-glow-lg: rgba(27, 79, 145, 0.24);
+  --pink-bg:      rgba(27, 79, 145, 0.06);
+
+  /* ── Flaechen: hell statt dunkel.
+        bg-3 und bg-4 sind bewusst nur leicht getoent — bei
+        kraeftigeren Toenen faellt --fg-dim unter lesbaren
+        Kontrast, weil darauf viele kleine Mono-Labels sitzen. ── */
+  --bg:   #FFFFFF;
+  --bg-2: #F4F7FB;
+  --bg-3: #EEF3F9;
+  --bg-4: #EDF2F8;
+
+  /* ── Schrift: dunkel statt hell. --fg-dim ist deutlich dunkler
+        als das Dunkel-Pendant, sonst 2,4:1 auf getoenten
+        Flaechen. ── */
+  --fg:       #1B2733;
+  --fg-muted: #5A6675;
+  --fg-dim:   #636E7B;
+
+  /* ── Linien: schwarz-transparent statt weiss-transparent.
+        Ohne das verschwindet jede Trennlinie auf Weiss. ── */
+  --line:        rgba(10, 37, 64, 0.10);
+  --line-strong: rgba(10, 37, 64, 0.18);
+
+  /* ── Status: die dunklen Varianten liegen auf Weiss bei
+        2,7:1 bzw. 2,2:1 und sind damit unlesbar. ── */
+  --ok:   #46702F;
+  --warn: #7F570D;
+
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* Ueberschriften bekommen das tiefe Navy, nicht das Fliesstext-Grau */
+body.theme-light h1,
+body.theme-light h2,
+body.theme-light h3,
+body.theme-light h4,
+body.theme-light .t-display,
+body.theme-light .t-h1,
+body.theme-light .t-h2,
+body.theme-light .t-h3,
+body.theme-light .t-h4 {
+  color: #0A2540;
+}
+
+/* ── Nav: Hintergrund ist hart dunkel verdrahtet, nicht tokenisiert.
+      Die Nav-Animationen (Hover-Pill, Scramble, Mega-Menue) bleiben
+      unangetastet — hier aendert sich ausschliesslich die Farbe. ── */
+body.theme-light .site-nav {
+  background: rgba(255, 255, 255, 0.82);
+}
+body.theme-light .site-nav.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom-color: rgba(10, 37, 64, 0.14);
+  box-shadow: 0 4px 24px rgba(10, 37, 64, 0.08);
+}
+
+/* ── Kundenlogos: werden per brightness(0) invert(1) auf REINWEISS
+      gezwungen und waeren auf weissem Grund komplett unsichtbar.
+      brightness(0) allein macht sie schwarz. ── */
+body.theme-light .client-logo-img,
+body.theme-light .hero-clients-logos img,
+body.theme-light .client-logo img {
+  filter: brightness(0);
+  opacity: 0.55;
+}
+body.theme-light .client-logo-img:hover,
+body.theme-light .client-logo:hover img {
+  filter: brightness(0);
+  opacity: 0.85;
+}
+
+/* ── Noise: schwarzes Rauschen bei 50% liest sich auf Weiss als
+      sichtbarer Dreck. Deutlich zurueckdrehen. ── */
+body.theme-light .noise-overlay {
+  opacity: 0.12;
+}
+
+/* ── Cursor-Glow: der pinke Schimmer wird auf Weiss zum grauen
+      Schmierfleck. Sehr dezentes Blau stattdessen. ── */
+body.theme-light #cursor-glow {
+  background: radial-gradient(circle, rgba(27, 79, 145, 0.045) 0%, transparent 65%);
+}
+
+/* ── Preloader: liegt vor der weissen Seite, deshalb hell.
+      Das Grid war pink bei 4% und waere unsichtbar. ── */
+body.theme-light .preloader-grid {
+  background-image:
+    linear-gradient(rgba(10, 37, 64, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 37, 64, 0.05) 1px, transparent 1px);
+}
+
+/* ── Karten: auf Weiss braucht es eine sichtbare Kante und einen
+      echten Schatten statt eines Glows. ── */
+body.theme-light .card {
+  background: #FFFFFF;
+  border-color: var(--line);
+  box-shadow: 0 1px 2px rgba(10, 37, 64, 0.04);
+}
+body.theme-light .card:hover {
+  border-color: rgba(27, 79, 145, 0.35);
+  box-shadow: 0 8px 24px -6px rgba(10, 37, 64, 0.12);
+}
+
+/* ── Sekundaerer Button: heller Rahmen wird zu dunklem Rahmen ── */
+body.theme-light .btn-secondary {
+  background: transparent;
+  border-color: var(--line-strong);
+  color: #0A2540;
+}
+body.theme-light .btn-secondary:hover {
+  border-color: rgba(27, 79, 145, 0.45);
+  background: rgba(27, 79, 145, 0.04);
+}
+
+/* ── Nav-Hover-Pill: Pink ist hier hart kodiert, laeuft nicht ueber
+      --pink. Die Bewegung selbst bleibt unveraendert, nur die
+      Farbe wechselt. ── */
+body.theme-light .nav-hover-pill {
+  background: rgba(27, 79, 145, 0.07);
+  border-color: rgba(27, 79, 145, 0.16);
+}
+
+/* ── Tag-Pillen: ebenfalls hart kodierter Pink-Rand ── */
+body.theme-light .tag {
+  border-color: rgba(27, 79, 145, 0.22);
+}
+
+/* ── Mega-Menue: schwerer Schwarzschatten plus pinker Rand-Glow.
+      Auf Weiss braucht es einen weichen Schatten und eine echte
+      Kante, damit das Panel ueberhaupt abhebt. ── */
+body.theme-light .mega-menu {
+  background: #FFFFFF;
+  box-shadow: 0 16px 48px -12px rgba(10, 37, 64, 0.18),
+              0 0 0 1px rgba(10, 37, 64, 0.06);
+}
+
+/* ── Google-Maps-Iframe ist fuer Dunkel invertiert. Auf Hell muss
+      die Inversion raus, sonst wird die Karte neon. ── */
+body.theme-light iframe[src*="google.com/maps"] {
+  filter: grayscale(0.4);
+}
+

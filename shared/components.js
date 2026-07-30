@@ -20,12 +20,20 @@
 
   function getBase() { return getRootPath(); }
 
+  // Das Marineblau-Logo hat auf dem dunklen Hintergrund der uebrigen
+  // Seiten nur ~2,4:1 Kontrast und waere dort kaum zu erkennen.
+  // Deshalb pro Theme die passende Datei.
+  function getLogo(b) {
+    const light = document.body && document.body.classList.contains('theme-light');
+    return b + (light ? 'assets/logo-full-navy.png' : 'assets/logo-full.png');
+  }
+
   function buildNav(b) {
     return `
 <nav class="site-nav" id="site-nav">
   <div class="nav-inner">
     <a href="${b}" class="nav-logo">
-      <img src="${b}assets/logo-full.png" alt="Nuroy" class="nav-logo-img">
+      <img src="${getLogo(b)}" alt="Nuroy" class="nav-logo-img">
     </a>
     <ul class="nav-links" id="nav-links">
       <li><div class="nav-link-wrap"><span class="nav-link-num">01</span><a href="${b}arbeiten" data-text="Arbeiten">Arbeiten</a></div></li>
@@ -154,7 +162,7 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <a href="${b}" class="footer-logo">
-        <img src="${b}assets/logo-full.png" alt="Nuroy" class="nav-logo-img">
+        <img src="${getLogo(b)}" alt="Nuroy" class="nav-logo-img">
       </a>
       <p class="footer-tagline">Die Technik-Abteilung für Unternehmen, die bauen wollen, statt zu verwalten.</p>
       <p class="t-mono c-dim">Paphos, Zypern — Remote-First DACH</p>
@@ -216,10 +224,14 @@
   }
 
   const base = getBase();
-  const NAV_HTML = buildNav(base);
-  const FOOTER_HTML = buildFooter(base);
 
   function inject() {
+    // Erst hier bauen, nicht beim Skript-Laden: getLogo() liest die
+    // Theme-Klasse vom <body>, der zum Auswertungszeitpunkt noch
+    // nicht existieren muss.
+    const NAV_HTML = buildNav(base);
+    const FOOTER_HTML = buildFooter(base);
+
     // Inject nav
     const navEl = document.getElementById('nav-mount');
     if (navEl) {
