@@ -3296,183 +3296,51 @@ h1, h2, h3,
 }
 
 /* ═══════════════════════════════════════════════════════════
-   Startseite, Kopfbereich.
-   Drei Abschnitte, die den Besucher abholen, bevor Belege kommen:
-   wer wir sind, wo es kostet, was sich aendert. Die Beweisfuehrung
-   mit Studienapparat steht auf den Leistungsseiten, nicht hier.
+   Startseite, Abschnitte 2 bis 4: mittige Kopfzone und Bilder.
+   Vorher waren es die einzigen Inhaltsbloecke ohne jedes Visual,
+   der Text klebte links im 1280er Container.
    ═══════════════════════════════════════════════════════════ */
-
-/* ── Wer wir sind ── */
-.pos-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  margin-top: 44px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  overflow: hidden;
+.sek-kopf {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
 }
-.pos-card {
-  background: #FFFFFF;
-  padding: 28px 26px;
-}
-.pos-nein {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 17px;
-  font-weight: 800;
-  letter-spacing: -.02em;
-  color: #0A2540;
-}
-.pos-nein::before {
-  content: '';
-  display: inline-block;
-  width: 14px;
-  height: 2px;
-  margin-right: 10px;
-  vertical-align: middle;
-  background: var(--pink);
-}
-.pos-txt {
-  margin-top: 12px;
-  font-size: 14.5px;
-  line-height: 1.7;
-  color: var(--fg-muted);
-}
-.pos-zeit {
-  margin-top: 32px;
-  max-width: 680px;
-  padding-left: 18px;
-  border-left: 3px solid var(--pink);
-  font-size: 15.5px;
-  line-height: 1.8;
-  color: var(--fg-muted);
-}
-
-/* ── Wo es kostet ── */
-.schmerz-section { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.schmerz-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: clamp(16px, 2vw, 24px);
-  margin-top: 44px;
-}
-.schmerz-card {
-  background: #FFFFFF;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 28px 26px;
-  transition: border-color .3s, transform .3s;
-}
-.schmerz-card:hover { border-color: rgba(var(--pink-rgb), .35); transform: translateY(-2px); }
-.schmerz-nr {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: .12em;
-  color: var(--pink);
-}
-.schmerz-kopf {
-  margin-top: 12px;
-  font-family: var(--font-display);
-  font-size: clamp(17px, 1.9vw, 21px);
-  font-weight: 800;
-  letter-spacing: -.02em;
-  line-height: 1.3;
-  color: #0A2540;
-}
-.schmerz-txt {
-  margin-top: 10px;
-  font-size: 15px;
-  line-height: 1.75;
-  color: var(--fg-muted);
-}
-.schmerz-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 28px;
-  font-size: 15px;
-  color: var(--pink);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(var(--pink-rgb), .3);
-  padding-bottom: 3px;
-  transition: border-color .25s, gap .25s;
-}
-.schmerz-link:hover { border-bottom-color: var(--pink); gap: 12px; }
-
-/* ── Was sich aendert ── */
-.wandel-liste {
-  margin-top: 40px;
-  border-top: 1px solid var(--line);
-}
-.wandel-zeile {
-  display: grid;
-  grid-template-columns: minmax(180px, 260px) 28px 1fr;
-  gap: 16px;
-  align-items: baseline;
-  padding: 22px 0;
-  border-bottom: 1px solid var(--line);
-}
-.wandel-vorher {
-  font-size: 14.5px;
-  line-height: 1.6;
-  color: var(--fg-dim);
-  text-decoration: line-through;
-  text-decoration-color: rgba(var(--pink-rgb), .45);
-  text-decoration-thickness: 1px;
-}
-.wandel-pfeil { color: var(--pink); font-size: 16px; }
-.wandel-nachher {
-  font-size: 15.5px;
-  line-height: 1.7;
-  color: var(--fg);
-  font-weight: 500;
-}
-
-@media (max-width: 900px) {
-  .pos-grid { grid-template-columns: 1fr; }
-  .schmerz-grid { grid-template-columns: 1fr; }
-  .wandel-zeile { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
-  .wandel-pfeil { display: none; }
-  .wandel-vorher { font-size: 13.5px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .schmerz-card { transition: none; }
-  .schmerz-card:hover { transform: none; }
-}
-
-/* Beleghinweis unter den Schmerzpunkten. Die vollstaendigen Quellen stehen
-   bei der jeweiligen Leistung, hier reicht der Verweis. */
-.schmerz-quelle {
-  margin-top: 20px;
-  max-width: 620px;
-  font-size: 13px;
-  line-height: 1.7;
-  color: var(--fg-dim);
-}
-.schmerz-quelle a { color: var(--fg-muted); }
-
-/* ═══════════════════════════════════════════════════════════
-   Startseite: Marktlage und die drei Ebenen.
-   Ersetzt die frueheren Bloecke, in denen dieselben vier
-   Punkte als Schmerz, als Wandel und als Leistung dreimal
-   auftauchten.
-   ═══════════════════════════════════════════════════════════ */
-.jetzt-text {
-  margin-top: 22px;
-  max-width: 680px;
-}
-.jetzt-text p {
+.sek-kopf .t-h2 { margin-top: 10px; }
+.sek-kopf-text {
+  margin-top: 16px;
   font-size: 16.5px;
   line-height: 1.8;
   color: var(--fg-muted);
 }
-.jetzt-text p + p { margin-top: 16px; }
+
+/* ── Warum jetzt: Bild links, Inhalt rechts ── */
+.jetzt-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(24px, 3.4vw, 52px);
+  align-items: center;
+  margin-top: clamp(36px, 4vw, 56px);
+}
+.jetzt-bild { margin: 0; }
+.jetzt-bild img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 11;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  box-shadow: 0 28px 60px -30px rgba(10, 37, 64, .35);
+}
+.jetzt-absatz {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--fg-muted);
+}
+.jetzt-absatz + .jetzt-absatz { margin-top: 14px; }
 .jetzt-anspruch {
-  margin-top: 34px;
-  max-width: 680px;
-  padding: 24px 26px;
+  margin-top: 26px;
+  padding: 22px 24px;
   border: 1px solid var(--line);
   border-left: 3px solid var(--pink);
   border-radius: 12px;
@@ -3489,32 +3357,46 @@ h1, h2, h3,
 .jetzt-anspruch-text {
   margin-top: 10px;
   font-family: var(--font-display);
-  font-size: clamp(17px, 2vw, 22px);
+  font-size: clamp(16px, 1.7vw, 20px);
   font-weight: 800;
   letter-spacing: -.02em;
-  line-height: 1.4;
+  line-height: 1.45;
   color: var(--fg);
 }
 
-/* ── Die drei Ebenen ── */
+/* ── Drei Ebenen: Karte mit Bild oben ── */
 .ebenen-section { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .ebenen-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(14px, 1.8vw, 22px);
-  margin-top: 44px;
+  gap: clamp(16px, 2vw, 24px);
+  margin-top: clamp(36px, 4vw, 52px);
 }
 .ebene {
   background: #FFFFFF;
   border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 28px 26px;
+  border-radius: 14px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 .ebene-hl {
   border-color: rgba(var(--pink-rgb), .4);
-  box-shadow: 0 22px 50px -30px rgba(10, 37, 64, .35);
+  box-shadow: 0 26px 56px -32px rgba(10, 37, 64, .4);
+}
+.ebene-bild { margin: 0; }
+.ebene-bild img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.ebene-text {
+  padding: 24px 24px 26px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 .ebene-nr {
   font-family: var(--font-mono);
@@ -3525,16 +3407,16 @@ h1, h2, h3,
 }
 .ebene-hl .ebene-nr { color: var(--pink); }
 .ebene-kopf {
-  margin-top: 10px;
+  margin-top: 8px;
   font-family: var(--font-display);
-  font-size: clamp(19px, 2.2vw, 24px);
+  font-size: clamp(19px, 2.1vw, 23px);
   font-weight: 800;
   letter-spacing: -.02em;
   color: #0A2540;
 }
 .ebene-txt {
-  margin-top: 12px;
-  font-size: 15px;
+  margin-top: 10px;
+  font-size: 14.5px;
   line-height: 1.75;
   color: var(--fg-muted);
   flex: 1;
@@ -3550,6 +3432,76 @@ h1, h2, h3,
 }
 .ebene-hl .ebene-stand { color: var(--pink); }
 
-@media (max-width: 900px) {
+/* ── Vorher / Nachher: Bild links, Liste rechts ── */
+.wandel-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+  gap: clamp(24px, 3.4vw, 52px);
+  align-items: start;
+  margin-top: clamp(36px, 4vw, 52px);
+}
+.wandel-bild { margin: 0; position: sticky; top: calc(var(--nav-h) + 28px); }
+.wandel-bild img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  box-shadow: 0 26px 56px -30px rgba(10, 37, 64, .32);
+}
+.wandel-bild figcaption {
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--fg-dim);
+}
+.wandel-liste { border-top: 1px solid var(--line); }
+.wandel-zeile {
+  display: grid;
+  gap: 8px;
+  padding: 20px 0 20px 22px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.wandel-zeile::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 26px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--pink);
+}
+.wandel-vorher {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--fg-dim);
+}
+.wandel-nachher {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--fg);
+  font-weight: 500;
+}
+.wandel-nachher::before {
+  content: '→ ';
+  color: var(--pink);
+  font-weight: 400;
+}
+.schmerz-quelle {
+  margin-top: 26px;
+  max-width: 660px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--fg-dim);
+}
+.schmerz-quelle a { color: var(--fg-muted); }
+
+@media (max-width: 980px) {
+  .jetzt-layout { grid-template-columns: 1fr; }
+  .wandel-layout { grid-template-columns: 1fr; }
+  .wandel-bild { position: static; max-width: 460px; }
   .ebenen-grid { grid-template-columns: 1fr; }
+  .ebene-bild img { aspect-ratio: 21 / 9; }
 }
