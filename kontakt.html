@@ -248,6 +248,12 @@
       alert('Bitte fülle alle Pflichtfelder aus.');
       return;
     }
+    // Tippfehler in der Adresse kosten uns sonst den Kontakt, ohne dass
+    // es jemandem auffaellt: die Nachricht kommt an, die Antwort nie.
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+      alert('Die E-Mail-Adresse sieht nicht richtig aus. Bitte prüf sie kurz.');
+      return;
+    }
 
     const btn = document.getElementById('submit-btn');
     btn.textContent = 'Wird gesendet…';
@@ -261,6 +267,9 @@
           access_key: '74d2105c-8e01-4666-8eb4-f48b370b4caa',
           subject: 'Neuer Interessent über Webseite',
           from_name: 'Nuroy Webseite',
+          // Ohne replyto geht die Antwort an Web3Forms statt an den
+          // Interessenten. So kann man direkt auf die Mail antworten.
+          replyto: email,
           name: name,
           Unternehmen: company || '—',
           email: email,

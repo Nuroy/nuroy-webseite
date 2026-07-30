@@ -3267,3 +3267,30 @@ h1, h2, h3,
   color: var(--fg);
   margin-bottom: 10px;
 }
+
+/* ═══════════════════════════════════════════════════════════
+   Fotos im Leistungs-Hero.
+   services-styles.css setzt fuer .service-vsl-wrapper img ein
+   object-fit:contain, weil der Rahmen urspruenglich ein Video
+   im Format 16:9 aufnahm. Ein Foto im Format 16:10 schwimmt
+   darin mit Balken. Hoehere Spezifitaet, damit das Foto den
+   Rahmen wirklich fuellt.
+   ═══════════════════════════════════════════════════════════ */
+.service-vsl-wrapper img.service-hero-photo {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
+  object-position: center 55%;
+  border-radius: 12px;
+  border: 0;
+  background: transparent;
+}
+
+/* Karten mit seitlicher Einblendung stehen vor der Animation 40px weiter
+   rechts und schieben das Dokument dadurch um wenige Pixel auf. clip statt
+   hidden, damit position:sticky im selben Baum weiter funktioniert. */
+.leistung-cards,
+.why-grid {
+  overflow-x: clip;
+}

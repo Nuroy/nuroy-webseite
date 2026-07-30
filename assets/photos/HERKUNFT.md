@@ -111,3 +111,33 @@ Bilddrittel mit 94 bis 119 von 255 zu dunkel für die Textauflage.
 Bewusst beibehalten, weil das Bild die Zielumgebung realistisch zeigt.
 Falls das Emblem stören sollte, muss der Ersatz im oberen Drittel über
 150 liegen, sonst wird die Bandüberschrift unlesbar.
+
+## Ergänzt: themengenaue Motive für die Leistungsseiten
+
+Die ersten Hero-Bilder zeigten durchweg Verkaufsgespräche, unabhängig vom
+Thema der Seite. Auf der Telefon-Seite stand also ein Beratungsfoto. Ersetzt
+durch Motive, die den jeweiligen Punkt zeigen. Alle von Unsplash, freie Lizenz.
+
+| Datei | Unsplash-ID | Motiv | Verwendung |
+|---|---|---|---|
+| `hero-telefon-assistent-*` | `1587560699334-bea93391dcef` | Tischtelefon im Büro | Hero Telefon-Assistent |
+| `hero-lead-response-*` | `1526045612212-70caf35c14df` | Nachricht auf dem Smartphone | Hero Lead-Response |
+| `hero-cockpit-*` | `1551288049-bebda4e38f71` | Auswertungen auf einem Laptop | Hero Inhaber-Cockpit |
+| `hero-aftersales-*` | `1727893512947-8bdc773ceb02` | Schlüsselübergabe | Hero Aftersales |
+| `foto-telefon2-*` | `1707388865290-8ac993cae951` | Arbeitsplatz mit Bildschirm und Telefon | Bildpaare |
+| `foto-schluessel-*` | `1761014586544-53fe5e1f1e25` | Schlüsselübergabe | Bildpaare |
+| `foto-auswertung-*` | `1526628953301-3e589a6a8b74` | Kennzahlen auf einem Monitor | Bildpaare |
+| `foto-hof-*` | `1574023278969-abb7ab49945c` | Fahrzeuge auf dem Hof | Bildpaare |
+| `foto-inserat-*` | `1560305527-51dc8ad5a8f8` | Fahrzeugsuche auf dem Smartphone | Bildpaare |
+| `foto-halle-*` | `1596986952526-3be237187071` | Fahrzeug in der Werkstatthalle | Bildpaar Werkstatt |
+| `band-service-*` | `1596986952526-3be237187071` | dasselbe Motiv im Format 21:9 | Querbänder |
+
+### Zwei Regeln, die beim Austausch gelten
+
+Das Hero sitzt in einem Rahmen im Format 16:9, der ursprünglich ein Video
+aufnahm. Die Fotos liegen in 16:10 vor und werden per `object-fit: cover`
+formatfüllend beschnitten. Ein Bild im Hochformat würde dort stark
+zuschneiden.
+
+Für Querbänder gilt weiterhin: oberes Bilddrittel über 150 von 255, sonst
+wird die dunkelblaue Bandüberschrift unlesbar.
