@@ -2902,3 +2902,87 @@ h1, h2, h3,
   line-height: 1.6;
   color: var(--fg-dim);
 }
+
+/* ═══════════════════════════════════════════════════════════
+   Vergleichstabelle.
+   Lag vollstaendig inline in leistungen.html, nur drei Teilregeln
+   standen hier. Dadurch rendert jede andere Seite, die sie nutzt,
+   als nackte Textliste. Deshalb hier zentral, mit der mobilen
+   Umschaltung auf gestapelte Karten.
+   ═══════════════════════════════════════════════════════════ */
+.compare-table {
+  margin-top: 56px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.ct-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background: var(--bg-3);
+  border-bottom: 1px solid var(--line);
+}
+.ct-hcell {
+  padding: 18px 24px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+.ct-hcell:first-child { color: var(--fg-muted); }
+.ct-hcell.hl {
+  color: var(--pink);
+  background: rgba(var(--pink-rgb), 0.04);
+}
+.ct-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 1px solid var(--line);
+  transition: background .25s;
+}
+.ct-row:last-child { border-bottom: none; }
+.ct-row:hover { background: var(--bg-3); }
+.ct-cell {
+  padding: 16px 24px;
+  font-size: 14px;
+  color: var(--fg-muted);
+}
+.ct-cell:first-child { font-weight: 500; color: var(--fg); }
+.ct-cell.good { color: var(--ok); }
+.ct-cell.pink { background: rgba(var(--pink-rgb), 0.03); }
+.ct-mobile-label { display: none; }
+
+@media (max-width: 900px) {
+  .ct-head { display: none; }
+  .ct-row {
+    grid-template-columns: 1fr;
+    padding: 20px 24px;
+    gap: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .ct-row:last-child { border-bottom: none; }
+  .ct-cell { padding: 0; display: block; }
+  .ct-cell:first-child {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--pink);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .ct-mobile-label {
+    display: inline;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+    margin-right: 6px;
+  }
+  .ct-cell.bad, .ct-cell.pink { background: transparent; font-size: 13px; }
+}
+@media (max-width: 600px) {
+  .ct-row { padding: 16px 20px; }
+}
