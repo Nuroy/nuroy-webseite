@@ -7,8 +7,8 @@
 /* Override for funnel page */
 .funnel-page {
   --nav-h: 0; /* No main nav, uses own header */
-  background: #FAFAF7; /* Light background for funnel */
-  color: #1A1A1A;
+  background: var(--bg); /* Light background for funnel */
+  color: var(--fg);
 }
 
 /* ══════════════════════════════════════════════════════════ */
@@ -38,7 +38,7 @@
 
 /* Animierte Pfade - Pink Branding */
 .background-paths path {
-  stroke: #FF2D7A;
+  stroke: var(--pink);
   fill: none;
   stroke-width: 1px;
   vector-effect: non-scaling-stroke;
@@ -134,7 +134,7 @@
   justify-content: center;
   text-align: center;
   padding: 120px var(--pad-x) 80px;
-  background: linear-gradient(135deg, #FAFAF7 0%, #F4F4F0 100%);
+  background: linear-gradient(135deg, var(--bg) 0%, var(--bg-2) 100%);
 
   /* 3D Perspective für Scroll-Animation */
   perspective: 1200px;
@@ -170,13 +170,13 @@
   letter-spacing: -0.03em;
   line-height: 1.0;
   margin-bottom: 80px; /* Erhöht von 16px für besseren Abstand zum Video */
-  color: #1A1A1A;
+  color: var(--fg);
   white-space: pre-line;
 }
 
 .funnel-hero-subline {
   font-size: clamp(18px, 1.5vw, 22px);
-  color: #6B6B66;
+  color: var(--fg-muted);
   margin-bottom: 48px;
   max-width: 600px;
   margin-left: auto;
@@ -191,7 +191,7 @@
   margin: 0 auto 32px;
 
   /* MacBook-Frame-Styling */
-  background: var(--bg-2);              /* Dunkler Bezel (#121216) */
+  background: var(--bg-2);              /* Dunkler Bezel (var(--bg-2)) */
   border: 1px solid var(--line-strong); /* Subtile Rahmen-Linie */
   border-radius: 16px;                  /* MacBook-ähnliche Rundung */
   padding: 4px;                         /* Bezel-Dicke (Rahmen um Video) */
@@ -199,7 +199,7 @@
   /* Dual-Shadow: Tiefe + Rosa Glow (Dashboard-Matching) */
   box-shadow:
     0 40px 120px rgba(0,0,0,0.6),          /* Tiefenschatten (3D-Effekt) */
-    0 0 100px rgba(255, 45, 122, 0.3);     /* Rosa Glow (Dashboard-Matching, 30% opacity) */
+    0 0 100px rgba(var(--pink-rgb), 0.3);     /* Rosa Glow (Dashboard-Matching, 30% opacity) */
 
   /* 3D Transform Settings für Scroll-Animation */
   transform-style: preserve-3d;
@@ -221,11 +221,11 @@
   border-radius: 12px;     /* Video-Ecken innerhalb des Frames */
   overflow: hidden;
   display: block;
-  background: #000;        /* Schwarzer Hintergrund für Letterboxing */
+  background: var(--bg);        /* Schwarzer Hintergrund für Letterboxing */
 }
 
 .funnel-vsl-wrapper lite-youtube {
-  background-color: #000;
+  background-color: var(--fg);
   position: relative;
   display: block;
   contain: content;
@@ -240,7 +240,7 @@
   display: flex;
   align-items: center;
   padding: 12px 16px;
-  background: var(--bg-3);              /* Etwas heller als Frame (#1C1C22) */
+  background: var(--bg-3);              /* Etwas heller als Frame (var(--bg-3)) */
   border-bottom: 1px solid var(--line); /* Separierungslinie */
   border-radius: 16px 16px 0 0;         /* Nur oben abgerundet */
 }
@@ -314,8 +314,8 @@
   /* Gradient Background mit Transparenz für Glaseffekt */
   background: linear-gradient(
     135deg,
-    rgba(255, 45, 122, 0.95) 0%,
-    rgba(208, 31, 94, 0.9) 100%
+    rgba(var(--pink-rgb), 0.95) 0%,
+    rgba(var(--pink-deep-rgb), 0.9) 100%
   );
   color: white;
 
@@ -329,7 +329,7 @@
   /* Triple Shadow: Depth + Pink Glow + Inner Shine */
   box-shadow:
     0 4px 16px rgba(0, 0, 0, 0.15),                /* Depth shadow */
-    0 0 24px rgba(255, 45, 122, 0.3),              /* Pink glow */
+    0 0 24px rgba(var(--pink-rgb), 0.3),              /* Pink glow */
     inset 0 1px 0 rgba(255, 255, 255, 0.25),       /* Top shine */
     inset 0 -1px 0 rgba(0, 0, 0, 0.15);            /* Bottom shadow */
 
@@ -340,8 +340,8 @@
 .btn-primary:hover {
   background: linear-gradient(
     135deg,
-    rgba(255, 45, 122, 1) 0%,
-    rgba(208, 31, 94, 0.95) 100%
+    rgba(var(--pink-rgb), 1) 0%,
+    rgba(var(--pink-deep-rgb), 0.95) 100%
   );
 
   /* Enhanced Glass on Hover */
@@ -354,7 +354,7 @@
   /* Stronger Glow */
   box-shadow:
     0 8px 24px rgba(0, 0, 0, 0.2),
-    0 0 48px rgba(255, 45, 122, 0.6),              /* Intensiver glow */
+    0 0 48px rgba(var(--pink-rgb), 0.6),              /* Intensiver glow */
     inset 0 1px 0 rgba(255, 255, 255, 0.3),
     inset 0 -1px 0 rgba(0, 0, 0, 0.2);
 }
@@ -364,7 +364,7 @@
   transform: translateY(0) scale(0.98);
   box-shadow:
     0 2px 8px rgba(0, 0, 0, 0.2),
-    0 0 20px rgba(255, 45, 122, 0.4),
+    0 0 20px rgba(var(--pink-rgb), 0.4),
     inset 0 2px 4px rgba(0, 0, 0, 0.25);
 
   transition-duration: 0.1s; /* Fast response */
@@ -396,7 +396,7 @@
 .btn-secondary {
   /* Transparent Background für stärkeren Glaseffekt */
   background: rgba(250, 250, 247, 0.08);
-  color: #1A1A1A;
+  color: var(--fg);
 
   /* Stronger Glass Effect (mehr sichtbar bei Transparenz) */
   backdrop-filter: blur(16px) saturate(180%);
@@ -416,8 +416,8 @@
 
 .btn-secondary:hover {
   /* Pink Tint on Hover */
-  background: rgba(255, 45, 122, 0.15);
-  border-color: rgba(255, 45, 122, 0.4);
+  background: rgba(var(--pink-rgb), 0.15);
+  border-color: rgba(var(--pink-rgb), 0.4);
   color: var(--pink);
 
   /* Enhanced Glass */
@@ -429,7 +429,7 @@
   /* Pink Glow */
   box-shadow:
     0 8px 20px rgba(0, 0, 0, 0.15),
-    0 0 36px rgba(255, 45, 122, 0.3),
+    0 0 36px rgba(var(--pink-rgb), 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
@@ -437,7 +437,7 @@
   transform: translateY(0) scale(0.98);
   box-shadow:
     0 2px 8px rgba(0, 0, 0, 0.15),
-    0 0 16px rgba(255, 45, 122, 0.2),
+    0 0 16px rgba(var(--pink-rgb), 0.2),
     inset 0 2px 4px rgba(0, 0, 0, 0.1);
 
   transition-duration: 0.1s;
@@ -454,7 +454,7 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 45, 122, 0.2) 50%,
+    rgba(var(--pink-rgb), 0.2) 50%,
     transparent 100%
   );
   transition: left 0.6s ease;
@@ -473,14 +473,14 @@
   0%, 100% {
     box-shadow:
       0 4px 16px rgba(0, 0, 0, 0.15),
-      0 0 24px rgba(255, 45, 122, 0.3),
+      0 0 24px rgba(var(--pink-rgb), 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.25),
       inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   }
   50% {
     box-shadow:
       0 4px 16px rgba(0, 0, 0, 0.15),
-      0 0 40px rgba(255, 45, 122, 0.5),              /* Stärkerer glow */
+      0 0 40px rgba(var(--pink-rgb), 0.5),              /* Stärkerer glow */
       inset 0 1px 0 rgba(255, 255, 255, 0.3),
       inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   }
@@ -496,7 +496,7 @@
   50% {
     box-shadow:
       0 4px 12px rgba(0, 0, 0, 0.1),
-      0 0 20px rgba(255, 45, 122, 0.2),              /* Subtiler als primary */
+      0 0 20px rgba(var(--pink-rgb), 0.2),              /* Subtiler als primary */
       inset 0 1px 0 rgba(255, 255, 255, 0.15);
   }
 }
@@ -507,7 +507,7 @@
 @supports not (backdrop-filter: blur(10px)) and not (-webkit-backdrop-filter: blur(10px)) {
   .btn-primary {
     /* Solid fallback, kein Glas */
-    background: linear-gradient(135deg, #FF2D7A 0%, #D01F5E 100%);
+    background: linear-gradient(135deg, var(--pink) 0%, var(--pink-deep) 100%);
     border: 2px solid var(--pink);
   }
 
@@ -549,13 +549,13 @@
     background: linear-gradient(135deg, #E61E6A 0%, #B01850 100%);
     box-shadow:
       0 2px 8px rgba(0, 0, 0, 0.2),
-      0 0 20px rgba(255, 45, 122, 0.4),
+      0 0 20px rgba(var(--pink-rgb), 0.4),
       inset 0 2px 6px rgba(0, 0, 0, 0.25);
   }
 
   .btn-secondary:active {
     transform: scale(0.96);
-    background: rgba(255, 45, 122, 0.2);
+    background: rgba(var(--pink-rgb), 0.2);
     border-color: var(--pink);
     box-shadow:
       0 2px 8px rgba(0, 0, 0, 0.15),
@@ -607,7 +607,7 @@
 /* ── Trust Bar Infinite Carousel (Inverted Minimal - Nuroy Design System Match) ─── */
 .funnel-trust-bar {
   padding: 60px var(--pad-x);
-  background: #121216; /* Matches --bg-2 from design system */
+  background: var(--bg-2); /* Matches --bg-2 from design system */
   text-align: center;
   overflow: hidden;
   position: relative;
@@ -694,7 +694,7 @@
 .funnel-trust-track img:hover {
   opacity: 0.85;
   transform: scale(1.05);
-  filter: brightness(0) invert(1) drop-shadow(0 0 20px rgba(255, 45, 122, 0.3));
+  filter: brightness(0) invert(1) drop-shadow(0 0 20px rgba(var(--pink-rgb), 0.3));
 }
 
 @keyframes trust-scroll {
@@ -784,12 +784,12 @@
 
 /* Dashboard Showcase Section - Dark Background */
 .funnel-section.dashboard-showcase {
-  background: #0A0A0C;
+  background: var(--bg);
 }
 
 .dashboard-showcase .funnel-section-headline,
 .dashboard-showcase .funnel-solution-subline {
-  color: #fafaf7;
+  color: var(--fg);
 }
 
 .funnel-section .container {
@@ -805,7 +805,7 @@
   line-height: 1.1;
   text-align: center;
   margin-bottom: 48px;
-  color: #1A1A1A;
+  color: var(--fg);
 }
 
 /* ── Problem Section ───────────────────────────────────── */
@@ -822,8 +822,8 @@
 
 .funnel-problem-card {
   padding: 32px;
-  background: #FAFAF7;
-  border: 1px solid #E8E8E0;
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
   border-radius: 12px;
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -847,26 +847,26 @@
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 12px;
-  color: #FF2D7A !important;
+  color: var(--pink) !important;
 }
 
 .funnel-problem-card p {
   font-size: 16px;
-  color: #6B6B66;
+  color: var(--fg-muted);
   line-height: 1.6;
 }
 
 .funnel-problem-closing {
   text-align: center;
   font-size: 20px;
-  color: #1A1A1A;
+  color: var(--fg);
   font-weight: 600;
   margin-top: 32px;
 }
 
 /* ── Solution Section ──────────────────────────────────── */
 .funnel-solution {
-  background: #000000;
+  background: var(--bg);
   color: white;
   position: relative;
   min-height: 600px;
@@ -920,7 +920,7 @@
 
 /* Dashboard Cards */
 .dashboard-card {
-  background: rgba(26, 26, 26, 0.8);
+  background: rgba(var(--bg-3-rgb), 0.8);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
@@ -940,8 +940,8 @@
 
 .dashboard-card:hover {
   transform: translateX(-8px);
-  border-color: rgba(255, 45, 122, 0.3);
-  box-shadow: 0 8px 32px rgba(255, 45, 122, 0.15);
+  border-color: rgba(var(--pink-rgb), 0.3);
+  box-shadow: 0 8px 32px rgba(var(--pink-rgb), 0.15);
 }
 
 .dashboard-card-icon {
@@ -957,8 +957,8 @@
 }
 
 .dashboard-card-icon.pink {
-  background: rgba(255, 45, 122, 0.15);
-  color: #FF2D7A;
+  background: rgba(var(--pink-rgb), 0.15);
+  color: var(--pink);
 }
 
 .dashboard-card-icon svg {
@@ -1008,7 +1008,7 @@
   font-family: var(--font-display);
   font-size: 36px;
   font-weight: 900;
-  color: #FF2D7A;
+  color: var(--pink);
   line-height: 1;
   letter-spacing: -0.02em;
   display: block;
@@ -1018,11 +1018,11 @@
 @keyframes numberPulse {
   0%, 100% {
     transform: scale(1);
-    text-shadow: 0 0 20px rgba(255, 45, 122, 0.3);
+    text-shadow: 0 0 20px rgba(var(--pink-rgb), 0.3);
   }
   50% {
     transform: scale(1.05);
-    text-shadow: 0 0 30px rgba(255, 45, 122, 0.5);
+    text-shadow: 0 0 30px rgba(var(--pink-rgb), 0.5);
   }
 }
 
@@ -1063,14 +1063,14 @@
 
 /* Unterüberschrift in CPU-Architecture-Sektion lesbar machen */
 .cpu-architecture-section .funnel-solution-subline {
-  color: #6B6B66;  /* Dunkles Grau statt Weiß */
+  color: var(--fg-muted);  /* Dunkles Grau statt Weiß */
   text-shadow: none;  /* Kein Shadow nötig auf hellem Hintergrund */
   font-weight: 500;
 }
 
 /* Headline auch optimieren für Konsistenz */
 .cpu-architecture-section .funnel-section-headline {
-  color: #1A1A1A;  /* Sicherstellen, dass Headline schwarz ist */
+  color: var(--fg);  /* Sicherstellen, dass Headline schwarz ist */
 }
 
 .cpu-viz-container {
@@ -1078,20 +1078,20 @@
   max-width: 900px;
   margin: 60px auto 0;
   padding: 80px 100px;
-  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0c 100%);
-  border: 1px solid rgba(255, 45, 122, 0.3);
+  background: linear-gradient(135deg, var(--bg-3) 0%, var(--bg) 100%);
+  border: 1px solid rgba(var(--pink-rgb), 0.3);
   border-radius: 24px;
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.3),
-    0 0 40px rgba(255, 45, 122, 0.2),
+    0 0 40px rgba(var(--pink-rgb), 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .cpu-architecture-svg {
   width: 100%;
   height: auto;
-  color: rgba(255, 45, 122, 0.5);
-  filter: drop-shadow(0 0 8px rgba(255, 45, 122, 0.3));
+  color: rgba(var(--pink-rgb), 0.5);
+  filter: drop-shadow(0 0 8px rgba(var(--pink-rgb), 0.3));
 }
 
 .cpu-path {
@@ -1226,7 +1226,7 @@
   margin: 48px auto;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 30px 100px rgba(255, 45, 122, 0.3);
+  box-shadow: 0 30px 100px rgba(var(--pink-rgb), 0.3);
   animation: float 6s ease-in-out infinite;
 }
 
@@ -1263,7 +1263,7 @@
 
 .funnel-solution-variant:hover,
 .funnel-solution-variant.active {
-  background: rgba(255, 45, 122, 0.2);
+  background: rgba(var(--pink-rgb), 0.2);
   border-color: var(--pink);
 }
 
@@ -1295,8 +1295,8 @@
 .funnel-feature-card {
   position: relative;
   padding: 32px 24px;
-  background: #FFFFFF;
-  border: 1px solid #E8E8E0;
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
   border-radius: 12px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   animation: fadeInUp 0.6s ease backwards;
@@ -1310,15 +1310,15 @@
   left: 0;
   right: 0;
   height: 0;
-  background: linear-gradient(90deg, #FF2D7A, #D01F5E);
+  background: linear-gradient(90deg, var(--pink), var(--pink-deep));
   transition: height 0.3s ease;
 }
 
 .funnel-feature-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(255, 45, 122, 0.3);
-  box-shadow: 0 12px 40px rgba(255, 45, 122, 0.12);
-  background: #FAFAF7;
+  border-color: rgba(var(--pink-rgb), 0.3);
+  box-shadow: 0 12px 40px rgba(var(--pink-rgb), 0.12);
+  background: var(--bg);
 }
 
 .funnel-feature-card:hover::before {
@@ -1328,7 +1328,7 @@
 .funnel-feature-icon {
   width: 56px;
   height: 56px;
-  background: rgba(255, 45, 122, 0.08);
+  background: rgba(var(--pink-rgb), 0.08);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -1340,18 +1340,18 @@
 .funnel-feature-icon svg {
   width: 28px;
   height: 28px;
-  color: #FF2D7A;
+  color: var(--pink);
 }
 
 .funnel-feature-card:hover .funnel-feature-icon {
   transform: scale(1.1) rotate(5deg);
-  background: rgba(255, 45, 122, 0.15);
+  background: rgba(var(--pink-rgb), 0.15);
 }
 
 .funnel-feature-title {
   font-size: 18px;
   font-weight: 700;
-  color: #1A1A1A;
+  color: var(--fg);
   margin: 0 0 12px 0;
   line-height: 1.3;
 }
@@ -1359,7 +1359,7 @@
 .funnel-feature-description {
   font-size: 15px;
   line-height: 1.6;
-  color: #6B6B66;
+  color: var(--fg-muted);
   margin: 0;
 }
 
@@ -1377,7 +1377,7 @@
 
 /* ── Process Section ───────────────────────────────────── */
 .funnel-process {
-  background: #F4F4F0;
+  background: var(--bg-2);
   overflow: visible;  /* Wichtig: Orbital Cards nicht abschneiden */
 }
 
@@ -1411,7 +1411,7 @@
   font-size: clamp(16px, 2vw, 20px);  /* Responsive Headline */
   font-weight: 700;
   margin-bottom: 8px;
-  color: #1A1A1A;
+  color: var(--fg);
   letter-spacing: 0.02em;
 }
 
@@ -1425,7 +1425,7 @@
 
 .funnel-process-step .details {
   font-size: clamp(12px, 1.4vw, 14px);  /* Responsive */
-  color: #6B6B66;
+  color: var(--fg-muted);
   line-height: 1.5;
 }
 
@@ -1454,8 +1454,8 @@
   flex: 1;
   max-width: 380px;
   min-width: 280px;
-  background: #FAFAF7;
-  border: 1px solid #E8E8E0;
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
   border-radius: 12px;
   overflow: hidden;
 
@@ -1467,7 +1467,7 @@
   /* Dual Shadows: Tiefe + Pink Glow (initial 0) */
   box-shadow:
     0 8px 24px rgba(0, 0, 0, 0.08),
-    0 0 0 rgba(255, 45, 122, 0);
+    0 0 0 rgba(var(--pink-rgb), 0);
 
   transition:
     transform 0.4s cubic-bezier(0.2, 0, 0, 1),
@@ -1494,9 +1494,9 @@
 
   box-shadow:
     0 24px 60px rgba(0, 0, 0, 0.16),
-    0 0 60px rgba(255, 45, 122, 0.35);  /* Starker Pink Glow */
+    0 0 60px rgba(var(--pink-rgb), 0.35);  /* Starker Pink Glow */
 
-  border-color: rgba(255, 45, 122, 0.3);
+  border-color: rgba(var(--pink-rgb), 0.3);
 }
 
 .funnel-testimonial-card:active {
@@ -1561,9 +1561,9 @@
 }
 
 .funnel-faq-item {
-  background: #FAFAF7;
-  border: 1px solid #E8E8E0;
-  border-left: 4px solid rgba(255, 45, 122, 0.3);
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  border-left: 4px solid rgba(var(--pink-rgb), 0.3);
   border-radius: 12px;
   padding: 24px 28px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1571,22 +1571,22 @@
 }
 
 .funnel-faq-item:hover {
-  border-left-color: #FF2D7A;
-  box-shadow: 0 4px 20px rgba(255, 45, 122, 0.08);
-  background: #FFFFFF;
+  border-left-color: var(--pink);
+  box-shadow: 0 4px 20px rgba(var(--pink-rgb), 0.08);
+  background: var(--bg);
 }
 
 .funnel-faq-item[open] {
-  border-left-color: #FF2D7A;
-  background: #FFFFFF;
-  box-shadow: 0 8px 32px rgba(255, 45, 122, 0.12);
+  border-left-color: var(--pink);
+  background: var(--bg);
+  box-shadow: 0 8px 32px rgba(var(--pink-rgb), 0.12);
 }
 
 .funnel-faq-item summary {
   cursor: pointer;
   font-size: 18px;
   font-weight: 600;
-  color: #1A1A1A;
+  color: var(--fg);
   list-style: none;
   display: flex;
   justify-content: space-between;
@@ -1596,7 +1596,7 @@
 }
 
 .funnel-faq-item:hover summary {
-  color: #FF2D7A;
+  color: var(--pink);
 }
 
 .funnel-faq-item summary::-webkit-details-marker {
@@ -1606,7 +1606,7 @@
 .funnel-faq-item summary::after {
   content: '+';
   font-size: 28px;
-  color: #FF2D7A;
+  color: var(--pink);
   font-weight: 300;
   transition: transform 0.3s ease;
   flex-shrink: 0;
@@ -1615,23 +1615,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 45, 122, 0.08);
+  background: rgba(var(--pink-rgb), 0.08);
   border-radius: 8px;
 }
 
 .funnel-faq-item:hover summary::after {
-  background: rgba(255, 45, 122, 0.15);
+  background: rgba(var(--pink-rgb), 0.15);
   transform: scale(1.1);
 }
 
 .funnel-faq-item[open] summary::after {
   transform: rotate(45deg);
-  background: rgba(255, 45, 122, 0.15);
+  background: rgba(var(--pink-rgb), 0.15);
 }
 
 .funnel-faq-item p {
   margin-top: 16px;
-  color: #6B6B66;
+  color: var(--fg-muted);
   line-height: 1.7;
   font-size: 16px;
   padding-right: 40px;
@@ -1662,9 +1662,9 @@
   display: flex;
   gap: 24px;
   padding: 32px;
-  background: #FAFAF7;
-  border: 1px solid #E8E8E0;
-  border-left: 4px solid #6B6B66;
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  border-left: 4px solid var(--fg-muted);
   border-radius: 12px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   animation: fadeInUp 0.6s ease backwards;
@@ -1672,9 +1672,9 @@
 
 .funnel-disqualifier-card:hover {
   transform: translateX(8px);
-  border-left-color: #FF2D7A;
+  border-left-color: var(--pink);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-  background: #FFFFFF;
+  background: var(--bg);
 }
 
 .funnel-disqualifier-icon {
@@ -1692,16 +1692,16 @@
 .funnel-disqualifier-icon svg {
   width: 24px;
   height: 24px;
-  color: #6B6B66;
+  color: var(--fg-muted);
 }
 
 .funnel-disqualifier-card:hover .funnel-disqualifier-icon {
-  background: rgba(255, 45, 122, 0.1);
+  background: rgba(var(--pink-rgb), 0.1);
   transform: scale(1.05) rotate(-5deg);
 }
 
 .funnel-disqualifier-card:hover .funnel-disqualifier-icon svg {
-  color: #FF2D7A;
+  color: var(--pink);
 }
 
 .funnel-disqualifier-content {
@@ -1711,7 +1711,7 @@
 .funnel-disqualifier-title {
   font-size: 20px;
   font-weight: 700;
-  color: #1A1A1A;
+  color: var(--fg);
   margin: 0 0 12px 0;
   line-height: 1.3;
 }
@@ -1719,7 +1719,7 @@
 .funnel-disqualifier-description {
   font-size: 16px;
   line-height: 1.6;
-  color: #6B6B66;
+  color: var(--fg-muted);
   margin: 0;
 }
 
@@ -1766,7 +1766,7 @@
 .booking-progress {
   width: 100%;
   height: 4px;
-  background: #E8E8E0;
+  background: var(--line-strong);
   border-radius: 2px;
   margin-bottom: 40px;
   overflow: hidden;
@@ -1818,14 +1818,14 @@
   font-family: var(--font-display);
   font-size: clamp(24px, 4vw, 32px);
   font-weight: 700;
-  color: #1A1A1A;
+  color: var(--fg);
   margin-bottom: 12px;
   line-height: 1.2;
 }
 
 .booking-step-subtitle {
   font-size: 16px;
-  color: #6B6B66;
+  color: var(--fg-muted);
   margin-bottom: 32px;
   line-height: 1.5;
 }
@@ -1836,7 +1836,7 @@
   max-width: 500px;
   padding: 16px 20px;
   font-size: 18px;
-  border: 2px solid #E8E8E0;
+  border: 2px solid var(--line-strong);
   border-radius: 8px;
   margin-bottom: 24px;
   font-family: var(--font-body);
@@ -1846,7 +1846,7 @@
 .booking-input:focus {
   outline: none;
   border-color: var(--pink);
-  box-shadow: 0 0 0 3px rgba(255, 45, 122, 0.1);
+  box-shadow: 0 0 0 3px rgba(var(--pink-rgb), 0.1);
 }
 
 /* Button Options */
@@ -1863,8 +1863,8 @@
   min-width: 140px;
   max-width: 180px;
   padding: 20px 16px;
-  background: #FAFAF7;
-  border: 2px solid #E8E8E0;
+  background: var(--bg);
+  border: 2px solid var(--line-strong);
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -1877,15 +1877,15 @@
 
 .booking-option:hover {
   border-color: var(--pink);
-  background: #FFF;
+  background: var(--bg);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(255, 45, 122, 0.15);
+  box-shadow: 0 6px 16px rgba(var(--pink-rgb), 0.15);
 }
 
 .booking-option-text {
   font-size: 15px;
   font-weight: 600;
-  color: #1A1A1A;
+  color: var(--fg);
   line-height: 1.3;
   text-align: center;
 }
@@ -1893,7 +1893,7 @@
 .booking-option-text small {
   font-size: 12px;
   font-weight: 400;
-  color: #6B6B66;
+  color: var(--fg-muted);
   display: block;
   margin-top: 2px;
 }
@@ -1909,13 +1909,13 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(255, 45, 122, 0.3);
+  box-shadow: 0 4px 12px rgba(var(--pink-rgb), 0.3);
   font-family: var(--font-body);
 }
 
 .booking-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 45, 122, 0.4);
+  box-shadow: 0 8px 24px rgba(var(--pink-rgb), 0.4);
 }
 
 .booking-btn:active {
@@ -1927,7 +1927,7 @@
   padding: 12px 24px;
   font-size: 16px;
   font-weight: 600;
-  color: #6B6B66;
+  color: var(--fg-muted);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -1942,7 +1942,7 @@
 
 /* Summary Box */
 .booking-summary {
-  background: #F4F4F0;
+  background: var(--bg-2);
   border-radius: 12px;
   padding: 24px;
   margin-bottom: 32px;
@@ -1954,9 +1954,9 @@
 
 .booking-summary-item {
   padding: 12px 0;
-  border-bottom: 1px solid #E8E8E0;
+  border-bottom: 1px solid var(--line-strong);
   font-size: 16px;
-  color: #1A1A1A;
+  color: var(--fg);
 }
 
 .booking-summary-item:last-child {
@@ -1966,7 +1966,7 @@
 .booking-summary-item strong {
   display: inline-block;
   width: 180px;
-  color: #6B6B66;
+  color: var(--fg-muted);
   font-weight: 600;
 }
 
@@ -2114,12 +2114,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #1A1A1A;
+  color: var(--fg);
 }
 
 .funnel-booking-embed p {
   font-size: 16px;
-  color: #6B6B66;
+  color: var(--fg-muted);
 }
 
 .funnel-booking-trust {
@@ -2185,14 +2185,14 @@
 
 .sticky-cta-text {
   font-weight: 600;
-  color: #1A1A1A;
+  color: var(--fg);
   font-size: 16px;
 }
 
 /* ── Minimal Footer ────────────────────────────────────── */
 .funnel-footer {
   padding: 48px var(--pad-x);
-  background: #1A1A1A;
+  background: var(--bg-3);
   color: #FFFFFF;
   border-top: 3px solid var(--pink);
 }
@@ -2269,7 +2269,7 @@
     /* Stärkerer Shadow auf Mobile (Dashboard-Matching) */
     box-shadow:
       0 30px 80px rgba(0,0,0,0.5),
-      0 0 80px rgba(255, 45, 122, 0.25);  /* von 0.12 auf 0.25 erhöht */
+      0 0 80px rgba(var(--pink-rgb), 0.25);  /* von 0.12 auf 0.25 erhöht */
     /* Initial Transform ENTFERNT — wird via JS gesetzt */
   }
 
@@ -2284,7 +2284,7 @@
       /* Verstärkter Pink-Glow für Premium-Look */
       box-shadow:
         0 24px 60px rgba(0,0,0,0.45),
-        0 0 60px rgba(255, 45, 122, 0.28);  /* Stärker als 0.25 */
+        0 0 60px rgba(var(--pink-rgb), 0.28);  /* Stärker als 0.25 */
     }
   }
 
@@ -2421,7 +2421,7 @@
     transform: none !important;
     box-shadow:
       0 12px 32px rgba(0, 0, 0, 0.12),
-      0 0 40px rgba(255, 45, 122, 0.2);
+      0 0 40px rgba(var(--pink-rgb), 0.2);
   }
 
   .funnel-testimonial-card:active {
@@ -2639,13 +2639,13 @@
 .testimonial-modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(15, 15, 15, 0.90);
+  background: rgba(var(--bg-3-rgb), 0.90);
   backdrop-filter: blur(16px) saturate(150%);
   -webkit-backdrop-filter: blur(16px) saturate(150%);
   cursor: pointer;
 
   /* Pink Glow Overlay */
-  box-shadow: inset 0 0 200px rgba(255, 45, 122, 0.15);
+  box-shadow: inset 0 0 200px rgba(var(--pink-rgb), 0.15);
 }
 
 /* Modal Content Container */
@@ -2654,16 +2654,16 @@
   z-index: 1;
   width: 90%;
   max-width: 1000px;
-  background: #000;
+  background: var(--bg);
   border-radius: 24px;
   overflow: hidden;
 
   /* Enhanced Pink Glow Shadow */
   box-shadow:
     0 40px 120px rgba(0, 0, 0, 0.6),
-    0 0 150px rgba(255, 45, 122, 0.4),
-    0 0 80px rgba(255, 45, 122, 0.3),
-    inset 0 0 0 1px rgba(255, 45, 122, 0.2);
+    0 0 150px rgba(var(--pink-rgb), 0.4),
+    0 0 80px rgba(var(--pink-rgb), 0.3),
+    inset 0 0 0 1px rgba(var(--pink-rgb), 0.2);
 
   /* Entry Animation */
   transform: scale(0.9) translateY(20px);
@@ -2685,7 +2685,7 @@
   width: 100%;
   padding: 0;
   margin: 0;
-  background: #000;
+  background: var(--bg);
   line-height: 0;
 }
 
@@ -2787,7 +2787,7 @@ body.modal-open {
   font-family: var(--font-display);
   font-size: 13px;
   font-weight: 600;
-  color: #6B6B66;
+  color: var(--fg-muted);
   text-align: center;
   margin-bottom: 20px;
   opacity: 0.8;
@@ -2826,7 +2826,7 @@ body.modal-open {
   z-index: 10;
   animation: pulse-glow 2s ease-in-out infinite;
   box-shadow:
-    0 0 30px rgba(255, 45, 122, 0.5),
+    0 0 30px rgba(var(--pink-rgb), 0.5),
     0 4px 12px rgba(0, 0, 0, 0.2);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -2845,14 +2845,14 @@ body.modal-open {
 @keyframes pulse-glow {
   0%, 100% {
     box-shadow:
-      0 0 30px rgba(255, 45, 122, 0.5),
-      0 0 50px rgba(255, 45, 122, 0.3),
+      0 0 30px rgba(var(--pink-rgb), 0.5),
+      0 0 50px rgba(var(--pink-rgb), 0.3),
       0 4px 12px rgba(0, 0, 0, 0.2);
   }
   50% {
     box-shadow:
-      0 0 50px rgba(255, 45, 122, 0.7),
-      0 0 90px rgba(255, 45, 122, 0.4),
+      0 0 50px rgba(var(--pink-rgb), 0.7),
+      0 0 90px rgba(var(--pink-rgb), 0.4),
       0 8px 20px rgba(0, 0, 0, 0.3);
   }
 }
@@ -2862,7 +2862,7 @@ body.modal-open {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  border: 3px solid rgba(255, 45, 122, 0.4);
+  border: 3px solid rgba(var(--pink-rgb), 0.4);
   animation: ping-pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
   opacity: 0.7;
 }
@@ -2882,7 +2882,7 @@ body.modal-open {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--bg);
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -2958,7 +2958,7 @@ body.modal-open {
   right: -8px;
   bottom: -8px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 45, 122, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(var(--pink-rgb), 0.15) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -2992,19 +2992,19 @@ body.modal-open {
   position: relative;
   overflow: visible;
   box-shadow:
-    0 4px 12px rgba(255, 45, 122, 0.3),
+    0 4px 12px rgba(var(--pink-rgb), 0.3),
     0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .orbital-node:hover .orbital-node-inner {
-  background: #1A1A1A;
+  background: var(--bg-3);
   border-color: var(--pink);
   border-width: 4px;
   transform: scale(1.15);
   box-shadow:
-    0 8px 24px rgba(255, 45, 122, 0.5),
+    0 8px 24px rgba(var(--pink-rgb), 0.5),
     0 4px 8px rgba(0, 0, 0, 0.2),
-    0 0 40px rgba(255, 45, 122, 0.4);
+    0 0 40px rgba(var(--pink-rgb), 0.4);
 }
 
 .orbital-node.is-active .orbital-node-inner {
@@ -3013,13 +3013,13 @@ body.modal-open {
   border-width: 4px;
   transform: scale(1.25);
   box-shadow:
-    0 12px 32px rgba(255, 45, 122, 0.6),
+    0 12px 32px rgba(var(--pink-rgb), 0.6),
     0 6px 12px rgba(0, 0, 0, 0.3),
-    0 0 60px rgba(255, 45, 122, 0.5);
+    0 0 60px rgba(var(--pink-rgb), 0.5);
 }
 
 .orbital-node.is-related .orbital-node-inner {
-  background: rgba(255, 45, 122, 0.5);
+  background: rgba(var(--pink-rgb), 0.5);
   border-color: var(--pink);
   animation: pulse-node 1s ease-in-out infinite;
 }
@@ -3027,11 +3027,11 @@ body.modal-open {
 @keyframes pulse-node {
   0%, 100% {
     transform: scale(1);
-    box-shadow: 0 4px 12px rgba(255, 45, 122, 0.4);
+    box-shadow: 0 4px 12px rgba(var(--pink-rgb), 0.4);
   }
   50% {
     transform: scale(1.08);
-    box-shadow: 0 6px 18px rgba(255, 45, 122, 0.6);
+    box-shadow: 0 6px 18px rgba(var(--pink-rgb), 0.6);
   }
 }
 
@@ -3046,7 +3046,7 @@ body.modal-open {
 
 .orbital-node:hover .orbital-node-icon {
   color: var(--pink);
-  text-shadow: 0 2px 8px rgba(255, 45, 122, 0.4);
+  text-shadow: 0 2px 8px rgba(var(--pink-rgb), 0.4);
 }
 
 .orbital-node.is-active .orbital-node-icon {
@@ -3067,7 +3067,7 @@ body.modal-open {
   font-family: var(--font-display);
   font-size: 15px;
   font-weight: 700;
-  color: #1A1A1A;
+  color: var(--fg);
   white-space: nowrap;
   transition: all 0.3s ease;
   pointer-events: none;
@@ -3082,14 +3082,14 @@ body.modal-open {
   color: #fff;
   background: var(--pink);
   transform: translateX(-50%) scale(1.1);
-  box-shadow: 0 4px 12px rgba(255, 45, 122, 0.3);
+  box-shadow: 0 4px 12px rgba(var(--pink-rgb), 0.3);
 }
 
 .orbital-node.is-active .orbital-node-label {
   color: #fff;
   background: var(--pink);
   transform: translateX(-50%) scale(1.15);
-  box-shadow: 0 6px 16px rgba(255, 45, 122, 0.4);
+  box-shadow: 0 6px 16px rgba(var(--pink-rgb), 0.4);
 }
 
 /* Node Card (Details) */
@@ -3100,7 +3100,7 @@ body.modal-open {
   transform: translateX(-50%) scale(0.9);
   width: 420px;  /* Erhöht von 280px für bessere Lesbarkeit */
   max-width: 90vw;  /* Responsiv auf kleinen Bildschirmen */
-  background: #fff;
+  background: var(--bg);
   border: 2px solid var(--pink);
   border-radius: 12px;
   padding: 24px;
@@ -3125,7 +3125,7 @@ body.modal-open {
   transform: translateX(-50%);
   width: 1px;
   height: 12px;
-  background: rgba(255, 45, 122, 0.4);
+  background: rgba(var(--pink-rgb), 0.4);
 }
 
 .orbital-card-status {
@@ -3145,7 +3145,7 @@ body.modal-open {
   font-family: var(--font-display);
   font-size: 18px;
   font-weight: 700;
-  color: #1A1A1A;
+  color: var(--fg);
   margin-bottom: 8px;
 }
 
@@ -3159,14 +3159,14 @@ body.modal-open {
 .orbital-card-content {
   font-size: 14px;
   line-height: 1.6;
-  color: #6B6B66;
+  color: var(--fg-muted);
 }
 
 /* Energy Bar */
 .orbital-card-energy {
   margin-top: 16px;
   padding-top: 16px;
-  border-top: 1px solid #E8E8E0;
+  border-top: 1px solid var(--line-strong);
 }
 
 .orbital-card-energy-label {
@@ -3174,14 +3174,14 @@ body.modal-open {
   justify-content: space-between;
   font-size: 11px;
   font-weight: 600;
-  color: #6B6B66;
+  color: var(--fg-muted);
   margin-bottom: 6px;
 }
 
 .orbital-card-energy-bar {
   width: 100%;
   height: 6px;
-  background: #F4F4F0;
+  background: var(--bg-2);
   border-radius: 3px;
   overflow: hidden;
 }
@@ -3353,12 +3353,12 @@ body.modal-open {
 }
 
 .dashboard-flow-section .funnel-section-headline {
-  color: #FF2D7A;
+  color: var(--pink);
   margin-bottom: 32px;  /* Erhöht von 16px für besseren Abstand */
 }
 
 .dashboard-flow-section .funnel-solution-subline {
-  color: #888;
+  color: var(--fg-muted);
   font-size: 1.2rem;
   text-align: center;
   margin-bottom: 60px;
@@ -3373,10 +3373,10 @@ body.modal-open {
   background: rgba(20, 20, 20, 0.8);
   border-radius: 24px;
   overflow: hidden;
-  border: 1px solid rgba(255, 45, 122, 0.15);
+  border: 1px solid rgba(var(--pink-rgb), 0.15);
   box-shadow:
-    0 0 80px rgba(255, 45, 122, 0.2),
-    inset 0 0 100px rgba(255, 45, 122, 0.05);
+    0 0 80px rgba(var(--pink-rgb), 0.2),
+    inset 0 0 100px rgba(var(--pink-rgb), 0.05);
 }
 
 .dashboard-flow-svg {
@@ -3395,13 +3395,13 @@ body.modal-open {
   background: rgba(20, 20, 20, 0.95);
   padding: 24px 48px;
   border-radius: 16px;
-  border: 2px solid #FF2D7A;
+  border: 2px solid var(--pink);
   font-size: 2rem;
   font-weight: 700;
   color: #fff;
   box-shadow:
-    0 0 60px rgba(255, 45, 122, 0.5),
-    inset 0 0 30px rgba(255, 45, 122, 0.1);
+    0 0 60px rgba(var(--pink-rgb), 0.5),
+    inset 0 0 30px rgba(var(--pink-rgb), 0.1);
   z-index: 10;
 }
 
@@ -3415,13 +3415,13 @@ body.modal-open {
 
 /* Animated trace paths (pink, flowing) */
 .path-trace {
-  stroke: #FF2D7A;
+  stroke: var(--pink);
   stroke-width: 3;
   fill: none;
   stroke-linecap: round;
   stroke-dasharray: 15 100;
   stroke-dashoffset: 0;
-  filter: drop-shadow(0 0 8px rgba(255, 45, 122, 0.8));
+  filter: drop-shadow(0 0 8px rgba(var(--pink-rgb), 0.8));
   opacity: 0.9;
 }
 
@@ -3519,17 +3519,17 @@ body.modal-open {
 /* Dim base lines (always visible) */
 .line-base {
   fill: none;
-  stroke: rgba(255, 45, 135, 0.18);
+  stroke: rgba(var(--pink-rgb), 0.18);
   stroke-width: 1.5;
 }
 
 /* Animated pulse dots */
 .pulse {
   fill: none;
-  stroke: #FF2D7A;
+  stroke: var(--pink);
   stroke-width: 3.5;
   stroke-linecap: round;
-  filter: drop-shadow(0 0 5px rgba(255, 45, 135, 0.9));
+  filter: drop-shadow(0 0 5px rgba(var(--pink-rgb), 0.9));
 }
 
 /* Individual pulse animations with staggered delays */
@@ -3552,12 +3552,12 @@ body.modal-open {
 
 /* Agent node styling */
 .agent-outline {
-  fill: #0d0d0d;
-  stroke: #FF2D7A;
+  fill: var(--bg-2);
+  stroke: var(--pink);
   stroke-width: 1.5;
 }
 
 .agent-core {
-  fill: #FF2D7A;
-  filter: drop-shadow(0 0 5px rgba(255, 45, 135, 0.8));
+  fill: var(--pink);
+  filter: drop-shadow(0 0 5px rgba(var(--pink-rgb), 0.8));
 }

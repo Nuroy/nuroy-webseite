@@ -1,18 +1,24 @@
 /* ============================================================
    NUROY — Shared Design System v1.0
-   Brand: Dark-dominant · Pink (#FF2D7A) · Signature Tech
+   Brand: Dark-dominant · Pink (var(--pink)) · Signature Tech
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700;800;900&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
   /* ── Brand Pink ─────────────────────────── */
+  /* --pink-rgb traegt dieselbe Farbe als RGB-Komponenten. Damit
+     lassen sich Alpha-Varianten als rgba(var(--pink-rgb), .3)
+     schreiben und drehen beim Theme-Wechsel automatisch mit. */
+  --pink-rgb:      255, 45, 122;
+  --pink-deep-rgb: 208, 31, 94;
+  --bg-3-rgb:      28, 28, 34;
   --pink:          #FF2D7A;
   --pink-deep:     #D01F5E;
   --pink-soft:     #FFD7E5;
-  --pink-glow:     rgba(255, 45, 122, 0.20);
-  --pink-glow-lg:  rgba(255, 45, 122, 0.40);
-  --pink-bg:       rgba(255, 45, 122, 0.08);
+  --pink-glow:     rgba(var(--pink-rgb), 0.20);
+  --pink-glow-lg:  rgba(var(--pink-rgb), 0.40);
+  --pink-bg:       rgba(var(--pink-rgb), 0.08);
 
   /* ── Backgrounds ────────────────────────── */
   --bg:   #0A0A0C;
@@ -182,7 +188,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .tag--pink {
   background: var(--pink-bg);
   color: var(--pink);
-  border-color: rgba(255, 45, 122, 0.18);
+  border-color: rgba(var(--pink-rgb), 0.18);
 }
 .tag--ok {
   background: rgba(143, 163, 115, 0.1);
@@ -253,7 +259,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   cursor: pointer;
   transition: background 0.25s;
 }
-.nav-link-wrap:hover { background: rgba(255,45,122,0.06); }
+.nav-link-wrap:hover { background: rgba(var(--pink-rgb), 0.06); }
 .nav-link-num {
   font-family: var(--font-mono);
   font-size: 8px;
@@ -285,7 +291,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   width: 0; height: 1px;
   background: var(--pink);
   transition: width 0.3s cubic-bezier(0.2,0,0,1), left 0.3s cubic-bezier(0.2,0,0,1);
-  box-shadow: 0 0 8px rgba(255,45,122,0.6);
+  box-shadow: 0 0 8px rgba(var(--pink-rgb), 0.6);
 }
 .nav-links a:hover::after,
 .nav-links a.active::after { width: 100%; left: 0; }
@@ -300,8 +306,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: absolute;
   top: 50%; transform: translateY(-50%);
   height: 36px;
-  background: rgba(255,45,122,0.06);
-  border: 1px solid rgba(255,45,122,0.14);
+  background: rgba(var(--pink-rgb), 0.06);
+  border: 1px solid rgba(var(--pink-rgb), 0.14);
   border-radius: 8px;
   pointer-events: none;
   opacity: 0;
@@ -422,7 +428,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: fixed;
   width: 600px; height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,45,122,0.05) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(var(--pink-rgb), 0.05) 0%, transparent 65%);
   pointer-events: none;
   z-index: 0;
   transform: translate(-50%, -50%);
@@ -477,7 +483,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   box-shadow: 0 8px 40px rgba(0,0,0,0.3);
 }
 .card--pink:hover {
-  border-color: rgba(255,45,122,0.25);
+  border-color: rgba(var(--pink-rgb), 0.25);
   box-shadow: 0 8px 40px var(--pink-glow);
 }
 
@@ -621,7 +627,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .client-logo-img:hover {
   opacity: 0.9;
   /* Add pink glow on hover */
-  filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(255, 45, 122, 0.4));
+  filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(var(--pink-rgb), 0.4));
   transform: scale(1.05);
 }
 
@@ -748,7 +754,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   z-index: 300;
   transition: border-color 0.2s, background 0.2s;
 }
-.nav-burger:hover { border-color: rgba(255,45,122,0.4); background: var(--pink-bg); }
+.nav-burger:hover { border-color: rgba(var(--pink-rgb), 0.4); background: var(--pink-bg); }
 .nav-burger span {
   display: block;
   width: 100%;
@@ -909,7 +915,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 @keyframes glow-flash {
   0% { text-shadow: 0 0 0 transparent; }
-  50% { text-shadow: 0 0 20px rgba(255, 45, 122, 0.6), 0 0 40px rgba(255, 45, 122, 0.3); }
+  50% { text-shadow: 0 0 20px rgba(var(--pink-rgb), 0.6), 0 0 40px rgba(var(--pink-rgb), 0.3); }
   100% { text-shadow: 0 0 0 transparent; }
 }
 .glow-flash {
@@ -934,7 +940,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     transform-origin: top center;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 8px 40px rgba(255, 45, 122, 0.12), 0 0 60px rgba(255, 45, 122, 0.06);
+    box-shadow: 0 8px 40px rgba(var(--pink-rgb), 0.12), 0 0 60px rgba(var(--pink-rgb), 0.06);
   }
   .hero-headline { font-size: clamp(48px, 14vw, 80px); }
 
@@ -1060,8 +1066,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .service-card-tag { opacity: 1 !important; }
   .proj-card-cta { gap: 8px !important; }
   /* Show ghost numbers always */
-  .service-card::before { -webkit-text-stroke-color: rgba(255,45,122,0.1) !important; }
-  .proj-card-ghost { -webkit-text-stroke-color: rgba(255,45,122,0.08) !important; }
+  .service-card::before { -webkit-text-stroke-color: rgba(var(--pink-rgb), 0.1) !important; }
+  .proj-card-ghost { -webkit-text-stroke-color: rgba(var(--pink-rgb), 0.08) !important; }
   /* Show nav numbers always */
   .nav-link-num { opacity: 1 !important; transform: none !important; }
 }
@@ -1097,8 +1103,8 @@ body.preloader-active > *:not(#nuroy-preloader) { visibility: hidden; }
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 45, 122, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 45, 122, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(var(--pink-rgb), 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--pink-rgb), 0.04) 1px, transparent 1px);
   background-size: 60px 60px;
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -1131,7 +1137,7 @@ body.preloader-active > *:not(#nuroy-preloader) { visibility: hidden; }
 }
 @keyframes dot-glow-pulse {
   0%, 100% { box-shadow: 0 0 20px var(--pink-glow-lg), 0 0 60px var(--pink-glow); }
-  50%      { box-shadow: 0 0 30px var(--pink-glow-lg), 0 0 80px rgba(255, 45, 122, 0.3); }
+  50%      { box-shadow: 0 0 30px var(--pink-glow-lg), 0 0 80px rgba(var(--pink-rgb), 0.3); }
 }
 
 /* ── Dashboard Frame ─────────────────────────────────────── */
@@ -1142,7 +1148,7 @@ body.preloader-active > *:not(#nuroy-preloader) { visibility: hidden; }
   border: 1px solid var(--line-strong);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 45, 122, 0.06);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(var(--pink-rgb), 0.06);
   opacity: 0;
   transform: scale(0.92) translateY(12px);
   transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
@@ -1475,7 +1481,7 @@ body.preloader-active > *:not(#nuroy-preloader) { visibility: hidden; }
   border: 1px solid var(--line-strong);
   border-radius: 12px;
   box-shadow: 0 12px 60px rgba(0,0,0,0.4),
-              0 0 0 1px rgba(255,45,122,0.08);
+              0 0 0 1px rgba(var(--pink-rgb), 0.08);
   opacity: 0;
   pointer-events: none;
   transform: translateX(-50%) translateY(-8px);
@@ -1672,7 +1678,7 @@ body.preloader-active > *:not(#nuroy-preloader) { visibility: hidden; }
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top left, rgba(255,45,122,0.04) 0%, transparent 60%);
+  background: radial-gradient(circle at top left, rgba(var(--pink-rgb), 0.04) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
@@ -1683,7 +1689,7 @@ body.preloader-active > *:not(#nuroy-preloader) { visibility: hidden; }
   transform: translateY(calc(-6px + var(--parallax-y, 0px)));
   box-shadow:
     0 12px 40px rgba(0,0,0,0.2),
-    0 0 40px rgba(255, 45, 122, 0.15);
+    0 0 40px rgba(var(--pink-rgb), 0.15);
 }
 
 .feature-card:hover::before {
@@ -1702,19 +1708,19 @@ body.preloader-active > *:not(#nuroy-preloader) { visibility: hidden; }
 
 .feature-card:hover .feature-icon {
   transform: scale(1.15) rotate(-8deg);
-  filter: drop-shadow(0 0 16px rgba(255, 45, 122, 0.6))
-          drop-shadow(0 0 24px rgba(255, 45, 122, 0.3));
+  filter: drop-shadow(0 0 16px rgba(var(--pink-rgb), 0.6))
+          drop-shadow(0 0 24px rgba(var(--pink-rgb), 0.3));
   animation: icon-pulse 1.2s ease-in-out infinite;
 }
 
 @keyframes icon-pulse {
   0%, 100% {
-    filter: drop-shadow(0 0 16px rgba(255, 45, 122, 0.6))
-            drop-shadow(0 0 24px rgba(255, 45, 122, 0.3));
+    filter: drop-shadow(0 0 16px rgba(var(--pink-rgb), 0.6))
+            drop-shadow(0 0 24px rgba(var(--pink-rgb), 0.3));
   }
   50% {
-    filter: drop-shadow(0 0 20px rgba(255, 45, 122, 0.8))
-            drop-shadow(0 0 32px rgba(255, 45, 122, 0.4));
+    filter: drop-shadow(0 0 20px rgba(var(--pink-rgb), 0.8))
+            drop-shadow(0 0 32px rgba(var(--pink-rgb), 0.4));
   }
 }
 
@@ -1942,7 +1948,7 @@ body.preloader-active > *:not(#nuroy-preloader) { visibility: hidden; }
   color: var(--pink);
   box-shadow:
     0 8px 24px rgba(0,0,0,0.2),
-    0 0 40px rgba(255, 45, 122, 0.3);
+    0 0 40px rgba(var(--pink-rgb), 0.3);
   animation: circle-activate 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 } */
 
@@ -1971,12 +1977,12 @@ body.preloader-active > *:not(#nuroy-preloader) { visibility: hidden; }
   0%, 100% {
     box-shadow:
       0 8px 24px rgba(0,0,0,0.2),
-      0 0 40px rgba(255, 45, 122, 0.3);
+      0 0 40px rgba(var(--pink-rgb), 0.3);
   }
   50% {
     box-shadow:
       0 8px 24px rgba(0,0,0,0.2),
-      0 0 60px rgba(255, 45, 122, 0.6);
+      0 0 60px rgba(var(--pink-rgb), 0.6);
   }
 }
 
@@ -1984,7 +1990,7 @@ body.preloader-active > *:not(#nuroy-preloader) { visibility: hidden; }
   transform: scale(1.1);
   box-shadow:
     0 12px 32px rgba(0,0,0,0.3),
-    0 0 60px rgba(255, 45, 122, 0.4);
+    0 0 60px rgba(var(--pink-rgb), 0.4);
   border-width: 5px;
 } */
 
@@ -2083,7 +2089,7 @@ body.preloader-active > *:not(#nuroy-preloader) { visibility: hidden; }
   inset: -50%;
   background: radial-gradient(
     circle at 50% 50%,
-    rgba(255, 45, 122, 0.03) 0%,
+    rgba(var(--pink-rgb), 0.03) 0%,
     transparent 50%
   );
   animation: gradient-shift 15s ease-in-out infinite;
@@ -2493,6 +2499,9 @@ body.preloader-active > *:not(#nuroy-preloader) { visibility: hidden; }
 
 body.theme-light {
   /* ── Marke: tiefes Marineblau statt Pink ── */
+  --pink-rgb:      27, 79, 145;
+  --pink-deep-rgb: 10, 37, 64;
+  --bg-3-rgb:      238, 243, 249;
   --pink:         #1B4F91;
   --pink-deep:    #0A2540;
   --pink-soft:    #E8EFF7;
@@ -2633,6 +2642,73 @@ body.theme-light .mega-menu {
   background: #FFFFFF;
   box-shadow: 0 16px 48px -12px rgba(10, 37, 64, 0.18),
               0 0 0 1px rgba(10, 37, 64, 0.06);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   LEISTUNGSSEITEN — Reparaturen nach der Farbumstellung
+   --------------------------------------------------------------
+   funnel-styles.css und services-styles.css laufen jetzt ueber die
+   Theme-Variablen. Zwei Faelle brauchen trotzdem eine Entscheidung
+   statt einer mechanischen Zuordnung.
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Die Solution-Sektion war eine dramatische dunkle Flaeche mit
+      Wellen-Animation. Flach weiss wuerde sie ihre Wirkung
+      verlieren — und alle Kindelemente tragen weisse Schrift.
+      Als Navy-Band bleibt beides richtig: Wirkung und Kontrast
+      (weiss auf #0A2540 = 15,5:1). ── */
+body.theme-light .funnel-solution,
+body.theme-light .funnel-solution-variant {
+  background: #0A2540;
+  color: #FFFFFF;
+}
+/* Alles INNERHALB des Navy-Bands traegt weisse Schrift — auch die
+   Kennzahlen, die sonst navy auf navy stuenden. */
+body.theme-light .funnel-solution :is(h2, h3, h4, p, li, span, strong),
+body.theme-light .funnel-solution .funnel-section-headline,
+body.theme-light .funnel-solution .funnel-solution-subline,
+body.theme-light .funnel-solution .benefit-number,
+body.theme-light .funnel-solution .benefit-label {
+  color: #FFFFFF;
+}
+body.theme-light .funnel-solution .benefit-desc,
+body.theme-light .funnel-solution .dashboard-card-desc {
+  color: rgba(255, 255, 255, 0.72);
+}
+body.theme-light .funnel-solution .dashboard-card,
+body.theme-light .funnel-solution .benefit-card {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Dieselbe Klasse wird auch AUSSERHALB des Bands benutzt, dort auf
+   weissem Grund — die braucht dunkle Schrift. */
+body.theme-light .funnel-solution-subline:not(.funnel-solution *) {
+  color: var(--fg-muted);
+}
+
+/* ── Final-CTA liegt auf var(--pink), im Light-Theme also auf
+      Marineblau. Die globale Ueberschriften-Regel weiter oben
+      wuerde die Headline dunkel auf dunkel setzen. Gleiches gilt
+      fuer die Ghost-Buttons darin. ── */
+body.theme-light .final-cta :is(h2, h3, p, .t-display),
+body.theme-light .final-cta .btn:not(.btn-primary) {
+  color: #FFFFFF;
+}
+body.theme-light .final-cta .btn:not(.btn-primary) {
+  border-color: rgba(255, 255, 255, 0.42);
+}
+
+/* ── Orbital-Timeline: die Knoten-Innenflaeche ist Marineblau,
+      die Ziffern darauf bleiben weiss. ── */
+body.theme-light .orbital-node-inner,
+body.theme-light .orbital-node-icon {
+  color: #FFFFFF;
+}
+
+/* ── Flow-Label sitzt auf heller Flaeche, nicht mehr auf dunkler ── */
+body.theme-light .dashboard-flow-label {
+  color: var(--fg);
 }
 
 /* ── Google-Maps-Iframe ist fuer Dunkel invertiert. Auf Hell muss

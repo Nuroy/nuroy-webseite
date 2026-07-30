@@ -12,9 +12,15 @@ class WavesAnimation {
     }
 
     // Configuration
+    // Canvas kennt keine CSS-Variablen, deshalb den aktuellen
+    // Theme-Wert einmalig aus dem Dokument lesen.
+    const themeFarbe = (name, fallback) => {
+      const v = getComputedStyle(document.body).getPropertyValue(name).trim()
+      return v || fallback
+    }
     this.config = {
-      strokeColor: options.strokeColor || '#FF2D7A',
-      backgroundColor: options.backgroundColor || '#000000',
+      strokeColor: options.strokeColor || themeFarbe('--pink', '#FF2D7A'),
+      backgroundColor: options.backgroundColor || themeFarbe('--bg', '#000000'),
       pointerSize: options.pointerSize || 0.5,
     }
 
@@ -374,9 +380,8 @@ class WavesAnimation {
 document.addEventListener('DOMContentLoaded', () => {
   const wavesContainer = document.getElementById('waves-container')
   if (wavesContainer) {
+    // Farben ohne Vorgabe: die Klasse zieht sie aus dem aktiven Theme
     new WavesAnimation('waves-container', {
-      strokeColor: '#FF2D7A',
-      backgroundColor: '#000000',
       pointerSize: 0.5
     })
   }

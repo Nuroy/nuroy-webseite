@@ -128,12 +128,12 @@ function renderChart(pathData) {
       <svg width="100%" height="48" viewBox="0 0 500 48" preserveAspectRatio="none">
         <defs>
           <linearGradient id="chart-gradient" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#FF2D7A" stop-opacity="0.25"/>
-            <stop offset="100%" stop-color="#FF2D7A" stop-opacity="0"/>
+            <stop offset="0%" stop-color="var(--pink)" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="var(--pink)" stop-opacity="0"/>
           </linearGradient>
         </defs>
         <path d="${pathData}" fill="url(#chart-gradient)"/>
-        <path d="${pathData.split('L500,48')[0]}" fill="none" stroke="#FF2D7A" stroke-width="1.5"/>
+        <path d="${pathData.split('L500,48')[0]}" fill="none" stroke="var(--pink)" stroke-width="1.5"/>
       </svg>
     </div>
   `;
