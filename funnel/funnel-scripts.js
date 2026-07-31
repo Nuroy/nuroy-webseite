@@ -233,7 +233,7 @@
     const testimonialCards = document.querySelectorAll('.funnel-testimonial-card');
 
     if (!modal || !modalVideo || testimonialCards.length === 0) {
-      console.warn('Testimonial modal elements not found');
+      // Die Video-Kundenstimmen wurden entfernt, das ist der Normalfall.
       return;
     }
 

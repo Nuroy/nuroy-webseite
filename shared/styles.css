@@ -3001,16 +3001,6 @@ p, li, dd, dt, figcaption, blockquote,
   .ct-row { padding: 16px 20px; }
 }
 
-/* Hinweis unter den Kundenstimmen: die Referenzen stammen aus anderen
-   Branchen, das muss auf einer Autohaus-Seite dabeistehen. */
-.sp-hinweis {
-  max-width: 620px;
-  margin: 14px auto 0;
-  text-align: center;
-  font-size: 14.5px;
-  line-height: 1.7;
-  color: var(--fg-muted);
-}
 
 /* ═══════════════════════════════════════════════════════════
    FAQ als zweispaltiger Block.
@@ -3668,4 +3658,73 @@ p, li, dd, dt, figcaption, blockquote,
 @media (prefers-reduced-motion: reduce) {
   .fv-laeufer { animation: none; left: 89%; }
   .fv-fuellung { animation: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Grundsaetze.
+   Ersetzen die Video-Kundenstimmen. Wichtig: Das sind Aussagen
+   von Nuroy ueber die eigene Arbeitsweise, keine Kundenzitate.
+   Deshalb stehen sie unter "Unsere Haltung" und nicht neben den
+   Logos, damit sie niemandem in den Mund gelegt werden.
+   ═══════════════════════════════════════════════════════════ */
+.gs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 1.8vw, 22px);
+  margin-top: clamp(32px, 4vw, 46px);
+}
+/* Die letzten beiden Karten fuellen die Reihe mittig auf */
+.gs-karte:nth-child(4) { grid-column: 1 / span 1; }
+.gs-karte {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-left: 3px solid rgba(var(--pink-rgb), .35);
+  border-radius: 12px;
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  transition: border-left-color .3s, transform .3s;
+}
+.gs-karte:hover { border-left-color: var(--pink); transform: translateY(-2px); }
+.gs-nr {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .12em;
+  color: var(--pink);
+}
+.gs-kopf {
+  margin-top: 12px;
+  font-family: var(--font-display);
+  font-size: clamp(16px, 1.7vw, 19px);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  line-height: 1.35;
+  color: #0A2540;
+}
+.gs-txt {
+  margin-top: 10px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--fg-muted);
+}
+.gs-h2 { margin-top: 8px; }
+.gs-logo-label {
+  margin-top: clamp(40px, 5vw, 60px);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+
+@media (max-width: 1000px) {
+  .gs-grid { grid-template-columns: repeat(2, 1fr); }
+  .gs-karte:nth-child(4) { grid-column: auto; }
+}
+@media (max-width: 640px) {
+  .gs-grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gs-karte { transition: none; }
+  .gs-karte:hover { transform: none; }
 }
