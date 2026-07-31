@@ -3667,46 +3667,7 @@ p, li, dd, dt, figcaption, blockquote,
    Deshalb stehen sie unter "Unsere Haltung" und nicht neben den
    Logos, damit sie niemandem in den Mund gelegt werden.
    ═══════════════════════════════════════════════════════════ */
-.gs-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(14px, 1.8vw, 22px);
-  margin-top: clamp(32px, 4vw, 46px);
-}
 /* Die letzten beiden Karten fuellen die Reihe mittig auf */
-.gs-karte:nth-child(4) { grid-column: 1 / span 1; }
-.gs-karte {
-  background: #FFFFFF;
-  border: 1px solid var(--line);
-  border-left: 3px solid rgba(var(--pink-rgb), .35);
-  border-radius: 12px;
-  padding: 26px 24px;
-  display: flex;
-  flex-direction: column;
-  transition: border-left-color .3s, transform .3s;
-}
-.gs-karte:hover { border-left-color: var(--pink); transform: translateY(-2px); }
-.gs-nr {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: .12em;
-  color: var(--pink);
-}
-.gs-kopf {
-  margin-top: 12px;
-  font-family: var(--font-display);
-  font-size: clamp(16px, 1.7vw, 19px);
-  font-weight: 800;
-  letter-spacing: -.02em;
-  line-height: 1.35;
-  color: #0A2540;
-}
-.gs-txt {
-  margin-top: 10px;
-  font-size: 14.5px;
-  line-height: 1.7;
-  color: var(--fg-muted);
-}
 .gs-h2 { margin-top: 8px; }
 .gs-logo-label {
   margin-top: clamp(40px, 5vw, 60px);
@@ -3717,14 +3678,152 @@ p, li, dd, dt, figcaption, blockquote,
   color: var(--fg-dim);
 }
 
-@media (max-width: 1000px) {
-  .gs-grid { grid-template-columns: repeat(2, 1fr); }
-  .gs-karte:nth-child(4) { grid-column: auto; }
+
+/* ═══════════════════════════════════════════════════════════
+   Tagesverlauf.
+   Ersetzt die Kachelreihe mit Grundsaetzen. Ein Marker laeuft
+   ueber die Achse, die Eintraege blenden nacheinander ein.
+   Antrieb in shared/autohaus-animationen.js. Ohne Bewegungswunsch
+   steht alles still und zeigt den vollen Tag.
+   ═══════════════════════════════════════════════════════════ */
+.tag-kopf {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
 }
-@media (max-width: 640px) {
-  .gs-grid { grid-template-columns: 1fr; }
+.tag-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--pink);
+}
+.tag-uhr {
+  font-family: var(--font-mono);
+  font-size: clamp(20px, 2.6vw, 28px);
+  font-weight: 500;
+  color: var(--fg);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Achse mit laufendem Marker ── */
+.tag-achse {
+  position: relative;
+  height: 3px;
+  margin-top: 18px;
+  border-radius: 999px;
+  background: linear-gradient(to right, rgba(var(--pink-rgb), .16), rgba(var(--pink-rgb), .3));
+}
+.tag-marke {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border-radius: 50%;
+  background: var(--pink);
+  box-shadow: 0 0 0 5px rgba(var(--pink-rgb), .16);
+  transition: left .06s linear;
+}
+.tag-stunden {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--fg-dim);
+}
+
+/* ── Eintraege ── */
+.tag-liste {
+  display: grid;
+  gap: 8px;
+  margin-top: 26px;
+}
+.tag-eintrag {
+  display: grid;
+  grid-template-columns: 64px 1fr 1fr;
+  gap: 16px;
+  align-items: baseline;
+  padding: 13px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #FFFFFF;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .45s ease, transform .45s ease, border-color .45s ease;
+}
+.tag-eintrag.sichtbar {
+  opacity: 1;
+  transform: none;
+  border-color: rgba(var(--pink-rgb), .3);
+}
+.tag-zeit {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--pink);
+  font-variant-numeric: tabular-nums;
+}
+.tag-was { font-size: 14.5px; line-height: 1.55; color: var(--fg-muted); }
+.tag-folge {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--fg);
+  font-weight: 500;
+}
+.tag-folge::before { content: '→ '; color: var(--pink); font-weight: 400; }
+
+/* ── Summe und Grundsaetze ── */
+.tag-summe {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.tag-summe-zahl {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.6vw, 40px);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  color: var(--pink);
+  font-variant-numeric: tabular-nums;
+  min-width: 1.2em;
+}
+.tag-summe-txt { font-size: 14.5px; line-height: 1.6; color: var(--fg-muted); }
+.tag-saetze {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin-top: 20px;
+}
+.tag-satz {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--fg-dim);
+  padding-left: 14px;
+  position: relative;
+}
+.tag-satz::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(var(--pink-rgb), .5);
+}
+
+@media (max-width: 820px) {
+  .tag-eintrag { grid-template-columns: 56px 1fr; gap: 6px 12px; }
+  .tag-folge { grid-column: 2; }
+  .tag-saetze { flex-direction: column; gap: 8px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .gs-karte { transition: none; }
-  .gs-karte:hover { transform: none; }
+  .tag-eintrag { opacity: 1; transform: none; transition: none; }
+  .tag-marke { transition: none; }
 }
