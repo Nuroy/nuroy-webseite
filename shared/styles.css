@@ -2816,16 +2816,32 @@ body.theme-light iframe[src*="google.com/maps"] {
   color: var(--fg-dim);
 }
 
-/* Lange deutsche Komposita duerfen in grossen Displaygroessen umbrechen,
-   sonst schiebt ein einzelnes Wort wie "Werkstattkapazitaet" die ganze
-   Seite horizontal auf. lang="de" steht am <html>, Trennung greift also. */
+/* Ueberschriften.
+   KEINE automatische Silbentrennung: hyphens:auto trennt auch kurze
+   Woerter wie "gera-de", nur um die Zeile zu fuellen. Das sieht in
+   Displaygroessen schlecht aus. overflow-wrap bleibt als Notbremse, es
+   greift nur, wenn ein einzelnes Wort breiter ist als die Zeile, und
+   setzt dabei keinen Bindestrich. text-wrap:balance verteilt die Zeilen
+   gleichmaessiger, wo der Browser es unterstuetzt. */
 h1, h2, h3,
 .t-display,
 .t-h1,
 .t-h2,
 .fch {
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: manual;
+  text-wrap: balance;
+}
+
+/* Dasselbe fuer Fliesstext und kleine Beschriftungen. Woerter wie
+   "Mindestlaufzeit" passen in schmalen Spalten sonst nicht und schieben
+   die Seite auf. break-word bricht ohne Bindestrich und nur dann, wenn
+   das Wort allein schon breiter ist als die Zeile. */
+p, li, dd, dt, figcaption, blockquote,
+.stat-label, .stat-sub,
+.t-body, .t-body-lg, .t-small {
+  overflow-wrap: break-word;
+  hyphens: manual;
 }
 
 /* ═══════════════════════════════════════════════════════════

@@ -790,7 +790,8 @@ img, video, iframe {
     font-size: clamp(36px, 8vw, 48px);
     word-wrap: break-word;
     overflow-wrap: break-word;
-    hyphens: auto;
+    /* keine automatische Trennung, siehe shared/styles.css */
+    hyphens: manual;
   }
 
   .service-vsl-wrapper {
