@@ -95,6 +95,28 @@ module.exports = async function handler(req, res) {
     return res.status(okCal ? 200 : 502).json({ ok: okCal });
   }
 
+  // ── Kontaktformular (/kontakt): Fallback-Kanal, falls web3forms im Browser scheitert ──
+  if (typ === 'kontakt') {
+    var kName = sanitize(body.name, 120);
+    var kEmail = sanitize(body.email, 160);
+    var kMsg = sanitize(body.nachricht, 1200);
+    if (!kName || !kEmail || !kMsg) {
+      return res.status(400).json({ ok: false, error: 'name_email_nachricht_required' });
+    }
+    var kFirma = sanitize(body.unternehmen, 160);
+    var kLeistung = sanitize(body.leistung, 160);
+    var okKontakt = await sendTelegram(
+      '✉️ Neue Kontaktanfrage (Webseite)\n' +
+      '👤 ' + kName + (kFirma ? ' · ' + kFirma : '') + '\n' +
+      '📧 ' + kEmail +
+      (kLeistung ? '\n🎯 ' + kLeistung : '') +
+      (country ? '\n🌍 Land: ' + country : '') +
+      (seite ? '\n📍 ' + seite : '') +
+      '\n📝 ' + kMsg
+    );
+    return res.status(okKontakt ? 200 : 502).json({ ok: okKontakt });
+  }
+
   // ── Rückruf-Lead: Pflichtfelder ──
   var name = sanitize(body.name, 120);
   var telefon = sanitize(body.telefon || body.phone, 60);
